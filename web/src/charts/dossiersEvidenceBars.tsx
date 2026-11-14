@@ -27,7 +27,7 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
 
   const narrow = width < 520;
   const labelW = narrow ? 112 : 168;
-  const m = { top: 8, right: narrow ? 40 : 56, bottom: 30, left: labelW };
+  const m = { top: 8, right: narrow ? 40 : 56, bottom: 36, left: labelW };
   const barH = 14;
   const gap = 4;
   const rowH = barH * 2 + gap + 18;
@@ -84,7 +84,7 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
                 <text y={ih + 16} textAnchor="middle" fontSize={12} fill="var(--ink-3)" className="num">{fmtNumber(t, 0)}</text>
               </g>
             ))}
-            <text x={iw} y={ih + 28} textAnchor="end" fontSize={12} fill="var(--ink-3)">tests</text>
+            <text x={iw} y={ih + 32} textAnchor="end" fontSize={12} fill="var(--ink-3)">tests</text>
             {FUEL_CLASSES.map((f, i) => (
               <g key={f} transform={`translate(0,${i * rowH + 9})`}>
                 <g transform={`translate(${-labelW + 8},${barH + gap / 2})`}>

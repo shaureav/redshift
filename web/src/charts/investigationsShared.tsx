@@ -276,7 +276,7 @@ export function QualityLink({ id, className = "" }: { id: string; className?: st
 
 // A coverage chip: filled when recorded, hatched when not recorded, dashed when there is no table.
 export function CoverageChip({ state, label }: { state: CoverageState; label: string }) {
-  const base = "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs leading-tight border";
+  const base = "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs border";
   const text = `${label}: ${COVERAGE_STATE_TEXT[state]}`;
   if (state === "recorded")
     return (
@@ -331,7 +331,7 @@ export function SourcedText({ val, className = "", clamp = false, emptyText = "n
   if (!val || val.v === null || val.v === "") return <p className="text-sm italic text-ink-3">{emptyText}</p>;
   return (
     <div ref={ref} className={`relative ${className}`} data-prov={val.p}>
-      <p className={`whitespace-pre-line text-sm leading-relaxed text-ink ${clamp ? "line-clamp-4" : ""}`}>{val.v}</p>
+      <p className={`whitespace-pre-line text-sm text-ink ${clamp ? "line-clamp-4" : ""}`}>{val.v}</p>
       <button type="button" className="mt-1 text-xs text-ink-3 underline decoration-dotted underline-offset-2 hover:text-ink" aria-expanded={open} aria-controls={popId} onClick={() => setOpen((o) => !o)}>
         Source
       </button>

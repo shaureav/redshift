@@ -35,6 +35,7 @@
   --control-h-sm: 24px;
   --field-h: 40px;
   --tap: 44px; /* minimum touch target on a coarse pointer */
+  --nav-h: 56px; /* the sticky glass nav (Layout); scroll padding keeps focus and anchors clear of it */
 
   /* Elevation, three levels only: flat (the plane, no class), raised (.card, .raised, .tile: a 1 px line),
      floating (.floating, .toolbar, .sheet: a line, --shadow and this backdrop blur). */
@@ -135,11 +136,21 @@ html, body {
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
 }
+/* The nav is sticky, so anything scrolled into view (a focused control, an anchor, the skip link's target)
+   stops below it rather than underneath it (WCAG 2.2, focus not obscured). */
+html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 
 .num { font-family: "IBM Plex Sans", system-ui, sans-serif; font-variant-numeric: tabular-nums; }
 .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
 
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--r-control); }
+/* The keyboard focus ring. In the base layer, so components and utilities (outline-none on a card that takes
+   focus only to hold it, an inset offset on a segment) override it; no radius, because an outline follows the
+   element's own corners and a pill must stay a pill while focused. */
+@layer base {
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  /* Native checkboxes and radios take the accent when checked, like every other control. */
+  input[type="checkbox"], input[type="radio"] { accent-color: var(--accent); }
+}
 
 @layer components {
   /* Raised: cards and panels on the page. */
@@ -164,16 +175,18 @@ html, body {
   .eyebrow { font-size: var(--text-label); line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
   .rule { border-top: 1px solid var(--line); }
 
-  /* Controls: custom, never the browser default. Every boundary is --control-line (3:1); pressed and checked
-     states use the accent, the only colour that marks interactive state. */
+  /* Controls: custom, never the browser default. Every boundary is --control-line (3:1); pressed, open and
+     checked states use the accent, the only colour that marks interactive state, and never by hue alone: a
+     pressed or open control's boundary doubles to 2 px (the 1 px border plus a 1 px inset ring), a pressed
+     segment gets a 2 px underline and the palette's active row a 2 px bar, so the state reads in greyscale. */
   .btn {
     display: inline-flex; align-items: center; gap: 8px; height: var(--control-h); padding: 0 12px;
     border-radius: var(--r-control); border: 1px solid var(--control-line); background: transparent; color: var(--ink);
     font-size: var(--text-body-sm); line-height: var(--leading-body-sm); font-weight: 500; white-space: nowrap;
-    transition: background-color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+    transition: background-color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out), box-shadow var(--t-fast) var(--ease-out);
   }
   .btn:hover { background: var(--surface-3); }
-  .btn[aria-pressed="true"] { background: var(--surface-3); border-color: var(--accent); color: var(--ink); }
+  .btn[aria-pressed="true"], .btn[aria-expanded="true"], details[open] > summary.btn { background: var(--surface-3); border-color: var(--accent); color: var(--ink); box-shadow: inset 0 0 0 1px var(--accent); }
   .btn:disabled { color: var(--ink-3); cursor: not-allowed; }
   .btn:disabled:hover { background: transparent; }
   .btn-quiet { border-color: transparent; color: var(--ink-2); }
@@ -182,22 +195,28 @@ html, body {
   .btn-primary:hover { background: var(--accent); filter: brightness(1.08); }
   .btn-sm { height: var(--control-h-sm); padding: 0 8px; font-size: var(--text-label); line-height: var(--leading-label); }
 
+  /* Segmented control: 32 px tall overall like every control beside it (the segments are 2 px shorter to leave
+     room for the border). It clips its segments to its corners, so a segment's focus ring is drawn inside it. */
   .seg { display: inline-flex; border: 1px solid var(--control-line); border-radius: var(--r-control); overflow: hidden; }
   .seg > button {
-    height: var(--control-h); padding: 0 12px; font-size: var(--text-body-sm); line-height: var(--leading-body-sm); color: var(--ink-2); white-space: nowrap;
+    display: inline-flex; align-items: center; height: calc(var(--control-h) - 2px); padding: 0 12px;
+    font-size: var(--text-body-sm); line-height: var(--leading-body-sm); color: var(--ink-2); white-space: nowrap;
     transition: background-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
   }
   .seg > button + button { border-left: 1px solid var(--line-strong); }
   .seg > button[aria-pressed="true"], .seg > button[aria-checked="true"] { background: var(--surface-3); color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); }
   .seg > button:hover { color: var(--ink); }
+  .seg > button:focus-visible { outline-offset: -2px; }
+  .seg-sm > button { height: calc(var(--control-h-sm) - 2px); padding: 0 8px; font-size: var(--text-label); line-height: var(--leading-label); }
 
   .chip {
     display: inline-flex; align-items: center; gap: 8px; height: var(--control-h); padding: 0 12px; border-radius: var(--r-pill);
-    border: 1px solid var(--control-line); color: var(--ink-2); font-size: var(--text-body-sm); line-height: var(--leading-body-sm);
-    transition: background-color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+    border: 1px solid var(--control-line); color: var(--ink-2); font-size: var(--text-body-sm); line-height: var(--leading-body-sm); white-space: nowrap;
+    transition: background-color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out), box-shadow var(--t-fast) var(--ease-out);
   }
-  .chip[aria-pressed="true"] { color: var(--ink); background: var(--surface-3); border-color: var(--accent); }
+  .chip[aria-pressed="true"] { color: var(--ink); background: var(--surface-3); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
   .chip:hover { color: var(--ink); }
+  .chip:disabled { color: var(--ink-3); cursor: not-allowed; }
 
   .switch { position: relative; width: 32px; height: 16px; border-radius: var(--r-pill); background: var(--control-line); transition: background-color var(--t-base) var(--ease-out); flex: none; }
   .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: var(--r-pill); background: var(--ink); transition: transform var(--t-base) var(--ease-out); }
@@ -206,9 +225,16 @@ html, body {
 
   .field {
     height: var(--field-h); width: 100%; padding: 0 12px; border-radius: var(--r-control); border: 1px solid var(--control-line);
-    background: var(--surface); color: var(--ink); font-size: var(--text-body-sm);
+    background: var(--surface); color: var(--ink); font-size: var(--text-body-sm); line-height: var(--leading-body-sm);
   }
   .field::placeholder { color: var(--ink-3); }
+  .field-sm { height: var(--control-h); padding: 0 8px; }
+  /* A select (the Select component): no native arrow; the icon set's chevron sits in the right padding. */
+  .field-select { appearance: none; -webkit-appearance: none; padding-right: 28px; cursor: pointer; text-overflow: ellipsis; }
+
+  /* A row in a listbox (the command palette): the arrow-key selection is the surface lift plus a 2 px accent
+     bar on the left edge, so it never rests on a 1.1:1 background change alone. */
+  .option[aria-selected="true"] { background: var(--surface-3); color: var(--ink); box-shadow: inset 2px 0 0 var(--accent); }
 
   .kbd { font-family: "IBM Plex Mono", monospace; font-size: var(--text-label); line-height: var(--leading-label); padding: 0 4px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: var(--r-control); color: var(--ink-2); }
 
@@ -279,9 +305,40 @@ html, body {
   .crossfade, .layer, .glyph { transition: opacity var(--t-fade) linear !important; }
 }
 
+/* Print (a dossier, the brief, the saved PDF): the light theme's colours on white paper, whichever theme is on
+   screen. The selector outranks both theme blocks, and it sets every token the light block sets, so nothing of
+   the dark theme (its fills, its surface-coloured rings, its accent) reaches the page; scripts/contrast.mjs checks
+   this block as a third theme and fails if it misses one of the light tokens. */
 @media print {
   @page { margin: 16mm; }
-  :root { --surface: #fff; --surface-2: #fff; --surface-3: #f2f4f7; --ink: #0f1b2d; --ink-2: #3f4b63; --ink-3: #56627a; --line: #d9dee7; --line-strong: #b4bdcc; }
+  :root, :root[data-theme] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --surface-3: #f2f4f7;
+    --ink: #0f1b2d;
+    --ink-2: #3f4b63;
+    --ink-3: #56627a;
+    --line: #d9dee7;
+    --line-strong: #b4bdcc;
+    --control-line: #76819a;
+    --accent: #1d756d;
+    --accent-ink: #ffffff;
+    --amber-ink: #8a5a00;
+    --gas: #2a78d6;       --gas-ring: #2466b6;       --gas-edge: var(--gas-ring);
+    --droplet: #1baf7a;   --droplet-ring: #158b61;   --droplet-edge: var(--droplet-ring);
+    --solid: #eda100;     --solid-ring: #a57000;     --solid-edge: var(--solid-ring);
+    --emulator: #e87ba4;  --emulator-ring: #b56080;  --emulator-edge: var(--emulator-ring);
+    --land: #ffffff;
+    --sea: #eef1f5;
+    --hatch: #9aa4b5;
+    --candidate: #0f1b2d;
+    --isotherm: #8c96a8;
+    --prebreathe: #6250d6;
+    --probe: #0f1b2d;
+    --shadow: none;
+  }
   html, body { background: #fff; color: #0f1b2d; }
   nav, footer, .no-print { display: none !important; }
   .card { border-color: #ccc; }

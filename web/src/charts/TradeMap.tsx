@@ -317,7 +317,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                 >
                   <circle r={on ? 9 : 7} fill="var(--surface-2)" stroke={on ? "var(--accent)" : "var(--candidate)"} strokeWidth={on ? 3 : 2.25} />
                   <circle r={2.5} fill={on ? "var(--accent)" : "var(--candidate)"} />
-                  <text x={11} y={c.role === "scenario" ? 20 : -8} fontSize={narrow ? 10 : 12} fontWeight={600} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
+                  <text x={11} y={c.role === "scenario" ? 20 : -8} fontSize={12} fontWeight={600} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
                     {c.name}
                   </text>
                   {!narrow && (

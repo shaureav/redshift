@@ -59,7 +59,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
     marks.push(
       <g key={`head${f}`} transform={`translate(${cx},12)`}>
         <path d={markerPath(f, 5)} transform="translate(5,0)" fill={FUEL_COLOR_VAR[f]} stroke={FUEL_EDGE_VAR[f]} />
-        <text x={15} dominantBaseline="central" fontSize={narrow ? 10.5 : 12} fontWeight={600} fill="var(--ink)">
+        <text x={15} dominantBaseline="central" fontSize={12} fontWeight={600} fill="var(--ink)">
           {narrow ? FUEL_TINY[f] : FUEL_SHORT[f]}
         </text>
       </g>,
@@ -85,7 +85,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
       key: `t${c.id}`,
       x: pad,
       y: y0 + 15,
-      size: narrow ? 12.5 : 13.5,
+      size: narrow ? 12 : 14,
       weight: 600,
       text: `${about ? "about " : ""}${c.name} (${valText(c.pressure_kpa, "kPa")})${narrow ? "" : `  ${c.short}`}`,
       node: (
@@ -106,7 +106,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
     // Row labels.
     NEAR_ROWS.forEach((r, ri) => {
       marks.push(
-        <text key={`rl${c.id}${r.key}`} x={pad} y={y0 + titleH + ri * rowH + rowH / 2} dominantBaseline="central" fontSize={narrow ? 10.5 : 11.5} fill="var(--ink-2)">
+        <text key={`rl${c.id}${r.key}`} x={pad} y={y0 + titleH + ri * rowH + rowH / 2} dominantBaseline="central" fontSize={12} fill="var(--ink-2)">
           {narrow ? r.tiny : r.label}
         </text>,
       );
@@ -165,7 +165,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
             <title>{`${FUEL_LABEL[f]}, ${r.label}: ${valText(val, "tests")} near ${c.name}`}</title>
           </path>,
         );
-        labels.push({ key: `${k}v`, x: cx + bw + 5, y: cy, size: narrow ? 11 : 12, weight: 600, text: valText(val), node: <Value val={val} unit={false} /> });
+        labels.push({ key: `${k}v`, x: cx + bw + 5, y: cy, size: 12, weight: 600, text: valText(val), node: <Value val={val} unit={false} /> });
       });
       const o2 = e?.o2_match_pressure_unknown[f];
       if (o2) {
@@ -173,7 +173,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
           key: `${c.id}${f}o2`,
           x: cx + 2,
           y: o2y + o2H / 2,
-          size: narrow ? 10.5 : 11.5,
+          size: 12,
           tone: "ink-2",
           text: valText(o2),
           node: <Value val={o2} unit={false} />,

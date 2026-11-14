@@ -89,7 +89,7 @@ export default function Brief() {
 
       <header className="border-b border-line pb-6">
         <span className="eyebrow">Redshift brief · dataset {ver}</span>
-        <h1 className="mt-2 text-xl font-semibold leading-tight">
+        <h1 className="mt-2 text-xl font-semibold">
           Fire evidence near <V v={r.o2} /> oxygen and <V v={r.psi} /> (<Value val={r.kpa} digits={1} />)
         </h1>
         {c && <p className="mt-2 text-sm text-ink-2">{c.name}: {c.short}. {c.context}</p>}

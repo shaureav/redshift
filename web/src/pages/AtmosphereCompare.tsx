@@ -44,7 +44,7 @@ export function CompareColumns({ grid, points, m, candidates, candEv, flame, pb,
             </div>
             <p className="mt-2 text-lg font-semibold"><Value val={r.o2} /> · <Value val={r.psi} /></p>
             <p className="text-sm text-ink-2"><Value val={r.kpa} digits={1} /></p>
-            <p className="mt-3 min-h-[48px] text-sm leading-snug"><PointHeadline r={r} /></p>
+            <p className="mt-3 min-h-[48px] text-sm"><PointHeadline r={r} /></p>
           </header>
           <div className={row}><FuelRows r={r} /></div>
           <div className={row}>
@@ -95,7 +95,7 @@ export default function AtmosphereCompare() {
     <div>
       <header className="mb-6 max-w-3xl">
         <span className="eyebrow">Compare atmospheres</span>
-        <h1 className="mt-2 text-xl font-semibold leading-tight">What is known about fire at each atmosphere, side by side.</h1>
+        <h1 className="mt-2 text-xl font-semibold">What is known about fire at each atmosphere, side by side.</h1>
         <p className="mt-2 text-sm text-ink-2">Columns are not ranked. Each shows the build&apos;s counts at that point of the plane, at the same nearness step size. Empty means unknown, never safe.</p>
       </header>
       <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -110,7 +110,7 @@ export default function AtmosphereCompare() {
         })}
         <form className="flex gap-2" onSubmit={(e) => { e.preventDefault(); const p = parsePoint(add); if (p && points.length < MAX) { setPoints([...points, p]); setAdd(""); } }}>
           <label htmlFor="add-point" className="sr-only">Add a point, for example 30% 9 psi</label>
-          <input id="add-point" className="field h-8 w-48" placeholder="Add 30% 9 psi" value={add} onChange={(e) => setAdd(e.target.value)} />
+          <input id="add-point" className="field field-sm w-48" placeholder="Add 30% 9 psi" value={add} onChange={(e) => setAdd(e.target.value)} />
           <button type="submit" className="btn" disabled={points.length >= MAX}>Add</button>
         </form>
         <span className="seg ml-auto" role="group" aria-label="Nearness step size">

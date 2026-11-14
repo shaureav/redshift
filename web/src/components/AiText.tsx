@@ -25,7 +25,7 @@ const COUNT_UNITS = new Set(["tests", "sessions", "findings"]);
 
 function Paragraph({ p }: { p: Para }) {
   return (
-    <p className={`leading-relaxed ${p.pending ? "text-ink-3 italic" : ""}`}>
+    <p className={`${p.pending ? "text-ink-3 italic" : ""}`}>
       {p.segments.map((s, i) =>
         "t" in s ? <span key={i}>{s.t}</span> : <Value key={i} val={s.val} unit={s.val.u && COUNT_UNITS.has(s.val.u) ? false : undefined} />,
       )}
@@ -93,7 +93,7 @@ export function AskPanel() {
       <div className="mb-3 flex flex-wrap gap-2" role="list">
         {data.qa.map((q) => (
           <button key={q.id} role="listitem" type="button" onClick={() => setOpen(q.id === open ? null : q.id)} aria-pressed={q.id === open}
-            className={`rounded-full border px-3 py-1 text-left text-xs ${q.id === open ? "border-accent bg-surface-3" : "border-line hover:bg-surface-3"}`}>
+            className="chip h-auto min-h-8 whitespace-normal py-1 text-left text-xs">
             {q.question}
           </button>
         ))}

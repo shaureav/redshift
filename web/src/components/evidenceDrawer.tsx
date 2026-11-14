@@ -93,7 +93,7 @@ export function EvidenceDrawer({ row, flags, onClose }: DrawerProps) {
               ref={closeRef}
               type="button"
               onClick={onClose}
-              className="shrink-0 rounded border border-line px-2.5 py-1 text-xs text-ink-2 hover:bg-surface-3"
+              className="btn btn-sm shrink-0 text-ink-2"
             >
               Close
             </button>

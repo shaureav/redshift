@@ -133,7 +133,7 @@ function LiveView({ a }: { a: LiveAnswer }) {
     <article className="animate-rise rounded-lg border border-line bg-[color:var(--surface)] p-4 text-sm">
       <div className="mb-2 flex justify-end"><span className="rounded-full border border-[color:var(--amber-ink)] px-2 text-xs text-[color:var(--amber-ink)]">AI-generated now, checked by code, not by a person</span></div>
       {a.paragraphs.map((p, i) => (
-        <p key={i} className="leading-relaxed">
+        <p key={i}>
           {p.segments.map((s, k) => ("t" in s ? <span key={k}>{s.t}</span> : <Value key={k} val={s.val} />))}
           {p.cites.length > 0 && <span className="ml-1 mono text-xs text-ink-3">[{p.cites.join(", ")}]</span>}
         </p>

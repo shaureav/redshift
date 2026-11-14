@@ -157,7 +157,7 @@ function StripView({ tests, candidates, label }: { tests: TestRow[]; candidates:
   const [ref, width] = useWidth();
   const narrow = width < 520;
   const cands = [...candidates].sort((a, b) => a.o2_pct.v - b.o2_pct.v);
-  const labelRow = 14;
+  const labelRow = 16; // the Label role's line: stacked 12 px names never touch
   const labelBand = cands.length * labelRow + 6;
   // Stack tests that share an O2 value (geometry only).
   const stacks = d3.groups(tests, (t) => t.fields.o2_pct.v as number);
@@ -183,12 +183,12 @@ function StripView({ tests, candidates, label }: { tests: TestRow[]; candidates:
           {cands.map((c, i) => {
             const cx = x(c.o2_pct.v);
             const ly = i * labelRow + 10;
-            const right = cx > iw - (narrow ? 90 : 130);
+            const right = cx > iw - (narrow ? 90 : 180);
             return (
               <g key={c.id}>
                 <line x1={cx} x2={cx} y1={ly + 3} y2={ih} stroke="var(--candidate)" strokeOpacity={0.45} />
                 <circle cx={cx} cy={ly + 3} r={2.5} fill="var(--candidate)" />
-                <text x={right ? cx - 6 : cx + 6} y={ly} dy="0.55em" textAnchor={right ? "end" : "start"} fontSize={narrow ? 10 : 11} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3}>
+                <text x={right ? cx - 6 : cx + 6} y={ly} dy="0.55em" textAnchor={right ? "end" : "start"} fontSize={12} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3}>
                   {narrow ? `${fmtNumber(c.o2_pct.v)}% O2` : `${c.name}${isAboutPressure(c) ? " (about)" : ""}`}
                 </text>
                 <title>{`${c.name}: candidate O2, shown for reference; its pressure is not comparable here`}</title>

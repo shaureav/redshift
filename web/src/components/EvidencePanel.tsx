@@ -70,8 +70,9 @@ export interface PanelData {
 
 function Section({ title, children, id }: { title: ReactNode; children: ReactNode; id?: string }) {
   return (
-    // scroll-mt clears the sticky nav when a section is scrolled to the top (the tour's access-gap step).
-    <section className="scroll-mt-16 border-t border-line px-5 py-4" aria-labelledby={id}>
+    // A section scrolled to the top (the tour's access-gap step) clears the sticky nav through the page's
+    // scroll padding (index.css), so it needs no scroll margin of its own.
+    <section className="border-t border-line px-5 py-4" aria-labelledby={id}>
       <h2 id={id} className="eyebrow mb-3">{title}</h2>
       {children}
     </section>
@@ -103,19 +104,29 @@ export function FuelRows({ r }: { r: Reading }) {
         return (
           <li key={f} className="grid grid-cols-[112px_1fr] items-center gap-3">
             <span className="flex items-center gap-2 text-sm text-ink-2"><FuelMarker fuel={f} size={12} /> {FUEL_LABEL[f].replace(" (BRE)", "")}</span>
-            <span className="relative flex h-6 items-center">
-              {n === 0 ? (
-                <span className="hatch-bg absolute inset-y-0 left-0 right-0 rounded-sm border border-dashed border-line-strong opacity-70" aria-hidden="true" />
-              ) : (
-                <span className={`bar fuel-bar fuel-${f} absolute inset-y-0 left-0 rounded-sm`} style={{ width: `${Math.max(2, (n / max) * 100)}%` }} aria-hidden="true" />
-              )}
-              {/* A solid chip, so the count and the paper label never sit on the bar's fill (AA in both themes). */}
-              <span className={`relative ml-auto flex items-baseline gap-2 rounded-sm bg-surface-2 px-2 text-sm ${n === 0 ? "text-ink-2" : ""}`}>
-                {n === 0 ? <span className="italic">no tests recorded</span> : null}
-                <span className="font-semibold"><Value val={r.near[f].psi_table} unit={false} /></span>
-                <span className="text-xs text-ink-3">paper <Value val={r.near[f].published_paper} unit={false} /></span>
+            {n === 0 ? (
+              // Zero: the words sit beside the hatch, never on it, so in a narrow column (a phone's compare) they
+              // wrap under it instead of covering it. Empty means unknown, and the hatch must stay in sight.
+              <span className="flex flex-wrap items-center justify-end gap-x-2 gap-y-1">
+                <span className="hatch-bg h-6 min-w-8 flex-1 rounded-sm border border-dashed border-line-strong opacity-70" aria-hidden="true" />
+                <span className="flex flex-wrap items-baseline justify-end gap-x-2 text-sm text-ink-2">
+                  <span className="italic">no tests recorded</span>
+                  <span className="flex items-baseline gap-2 whitespace-nowrap">
+                    <span className="font-semibold"><Value val={r.near[f].psi_table} unit={false} /></span>
+                    <span className="text-xs text-ink-3">paper <Value val={r.near[f].published_paper} unit={false} /></span>
+                  </span>
+                </span>
               </span>
-            </span>
+            ) : (
+              <span className="relative flex h-6 items-center">
+                <span className={`bar fuel-bar fuel-${f} absolute inset-y-0 left-0 rounded-sm`} style={{ width: `${Math.max(2, (n / max) * 100)}%` }} aria-hidden="true" />
+                {/* A solid chip, so the count and the paper label never sit on the bar's fill (AA in both themes). */}
+                <span className="relative ml-auto flex items-baseline gap-2 rounded-sm bg-surface-2 px-2 text-sm">
+                  <span className="font-semibold"><Value val={r.near[f].psi_table} unit={false} /></span>
+                  <span className="text-xs text-ink-3">paper <Value val={r.near[f].published_paper} unit={false} /></span>
+                </span>
+              </span>
+            )}
           </li>
         );
       })}
@@ -174,7 +185,7 @@ function GapMini({ gap, r }: { gap: AccessGapData; r: Reading }) {
   const max = Math.max(1, ...steps.map((s) => s.count.v));
   return (
     <div>
-      <p className="text-base font-semibold leading-snug">
+      <p className="text-base font-semibold">
         {noPressure ? "No solid burn in PSI's tables records pressure." : "Solid burns in PSI's tables, step by step."}
       </p>
       <ol className="mt-3 space-y-2">
@@ -225,7 +236,7 @@ export function EvidencePanelView({ data, actions, ask }: { data: PanelData; act
         </p>
         {candidate && <p className="mt-1 text-sm text-ink-2">{candidate.name}: {candidate.short}. {candidate.context}</p>}
         {data.outside && <p className="mt-1 text-sm text-[color:var(--amber-ink)]">Outside the probe grid; showing its nearest edge point.</p>}
-        <p className="mt-3 text-lg leading-snug" aria-live="polite"><PointHeadline r={r} /></p>
+        <p className="mt-3 text-lg" aria-live="polite"><PointHeadline r={r} /></p>
       </header>
 
       <Section title="Tests near this point, by fuel class" id="sec-fuel">

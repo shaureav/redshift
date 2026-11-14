@@ -36,7 +36,7 @@ export function AccessGap() {
   const pending = data.paper_findings_awaiting_verification;
 
   const narrow = width < 520;
-  const labelSize = narrow ? 12 : 13;
+  const labelSize = 12;
   const countRoom = narrow ? 56 : 72;
   const iw = Math.max(120, width - countRoom);
   const allSteps = [...data.psi_steps, ...data.paper_steps];
@@ -93,7 +93,7 @@ export function AccessGap() {
         const text = awaiting ? `0 verified; ${valText(pending, pending.u)} awaiting human verification` : "0, none recorded";
         const pillW = textWidth(text, 12) + 24;
         const twoLines = pillW > iw - 12;
-        const h = twoLines ? barH + 16 : barH;
+        const h = twoLines ? barH + 20 : barH;
         marks.push(
           <rect key={`${k}h`} x={0} y={y} width={iw} height={h} rx={4} fill="url(#hatch-gap)" stroke="var(--line)">
             <title>{text}</title>

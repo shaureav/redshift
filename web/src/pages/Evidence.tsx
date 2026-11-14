@@ -67,7 +67,7 @@ function buildColumns(fieldKeys: string[], open: (id: string) => void): ColumnDe
       accessorFn: (r) => r.investigation,
       sortingFn: mixedSort,
       cell: ({ row }) => (
-        <span className="flex flex-col leading-tight">
+        <span className="flex flex-col">
           <span>{row.original.investigation}</span>
           <span className="mono text-xs text-ink-3">{row.original.investigation_id}</span>
         </span>
@@ -376,11 +376,11 @@ export default function Evidence() {
             type="button"
             onClick={exportCsv}
             disabled={shownCount === 0}
-            className="rounded border border-line px-2.5 py-1.5 hover:bg-surface-3 disabled:opacity-50"
+            className="btn"
           >
             Download shown tests (CSV)
           </button>
-          <a className="rounded border border-line px-2.5 py-1.5 hover:bg-surface-3" href={dataUrl("tests.csv")} download>
+          <a className="btn" href={dataUrl("tests.csv")} download>
             Full tests.csv
           </a>
         </div>

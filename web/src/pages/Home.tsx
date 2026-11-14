@@ -125,7 +125,8 @@ export default function Home() {
     <div className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:h-[calc(100vh-56px)] lg:grid-cols-[minmax(0,1fr)_400px] lg:grid-rows-1 lg:overflow-hidden">
       <section className="flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
         <header className="flex flex-col gap-3 px-4 pb-2 pt-4 lg:px-6">
-          <h1 className="max-w-4xl text-lg font-semibold leading-snug lg:text-xl" aria-live="polite">
+          {/* The Heading role (plan, section 5): the panel's point readout keeps the larger Title role. */}
+          <h1 className="max-w-4xl text-heading" aria-live="polite">
             {view.solids ? (
               gapSteps && gapSteps[2]?.count.v === 0 ? (
                 <>No solid burn in PSI&apos;s tables records pressure.{" "}
@@ -139,8 +140,9 @@ export default function Home() {
               <>Microgravity fire tests by oxygen and cabin pressure.</>
             )}
           </h1>
-          <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
-            {/* On a phone the controls scroll sideways in one row, so the plane stays above the fold. */}
+          <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 pt-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pt-0">
+            {/* On a phone the controls scroll sideways in one row, so the plane stays above the fold. The row
+                clips what overflows it, so it pads at least 4 px on every side: room for a focus ring (2 px out, 2 px wide). */}
             <button type="button" role="switch" aria-checked={view.solids} onClick={() => setView({ solids: !view.solids })} className={`chip flex-none whitespace-nowrap ${view.solids ? "border-[color:var(--solid-edge)] text-ink" : ""}`} id="tour-solids">
               <span className="switch" aria-checked={view.solids} aria-hidden="true" /> Solids only
             </button>

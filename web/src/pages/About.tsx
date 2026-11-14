@@ -30,9 +30,9 @@ const NTRS_DOCS: { id: string; title: string; who: string; year: string; venue: 
 
 function Block({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
-    <section id={id} aria-labelledby={`${id}-h`} className="card scroll-mt-20 p-5">
+    <section id={id} aria-labelledby={`${id}-h`} className="card p-5">
       <h2 id={`${id}-h`} className="text-lg font-semibold tracking-tight">{title}</h2>
-      <div className="mt-2 space-y-3 text-sm leading-relaxed text-ink-2">{children}</div>
+      <div className="mt-2 space-y-3 text-sm text-ink-2">{children}</div>
     </section>
   );
 }
@@ -42,7 +42,7 @@ function CopyButton({ text }: { text: string }) {
   return (
     <button
       type="button"
-      className="rounded border border-line px-2 py-1 text-xs hover:bg-surface-3"
+      className="btn btn-sm"
       onClick={() => {
         navigator.clipboard?.writeText(text).then(
           () => {

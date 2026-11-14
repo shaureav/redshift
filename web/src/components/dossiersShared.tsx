@@ -311,7 +311,7 @@ export function AwaitingVerification({ kf, pendingIds = [] }: { kf: KeyFindingsF
 
 export function ExportButton({ onClick, children, label, disabled, title }: { onClick: () => void; children: ReactNode; label?: string; disabled?: boolean; title?: string }) {
   return (
-    <button type="button" onClick={onClick} aria-label={label} disabled={disabled} title={title} className="rounded border border-line bg-surface-2 px-2.5 py-1 text-xs hover:bg-surface-3 disabled:cursor-not-allowed disabled:text-ink-3 disabled:hover:bg-surface-2">
+    <button type="button" onClick={onClick} aria-label={label} disabled={disabled} title={title} className="btn btn-sm">
       {children}
     </button>
   );

@@ -116,11 +116,11 @@ function Collapsible({ id, summary, children, state }: { id: string; summary: Re
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
-    <section id={id} aria-labelledby={`${id}-h`} className="scroll-mt-20 border-t border-line pt-6">
+    <section id={id} aria-labelledby={`${id}-h`} className="border-t border-line pt-6">
       <h2 id={`${id}-h`} className="text-xl font-semibold tracking-tight">
         <a href={`#${id}`} className="hover:underline">{title}</a>
       </h2>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink-2">{children}</div>
+      <div className="mt-3 space-y-3 text-sm text-ink-2">{children}</div>
     </section>
   );
 }
@@ -457,7 +457,7 @@ export default function Methods() {
                       </span>
                     ))}
                   </p>
-                  <pre className="mono max-w-full whitespace-pre-wrap break-words text-xs leading-relaxed text-ink">{a.mapping}</pre>
+                  <pre className="mono max-w-full whitespace-pre-wrap break-words text-xs text-ink">{a.mapping}</pre>
                   <Link className="mt-2 inline-block text-xs underline" to={`/investigations?open=${a.investigation_id}`}>Open this investigation</Link>
                 </Collapsible>
               ))}

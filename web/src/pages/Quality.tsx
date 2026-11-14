@@ -27,7 +27,7 @@ const tag = (v: number | string | null, p: string, u?: string): Val => ({ v, u, 
 
 function Section({ id, title, lead, children }: { id: string; title: string; lead?: ReactNode; children: ReactNode }) {
   return (
-    <section id={id} aria-labelledby={`${id}-h`} className="scroll-mt-20">
+    <section id={id} aria-labelledby={`${id}-h`}>
       <h2 id={`${id}-h`} className="text-lg font-semibold tracking-tight">{title}</h2>
       {lead && <p className="mb-3 mt-0.5 max-w-3xl text-sm text-ink-2">{lead}</p>}
       {children}
@@ -303,9 +303,9 @@ export default function Quality() {
         lead="What the pipeline read, what it excluded and why, what it checked against earlier analyses, and every flag it raised. Raw values are kept verbatim; nothing is silently corrected."
       >
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-          <a className="rounded border border-line px-2.5 py-1.5 hover:bg-surface-3" href={dataUrl("flags.csv")} download>Download flags.csv</a>
-          <a className="rounded border border-line px-2.5 py-1.5 hover:bg-surface-3" href={dataUrl("tests.csv")} download>Download tests.csv</a>
-          <Link className="rounded border border-line px-2.5 py-1.5 hover:bg-surface-3" to="/evidence">Open the Evidence Explorer</Link>
+          <a className="btn" href={dataUrl("flags.csv")} download>Download flags.csv</a>
+          <a className="btn" href={dataUrl("tests.csv")} download>Download tests.csv</a>
+          <Link className="btn" to="/evidence">Open the Evidence Explorer</Link>
         </div>
         <nav aria-label="On this page" className="mt-4">
           <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm">

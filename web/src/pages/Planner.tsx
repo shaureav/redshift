@@ -77,14 +77,13 @@ function PresetPicker({ preset, onChange }: { preset: PresetKey; onChange: (p: P
   return (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
       <span id="preset-label" className="text-sm font-medium">Weight preset</span>
-      <div className="inline-flex max-w-full self-start overflow-hidden rounded-lg border border-line text-sm" role="group" aria-labelledby="preset-label">
+      <div className="seg max-w-full self-start" role="group" aria-labelledby="preset-label">
         {PRESETS.map((p) => (
           <button
             key={p}
             type="button"
             aria-pressed={preset === p}
             onClick={() => onChange(p)}
-            className={`whitespace-nowrap border-line px-2.5 py-1.5 sm:px-3 [&:not(:first-child)]:border-l ${preset === p ? "bg-accent font-medium text-accent-ink" : "bg-surface-2 hover:bg-surface-3"}`}
           >
             {PRESET_LABEL[p]}
           </button>
@@ -219,7 +218,7 @@ function RankedList({ grid, preset, selected, onSelect, kpaByPsi, candAt }: {
                       onClick={() => onSelect(id)}
                       aria-pressed={on}
                       aria-label={`Show ${c.o2_pct}% O2, ${c.pressure_psi} psi, ${FUEL_LABEL[c.material]} on the heat map`}
-                      className="mt-1 rounded border border-line px-1.5 py-0.5 text-xs text-ink-2 hover:bg-surface-3"
+                      className="btn btn-sm mt-1 text-ink-2"
                     >
                       {on ? "Shown on map" : "Show on map"}
                     </button>
@@ -256,7 +255,7 @@ function CellDetail({ cell, grid, kpaByPsi, cands, onClear }: { cell?: PlannerGr
             <Value val={param(cell.o2_pct, grid.p, "%")} /> O2 at <LevelPressure psi={cell.pressure_psi} gridP={grid.p} kpaByPsi={kpaByPsi} cell={cell} />
           </span>
         </h2>
-        <button type="button" onClick={onClear} className="rounded border border-line px-2 py-1 text-xs hover:bg-surface-3">Clear</button>
+        <button type="button" onClick={onClear} className="btn btn-sm">Clear</button>
       </div>
       <p className="mono mt-1 text-xs text-ink-3">{cell.id}</p>
       {cands.length > 0 && (

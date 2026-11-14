@@ -229,7 +229,7 @@ export function Tour({ onStep }: { onStep?: (i: number) => void }) {
           <span className="eyebrow">Step {step + 1} of {STEPS.length}</span>
           <button type="button" className="btn btn-sm btn-quiet" onClick={finish}>Skip tour</button>
         </div>
-        <h2 id="tour-title" className="mt-2 text-lg font-semibold leading-snug">{s.title}</h2>
+        <h2 id="tour-title" className="mt-2 text-lg font-semibold">{s.title}</h2>
         <p className="mt-2 text-sm text-ink-2">{s.body}</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="flex gap-1" aria-hidden="true">

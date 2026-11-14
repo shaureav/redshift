@@ -3,7 +3,7 @@
 // values only, what is known about fire there and what is missing. Filters live in the URL.
 import { useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ErrorNote, FuelLegend, Loading, PageHeader } from "../components/Common";
+import { ErrorNote, FuelLegend, Loading, PageHeader, Select } from "../components/Common";
 import { Pressure, Value } from "../components/Value";
 import {
   type CandidatesFile,
@@ -116,15 +116,15 @@ export default function Dossiers() {
                 value={q}
                 onChange={(e) => set("q", e.target.value)}
                 placeholder="e.g. PMMA"
-                className="w-40 rounded border border-line bg-surface-2 px-2 py-1 text-sm"
+                className="field field-sm w-40"
               />
             </label>
             <label className="flex items-center gap-1.5">
               <span className="text-xs text-ink-3">Investigation</span>
-              <select value={inv} onChange={(e) => set("inv", e.target.value)} className="rounded border border-line bg-surface-2 px-2 py-1 text-sm">
+              <Select small value={inv} onChange={(e) => set("inv", e.target.value)}>
                 <option value="">All</option>
                 {invOptions.map((o) => <option key={o} value={o}>{o}</option>)}
-              </select>
+              </Select>
             </label>
           </div>
         </div>

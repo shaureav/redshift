@@ -174,7 +174,7 @@ export function CountCell({ val, compact = false }: { val: Val<number>; compact?
 export function Eq({ children, label }: { children: ReactNode; label?: string }) {
   return (
     <div className="my-3 overflow-x-auto rounded-lg border border-line bg-surface-3 px-4 py-3" role="math" aria-label={label}>
-      <div className="num whitespace-nowrap text-sm leading-relaxed text-ink">{children}</div>
+      <div className="num whitespace-nowrap text-sm text-ink">{children}</div>
     </div>
   );
 }

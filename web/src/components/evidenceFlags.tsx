@@ -4,13 +4,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { flagMatches, parseFlagFilters, writeFlagFilters, type FlagFilters } from "../lib/filters";
 import type { FlagEntry } from "../lib/types";
+import { Select } from "./Common";
 import { SeverityBadge, type FlagDefinition } from "./evidenceShared";
 
 const PAGE = 25;
 const MAX_CHIPS = 8;
 const MAX_LINES = 24;
 
-const control = "rounded-md border border-line bg-surface-2 px-2 py-1.5 text-sm text-ink";
 const labelCls = "flex flex-col gap-1 text-xs text-ink-2";
 
 function evidenceLink(ids: string[]): string {
@@ -85,7 +85,7 @@ function FlagCard({ fl, highlighted, invName }: { fl: FlagEntry; highlighted: bo
               ))}
               {fl.test_ids.length > MAX_CHIPS && <span className="text-ink-3">and more</span>}
               {fl.test_ids.length > 1 && (
-                <Link className="rounded border border-line px-2 py-0.5 hover:bg-surface-3" to={evidenceLink(fl.test_ids)}>
+                <Link className="btn btn-sm" to={evidenceLink(fl.test_ids)}>
                   Open all affected tests in the Evidence Explorer
                 </Link>
               )}
@@ -154,37 +154,37 @@ export function EvidenceFlagList({ flags, definitions, invNames }: FlagListProps
   const invs = useMemo(() => [...new Set(flags.map((f) => f.investigation_id))].sort((a, b) => (invNames.get(a) ?? a).localeCompare(invNames.get(b) ?? b, "en-GB")), [flags, invNames]);
   const def = filters.code ? definitions[filters.code] : undefined;
   const active = filters.q || filters.code || filters.sev || filters.inv;
-  const btn = "rounded border border-line px-2.5 py-1 hover:bg-surface-3 disabled:opacity-40";
+  const btn = "btn btn-sm";
 
   return (
     <div>
       <div className="card grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 lg:grid-cols-[minmax(16rem,2fr)_repeat(3,minmax(10rem,1fr))]">
         <label className={labelCls}>
           Search flags
-          <input type="search" className={control} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Flag id, file, column, raw value, test id" />
+          <input type="search" className="field" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Flag id, file, column, raw value, test id" />
         </label>
         <label className={labelCls}>
           Flag type
-          <select className={control} value={filters.code} onChange={(e) => setFilters({ ...filters, code: e.target.value })}>
+          <Select className="w-full" value={filters.code} onChange={(e) => setFilters({ ...filters, code: e.target.value })}>
             <option value="">All types</option>
             {codes.map((c) => <option key={c} value={c}>{definitions[c]?.title ?? c} ({c})</option>)}
-          </select>
+          </Select>
         </label>
         <label className={labelCls}>
           Severity
-          <select className={control} value={filters.sev} onChange={(e) => setFilters({ ...filters, sev: e.target.value })}>
+          <Select className="w-full" value={filters.sev} onChange={(e) => setFilters({ ...filters, sev: e.target.value })}>
             <option value="">All severities</option>
             <option value="info">info</option>
             <option value="warning">warning</option>
             <option value="error">error</option>
-          </select>
+          </Select>
         </label>
         <label className={labelCls}>
           Investigation
-          <select className={control} value={filters.inv} onChange={(e) => setFilters({ ...filters, inv: e.target.value })}>
+          <Select className="w-full" value={filters.inv} onChange={(e) => setFilters({ ...filters, inv: e.target.value })}>
             <option value="">All investigations</option>
             {invs.map((i) => <option key={i} value={i}>{invNames.get(i) ?? i} ({i})</option>)}
-          </select>
+          </Select>
         </label>
         {(def || active) && (
           <div className="flex flex-wrap items-start justify-between gap-2 text-xs sm:col-span-2 lg:col-span-4">

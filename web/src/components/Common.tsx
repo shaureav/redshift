@@ -1,7 +1,8 @@
 // Shared visual vocabulary: fuel-class markers, source-type legend, hatching, chart frame with a
 // "view as table" toggle and SVG download (caption and sources embedded).
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode, type SelectHTMLAttributes } from "react";
 import { FUEL_LABEL } from "../lib/format";
+import { ChevronIcon } from "./Icons";
 
 /** The validated fill of each fuel class. */
 export const FUEL_COLOR_VAR: Record<string, string> = {
@@ -124,6 +125,40 @@ interface ChartFrameProps {
   id?: string;
 }
 
+const SVG_NS = "http://www.w3.org/2000/svg";
+const VAR_NAME = /var\(\s*(--[\w-]+)/g;
+
+/** A token's value on the page right now (the theme in force); computed values already have nested var() substituted. */
+export function pageToken(name: string): string {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+/** The chart as a standalone SVG file: its caption and sources in a <desc>, and every token it draws with (every
+ *  custom property the markup reads, and any token those values name in turn) written into an embedded <style>, so the file
+ *  draws exactly as the page does with no app stylesheet. A fixed list here once dropped the -edge and -ring
+ *  tokens, and outlined marks then lost their only distinguishing stroke (the export test guards it). */
+export function chartSvgMarkup(svg: SVGSVGElement, meta: { title: string; caption: string; sources: string }, resolve: (name: string) => string = pageToken): string {
+  const clone = svg.cloneNode(true) as SVGSVGElement;
+  const values = new Map<string, string>();
+  const queue = [...clone.outerHTML.matchAll(VAR_NAME)].map((m) => m[1]);
+  while (queue.length) {
+    const name = queue.shift()!;
+    if (values.has(name)) continue;
+    const value = resolve(name);
+    values.set(name, value);
+    for (const m of value.matchAll(VAR_NAME)) queue.push(m[1]);
+  }
+  const decls = [...values].filter(([, v]) => v !== "").map(([k, v]) => `${k}:${v}`);
+  const s = document.createElementNS(SVG_NS, "style");
+  s.textContent = `svg{${[...decls, "font-family:'IBM Plex Sans',sans-serif"].join(";")}}`;
+  clone.insertBefore(s, clone.firstChild);
+  const desc = document.createElementNS(SVG_NS, "desc");
+  desc.textContent = `${meta.title}. ${meta.caption} Sources: ${meta.sources}`;
+  clone.insertBefore(desc, clone.firstChild);
+  clone.setAttribute("xmlns", SVG_NS);
+  return new XMLSerializer().serializeToString(clone);
+}
+
 // Wraps every chart: takeaway headline, what the chart is, caption, sources, a table alternative and SVG download.
 export function ChartFrame({ title, headline, caption, sources, children, table, actions, id }: ChartFrameProps) {
   const [asTable, setAsTable] = useState(false);
@@ -131,18 +166,7 @@ export function ChartFrame({ title, headline, caption, sources, children, table,
   const download = () => {
     const svg = ref.current?.querySelector("svg[data-chart]") as SVGSVGElement | null;
     if (!svg) return;
-    const clone = svg.cloneNode(true) as SVGSVGElement;
-    const styles = getComputedStyle(document.documentElement);
-    const vars = ["--surface", "--surface-2", "--ink", "--ink-2", "--ink-3", "--line", "--gas", "--droplet", "--solid", "--emulator", "--hatch", "--candidate", "--isotherm", "--prebreathe", "--accent"];
-    const style = `svg{${vars.map((v) => `${v}:${styles.getPropertyValue(v)}`).join(";")};font-family:'IBM Plex Sans',sans-serif}`;
-    const s = document.createElementNS("http://www.w3.org/2000/svg", "style");
-    s.textContent = style;
-    clone.insertBefore(s, clone.firstChild);
-    const desc = document.createElementNS("http://www.w3.org/2000/svg", "desc");
-    desc.textContent = `${title}. ${caption} Sources: ${sources}`;
-    clone.insertBefore(desc, clone.firstChild);
-    clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    const blob = new Blob([new XMLSerializer().serializeToString(clone)], { type: "image/svg+xml" });
+    const blob = new Blob([chartSvgMarkup(svg, { title, caption, sources })], { type: "image/svg+xml" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = `${(id ?? title).toLowerCase().replace(/[^a-z0-9]+/g, "-")}.svg`;
@@ -154,7 +178,7 @@ export function ChartFrame({ title, headline, caption, sources, children, table,
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0 max-w-3xl">
           <div className="eyebrow">{title}</div>
-          {headline && <h3 className="mt-1 text-lg font-semibold leading-snug">{headline}</h3>}
+          {headline && <h3 className="mt-1 text-lg font-semibold">{headline}</h3>}
         </div>
         <div className="no-print flex flex-wrap items-center gap-2">
           {actions}
@@ -173,6 +197,18 @@ export function ChartFrame({ title, headline, caption, sources, children, table,
         {caption} <span className="text-ink-3">Sources: {sources}</span>
       </figcaption>
     </figure>
+  );
+}
+
+/** A select drawn as a .field (the 3:1 control boundary, the control heights), never the browser's own box:
+ *  the native arrow is removed (appearance: none) and the icon set's chevron drawn in its place. `className`
+ *  places and sizes the control; `small` is the 32 px height used in toolbars, the default the 40 px field. */
+export function Select({ className = "", small = false, children, ...rest }: SelectHTMLAttributes<HTMLSelectElement> & { small?: boolean }) {
+  return (
+    <span className={`relative inline-flex ${className}`}>
+      <select {...rest} className={`field field-select w-full ${small ? "field-sm" : ""}`}>{children}</select>
+      <ChevronIcon dir="down" className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-ink-2" />
+    </span>
   );
 }
 

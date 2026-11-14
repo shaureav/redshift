@@ -150,7 +150,7 @@ export function CommandPalette() {
                       aria-selected={idx === active}
                       onMouseEnter={() => setActive(idx)}
                       onClick={() => i.run()}
-                      className={`flex cursor-pointer items-baseline justify-between gap-4 rounded-md px-3 py-2 text-sm ${idx === active ? "bg-[color:var(--surface-3)] text-ink" : "text-ink-2"}`}
+                      className="option flex cursor-pointer items-baseline justify-between gap-4 rounded-md px-3 py-2 text-sm text-ink-2"
                     >
                       <span className={i.group === "Tests" ? "mono" : ""}>{i.label}</span>
                       {i.hint && <span className="truncate text-xs text-ink-3">{i.hint}</span>}

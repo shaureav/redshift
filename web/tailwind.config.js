@@ -3,6 +3,8 @@ import { fileURLToPath } from "node:url";
 // The visual system is enforced here, not by convention. Values are the tokens in src/index.css:
 // - six type sizes only (12, 14, 16, 20, 28, 40 px), by size (xs to 2xl) or by role (label to display);
 //   `text-3xl` and friends do not exist;
+// - six line heights only, each set by its size's role (16, 20, 24, 28, 36, 48 px); Tailwind's unitless
+//   `leading-snug` and friends do not exist, and `leading-<role>` exists only to borrow a role's line;
 // - weights 400, 500 and 600 only;
 // - every spacing step is a multiple of 8 px, with 4 px as the only half step;
 // - two corner radii (4 px for controls, 8 px for surfaces) plus pills;
@@ -46,6 +48,7 @@ export default {
       title: role("title", { letterSpacing: "-0.01em", fontWeight: "600" }),
       display: role("display", { letterSpacing: "-0.02em", fontWeight: "600" }),
     },
+    lineHeight: Object.fromEntries(["label", "body-sm", "body", "heading", "title", "display"].map((r) => [r, `var(--leading-${r})`])),
     fontWeight: { normal: "400", medium: "500", semibold: "600" },
     spacing,
     borderRadius: { none: "0px", sm: px(4), DEFAULT: px(4), md: px(4), lg: px(8), xl: px(8), full: "9999px" },

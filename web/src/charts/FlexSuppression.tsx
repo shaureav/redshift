@@ -119,7 +119,7 @@ export function FlexSuppression() {
     const k = row.key;
 
     marks.push(<text key={`${k}t`} x={0} y={y0 + 12} dominantBaseline="central" fontSize={14} fill="var(--ink-2)">{row.title}</text>);
-    labels.push({ key: `${k}h`, x: 0, y: y0 + 33, size: wide ? 19 : 17, weight: 600, text: row.headlineText, node: row.headline });
+    labels.push({ key: `${k}h`, x: 0, y: y0 + 33, size: wide ? 20 : 16, weight: 600, text: row.headlineText, node: row.headline });
     if (row.sub) labels.push({ key: `${k}s`, x: 0, y: y0 + 54, size: 12, tone: "ink-2", text: row.sub.text, node: row.sub.node });
 
     const uy = wide ? y0 + (h - unitsH) / 2 : y0 + leftH + 2;
@@ -147,7 +147,7 @@ export function FlexSuppression() {
         key: `${k}b${l}`,
         x: bx + 18,
         y: by + i * 17,
-        size: 12.5,
+        size: 12,
         tone: "ink",
         text: `"${l}" ${valText(v)}`,
         node: (
@@ -171,7 +171,7 @@ export function FlexSuppression() {
     key: "band",
     x: 0,
     y: 10 + (bandLines - 1) * 8,
-    size: 12.5,
+    size: 12,
     tone: "ink-2",
     text: bandText,
     maxWidth: wide ? undefined : width,
@@ -214,7 +214,7 @@ export function FlexSuppression() {
   );
 
   // The annotation, beside the group it qualifies.
-  const noteSize = wide ? 14.5 : 13;
+  const noteSize = wide ? 14 : 12;
   const noteLines = wrapWords(data.annotation, Math.floor((width - 40) / (noteSize * 0.53)));
   const noteH = noteLines.length * (noteSize + 7) + 18;
   marks.push(

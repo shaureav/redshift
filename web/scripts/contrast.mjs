@@ -1,18 +1,27 @@
 // Contrast check for the design tokens (docs/redesign/EXCEPTIONAL_PLAN.md, sections 3 and 5).
 //
-// Reads the colour tokens straight from src/index.css for both themes, resolves var(), rgb() and
-// color-mix(), and computes WCAG 2.2 contrast ratios for:
+// Reads the colour tokens straight from src/index.css for three themes (dark, light, and print: the
+// @media print block over the dark tokens, the worst case of printing from the default theme), resolves
+// var(), rgb() and color-mix(), and computes WCAG 2.2 contrast ratios for:
 //   - every text pair: each text token on each surface it can sit on, at 4.5:1 (AA for body text, even where
 //     the text is large);
 //   - every data glyph against the surfaces it is drawn on, at 3:1: a filled fuel glyph passes when its fill
 //     or its 1 px ring reaches 3:1, an outlined glyph when its edge does;
 //   - every control boundary and state indicator (control line, focus ring, accent, switch knob), at 3:1;
-//   - the palette: no colour literal anywhere in index.css may be red (house rule).
-// Textures and quiet context lines (hatching, isotherms, dividers) are reported as advisory and not
-// enforced: each is always paired with text that carries the same information.
+//   - the palette: no colour literal anywhere in index.css may be red (house rule);
+//   - the print block: it must set every token the light block sets, so no dark value reaches paper.
+// Reported as advisory, not enforced:
+//   - hatching, at the opacities actually drawn (sea and strips 30%, the plane's blind area 40%, or 70% under
+//     Solids only, zero bars 70%, empty tiles 60%). Where text says "no tests recorded" beside it, the text
+//     carries the meaning. On the plane the blind area (and, from Phase 3, the sea) has only the legend, and
+//     there the hatch falls well below 3:1: that visibility decision is open (OPEN_QUESTIONS Q22), with the
+//     coast line (3:1 or better, enforced below) the candidate carrier;
+//   - isotherms and dividers (quiet on purpose; each isotherm is labelled, dividers are decorative);
+//   - pressed against unpressed boundaries (accent against control-line): a hue step only, so a pressed or
+//     open control also doubles its boundary to 2 px and a pressed segment gets a 2 px underline (index.css).
 //
 // Run: npm run contrast (or node scripts/contrast.mjs [--all]). npm run test runs it before vitest.
-// Exit code 1 when any enforced pair fails or a red colour is found.
+// Exit code 1 when any enforced pair fails, a red colour is found or the print block misses a light token.
 import { readFileSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -59,18 +68,38 @@ function declarations(body) {
   return out;
 }
 
-/** The custom properties in force on the root element in each theme. The first colour block's selector list
- *  is `:root, :root[data-theme="dark"]`, so it applies in the light theme too, under the light block. */
-export function themeTokens(css) {
+const norm = (s) => s.replace(/\s+/g, "");
+const merge = (blocks) => Object.assign({}, ...blocks);
+
+/** The token blocks of index.css: shared, dark, light, and the root rule inside @media print. */
+function tokenBlocks(css) {
   const rules = topLevelRules(css);
-  const norm = (s) => s.replace(/\s+/g, "");
-  const pick = (sel) => rules.filter((r) => norm(r.selector) === sel).map((r) => declarations(r.body));
-  const shared = pick(":root");
-  const dark = pick(':root,:root[data-theme="dark"]');
-  const light = pick(':root[data-theme="light"]');
+  const pick = (list, sel) => list.filter((r) => norm(r.selector) === sel).map((r) => declarations(r.body));
+  const printMedia = rules.filter((r) => norm(r.selector) === "@mediaprint");
+  const printRules = printMedia.flatMap((r) => topLevelRules(r.body));
+  return {
+    shared: pick(rules, ":root"),
+    dark: pick(rules, ':root,:root[data-theme="dark"]'),
+    light: pick(rules, ':root[data-theme="light"]'),
+    print: pick(printRules, ":root,:root[data-theme]"),
+  };
+}
+
+/** The custom properties in force on the root element in each theme. The first colour block's selector list
+ *  is `:root, :root[data-theme="dark"]`, so it applies in the light theme too, under the light block. Print is
+ *  the print block over the dark theme: printing from the default theme, the case that leaves the most behind. */
+export function themeTokens(css) {
+  const { shared, dark, light, print } = tokenBlocks(css);
   if (!dark.length || !light.length) throw new Error("index.css: the dark or the light token block is missing");
-  const merge = (blocks) => Object.assign({}, ...blocks);
-  return { dark: merge([...shared, ...dark]), light: merge([...shared, ...dark, ...light]) };
+  if (!print.length) throw new Error("index.css: the print token block (:root, :root[data-theme] in @media print) is missing");
+  return { dark: merge([...shared, ...dark]), light: merge([...shared, ...dark, ...light]), print: merge([...shared, ...dark, ...print]) };
+}
+
+/** Tokens the light block sets that the print block does not: each would print in its dark-theme value. */
+export function printGaps(css) {
+  const { light, print } = tokenBlocks(css);
+  const printed = merge(print);
+  return Object.keys(merge(light)).filter((k) => !(k in printed));
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -207,9 +236,23 @@ function pairs() {
   list.push({ group: "control", min: 3, fg: v("ink"), bg: { label: "control-line", expr: v("control-line") }, what: "switch knob (ink) on its off track" });
   list.push({ group: "control", min: 3, fg: v("accent-ink"), bg: { label: "accent", expr: v("accent") }, what: "switch knob (accent-ink) on its on track" });
 
-  for (const s of [...PAGE, ...PLANE]) list.push({ group: "advisory", min: 3, fg: v("hatch"), bg: s, what: `hatch texture on ${s.label} (always with "no tests recorded" text)` });
+  // Hatching at the opacity each use draws it (Plane.tsx, EvidencePanel.tsx, index.css .tile).
+  const surface2 = PAGE[2];
+  const sea = PLANE[1];
+  const hatches = [
+    { opacity: 0.3, bg: sea, what: "sea hatching at 30% (Phase 3; legend only, no text in place)" },
+    { opacity: 0.3, bg: surface2, what: "no-pressure strip hatching at 30% (lane labelled)" },
+    { opacity: 0.4, bg: surface2, what: "blind-area hatching at 40% on the plane (legend only, no text in place)" },
+    { opacity: 0.7, bg: surface2, what: "blind-area hatching at 70% under Solids only (legend only, no text in place)" },
+    { opacity: 0.7, bg: surface2, what: "zero-count bar hatching at 70% (with \"no tests recorded\" text)" },
+    { opacity: 0.6, bg: surface2, what: "empty tile hatching at 60% (with \"no tests recorded\" text)" },
+    { opacity: 1, bg: surface2, what: "empty-state hatching at full strength (with its title)" },
+  ];
+  for (const h of hatches) list.push({ group: "advisory", min: 3, fg: v("hatch"), opacity: h.opacity, bg: h.bg, what: h.what });
   for (const s of PLANE) list.push({ group: "advisory", min: 3, fg: v("isotherm"), bg: s, what: `isotherm line on ${s.label} (quiet on purpose; each is labelled)` });
   for (const d of ["line", "line-strong"]) for (const s of PAGE) list.push({ group: "advisory", min: 3, fg: v(d), bg: s, what: `${d} divider on ${s.label} (decorative)` });
+  list.push({ group: "advisory", min: 3, fg: v("accent"), bg: { label: "control-line", expr: v("control-line") }, what: "pressed boundary (accent) against unpressed (control-line): hue only, so pressed also doubles to 2 px" });
+  list.push({ group: "advisory", min: 3, fg: v("surface-3"), bg: LAYERED[0], what: "palette active row (surface-3 on floating): the 2 px accent bar carries the state" });
   return list;
 }
 
@@ -229,8 +272,8 @@ function evaluate(p, tokens) {
     const rr = ratio(ring, bg);
     return { value: Math.max(rf, rr), detail: `fill ${rf.toFixed(2)}, ring ${rr.toFixed(2)} (${hex(ring)} on ${hex(bg)})` };
   }
-  const fg = over(resolveColour(p.fg, tokens), bg);
-  return { value: ratio(fg, bg), detail: `${hex(fg)} on ${hex(bg)}` };
+  const fg = over(resolveColour(p.fg, tokens), bg, p.opacity ?? 1);
+  return { value: ratio(fg, bg), detail: `${hex(fg)} on ${hex(bg)}${p.opacity !== undefined && p.opacity < 1 ? ` (at ${Math.round(p.opacity * 100)}%)` : ""}` };
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -275,19 +318,19 @@ export function checkContrast(css) {
     }
   }
   const red = paletteLiterals(css).filter((lit) => isRed(resolveColour(lit, {})));
-  return { results, red };
+  return { results, red, printGaps: printGaps(css) };
 }
 
 function main() {
   const all = process.argv.includes("--all");
   const css = readFileSync(CSS_PATH, "utf8");
-  const { results, red } = checkContrast(css);
+  const { results, red, printGaps: gaps } = checkContrast(css);
   const enforced = results.filter((r) => r.group !== "advisory");
   const failures = enforced.filter((r) => !r.pass);
   const line = (r) => `  ${r.pass ? "pass" : "FAIL"}  ${r.theme.padEnd(5)}  ${r.group.padEnd(8)}  ${r.value.toFixed(2).padStart(5)} >= ${r.min}  ${r.what}  [${r.detail}]`;
 
-  console.log("Contrast check: web/src/index.css, dark and light themes (WCAG 2.2 ratios)");
-  for (const theme of ["dark", "light"]) {
+  console.log("Contrast check: web/src/index.css, dark, light and print themes (WCAG 2.2 ratios)");
+  for (const theme of ["dark", "light", "print"]) {
     for (const group of ["text", "glyph", "control", "advisory"]) {
       const rows = results.filter((r) => r.theme === theme && r.group === group);
       const worst = rows.reduce((a, b) => (b.value < a.value ? b : a));
@@ -299,12 +342,13 @@ function main() {
   if (all) results.forEach((r) => console.log(r.group === "advisory" ? line(r).replace("FAIL", "note") : line(r)));
   else failures.forEach((r) => console.log(line(r)));
   red.forEach((lit) => console.log(`  FAIL  palette  ${lit} is red; the palette has no red`));
+  gaps.forEach((name) => console.log(`  FAIL  print    ${name} is set by the light theme but not by the print block; it would print in its dark value`));
 
-  if (failures.length || red.length) {
-    console.log(`${failures.length} enforced pair(s) below their minimum, ${red.length} red colour(s).`);
+  if (failures.length || red.length || gaps.length) {
+    console.log(`${failures.length} enforced pair(s) below their minimum, ${red.length} red colour(s), ${gaps.length} token(s) missing from print.`);
     process.exit(1);
   }
-  console.log(`All ${enforced.length} enforced pairs pass in both themes; no red in the palette.`);
+  console.log(`All ${enforced.length} enforced pairs pass in the dark, light and print themes; no red in the palette; print sets every light token.`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();

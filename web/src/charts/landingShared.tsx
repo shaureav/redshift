@@ -79,12 +79,20 @@ export function barPath(w: number, h: number, r = 4): string {
 export type Tone = "ink" | "ink-2" | "ink-3";
 const TONE_CLASS: Record<Tone, string> = { ink: "text-ink", "ink-2": "text-ink-2", "ink-3": "text-ink-3" };
 
+/** The six sizes of the type scale (index.css), the only sizes a chart label may take. */
+export type TypeSize = 12 | 14 | 16 | 20 | 28 | 40;
+/** Each size's line height, from its type role (label, body small, body, heading, title, display). */
+export const LEADING: Record<TypeSize, number> = { 12: 16, 14: 20, 16: 24, 20: 28, 28: 36, 40: 48 };
+const LEADING_VAR: Record<TypeSize, string> = {
+  12: "var(--leading-label)", 14: "var(--leading-body-sm)", 16: "var(--leading-body)", 20: "var(--leading-heading)", 28: "var(--leading-title)", 40: "var(--leading-display)",
+};
+
 export interface OverlayLabel {
   key: string;
   x: number;
   y: number; // vertical centre of the line
   anchor?: "start" | "middle" | "end";
-  size?: number;
+  size?: TypeSize;
   weight?: number;
   tone?: Tone;
   italic?: boolean;
@@ -106,7 +114,7 @@ export function ExportLabels({ labels }: { labels: OverlayLabel[] }) {
         const size = l.size ?? 12;
         const anchor = l.anchor === "end" ? "end" : l.anchor === "middle" ? "middle" : "start";
         const lines = l.maxWidth ? wrapWords(l.text, Math.max(8, Math.floor((l.maxWidth - (l.pill ? 18 : 0)) / (size * 0.55)))) : [l.text];
-        const lh = size * 1.3;
+        const lh = LEADING[size];
         const longest = lines.reduce((a, b) => (b.length > a.length ? b : a), "");
         const w = textWidth(longest, size) + 16;
         const h = lines.length * lh + size * 0.5;
@@ -146,10 +154,10 @@ export function OverlayLayer({ labels }: { labels: OverlayLabel[] }) {
         return (
           <div
             key={l.key}
-            className={`absolute leading-tight ${l.maxWidth ? "whitespace-normal" : "whitespace-nowrap"} ${TONE_CLASS[l.tone ?? "ink"]} ${l.italic ? "italic" : ""} ${
-              l.pill ? "rounded-full border border-line bg-surface-2 px-2 py-0.5" : ""
+            className={`absolute ${l.maxWidth ? "whitespace-normal" : "whitespace-nowrap"} ${TONE_CLASS[l.tone ?? "ink"]} ${l.italic ? "italic" : ""} ${
+              l.pill ? "rounded-full border border-line bg-surface-2 px-2" : ""
             }`}
-            style={{ left: l.x, top: l.y, transform: `translate(${tx},-50%)`, fontSize: l.size ?? 12, fontWeight: l.weight ?? 400, maxWidth: l.maxWidth }}
+            style={{ left: l.x, top: l.y, transform: `translate(${tx},-50%)`, fontSize: l.size ?? 12, lineHeight: LEADING_VAR[l.size ?? 12], fontWeight: l.weight ?? 400, maxWidth: l.maxWidth }}
           >
             {l.node}
           </div>

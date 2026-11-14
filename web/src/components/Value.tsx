@@ -65,7 +65,7 @@ const SOURCE_GLYPH: Record<string, ReactNode> = {
   psi_page: <path d="M2 2h8v8H2z" fill="none" stroke="currentColor" strokeWidth="1.5" />,
   published_paper: <path d="M2 2h8v8H2z" fill="none" stroke="currentColor" strokeWidth="1.5" />,
   reference_document: <path d="M3 4h2v3H3zM7 4h2v3H7z" fill="currentColor" />,
-  derived: <text x="1" y="10" fontSize="10" fontStyle="italic" fill="currentColor">f</text>,
+  derived: <text x="2" y="10.5" fontSize="12" fontStyle="italic" fill="currentColor">f</text>,
 };
 
 function Step({ label, children, last = false }: { label: string; children: ReactNode; last?: boolean }) {

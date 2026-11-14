@@ -95,7 +95,7 @@ export function Layout() {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-[90] focus:rounded focus:bg-surface-2 focus:p-2">Skip to content</a>
       {/* The nav must fit a 360 px screen: below 640 px the buttons are tighter, Compare moves into the
           Reference menu, and the logo never shrinks (images default to max-width 100%). */}
-      <nav className="glass sticky top-0 z-40 h-14 border-b border-line backdrop-blur" aria-label="Main">
+      <nav className="glass sticky top-0 z-40 h-[var(--nav-h)] border-b border-line backdrop-blur" aria-label="Main">
         <div className="flex h-full items-center gap-1 px-4 sm:gap-2 lg:px-6">
           <Link to="/" className="mr-1 flex flex-none items-center gap-2 sm:mr-2" aria-label="Redshift, the plane">
             <img src="/favicon.svg" alt="" className="h-6 w-6 max-w-none flex-none" />

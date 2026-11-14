@@ -186,7 +186,7 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                 className="group"
               >
                 <rect x={-m.left} y={i * rowH} width={width} height={rowH} fill={on ? "var(--surface-3)" : "transparent"} className={SVG_ROW_HIGHLIGHT} />
-                <text x={-10} y={cy} dy="0.32em" textAnchor="end" fontSize={narrow ? 10.5 : 11.5} fontWeight={on ? 600 : 400} fill={on ? "var(--ink)" : "var(--ink-2)"}>
+                <text x={-10} y={cy} dy="0.32em" textAnchor="end" fontSize={12} fontWeight={on ? 600 : 400} fill={on ? "var(--ink)" : "var(--ink-2)"}>
                   {label(r)}
                 </text>
                 {x1 !== null ? (
@@ -231,7 +231,7 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
           {undated.length > 0 && (
             <g transform={`translate(0,${datedH + axisH})`}>
               <text x={-10} y={10} textAnchor="end" fontSize={12} fontWeight={600} fill="var(--ink)">Dates not</text>
-              <text x={-10} y={24} textAnchor="end" fontSize={12} fontWeight={600} fill="var(--ink)">recorded</text>
+              <text x={-10} y={26} textAnchor="end" fontSize={12} fontWeight={600} fill="var(--ink)">recorded</text>
               <rect x={0} y={0} width={iw} height={laneH - 8} rx={4} fill="url(#hatch-timeline)" opacity={0.45} />
               {undated.map(({ r }, i) => {
                 const c = invClass(r);
@@ -264,8 +264,8 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                       stroke={r.has_table ? ring : edge}
                       strokeWidth={r.has_table ? 2 : 1.75}
                     />
-                    <text x={cx + 11} y={cy} dy="0.32em" fontSize={narrow ? 10 : 11} fontWeight={on ? 600 : 400} fill="var(--ink-2)">
-                      {invName(r).length > Math.floor((slot - 30) / 6.5) ? `${invName(r).slice(0, Math.max(3, Math.floor((slot - 30) / 6.5) - 1))}...` : invName(r)}
+                    <text x={cx + 11} y={cy} dy="0.32em" fontSize={12} fontWeight={on ? 600 : 400} fill="var(--ink-2)">
+                      {invName(r).length > Math.floor((slot - 30) / 7.2) ? `${invName(r).slice(0, Math.max(3, Math.floor((slot - 30) / 7.2) - 1))}...` : invName(r)}
                     </text>
                   </g>
                 );

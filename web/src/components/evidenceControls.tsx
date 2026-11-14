@@ -2,9 +2,8 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { EMPTY_FILTERS, hasActiveFilters, type EvidenceFilters } from "../lib/filters";
 import { FUEL_LABEL } from "../lib/format";
-import { FuelMarker } from "./Common";
+import { FuelMarker, Select } from "./Common";
 
-const control = "rounded-md border border-line bg-surface-2 px-2 py-1.5 text-sm text-ink";
 const labelCls = "flex flex-col gap-1 text-xs text-ink-2";
 
 // Text input that writes to the URL a moment after typing stops, and follows the URL when it changes.
@@ -31,7 +30,7 @@ function SearchBox({ value, onCommit }: { value: string; onCommit: (v: string) =
       value={text}
       onChange={(e) => setText(e.target.value)}
       placeholder="Test id, fuel, material, outcome, raw text, flag id"
-      className={`${control} w-full`}
+      className="field"
     />
   );
 }
@@ -59,37 +58,37 @@ export function EvidenceFilterBar({ filters, onChange, investigations, kinds, fu
         </label>
         <label className={labelCls}>
           Investigation
-          <select className={control} value={invValue} onChange={(e) => set({ inv: e.target.value ? [e.target.value] : [] })}>
+          <Select className="w-full" value={invValue} onChange={(e) => set({ inv: e.target.value ? [e.target.value] : [] })}>
             <option value="">All investigations</option>
             {invValue === "__several" && <option value="__several">Several (from link)</option>}
             {investigations.map(([id, name]) => (
               <option key={id} value={id}>{name} ({id})</option>
             ))}
-          </select>
+          </Select>
         </label>
         <label className={labelCls}>
           Test kind
-          <select className={control} value={kindValue} onChange={(e) => set({ kind: e.target.value ? [e.target.value] : [] })}>
+          <Select className="w-full" value={kindValue} onChange={(e) => set({ kind: e.target.value ? [e.target.value] : [] })}>
             <option value="">All kinds</option>
             {kindValue === "__several" && <option value="__several">Several (from link)</option>}
             {kinds.map((k) => <option key={k} value={k}>{k}</option>)}
-          </select>
+          </Select>
         </label>
         <label className={labelCls}>
           Data quality flags
-          <select className={control} value={filters.flagged} onChange={(e) => set({ flagged: e.target.value as EvidenceFilters["flagged"] })}>
+          <Select className="w-full" value={filters.flagged} onChange={(e) => set({ flagged: e.target.value as EvidenceFilters["flagged"] })}>
             <option value="all">Flagged and unflagged</option>
             <option value="flagged">Flagged rows only</option>
             <option value="unflagged">Unflagged rows only</option>
-          </select>
+          </Select>
         </label>
         <label className={labelCls}>
           Pressure
-          <select className={control} value={filters.pressure} onChange={(e) => set({ pressure: e.target.value as EvidenceFilters["pressure"] })}>
+          <Select className="w-full" value={filters.pressure} onChange={(e) => set({ pressure: e.target.value as EvidenceFilters["pressure"] })}>
             <option value="all">Recorded or not</option>
             <option value="recorded">Pressure recorded</option>
             <option value="not_recorded">Pressure not recorded</option>
-          </select>
+          </Select>
         </label>
       </div>
 
@@ -104,9 +103,7 @@ export function EvidenceFilterBar({ filters, onChange, investigations, kinds, fu
                 type="button"
                 aria-pressed={on}
                 onClick={() => set({ fuel: on ? filters.fuel.filter((x) => x !== f) : [...filters.fuel, f] })}
-                className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs ${
-                  on ? "border-accent bg-surface-3 font-medium text-ink" : "border-line text-ink-2 hover:bg-surface-3"
-                }`}
+                className="chip px-3 text-xs"
               >
                 <FuelMarker fuel={f} outlined={!on && filters.fuel.length > 0} /> {FUEL_LABEL[f] ?? f}
               </button>
@@ -164,7 +161,7 @@ export function EvidenceColumnMenu({ columns, onChange, defaults }: { columns: C
   };
   return (
     <details ref={ref} className="relative">
-      <summary className="cursor-pointer list-none rounded border border-line px-2.5 py-1.5 hover:bg-surface-3" aria-controls={panelId}>
+      <summary className="btn cursor-pointer list-none [&::-webkit-details-marker]:hidden" aria-controls={panelId}>
         Columns
       </summary>
       <div id={panelId} className="absolute right-0 z-30 mt-1 max-h-[60vh] w-64 max-w-[85vw] overflow-auto floating p-3">
@@ -191,7 +188,7 @@ export function EvidenceColumnMenu({ columns, onChange, defaults }: { columns: C
 }
 
 export function EvidencePager({ pageIndex, pageCount, onPage }: { pageIndex: number; pageCount: number; onPage: (i: number) => void }) {
-  const btn = "rounded border border-line px-2.5 py-1 hover:bg-surface-3 disabled:opacity-40 disabled:hover:bg-transparent";
+  const btn = "btn btn-sm";
   return (
     <nav className="flex flex-wrap items-center justify-between gap-2 border-t border-line px-3 py-2 text-xs text-ink-2" aria-label="Table pages">
       <span>Page <span className="num">{pageIndex + 1}</span> of <span className="num">{pageCount}</span>, 50 rows per page</span>

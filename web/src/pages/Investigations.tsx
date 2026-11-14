@@ -2,7 +2,8 @@
 // ordered by reproducible measures and filtered; every view state lives in the URL.
 import { useEffect, useId, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Badge, ErrorNote, Loading, PageHeader } from "../components/Common";
+import { Badge, ErrorNote, Loading, PageHeader, Select } from "../components/Common";
+import { CloseIcon } from "../components/Icons";
 import { Pressure, Value } from "../components/Value";
 import { useData } from "../lib/data";
 import { doiUrl } from "../lib/format";
@@ -152,13 +153,7 @@ function Controls({ st }: { st: ReturnType<typeof useInvestigationsState> }) {
           {INV_CLASSES.map((c) => {
             const on = st.classes.has(c);
             return (
-              <button
-                key={c}
-                type="button"
-                aria-pressed={on}
-                onClick={() => st.toggleClass(c)}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs ${on ? "border-accent bg-surface-3 font-medium text-ink" : "border-line text-ink-2 hover:bg-surface-3"}`}
-              >
+              <button key={c} type="button" aria-pressed={on} onClick={() => st.toggleClass(c)} className="chip px-3 text-xs">
                 <InvMarker c={c} /> {INV_CLASS_LABEL[c]}
               </button>
             );
@@ -167,9 +162,9 @@ function Controls({ st }: { st: ReturnType<typeof useInvestigationsState> }) {
       </fieldset>
       <fieldset>
         <legend className="mb-1 text-xs font-medium text-ink-3">Experiment table</legend>
-        <div className="flex overflow-hidden rounded border border-line text-xs" role="group">
+        <div className="seg" role="group">
           {([["all", "All"], ["yes", "With table"], ["no", "Without table"]] as [TableFilter, string][]).map(([k, label]) => (
-            <button key={k} type="button" aria-pressed={st.table === k} onClick={() => st.setTable(k)} className={`px-2.5 py-1 ${st.table === k ? "bg-surface-3 font-medium" : "hover:bg-surface-3"}`}>
+            <button key={k} type="button" aria-pressed={st.table === k} onClick={() => st.setTable(k)}>
               {label}
             </button>
           ))}
@@ -178,10 +173,10 @@ function Controls({ st }: { st: ReturnType<typeof useInvestigationsState> }) {
       <div>
         <label htmlFor={sortId} className="mb-1 block text-xs font-medium text-ink-3">Order by</label>
         <div className="flex gap-1.5">
-          <select id={sortId} value={st.sort} onChange={(e) => st.setSort(e.target.value as SortKey)} className="rounded border border-line bg-surface-2 px-2 py-1 text-xs text-ink">
+          <Select small id={sortId} value={st.sort} onChange={(e) => st.setSort(e.target.value as SortKey)}>
             {(Object.keys(SORT_LABEL) as SortKey[]).map((k) => <option key={k} value={k}>{SORT_LABEL[k]}</option>)}
-          </select>
-          <button type="button" onClick={st.toggleDir} className="rounded border border-line px-2 py-1 text-xs hover:bg-surface-3" aria-label={`Direction: ${st.dir === "asc" ? "ascending" : "descending"}. Change`}>
+          </Select>
+          <button type="button" onClick={st.toggleDir} className="btn" aria-label={`Direction: ${st.dir === "asc" ? "ascending" : "descending"}. Change`}>
             {st.dir === "asc" ? "Ascending" : "Descending"}
           </button>
         </div>
@@ -273,13 +268,13 @@ function InvCard({ r, isOpen, selected, canSelect, onToggleSelect, meta }: CardP
       id={`inv-${r.id}`}
       tabIndex={-1}
       aria-labelledby={headId}
-      className={`card flex h-full scroll-mt-24 flex-col gap-3 p-4 ${isOpen ? "ring-2 ring-accent" : ""}`}
+      className={`card flex h-full flex-col gap-3 p-4 ${isOpen ? "ring-2 ring-accent" : ""}`}
     >
       <header className="flex items-start gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <InvMarker c={c} size={14} outlined={!r.has_table} />
-            <h3 id={headId} className="text-base font-semibold leading-tight">{r.acronym?.v ?? r.title?.v ?? r.id}</h3>
+            <h3 id={headId} className="text-base font-semibold">{r.acronym?.v ?? r.title?.v ?? r.id}</h3>
             <span className="mono text-xs text-ink-3">{r.id}</span>
           </div>
           {r.acronym?.v && r.title?.v && <p className="mt-0.5 text-sm text-ink-2">{r.title.v}</p>}
@@ -329,7 +324,7 @@ function InvCard({ r, isOpen, selected, canSelect, onToggleSelect, meta }: CardP
           </dl>
         )}
         {s && s.o2_pct.min && (
-          <p className="mt-1 text-xs leading-snug text-ink-3">
+          <p className="mt-1 text-xs text-ink-3">
             Lowest to highest value in the table. The O2 range covers whichever basis the table records (chamber initial, ambient or, for inverse flames, the oxidiser stream) and can mix them; Evidence gives the basis of each test.
           </p>
         )}
@@ -391,8 +386,8 @@ function CompareBar({ ids, byId, onRemove, onClear }: { ids: string[]; byId: Map
               <li key={id} className="inline-flex items-center gap-1 rounded-full border border-line bg-surface px-2 py-0.5 text-xs">
                 {r && <InvMarker c={invClass(r)} size={11} outlined={!r.has_table} />}
                 {r ? invName(r) : id}
-                <button type="button" className="ml-0.5 rounded px-1 text-ink-3 hover:text-ink" aria-label={`Remove ${r ? invName(r) : id} from comparison`} onClick={() => onRemove(id)}>
-                  &times;
+                <button type="button" className="ml-0.5 inline-flex items-center rounded text-ink-3 hover:text-ink" aria-label={`Remove ${r ? invName(r) : id} from comparison`} onClick={() => onRemove(id)}>
+                  <CloseIcon size={12} />
                 </button>
               </li>
             );
@@ -401,11 +396,11 @@ function CompareBar({ ids, byId, onRemove, onClear }: { ids: string[]; byId: Map
         {!ready && <span className="text-xs text-ink-3">Pick at least {MIN_COMPARE}.</span>}
         <button type="button" className="text-xs text-ink-3 underline underline-offset-2 hover:text-ink" onClick={onClear}>Clear</button>
         {ready ? (
-          <Link to={`/investigations/compare?ids=${ids.join(",")}`} className="rounded bg-accent px-3 py-1.5 text-sm font-medium text-accent-ink hover:opacity-90">
+          <Link to={`/investigations/compare?ids=${ids.join(",")}`} className="btn btn-primary">
             Compare
           </Link>
         ) : (
-          <span aria-disabled="true" className="cursor-not-allowed rounded bg-surface-3 px-3 py-1.5 text-sm font-medium text-ink-3">Compare</span>
+          <span aria-disabled="true" className="btn cursor-not-allowed text-ink-3">Compare</span>
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 # Redshift: plan for an exceptional interface
 
-Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23), with its review fixes (D24, D25). Phase 1 is done (D26).
+Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23), with its review fixes (D24, D25). Phase 1 is done (D26), with its review fixes (D27).
 Follows `docs/redesign/PLAN.md` (the plane-first redesign, done) and `docs/REDESIGN_AUDIT.md`.
 
 > **The one job.** "If we pick this cabin atmosphere, what do we actually know about fire there, and what's missing?"
@@ -217,7 +217,7 @@ Each phase lists goal, interaction specification, data and integrity, accessibil
 - **Ask:** suggestion chips change with the point (for example "Why can't BRE be placed here?" when BRE sessions match the oxygen).
 
 ### Phase 12. Polish and verification (M, must)
-- Collision and clipping audit across the screenshot matrix in both themes.
+- Collision and clipping audit across the screenshot matrix in both themes. The matrix includes Compare at 390 px (zero-count rows) and the plane at 1440 px (isotherm labels against candidate labels). Known from the Phase 1 review: the planner heat map sizes its in-cell labels to the cell (under 12 px), and the coverage matrix's rotated column headers run past the chart edge at 390 px.
 - Copy edit of every visible string (British English, no em dashes, plain sentences, cited numbers).
 - Performance pass, Lighthouse, keyboard walkthrough, screen reader spot check (NVDA on Windows).
 - Usability sessions (section 3) and fixes.

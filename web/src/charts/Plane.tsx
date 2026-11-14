@@ -7,7 +7,7 @@
 // view; the overlay (nearness region, probe, selection, pointer surface) is the only thing that repaints
 // while the probe moves, so a drag stays within a frame even with a thousand glyphs on the plane.
 import * as d3 from "d3";
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { fmtNumber, FUEL_LABEL } from "../lib/format";
 import { snapIndex, type Grid } from "../lib/probe";
@@ -17,6 +17,9 @@ import type { FlameGrid, MapPoint, PlannerCell, PrebreathePoint, Strip, TradeMap
 
 const KPA_PER_PSI = 6.894757293168361; // axis labels only; every value shown in the panel carries its own kPa
 const MAGNET_PX = 14;
+// Glyphs are clipped to the plot plus this margin, not to the plot itself, so a test on the edge of the domain
+// (15% O2, say) draws whole: the largest marker, the emulator diamond at r = 12, reaches 15.6 px plus its stroke.
+const GLYPH_PAD = 18;
 
 export type ProbeMode = "hover" | "drag" | "commit";
 
@@ -216,7 +219,22 @@ export function Plane(props: Props) {
   const pxp = x(probe.o2);
   const pyp = y(probe.psi);
   const tag = `${fmtNumber(probe.o2)}% O2 · ${fmtNumber(probe.psi)} psi`;
-  const tagW = tag.length * 7 + 16;
+  // The tag's box is the text's measured width plus 8 px each side. Until the text is measured (the first
+  // paint, a server render) a character-count guess stands in. Tabular figures keep the width steady while the
+  // probe moves, so a drag rarely changes it.
+  const tagText = useRef<SVGTextElement>(null);
+  const [tagTextW, setTagTextW] = useState<number | null>(null);
+  const measureTag = useCallback(() => {
+    const el = tagText.current;
+    if (!el || typeof el.getComputedTextLength !== "function") return;
+    const w = el.getComputedTextLength();
+    if (w > 0) setTagTextW(Math.ceil(w));
+  }, []);
+  useLayoutEffect(measureTag, [tag, measureTag]);
+  useEffect(() => {
+    void document.fonts?.ready.then(measureTag); // the web font may arrive after the first measure
+  }, [measureTag]);
+  const tagW = (tagTextW ?? tag.length * 7) + 16;
   const tagLeft = pxp + 16 + tagW > iw;
   const glide = dragging ? "none" : "transform var(--t-move) var(--ease-out)";
 
@@ -254,7 +272,7 @@ export function Plane(props: Props) {
               <circle r={3} fill="var(--probe)" />
               <g transform={`translate(${tagLeft ? -16 - tagW : 16},${pyp < 40 ? 16 : -32})`}>
                 <rect width={tagW} height={24} rx={4} fill="var(--surface)" stroke="var(--line-strong)" />
-                <text x={8} y={16} fontSize={12} fill="var(--ink)" className="num">{tag}</text>
+                <text ref={tagText} x={8} y={16} fontSize={12} fill="var(--ink)" className="num">{tag}</text>
               </g>
             </g>
           </g>
@@ -295,7 +313,21 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
     const gen = d3.contours().size([nx, ny]).thresholds(flame.isotherms_K.map((t) => t.v));
     const o2At = d3.scaleLinear().domain([0.5, nx - 0.5]).range([flame.o2_pct[0], flame.o2_pct[nx - 1]]);
     const pAt = d3.scaleLinear().domain([0.5, ny - 0.5]).range([flame.pressure_psi[0], flame.pressure_psi[ny - 1]]);
-    const placed: [number, number][] = []; // isotherm labels already placed; a label too close to one is skipped
+    // Boxes an isotherm label must stay clear of: every candidate's ring and name (the name is drawn unless the
+    // probe sits on that candidate; it is kept clear either way), then each isotherm label once placed. Widths
+    // are generous estimates (0.6 em a character), so a label that might touch is moved, never one that does not.
+    type Box = { x0: number; x1: number; y0: number; y1: number };
+    const nameSize = narrow ? 12 : 14;
+    const taken: Box[] = candidates.flatMap((c) => {
+      const cx = x(c.o2_pct.v);
+      const cy = y(c.pressure_psi.v);
+      const base = cy + (c.role === "scenario" ? 20 : -10);
+      return [
+        { x0: cx - 10, x1: cx + 10, y0: cy - 10, y1: cy + 10 },
+        { x0: cx + 10, x1: cx + 14 + c.name.length * nameSize * 0.6, y0: base - nameSize, y1: base + 4 },
+      ];
+    });
+    const hits = (b: Box) => taken.some((t) => b.x0 < t.x1 && b.x1 > t.x0 && b.y0 < t.y1 && b.y1 > t.y0);
     return gen(flame.temperature_K.flat()).map((c, i) => {
       const lines: [number, number][][] = [];
       const inside = ([gx, gy]: number[]) => gx > 0.5 && gx < nx - 0.5 && gy > 0.5 && gy < ny - 0.5;
@@ -312,13 +344,23 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
           if (cur.length > 1) lines.push(cur);
         }
       }
+      // The label sits 30% along the line, or at the next spot along it that is clear; none is drawn if none is.
       const labelPts = lines.flat().filter(([px, py]) => px > 40 && px < iw - 40 && py > 16 && py < ih - 16);
-      let label: [number, number] | null = labelPts.length ? labelPts[Math.floor(labelPts.length * 0.3)] : null;
-      if (label && placed.some(([lx, ly]) => Math.abs(lx - label![0]) < 56 && Math.abs(ly - label![1]) < 20)) label = null;
-      if (label) placed.push(label);
+      const text = `${fmtNumber(flame.isotherms_K[i].v, 0)} K`;
+      const half = (text.length * 12 * 0.6) / 2 + 2;
+      const boxAt = ([lx, ly]: [number, number]): Box => ({ x0: lx - half, x1: lx + half, y0: ly - 17, y1: ly + 2 });
+      let label: [number, number] | null = null;
+      for (const at of [0.3, 0.45, 0.6, 0.15, 0.75, 0.9]) {
+        const pt = labelPts[Math.floor(labelPts.length * at)];
+        if (pt && !hits(boxAt(pt))) {
+          label = pt;
+          taken.push(boxAt(pt));
+          break;
+        }
+      }
       return { value: flame.isotherms_K[i].v, lines: lines.map((l) => d3.line()(l) ?? ""), label };
     });
-  }, [flame, x, y, z, iw, ih]);
+  }, [flame, x, y, z, iw, ih, candidates, narrow]);
 
   const blind = useMemo(() => {
     if (!planner) return [];
@@ -358,6 +400,7 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
       <defs>
         <Hatch id="hatch-plane" />
         <clipPath id="plane-clip"><rect width={iw} height={ih} /></clipPath>
+        <clipPath id="plane-clip-glyphs"><rect x={-GLYPH_PAD} y={-GLYPH_PAD} width={iw + 2 * GLYPH_PAD} height={ih + 2 * GLYPH_PAD} /></clipPath>
       </defs>
       <g transform={`translate(${m.left},${m.top})`}>
         <rect width={iw} height={ih} fill="var(--surface-2)" stroke="var(--line)" />
@@ -378,8 +421,13 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
             ))}
           </g>
 
-          <GlyphLayer on={layers.has("ev")} points={glyphs} x={x} y={y} r={r} solids={solids} />
+        </g>
 
+        <g clipPath="url(#plane-clip-glyphs)">
+          <GlyphLayer on={layers.has("ev")} points={glyphs} x={x} y={y} r={r} solids={solids} />
+        </g>
+
+        <g clipPath="url(#plane-clip)">
           <g className="layer" data-on={layers.has("pb")}>
             {(prebreathe ?? []).map((pb) => (
               <g key={pb.finding_id} transform={`translate(${x(pb.o2_pct.v)},${y(pb.pressure_psi.v)})`}>

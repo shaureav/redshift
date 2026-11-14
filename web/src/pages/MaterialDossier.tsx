@@ -114,7 +114,7 @@ export default function MaterialDossier() {
           <div className="no-print flex flex-wrap gap-2">
             <ExportButton onClick={() => window.print()}>Print or save as PDF</ExportButton>
             {ids.length > 0 && (
-              <Link to={evidenceHref(ids)} className="rounded border border-line bg-surface-2 px-2.5 py-1 text-xs hover:bg-surface-3">
+              <Link to={evidenceHref(ids)} className="btn btn-sm">
                 Open all in the Evidence Explorer
               </Link>
             )}
@@ -148,19 +148,20 @@ export default function MaterialDossier() {
             id="tests"
             title="Tests of this material"
             aside={
-              <div className="no-print flex items-center gap-1 text-xs" role="group" aria-label="Sort tests by">
-                <span className="text-ink-3">Sort</span>
+              <div className="no-print flex items-center gap-2 text-xs">
+                <span className="text-ink-3" aria-hidden="true">Sort</span>
+                <span className="seg seg-sm" role="group" aria-label="Sort tests by">
                 {SORTS.map((s) => (
                   <button
                     key={s.key}
                     type="button"
                     aria-pressed={sort === s.key}
                     onClick={() => setSort(s.key)}
-                    className={`rounded border border-line px-2 py-0.5 ${sort === s.key ? "bg-surface-3 font-medium" : "hover:bg-surface-3"}`}
                   >
                     {s.label}
                   </button>
                 ))}
+                </span>
               </div>
             }
           >

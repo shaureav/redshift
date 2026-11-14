@@ -2,7 +2,7 @@
 // the bars can be read against each other; the numbers under each bar come from the snapshot.
 import { useId, useMemo, useState, type ReactNode } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ErrorNote, Loading, PageHeader } from "../components/Common";
+import { ErrorNote, Loading, PageHeader, Select } from "../components/Common";
 import { Value } from "../components/Value";
 import { useData } from "../lib/data";
 import { doiUrl } from "../lib/format";
@@ -94,14 +94,14 @@ export default function Compare() {
     >
       <div>
         <label htmlFor={addId} className="mb-1 block text-xs font-medium text-ink-3">Add an investigation</label>
-        <select id={addId} value={toAdd} onChange={(e) => setToAdd(e.target.value)} className="max-w-[18rem] rounded border border-line bg-surface-2 px-2 py-1 text-sm text-ink">
+        <Select small id={addId} value={toAdd} onChange={(e) => setToAdd(e.target.value)} className="max-w-[18rem]">
           <option value="">Choose...</option>
           {others.map((r) => (
             <option key={r.id} value={r.id}>{invName(r)} ({r.id})</option>
           ))}
-        </select>
+        </Select>
       </div>
-      <button type="submit" disabled={!toAdd} className="rounded border border-line px-3 py-1 text-sm hover:bg-surface-3 disabled:opacity-50">Add</button>
+      <button type="submit" disabled={!toAdd} className="btn">Add</button>
     </form>
   );
 
@@ -120,7 +120,7 @@ export default function Compare() {
       <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
         {addPicker || <p className="text-xs text-ink-3">Four is the most that fit side by side. Remove one to add another.</p>}
         <div className="flex flex-wrap items-center gap-3">
-          <button type="button" className="rounded border border-line px-2 py-1 text-xs hover:bg-surface-3" aria-pressed={fullText} onClick={() => setFullText((f) => !f)}>
+          <button type="button" className="btn" aria-pressed={fullText} onClick={() => setFullText((f) => !f)}>
             {fullText ? "Shorten long text" : "Show full text"}
           </button>
         </div>
@@ -153,7 +153,7 @@ export default function Compare() {
                         </div>
                         <div className="mono text-xs text-ink-3">{r.id}</div>
                       </div>
-                      <button type="button" className="shrink-0 rounded border border-line px-1.5 py-0.5 text-xs text-ink-2 hover:bg-surface-3" aria-label={`Remove ${invName(r)} from the comparison`} onClick={() => setIds(ids.filter((x) => x !== r.id))}>
+                      <button type="button" className="btn btn-sm shrink-0 text-ink-2" aria-label={`Remove ${invName(r)} from the comparison`} onClick={() => setIds(ids.filter((x) => x !== r.id))}>
                         Remove
                       </button>
                     </div>
@@ -253,7 +253,7 @@ export default function Compare() {
                     {r.publications.length > 0 && (
                       <ol className="mt-1.5 flex flex-col gap-1.5">
                         {r.publications.slice(0, 5).map((p) => (
-                          <li key={p.line} className="text-xs leading-snug">
+                          <li key={p.line} className="text-xs">
                             <span className="text-ink">{p.title?.v ?? "untitled"}</span>
                             {p.doi?.v ? (
                               <a className="mono block truncate text-xs text-ink-2 underline underline-offset-2" href={doiUrl(p.doi.v)} target="_blank" rel="noreferrer">{p.doi.v}</a>
