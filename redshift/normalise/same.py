@@ -28,18 +28,20 @@ C_FLOW = "Air Flow (cm/s)"
 
 
 def adapt(ctx: Ctx) -> None:
-    gravity = ctx.constant("gravity", "microgravity (ISS)",
-                           "SAME.md: flight platform International Space Station.")
+    gravity = ctx.constant("gravity", "microgravity (ISS)", "SAME.md: flight platform International Space Station.")
     for row in ctx.rows():
-        ctx.emit(row, {
-            "test_label": ctx.text(row, C_ID),
-            "material": ctx.text(row, C_MAT),
-            "flow_cm_s": ctx.num(row, C_FLOW, "flow_cm_s"),
-            "o2_pct": ctx.missing("o2_pct", "The SAME table has no oxygen column."),
-            "pressure_kpa": ctx.missing("pressure_kpa", "The SAME table has no pressure column."),
-            "pressure_psi": ctx.missing("pressure_psi", "The SAME table has no pressure column."),
-            "gravity_level": gravity,
-        })
+        ctx.emit(
+            row,
+            {
+                "test_label": ctx.text(row, C_ID),
+                "material": ctx.text(row, C_MAT),
+                "flow_cm_s": ctx.num(row, C_FLOW, "flow_cm_s"),
+                "o2_pct": ctx.missing("o2_pct", "The SAME table has no oxygen column."),
+                "pressure_kpa": ctx.missing("pressure_kpa", "The SAME table has no pressure column."),
+                "pressure_psi": ctx.missing("pressure_psi", "The SAME table has no pressure column."),
+                "gravity_level": gravity,
+            },
+        )
 
 
 SPEC = AdapterSpec(

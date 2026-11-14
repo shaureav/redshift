@@ -51,26 +51,40 @@ class Steps:
 
     @classmethod
     def from_params(cls, p: dict[str, Any], multiplier: float = 1.0) -> Steps:
-        return cls(o2=p["o2_step_pct_points"] * multiplier, log_p=math.log(p["pressure_step_log"]) * multiplier,
-                   flow=p["flow_step_cm_s"] * multiplier, threshold=p["threshold"])
+        return cls(
+            o2=p["o2_step_pct_points"] * multiplier,
+            log_p=math.log(p["pressure_step_log"]) * multiplier,
+            flow=p["flow_step_cm_s"] * multiplier,
+            threshold=p["threshold"],
+        )
 
 
-def distance(ev: Evidence, o2_pct: float, pressure_kpa: float, steps: Steps,
-             target_flow: float | None = None) -> float | None:
+def distance(
+    ev: Evidence, o2_pct: float, pressure_kpa: float, steps: Steps, target_flow: float | None = None
+) -> float | None:
     """Distance in steps, or None if the test lacks O2 or pressure."""
     if ev.o2_pct is None or ev.pressure_kpa is None or ev.pressure_kpa <= 0:
         return None
     o2 = min(max(o2_pct, ev.o2_range[0]), ev.o2_range[1]) if ev.o2_range else ev.o2_pct
-    p = min(max(pressure_kpa, ev.pressure_range_kpa[0]), ev.pressure_range_kpa[1]) \
-        if ev.pressure_range_kpa else ev.pressure_kpa
+    p = (
+        min(max(pressure_kpa, ev.pressure_range_kpa[0]), ev.pressure_range_kpa[1])
+        if ev.pressure_range_kpa
+        else ev.pressure_kpa
+    )
     d2 = ((o2 - o2_pct) / steps.o2) ** 2 + (math.log(p / pressure_kpa) / steps.log_p) ** 2
     if target_flow is not None and ev.flow_cm_s is not None:
         d2 += ((ev.flow_cm_s - target_flow) / steps.flow) ** 2
     return math.sqrt(d2)
 
 
-def classify(ev: Evidence, o2_pct: float, pressure_kpa: float, steps: Steps, counted_bases: list[str],
-             target_flow: float | None = None) -> tuple[State, float | None]:
+def classify(
+    ev: Evidence,
+    o2_pct: float,
+    pressure_kpa: float,
+    steps: Steps,
+    counted_bases: list[str],
+    target_flow: float | None = None,
+) -> tuple[State, float | None]:
     if ev.o2_pct is not None and ev.o2_basis is not None and ev.o2_basis not in counted_bases:
         return "basis_differs", None
     if ev.o2_pct is None and ev.pressure_kpa is None:
@@ -92,8 +106,14 @@ def o2_only_match(ev: Evidence, o2_pct: float, steps: Steps) -> bool:
     return abs(o2 - o2_pct) / steps.o2 <= steps.threshold
 
 
-def evaluate(evidence: list[Evidence], o2_pct: float, pressure_kpa: float, params: dict[str, Any],
-             multiplier: float = 1.0, target_flow: float | None = None) -> dict[str, Any]:
+def evaluate(
+    evidence: list[Evidence],
+    o2_pct: float,
+    pressure_kpa: float,
+    params: dict[str, Any],
+    multiplier: float = 1.0,
+    target_flow: float | None = None,
+) -> dict[str, Any]:
     """Counts by state, fuel class and source type, plus the near tests sorted by distance."""
     steps = Steps.from_params(params, multiplier)
     bases = params["o2_basis_counted"]
@@ -112,8 +132,12 @@ def evaluate(evidence: list[Evidence], o2_pct: float, pressure_kpa: float, param
     return {"counts": counts, "near": near, "o2_match_pressure_unknown": o2_match_p_unknown}
 
 
-def count(counts: dict[str, dict[str, dict[str, int]]], state: str, fuel_class: str | None = None,
-          source_type: str | None = None) -> int:
+def count(
+    counts: dict[str, dict[str, dict[str, int]]],
+    state: str,
+    fuel_class: str | None = None,
+    source_type: str | None = None,
+) -> int:
     total = 0
     for fc, by_src in counts.get(state, {}).items():
         if fuel_class is not None and fc != fuel_class:

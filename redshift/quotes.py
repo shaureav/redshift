@@ -13,8 +13,18 @@ _WS = re.compile(r"\s+")
 # Typographic substitutions applied to BOTH the quote and the source before matching. Each is listed so
 # the matching rule is auditable; none changes a digit, a unit or a word.
 NORMALISATIONS = {
-    "ﬁ": "fi", "ﬂ": "fl", "ﬀ": "ff", "ﬃ": "ffi", "ﬄ": "ffl",
-    "’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "−": "-", " ": " ",
+    "ﬁ": "fi",
+    "ﬂ": "fl",
+    "ﬀ": "ff",
+    "ﬃ": "ffi",
+    "ﬄ": "ffl",
+    "’": "'",
+    "‘": "'",
+    "“": '"',
+    "”": '"',
+    "–": "-",
+    "−": "-",
+    " ": " ",
 }
 
 

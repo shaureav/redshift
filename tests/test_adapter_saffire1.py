@@ -25,8 +25,14 @@ def out():
     spec = M.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, reg, flags, {r.source_row: r for r in ctx.records}
@@ -55,7 +61,11 @@ def test_reconciliation(out):
 def test_flag_counts(out):
     _, _, flags, _ = out
     assert Counter(f.code for f in flags.items) == {
-        "missing_column": 7, "swapped_columns": 2, "unit_unclear": 2, "non_numeric": 2, "non_test_row": 2,
+        "missing_column": 7,
+        "swapped_columns": 2,
+        "unit_unclear": 2,
+        "non_numeric": 2,
+        "non_test_row": 2,
     }
 
 

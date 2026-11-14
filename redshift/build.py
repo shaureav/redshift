@@ -48,16 +48,21 @@ def compute() -> dict[str, Any]:
     registry, flags = Registry(), FlagLog()
     norm = normalise(registry, flags)
     records = norm.records
-    unlabelled = [r.test_id for r in records
-                  if r.fields["o2_pct"]["v"] is not None and (r.fields.get("o2_basis") or {}).get("v") is None]
+    unlabelled = [
+        r.test_id
+        for r in records
+        if r.fields["o2_pct"]["v"] is not None and (r.fields.get("o2_basis") or {}).get("v") is None
+    ]
     if unlabelled:
         raise BuildError(f"{len(unlabelled)} tests have an O2 value but no o2_basis, e.g. {unlabelled[:3]}")
 
     invs = investigations.build(registry, flags)
     inv_names = {i["id"]: (i.get("acronym", {}) or {}).get("v") or i["id"] for i in invs}
     cov = investigations.coverage(records)
+    stats = E.investigation_stats(registry, records)
     for i in invs:
         i["coverage"] = cov.get(i["id"])
+        i["stats"] = stats.get(i["id"])
 
     cands = C.build(registry)
     ft_params = params["flame_temperature"]
@@ -95,14 +100,23 @@ def compute() -> dict[str, Any]:
         fids = sorted({flag_ids_by_index[i] for i in r.flag_refs})
         for fid in fids:
             tests_by_flag.setdefault(fid, []).append(r.test_id)
-        tests_payload.append({
-            "test_id": r.test_id, "investigation_id": r.investigation_id,
-            "investigation": inv_names.get(r.investigation_id, r.investigation_id),
-            "source_type": "psi_table", "table_file": r.table_file, "source_row": r.source_row,
-            "doi": registry.get(next(iter(v["p"] for v in r.fields.values()))).doi,
-            "fuel_class": r.fuel_class, "test_kind": r.test_kind, "fields": r.fields, "flags": fids,
-            "raw": r.raw, "verified": True,
-        })
+        tests_payload.append(
+            {
+                "test_id": r.test_id,
+                "investigation_id": r.investigation_id,
+                "investigation": inv_names.get(r.investigation_id, r.investigation_id),
+                "source_type": "psi_table",
+                "table_file": r.table_file,
+                "source_row": r.source_row,
+                "doi": registry.get(next(iter(v["p"] for v in r.fields.values()))).doi,
+                "fuel_class": r.fuel_class,
+                "test_kind": r.test_kind,
+                "fields": r.fields,
+                "flags": fids,
+                "raw": r.raw,
+                "verified": True,
+            }
+        )
     for fj in flag_json:
         fj["test_ids"] = sorted(tests_by_flag.get(fj["id"], []))
 
@@ -125,6 +139,7 @@ def compute() -> dict[str, Any]:
         actual[f"ft_{cid}"] = t["v"]
     psi_ev = [e for e in rec_ev if e.fuel_class in {"gas", "droplet", "solid"}]
     from redshift.science.nearness import evaluate
+
     for c in cands:
         res = evaluate(psi_ev, c["o2_pct"]["v"], c["pressure_kpa"]["v"], near_params)
         near = [e for _, e in res["near"]]
@@ -132,27 +147,44 @@ def compute() -> dict[str, Any]:
         for fc in ("solid", "droplet", "gas"):
             actual[f"near_psi_{fc}_{c['id']}"] = sum(1 for e in near if e.fuel_class == fc)
     actual["near_psi_solid_any_habitat"] = sum(
-        actual[f"near_psi_solid_{c['id']}"] for c in cands if c["id"] not in {"c14_7_21", "c4_3_100"})
+        actual[f"near_psi_solid_{c['id']}"] for c in cands if c["id"] not in {"c14_7_21", "c4_3_100"}
+    )
     actual["bre_flames_total"] = sum(
-        (r.fields["n_flames"]["v"] or 0) for r in records if r.investigation_id == "PSI-20")
+        (r.fields["n_flames"]["v"] or 0) for r in records if r.investigation_id == "PSI-20"
+    )
     golden_results = goldens.evaluate(actual)
-    gid = registry.add(Prov(id="goldens", source_type="derived", method="golden checks", method_version="1",
-                            note="Expected values from earlier analyses, reproduced or explained."))
+    gid = registry.add(
+        Prov(
+            id="goldens",
+            source_type="derived",
+            method="golden checks",
+            method_version="1",
+            note="Expected values from earlier analyses, reproduced or explained.",
+        )
+    )
 
     # ---- summary counts ----
     fuel_counts = Counter(r.fuel_class for r in records)
-    summary_id = registry.add(Prov(id="summary", source_type="derived", method="dataset summary counts",
-                                   method_version="1", inputs=sorted(r.test_id for r in records)))
+    summary_id = registry.add(
+        Prov(
+            id="summary",
+            source_type="derived",
+            method="dataset summary counts",
+            method_version="1",
+            inputs=sorted(r.test_id for r in records),
+        )
+    )
     summary = {
         "tests": value(len(records), "tests", summary_id),
-        "investigations_with_tables": value(len({r.investigation_id for r in records}), "investigations",
-                                            summary_id),
+        "investigations_with_tables": value(len({r.investigation_id for r in records}), "investigations", summary_id),
         "investigations_total": value(len(invs), "investigations", summary_id),
         "tables": value(len(recons), "tables", summary_id),
         "by_fuel_class": {k: value(v, "tests", summary_id) for k, v in sorted(fuel_counts.items())},
         "flags": value(len(flag_json), "flags", summary_id),
-        "flags_by_severity": {s: value(sum(1 for f in flag_json if f["severity"] == s), "flags", summary_id)
-                              for s in ("error", "warning", "info")},
+        "flags_by_severity": {
+            s: value(sum(1 for f in flag_json if f["severity"] == s), "flags", summary_id)
+            for s in ("error", "warning", "info")
+        },
         "duplicates_removed": value(sum(r["duplicates_removed"] for r in recons), "rows", summary_id),
         "blank_rows_excluded": value(sum(r["blank_excluded"] for r in recons), "rows", summary_id),
         "non_test_rows_excluded": value(sum(r["non_test_excluded"] for r in recons), "rows", summary_id),
@@ -160,8 +192,9 @@ def compute() -> dict[str, Any]:
 
     quality = {
         "summary": summary,
-        "flag_definitions": {k: {"severity": d.severity, "title": d.title, "description": d.description}
-                             for k, d in sorted(DEFS.items())},
+        "flag_definitions": {
+            k: {"severity": d.severity, "title": d.title, "description": d.description} for k, d in sorted(DEFS.items())
+        },
         "flags": flag_json,
         "reconciliation": recons,
         "goldens": {"results": golden_results, "p": gid},
@@ -182,13 +215,25 @@ def compute() -> dict[str, Any]:
         "key_findings.json": {"findings": public_findings, "status": fstatus, "p": "summary"},
         "prebreathe.json": prebreathe,
         "trade_map.json": tmap,
+        "investigation_stats.json": {"stats": stats, "p": summary_id},
         "quality_report.json": quality,
-        "adapters.json": {"adapters": [{"investigation_id": s.investigation_id, "folder": s.folder,
-                                        "fuel_class": s.fuel_class, "test_kind": s.test_kind,
-                                        "tables": [t.relpath for t in s.tables],
-                                        "mapping": s.mapping_doc.strip()} for s in norm.specs]},
-        "manifest.json": {"files": [{k: v for k, v in f.items() if k != "size"} | {"bytes": f["size"]}
-                                    for f in manifest["files"]], "note": manifest["note"]},
+        "adapters.json": {
+            "adapters": [
+                {
+                    "investigation_id": s.investigation_id,
+                    "folder": s.folder,
+                    "fuel_class": s.fuel_class,
+                    "test_kind": s.test_kind,
+                    "tables": [t.relpath for t in s.tables],
+                    "mapping": s.mapping_doc.strip(),
+                }
+                for s in norm.specs
+            ]
+        },
+        "manifest.json": {
+            "files": [{k: v for k, v in f.items() if k != "size"} | {"bytes": f["size"]} for f in manifest["files"]],
+            "note": manifest["note"],
+        },
     }
     # Provenance coverage lint over every payload.
     known = set(registry.to_json())
@@ -200,8 +245,12 @@ def compute() -> dict[str, Any]:
         checked_n += n
         failures.extend(fails)
     coverage = 100.0 if checked_n == 0 else round(100.0 * (checked_n - len(failures)) / checked_n, 4)
-    quality["provenance_coverage"] = {"numbers_checked": checked_n, "without_provenance": len(failures),
-                                      "percent": coverage, "examples": failures[:20]}
+    quality["provenance_coverage"] = {
+        "numbers_checked": checked_n,
+        "without_provenance": len(failures),
+        "percent": coverage,
+        "examples": failures[:20],
+    }
     payloads["provenance.json"] = registry.to_json()
 
     # Version: content hash of everything published.
@@ -211,20 +260,42 @@ def compute() -> dict[str, Any]:
         h.update(dumps(payloads[name]).encode())
     version = f"{RETRIEVED}+{h.hexdigest()[:12]}"
     payloads["dataset_version.json"] = {
-        "version": version, "retrieved": RETRIEVED, "content_sha256": h.hexdigest(),
+        "version": version,
+        "retrieved": RETRIEVED,
+        "content_sha256": h.hexdigest(),
         "cite": f"Project Redshift (2026). Redshift microgravity fire evidence dataset, version {version}. "
-                "Derived from NASA Physical Sciences Informatics (cite each investigation by its DOI).",
+        "Derived from NASA Physical Sciences Informatics (cite each investigation by its DOI).",
     }
-    return {"payloads": payloads, "failures": failures, "golden_results": golden_results, "records": records,
-            "registry": registry, "quality": quality, "version": version, "summary_flags": flag_json}
+    return {
+        "payloads": payloads,
+        "failures": failures,
+        "golden_results": golden_results,
+        "records": records,
+        "registry": registry,
+        "quality": quality,
+        "version": version,
+        "summary_flags": flag_json,
+    }
 
 
 def tests_table(records: list[Any], registry: Registry, flags_by_test: dict[str, list[str]]) -> list[dict[str, Any]]:
     rows = []
     for t in records:
-        row: dict[str, Any] = {k: t[k] for k in ("test_id", "investigation_id", "investigation", "source_type",
-                                                  "table_file", "source_row", "doi", "fuel_class", "test_kind",
-                                                  "verified")}
+        row: dict[str, Any] = {
+            k: t[k]
+            for k in (
+                "test_id",
+                "investigation_id",
+                "investigation",
+                "source_type",
+                "table_file",
+                "source_row",
+                "doi",
+                "fuel_class",
+                "test_kind",
+                "verified",
+            )
+        }
         for f in (*NUMERIC_FIELDS, *TEXT_FIELDS):
             row[f] = t["fields"][f]["v"] if f in t["fields"] else None
         row["flags"] = ";".join(t["flags"])
@@ -242,8 +313,9 @@ def write(result: dict[str, Any]) -> None:
         text = dumps(payload)
         (PROCESSED / name).write_text(text, encoding="utf-8")
         (SNAPSHOT / name).write_text(text, encoding="utf-8")
-    (PROCESSED / "quality_report.md").write_text(quality_markdown(result["quality"], result["version"]),
-                                                 encoding="utf-8")
+    (PROCESSED / "quality_report.md").write_text(
+        quality_markdown(result["quality"], result["version"]), encoding="utf-8"
+    )
     rows = tests_table(payloads["tests.json"]["tests"], result["registry"], {})
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=list(rows[0].keys()), lineterminator="\n")
@@ -251,6 +323,7 @@ def write(result: dict[str, Any]) -> None:
     w.writerows(rows)
     (PROCESSED / "tests.csv").write_text(buf.getvalue(), encoding="utf-8")
     import pandas as pd
+
     df = pd.DataFrame(rows)
     df.to_parquet(PROCESSED / "tests.parquet", index=False)
     (PROCESSED / "flags.csv").write_text(_flags_csv(result["summary_flags"]), encoding="utf-8")
@@ -260,8 +333,20 @@ def write(result: dict[str, Any]) -> None:
 
 def _flags_csv(flags: list[dict[str, Any]]) -> str:
     buf = io.StringIO()
-    cols = ["id", "code", "severity", "title", "investigation_id", "file", "rows", "column", "raw", "detail",
-            "action", "test_ids"]
+    cols = [
+        "id",
+        "code",
+        "severity",
+        "title",
+        "investigation_id",
+        "file",
+        "rows",
+        "column",
+        "raw",
+        "detail",
+        "action",
+        "test_ids",
+    ]
     w = csv.DictWriter(buf, fieldnames=cols, lineterminator="\n")
     w.writeheader()
     for f in flags:
@@ -290,13 +375,16 @@ def main() -> int:
     write(result)
     q = result["quality"]
     print(f"dataset {result['version']}")
-    print(f"tests {q['summary']['tests']['v']}, flags {q['summary']['flags']['v']}, "
-          f"provenance coverage {q['provenance_coverage']['percent']}% of {q['provenance_coverage']['numbers_checked']}")
-    print("goldens: " + ", ".join(f"{s}={n}" for s, n in Counter(g['status'] for g in result['golden_results']).items()))
+    print(
+        f"tests {q['summary']['tests']['v']}, flags {q['summary']['flags']['v']}, "
+        f"provenance coverage {q['provenance_coverage']['percent']}% of {q['provenance_coverage']['numbers_checked']}"
+    )
+    print(
+        "goldens: " + ", ".join(f"{s}={n}" for s, n in Counter(g["status"] for g in result["golden_results"]).items())
+    )
     print(f"wrote {rel(PROCESSED)} and {rel(SNAPSHOT)}")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

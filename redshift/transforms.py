@@ -16,7 +16,7 @@ ALLOWED: dict[str, str] = {
     "empty_to_null": "An empty cell becomes an explicit null, displayed as 'not recorded'.",
     "parse_number": "Read a plain decimal number (digits, one optional point, optional sign or exponent).",
     "strip_stated_unit": "Read '<number> <unit>' when the unit written in the cell is exactly the unit expected "
-                         "for the column (for example '0.75 atm' in a pressure column read as atm).",
+    "for the column (for example '0.75 atm' in a pressure column read as atm).",
     "strip_percent_sign": "Remove a single trailing '%' from a number already in percent.",
     "fraction_to_pct": "Multiply a mole fraction by 100 to give percent.",
     "mmhg_to_kpa": "Multiply by 101.325/760 (exact definition of the conventional mmHg).",

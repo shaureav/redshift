@@ -45,15 +45,22 @@ def dois() -> dict[str, str]:
 def run(registry: Registry | None = None, flags: FlagLog | None = None) -> NormaliseResult:
     # Explicit None checks: an empty Registry or FlagLog is falsy (it defines __len__), so `or` would
     # silently replace the caller's registry with a new one.
-    res = NormaliseResult(registry=Registry() if registry is None else registry,
-                          flags=FlagLog() if flags is None else flags)
+    res = NormaliseResult(
+        registry=Registry() if registry is None else registry, flags=FlagLog() if flags is None else flags
+    )
     doi_by_id = dois()
     res.specs = discover()
     for spec in res.specs:
         for t in spec.tables:
             table = read_table(spec.investigation_id, t.table_key, t.relpath)
-            ctx = Ctx(table, res.registry, res.flags, doi=doi_by_id[spec.investigation_id],
-                      fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+            ctx = Ctx(
+                table,
+                res.registry,
+                res.flags,
+                doi=doi_by_id[spec.investigation_id],
+                fuel_class=spec.fuel_class,
+                test_kind=spec.test_kind,
+            )
             spec.adapt(ctx)
             ctx.finish()
             res.records.extend(ctx.records)

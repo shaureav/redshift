@@ -23,8 +23,14 @@ def _run(key: str) -> tuple[Ctx, FlagLog, Registry]:
     spec = acme_cfig.SPEC
     t = next(t for t in spec.tables if t.table_key == key)
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, flags, reg

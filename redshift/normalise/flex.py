@@ -46,14 +46,26 @@ def adapt(ctx: Ctx) -> None:
         if all(p is not None for p in parts):
             total = sum(parts) / 100.0  # type: ignore[arg-type]
             if abs(total - 1.0) > 0.01:
-                ctx.flag("composition_sum", row, None, ",".join(ctx.raw(row, c) for c in (C_O2, C_N2, C_CO2, C_HE)),
-                         f"O2 + N2 + CO2 + He mole fractions sum to {total:.3f}.", "Values kept as recorded.")
+                ctx.flag(
+                    "composition_sum",
+                    row,
+                    None,
+                    ",".join(ctx.raw(row, c) for c in (C_O2, C_N2, C_CO2, C_HE)),
+                    f"O2 + N2 + CO2 + He mole fractions sum to {total:.3f}.",
+                    "Values kept as recorded.",
+                )
 
         ident = ctx.raw(row, C_ID).strip()
         if ident in seen_ids:
-            ctx.flag("near_duplicate", row, C_ID, ident,
-                     f"FLEX Identifier {ident} also appears on line {seen_ids[ident]} with different values.",
-                     "Both rows kept.", rows=[seen_ids[ident], row.line])
+            ctx.flag(
+                "near_duplicate",
+                row,
+                C_ID,
+                ident,
+                f"FLEX Identifier {ident} also appears on line {seen_ids[ident]} with different values.",
+                "Both rows kept.",
+                rows=[seen_ids[ident], row.line],
+            )
         else:
             seen_ids[ident] = row.line
 
@@ -70,24 +82,42 @@ def adapt(ctx: Ctx) -> None:
         else:
             supp = "none"
         suppressant = ctx.derived_text(
-            row, "suppressant", supp,
+            row,
+            "suppressant",
+            supp,
             "Label from recorded diluent fractions: CO2 > 0 and/or He > 0, else 'none'; null if either is unknown.",
-            [co2, he])
-        ctx.emit(row, {
-            "test_label": ctx.text(row, C_ID),
-            "test_date": ctx.text(row, C_DATE),
-            "fuel": ctx.text(row, C_FUEL),
-            "o2_pct": o2, "n2_pct": n2, "co2_pct": co2, "he_pct": he,
-            **({"o2_basis": ctx.constant("o2_basis", "chamber initial",
-                                         "Header 'O initial ambient composition': initial chamber atmosphere.")}
-               if o2["v"] is not None else {}),
-            "pressure_kpa": kpa, "pressure_psi": psi,
-            "diluent": ctx.constant("diluent", "N2", "Balance gas recorded in the N2 column."),
-            "suppressant": suppressant,
-            "outcome_label": ctx.text(row, C_END),
-            "flow_cm_s": ctx.missing("flow_cm_s", "FLEX burned droplets in a quiescent chamber; no flow column."),
-            "gravity_level": ctx.constant("gravity", "microgravity (ISS)", "PSI page: flight platform ISS."),
-        })
+            [co2, he],
+        )
+        ctx.emit(
+            row,
+            {
+                "test_label": ctx.text(row, C_ID),
+                "test_date": ctx.text(row, C_DATE),
+                "fuel": ctx.text(row, C_FUEL),
+                "o2_pct": o2,
+                "n2_pct": n2,
+                "co2_pct": co2,
+                "he_pct": he,
+                **(
+                    {
+                        "o2_basis": ctx.constant(
+                            "o2_basis",
+                            "chamber initial",
+                            "Header 'O initial ambient composition': initial chamber atmosphere.",
+                        )
+                    }
+                    if o2["v"] is not None
+                    else {}
+                ),
+                "pressure_kpa": kpa,
+                "pressure_psi": psi,
+                "diluent": ctx.constant("diluent", "N2", "Balance gas recorded in the N2 column."),
+                "suppressant": suppressant,
+                "outcome_label": ctx.text(row, C_END),
+                "flow_cm_s": ctx.missing("flow_cm_s", "FLEX burned droplets in a quiescent chamber; no flow column."),
+                "gravity_level": ctx.constant("gravity", "microgravity (ISS)", "PSI page: flight platform ISS."),
+            },
+        )
 
 
 SPEC = AdapterSpec(

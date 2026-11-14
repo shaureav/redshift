@@ -49,8 +49,10 @@ C_O2 = "Oxygen Conc (percent)"
 C_FLAMES = "Flames Ignited"
 C_NOTES = "Notes"
 
-PRESSURE_NOTE = ("No pressure column. The table Notes on line 2 say: \"The chamber pressures were also "
-                 "varied but are not identified in this summary table.\"")
+PRESSURE_NOTE = (
+    'No pressure column. The table Notes on line 2 say: "The chamber pressures were also '
+    'varied but are not identified in this summary table."'
+)
 
 
 def adapt(ctx: Ctx) -> None:
@@ -63,19 +65,28 @@ def adapt(ctx: Ctx) -> None:
 
         d = S.row_date(ctx, row, C_YEAR, C_MONTH, C_DATE)
         if d is not None and prev is not None and d < prev[0]:
-            ctx.flag("date_inconsistent", row, C_DATE,
-                     " ".join(ctx.raw(row, c).strip() for c in (C_YEAR, C_MONTH, C_DATE)),
-                     f"Rows are out of date order: line {row.line} ({d.isoformat()}) follows line {prev[1]} "
-                     f"({prev[0].isoformat()}).", "Both rows kept in file order; dates kept as recorded.",
-                     rows=[prev[1], row.line])
+            ctx.flag(
+                "date_inconsistent",
+                row,
+                C_DATE,
+                " ".join(ctx.raw(row, c).strip() for c in (C_YEAR, C_MONTH, C_DATE)),
+                f"Rows are out of date order: line {row.line} ({d.isoformat()}) follows line {prev[1]} "
+                f"({prev[0].isoformat()}).",
+                "Both rows kept in file order; dates kept as recorded.",
+                rows=[prev[1], row.line],
+            )
         if d is not None:
             prev = (d, row.line)
 
         o2 = ctx.num(row, C_O2, "o2_pct", S.single_percent("Oxygen Conc (percent)"))
         date = S.date_text(ctx, row, C_YEAR, C_MONTH, C_DATE)
-        label = ctx.derived_text(row, "test_label", None if date["v"] is None else f"Session {date['v']}",
-                                 "'Session ' followed by test_date (Year, Month and Date cells, verbatim).",
-                                 [date])
+        label = ctx.derived_text(
+            row,
+            "test_label",
+            None if date["v"] is None else f"Session {date['v']}",
+            "'Session ' followed by test_date (Year, Month and Date cells, verbatim).",
+            [date],
+        )
         fields = {
             "test_label": label,
             "test_date": date,
@@ -85,22 +96,27 @@ def adapt(ctx: Ctx) -> None:
             "pressure_psi": ctx.missing("pressure_psi", PRESSURE_NOTE),
             "n_flames": ctx.num(row, C_FLAMES, "n_flames"),
             "fuel_conc_pct": ctx.missing(
-                "fuel_conc_pct", "The fuel percentage appears only inside the Fuel Bottle label (for example "
-                "'50% C2H4'); it is not read out of text."),
+                "fuel_conc_pct",
+                "The fuel percentage appears only inside the Fuel Bottle label (for example "
+                "'50% C2H4'); it is not read out of text.",
+            ),
             "flow_cm_s": ctx.missing(
-                "flow_cm_s",
-                "The burner burned in a quiescent ambient (PSI page Objectives); no flow column."),
+                "flow_cm_s", "The burner burned in a quiescent ambient (PSI page Objectives); no flow column."
+            ),
             "diluent": ctx.constant(
-                "diluent", "N2", "Table Notes line 2: oxygen 'as diluted with nitrogen on a volume basis'."),
+                "diluent", "N2", "Table Notes line 2: oxygen 'as diluted with nitrogen on a volume basis'."
+            ),
             "gravity_level": S.gravity(ctx),
             "notes": S.notes(ctx, row, [("Burner size (mm)", C_BURNER, None), ("Notes", C_NOTES, None)]),
         }
         if ctx.raw(row, C_O2).strip():
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "ambient",
+                "o2_basis",
+                "ambient",
                 "Table Notes line 2: Oxygen Conc. 'as diluted with nitrogen on a volume basis'; PSI page "
                 "Objectives: 'O2/N2 ambients' in 'a quiescent microgravity ambient'; PSI page Approach: "
-                "oxygen concentration is set as part of 'the chamber contents'.")
+                "oxygen concentration is set as part of 'the chamber contents'.",
+            )
         ctx.emit(row, fields)
     spelling.finish()
 

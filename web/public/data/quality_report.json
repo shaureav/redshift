@@ -164,12 +164,28 @@
  },
  "flags": [
   {
+   "action": "Metadata kept exactly as published; investigation badged.",
+   "code": "no_licence",
+   "column": "License",
+   "detail": "The PSI page's License row (line 19) holds only the placeholder '—' and names no licence.",
+   "file": "data/raw/psi/ACME-Flame-Design/ACME-Flame-Design.md",
+   "id": "F0001",
+   "investigation_id": "PSI-10",
+   "raw": "—",
+   "rows": [
+    19
+   ],
+   "severity": "warning",
+   "test_ids": [],
+   "title": "No licence shown"
+  },
+  {
    "action": "Raw label kept verbatim; no correction attempted.",
    "code": "label_inconsistent",
    "column": "Test",
    "detail": "Test label 22042M1 begins 22042, while the other Day 6 tests begin 22024.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0001",
+   "id": "F0002",
    "investigation_id": "PSI-10",
    "raw": "22042M1",
    "rows": [
@@ -187,7 +203,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0002",
+   "id": "F0003",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -201,7 +217,7 @@
    "column": "flow_cm_s",
    "detail": "Burner flows are recorded as mass flow rates in mg/s, not cm/s.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0003",
+   "id": "F0004",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -215,7 +231,7 @@
    "column": "fuel",
    "detail": "The Inverse Flame table has no Fuel column, and the PSI page (ACME-Flame-Design.md lines 25 to 27) names both C2H4 and CH4 without saying which the inverse flames used. The headers 'XC2H4 initial' and 'XC2H4 final' point to C2H4 but are not used to fill the field.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0004",
+   "id": "F0005",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -229,7 +245,7 @@
    "column": "fuel_conc_pct",
    "detail": "Inverse flames: 'XC2H4 initial' is the chamber-ambient fuel fraction, not a burner-stream fuel concentration; it stays in the raw columns.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0005",
+   "id": "F0006",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -243,7 +259,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0006",
+   "id": "F0007",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -257,7 +273,7 @@
    "column": "n2_pct",
    "detail": "N2 is recorded only as a burner mass flow 'mN2 (mg/s)', not as a percentage.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0007",
+   "id": "F0008",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -271,7 +287,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0008",
+   "id": "F0009",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -285,7 +301,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0009",
+   "id": "F0010",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -303,7 +319,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0010",
+   "id": "F0011",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -321,7 +337,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0011",
+   "id": "F0012",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -339,7 +355,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0012",
+   "id": "F0013",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -357,7 +373,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0013",
+   "id": "F0014",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -375,7 +391,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0014",
+   "id": "F0015",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -393,7 +409,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0015",
+   "id": "F0016",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -411,7 +427,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'LOW O2'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0016",
+   "id": "F0017",
    "investigation_id": "PSI-10",
    "raw": "LOW O2",
    "rows": [
@@ -429,7 +445,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'LOW O2'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0017",
+   "id": "F0018",
    "investigation_id": "PSI-10",
    "raw": "LOW O2",
    "rows": [
@@ -447,7 +463,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0018",
+   "id": "F0019",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -465,7 +481,7 @@
    "column": "XO2",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
-   "id": "F0019",
+   "id": "F0020",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -483,7 +499,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0020",
+   "id": "F0021",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -497,7 +513,7 @@
    "column": "flow_cm_s",
    "detail": "Burner flows are recorded as mass flow rates in mg/s, not cm/s.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0021",
+   "id": "F0022",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -511,7 +527,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0022",
+   "id": "F0023",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -525,7 +541,7 @@
    "column": "n2_pct",
    "detail": "N2 is recorded only as a burner mass flow 'mN2 (mg/s)', not as a percentage.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0023",
+   "id": "F0024",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -539,7 +555,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0024",
+   "id": "F0025",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -553,7 +569,7 @@
    "column": "pmean (atm)",
    "detail": "'pmean (atm)', 'pfinal (atm)' and 'XO2 (final)' are blank on 20 rows (lines 189 to 208). 'pinit (atm)' is recorded there but is not substituted.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0025",
+   "id": "F0026",
    "investigation_id": "PSI-10",
    "raw": "",
    "rows": [
@@ -609,7 +625,7 @@
    "column": null,
    "detail": "ACME-Flame-Design.md line 19 shows a dash placeholder in the License row and names no licence.",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0026",
+   "id": "F0027",
    "investigation_id": "PSI-10",
    "raw": null,
    "rows": [],
@@ -623,7 +639,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMPED'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0027",
+   "id": "F0028",
    "investigation_id": "PSI-10",
    "raw": "RAMPED",
    "rows": [
@@ -641,7 +657,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMPED'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0028",
+   "id": "F0029",
    "investigation_id": "PSI-10",
    "raw": "RAMPED",
    "rows": [
@@ -659,7 +675,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMPED'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0029",
+   "id": "F0030",
    "investigation_id": "PSI-10",
    "raw": "RAMPED",
    "rows": [
@@ -677,7 +693,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0030",
+   "id": "F0031",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -695,7 +711,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0031",
+   "id": "F0032",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -713,7 +729,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0032",
+   "id": "F0033",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -731,7 +747,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0033",
+   "id": "F0034",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -749,7 +765,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0034",
+   "id": "F0035",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -767,7 +783,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0035",
+   "id": "F0036",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -785,7 +801,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0036",
+   "id": "F0037",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -803,7 +819,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0037",
+   "id": "F0038",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -821,7 +837,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0038",
+   "id": "F0039",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -839,7 +855,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0039",
+   "id": "F0040",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -857,7 +873,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0040",
+   "id": "F0041",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -875,7 +891,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0041",
+   "id": "F0042",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -893,7 +909,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0042",
+   "id": "F0043",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -911,7 +927,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0043",
+   "id": "F0044",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -929,7 +945,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0044",
+   "id": "F0045",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -947,7 +963,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0045",
+   "id": "F0046",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -965,7 +981,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0046",
+   "id": "F0047",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -983,7 +999,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0047",
+   "id": "F0048",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1001,7 +1017,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0048",
+   "id": "F0049",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1019,7 +1035,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0049",
+   "id": "F0050",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1037,7 +1053,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0050",
+   "id": "F0051",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1055,7 +1071,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0051",
+   "id": "F0052",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1073,7 +1089,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0052",
+   "id": "F0053",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1091,7 +1107,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0053",
+   "id": "F0054",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1109,7 +1125,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0054",
+   "id": "F0055",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1127,7 +1143,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0055",
+   "id": "F0056",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1145,7 +1161,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0056",
+   "id": "F0057",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1163,7 +1179,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0057",
+   "id": "F0058",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1181,7 +1197,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0058",
+   "id": "F0059",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1199,7 +1215,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0059",
+   "id": "F0060",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1217,7 +1233,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0060",
+   "id": "F0061",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1235,7 +1251,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0061",
+   "id": "F0062",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1253,7 +1269,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0062",
+   "id": "F0063",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1271,7 +1287,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0063",
+   "id": "F0064",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1289,7 +1305,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0064",
+   "id": "F0065",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1307,7 +1323,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0065",
+   "id": "F0066",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1325,7 +1341,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0066",
+   "id": "F0067",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1343,7 +1359,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0067",
+   "id": "F0068",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1361,7 +1377,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0068",
+   "id": "F0069",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1379,7 +1395,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0069",
+   "id": "F0070",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1397,7 +1413,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0070",
+   "id": "F0071",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1415,7 +1431,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0071",
+   "id": "F0072",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1433,7 +1449,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0072",
+   "id": "F0073",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1451,7 +1467,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0073",
+   "id": "F0074",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1469,7 +1485,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0074",
+   "id": "F0075",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1487,7 +1503,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0075",
+   "id": "F0076",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1505,7 +1521,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0076",
+   "id": "F0077",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1523,7 +1539,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0077",
+   "id": "F0078",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1541,7 +1557,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0078",
+   "id": "F0079",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1559,7 +1575,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0079",
+   "id": "F0080",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1577,7 +1593,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0080",
+   "id": "F0081",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1595,7 +1611,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0081",
+   "id": "F0082",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1613,7 +1629,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0082",
+   "id": "F0083",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1631,7 +1647,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0083",
+   "id": "F0084",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1649,7 +1665,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0084",
+   "id": "F0085",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1667,7 +1683,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0085",
+   "id": "F0086",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1685,7 +1701,7 @@
    "column": "Xfuel",
    "detail": "expected a number, found 'RAMP'",
    "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
-   "id": "F0086",
+   "id": "F0087",
    "investigation_id": "PSI-10",
    "raw": "RAMP",
    "rows": [
@@ -1698,37 +1714,27 @@
    "title": "Text in a numeric field"
   },
   {
+   "action": "Metadata kept exactly as published; investigation badged.",
+   "code": "metadata_inconsistent",
+   "column": "Flight platform",
+   "detail": "SAFFIRE-III flight platform is 'International Space Station (ISS)' (line 12), but the Hardware row reads 'Saffire III enclosure in Cygnus' (line 15) and the Approach (line 29) says the experiment was performed on the Cygnus resupply vehicle after it deberthed from the ISS. SAFFIRE-II gives 'Cygnus Spacecraft' (data/raw/psi/SAFFIRE-II/SAFFIRE-II.md line 12).",
+   "file": "data/raw/psi/SAFFIRE-III/SAFFIRE-III.md",
+   "id": "F0088",
+   "investigation_id": "PSI-100",
+   "raw": "International Space Station (ISS)",
+   "rows": [
+    12,
+    15,
+    29
+   ],
+   "severity": "warning",
+   "test_ids": [],
+   "title": "Investigation metadata inconsistent"
+  },
+  {
    "action": "Value is null ('not recorded').",
    "code": "missing_column",
    "column": "co2_pct",
-   "detail": "The table has no column for this condition.",
-   "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
-   "id": "F0087",
-   "investigation_id": "PSI-100",
-   "raw": null,
-   "rows": [],
-   "severity": "info",
-   "test_ids": [],
-   "title": "Condition not recorded in table"
-  },
-  {
-   "action": "Value is null ('not recorded').",
-   "code": "missing_column",
-   "column": "fuel_conc_pct",
-   "detail": "The table has no column for this condition.",
-   "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
-   "id": "F0088",
-   "investigation_id": "PSI-100",
-   "raw": null,
-   "rows": [],
-   "severity": "info",
-   "test_ids": [],
-   "title": "Condition not recorded in table"
-  },
-  {
-   "action": "Value is null ('not recorded').",
-   "code": "missing_column",
-   "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
    "id": "F0089",
@@ -1742,7 +1748,7 @@
   {
    "action": "Value is null ('not recorded').",
    "code": "missing_column",
-   "column": "n2_pct",
+   "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
    "id": "F0090",
@@ -1756,7 +1762,7 @@
   {
    "action": "Value is null ('not recorded').",
    "code": "missing_column",
-   "column": "n_flames",
+   "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
    "id": "F0091",
@@ -1770,10 +1776,38 @@
   {
    "action": "Value is null ('not recorded').",
    "code": "missing_column",
+   "column": "n2_pct",
+   "detail": "The table has no column for this condition.",
+   "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
+   "id": "F0092",
+   "investigation_id": "PSI-100",
+   "raw": null,
+   "rows": [],
+   "severity": "info",
+   "test_ids": [],
+   "title": "Condition not recorded in table"
+  },
+  {
+   "action": "Value is null ('not recorded').",
+   "code": "missing_column",
+   "column": "n_flames",
+   "detail": "The table has no column for this condition.",
+   "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
+   "id": "F0093",
+   "investigation_id": "PSI-100",
+   "raw": null,
+   "rows": [],
+   "severity": "info",
+   "test_ids": [],
+   "title": "Condition not recorded in table"
+  },
+  {
+   "action": "Value is null ('not recorded').",
+   "code": "missing_column",
    "column": "o2_pct",
    "detail": "The table has no oxygen column.",
    "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
-   "id": "F0092",
+   "id": "F0094",
    "investigation_id": "PSI-100",
    "raw": null,
    "rows": [],
@@ -1787,7 +1821,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
-   "id": "F0093",
+   "id": "F0095",
    "investigation_id": "PSI-100",
    "raw": null,
    "rows": [],
@@ -1801,49 +1835,13 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
-   "id": "F0094",
+   "id": "F0096",
    "investigation_id": "PSI-100",
    "raw": null,
    "rows": [],
    "severity": "info",
    "test_ids": [],
    "title": "Condition not recorded in table"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Air Flow",
-   "detail": "expected a number, found '30 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
-   "id": "F0095",
-   "investigation_id": "PSI-100",
-   "raw": "30 cm/s",
-   "rows": [
-    2
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-100-main-L2"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Air Flow",
-   "detail": "expected a number, found '30 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
-   "id": "F0096",
-   "investigation_id": "PSI-100",
-   "raw": "30 cm/s",
-   "rows": [
-    3
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-100-main-L3"
-   ],
-   "title": "Text in a numeric field"
   },
   {
    "action": "Raw kept; no year added.",
@@ -9980,12 +9978,28 @@
    "title": "Row is not a test"
   },
   {
+   "action": "Metadata kept exactly as published; investigation badged.",
+   "code": "metadata_inconsistent",
+   "column": "Investigation dates",
+   "detail": "CFI investigation dates are '10-01-2020 to 10-20-2021' (line 16), but all 87 Test Date cells of data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv (lines 2 to 88) carry the two-digit year 17, for example '9-Mar-17' on line 2.",
+   "file": "data/raw/psi/CFI/CFI.md",
+   "id": "F0546",
+   "investigation_id": "PSI-39",
+   "raw": "10-01-2020 to 10-20-2021",
+   "rows": [
+    16
+   ],
+   "severity": "warning",
+   "test_ids": [],
+   "title": "Investigation metadata inconsistent"
+  },
+  {
    "action": "Values kept as recorded.",
    "code": "composition_sum",
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0546",
+   "id": "F0547",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10003,7 +10017,7 @@
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0547",
+   "id": "F0548",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10021,7 +10035,7 @@
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0548",
+   "id": "F0549",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10039,7 +10053,7 @@
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0549",
+   "id": "F0550",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10057,7 +10071,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 38 (11:06:59 am est, CIR f180d02) is earlier than on line 37 (10:42:16 pm est, CIR f180d01), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0550",
+   "id": "F0551",
    "investigation_id": "PSI-39",
    "raw": "11:06:59 am est",
    "rows": [
@@ -10077,7 +10091,7 @@
    "column": "Test Date",
    "detail": "Test Date 29-Jul-17 is day 210 of the year, but CIR code f180d02 gives day 180.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0551",
+   "id": "F0552",
    "investigation_id": "PSI-39",
    "raw": "29-Jul-17",
    "rows": [
@@ -10095,7 +10109,7 @@
    "column": "Local Time",
    "detail": "Local Time is not a complete clock time.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0552",
+   "id": "F0553",
    "investigation_id": "PSI-39",
    "raw": "02:22:xx pm est",
    "rows": [
@@ -10113,7 +10127,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 56 (12:07:00 am est, CIR f200d05) is earlier than on line 55 (11:37:54 am est, CIR f200d04), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0553",
+   "id": "F0554",
    "investigation_id": "PSI-39",
    "raw": "12:07:00 am est",
    "rows": [
@@ -10133,7 +10147,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 63 (12:02:11 am est, CIR f208d04) is earlier than on line 62 (11:41:29 am est, CIR f208d03), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0554",
+   "id": "F0555",
    "investigation_id": "PSI-39",
    "raw": "12:02:11 am est",
    "rows": [
@@ -10153,7 +10167,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 79 (12:24:13 am est, CIR f233d04) is earlier than on line 78 (11:31:44 am est, CIR f233d02), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0555",
+   "id": "F0556",
    "investigation_id": "PSI-39",
    "raw": "12:24:13 am est",
    "rows": [
@@ -10173,7 +10187,7 @@
    "column": null,
    "detail": "Byte-identical to line 24.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0556",
+   "id": "F0557",
    "investigation_id": "PSI-39",
    "raw": "1285,22-Jun-17,11:05:52 am est,f173e01,1 atm ,0.17,0.83,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10189,7 +10203,7 @@
    "column": null,
    "detail": "Byte-identical to line 25.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0557",
+   "id": "F0558",
    "investigation_id": "PSI-39",
    "raw": "1286,22-Jun-17,11:23:26 am est,f173e02,1 atm,0.17,0.83,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10205,7 +10219,7 @@
    "column": null,
    "detail": "Byte-identical to line 26.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0558",
+   "id": "F0559",
    "investigation_id": "PSI-39",
    "raw": "1287,22-Jun-17,11:42:32 am est,f173e03,1 atm,0.17,0.83,0,No,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10221,7 +10235,7 @@
    "column": null,
    "detail": "Byte-identical to line 27.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0559",
+   "id": "F0560",
    "investigation_id": "PSI-39",
    "raw": "1288,22-Jun-17,12:36:48 pm est,f173e05,1 atm,0.17,0.83,0,No,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10237,7 +10251,7 @@
    "column": null,
    "detail": "Byte-identical to line 28.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0560",
+   "id": "F0561",
    "investigation_id": "PSI-39",
    "raw": "1289,22-Jun-17,12:47:53 pm est,f173e06,1 atm ,0.17,0.83,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10253,7 +10267,7 @@
    "column": null,
    "detail": "Byte-identical to line 29.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0561",
+   "id": "F0562",
    "investigation_id": "PSI-39",
    "raw": "1295,28-Jun-17,09:24:35 am est,f179e01,1 atm,0.21,0.79,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10269,7 +10283,7 @@
    "column": null,
    "detail": "Byte-identical to line 30.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0562",
+   "id": "F0563",
    "investigation_id": "PSI-39",
    "raw": "1296,28-Jun-17,9:43:08 am est,f179e02,1 atm,0.21,0.79,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10285,7 +10299,7 @@
    "column": null,
    "detail": "Byte-identical to line 31.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0563",
+   "id": "F0564",
    "investigation_id": "PSI-39",
    "raw": "1297,28-Jun-17,11:51:50 am est,f179e05,1 atm,0.21,0.79,0,No,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10301,7 +10315,7 @@
    "column": "Test Date",
    "detail": "Test Date values run from 9-Mar-17 to 21-Aug-17, but the PSI page gives investigation dates 10-01-2020 to 10-20-2021.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0564",
+   "id": "F0565",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10315,7 +10329,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0565",
+   "id": "F0566",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10329,7 +10343,7 @@
    "column": "flow_cm_s",
    "detail": "CFI droplets burned in a quiescent chamber; no flow column.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0566",
+   "id": "F0567",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10343,7 +10357,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0567",
+   "id": "F0568",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10357,20 +10371,6 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0568",
-   "investigation_id": "PSI-39",
-   "raw": null,
-   "rows": [],
-   "severity": "info",
-   "test_ids": [],
-   "title": "Condition not recorded in table"
-  },
-  {
-   "action": "Value is null ('not recorded').",
-   "code": "missing_column",
-   "column": "pressure_kpa",
-   "detail": "The CFI Pressure header gives no unit and each cell holds a number with a unit suffix (for example '1 atm'); no allowed transform removes the suffix, so no pressure value is produced.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
    "id": "F0569",
    "investigation_id": "PSI-39",
    "raw": null,
@@ -10380,1448 +10380,12 @@
    "title": "Condition not recorded in table"
   },
   {
-   "action": "Value is null ('not recorded').",
-   "code": "missing_column",
-   "column": "pressure_psi",
-   "detail": "The CFI Pressure header gives no unit and each cell holds a number with a unit suffix (for example '1 atm'); no allowed transform removes the suffix, so no pressure value is produced.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0570",
-   "investigation_id": "PSI-39",
-   "raw": null,
-   "rows": [],
-   "severity": "info",
-   "test_ids": [],
-   "title": "Condition not recorded in table"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0571",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    2
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L2"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0572",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    3
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L3"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0573",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    4
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L4"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0574",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    5
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L5"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0575",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    6
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L6"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0576",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    7
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L7"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0577",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    8
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L8"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0578",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    9
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L9"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0579",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    10
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L10"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0580",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    11
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L11"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0581",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm ",
-   "rows": [
-    12
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L12"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0582",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm ",
-   "rows": [
-    13
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L13"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0583",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    14
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L14"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0584",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    15
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L15"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0585",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm ",
-   "rows": [
-    16
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L16"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0586",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    17
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L17"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0587",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    18
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L18"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0588",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    19
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L19"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0589",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    20
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L20"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '2 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0590",
-   "investigation_id": "PSI-39",
-   "raw": "2 atm",
-   "rows": [
-    21
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L21"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '2 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0591",
-   "investigation_id": "PSI-39",
-   "raw": "2 atm",
-   "rows": [
-    22
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L22"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '2 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0592",
-   "investigation_id": "PSI-39",
-   "raw": "2 atm",
-   "rows": [
-    23
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L23"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0593",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm ",
-   "rows": [
-    24
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L24"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0594",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    25
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L25"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0595",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    26
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L26"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0596",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    27
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L27"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0597",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm ",
-   "rows": [
-    28
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L28"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0598",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    29
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L29"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0599",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    30
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L30"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0600",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    31
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L31"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0601",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm ",
-   "rows": [
-    32
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L32"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0602",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    33
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L33"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0603",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    34
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L34"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0604",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm ",
-   "rows": [
-    35
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L35"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0605",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    36
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L36"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0606",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    37
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L37"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0607",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    38
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L38"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0608",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    39
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L39"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0609",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    40
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L40"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0610",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    41
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L41"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0611",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    42
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L42"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1.25 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0612",
-   "investigation_id": "PSI-39",
-   "raw": "1.25 atm",
-   "rows": [
-    43
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L43"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '2 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0613",
-   "investigation_id": "PSI-39",
-   "raw": "2 atm",
-   "rows": [
-    44
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L44"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '2 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0614",
-   "investigation_id": "PSI-39",
-   "raw": "2 atm",
-   "rows": [
-    45
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L45"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '2 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0615",
-   "investigation_id": "PSI-39",
-   "raw": "2 atm",
-   "rows": [
-    46
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L46"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '2 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0616",
-   "investigation_id": "PSI-39",
-   "raw": "2 atm",
-   "rows": [
-    47
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L47"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0617",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    48
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L48"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0618",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm ",
-   "rows": [
-    49
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L49"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0619",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    50
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L50"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0620",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    51
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L51"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0621",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm ",
-   "rows": [
-    52
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L52"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0622",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    53
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L53"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0623",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    54
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L54"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0624",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    55
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L55"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0625",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    56
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L56"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '5 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0626",
-   "investigation_id": "PSI-39",
-   "raw": "5 atm ",
-   "rows": [
-    57
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L57"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '5 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0627",
-   "investigation_id": "PSI-39",
-   "raw": "5 atm ",
-   "rows": [
-    58
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L58"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '5 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0628",
-   "investigation_id": "PSI-39",
-   "raw": "5 atm ",
-   "rows": [
-    59
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L59"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '0.75 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0629",
-   "investigation_id": "PSI-39",
-   "raw": "0.75 atm",
-   "rows": [
-    60
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L60"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '0.75 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0630",
-   "investigation_id": "PSI-39",
-   "raw": "0.75 atm",
-   "rows": [
-    61
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L61"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '0.75 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0631",
-   "investigation_id": "PSI-39",
-   "raw": "0.75 atm",
-   "rows": [
-    62
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L62"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '0.75 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0632",
-   "investigation_id": "PSI-39",
-   "raw": "0.75 atm",
-   "rows": [
-    63
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L63"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '0.5 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0633",
-   "investigation_id": "PSI-39",
-   "raw": "0.5 atm",
-   "rows": [
-    64
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L64"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '0.5 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0634",
-   "investigation_id": "PSI-39",
-   "raw": "0.5 atm",
-   "rows": [
-    65
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L65"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '0.5 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0635",
-   "investigation_id": "PSI-39",
-   "raw": "0.5 atm",
-   "rows": [
-    66
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L66"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0636",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    67
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L67"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0637",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    68
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L68"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0638",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    69
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L69"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0639",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    70
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L70"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0640",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    71
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L71"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0641",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm ",
-   "rows": [
-    72
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L72"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0642",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    73
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L73"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0643",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    74
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L74"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0644",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm",
-   "rows": [
-    75
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L75"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '3 atm ' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0645",
-   "investigation_id": "PSI-39",
-   "raw": "3 atm ",
-   "rows": [
-    76
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L76"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0646",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    77
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L77"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0647",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    78
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L78"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0648",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    79
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L79"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept (also in notes); value set to null.",
-   "code": "non_numeric",
-   "column": "Pressure",
-   "detail": "Pressure cell '1 atm' holds a number with a unit suffix and the header gives no unit; no allowed transform removes the suffix.",
-   "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0649",
-   "investigation_id": "PSI-39",
-   "raw": "1 atm",
-   "rows": [
-    80
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-39-main-L80"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
    "action": "Raw labels kept verbatim.",
    "code": "label_inconsistent",
    "column": "Sample Material",
    "detail": "The table names the aerosol standard 'Arizona Road Dust (ARD Fine)'; DAFT-DAFT-2.md Approach calls it 'Arizona Red Dust (ARD)'.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0650",
+   "id": "F0570",
    "investigation_id": "PSI-47",
    "raw": "Arizona Road Dust (ARD Fine)",
    "rows": [
@@ -11841,7 +10405,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0651",
+   "id": "F0571",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11855,7 +10419,7 @@
    "column": "flow_cm_s",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0652",
+   "id": "F0572",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11869,7 +10433,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0653",
+   "id": "F0573",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11883,7 +10447,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0654",
+   "id": "F0574",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11897,7 +10461,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0655",
+   "id": "F0575",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11911,7 +10475,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0656",
+   "id": "F0576",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11925,7 +10489,7 @@
    "column": "o2_pct",
    "detail": "The DAFT table has no oxygen column; nothing was burned.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0657",
+   "id": "F0577",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11939,7 +10503,7 @@
    "column": "pressure_kpa",
    "detail": "The DAFT table has no pressure column.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0658",
+   "id": "F0578",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11953,7 +10517,7 @@
    "column": "pressure_psi",
    "detail": "The DAFT table has no pressure column.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0659",
+   "id": "F0579",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -11967,7 +10531,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0660",
+   "id": "F0580",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -11981,7 +10545,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0661",
+   "id": "F0581",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -11995,7 +10559,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0662",
+   "id": "F0582",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -12009,7 +10573,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0663",
+   "id": "F0583",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -12023,7 +10587,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0664",
+   "id": "F0584",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -12037,7 +10601,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0665",
+   "id": "F0585",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12055,7 +10619,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0666",
+   "id": "F0586",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12073,7 +10637,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0667",
+   "id": "F0587",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12091,7 +10655,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0668",
+   "id": "F0588",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12109,7 +10673,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0669",
+   "id": "F0589",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12127,7 +10691,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0670",
+   "id": "F0590",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12145,7 +10709,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0671",
+   "id": "F0591",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12163,7 +10727,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0672",
+   "id": "F0592",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12181,7 +10745,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0673",
+   "id": "F0593",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12199,7 +10763,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0674",
+   "id": "F0594",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12217,7 +10781,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0675",
+   "id": "F0595",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12235,7 +10799,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0676",
+   "id": "F0596",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12253,7 +10817,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0677",
+   "id": "F0597",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12271,7 +10835,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0678",
+   "id": "F0598",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12289,7 +10853,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0679",
+   "id": "F0599",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12307,7 +10871,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0680",
+   "id": "F0600",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12325,7 +10889,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0681",
+   "id": "F0601",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12343,7 +10907,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0682",
+   "id": "F0602",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12361,7 +10925,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0683",
+   "id": "F0603",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12379,7 +10943,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0684",
+   "id": "F0604",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12397,7 +10961,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0685",
+   "id": "F0605",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12415,7 +10979,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0686",
+   "id": "F0606",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -12433,7 +10997,7 @@
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0687",
+   "id": "F0607",
    "investigation_id": "PSI-68",
    "raw": "0.1 - 5",
    "rows": [
@@ -12451,7 +11015,7 @@
    "column": "Oxygen Mole Fraction",
    "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0688",
+   "id": "F0608",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -12469,7 +11033,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0689",
+   "id": "F0609",
    "investigation_id": "PSI-69",
    "raw": "0.2,0.79,0,0",
    "rows": [
@@ -12487,7 +11051,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0690",
+   "id": "F0610",
    "investigation_id": "PSI-69",
    "raw": "0.2,0.79,0,0",
    "rows": [
@@ -12505,7 +11069,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0691",
+   "id": "F0611",
    "investigation_id": "PSI-69",
    "raw": "0.18,0.81,0,0",
    "rows": [
@@ -12523,7 +11087,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0692",
+   "id": "F0612",
    "investigation_id": "PSI-69",
    "raw": "0.18,0.81,0,0",
    "rows": [
@@ -12541,7 +11105,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0693",
+   "id": "F0613",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -12559,7 +11123,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0694",
+   "id": "F0614",
    "investigation_id": "PSI-69",
    "raw": "0.14,0.84,0,0",
    "rows": [
@@ -12577,7 +11141,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0695",
+   "id": "F0615",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -12595,7 +11159,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0696",
+   "id": "F0616",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -12613,7 +11177,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0697",
+   "id": "F0617",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -12631,7 +11195,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0698",
+   "id": "F0618",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -12649,7 +11213,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0699",
+   "id": "F0619",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -12667,7 +11231,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0700",
+   "id": "F0620",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -12685,7 +11249,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0701",
+   "id": "F0621",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -12703,7 +11267,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0702",
+   "id": "F0622",
    "investigation_id": "PSI-69",
    "raw": "0.14,0.85,0,0",
    "rows": [
@@ -12721,7 +11285,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0703",
+   "id": "F0623",
    "investigation_id": "PSI-69",
    "raw": "0.14,0.85,0,0",
    "rows": [
@@ -12739,7 +11303,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0704",
+   "id": "F0624",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -12757,7 +11321,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0705",
+   "id": "F0625",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -12775,7 +11339,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0706",
+   "id": "F0626",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -12793,7 +11357,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0707",
+   "id": "F0627",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -12811,7 +11375,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0708",
+   "id": "F0628",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -12829,7 +11393,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0709",
+   "id": "F0629",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -12847,7 +11411,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0710",
+   "id": "F0630",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -12865,7 +11429,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0711",
+   "id": "F0631",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -12883,7 +11447,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0712",
+   "id": "F0632",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -12901,7 +11465,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0713",
+   "id": "F0633",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -12919,7 +11483,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0714",
+   "id": "F0634",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -12937,7 +11501,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0715",
+   "id": "F0635",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -12955,7 +11519,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0716",
+   "id": "F0636",
    "investigation_id": "PSI-69",
    "raw": "0.2,0.44,0.35,0",
    "rows": [
@@ -12973,7 +11537,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 1.010.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0717",
+   "id": "F0637",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.54,0.32,0",
    "rows": [
@@ -12991,7 +11555,7 @@
    "column": null,
    "detail": "File is not valid UTF-8; decoded as Windows-1252.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0718",
+   "id": "F0638",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -13005,7 +11569,7 @@
    "column": "flow_cm_s",
    "detail": "FLEX burned droplets in a quiescent chamber; no flow column.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0719",
+   "id": "F0639",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -13019,7 +11583,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0720",
+   "id": "F0640",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -13033,7 +11597,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0721",
+   "id": "F0641",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -13047,7 +11611,7 @@
    "column": "FLEX Identifier",
    "detail": "FLEX Identifier 193F001 also appears on line 71 with different values.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0722",
+   "id": "F0642",
    "investigation_id": "PSI-69",
    "raw": "193F001",
    "rows": [
@@ -13065,9 +11629,9 @@
    "action": "Raw kept; value set to null.",
    "code": "out_of_range",
    "column": "Ambient pressure; mmHg",
-   "detail": "pressure_kpa = 0 kPa is outside the physical range (0.0, 400.0).",
+   "detail": "pressure_kpa = 0 kPa is outside the physical range (0.0, 600.0).",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0723",
+   "id": "F0643",
    "investigation_id": "PSI-69",
    "raw": "0",
    "rows": [
@@ -13080,12 +11644,62 @@
    "title": "Value outside the physical range"
   },
   {
+   "action": "Metadata kept exactly as published; investigation badged.",
+   "code": "metadata_inconsistent",
+   "column": "Proposal title",
+   "detail": "SAFFIRE-I's proposal title 'Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection' (line 11) is about smoke, the subject of SAME (PSI-102): SAME's publications.csv lines 7, 8 have titles beginning 'Smoke: Characterization of Smoke Particulate for Spacecraft Fire Detection'. SAFFIRE-I's own Objectives (lines 24 to 26) concern fire growth and flammability limits and do not mention smoke. SAME's proposal title is blank, so a copy cannot be proven from these files.",
+   "file": "data/raw/psi/SAFFIRE-I/SAFFIRE-I.md",
+   "id": "F0644",
+   "investigation_id": "PSI-98",
+   "raw": "Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection",
+   "rows": [
+    11
+   ],
+   "severity": "warning",
+   "test_ids": [],
+   "title": "Investigation metadata inconsistent"
+  },
+  {
+   "action": "Metadata kept exactly as published; investigation badged.",
+   "code": "metadata_inconsistent",
+   "column": "Flight platform",
+   "detail": "SAFFIRE-I flight platform is 'International Space Station (ISS)' (line 12), but the Hardware row reads 'Saffire 1 enclosure in Cygnus' (line 15) and the Approach (line 30) says the experiment was performed on the Cygnus resupply vehicle after it deberthed from the ISS. SAFFIRE-II gives 'Cygnus Spacecraft' (data/raw/psi/SAFFIRE-II/SAFFIRE-II.md line 12).",
+   "file": "data/raw/psi/SAFFIRE-I/SAFFIRE-I.md",
+   "id": "F0645",
+   "investigation_id": "PSI-98",
+   "raw": "International Space Station (ISS)",
+   "rows": [
+    12,
+    15,
+    30
+   ],
+   "severity": "warning",
+   "test_ids": [],
+   "title": "Investigation metadata inconsistent"
+  },
+  {
+   "action": "Metadata kept exactly as published; investigation badged.",
+   "code": "metadata_inconsistent",
+   "column": "Investigation dates",
+   "detail": "SAFFIRE-I investigation dates '03-02-2001 to 02-28-2008' (line 16) are identical to those of SAME (PSI-102), data/raw/psi/SAME/SAME.md line 16; the PSI search records give the same dates for both. SAFFIRE-I's Approach (line 30) places the experiment on the Cygnus vehicle, so the dates appear copied from SAME.",
+   "file": "data/raw/psi/SAFFIRE-I/SAFFIRE-I.md",
+   "id": "F0646",
+   "investigation_id": "PSI-98",
+   "raw": "03-02-2001 to 02-28-2008",
+   "rows": [
+    16
+   ],
+   "severity": "warning",
+   "test_ids": [],
+   "title": "Investigation metadata inconsistent"
+  },
+  {
    "action": "Value is null ('not recorded').",
    "code": "missing_column",
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0724",
+   "id": "F0647",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -13099,7 +11713,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0725",
+   "id": "F0648",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -13113,7 +11727,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0726",
+   "id": "F0649",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -13127,7 +11741,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0727",
+   "id": "F0650",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -13141,7 +11755,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0728",
+   "id": "F0651",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -13155,7 +11769,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0729",
+   "id": "F0652",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -13169,7 +11783,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0730",
+   "id": "F0653",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -13183,7 +11797,7 @@
    "column": "Percent O2",
    "detail": "expected a percentage, found '21.5 - 21.7'",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0731",
+   "id": "F0654",
    "investigation_id": "PSI-98",
    "raw": "21.5 - 21.7",
    "rows": [
@@ -13201,7 +11815,7 @@
    "column": "Percent O2",
    "detail": "expected a percentage, found '~ 21.5'",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0732",
+   "id": "F0655",
    "investigation_id": "PSI-98",
    "raw": "~ 21.5",
    "rows": [
@@ -13219,7 +11833,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0733",
+   "id": "F0656",
    "investigation_id": "PSI-98",
    "raw": "F1C1/F1C2,Pre-test flow visulation data for sample 1,,,,,,,,,,,",
    "rows": [
@@ -13235,7 +11849,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0734",
+   "id": "F0657",
    "investigation_id": "PSI-98",
    "raw": "F2C1/F2C2,Pre-test flow visulation data for sample 2,,,,,,,,,,,",
    "rows": [
@@ -13251,7 +11865,7 @@
    "column": "Sample Length (cm)",
    "detail": "Sample Length 40.6 cm is shorter than Sample Width 94 cm. SAFFIRE-I.md Approach (quoted): 'The sample was approximately 0.94 meters long and 0.4 meters wide'; the SAFFIRE-III table (lines 2 and 3) gives Length 94 cm and Width 40.6 cm.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0735",
+   "id": "F0658",
    "investigation_id": "PSI-98",
    "raw": "40.6,94",
    "rows": [
@@ -13269,7 +11883,7 @@
    "column": "Sample Length (cm)",
    "detail": "Sample Length 40.6 cm is shorter than Sample Width 94 cm. SAFFIRE-I.md Approach (quoted): 'The sample was approximately 0.94 meters long and 0.4 meters wide'; the SAFFIRE-III table (lines 2 and 3) gives Length 94 cm and Width 40.6 cm.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0736",
+   "id": "F0659",
    "investigation_id": "PSI-98",
    "raw": "40.6,94",
    "rows": [
@@ -13287,7 +11901,7 @@
    "column": "Sample Thickness (cm)",
    "detail": "SIBAL thickness 0.37 cm here and '.33 cm' in SAFFIRE-III (lines 2 and 3), but SAFFIRE-II gives '037 mm' for SIBAL (line 6); the tables do not settle which unit is right.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0737",
+   "id": "F0660",
    "investigation_id": "PSI-98",
    "raw": "0.37",
    "rows": [
@@ -13305,7 +11919,7 @@
    "column": "Sample Thickness (cm)",
    "detail": "SIBAL thickness 0.37 cm here and '.33 cm' in SAFFIRE-III (lines 2 and 3), but SAFFIRE-II gives '037 mm' for SIBAL (line 6); the tables do not settle which unit is right.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0738",
+   "id": "F0661",
    "investigation_id": "PSI-98",
    "raw": "0.37",
    "rows": [
@@ -13323,7 +11937,7 @@
    "column": "?-g Burn Length",
    "detail": "The micro sign was lost from this header and is a literal '?'; it means micro-g (low gravity).",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0739",
+   "id": "F0662",
    "investigation_id": "PSI-99",
    "raw": "?-g Burn Length",
    "rows": [],
@@ -13337,7 +11951,7 @@
    "column": "?-g Spread Length",
    "detail": "The micro sign was lost from this header and is a literal '?'; it means micro-g (low gravity).",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0740",
+   "id": "F0663",
    "investigation_id": "PSI-99",
    "raw": "?-g Spread Length",
    "rows": [],
@@ -13351,7 +11965,7 @@
    "column": "Samle Thickness",
    "detail": "Header reads 'Samle Thickness', a typo for 'Sample Thickness'.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0741",
+   "id": "F0664",
    "investigation_id": "PSI-99",
    "raw": "Samle Thickness ",
    "rows": [],
@@ -13365,7 +11979,7 @@
    "column": "Camera 1",
    "detail": "Camera 1 file name is blank; other rows give a name or 'n/a'.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0742",
+   "id": "F0665",
    "investigation_id": "PSI-99",
    "raw": "",
    "rows": [
@@ -13383,7 +11997,7 @@
    "column": "Camera 2",
    "detail": "Camera 2 file name 'S4C1' does not follow the pattern of the other rows (expected form 'S4C2').",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0743",
+   "id": "F0666",
    "investigation_id": "PSI-99",
    "raw": "S4C1",
    "rows": [
@@ -13401,7 +12015,7 @@
    "column": "Camera 2",
    "detail": "Camera 2 file name 'S56C2' does not follow the pattern of the other rows (expected form 'S6C2').",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0744",
+   "id": "F0667",
    "investigation_id": "PSI-99",
    "raw": "S56C2",
    "rows": [
@@ -13419,7 +12033,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0745",
+   "id": "F0668",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -13433,7 +12047,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0746",
+   "id": "F0669",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -13447,7 +12061,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0747",
+   "id": "F0670",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -13461,7 +12075,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0748",
+   "id": "F0671",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -13475,7 +12089,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0749",
+   "id": "F0672",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -13489,7 +12103,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0750",
+   "id": "F0673",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -13503,7 +12117,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0751",
+   "id": "F0674",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -13517,7 +12131,7 @@
    "column": "Material",
    "detail": "Material cell is blank on this test row",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0752",
+   "id": "F0675",
    "investigation_id": "PSI-99",
    "raw": "",
    "rows": [
@@ -13535,7 +12149,7 @@
    "column": "Material",
    "detail": "Material cell is blank on this test row",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0753",
+   "id": "F0676",
    "investigation_id": "PSI-99",
    "raw": "",
    "rows": [
@@ -13550,28 +12164,10 @@
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0754",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
-   "rows": [
-    2
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L2"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 21.5'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0755",
+   "id": "F0677",
    "investigation_id": "PSI-99",
    "raw": "~ 21.5",
    "rows": [
@@ -13586,12 +12182,12 @@
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
+   "column": "Percent O2 (Note 1)",
+   "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0756",
+   "id": "F0678",
    "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
+   "raw": "~ 22.1",
    "rows": [
     3
    ],
@@ -13607,27 +12203,9 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0757",
+   "id": "F0679",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
-   "rows": [
-    3
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L3"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0758",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
    "rows": [
     4
    ],
@@ -13643,43 +12221,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0759",
-   "investigation_id": "PSI-99",
-   "raw": "~ 22.1",
-   "rows": [
-    4
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L4"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0760",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
-   "rows": [
-    5
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L5"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Percent O2 (Note 1)",
-   "detail": "expected a percentage, found '~ 22.1'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0761",
+   "id": "F0680",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -13697,7 +12239,7 @@
    "column": "Samle Thickness",
    "detail": "Thickness '037 mm' has a leading zero and no decimal point, so the intended thickness cannot be read from the cell.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0762",
+   "id": "F0681",
    "investigation_id": "PSI-99",
    "raw": "037 mm",
    "rows": [
@@ -13712,28 +12254,10 @@
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0763",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
-   "rows": [
-    6
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L6"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0764",
+   "id": "F0682",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -13751,7 +12275,7 @@
    "column": "Samle Thickness",
    "detail": "Thickness '037 mm' has a leading zero and no decimal point, so the intended thickness cannot be read from the cell.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0765",
+   "id": "F0683",
    "investigation_id": "PSI-99",
    "raw": "037 mm",
    "rows": [
@@ -13766,28 +12290,10 @@
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0766",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
-   "rows": [
-    7
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L7"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0767",
+   "id": "F0684",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -13805,7 +12311,7 @@
    "column": "Samle Thickness",
    "detail": "Thickness '037 mm' has a leading zero and no decimal point, so the intended thickness cannot be read from the cell.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0768",
+   "id": "F0685",
    "investigation_id": "PSI-99",
    "raw": "037 mm",
    "rows": [
@@ -13820,28 +12326,10 @@
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0769",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
-   "rows": [
-    8
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L8"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0770",
+   "id": "F0686",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -13850,24 +12338,6 @@
    "severity": "warning",
    "test_ids": [
     "PSI-99-main-L8"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0771",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
-   "rows": [
-    9
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L9"
    ],
    "title": "Text in a numeric field"
   },
@@ -13877,7 +12347,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '22.1 to 22.0'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0772",
+   "id": "F0687",
    "investigation_id": "PSI-99",
    "raw": "22.1 to 22.0",
    "rows": [
@@ -13892,28 +12362,10 @@
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Air Flow (cm/s)",
-   "detail": "expected a number, found '20 cm/s'",
-   "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0773",
-   "investigation_id": "PSI-99",
-   "raw": "20 cm/s",
-   "rows": [
-    10
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-99-main-L10"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '22.0 to 21.9'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0774",
+   "id": "F0688",
    "investigation_id": "PSI-99",
    "raw": "22.0 to 21.9",
    "rows": [
@@ -13931,7 +12383,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0775",
+   "id": "F0689",
    "investigation_id": "PSI-99",
    "raw": "F1C1/F1C2,Pre-test flow visulation data for sample 2-1,,,,,,,,,,,,,,,",
    "rows": [
@@ -13947,7 +12399,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0776",
+   "id": "F0690",
    "investigation_id": "PSI-99",
    "raw": "F2C1/F2C2,Pre-test flow visulation data for sample 2-2,,,,,,,,,,,,,,,",
    "rows": [
@@ -13963,7 +12415,7 @@
    "column": null,
    "detail": "Table footnote (Note 1), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0777",
+   "id": "F0691",
    "investigation_id": "PSI-99",
    "raw": "Note 1 Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS.,,,,,,,,,,,,,,,,",
    "rows": [
@@ -13979,7 +12431,7 @@
    "column": null,
    "detail": "Table footnote (Note 2), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0778",
+   "id": "F0692",
    "investigation_id": "PSI-99",
    "raw": "Note 2 The PMMA portion was completely consumed but the Nomex was not ignited.,,,,,,,,,,,,,,,,",
    "rows": [
@@ -13995,7 +12447,7 @@
    "column": null,
    "detail": "Table footnote (Note 3), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0779",
+   "id": "F0693",
    "investigation_id": "PSI-99",
    "raw": "Note 3 This is the length of fuel with significant visible damage.,,,,,,,,,,,,,,,,",
    "rows": [
@@ -14011,7 +12463,7 @@
    "column": null,
    "detail": "Table footnote (Note 4), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0780",
+   "id": "F0694",
    "investigation_id": "PSI-99",
    "raw": "Note 4 The flames remain anchored at the base of the sample which has a very slow regression rate (0.01 to 0.04 mm/s),,,,,,,,,,,,,,,,",
    "rows": [
@@ -14182,31 +12634,31 @@
     "status": "match"
    },
    {
-    "actual": 243,
+    "actual": 295,
     "description": "PSI-table tests near 14.7 psi / 21% (gas, droplet, solid; BRE excluded)",
     "expected": 432,
-    "explanation": null,
+    "explanation": "Explained exactly: 432 = 295 + 129 + 8. The 129 are BASS-II solid burns (PSI-25), whose table records O2 but no pressure; the earlier count must have assumed 1 atm, which Redshift does not impute. They are reported as 'O2 matches, pressure not recorded'. The 8 are byte-identical duplicate CFI rows (PSI-39 lines 81 to 88 repeat lines 24 to 31), removed by the pipeline. Checked 2026-11-14.",
     "id": "near_psi_c14_7_21",
     "source": "Draft p1 (earlier pipeline)",
-    "status": "unexplained_difference"
+    "status": "explained_difference"
    },
    {
     "actual": 0,
     "description": "... of which solid",
     "expected": 129,
-    "explanation": null,
+    "explanation": "Explained: all 129 are BASS-II rows (PSI-25) with O2 recorded (13.6 to 22.2%) but no pressure column. All 129 would be near 14.7 psi / 21% only if a pressure of 1 atm were assumed; Redshift does not impute pressure, so they appear as 'O2 matches, pressure not recorded'. Checked 2026-11-14.",
     "id": "near_psi_solid_c14_7_21",
     "source": "Draft p1",
-    "status": "unexplained_difference"
+    "status": "explained_difference"
    },
    {
-    "actual": 68,
+    "actual": 72,
     "description": "PSI-table tests near 10.2 psi / 26.5%",
     "expected": 72,
     "explanation": null,
     "id": "near_psi_c10_2_26_5",
     "source": "Draft p1",
-    "status": "unexplained_difference"
+    "status": "match"
    },
    {
     "actual": 52,
@@ -14276,7 +12728,7 @@
  "p": "summary",
  "provenance_coverage": {
   "examples": [],
-  "numbers_checked": 10402,
+  "numbers_checked": 11576,
   "percent": 100.0,
   "without_provenance": 0
  },
@@ -15915,7 +14367,7 @@
   "flags": {
    "p": "summary",
    "u": "flags",
-   "v": 780
+   "v": 694
   },
   "flags_by_severity": {
    "error": {
@@ -15926,18 +14378,18 @@
    "info": {
     "p": "summary",
     "u": "flags",
-    "v": 422
+    "v": 420
    },
    "warning": {
     "p": "summary",
     "u": "flags",
-    "v": 347
+    "v": 263
    }
   },
   "investigations_total": {
    "p": "summary",
    "u": "investigations",
-   "v": 0
+   "v": 24
   },
   "investigations_with_tables": {
    "p": "summary",

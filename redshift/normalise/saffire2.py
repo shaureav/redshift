@@ -11,8 +11,8 @@ Column mapping (written out by hand so it can be audited):
   drawn through the duct, so o2_basis is "ambient". Every cell is written as an approximation or a range
   ("~ 22.1", "22.1 to 22.0"); no number is taken from such text, so each is flagged non_numeric and
   o2_pct is null.
-- "Air Flow (cm/s)" -> flow_cm_s. Every cell repeats the unit ("20 cm/s"); removing a unit written in the
-  cell is not an allowed transform, so each is flagged non_numeric and flow_cm_s is null.
+- "Air Flow (cm/s)" -> flow_cm_s. Every cell repeats the unit ("20 cm/s"); the allowed transform
+  strip_stated_unit reads the number because the unit written in the cell is exactly the header's cm/s.
 - "Flow Direction" -> notes, verbatim ("Concurrent" or "Opposed")
 - pressure_kpa and pressure_psi are null: the table has no pressure column.
 - gravity_level is the constant "microgravity (Cygnus)", from the PSI page (flight platform Cygnus).
@@ -55,8 +55,10 @@ C_CAM = ("Camera 1", "Camera 2")
 C_MICRO = ("?-g Burn Length", "?-g Spread Length")
 
 FLOW_VIS_MARKER = "pre-test flow visulation data"
-GRAVITY_NOTE = ("SAFFIRE-II.md: flight platform Cygnus Spacecraft; Approach: performed on the Cygnus "
-                "resupply vehicle after it deberthed from the ISS.")
+GRAVITY_NOTE = (
+    "SAFFIRE-II.md: flight platform Cygnus Spacecraft; Approach: performed on the Cygnus "
+    "resupply vehicle after it deberthed from the ISS."
+)
 _NOTE = re.compile(r"^Note \d+ ")
 _SAMPLE = re.compile(r"^\d+-(\d+)$")
 _MALFORMED_THICKNESS = re.compile(r"^0\d+ mm$")
@@ -71,33 +73,58 @@ def non_test_reason(ctx: Ctx, row: RawRow) -> str | None:
     first = ctx.raw(row, C_ID).strip()
     marked = ctx.raw(row, C_MAT).strip().lower().startswith(FLOW_VIS_MARKER)
     if marked and _others_blank(ctx, row, (C_ID, C_MAT)):
-        return ("Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the "
-                "burn of the sample it names.")
+        return (
+            "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the "
+            "burn of the sample it names."
+        )
     if _NOTE.match(first) and _others_blank(ctx, row, (C_ID,)):
         return f"Table footnote ({first.split(' ', 2)[0]} {first.split(' ', 2)[1]}), not a test."
     return None
 
 
 def header_flags(ctx: Ctx) -> None:
-    ctx.flag("label_inconsistent", None, C_THICK, ctx.table.header[ctx.table.col(C_THICK)],
-             "Header reads 'Samle Thickness', a typo for 'Sample Thickness'.", "Header kept verbatim.",
-             rows=[])
+    ctx.flag(
+        "label_inconsistent",
+        None,
+        C_THICK,
+        ctx.table.header[ctx.table.col(C_THICK)],
+        "Header reads 'Samle Thickness', a typo for 'Sample Thickness'.",
+        "Header kept verbatim.",
+        rows=[],
+    )
     for col in C_MICRO:
-        ctx.flag("label_inconsistent", None, col, col,
-                 "The micro sign was lost from this header and is a literal '?'; it means micro-g "
-                 "(low gravity).",
-                 "Header kept verbatim.", rows=[])
+        ctx.flag(
+            "label_inconsistent",
+            None,
+            col,
+            col,
+            "The micro sign was lost from this header and is a literal '?'; it means micro-g (low gravity).",
+            "Header kept verbatim.",
+            rows=[],
+        )
 
 
 def check_row(ctx: Ctx, row: RawRow) -> None:
     raw_t = ctx.raw(row, C_THICK)
     if _MALFORMED_THICKNESS.match(raw_t.strip()):
-        ctx.flag("non_numeric", row, C_THICK, raw_t,
-                 f"Thickness {raw_t!r} has a leading zero and no decimal point, so the intended thickness "
-                 "cannot be read from the cell.", "Raw kept; not a canonical field, no value read.")
+        ctx.flag(
+            "non_numeric",
+            row,
+            C_THICK,
+            raw_t,
+            f"Thickness {raw_t!r} has a leading zero and no decimal point, so the intended thickness "
+            "cannot be read from the cell.",
+            "Raw kept; not a canonical field, no value read.",
+        )
     if not ctx.raw(row, C_MAT).strip():
-        ctx.flag("missing_column", row, C_MAT, ctx.raw(row, C_MAT), "Material cell is blank on this test row",
-                 "Value is null ('not recorded').")
+        ctx.flag(
+            "missing_column",
+            row,
+            C_MAT,
+            ctx.raw(row, C_MAT),
+            "Material cell is blank on this test row",
+            "Value is null ('not recorded').",
+        )
     m = _SAMPLE.match(ctx.raw(row, C_ID).strip())
     for k, col in enumerate(C_CAM, start=1):
         raw = ctx.raw(row, col)
@@ -106,12 +133,23 @@ def check_row(ctx: Ctx, row: RawRow) -> None:
             continue
         expected = f"S{m[1]}C{k}" if m else None
         if not s:
-            ctx.flag("label_inconsistent", row, col, raw, f"{col} file name is blank; other rows give a name "
-                     "or 'n/a'.", "Raw kept verbatim; no name filled in.")
+            ctx.flag(
+                "label_inconsistent",
+                row,
+                col,
+                raw,
+                f"{col} file name is blank; other rows give a name or 'n/a'.",
+                "Raw kept verbatim; no name filled in.",
+            )
         elif expected is not None and s != expected:
-            ctx.flag("label_inconsistent", row, col, raw,
-                     f"{col} file name {s!r} does not follow the pattern of the other rows (expected form "
-                     f"{expected!r}).", "Raw kept verbatim; no correction attempted.")
+            ctx.flag(
+                "label_inconsistent",
+                row,
+                col,
+                raw,
+                f"{col} file name {s!r} does not follow the pattern of the other rows (expected form {expected!r}).",
+                "Raw kept verbatim; no correction attempted.",
+            )
 
 
 def adapt(ctx: Ctx) -> None:
@@ -127,7 +165,7 @@ def adapt(ctx: Ctx) -> None:
             "test_label": ctx.text(row, C_ID),
             "material": ctx.text(row, C_MAT),
             "o2_pct": ctx.num(row, C_O2, "o2_pct", T.percent),
-            "flow_cm_s": ctx.num(row, C_FLOW, "flow_cm_s"),
+            "flow_cm_s": ctx.num(row, C_FLOW, "flow_cm_s", lambda r: T.number_with_unit(r, "cm/s")),
             "pressure_kpa": ctx.missing("pressure_kpa", reason=no_p),
             "pressure_psi": ctx.missing("pressure_psi", reason=no_p),
             "notes": ctx.text(row, C_DIR),
@@ -135,10 +173,12 @@ def adapt(ctx: Ctx) -> None:
         }
         if ctx.raw(row, C_O2).strip():
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "ambient",
+                "o2_basis",
+                "ambient",
                 "SAFFIRE-II table Note 1 (line 13): Percent O2 is derived from measured CO2 production "
                 "and referenced to the initial O2 reported by ISS; air is drawn through the duct "
-                "(SAFFIRE-II.md).")
+                "(SAFFIRE-II.md).",
+            )
         ctx.emit(row, fields)
 
 

@@ -32,25 +32,39 @@ _DATE = re.compile(r"^\d{4}-[A-Z]{3}-\d{2}$")
 
 
 def adapt(ctx: Ctx) -> None:
-    gravity = ctx.constant("gravity", "microgravity (ISS)",
-                           "SLICE.md: flight platform International Space Station.")
+    gravity = ctx.constant("gravity", "microgravity (ISS)", "SLICE.md: flight platform International Space Station.")
     for row in ctx.rows():
         date_raw = ctx.raw(row, C_DATE)
         if not _DATE.match(date_raw.strip()):
-            ctx.flag("date_inconsistent", row, C_DATE, date_raw,
-                     "Test Date carries text after the date.", "Raw kept verbatim; no text removed.")
+            ctx.flag(
+                "date_inconsistent",
+                row,
+                C_DATE,
+                date_raw,
+                "Test Date carries text after the date.",
+                "Raw kept verbatim; no text removed.",
+            )
         if "SPICE" in date_raw:
-            ctx.flag("implausible_value", row, C_DATE, date_raw,
-                     "The Test Date cell describes SPICE testing (100% C3H8 and then 100% C2H4) on the last "
-                     "day, not a SLICE run.", "Row kept and flagged for review.")
-        ctx.emit(row, {
-            "test_date": ctx.text(row, C_DATE),
-            "fuel": ctx.text(row, C_FUEL),
-            "o2_pct": ctx.missing("o2_pct", "The SLICE table has no oxygen column."),
-            "pressure_kpa": ctx.missing("pressure_kpa", "The SLICE table has no pressure column."),
-            "pressure_psi": ctx.missing("pressure_psi", "The SLICE table has no pressure column."),
-            "gravity_level": gravity,
-        })
+            ctx.flag(
+                "implausible_value",
+                row,
+                C_DATE,
+                date_raw,
+                "The Test Date cell describes SPICE testing (100% C3H8 and then 100% C2H4) on the last "
+                "day, not a SLICE run.",
+                "Row kept and flagged for review.",
+            )
+        ctx.emit(
+            row,
+            {
+                "test_date": ctx.text(row, C_DATE),
+                "fuel": ctx.text(row, C_FUEL),
+                "o2_pct": ctx.missing("o2_pct", "The SLICE table has no oxygen column."),
+                "pressure_kpa": ctx.missing("pressure_kpa", "The SLICE table has no pressure column."),
+                "pressure_psi": ctx.missing("pressure_psi", "The SLICE table has no pressure column."),
+                "gravity_level": gravity,
+            },
+        )
 
 
 SPEC = AdapterSpec(

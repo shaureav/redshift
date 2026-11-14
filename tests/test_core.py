@@ -14,8 +14,13 @@ from redshift.export.lint import lint
 from redshift.quotes import QuoteNotFound, find_line, normalise
 from redshift.science.nearness import Evidence, Steps, classify, distance
 
-PARAMS = {"o2_step_pct_points": 5.0, "pressure_step_log": 1.25, "flow_step_cm_s": 10.0, "threshold": 1.5,
-          "o2_basis_counted": ["ambient", "chamber initial"]}
+PARAMS = {
+    "o2_step_pct_points": 5.0,
+    "pressure_step_log": 1.25,
+    "flow_step_cm_s": 10.0,
+    "threshold": 1.5,
+    "o2_basis_counted": ["ambient", "chamber initial"],
+}
 
 # ---------- units ----------
 
@@ -53,7 +58,9 @@ def test_fraction_to_pct_no_float_artefacts() -> None:
 # ---------- transforms ----------
 
 
-@pytest.mark.parametrize("raw,expected", [("21", 21.0), (" 0.5 ", 0.5), (".33", 0.33), ("-0.28", -0.28), ("1e3", 1000.0)])
+@pytest.mark.parametrize(
+    "raw,expected", [("21", 21.0), (" 0.5 ", 0.5), (".33", 0.33), ("-0.28", -0.28), ("1e3", 1000.0)]
+)
 def test_number_accepts_plain_numbers(raw: str, expected: float) -> None:
     v, applied = T.number(raw)
     assert v == expected
@@ -98,8 +105,18 @@ def test_every_applied_transform_is_allowed() -> None:
 
 
 def ev(o2: float | None, p: float | None, basis: str | None = "ambient", flow: float | None = None) -> Evidence:
-    return Evidence(id="t", investigation_id="X", investigation="X", fuel_class="gas", source_type="psi_table",
-                    o2_pct=o2, pressure_kpa=p, flow_cm_s=flow, o2_basis=basis, label="")
+    return Evidence(
+        id="t",
+        investigation_id="X",
+        investigation="X",
+        fuel_class="gas",
+        source_type="psi_table",
+        o2_pct=o2,
+        pressure_kpa=p,
+        flow_cm_s=flow,
+        o2_basis=basis,
+        label="",
+    )
 
 
 def test_distance_zero_at_target() -> None:
@@ -123,8 +140,7 @@ def test_unknown_is_never_not_near() -> None:
 
 def test_inverse_flames_are_not_counted() -> None:
     s = Steps.from_params(PARAMS)
-    state, _ = classify(ev(34, 56.5, basis="oxidiser stream (inverse flame)"), 34, 56.5, s,
-                        PARAMS["o2_basis_counted"])
+    state, _ = classify(ev(34, 56.5, basis="oxidiser stream (inverse flame)"), 34, 56.5, s, PARAMS["o2_basis_counted"])
     assert state == "basis_differs"
 
 
@@ -146,8 +162,9 @@ def test_distance_symmetric_in_o2(o2: float, p: float) -> None:
 
 
 def test_bre_candidate_quote_is_in_raw_file() -> None:
-    line = find_line("data/raw/psi/ACME-BRE/ACME-BRE.md",
-                     "14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen")
+    line = find_line(
+        "data/raw/psi/ACME-BRE/ACME-BRE.md", "14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen"
+    )
     assert line == 26
 
 

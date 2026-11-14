@@ -22,8 +22,9 @@ METHOD_VERSION = "1"
 
 
 @lru_cache(maxsize=4096)
-def adiabatic_flame_temperature(o2_pct: float, pressure_psi: float, mechanism: str = "gri30.yaml",
-                                t0: float = 298.15) -> float:
+def adiabatic_flame_temperature(
+    o2_pct: float, pressure_psi: float, mechanism: str = "gri30.yaml", t0: float = 298.15
+) -> float:
     gas = ct.Solution(mechanism)
     x = o2_pct / 100.0
     oxidiser = {"O2": 1.0} if x >= 1.0 else {"O2": x, "N2": 1.0 - x}
@@ -43,16 +44,26 @@ def _frange(start: float, stop: float, step: float) -> list[float]:
 
 
 def _prov(registry: Registry, pid: str, params: dict[str, Any], o2: float, p: float, approximate: bool) -> str:
-    return registry.add(Prov(
-        id=pid, source_type="derived", method=METHOD, method_version=METHOD_VERSION,
-        params={**params, "o2_pct": o2, "pressure_psi": p, "cantera_version": ct.__version__},
-        note=("Approximate: dissociation dominates at this temperature, so the value depends strongly on how "
-              "it is modelled." if approximate else None),
-    ))
+    return registry.add(
+        Prov(
+            id=pid,
+            source_type="derived",
+            method=METHOD,
+            method_version=METHOD_VERSION,
+            params={**params, "o2_pct": o2, "pressure_psi": p, "cantera_version": ct.__version__},
+            note=(
+                "Approximate: dissociation dominates at this temperature, so the value depends strongly on how "
+                "it is modelled."
+                if approximate
+                else None
+            ),
+        )
+    )
 
 
-def candidate_temperatures(registry: Registry, candidates: list[dict[str, Any]], params: dict[str, Any]
-                           ) -> dict[str, dict[str, Any]]:
+def candidate_temperatures(
+    registry: Registry, candidates: list[dict[str, Any]], params: dict[str, Any]
+) -> dict[str, dict[str, Any]]:
     out = {}
     for c in candidates:
         o2, p = c["o2_pct"]["v"], c["pressure_psi"]["v"]
@@ -76,19 +87,34 @@ def grid(registry: Registry, params: dict[str, Any]) -> dict[str, Any]:
             arow.append(t > params["approximate_above_K"])
         values.append(row)
         approx.append(arow)
-    gid = registry.add(Prov(
-        id="ft:grid", source_type="derived", method=METHOD, method_version=METHOD_VERSION,
-        params={**{k: v for k, v in params.items() if k != "isotherms_K"}, "cantera_version": ct.__version__},
-        note="Grid of adiabatic flame temperatures used for contour lines. Each cell is one Cantera equilibrium.",
-    ))
-    iso_id = registry.add(Prov(id="ft:isotherms", source_type="derived", method="isotherm levels",
-                               method_version="1", params={"levels_K": params["isotherms_K"]},
-                               note="Contour levels chosen for legibility (judgement)."))
+    gid = registry.add(
+        Prov(
+            id="ft:grid",
+            source_type="derived",
+            method=METHOD,
+            method_version=METHOD_VERSION,
+            params={**{k: v for k, v in params.items() if k != "isotherms_K"}, "cantera_version": ct.__version__},
+            note="Grid of adiabatic flame temperatures used for contour lines. Each cell is one Cantera equilibrium.",
+        )
+    )
+    iso_id = registry.add(
+        Prov(
+            id="ft:isotherms",
+            source_type="derived",
+            method="isotherm levels",
+            method_version="1",
+            params={"levels_K": params["isotherms_K"]},
+            note="Contour levels chosen for legibility (judgement).",
+        )
+    )
     return {
-        "o2_pct": o2s, "pressure_psi": ps, "temperature_K": values, "approximate": approx,
+        "o2_pct": o2s,
+        "pressure_psi": ps,
+        "temperature_K": values,
+        "approximate": approx,
         "isotherms_K": [value(t, "K", iso_id) for t in params["isotherms_K"]],
         "p": gid,
         "caption": "Adiabatic flame temperature of stoichiometric methane (Cantera, GRI-Mech 3.0, 298.15 K, "
-                   "constant enthalpy and pressure). Explains how hot a flame can get; does not predict "
-                   "ignition or spread.",
+        "constant enthalpy and pressure). Explains how hot a flame can get; does not predict "
+        "ignition or spread.",
     }

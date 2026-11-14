@@ -118,14 +118,21 @@ def load_checked() -> list[CheckedFinding]:
 def register(registry: Registry, cf: CheckedFinding) -> str:
     d = cf.draft
     ver = cf.verification or {}
-    return registry.add(Prov(
-        id=f"paper:{d['id']}", source_type="published_paper", file=d["source_file"],
-        page=None if d.get("page") is None else int(d["page"]),
-        quote=d["quote"], doi=d.get("doi"), ntrs=d.get("ntrs_id"), verified=cf.verified,
-        verified_by=ver.get("verified_by") if cf.verified else None,
-        verified_at=ver.get("verified_at") if cf.verified else None,
-        note="AI-drafted from the paper; quote checked automatically; verified by a named team member.",
-    ))
+    return registry.add(
+        Prov(
+            id=f"paper:{d['id']}",
+            source_type="published_paper",
+            file=d["source_file"],
+            page=None if d.get("page") is None else int(d["page"]),
+            quote=d["quote"],
+            doi=d.get("doi"),
+            ntrs=d.get("ntrs_id"),
+            verified=cf.verified,
+            verified_by=ver.get("verified_by") if cf.verified else None,
+            verified_at=ver.get("verified_at") if cf.verified else None,
+            note="AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+        )
+    )
 
 
 def public(registry: Registry, findings: list[CheckedFinding]) -> list[dict[str, Any]]:
@@ -136,14 +143,23 @@ def public(registry: Registry, findings: list[CheckedFinding]) -> list[dict[str,
             continue
         pid = register(registry, cf)
         d = cf.draft
-        out.append({
-            "id": d["id"], "investigation": d.get("investigation"), "kind": d.get("kind"),
-            "finding": value(d["finding"], None, pid), "quote": d["quote"], "page": d["page"],
-            "ntrs_id": d.get("ntrs_id"), "doi": d.get("doi"),
-            "values": [{"name": v["name"], **value(v["value"], v.get("unit"), pid), "as_written": v["as_written"]}
-                       for v in d.get("values", [])],
-            "p": pid,
-        })
+        out.append(
+            {
+                "id": d["id"],
+                "investigation": d.get("investigation"),
+                "kind": d.get("kind"),
+                "finding": value(d["finding"], None, pid),
+                "quote": d["quote"],
+                "page": d["page"],
+                "ntrs_id": d.get("ntrs_id"),
+                "doi": d.get("doi"),
+                "values": [
+                    {"name": v["name"], **value(v["value"], v.get("unit"), pid), "as_written": v["as_written"]}
+                    for v in d.get("values", [])
+                ],
+                "p": pid,
+            }
+        )
     return out
 
 
@@ -152,6 +168,8 @@ def status(findings: list[CheckedFinding]) -> dict[str, Any]:
         "drafted": len(findings),
         "failed_checks": [{"id": f.id, "problems": f.problems} for f in findings if not f.passes_checks],
         "awaiting_verification": [f.id for f in findings if f.passes_checks and f.verification is None],
-        "rejected_by_reviewer": [f.id for f in findings if f.verification and f.verification.get("decision") != "accept"],
+        "rejected_by_reviewer": [
+            f.id for f in findings if f.verification and f.verification.get("decision") != "accept"
+        ],
         "verified": [f.id for f in findings if f.verified],
     }

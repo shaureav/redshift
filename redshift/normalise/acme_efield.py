@@ -54,22 +54,27 @@ def adapt(ctx: Ctx) -> None:
         fill.check(row)
         spelling.check(row)
         S.check_day_of_year(ctx, row, C_DAY, C_YEAR, C_MONTH, C_DATE)
-        ctx.emit(row, {
-            "test_label": ctx.text(row, C_DAY),
-            "test_date": S.date_text(ctx, row, C_YEAR, C_MONTH, C_DATE),
-            "fuel": ctx.text(row, C_FUEL),
-            "fuel_conc_pct": ctx.num(row, C_CONC, "fuel_conc_pct", S.single_percent("Fuel Conc")),
-            "n_flames": ctx.num(row, C_FLAMES, "n_flames"),
-            "o2_pct": ctx.missing("o2_pct", "The table has no oxygen column."),
-            "pressure_kpa": ctx.missing("pressure_kpa", "The table has no pressure column."),
-            "pressure_psi": ctx.missing("pressure_psi", "The table has no pressure column."),
-            "flow_cm_s": ctx.missing("flow_cm_s", "The table has no flow column."),
-            "diluent": ctx.constant("diluent", "N2",
-                                    "Table Notes line 4: fuel 'diluted with nitrogen on a volume basis'."),
-            "gravity_level": S.gravity(ctx),
-            "notes": S.notes(ctx, row, [("Test type", C_TYPE, None), ("Mesh polarity", C_POL, None),
-                                        ("Notes", C_NOTES, None)]),
-        })
+        ctx.emit(
+            row,
+            {
+                "test_label": ctx.text(row, C_DAY),
+                "test_date": S.date_text(ctx, row, C_YEAR, C_MONTH, C_DATE),
+                "fuel": ctx.text(row, C_FUEL),
+                "fuel_conc_pct": ctx.num(row, C_CONC, "fuel_conc_pct", S.single_percent("Fuel Conc")),
+                "n_flames": ctx.num(row, C_FLAMES, "n_flames"),
+                "o2_pct": ctx.missing("o2_pct", "The table has no oxygen column."),
+                "pressure_kpa": ctx.missing("pressure_kpa", "The table has no pressure column."),
+                "pressure_psi": ctx.missing("pressure_psi", "The table has no pressure column."),
+                "flow_cm_s": ctx.missing("flow_cm_s", "The table has no flow column."),
+                "diluent": ctx.constant(
+                    "diluent", "N2", "Table Notes line 4: fuel 'diluted with nitrogen on a volume basis'."
+                ),
+                "gravity_level": S.gravity(ctx),
+                "notes": S.notes(
+                    ctx, row, [("Test type", C_TYPE, None), ("Mesh polarity", C_POL, None), ("Notes", C_NOTES, None)]
+                ),
+            },
+        )
     spelling.finish()
 
 
@@ -78,8 +83,9 @@ SPEC = AdapterSpec(
     folder="ACME-E-FIELD-Flames",
     fuel_class="gas",
     test_kind="flame",
-    tables=(TableSpec(
-        "main", "ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv"),),
+    tables=(
+        TableSpec("main", "ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv"),
+    ),
     adapt=adapt,
     mapping_doc=__doc__ or "",
 )

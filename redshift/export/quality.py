@@ -43,27 +43,50 @@ def quality_markdown(q: dict[str, Any], version: str) -> str:
     for code, n in sorted(by_code.items(), key=lambda t: (-t[1], t[0])):
         d = q["flag_definitions"][code]
         lines.append(f"| `{code}` | {d['severity']} | {n} | {d['description']} |")
-    lines += ["", "## Reconciliation (rows in = tests out + duplicates + blanks + non-test rows)", "",
-              "| Table | Records in | Tests out | Duplicates | Blank | Non-test | Balanced |",
-              "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
+    lines += [
+        "",
+        "## Reconciliation (rows in = tests out + duplicates + blanks + non-test rows)",
+        "",
+        "| Table | Records in | Tests out | Duplicates | Blank | Non-test | Balanced |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | --- |",
+    ]
     for r in q["reconciliation"]:
-        lines.append(f"| `{r['table_file'].split('/')[-1]}` | {r['records_in']} | {r['tests_out']} | "
-                     f"{r['duplicates_removed']} | {r['blank_excluded']} | {r['non_test_excluded']} | "
-                     f"{'yes' if r['balanced'] else 'NO'} |")
-    lines += ["", "## Golden checks", "",
-              "| Check | Expected | Actual | Status | Explanation |", "| --- | --- | --- | --- | --- |"]
+        lines.append(
+            f"| `{r['table_file'].split('/')[-1]}` | {r['records_in']} | {r['tests_out']} | "
+            f"{r['duplicates_removed']} | {r['blank_excluded']} | {r['non_test_excluded']} | "
+            f"{'yes' if r['balanced'] else 'NO'} |"
+        )
+    lines += [
+        "",
+        "## Golden checks",
+        "",
+        "| Check | Expected | Actual | Status | Explanation |",
+        "| --- | --- | --- | --- | --- |",
+    ]
     for g in q["goldens"]["results"]:
-        lines.append(f"| {g['description']} | {g['expected']} | {g['actual']} | {g['status'].replace('_', ' ')} | "
-                     f"{g['explanation'] or ''} |")
+        lines.append(
+            f"| {g['description']} | {g['expected']} | {g['actual']} | {g['status'].replace('_', ' ')} | "
+            f"{g['explanation'] or ''} |"
+        )
     fs = q["findings"]
-    lines += ["", "## Paper findings", "",
-              f"Drafted: {fs['drafted']}. Verified by a named team member: {len(fs['verified'])}. "
-              f"Awaiting verification: {len(fs['awaiting_verification'])}. Rejected by reviewer: "
-              f"{len(fs['rejected_by_reviewer'])}. Failed automatic quote checks: {len(fs['failed_checks'])}.", ""]
+    lines += [
+        "",
+        "## Paper findings",
+        "",
+        f"Drafted: {fs['drafted']}. Verified by a named team member: {len(fs['verified'])}. "
+        f"Awaiting verification: {len(fs['awaiting_verification'])}. Rejected by reviewer: "
+        f"{len(fs['rejected_by_reviewer'])}. Failed automatic quote checks: {len(fs['failed_checks'])}.",
+        "",
+    ]
     for f in fs["failed_checks"]:
         lines.append(f"- `{f['id']}`: {'; '.join(f['problems'])}")
-    lines += ["", "## Every flag", "", "| ID | Code | Investigation | File | Lines | Column | Raw | Detail | Action |",
-              "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+    lines += [
+        "",
+        "## Every flag",
+        "",
+        "| ID | Code | Investigation | File | Lines | Column | Raw | Detail | Action |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+    ]
 
     def cell(x: Any) -> str:
         t = "" if x is None else str(x)
@@ -72,6 +95,8 @@ def quality_markdown(q: dict[str, Any], version: str) -> str:
     for f in q["flags"]:
         rows = f["rows"]
         rtxt = ", ".join(map(str, rows[:8])) + (" ..." if len(rows) > 8 else "")
-        lines.append(f"| {f['id']} | `{f['code']}` | {f['investigation_id']} | `{cell((f['file'] or '').split('/')[-1])}` | "
-                     f"{rtxt} | {cell(f['column'])} | {cell(f['raw'])} | {cell(f['detail'])} | {cell(f['action'])} |")
+        lines.append(
+            f"| {f['id']} | `{f['code']}` | {f['investigation_id']} | `{cell((f['file'] or '').split('/')[-1])}` | "
+            f"{rtxt} | {cell(f['column'])} | {cell(f['raw'])} | {cell(f['detail'])} | {cell(f['action'])} |"
+        )
     return "\n".join(lines) + "\n"

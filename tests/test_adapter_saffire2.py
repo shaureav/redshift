@@ -25,8 +25,14 @@ def out():
     spec = M.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, reg, flags, {r.source_row: r for r in ctx.records}
@@ -57,7 +63,10 @@ def test_reconciliation(out):
 def test_flag_counts(out):
     _, _, flags, _ = out
     assert Counter(f.code for f in flags.items) == {
-        "non_numeric": 21, "missing_column": 9, "label_inconsistent": 6, "non_test_row": 6,
+        "non_numeric": 12,
+        "missing_column": 9,
+        "label_inconsistent": 6,
+        "non_test_row": 6,
     }
 
 
@@ -74,10 +83,10 @@ def test_o2_and_flow_text_not_parsed(out):
     assert _cell(reg, recs[2], "o2_pct") == (None, "~ 21.5")
     assert _cell(reg, recs[9], "o2_pct") == (None, "22.1 to 22.0")
     assert _cell(reg, recs[10], "o2_pct") == (None, "22.0 to 21.9")
-    assert _cell(reg, recs[2], "flow_cm_s") == (None, "20 cm/s")
+    assert _cell(reg, recs[2], "flow_cm_s") == (20.0, "20 cm/s")  # strip_stated_unit
     nn = _flags(flags, "non_numeric")
     assert sorted(f.rows[0] for f in nn if f.column == "Percent O2 (Note 1)") == list(range(2, 11))
-    assert sorted(f.rows[0] for f in nn if f.column == "Air Flow (cm/s)") == list(range(2, 11))
+    assert not [f for f in nn if f.column == "Air Flow (cm/s)"]  # read via strip_stated_unit
     assert all(rec.fields["o2_basis"]["v"] == "ambient" for rec in recs.values())
 
 

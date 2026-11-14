@@ -25,8 +25,14 @@ def out():
     spec = M.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, reg, flags, {r.source_row: r for r in ctx.records}
@@ -52,7 +58,7 @@ def test_reconciliation(out):
 
 def test_flag_counts(out):
     _, _, flags, _ = out
-    assert Counter(f.code for f in flags.items) == {"missing_column": 8, "non_numeric": 2}
+    assert Counter(f.code for f in flags.items) == {"missing_column": 8}
 
 
 def test_known_values(out):
@@ -60,9 +66,8 @@ def test_known_values(out):
     assert _cell(reg, recs[2], "test_label") == ("S1", "S1")
     assert _cell(reg, recs[3], "material") == ("SIBAL Fabric", "SIBAL Fabric")
     assert _cell(reg, recs[2], "notes") == ("Concurrent", "Concurrent ")
-    assert _cell(reg, recs[3], "flow_cm_s") == (None, "30 cm/s")
-    got = {(f.rows[0], f.column, f.raw) for f in _flags(flags, "non_numeric")}
-    assert got == {(2, "Air Flow", "30 cm/s"), (3, "Air Flow", "30 cm/s")}
+    assert _cell(reg, recs[3], "flow_cm_s") == (30.0, "30 cm/s")  # strip_stated_unit
+    assert not _flags(flags, "non_numeric")
     # Length and width agree with the SAFFIRE-I page; no flag is raised here.
     assert recs[2].raw["Sample Length"] == "94 cm" and recs[2].raw["Sample Width"] == "40.6 cm"
     assert recs[2].fields["gravity_level"]["v"] == "microgravity (Cygnus)"

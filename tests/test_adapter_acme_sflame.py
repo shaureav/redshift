@@ -25,8 +25,14 @@ def out():
     spec = M.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, reg, flags, {r.source_row: r for r in ctx.records}
@@ -48,20 +54,35 @@ def test_reconciliation(out):
 def test_flag_counts(out):
     _, _, flags, _ = out
     assert Counter(f.code for f in flags.items) == {
-        "non_numeric": 18, "fill_down_error": 8, "implausible_value": 1, "metadata_inconsistent": 1,
+        "non_numeric": 18,
+        "fill_down_error": 8,
+        "implausible_value": 1,
+        "metadata_inconsistent": 1,
         "missing_column": 7,
     }
     assert {f.column for f in _flags(flags, "missing_column")} == {
-        "pressure_kpa", "pressure_psi", "fuel_conc_pct", "flow_cm_s", "co2_pct", "he_pct", "n2_pct"}
+        "pressure_kpa",
+        "pressure_psi",
+        "fuel_conc_pct",
+        "flow_cm_s",
+        "co2_pct",
+        "he_pct",
+        "n2_pct",
+    }
 
 
 def test_fill_down_cells(out):
     _, _, flags, recs = out
     got = sorted((f.rows[0], f.column, f.raw) for f in _flags(flags, "fill_down_error"))
     assert got == [
-        (3, M.C_ATM, "~21% O2 with N3"), (3, M.C_FUEL, "50% C2H4 with N3"), (4, M.C_ATM, "~21% O2 with N4"),
-        (5, M.C_FUEL, "45% CH4 with N3"), (7, M.C_ATM, "~21% O2 with N3"), (8, M.C_ATM, "~21% O2 with N4"),
-        (9, M.C_ATM, "~21% O2 with N5"), (10, M.C_ATM, "~21% O2 with N6"),
+        (3, M.C_ATM, "~21% O2 with N3"),
+        (3, M.C_FUEL, "50% C2H4 with N3"),
+        (4, M.C_ATM, "~21% O2 with N4"),
+        (5, M.C_FUEL, "45% CH4 with N3"),
+        (7, M.C_ATM, "~21% O2 with N3"),
+        (8, M.C_ATM, "~21% O2 with N4"),
+        (9, M.C_ATM, "~21% O2 with N5"),
+        (10, M.C_ATM, "~21% O2 with N6"),
     ]
     assert recs[3].fields["fuel"]["v"] == "50% C2H4 with N3"
     assert recs[5].fields["fuel"]["v"] == "45% CH4 with N3"

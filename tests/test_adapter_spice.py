@@ -26,8 +26,14 @@ def run() -> tuple[Ctx, FlagLog, Registry]:
     spec = spice.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, flags, reg
@@ -42,8 +48,11 @@ def _codes(flags: FlagLog) -> Counter[str]:
 
 
 def _find(flags: FlagLog, code: str, line: int | None = None, column: str | None = None) -> list[Flag]:
-    return [f for f in flags.items if f.code == code and (line is None or line in f.rows)
-            and (column is None or f.column == column)]
+    return [
+        f
+        for f in flags.items
+        if f.code == code and (line is None or line in f.rows) and (column is None or f.column == column)
+    ]
 
 
 def _raw(reg: Registry, rec: Rec, field: str) -> str | None:
@@ -83,8 +92,14 @@ def test_negative_air_rate(run: tuple[Ctx, FlagLog, Registry]) -> None:
     ctx, flags, reg = run
     oor = _find(flags, "out_of_range", column="Air Rate (cm/s)")
     assert sorted((f.rows[0], f.raw) for f in oor) == [
-        (296, "-0.28"), (298, "-0.28"), (299, "-0.28"), (300, "-0.28"), (301, "-0.28"),
-        (337, "-5.92"), (338, "-5.92"), (339, "-5.92"),
+        (296, "-0.28"),
+        (298, "-0.28"),
+        (299, "-0.28"),
+        (300, "-0.28"),
+        (301, "-0.28"),
+        (337, "-5.92"),
+        (338, "-5.92"),
+        (339, "-5.92"),
     ]
     r296 = _rec(ctx, 296)
     assert r296.fields["flow_cm_s"]["v"] is None and _raw(reg, r296, "flow_cm_s") == "-0.28"

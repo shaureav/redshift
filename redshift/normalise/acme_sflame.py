@@ -55,8 +55,10 @@ C_NOTES = "Notes"
 # PSI page (ACME-s-Flame.md line 16): "Investigation dates | 02-05-2015 to 11-24-2019". Used only for a check.
 PAGE_END = dt.date(2019, 11, 24)
 
-PRESSURE_NOTE = ("No pressure column. The table note on line 3 says \"*Atmosphere is ~1 atm but pressure "
-                 "increases and O2% drops with vitiation.\" An approximate statement is not used as a value.")
+PRESSURE_NOTE = (
+    'No pressure column. The table note on line 3 says "*Atmosphere is ~1 atm but pressure '
+    'increases and O2% drops with vitiation." An approximate statement is not used as a value.'
+)
 
 
 def adapt(ctx: Ctx) -> None:
@@ -75,10 +77,15 @@ def adapt(ctx: Ctx) -> None:
 
         ttype, atm, fuel_raw = (ctx.raw(row, c) for c in (C_TYPE, C_ATM, C_FUEL))
         if "nitrogen-diluted" in ttype and "with He" in atm and "with He" in fuel_raw:
-            ctx.flag("implausible_value", row, C_TYPE, ttype.strip(),
-                     f"Test Type says nitrogen-diluted, but Atmosphere ('{atm.strip()}') and Fuel Bottle "
-                     f"('{fuel_raw.strip()}') on this row both say helium.",
-                     "All three cells kept as recorded; row kept.")
+            ctx.flag(
+                "implausible_value",
+                row,
+                C_TYPE,
+                ttype.strip(),
+                f"Test Type says nitrogen-diluted, but Atmosphere ('{atm.strip()}') and Fuel Bottle "
+                f"('{fuel_raw.strip()}') on this row both say helium.",
+                "All three cells kept as recorded; row kept.",
+            )
 
         o2 = ctx.num(row, C_ATM, "o2_pct", S.single_percent("Atmosphere*"))
         fields = {
@@ -88,27 +95,38 @@ def adapt(ctx: Ctx) -> None:
             "o2_pct": o2,
             "n_flames": ctx.num(row, C_FLAMES, "n_flames"),
             "fuel_conc_pct": ctx.missing(
-                "fuel_conc_pct", "The fuel percentage appears only inside the Fuel Bottle label (for example "
-                "'50% C2H4 with N2'); it is not read out of text."),
+                "fuel_conc_pct",
+                "The fuel percentage appears only inside the Fuel Bottle label (for example "
+                "'50% C2H4 with N2'); it is not read out of text.",
+            ),
             "pressure_kpa": ctx.missing("pressure_kpa", PRESSURE_NOTE),
             "pressure_psi": ctx.missing("pressure_psi", PRESSURE_NOTE),
             "flow_cm_s": ctx.missing("flow_cm_s", "The table has no flow column."),
             "gravity_level": S.gravity(ctx),
-            "notes": S.notes(ctx, row, [("Test type", C_TYPE, None), ("Atmosphere", C_ATM, o2),
-                                        ("Notes", C_NOTES, None)]),
+            "notes": S.notes(
+                ctx, row, [("Test type", C_TYPE, None), ("Atmosphere", C_ATM, o2), ("Notes", C_NOTES, None)]
+            ),
         }
         if atm.strip():
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "ambient",
+                "o2_basis",
+                "ambient",
                 "PSI page Approach: fuel and diluent issue from a spherical porous burner into an oxidising "
-                "environment; the table column is headed 'Atmosphere'.")
+                "environment; the table column is headed 'Atmosphere'.",
+            )
         ctx.emit(row, fields)
     spelling.finish()
     if late:
-        ctx.flag("metadata_inconsistent", None, C_YEAR, None,
-                 f"{len(late)} rows (lines {late[0]} to {late[-1]}) are dated after the investigation end "
-                 "date given on the PSI page (ACME-s-Flame.md line 16: 02-05-2015 to 11-24-2019).",
-                 "Row dates and page metadata kept as recorded.", rows=late)
+        ctx.flag(
+            "metadata_inconsistent",
+            None,
+            C_YEAR,
+            None,
+            f"{len(late)} rows (lines {late[0]} to {late[-1]}) are dated after the investigation end "
+            "date given on the PSI page (ACME-s-Flame.md line 16: 02-05-2015 to 11-24-2019).",
+            "Row dates and page metadata kept as recorded.",
+            rows=late,
+        )
 
 
 SPEC = AdapterSpec(

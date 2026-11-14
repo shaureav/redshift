@@ -1,0 +1,109 @@
+{
+ "candidate_id": "c4_3_100",
+ "flame_temperature": {
+  "approximate": true,
+  "p": "ft:c4_3_100",
+  "u": "K",
+  "v": 2903.5
+ },
+ "near": {
+  "droplet": {
+   "psi_table": {
+    "p": "near:c4_3_100:droplet:psi_table",
+    "u": "tests",
+    "v": 0
+   },
+   "published_paper": {
+    "p": "near:c4_3_100:droplet:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  },
+  "emulator": {
+   "psi_table": {
+    "p": "near:c4_3_100:emulator:psi_table",
+    "u": "tests",
+    "v": 0
+   },
+   "published_paper": {
+    "p": "near:c4_3_100:emulator:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  },
+  "gas": {
+   "psi_table": {
+    "p": "near:c4_3_100:gas:psi_table",
+    "u": "tests",
+    "v": 0
+   },
+   "published_paper": {
+    "p": "near:c4_3_100:gas:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  },
+  "solid": {
+   "psi_table": {
+    "p": "near:c4_3_100:solid:psi_table",
+    "u": "tests",
+    "v": 0
+   },
+   "published_paper": {
+    "p": "near:c4_3_100:solid:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  }
+ },
+ "near_total": {
+  "p": "near:c4_3_100:total",
+  "u": "tests",
+  "v": 0
+ },
+ "nearest": [],
+ "o2_match_pressure_unknown": {
+  "droplet": {
+   "p": "o2match:c4_3_100:droplet",
+   "u": "tests",
+   "v": 0
+  },
+  "emulator": {
+   "p": "o2match:c4_3_100:emulator",
+   "u": "tests",
+   "v": 0
+  },
+  "gas": {
+   "p": "o2match:c4_3_100:gas",
+   "u": "tests",
+   "v": 0
+  },
+  "solid": {
+   "p": "o2match:c4_3_100:solid",
+   "u": "tests",
+   "v": 0
+  }
+ },
+ "unknown": {
+  "basis_differs": {
+   "p": "state:c4_3_100:basis_differs",
+   "u": "tests",
+   "v": 263
+  },
+  "unknown_both": {
+   "p": "state:c4_3_100:unknown_both",
+   "u": "tests",
+   "v": 681
+  },
+  "unknown_o2": {
+   "p": "state:c4_3_100:unknown_o2",
+   "u": "tests",
+   "v": 11
+  },
+  "unknown_pressure": {
+   "p": "state:c4_3_100:unknown_pressure",
+   "u": "tests",
+   "v": 150
+  }
+ }
+}

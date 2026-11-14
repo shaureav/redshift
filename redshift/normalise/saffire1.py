@@ -49,8 +49,10 @@ C_O2 = "Percent O2"
 C_DIR = "Flow Direction"
 
 FLOW_VIS_MARKER = "pre-test flow visulation data"
-GRAVITY_NOTE = ("SAFFIRE-I.md Approach: performed on the Cygnus resupply vehicle after it deberthed from the "
-                "ISS; hardware 'Saffire 1 enclosure in Cygnus'.")
+GRAVITY_NOTE = (
+    "SAFFIRE-I.md Approach: performed on the Cygnus resupply vehicle after it deberthed from the "
+    "ISS; hardware 'Saffire 1 enclosure in Cygnus'."
+)
 
 
 def _is_flow_visualisation(ctx: Ctx, row: RawRow) -> bool:
@@ -67,29 +69,42 @@ def check_dimensions(ctx: Ctx, row: RawRow) -> None:
     except T.NotClean:
         return
     if length is not None and width is not None and length < width:
-        ctx.flag("swapped_columns", row, C_LEN, f"{raw_l},{raw_w}",
-                 f"Sample Length {raw_l} cm is shorter than Sample Width {raw_w} cm. SAFFIRE-I.md "
-                 "Approach (quoted): 'The sample was approximately 0.94 meters long and 0.4 meters wide'; "
-                 "the SAFFIRE-III table (lines 2 and 3) gives Length 94 cm and Width 40.6 cm.",
-                 "Raw kept; no swap applied (length and width are not canonical fields).")
+        ctx.flag(
+            "swapped_columns",
+            row,
+            C_LEN,
+            f"{raw_l},{raw_w}",
+            f"Sample Length {raw_l} cm is shorter than Sample Width {raw_w} cm. SAFFIRE-I.md "
+            "Approach (quoted): 'The sample was approximately 0.94 meters long and 0.4 meters wide'; "
+            "the SAFFIRE-III table (lines 2 and 3) gives Length 94 cm and Width 40.6 cm.",
+            "Raw kept; no swap applied (length and width are not canonical fields).",
+        )
 
 
 def check_thickness(ctx: Ctx, row: RawRow) -> None:
     raw = ctx.raw(row, C_THICK)
     if raw.strip():
-        ctx.flag("unit_unclear", row, C_THICK, raw,
-                 f"SIBAL thickness {raw} cm here and '.33 cm' in SAFFIRE-III (lines 2 and 3), but "
-                 "SAFFIRE-II gives '037 mm' for SIBAL (line 6); the tables do not settle which unit is "
-                 "right.",
-                 "Raw kept; not a canonical field, no value read.")
+        ctx.flag(
+            "unit_unclear",
+            row,
+            C_THICK,
+            raw,
+            f"SIBAL thickness {raw} cm here and '.33 cm' in SAFFIRE-III (lines 2 and 3), but "
+            "SAFFIRE-II gives '037 mm' for SIBAL (line 6); the tables do not settle which unit is "
+            "right.",
+            "Raw kept; not a canonical field, no value read.",
+        )
 
 
 def adapt(ctx: Ctx) -> None:
     no_p = "The table has no pressure column; the PSI table does not record chamber pressure for these burns."
     for row in ctx.rows():
         if _is_flow_visualisation(ctx, row):
-            ctx.exclude(row, "Pre-test flow-visualisation entry (camera files only, no burn data); recorded "
-                             "before the burn of the sample it names.")
+            ctx.exclude(
+                row,
+                "Pre-test flow-visualisation entry (camera files only, no burn data); recorded "
+                "before the burn of the sample it names.",
+            )
             continue
         check_dimensions(ctx, row)
         check_thickness(ctx, row)
@@ -105,8 +120,10 @@ def adapt(ctx: Ctx) -> None:
         }
         if ctx.raw(row, C_O2).strip():
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "ambient",
-                "SAFFIRE-I.md Approach: air is drawn through the flow duct, so Percent O2 is the cabin air.")
+                "o2_basis",
+                "ambient",
+                "SAFFIRE-I.md Approach: air is drawn through the flow duct, so Percent O2 is the cabin air.",
+            )
         ctx.emit(row, fields)
 
 

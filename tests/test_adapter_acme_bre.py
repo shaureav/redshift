@@ -25,8 +25,14 @@ def out():
     spec = M.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, reg, flags, {r.source_row: r for r in ctx.records}
@@ -49,11 +55,21 @@ def test_reconciliation(out):
 def test_flag_counts(out):
     _, _, flags, _ = out
     assert Counter(f.code for f in flags.items) == {
-        "non_numeric": 16, "out_of_range": 2, "date_inconsistent": 1, "label_inconsistent": 1,
+        "non_numeric": 16,
+        "out_of_range": 2,
+        "date_inconsistent": 1,
+        "label_inconsistent": 1,
         "missing_column": 7,
     }
     assert {f.column for f in _flags(flags, "missing_column")} == {
-        "pressure_kpa", "pressure_psi", "fuel_conc_pct", "flow_cm_s", "co2_pct", "he_pct", "n2_pct"}
+        "pressure_kpa",
+        "pressure_psi",
+        "fuel_conc_pct",
+        "flow_cm_s",
+        "co2_pct",
+        "he_pct",
+        "n2_pct",
+    }
 
 
 @pytest.mark.parametrize("line,raw", [(6, "3400%"), (9, "2100%")])

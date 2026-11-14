@@ -52,8 +52,7 @@ def _check_time(ctx: Ctx, row: RawRow, col: str) -> None:
 
 
 def adapt(ctx: Ctx) -> None:
-    gravity = ctx.constant("gravity", "microgravity (ISS)",
-                           "SPICE.md: flight platform International Space Station.")
+    gravity = ctx.constant("gravity", "microgravity (ISS)", "SPICE.md: flight platform International Space Station.")
     o2_reason = "SPICE flames burned in co-flowing air; the table has no oxygen column."
     p_reason = "The SPICE table has no pressure column."
     spellings: dict[str, list[int]] = {}
@@ -63,26 +62,43 @@ def adapt(ctx: Ctx) -> None:
         fuel_raw = ctx.raw(row, C_FUEL).strip()
         if fuel_raw.endswith("Propylene") and fuel_raw.startswith("75"):
             spellings.setdefault(fuel_raw, []).append(row.line)
-        ctx.emit(row, {
-            "test_label": ctx.text(row, C_IGN),
-            "test_date": ctx.text(row, C_DAY),
-            "fuel": ctx.text(row, C_FUEL),
-            "flow_cm_s": ctx.num(row, C_AIR, "flow_cm_s"),
-            "o2_pct": ctx.missing("o2_pct", o2_reason),
-            "pressure_kpa": ctx.missing("pressure_kpa", p_reason),
-            "pressure_psi": ctx.missing("pressure_psi", p_reason),
-            "gravity_level": gravity,
-        })
-    ctx.flag("date_inconsistent", None, C_DAY, None,
-             "GMT date holds the day of the year only (for example '45'), with no year; the PSI page gives "
-             "no investigation dates.", "Raw kept; no year assumed.", rows=[])
+        ctx.emit(
+            row,
+            {
+                "test_label": ctx.text(row, C_IGN),
+                "test_date": ctx.text(row, C_DAY),
+                "fuel": ctx.text(row, C_FUEL),
+                "flow_cm_s": ctx.num(row, C_AIR, "flow_cm_s"),
+                "o2_pct": ctx.missing("o2_pct", o2_reason),
+                "pressure_kpa": ctx.missing("pressure_kpa", p_reason),
+                "pressure_psi": ctx.missing("pressure_psi", p_reason),
+                "gravity_level": gravity,
+            },
+        )
+    ctx.flag(
+        "date_inconsistent",
+        None,
+        C_DAY,
+        None,
+        "GMT date holds the day of the year only (for example '45'), with no year; the PSI page gives "
+        "no investigation dates.",
+        "Raw kept; no year assumed.",
+        rows=[],
+    )
     if len(spellings) > 1:
         lines = sorted(ln for v in spellings.values() for ln in v)
-        detail = "; ".join(f"{k!r} on {len(v)} kept rows (lines {v[0]} to {v[-1]})"
-                           for k, v in sorted(spellings.items()))
-        ctx.flag("label_inconsistent", None, C_FUEL, " | ".join(sorted(spellings)),
-                 f"One fuel is written in {len(spellings)} ways: {detail}.", "Raw labels kept verbatim.",
-                 rows=lines)
+        detail = "; ".join(
+            f"{k!r} on {len(v)} kept rows (lines {v[0]} to {v[-1]})" for k, v in sorted(spellings.items())
+        )
+        ctx.flag(
+            "label_inconsistent",
+            None,
+            C_FUEL,
+            " | ".join(sorted(spellings)),
+            f"One fuel is written in {len(spellings)} ways: {detail}.",
+            "Raw labels kept verbatim.",
+            rows=lines,
+        )
 
 
 SPEC = AdapterSpec(

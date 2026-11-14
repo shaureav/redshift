@@ -40,17 +40,19 @@ def main() -> int:
         print(f"{d['id']}  ({d.get('investigation')}, {d.get('kind')})")
         print(f"Source: {d['source_file']}   page {d['page']}   NTRS {d.get('ntrs_id')}")
         print(f"\nFinding: {d['finding']}\n")
-        print(f"Quote:   \"{d['quote']}\"\n")
+        print(f'Quote:   "{d["quote"]}"\n')
         for v in d.get("values", []):
-            print(f"  {v['name']}: {v['value']} {v.get('unit') or ''}   (written as \"{v['as_written']}\")")
+            print(f'  {v["name"]}: {v["value"]} {v.get("unit") or ""}   (written as "{v["as_written"]}")')
         ans = input("\nCorrect? [y/n/s/q] ").strip().lower()
         if ans == "q":
             break
         if ans not in {"y", "n"}:
             continue
         entry = {
-            "finding_id": d["id"], "decision": "accept" if ans == "y" else "reject",
-            "verified_by": name, "verified_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "finding_id": d["id"],
+            "decision": "accept" if ans == "y" else "reject",
+            "verified_by": name,
+            "verified_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         if ans == "n":
             entry["note"] = input("What is wrong? ").strip()

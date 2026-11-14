@@ -26,6 +26,15 @@ def evaluate(actual: dict[str, Any]) -> list[dict[str, Any]]:
         else:
             match = a == exp
         status = "match" if match else ("explained_difference" if g.get("explanation") else "unexplained_difference")
-        out.append({"id": g["id"], "description": g["description"], "source": g.get("source"),
-                    "expected": exp, "actual": a, "status": status, "explanation": g.get("explanation")})
+        out.append(
+            {
+                "id": g["id"],
+                "description": g["description"],
+                "source": g.get("source"),
+                "expected": exp,
+                "actual": a,
+                "status": status,
+                "explanation": g.get("explanation"),
+            }
+        )
     return out

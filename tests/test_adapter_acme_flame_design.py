@@ -25,8 +25,14 @@ def _run(key: str) -> tuple[Ctx, FlagLog, Registry]:
     spec = acme_flame_design.SPEC
     t = next(t for t in spec.tables if t.table_key == key)
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, flags, reg
@@ -133,8 +139,9 @@ def test_normal_ramped_and_ramp(normal) -> None:
 def test_normal_blank_pressure_flagged(normal) -> None:
     ctx, flags, _ = normal
     header = ctx.table.header
-    blank_cells = [(row.line, h) for row in ctx.table.rows for h, c in zip(header, row.cells, strict=True)
-                   if c.strip() == ""]
+    blank_cells = [
+        (row.line, h) for row in ctx.table.rows for h, c in zip(header, row.cells, strict=True) if c.strip() == ""
+    ]
     assert len(blank_cells) == 60
     assert {h for _, h in blank_cells} == {"XO2 (final)", "pfinal (atm)", "pmean (atm)"}
     gap = [f for f in flags.items if f.code == "missing_column" and f.rows]

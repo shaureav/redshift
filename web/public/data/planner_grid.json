@@ -666,19 +666,47 @@
    "n_near": {
     "p": "planner:cell:21:6:droplet:n",
     "u": "tests",
-    "v": 0
+    "v": 3
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:21:6:droplet:n",
+      "u": "steps",
+      "v": 0.9082
+     },
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L64"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:6:droplet:n",
+      "u": "steps",
+      "v": 0.9082
+     },
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L65"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:6:droplet:n",
+      "u": "steps",
+      "v": 0.9082
+     },
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L66"
+    }
+   ],
    "o2_pct": 21.0,
    "pressure_psi": 6.0,
    "priority": {
     "balanced": {
      "p": "planner:cell:21:6:droplet:priority:balanced",
-     "v": 0.130508
+     "v": 0.081567
     },
     "equal": {
      "p": "planner:cell:21:6:droplet:priority:equal",
-     "v": 0.217513
+     "v": 0.135946
     },
     "solids_only": {
      "p": "planner:cell:21:6:droplet:priority:solids_only",
@@ -705,7 +733,7 @@
       "u": "steps",
       "v": 0.9085
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L41"
     },
     {
@@ -714,7 +742,7 @@
       "u": "steps",
       "v": 0.9089
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L42"
     },
     {
@@ -723,7 +751,7 @@
       "u": "steps",
       "v": 0.9099
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L43"
     }
    ],
@@ -784,19 +812,47 @@
    "n_near": {
     "p": "planner:cell:26.5:6:droplet:n",
     "u": "tests",
-    "v": 0
+    "v": 3
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:26.5:6:droplet:n",
+      "u": "steps",
+      "v": 1.4265
+     },
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L64"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:6:droplet:n",
+      "u": "steps",
+      "v": 1.4265
+     },
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L65"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:6:droplet:n",
+      "u": "steps",
+      "v": 1.4265
+     },
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L66"
+    }
+   ],
    "o2_pct": 26.5,
    "pressure_psi": 6.0,
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:6:droplet:priority:balanced",
-     "v": 0.235438
+     "v": 0.147149
     },
     "equal": {
      "p": "planner:cell:26.5:6:droplet:priority:equal",
-     "v": 0.392397
+     "v": 0.245248
     },
     "solids_only": {
      "p": "planner:cell:26.5:6:droplet:priority:solids_only",
@@ -823,7 +879,7 @@
       "u": "steps",
       "v": 1.4313
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L41"
     },
     {
@@ -832,7 +888,7 @@
       "u": "steps",
       "v": 1.4485
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L42"
     },
     {
@@ -841,7 +897,7 @@
       "u": "steps",
       "v": 1.4659
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L43"
     }
    ],
@@ -941,7 +997,7 @@
       "u": "steps",
       "v": 1.1164
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L131"
     },
     {
@@ -950,7 +1006,7 @@
       "u": "steps",
       "v": 1.146
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L130"
     },
     {
@@ -959,7 +1015,7 @@
       "u": "steps",
       "v": 1.2212
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L129"
     }
    ],
@@ -1059,7 +1115,7 @@
       "u": "steps",
       "v": 0.9086
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L129"
     },
     {
@@ -1068,7 +1124,7 @@
       "u": "steps",
       "v": 0.9141
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L130"
     },
     {
@@ -1077,7 +1133,7 @@
       "u": "steps",
       "v": 0.9209
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L131"
     }
    ],
@@ -1177,7 +1233,7 @@
       "u": "steps",
       "v": 0.9204
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L32"
     },
     {
@@ -1186,7 +1242,7 @@
       "u": "steps",
       "v": 0.9361
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L126"
     },
     {
@@ -1195,7 +1251,7 @@
       "u": "steps",
       "v": 0.9366
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L153"
     }
    ],
@@ -1436,35 +1492,35 @@
    "n_near": {
     "p": "planner:cell:21:8.2:droplet:n",
     "u": "tests",
-    "v": 82
+    "v": 89
    },
    "nearest": [
     {
      "distance": {
       "p": "planner:cell:21:8.2:droplet:n",
       "u": "steps",
-      "v": 0.9909
+      "v": 0.4917
      },
-     "investigation": "PSI-69",
-     "test_id": "PSI-69-main-L260"
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L64"
     },
     {
      "distance": {
       "p": "planner:cell:21:8.2:droplet:n",
       "u": "steps",
-      "v": 0.996
+      "v": 0.4917
      },
-     "investigation": "PSI-69",
-     "test_id": "PSI-69-main-L259"
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L65"
     },
     {
      "distance": {
       "p": "planner:cell:21:8.2:droplet:n",
       "u": "steps",
-      "v": 0.9992
+      "v": 0.4917
      },
-     "investigation": "PSI-69",
-     "test_id": "PSI-69-main-L263"
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L66"
     }
    ],
    "o2_pct": 21.0,
@@ -1472,11 +1528,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:8.2:droplet:priority:balanced",
-     "v": 0.021306
+     "v": 0.019719
     },
     "equal": {
      "p": "planner:cell:21:8.2:droplet:priority:equal",
-     "v": 0.03551
+     "v": 0.032865
     },
     "solids_only": {
      "p": "planner:cell:21:8.2:droplet:priority:solids_only",
@@ -1503,7 +1559,7 @@
       "u": "steps",
       "v": 0.4915
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L41"
     },
     {
@@ -1512,7 +1568,7 @@
       "u": "steps",
       "v": 0.4922
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L42"
     },
     {
@@ -1521,7 +1577,7 @@
       "u": "steps",
       "v": 0.494
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L43"
     }
    ],
@@ -1582,7 +1638,7 @@
    "n_near": {
     "p": "planner:cell:26.5:8.2:droplet:n",
     "u": "tests",
-    "v": 49
+    "v": 52
    },
    "nearest": [
     {
@@ -1591,7 +1647,7 @@
       "u": "steps",
       "v": 1.0942
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L93"
     },
     {
@@ -1600,7 +1656,7 @@
       "u": "steps",
       "v": 1.1023
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L94"
     },
     {
@@ -1609,7 +1665,7 @@
       "u": "steps",
       "v": 1.1031
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L90"
     }
    ],
@@ -1618,11 +1674,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:8.2:droplet:priority:balanced",
-     "v": 0.044916
+     "v": 0.042552
     },
     "equal": {
      "p": "planner:cell:26.5:8.2:droplet:priority:equal",
-     "v": 0.07486
+     "v": 0.07092
     },
     "solids_only": {
      "p": "planner:cell:26.5:8.2:droplet:priority:solids_only",
@@ -1649,7 +1705,7 @@
       "u": "steps",
       "v": 1.2103
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L41"
     },
     {
@@ -1658,7 +1714,7 @@
       "u": "steps",
       "v": 1.2307
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L42"
     },
     {
@@ -1667,7 +1723,7 @@
       "u": "steps",
       "v": 1.2511
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L43"
     }
    ],
@@ -1737,7 +1793,7 @@
       "u": "steps",
       "v": 1.0356
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L42"
     },
     {
@@ -1746,7 +1802,7 @@
       "u": "steps",
       "v": 1.0406
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L44"
     },
     {
@@ -1755,7 +1811,7 @@
       "u": "steps",
       "v": 1.0414
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L43"
     }
    ],
@@ -1795,7 +1851,7 @@
       "u": "steps",
       "v": 0.814
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L131"
     },
     {
@@ -1804,7 +1860,7 @@
       "u": "steps",
       "v": 0.8542
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L130"
     },
     {
@@ -1813,7 +1869,7 @@
       "u": "steps",
       "v": 0.9527
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L129"
     }
    ],
@@ -1883,7 +1939,7 @@
       "u": "steps",
       "v": 1.0356
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L38"
     },
     {
@@ -1892,7 +1948,7 @@
       "u": "steps",
       "v": 1.0364
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L39"
     },
     {
@@ -1901,7 +1957,7 @@
       "u": "steps",
       "v": 1.0406
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L40"
     }
    ],
@@ -1941,7 +1997,7 @@
       "u": "steps",
       "v": 0.4917
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L129"
     },
     {
@@ -1950,7 +2006,7 @@
       "u": "steps",
       "v": 0.5018
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L130"
     },
     {
@@ -1959,7 +2015,7 @@
       "u": "steps",
       "v": 0.5141
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L131"
     }
    ],
@@ -2059,7 +2115,7 @@
       "u": "steps",
       "v": 0.5132
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L32"
     },
     {
@@ -2068,7 +2124,7 @@
       "u": "steps",
       "v": 0.5409
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L126"
     },
     {
@@ -2077,7 +2133,7 @@
       "u": "steps",
       "v": 0.5417
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L153"
     }
    ],
@@ -2318,7 +2374,7 @@
    "n_near": {
     "p": "planner:cell:21:10.2:droplet:n",
     "u": "tests",
-    "v": 86
+    "v": 93
    },
    "nearest": [
     {
@@ -2327,7 +2383,7 @@
       "u": "steps",
       "v": 0.0128
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L260"
     },
     {
@@ -2336,7 +2392,7 @@
       "u": "steps",
       "v": 0.0179
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L259"
     },
     {
@@ -2345,7 +2401,7 @@
       "u": "steps",
       "v": 0.0272
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L113"
     }
    ],
@@ -2354,11 +2410,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:10.2:droplet:priority:balanced",
-     "v": 0.025194
+     "v": 0.023395
     },
     "equal": {
      "p": "planner:cell:21:10.2:droplet:priority:equal",
-     "v": 0.041991
+     "v": 0.038991
     },
     "solids_only": {
      "p": "planner:cell:21:10.2:droplet:priority:solids_only",
@@ -2385,7 +2441,7 @@
       "u": "steps",
       "v": 1.4695
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L41"
     },
     {
@@ -2394,7 +2450,7 @@
       "u": "steps",
       "v": 1.4698
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L42"
     },
     {
@@ -2403,7 +2459,7 @@
       "u": "steps",
       "v": 1.4704
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L43"
     }
    ],
@@ -2464,7 +2520,7 @@
    "n_near": {
     "p": "planner:cell:26.5:10.2:droplet:n",
     "u": "tests",
-    "v": 68
+    "v": 72
    },
    "nearest": [
     {
@@ -2473,7 +2529,7 @@
       "u": "steps",
       "v": 0.309
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L93"
     },
     {
@@ -2482,7 +2538,7 @@
       "u": "steps",
       "v": 0.3112
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L94"
     },
     {
@@ -2491,7 +2547,7 @@
       "u": "steps",
       "v": 0.3114
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L90"
     }
    ],
@@ -2500,11 +2556,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:10.2:droplet:priority:balanced",
-     "v": 0.041096
+     "v": 0.038961
     },
     "equal": {
      "p": "planner:cell:26.5:10.2:droplet:priority:equal",
-     "v": 0.068493
+     "v": 0.064935
     },
     "solids_only": {
      "p": "planner:cell:26.5:10.2:droplet:priority:solids_only",
@@ -2591,7 +2647,7 @@
       "u": "steps",
       "v": 0.0575
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L42"
     },
     {
@@ -2600,7 +2656,7 @@
       "u": "steps",
       "v": 0.0625
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L44"
     },
     {
@@ -2609,7 +2665,7 @@
       "u": "steps",
       "v": 0.0633
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L43"
     }
    ],
@@ -2709,7 +2765,7 @@
       "u": "steps",
       "v": 0.0575
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L38"
     },
     {
@@ -2718,7 +2774,7 @@
       "u": "steps",
       "v": 0.0583
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L39"
     },
     {
@@ -2727,7 +2783,7 @@
       "u": "steps",
       "v": 0.0625
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L40"
     }
    ],
@@ -2767,7 +2823,7 @@
       "u": "steps",
       "v": 1.4095
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L11"
     },
     {
@@ -2776,7 +2832,7 @@
       "u": "steps",
       "v": 1.4229
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L54"
     },
     {
@@ -2785,7 +2841,7 @@
       "u": "steps",
       "v": 1.4229
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L55"
     }
    ],
@@ -2855,7 +2911,7 @@
       "u": "steps",
       "v": 1.2014
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L38"
     },
     {
@@ -2864,7 +2920,7 @@
       "u": "steps",
       "v": 1.2014
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L39"
     },
     {
@@ -2873,7 +2929,7 @@
       "u": "steps",
       "v": 1.2016
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L40"
     }
    ],
@@ -2913,7 +2969,7 @@
       "u": "steps",
       "v": 1.3244
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L46"
     },
     {
@@ -2922,7 +2978,7 @@
       "u": "steps",
       "v": 1.3265
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L47"
     },
     {
@@ -2931,7 +2987,7 @@
       "u": "steps",
       "v": 1.3268
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L2"
     }
    ],
@@ -3172,35 +3228,35 @@
    "n_near": {
     "p": "planner:cell:21:12:droplet:n",
     "u": "tests",
-    "v": 198
+    "v": 241
    },
    "nearest": [
     {
      "distance": {
       "p": "planner:cell:21:12:droplet:n",
       "u": "steps",
-      "v": 0.6201
+      "v": 0.381
      },
-     "investigation": "PSI-69",
-     "test_id": "PSI-69-main-L58"
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L60"
     },
     {
      "distance": {
       "p": "planner:cell:21:12:droplet:n",
       "u": "steps",
-      "v": 0.6224
+      "v": 0.381
      },
-     "investigation": "PSI-69",
-     "test_id": "PSI-69-main-L57"
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L61"
     },
     {
      "distance": {
       "p": "planner:cell:21:12:droplet:n",
       "u": "steps",
-      "v": 0.6341
+      "v": 0.381
      },
-     "investigation": "PSI-69",
-     "test_id": "PSI-69-main-L56"
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L62"
     }
    ],
    "o2_pct": 21.0,
@@ -3208,11 +3264,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:12:droplet:priority:balanced",
-     "v": 0.012297
+     "v": 0.010148
     },
     "equal": {
      "p": "planner:cell:21:12:droplet:priority:equal",
-     "v": 0.020495
+     "v": 0.016913
     },
     "solids_only": {
      "p": "planner:cell:21:12:droplet:priority:solids_only",
@@ -3239,7 +3295,7 @@
       "u": "steps",
       "v": 0.9084
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L123"
     },
     {
@@ -3248,7 +3304,7 @@
       "u": "steps",
       "v": 0.9084
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L145"
     },
     {
@@ -3257,7 +3313,7 @@
       "u": "steps",
       "v": 0.9085
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L12"
     }
    ],
@@ -3318,7 +3374,7 @@
    "n_near": {
     "p": "planner:cell:26.5:12:droplet:n",
     "u": "tests",
-    "v": 118
+    "v": 147
    },
    "nearest": [
     {
@@ -3327,7 +3383,7 @@
       "u": "steps",
       "v": 0.6977
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L91"
     },
     {
@@ -3336,7 +3392,7 @@
       "u": "steps",
       "v": 0.7045
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L92"
     },
     {
@@ -3345,7 +3401,7 @@
       "u": "steps",
       "v": 0.7105
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L89"
     }
    ],
@@ -3354,11 +3410,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:12:droplet:priority:balanced",
-     "v": 0.021678
+     "v": 0.017542
     },
     "equal": {
      "p": "planner:cell:26.5:12:droplet:priority:equal",
-     "v": 0.03613
+     "v": 0.029237
     },
     "solids_only": {
      "p": "planner:cell:26.5:12:droplet:priority:solids_only",
@@ -3385,7 +3441,7 @@
       "u": "steps",
       "v": 1.0987
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L26"
     },
     {
@@ -3394,7 +3450,7 @@
       "u": "steps",
       "v": 1.1038
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L27"
     },
     {
@@ -3403,7 +3459,7 @@
       "u": "steps",
       "v": 1.1083
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L28"
     }
    ],
@@ -3473,7 +3529,7 @@
       "u": "steps",
       "v": 0.6175
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L28"
     },
     {
@@ -3482,7 +3538,7 @@
       "u": "steps",
       "v": 0.6258
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L29"
     },
     {
@@ -3491,7 +3547,7 @@
       "u": "steps",
       "v": 0.6366
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L27"
     }
    ],
@@ -3531,7 +3587,7 @@
       "u": "steps",
       "v": 0.949
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L164"
     },
     {
@@ -3540,7 +3596,7 @@
       "u": "steps",
       "v": 0.9579
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L165"
     },
     {
@@ -3549,7 +3605,7 @@
       "u": "steps",
       "v": 0.961
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L73"
     }
    ],
@@ -3619,7 +3675,7 @@
       "u": "steps",
       "v": 0.6001
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L25"
     },
     {
@@ -3628,7 +3684,7 @@
       "u": "steps",
       "v": 0.6084
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L24"
     },
     {
@@ -3637,7 +3693,7 @@
       "u": "steps",
       "v": 0.6183
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L22"
     }
    ],
@@ -3677,7 +3733,7 @@
       "u": "steps",
       "v": 0.7698
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L11"
     },
     {
@@ -3686,7 +3742,7 @@
       "u": "steps",
       "v": 0.7942
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L54"
     },
     {
@@ -3695,7 +3751,7 @@
       "u": "steps",
       "v": 0.7942
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L55"
     }
    ],
@@ -3765,7 +3821,7 @@
       "u": "steps",
       "v": 1.3417
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L25"
     },
     {
@@ -3774,7 +3830,7 @@
       "u": "steps",
       "v": 1.3454
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L24"
     },
     {
@@ -3783,7 +3839,7 @@
       "u": "steps",
       "v": 1.3499
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L22"
     }
    ],
@@ -3823,7 +3879,7 @@
       "u": "steps",
       "v": 0.6
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L46"
     },
     {
@@ -3832,7 +3888,7 @@
       "u": "steps",
       "v": 0.6047
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L47"
     },
     {
@@ -3841,7 +3897,7 @@
       "u": "steps",
       "v": 0.6053
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L2"
     }
    ],
@@ -4082,7 +4138,7 @@
    "n_near": {
     "p": "planner:cell:21:14.7:droplet:n",
     "u": "tests",
-    "v": 137
+    "v": 189
    },
    "nearest": [
     {
@@ -4091,7 +4147,7 @@
       "u": "steps",
       "v": 0.0001
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L203"
     },
     {
@@ -4100,7 +4156,7 @@
       "u": "steps",
       "v": 0.0001
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L207"
     },
     {
@@ -4109,8 +4165,8 @@
       "u": "steps",
       "v": 0.0012
      },
-     "investigation": "PSI-69",
-     "test_id": "PSI-69-main-L10"
+     "investigation": "CFI",
+     "test_id": "PSI-39-main-L12"
     }
    ],
    "o2_pct": 21.0,
@@ -4118,11 +4174,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:14.7:droplet:priority:balanced",
-     "v": 0.021127
+     "v": 0.015464
     },
     "equal": {
      "p": "planner:cell:21:14.7:droplet:priority:equal",
-     "v": 0.035211
+     "v": 0.025773
     },
     "solids_only": {
      "p": "planner:cell:21:14.7:droplet:priority:solids_only",
@@ -4149,7 +4205,7 @@
       "u": "steps",
       "v": 0.001
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L123"
     },
     {
@@ -4158,7 +4214,7 @@
       "u": "steps",
       "v": 0.001
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L145"
     },
     {
@@ -4167,7 +4223,7 @@
       "u": "steps",
       "v": 0.0022
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L12"
     }
    ],
@@ -4228,7 +4284,7 @@
    "n_near": {
     "p": "planner:cell:26.5:14.7:droplet:n",
     "u": "tests",
-    "v": 65
+    "v": 99
    },
    "nearest": [
     {
@@ -4237,7 +4293,7 @@
       "u": "steps",
       "v": 0.5005
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L132"
     },
     {
@@ -4246,7 +4302,7 @@
       "u": "steps",
       "v": 0.5009
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L133"
     },
     {
@@ -4255,7 +4311,7 @@
       "u": "steps",
       "v": 0.5014
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L134"
     }
    ],
@@ -4264,11 +4320,11 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:14.7:droplet:priority:balanced",
-     "v": 0.032753
+     "v": 0.022045
     },
     "equal": {
      "p": "planner:cell:26.5:14.7:droplet:priority:equal",
-     "v": 0.054588
+     "v": 0.036742
     },
     "solids_only": {
      "p": "planner:cell:26.5:14.7:droplet:priority:solids_only",
@@ -4295,7 +4351,7 @@
       "u": "steps",
       "v": 0.5003
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L167"
     },
     {
@@ -4304,7 +4360,7 @@
       "u": "steps",
       "v": 0.5827
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L74"
     },
     {
@@ -4313,7 +4369,7 @@
       "u": "steps",
       "v": 0.5827
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L166"
     }
    ],
@@ -4383,7 +4439,7 @@
       "u": "steps",
       "v": 0.0387
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L45"
     },
     {
@@ -4392,7 +4448,7 @@
       "u": "steps",
       "v": 0.0393
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L30"
     },
     {
@@ -4401,7 +4457,7 @@
       "u": "steps",
       "v": 0.0474
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L46"
     }
    ],
@@ -4441,7 +4497,7 @@
       "u": "steps",
       "v": 0.0411
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L164"
     },
     {
@@ -4450,7 +4506,7 @@
       "u": "steps",
       "v": 0.0518
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L73"
     },
     {
@@ -4459,7 +4515,7 @@
       "u": "steps",
       "v": 0.0697
      },
-     "investigation": "PSI-10",
+     "investigation": "ACME/Flame Design",
      "test_id": "PSI-10-normal-L165"
     }
    ],
@@ -4529,7 +4585,7 @@
       "u": "steps",
       "v": 0.8009
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L45"
     },
     {
@@ -4538,7 +4594,7 @@
       "u": "steps",
       "v": 0.801
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L30"
     },
     {
@@ -4547,7 +4603,7 @@
       "u": "steps",
       "v": 0.8014
      },
-     "investigation": "PSI-69",
+     "investigation": "FLEX",
      "test_id": "PSI-69-main-L46"
     }
    ],
@@ -4587,7 +4643,7 @@
       "u": "steps",
       "v": 0.2481
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L122"
     },
     {
@@ -4596,7 +4652,7 @@
       "u": "steps",
       "v": 0.2736
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L121"
     },
     {
@@ -4605,7 +4661,7 @@
       "u": "steps",
       "v": 0.3137
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L120"
     }
    ],
@@ -4705,7 +4761,7 @@
       "u": "steps",
       "v": 0.0061
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L140"
     },
     {
@@ -4714,7 +4770,7 @@
       "u": "steps",
       "v": 0.0081
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L114"
     },
     {
@@ -4723,7 +4779,7 @@
       "u": "steps",
       "v": 0.044
      },
-     "investigation": "PSI-159",
+     "investigation": "ACME CFI-G",
      "test_id": "PSI-159-normal-L175"
     }
    ],
@@ -5005,16 +5061,15 @@
    "cell:40:12:solid",
    "cell:30:6:droplet",
    "cell:40:6:droplet",
-   "cell:26.5:6:droplet",
    "cell:40:14.7:solid",
    "cell:21:6:solid",
    "cell:34:4.3:solid",
    "cell:21:10.2:gas",
+   "cell:26.5:6:droplet",
    "cell:34:8.2:droplet",
    "cell:40:14.7:droplet",
    "cell:30:4.3:solid",
    "cell:26.5:8.2:gas",
-   "cell:21:6:droplet",
    "cell:40:10.2:droplet",
    "cell:21:8.2:gas",
    "cell:34:14.7:droplet",
@@ -5028,6 +5083,7 @@
    "cell:34:10.2:gas",
    "cell:30:12:gas",
    "cell:50:10.2:solid",
+   "cell:21:6:droplet",
    "cell:40:12:droplet",
    "cell:30:4.3:droplet",
    "cell:30:6:gas",
@@ -5048,36 +5104,36 @@
    "cell:34:6:gas",
    "cell:50:10.2:droplet",
    "cell:40:4.3:gas",
-   "cell:26.5:8.2:droplet",
    "cell:21:6:gas",
-   "cell:26.5:10.2:droplet",
+   "cell:26.5:8.2:droplet",
    "cell:50:8.2:gas",
    "cell:40:6:gas",
    "cell:50:6:droplet",
    "cell:40:10.2:gas",
+   "cell:26.5:10.2:droplet",
    "cell:26.5:4.3:gas",
    "cell:21:4.3:solid",
    "cell:50:10.2:gas",
-   "cell:26.5:14.7:droplet",
    "cell:50:12:droplet",
    "cell:26.5:12:gas",
    "cell:50:6:gas",
    "cell:21:10.2:droplet",
    "cell:50:14.7:solid",
-   "cell:26.5:12:droplet",
+   "cell:26.5:14.7:droplet",
    "cell:30:14.7:gas",
    "cell:50:12:gas",
-   "cell:21:8.2:droplet",
-   "cell:21:14.7:droplet",
    "cell:21:4.3:droplet",
+   "cell:21:8.2:droplet",
    "cell:21:14.7:gas",
+   "cell:26.5:12:droplet",
    "cell:50:4.3:solid",
+   "cell:21:14.7:droplet",
    "cell:21:12:gas",
    "cell:21:4.3:gas",
    "cell:50:14.7:droplet",
    "cell:26.5:14.7:gas",
-   "cell:21:12:droplet",
    "cell:34:12:gas",
+   "cell:21:12:droplet",
    "cell:50:4.3:droplet",
    "cell:50:14.7:gas",
    "cell:50:4.3:gas",
@@ -5131,19 +5187,18 @@
    "cell:34:14.7:solid",
    "cell:40:6:droplet",
    "cell:40:6:solid",
-   "cell:26.5:6:droplet",
    "cell:26.5:6:solid",
    "cell:21:10.2:gas",
    "cell:40:12:solid",
    "cell:26.5:8.2:gas",
    "cell:21:8.2:gas",
    "cell:30:8.2:gas",
+   "cell:26.5:6:droplet",
    "cell:34:10.2:gas",
    "cell:34:8.2:droplet",
    "cell:40:14.7:droplet",
    "cell:40:14.7:solid",
    "cell:30:12:gas",
-   "cell:21:6:droplet",
    "cell:21:6:solid",
    "cell:40:10.2:droplet",
    "cell:30:6:gas",
@@ -5156,6 +5211,7 @@
    "cell:34:4.3:solid",
    "cell:30:8.2:droplet",
    "cell:40:8.2:gas",
+   "cell:21:6:droplet",
    "cell:40:12:droplet",
    "cell:30:4.3:droplet",
    "cell:30:4.3:gas",
@@ -5182,11 +5238,10 @@
    "cell:50:10.2:solid",
    "cell:26.5:12:gas",
    "cell:26.5:8.2:droplet",
-   "cell:26.5:10.2:droplet",
    "cell:50:6:droplet",
    "cell:50:6:gas",
    "cell:50:6:solid",
-   "cell:26.5:14.7:droplet",
+   "cell:26.5:10.2:droplet",
    "cell:30:14.7:gas",
    "cell:50:12:droplet",
    "cell:50:12:gas",
@@ -5194,14 +5249,15 @@
    "cell:21:14.7:gas",
    "cell:21:10.2:droplet",
    "cell:21:12:gas",
-   "cell:26.5:12:droplet",
-   "cell:21:8.2:droplet",
-   "cell:21:14.7:droplet",
+   "cell:26.5:14.7:droplet",
    "cell:21:4.3:droplet",
    "cell:21:4.3:gas",
    "cell:21:4.3:solid",
    "cell:26.5:14.7:gas",
+   "cell:21:8.2:droplet",
+   "cell:26.5:12:droplet",
    "cell:34:12:gas",
+   "cell:21:14.7:droplet",
    "cell:50:14.7:droplet",
    "cell:50:14.7:gas",
    "cell:50:14.7:solid",

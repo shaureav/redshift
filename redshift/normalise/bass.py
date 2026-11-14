@@ -68,24 +68,39 @@ def check_dates(ctx: Ctx, rows: list[RawRow]) -> None:
         raw_date = ctx.raw(row, C_DATE)
         d = dates[i]
         if d is None:
-            ctx.flag("date_inconsistent", row, C_DATE, raw_date,
-                     f"Date {raw_date!r} is not written as month/day/four-digit year.",
-                     "Raw kept verbatim; no correction attempted.")
+            ctx.flag(
+                "date_inconsistent",
+                row,
+                C_DATE,
+                raw_date,
+                f"Date {raw_date!r} is not written as month/day/four-digit year.",
+                "Raw kept verbatim; no correction attempted.",
+            )
             continue
         before = dates[i - 1] if i > 0 else None
         after = dates[i + 1] if i + 1 < len(rows) else None
         neighbours = [x for x in (before, after) if x is not None]
         if neighbours and all(n.year != d.year for n in neighbours):
             years = " and ".join(sorted({str(n.year) for n in neighbours}))
-            ctx.flag("date_inconsistent", row, C_DATE, raw_date,
-                     f"Year {d.year} differs from the neighbouring test rows ({years}).",
-                     "Raw kept verbatim; no correction attempted.")
+            ctx.flag(
+                "date_inconsistent",
+                row,
+                C_DATE,
+                raw_date,
+                f"Year {d.year} differs from the neighbouring test rows ({years}).",
+                "Raw kept verbatim; no correction attempted.",
+            )
         raw_gmt = ctx.raw(row, C_GMT)
         doy = d.timetuple().tm_yday
         if raw_gmt.strip() != str(doy):
-            ctx.flag("date_inconsistent", row, C_GMT, raw_gmt,
-                     f"GMT day {raw_gmt.strip()} does not match the date {raw_date} (day {doy} of the year).",
-                     "Raw kept verbatim; no correction attempted.")
+            ctx.flag(
+                "date_inconsistent",
+                row,
+                C_GMT,
+                raw_gmt,
+                f"GMT day {raw_gmt.strip()} does not match the date {raw_date} (day {doy} of the year).",
+                "Raw kept verbatim; no correction attempted.",
+            )
 
 
 def check_repeats(ctx: Ctx, rows: list[RawRow], col: str) -> None:
@@ -97,27 +112,43 @@ def check_repeats(ctx: Ctx, rows: list[RawRow], col: str) -> None:
     for v, lines in seen.items():
         if len(lines) > 1:
             where = ", ".join(str(x) for x in lines)
-            ctx.flag("near_duplicate", None, col, v,
-                     f"{col} {v} appears on lines {where}, which differ in other values.",
-                     "All rows kept.", rows=lines)
+            ctx.flag(
+                "near_duplicate",
+                None,
+                col,
+                v,
+                f"{col} {v} appears on lines {where}, which differ in other values.",
+                "All rows kept.",
+                rows=lines,
+            )
 
 
 def check_spelling(ctx: Ctx, rows: list[RawRow]) -> None:
     for variant, usual in SPELLING_VARIANTS.items():
         lines = [r.line for r in rows if variant in ctx.raw(r, C_MAT).lower()]
         if lines:
-            ctx.flag("label_inconsistent", None, C_MAT, variant,
-                     f"'{variant}' is written '{usual}' elsewhere in the table.", "Raw labels kept verbatim.",
-                     rows=lines)
+            ctx.flag(
+                "label_inconsistent",
+                None,
+                C_MAT,
+                variant,
+                f"'{variant}' is written '{usual}' elsewhere in the table.",
+                "Raw labels kept verbatim.",
+                rows=lines,
+            )
 
 
 def adapt(ctx: Ctx) -> None:
     tests: list[RawRow] = []
     for row in ctx.rows():
-        if (ctx.raw(row, C_MAT).strip() == NON_TEST_MATERIAL and not ctx.raw(row, C_TEST).strip()
-                and not ctx.raw(row, C_SAMPLE).strip()):
-            ctx.exclude(row, "Hardware cleaning entry ('SOOT Cleaning'), with no test or sample number; "
-                             "no burn took place.")
+        if (
+            ctx.raw(row, C_MAT).strip() == NON_TEST_MATERIAL
+            and not ctx.raw(row, C_TEST).strip()
+            and not ctx.raw(row, C_SAMPLE).strip()
+        ):
+            ctx.exclude(
+                row, "Hardware cleaning entry ('SOOT Cleaning'), with no test or sample number; no burn took place."
+            )
             continue
         tests.append(row)
 
@@ -127,21 +158,28 @@ def adapt(ctx: Ctx) -> None:
     check_spelling(ctx, tests)
 
     no_p = "The table has no pressure column; the PSI table does not record chamber pressure for these burns."
-    no_flow = ("The table has no flow column; the PSI page gives only the fan range (up to 40 cm/s), not a "
-               "flow per test.")
+    no_flow = (
+        "The table has no flow column; the PSI page gives only the fan range (up to 40 cm/s), not a flow per test."
+    )
     for row in tests:
-        ctx.emit(row, {
-            "test_label": ctx.text(row, C_TEST),
-            "test_date": ctx.text(row, C_DATE),
-            "material": ctx.text(row, C_MAT),
-            "o2_pct": ctx.missing("o2_pct", "The table has no oxygen column."),
-            "pressure_kpa": ctx.missing("pressure_kpa", reason=no_p),
-            "pressure_psi": ctx.missing("pressure_psi", reason=no_p),
-            "flow_cm_s": ctx.missing("flow_cm_s", no_flow),
-            "gravity_level": ctx.constant("gravity_level", "microgravity (ISS)",
-                                          "BASS.md: flight platform International Space Station (ISS), "
-                                          "hardware Microgravity Science Glovebox."),
-        })
+        ctx.emit(
+            row,
+            {
+                "test_label": ctx.text(row, C_TEST),
+                "test_date": ctx.text(row, C_DATE),
+                "material": ctx.text(row, C_MAT),
+                "o2_pct": ctx.missing("o2_pct", "The table has no oxygen column."),
+                "pressure_kpa": ctx.missing("pressure_kpa", reason=no_p),
+                "pressure_psi": ctx.missing("pressure_psi", reason=no_p),
+                "flow_cm_s": ctx.missing("flow_cm_s", no_flow),
+                "gravity_level": ctx.constant(
+                    "gravity_level",
+                    "microgravity (ISS)",
+                    "BASS.md: flight platform International Space Station (ISS), "
+                    "hardware Microgravity Science Glovebox.",
+                ),
+            },
+        )
 
 
 SPEC = AdapterSpec(

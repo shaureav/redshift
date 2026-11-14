@@ -1,30 +1,173 @@
 {
-  "checks": [
-    {"id": "harvest_investigations", "description": "Microgravity combustion investigations with a harvest folder", "expected": 19, "source": "Review p2"},
-    {"id": "harvest_tables", "description": "Experiment table files", "expected": 21, "source": "Review p2"},
-    {"id": "harvest_nonblank_records", "description": "Non-blank data records across all tables (before removing duplicates)", "expected": 2001, "source": "Review p2"},
-    {"id": "flex_high_o2_total", "description": "FLEX, 30 to 34% O2, no suppressant, 534 to 543 mmHg: tests", "expected": 17, "source": "Brief C3; Review p2"},
-    {"id": "flex_high_o2_labels", "description": "... outcome labels", "expected": {"Disruption": 15, "Completion": 2}, "source": "Brief C3"},
-    {"id": "flex_high_o2_fuels", "description": "... fuels", "expected": {"Methanol": 9, "Heptane": 8}, "source": "Brief C3"},
-    {"id": "flex_band_480_600", "description": "FLEX tests between 480 and 600 mmHg", "expected": 103, "source": "Review p2 (draft said 104)"},
-    {"id": "flex_co2_0", "description": "25% O2 + 15% CO2: extinguished / total", "expected": "0/6", "source": "Brief C3"},
-    {"id": "flex_co2_1", "description": "23 to 24% O2 + 20 to 25% CO2: extinguished / total", "expected": "14/23", "source": "Brief C3"},
-    {"id": "flex_co2_2", "description": "21% O2 + 30% CO2: extinguished / total", "expected": "4/6", "source": "Brief C3"},
-    {"id": "flex_co2_3", "description": "15 to 20% O2 + 35 to 50% CO2: extinguished / total", "expected": "22/22", "source": "Review p2 (draft said 23/23)"},
-    {"id": "ft_c14_7_21", "description": "Flame temperature, 14.7 psi / 21% (K)", "expected": 2224, "tolerance": 1, "source": "Brief C3"},
-    {"id": "ft_c10_2_26_5", "description": "Flame temperature, 10.2 psi / 26.5% (K)", "expected": 2415, "tolerance": 1, "source": "Brief C3"},
-    {"id": "ft_c10_2_30", "description": "Flame temperature, 10.2 psi / 30% (K)", "expected": 2505, "tolerance": 1, "source": "Brief C3"},
-    {"id": "ft_c8_2_34", "description": "Flame temperature, 8.2 psi / 34% (K)", "expected": 2570, "tolerance": 1, "source": "Brief C3"},
-    {"id": "ft_c4_3_100", "description": "Flame temperature, 4.3 psi / 100% (K, approximate)", "expected": 2903, "tolerance": 1, "source": "Brief C3"},
-    {"id": "near_psi_c14_7_21", "description": "PSI-table tests near 14.7 psi / 21% (gas, droplet, solid; BRE excluded)", "expected": 432, "source": "Draft p1 (earlier pipeline)"},
-    {"id": "near_psi_solid_c14_7_21", "description": "... of which solid", "expected": 129, "source": "Draft p1"},
-    {"id": "near_psi_c10_2_26_5", "description": "PSI-table tests near 10.2 psi / 26.5%", "expected": 72, "source": "Draft p1"},
-    {"id": "near_psi_c10_2_30", "description": "PSI-table tests near 10.2 psi / 30%", "expected": 52, "source": "Draft p1"},
-    {"id": "near_psi_c8_2_34", "description": "PSI-table tests near 8.2 psi / 34%", "expected": 37, "source": "Draft p1"},
-    {"id": "near_psi_droplet_c8_2_34", "description": "... of which droplet (FLEX)", "expected": 17, "source": "Draft p8"},
-    {"id": "near_psi_gas_c8_2_34", "description": "... of which gas (CFI-G)", "expected": 20, "source": "Draft p8"},
-    {"id": "near_psi_c4_3_100", "description": "PSI-table tests near 4.3 psi / 100%", "expected": 0, "source": "Draft p1"},
-    {"id": "near_psi_solid_any_habitat", "description": "PSI solid tests near any habitat candidate other than 14.7/21", "expected": 0, "source": "Brief A2"},
-    {"id": "bre_flames_total", "description": "ACME BRE flames ignited, summed over rows", "expected": 194, "source": "Review p3"}
-  ]
+ "checks": [
+  {
+   "id": "harvest_investigations",
+   "description": "Microgravity combustion investigations with a harvest folder",
+   "expected": 19,
+   "source": "Review p2"
+  },
+  {
+   "id": "harvest_tables",
+   "description": "Experiment table files",
+   "expected": 21,
+   "source": "Review p2"
+  },
+  {
+   "id": "harvest_nonblank_records",
+   "description": "Non-blank data records across all tables (before removing duplicates)",
+   "expected": 2001,
+   "source": "Review p2"
+  },
+  {
+   "id": "flex_high_o2_total",
+   "description": "FLEX, 30 to 34% O2, no suppressant, 534 to 543 mmHg: tests",
+   "expected": 17,
+   "source": "Brief C3; Review p2"
+  },
+  {
+   "id": "flex_high_o2_labels",
+   "description": "... outcome labels",
+   "expected": {
+    "Disruption": 15,
+    "Completion": 2
+   },
+   "source": "Brief C3"
+  },
+  {
+   "id": "flex_high_o2_fuels",
+   "description": "... fuels",
+   "expected": {
+    "Methanol": 9,
+    "Heptane": 8
+   },
+   "source": "Brief C3"
+  },
+  {
+   "id": "flex_band_480_600",
+   "description": "FLEX tests between 480 and 600 mmHg",
+   "expected": 103,
+   "source": "Review p2 (draft said 104)"
+  },
+  {
+   "id": "flex_co2_0",
+   "description": "25% O2 + 15% CO2: extinguished / total",
+   "expected": "0/6",
+   "source": "Brief C3"
+  },
+  {
+   "id": "flex_co2_1",
+   "description": "23 to 24% O2 + 20 to 25% CO2: extinguished / total",
+   "expected": "14/23",
+   "source": "Brief C3"
+  },
+  {
+   "id": "flex_co2_2",
+   "description": "21% O2 + 30% CO2: extinguished / total",
+   "expected": "4/6",
+   "source": "Brief C3"
+  },
+  {
+   "id": "flex_co2_3",
+   "description": "15 to 20% O2 + 35 to 50% CO2: extinguished / total",
+   "expected": "22/22",
+   "source": "Review p2 (draft said 23/23)"
+  },
+  {
+   "id": "ft_c14_7_21",
+   "description": "Flame temperature, 14.7 psi / 21% (K)",
+   "expected": 2224,
+   "tolerance": 1,
+   "source": "Brief C3"
+  },
+  {
+   "id": "ft_c10_2_26_5",
+   "description": "Flame temperature, 10.2 psi / 26.5% (K)",
+   "expected": 2415,
+   "tolerance": 1,
+   "source": "Brief C3"
+  },
+  {
+   "id": "ft_c10_2_30",
+   "description": "Flame temperature, 10.2 psi / 30% (K)",
+   "expected": 2505,
+   "tolerance": 1,
+   "source": "Brief C3"
+  },
+  {
+   "id": "ft_c8_2_34",
+   "description": "Flame temperature, 8.2 psi / 34% (K)",
+   "expected": 2570,
+   "tolerance": 1,
+   "source": "Brief C3"
+  },
+  {
+   "id": "ft_c4_3_100",
+   "description": "Flame temperature, 4.3 psi / 100% (K, approximate)",
+   "expected": 2903,
+   "tolerance": 1,
+   "source": "Brief C3"
+  },
+  {
+   "id": "near_psi_c14_7_21",
+   "description": "PSI-table tests near 14.7 psi / 21% (gas, droplet, solid; BRE excluded)",
+   "expected": 432,
+   "source": "Draft p1 (earlier pipeline)",
+   "explanation": "Explained exactly: 432 = 295 + 129 + 8. The 129 are BASS-II solid burns (PSI-25), whose table records O2 but no pressure; the earlier count must have assumed 1 atm, which Redshift does not impute. They are reported as 'O2 matches, pressure not recorded'. The 8 are byte-identical duplicate CFI rows (PSI-39 lines 81 to 88 repeat lines 24 to 31), removed by the pipeline. Checked 2026-11-14."
+  },
+  {
+   "id": "near_psi_solid_c14_7_21",
+   "description": "... of which solid",
+   "expected": 129,
+   "source": "Draft p1",
+   "explanation": "Explained: all 129 are BASS-II rows (PSI-25) with O2 recorded (13.6 to 22.2%) but no pressure column. All 129 would be near 14.7 psi / 21% only if a pressure of 1 atm were assumed; Redshift does not impute pressure, so they appear as 'O2 matches, pressure not recorded'. Checked 2026-11-14."
+  },
+  {
+   "id": "near_psi_c10_2_26_5",
+   "description": "PSI-table tests near 10.2 psi / 26.5%",
+   "expected": 72,
+   "source": "Draft p1"
+  },
+  {
+   "id": "near_psi_c10_2_30",
+   "description": "PSI-table tests near 10.2 psi / 30%",
+   "expected": 52,
+   "source": "Draft p1"
+  },
+  {
+   "id": "near_psi_c8_2_34",
+   "description": "PSI-table tests near 8.2 psi / 34%",
+   "expected": 37,
+   "source": "Draft p1"
+  },
+  {
+   "id": "near_psi_droplet_c8_2_34",
+   "description": "... of which droplet (FLEX)",
+   "expected": 17,
+   "source": "Draft p8"
+  },
+  {
+   "id": "near_psi_gas_c8_2_34",
+   "description": "... of which gas (CFI-G)",
+   "expected": 20,
+   "source": "Draft p8"
+  },
+  {
+   "id": "near_psi_c4_3_100",
+   "description": "PSI-table tests near 4.3 psi / 100%",
+   "expected": 0,
+   "source": "Draft p1"
+  },
+  {
+   "id": "near_psi_solid_any_habitat",
+   "description": "PSI solid tests near any habitat candidate other than 14.7/21",
+   "expected": 0,
+   "source": "Brief A2"
+  },
+  {
+   "id": "bre_flames_total",
+   "description": "ACME BRE flames ignited, summed over rows",
+   "expected": 194,
+   "source": "Review p3"
+  }
+ ]
 }

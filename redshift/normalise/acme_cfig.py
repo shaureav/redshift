@@ -97,9 +97,15 @@ def flag_case_variants(ctx: Ctx, rows: list[RawRow], col: str) -> None:
         ranked = sorted(spellings, key=lambda s: (-len(lines[s]), lines[s][0]))
         counts = ", ".join(f"{s!r} on {len(lines[s])} rows" for s in ranked)
         flagged = sorted(ln for s in ranked[1:] for ln in lines[s])
-        ctx.flag("label_inconsistent", None, col, "; ".join(ranked),
-                 f"The same label is written with different letter case: {counts}.",
-                 "Raw labels kept verbatim; the rarer spelling's lines are listed.", rows=flagged)
+        ctx.flag(
+            "label_inconsistent",
+            None,
+            col,
+            "; ".join(ranked),
+            f"The same label is written with different letter case: {counts}.",
+            "Raw labels kept verbatim; the rarer spelling's lines are listed.",
+            rows=flagged,
+        )
 
 
 def flag_day_code(ctx: Ctx, rows: list[RawRow]) -> None:
@@ -112,10 +118,14 @@ def flag_day_code(ctx: Ctx, rows: list[RawRow]) -> None:
         label = ctx.raw(row, C_TEST).strip()
         common, n = by_day[day].most_common(1)[0]
         if label[:5] != common and n > 1:
-            ctx.flag("label_inconsistent", row, C_TEST, label,
-                     f"Test label {label} begins {label[:5]}, while the other Day {day} tests begin "
-                     f"{common}.",
-                     "Raw label kept verbatim; no correction attempted.")
+            ctx.flag(
+                "label_inconsistent",
+                row,
+                C_TEST,
+                label,
+                f"Test label {label} begins {label[:5]}, while the other Day {day} tests begin {common}.",
+                "Raw label kept verbatim; no correction attempted.",
+            )
 
 
 def _common(ctx: Ctx, row: RawRow, end_col: str) -> dict[str, dict]:
@@ -139,20 +149,29 @@ def adapt_normal(ctx: Ctx) -> None:
         o2 = ctx.num(row, N_O2, "o2_pct", T.fraction_as_pct)
         xf = ctx.num(row, N_XF, "fuel_conc_pct", T.fraction_as_pct)
         if xf["v"] == 0:
-            ctx.flag("implausible_value", row, N_XF, ctx.raw(row, N_XF),
-                     f"Xf = 0 and {N_MHC} = {ctx.raw(row, N_MHC).strip()} for a listed flame test: no fuel "
-                     f"flow is recorded, and Tad (K) and Zst read {ctx.raw(row, 'Tad (K)').strip()!r} and "
-                     f"{ctx.raw(row, 'Zst').strip()!r} on this row.",
-                     "Raw and value kept; flagged for review.")
+            ctx.flag(
+                "implausible_value",
+                row,
+                N_XF,
+                ctx.raw(row, N_XF),
+                f"Xf = 0 and {N_MHC} = {ctx.raw(row, N_MHC).strip()} for a listed flame test: no fuel "
+                f"flow is recorded, and Tad (K) and Zst read {ctx.raw(row, 'Tad (K)').strip()!r} and "
+                f"{ctx.raw(row, 'Zst').strip()!r} on this row.",
+                "Raw and value kept; flagged for review.",
+            )
         fields = _common(ctx, row, N_END)
-        fields.update({
-            "o2_pct": o2,
-            "fuel_conc_pct": xf,
-        })
+        fields.update(
+            {
+                "o2_pct": o2,
+                "fuel_conc_pct": xf,
+            }
+        )
         if o2["v"] is not None:
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "chamber initial",
-                "Header ' XO2 before test' in the Normal Flames table: chamber O2 at the start of each test.")
+                "o2_basis",
+                "chamber initial",
+                "Header ' XO2 before test' in the Normal Flames table: chamber O2 at the start of each test.",
+            )
         ctx.emit(row, fields)
 
 
@@ -164,17 +183,22 @@ def adapt_inverse(ctx: Ctx) -> None:
     for row in rows:
         o2 = ctx.num(row, I_O2, "o2_pct", T.fraction_as_pct)
         fields = _common(ctx, row, I_END)
-        fields.update({
-            "o2_pct": o2,
-            "fuel_conc_pct": ctx.missing(
-                "fuel_conc_pct",
-                "Inverse flames: 'Xf  before test' is the chamber-ambient fuel fraction, not a burner-stream "
-                "fuel concentration; it stays in the raw columns."),
-        })
+        fields.update(
+            {
+                "o2_pct": o2,
+                "fuel_conc_pct": ctx.missing(
+                    "fuel_conc_pct",
+                    "Inverse flames: 'Xf  before test' is the chamber-ambient fuel fraction, not a burner-stream "
+                    "fuel concentration; it stays in the raw columns.",
+                ),
+            }
+        )
         if o2["v"] is not None:
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "oxidiser stream (inverse flame)",
-                "Header 'XO2' in the Inverse Flames table: O2 fraction of the burner oxidiser stream.")
+                "o2_basis",
+                "oxidiser stream (inverse flame)",
+                "Header 'XO2' in the Inverse Flames table: O2 fraction of the burner oxidiser stream.",
+            )
         ctx.emit(row, fields)
 
 

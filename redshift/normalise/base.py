@@ -26,7 +26,7 @@ FUEL_CLASSES: tuple[str, ...] = ("gas", "droplet", "solid", "emulator", "none")
 # Canonical fields: name -> (unit, physical range or None). Order is the output column order.
 NUMERIC_FIELDS: dict[str, tuple[str, tuple[float, float] | None]] = {
     "o2_pct": ("%", (0.0, 100.0)),
-    "pressure_kpa": ("kPa", (0.0, 400.0)),
+    "pressure_kpa": ("kPa", (0.0, 600.0)),  # CFI ran up to 5 atm (CFI.md objectives)
     "pressure_psi": ("psi", None),
     "co2_pct": ("%", (0.0, 100.0)),
     "he_pct": ("%", (0.0, 100.0)),
@@ -36,8 +36,16 @@ NUMERIC_FIELDS: dict[str, tuple[str, tuple[float, float] | None]] = {
     "n_flames": ("count", (0.0, 10000.0)),
 }
 TEXT_FIELDS: tuple[str, ...] = (
-    "test_label", "test_date", "fuel", "material", "diluent", "outcome_label", "suppressant",
-    "gravity_level", "o2_basis", "notes",
+    "test_label",
+    "test_date",
+    "fuel",
+    "material",
+    "diluent",
+    "outcome_label",
+    "suppressant",
+    "gravity_level",
+    "o2_basis",
+    "notes",
 )
 
 _SPREADSHEET_ERROR = re.compile(r"^#(VALUE|DIV/0|REF|NAME\?|N/A|NUM|NULL)!?$", re.I)
@@ -97,8 +105,9 @@ class Reconciliation:
 class Ctx:
     """Everything an adapter may do to one table."""
 
-    def __init__(self, table: RawTable, registry: Registry, flags: FlagLog, *, doi: str, fuel_class: str,
-                 test_kind: str) -> None:
+    def __init__(
+        self, table: RawTable, registry: Registry, flags: FlagLog, *, doi: str, fuel_class: str, test_kind: str
+    ) -> None:
         self.table = table
         self.registry = registry
         self.flags = flags
@@ -116,8 +125,14 @@ class Ctx:
         )
         self._row_flags: dict[int, list[int]] = {}
         if "decode_cp1252" in table.file_transforms:
-            self.flag("encoding", None, None, None, "File is not valid UTF-8; decoded as Windows-1252.",
-                      "Decoded; no characters changed.")
+            self.flag(
+                "encoding",
+                None,
+                None,
+                None,
+                "File is not valid UTF-8; decoded as Windows-1252.",
+                "Decoded; no characters changed.",
+            )
 
     # ---------- identity ----------
     @property
@@ -131,11 +146,28 @@ class Ctx:
         return row.cells[self.table.col(col)]
 
     # ---------- flags ----------
-    def flag(self, code: str, row: RawRow | None, col: str | None, raw: str | None, detail: str, action: str,
-             *, rows: list[int] | None = None) -> None:
+    def flag(
+        self,
+        code: str,
+        row: RawRow | None,
+        col: str | None,
+        raw: str | None,
+        detail: str,
+        action: str,
+        *,
+        rows: list[int] | None = None,
+    ) -> None:
         lines = rows if rows is not None else ([row.line] if row is not None else [])
-        f = Flag(code=code, investigation_id=self.inv, file=self.table.path, rows=lines, column=col, raw=raw,
-                 detail=detail, action=action)
+        f = Flag(
+            code=code,
+            investigation_id=self.inv,
+            file=self.table.path,
+            rows=lines,
+            column=col,
+            raw=raw,
+            detail=detail,
+            action=action,
+        )
         self.flags.add(f)
         idx = len(self.flags.items) - 1
         for ln in lines:
@@ -154,15 +186,27 @@ class Ctx:
             key = tuple(row.cells)
             if key in seen:
                 self.recon.duplicates_removed.append({"line": row.line, "duplicate_of": seen[key]})
-                self.flag("exact_duplicate", row, None, ",".join(row.cells),
-                          f"Byte-identical to line {seen[key]}.", "Removed (remove_exact_duplicate).")
+                self.flag(
+                    "exact_duplicate",
+                    row,
+                    None,
+                    ",".join(row.cells),
+                    f"Byte-identical to line {seen[key]}.",
+                    "Removed (remove_exact_duplicate).",
+                )
                 continue
             seen[key] = row.line
             yield row
         if blanks:
-            self.flag("blank_row", None, None, None,
-                      f"{len(blanks)} blank rows (lines {blanks[0]} to {blanks[-1]}).",
-                      "Excluded (exclude_blank_row).", rows=[])
+            self.flag(
+                "blank_row",
+                None,
+                None,
+                None,
+                f"{len(blanks)} blank rows (lines {blanks[0]} to {blanks[-1]}).",
+                "Excluded (exclude_blank_row).",
+                rows=[],
+            )
 
     def exclude(self, row: RawRow, reason: str) -> None:
         """Exclude a non-test row (a note, a continuation stub). It is listed verbatim in the report."""
@@ -173,26 +217,52 @@ class Ctx:
     def _prov(self, row: RawRow, col: str, raw: str, applied: list[str], suffix: str = "") -> str:
         col_idx = self.table.col(col)
         pid = f"cell:{self.inv}:{self.table.table_key}:L{row.line}:C{col_idx}{suffix}"
-        return self.registry.add(Prov(
-            id=pid, source_type="psi_table", investigation_id=self.inv, file=self.table.path, row=row.line,
-            column=self.table.header[col_idx], raw=raw, transforms=[*self.table.file_transforms, *applied],
+        prov = Prov(
+            id=pid,
+            source_type="psi_table",
+            investigation_id=self.inv,
+            file=self.table.path,
+            row=row.line,
+            column=self.table.header[col_idx],
+            raw=raw,
+            transforms=[*self.table.file_transforms, *applied],
             doi=self.doi,
-        ))
+        )
+        if pid in self.registry and self.registry.get(pid) != prov:
+            # The same cell read a second way (for example as a number and as note text): a distinct,
+            # deterministic id named after the transforms, so neither reading overwrites the other.
+            pid = f"{pid}:{'+'.join(applied) or 'raw'}"
+            prov = prov.model_copy(update={"id": pid})
+        return self.registry.add(prov)
 
     def missing(self, field_name: str, reason: str = "The table has no column for this condition.") -> dict[str, Any]:
         """A field the table does not record. Null, with provenance saying why."""
         pid = f"missing:{self.inv}:{self.table.table_key}:{field_name}"
         if pid not in self.registry:
-            self.registry.add(Prov(id=pid, source_type="psi_table", investigation_id=self.inv,
-                                   file=self.table.path, note=reason, doi=self.doi))
+            self.registry.add(
+                Prov(
+                    id=pid,
+                    source_type="psi_table",
+                    investigation_id=self.inv,
+                    file=self.table.path,
+                    note=reason,
+                    doi=self.doi,
+                )
+            )
             self.flag("missing_column", None, field_name, None, reason, "Value is null ('not recorded').", rows=[])
         unit = NUMERIC_FIELDS[field_name][0] if field_name in NUMERIC_FIELDS else None
         return value(None, unit, pid)
 
     # ---------- value readers ----------
-    def num(self, row: RawRow, col: str, field_name: str,
-            parser: Callable[[str | None], tuple[float | None, list[str]]] = T.number,
-            *, rng: tuple[float, float] | None | Literal["default"] = "default") -> dict[str, Any]:
+    def num(
+        self,
+        row: RawRow,
+        col: str,
+        field_name: str,
+        parser: Callable[[str | None], tuple[float | None, list[str]]] = T.number,
+        *,
+        rng: tuple[float, float] | None | Literal["default"] = "default",
+    ) -> dict[str, Any]:
         """Read a numeric cell. Text becomes a flag and a null; out-of-range becomes a flag and a null."""
         raw = self.raw(row, col)
         unit, default_rng = NUMERIC_FIELDS[field_name]
@@ -206,12 +276,20 @@ class Ctx:
             self.flag(code, row, col, raw, exc.detail, "Raw kept; value set to null.")
             return value(None, unit, pid)
         pid = self._prov(row, col, raw, applied)
-        if v is not None and bounds is not None and not (bounds[0] <= v <= bounds[1]) or (
-            v is not None and field_name.startswith("pressure") and v <= 0
+        if (
+            v is not None
+            and bounds is not None
+            and not (bounds[0] <= v <= bounds[1])
+            or (v is not None and field_name.startswith("pressure") and v <= 0)
         ):
-            self.flag("out_of_range", row, col, raw,
-                      f"{field_name} = {v:g} {unit} is outside the physical range {bounds}.",
-                      "Raw kept; value set to null.")
+            self.flag(
+                "out_of_range",
+                row,
+                col,
+                raw,
+                f"{field_name} = {v:g} {unit} is outside the physical range {bounds}.",
+                "Raw kept; value set to null.",
+            )
             return value(None, unit, pid)
         return value(v, unit, pid)
 
@@ -222,6 +300,7 @@ class Ctx:
         psi_id = kpa["p"] + ":psi"
         self.registry.add(base.model_copy(update={"id": psi_id, "transforms": [*base.transforms, "kpa_to_psi"]}))
         from redshift.units import kpa_to_psi
+
         return kpa, value(None if kpa["v"] is None else kpa_to_psi(kpa["v"]), "psi", psi_id)
 
     def text(self, row: RawRow, col: str) -> dict[str, Any]:
@@ -233,22 +312,47 @@ class Ctx:
         """A per-table constant stated by the investigation (for example the fuel class). Text only."""
         pid = f"const:{self.inv}:{self.table.table_key}:{field_name}"
         if pid not in self.registry:
-            self.registry.add(Prov(id=pid, source_type="psi_page", investigation_id=self.inv,
-                                   file=self.table.path, note=note, doi=self.doi))
+            self.registry.add(
+                Prov(
+                    id=pid,
+                    source_type="psi_page",
+                    investigation_id=self.inv,
+                    file=self.table.path,
+                    note=note,
+                    doi=self.doi,
+                )
+            )
         return value(v, None, pid)
 
-    def derived_text(self, row: RawRow, field_name: str, v: str | None, method: str,
-                     inputs: list[dict[str, Any]]) -> dict[str, Any]:
+    def derived_text(
+        self, row: RawRow, field_name: str, v: str | None, method: str, inputs: list[dict[str, Any]]
+    ) -> dict[str, Any]:
         """A text label computed from other recorded values of the same row (never a number)."""
         pid = f"derived:{self.inv}:{self.table.table_key}:L{row.line}:{field_name}"
-        self.registry.add(Prov(id=pid, source_type="derived", investigation_id=self.inv, file=self.table.path,
-                               row=row.line, method=method, method_version="1",
-                               inputs=[i["p"] for i in inputs], doi=self.doi))
+        self.registry.add(
+            Prov(
+                id=pid,
+                source_type="derived",
+                investigation_id=self.inv,
+                file=self.table.path,
+                row=row.line,
+                method=method,
+                method_version="1",
+                inputs=[i["p"] for i in inputs],
+                doi=self.doi,
+            )
+        )
         return value(v, None, pid)
 
     # ---------- output ----------
-    def emit(self, row: RawRow, fields: dict[str, dict[str, Any]], *, fuel_class: str | None = None,
-             test_kind: str | None = None) -> TestRecord:
+    def emit(
+        self,
+        row: RawRow,
+        fields: dict[str, dict[str, Any]],
+        *,
+        fuel_class: str | None = None,
+        test_kind: str | None = None,
+    ) -> TestRecord:
         for k in fields:
             if k not in NUMERIC_FIELDS and k not in TEXT_FIELDS:
                 raise KeyError(f"unknown canonical field {k}")
@@ -264,9 +368,14 @@ class Ctx:
         if fc not in FUEL_CLASSES:
             raise ValueError(f"bad fuel class {fc}")
         rec = TestRecord(
-            test_id=self.test_id(row), investigation_id=self.inv, table_key=self.table.table_key,
-            table_file=self.table.path, source_row=row.line, fuel_class=fc,
-            test_kind=test_kind or self.default_test_kind, fields=full,
+            test_id=self.test_id(row),
+            investigation_id=self.inv,
+            table_key=self.table.table_key,
+            table_file=self.table.path,
+            source_row=row.line,
+            fuel_class=fc,
+            test_kind=test_kind or self.default_test_kind,
+            fields=full,
             raw={self.table.header[i]: c for i, c in enumerate(row.cells)},
         )
         self.records.append(rec)

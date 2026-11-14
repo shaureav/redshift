@@ -16,8 +16,18 @@ from redshift.normalise.base import Ctx
 
 # Month names as written in the ACME tables, used only to compare dates for checks.
 MONTHS: dict[str, int] = {
-    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10,
-    "nov": 11, "dec": 12,
+    "jan": 1,
+    "feb": 2,
+    "mar": 3,
+    "apr": 4,
+    "may": 5,
+    "jun": 6,
+    "jul": 7,
+    "aug": 8,
+    "sep": 9,
+    "oct": 10,
+    "nov": 11,
+    "dec": 12,
 }
 
 # Formulas of real gases that may appear at the end of a label; used only to word a flag.
@@ -72,8 +82,12 @@ def date_text(ctx: Ctx, row: RawRow, c_year: str, c_month: str, c_date: str) -> 
     parts = [ctx.text(row, c) for c in (c_year, c_month, c_date)]
     words = [p["v"] for p in parts if p["v"] is not None]
     return ctx.derived_text(
-        row, "test_date", " ".join(words) if words else None,
-        f"Cells '{c_year}', '{c_month}' and '{c_date}' joined with spaces, verbatim.", parts)
+        row,
+        "test_date",
+        " ".join(words) if words else None,
+        f"Cells '{c_year}', '{c_month}' and '{c_date}' joined with spaces, verbatim.",
+        parts,
+    )
 
 
 def check_day_of_year(ctx: Ctx, row: RawRow, c_day: str, c_year: str, c_month: str, c_date: str) -> None:
@@ -84,9 +98,15 @@ def check_day_of_year(ctx: Ctx, row: RawRow, c_day: str, c_year: str, c_month: s
         return
     expected = f"{d.year % 100:02d}{d.timetuple().tm_yday:03d}"
     if expected != raw_day:
-        ctx.flag("date_inconsistent", row, c_day, raw_day,
-                 f"Test Day {raw_day} (YYDDD) does not match the Year, Month and Date cells "
-                 f"({d.isoformat()}, day {expected}).", "Both kept as recorded.")
+        ctx.flag(
+            "date_inconsistent",
+            row,
+            c_day,
+            raw_day,
+            f"Test Day {raw_day} (YYDDD) does not match the Year, Month and Date cells "
+            f"({d.isoformat()}, day {expected}).",
+            "Both kept as recorded.",
+        )
 
 
 class FillDownCheck:
@@ -111,13 +131,20 @@ class FillDownCheck:
         stem, n = m.group(1), int(m.group(2))
         if self.prev is not None and self.prev[0] == stem and n == self.prev[1] + 1:
             last = raw.split()[-1]
-            extra = (f" '{last}' is itself a real formula, but it sits inside an incrementing series."
-                     if last in REAL_FORMULAS else "")
+            extra = (
+                f" '{last}' is itself a real formula, but it sits inside an incrementing series."
+                if last in REAL_FORMULAS
+                else ""
+            )
             self.ctx.flag(
-                "fill_down_error", row, self.col, raw,
+                "fill_down_error",
+                row,
+                self.col,
+                raw,
                 f"'{raw}' follows '{self.prev[2]}' (line {self.prev[3]}) with its final number increased "
                 f"by 1, the pattern of a spreadsheet fill-down.{extra}",
-                "Raw label kept verbatim; no correction attempted.")
+                "Raw label kept verbatim; no correction attempted.",
+            )
             self.flagged.append(row.line)
         self.prev = (stem, n, raw, row.line)
 
@@ -145,10 +172,15 @@ class SpellingCheck:
                 if sp == main:
                     continue
                 self.ctx.flag(
-                    "label_inconsistent", None, self.col, sp,
+                    "label_inconsistent",
+                    None,
+                    self.col,
+                    sp,
                     f"'{sp}' (lines {', '.join(map(str, lines))}) is written differently from '{main}' "
                     f"(lines {', '.join(map(str, spellings[main]))}).",
-                    "Raw labels kept verbatim.", rows=lines)
+                    "Raw labels kept verbatim.",
+                    rows=lines,
+                )
 
 
 def notes(ctx: Ctx, row: RawRow, items: list[tuple[str, str, dict[str, Any] | None]]) -> dict[str, Any]:

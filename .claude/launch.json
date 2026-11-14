@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "redshift-web",
+      "runtimeExecutable": "/Users/shaureavardhan/.local/opt/node-v22.23.5-darwin-arm64/bin/node",
+      "runtimeArgs": ["web/node_modules/vite/bin/vite.js", "web", "--port", "5174", "--strictPort"],
+      "port": 5174
+    }
+  ]
+}

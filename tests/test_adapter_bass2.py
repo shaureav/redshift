@@ -27,8 +27,14 @@ def out():
     spec = M.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, reg, flags, {r.source_row: r for r in ctx.records}
@@ -56,7 +62,10 @@ def test_reconciliation(out):
 def test_flag_counts(out):
     _, _, flags, _ = out
     assert Counter(f.code for f in flags.items) == {
-        "non_numeric": 26, "missing_column": 7, "implausible_value": 6, "date_inconsistent": 3,
+        "non_numeric": 26,
+        "missing_column": 7,
+        "implausible_value": 6,
+        "date_inconsistent": 3,
         "label_inconsistent": 2,
     }
 
@@ -129,9 +138,13 @@ def test_free_text_in_numeric_columns(out):
     _, _, flags, _ = out
     got = {(f.rows[0], f.column, f.raw) for f in _flags(flags, "non_numeric")}
     for item in [
-        (32, "Total Frames Shot", "300+   +102"), (72, "Total Frames Shot", "video"),
-        (52, "Final CO (ppm)", "OR"), (62, "Initial CO (ppm)", "OR"), (64, "Final CO (ppm)", "over"),
-        (32, "Final CO (ppm)", ">500"), (3, "Total Frames Shot", "none"),
+        (32, "Total Frames Shot", "300+   +102"),
+        (72, "Total Frames Shot", "video"),
+        (52, "Final CO (ppm)", "OR"),
+        (62, "Initial CO (ppm)", "OR"),
+        (64, "Final CO (ppm)", "over"),
+        (32, "Final CO (ppm)", ">500"),
+        (3, "Total Frames Shot", "none"),
     ]:
         assert item in got
 

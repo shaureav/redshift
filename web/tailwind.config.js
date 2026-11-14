@@ -1,6 +1,7 @@
+import { fileURLToPath } from "node:url";
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  content: [fileURLToPath(new URL("./index.html", import.meta.url)), fileURLToPath(new URL("./src", import.meta.url)) + "/**/*.{ts,tsx}"],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {

@@ -78,9 +78,11 @@ GRAVITY_NOTE = "PSI page ACME-Flame-Design.md line 12: flight platform Internati
 FLOW_NOTE = "Burner flows are recorded as mass flow rates in mg/s, not cm/s."
 N2_NOTE = "N2 is recorded only as a burner mass flow 'mN2 (mg/s)', not as a percentage."
 TABLE_DIR = "ACME-Flame-Design/experiment_table"
-FUEL_NOTE = ("The Inverse Flame table has no Fuel column, and the PSI page (ACME-Flame-Design.md lines 25 to "
-             "27) names both C2H4 and CH4 without saying which the inverse flames used. The headers 'XC2H4 "
-             "initial' and 'XC2H4 final' point to C2H4 but are not used to fill the field.")
+FUEL_NOTE = (
+    "The Inverse Flame table has no Fuel column, and the PSI page (ACME-Flame-Design.md lines 25 to "
+    "27) names both C2H4 and CH4 without saying which the inverse flames used. The headers 'XC2H4 "
+    "initial' and 'XC2H4 final' point to C2H4 but are not used to fill the field."
+)
 
 
 def flag_day_code(ctx: Ctx, rows: list[RawRow]) -> None:
@@ -93,10 +95,14 @@ def flag_day_code(ctx: Ctx, rows: list[RawRow]) -> None:
         label = ctx.raw(row, C_TEST).strip()
         common, n = by_day[day].most_common(1)[0]
         if label[:5] != common and n > 1:
-            ctx.flag("label_inconsistent", row, C_TEST, label,
-                     f"Test label {label} begins {label[:5]}, while the other Day {day} tests begin "
-                     f"{common}.",
-                     "Raw label kept verbatim; no correction attempted.")
+            ctx.flag(
+                "label_inconsistent",
+                row,
+                C_TEST,
+                label,
+                f"Test label {label} begins {label[:5]}, while the other Day {day} tests begin {common}.",
+                "Raw label kept verbatim; no correction attempted.",
+            )
 
 
 def _common(ctx: Ctx, row: RawRow) -> dict[str, dict]:
@@ -113,10 +119,15 @@ def _common(ctx: Ctx, row: RawRow) -> dict[str, dict]:
 
 def _no_licence(ctx: Ctx) -> None:
     if ctx.table.table_key == "normal":
-        ctx.flag("no_licence", None, None, None,
-                 "ACME-Flame-Design.md line 19 shows a dash placeholder in the License row and names no "
-                 "licence.",
-                 "Recorded once for the investigation; data cited by the PSI DOI.", rows=[])
+        ctx.flag(
+            "no_licence",
+            None,
+            None,
+            None,
+            "ACME-Flame-Design.md line 19 shows a dash placeholder in the License row and names no licence.",
+            "Recorded once for the investigation; data cited by the PSI DOI.",
+            rows=[],
+        )
 
 
 def adapt_normal(ctx: Ctx) -> None:
@@ -124,22 +135,32 @@ def adapt_normal(ctx: Ctx) -> None:
     flag_day_code(ctx, rows)
     blank_p = [row.line for row in rows if all(ctx.raw(row, c).strip() == "" for c in N_PBLANK)]
     if blank_p:
-        ctx.flag("missing_column", None, C_P, "",
-                 f"'pmean (atm)', 'pfinal (atm)' and 'XO2 (final)' are blank on {len(blank_p)} rows (lines "
-                 f"{blank_p[0]} to {blank_p[-1]}). 'pinit (atm)' is recorded there but is not substituted.",
-                 "pressure_kpa and pressure_psi are null ('not recorded') on these rows.", rows=blank_p)
+        ctx.flag(
+            "missing_column",
+            None,
+            C_P,
+            "",
+            f"'pmean (atm)', 'pfinal (atm)' and 'XO2 (final)' are blank on {len(blank_p)} rows (lines "
+            f"{blank_p[0]} to {blank_p[-1]}). 'pinit (atm)' is recorded there but is not substituted.",
+            "pressure_kpa and pressure_psi are null ('not recorded') on these rows.",
+            rows=blank_p,
+        )
     for row in rows:
         o2 = ctx.num(row, N_O2, "o2_pct", T.fraction_as_pct)
         fields = _common(ctx, row)
-        fields.update({
-            "fuel": ctx.text(row, N_FUEL),
-            "o2_pct": o2,
-            "fuel_conc_pct": ctx.num(row, N_XF, "fuel_conc_pct", T.fraction_as_pct),
-        })
+        fields.update(
+            {
+                "fuel": ctx.text(row, N_FUEL),
+                "o2_pct": o2,
+                "fuel_conc_pct": ctx.num(row, N_XF, "fuel_conc_pct", T.fraction_as_pct),
+            }
+        )
         if o2["v"] is not None:
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "chamber initial",
-                "Header 'XO2 (init)' in the Normal Flame table: chamber O2 at the start of each test.")
+                "o2_basis",
+                "chamber initial",
+                "Header 'XO2 (init)' in the Normal Flame table: chamber O2 at the start of each test.",
+            )
         ctx.emit(row, fields)
 
 
@@ -149,18 +170,23 @@ def adapt_inverse(ctx: Ctx) -> None:
     for row in rows:
         o2 = ctx.num(row, I_O2, "o2_pct", T.fraction_as_pct)
         fields = _common(ctx, row)
-        fields.update({
-            "fuel": ctx.missing("fuel", FUEL_NOTE),
-            "o2_pct": o2,
-            "fuel_conc_pct": ctx.missing(
-                "fuel_conc_pct",
-                "Inverse flames: 'XC2H4 initial' is the chamber-ambient fuel fraction, not a burner-stream "
-                "fuel concentration; it stays in the raw columns."),
-        })
+        fields.update(
+            {
+                "fuel": ctx.missing("fuel", FUEL_NOTE),
+                "o2_pct": o2,
+                "fuel_conc_pct": ctx.missing(
+                    "fuel_conc_pct",
+                    "Inverse flames: 'XC2H4 initial' is the chamber-ambient fuel fraction, not a burner-stream "
+                    "fuel concentration; it stays in the raw columns.",
+                ),
+            }
+        )
         if o2["v"] is not None:
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "oxidiser stream (inverse flame)",
-                "Header 'XO2' in the Inverse Flame table: O2 fraction of the burner oxidiser stream.")
+                "o2_basis",
+                "oxidiser stream (inverse flame)",
+                "Header 'XO2' in the Inverse Flame table: O2 fraction of the burner oxidiser stream.",
+            )
         ctx.emit(row, fields)
 
 

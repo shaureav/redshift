@@ -91,6 +91,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
   const wrap = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(900);
   const [tip, setTip] = useState<Tip>(null);
+  const [hoverCand, setHoverCand] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -129,10 +130,20 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
     const o2At = d3.scaleLinear().domain([0.5, nx - 0.5]).range([grid.o2_pct[0], grid.o2_pct[nx - 1]]);
     const pAt = d3.scaleLinear().domain([0.5, ny - 0.5]).range([grid.pressure_psi[0], grid.pressure_psi[ny - 1]]);
     return gen(flat).map((c, i) => {
+      // d3.contours returns filled polygons; keep only the isoline parts (drop points on the grid edge).
       const lines: [number, number][][] = [];
+      const inside = ([gx, gy]: number[]) => gx > 0.5 && gx < nx - 0.5 && gy > 0.5 && gy < ny - 0.5;
       for (const poly of c.coordinates) {
         for (const ring of poly) {
-          lines.push(ring.map(([gx, gy]) => [x(o2At(gx)), y(Math.max(z.psi[0], pAt(gy)))] as [number, number]));
+          let cur: [number, number][] = [];
+          for (const pt of ring) {
+            if (inside(pt)) cur.push([x(o2At(pt[0])), y(Math.max(z.psi[0], pAt(pt[1])))]);
+            else if (cur.length) {
+              if (cur.length > 1) lines.push(cur);
+              cur = [];
+            }
+          }
+          if (cur.length > 1) lines.push(cur);
         }
       }
       return { value: grid.isotherms_K[i], lines };
@@ -233,8 +244,10 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
             ))}
 
             {/* candidate halos (nearness region) */}
-            {layers.has("cand") && candidates.map((c) => (
-              <path key={`h${c.id}`} d={halo(c)} fill={c.id === highlight ? "var(--accent)" : "var(--ink)"} fillOpacity={c.id === highlight ? 0.1 : 0.04} stroke={c.id === highlight ? "var(--accent)" : "var(--ink-3)"} strokeDasharray={c.role === "habitat" ? undefined : "3 3"} strokeWidth={c.id === highlight ? 2 : 1} />
+            {layers.has("cand") && candidates.filter((c) => c.id === highlight || c.id === hoverCand).map((c) => (
+              <path key={`h${c.id}`} d={halo(c)} fill="var(--accent)" fillOpacity={0.08} stroke="var(--accent)" strokeDasharray="5 3" strokeWidth={1.5}>
+                <title>Nearness region of {c.name}: within 1.5 steps (one step is 5 O2 points or a 25% pressure change)</title>
+              </path>
             ))}
 
             {/* test evidence */}
@@ -290,7 +303,8 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                   aria-label={`${c.name}, ${c.short}. ${ev?.near_total.v ?? 0} tests near. Open dossier`}
                   onClick={open}
                   onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open()}
-                  onMouseEnter={(e) => ev && show(e, <CandTip c={c} ev={ev} solidsOnly={solidsOnly} />)}
+                  onMouseEnter={(e) => { setHoverCand(c.id); if (ev) show(e, <CandTip c={c} ev={ev} solidsOnly={solidsOnly} />); }}
+                  onMouseLeave={() => setHoverCand(null)}
                   onFocus={(e) => ev && show(e, <CandTip c={c} ev={ev} solidsOnly={solidsOnly} />)}
                   onBlur={() => setTip(null)}
                   style={{ cursor: "pointer" }}

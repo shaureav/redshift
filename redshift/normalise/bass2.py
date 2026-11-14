@@ -89,24 +89,41 @@ def check_dates(ctx: Ctx, rows: list[RawRow]) -> None:
             raw_date = ctx.raw(row, C_DATE)
             d = dates[i]
             if d is None:
-                ctx.flag("date_inconsistent", row, C_DATE, raw_date,
-                         f"Date {raw_date!r} is not written as month/day/four-digit year.",
-                         "Raw kept verbatim; no correction attempted.")
+                ctx.flag(
+                    "date_inconsistent",
+                    row,
+                    C_DATE,
+                    raw_date,
+                    f"Date {raw_date!r} is not written as month/day/four-digit year.",
+                    "Raw kept verbatim; no correction attempted.",
+                )
                 continue
-            nb = [x for x in (dates[i - 1] if i > 0 else None, dates[i + 1] if i + 1 < len(group) else None)
-                  if x is not None]
+            nb = [
+                x
+                for x in (dates[i - 1] if i > 0 else None, dates[i + 1] if i + 1 < len(group) else None)
+                if x is not None
+            ]
             if nb and all(n.year != d.year for n in nb):
                 years = " and ".join(sorted({str(n.year) for n in nb}))
-                ctx.flag("date_inconsistent", row, C_DATE, raw_date,
-                         f"Year {d.year} differs from the neighbouring rows of the same PI ({years}).",
-                         "Raw kept verbatim; no correction attempted.")
+                ctx.flag(
+                    "date_inconsistent",
+                    row,
+                    C_DATE,
+                    raw_date,
+                    f"Year {d.year} differs from the neighbouring rows of the same PI ({years}).",
+                    "Raw kept verbatim; no correction attempted.",
+                )
             raw_gmt = ctx.raw(row, C_GMT)
             doy = d.timetuple().tm_yday
             if raw_gmt.strip() != str(doy):
-                ctx.flag("date_inconsistent", row, C_GMT, raw_gmt,
-                         f"GMT day {raw_gmt.strip()} does not match the date {raw_date} "
-                         f"(day {doy} of the year).",
-                         "Raw kept verbatim; no correction attempted.")
+                ctx.flag(
+                    "date_inconsistent",
+                    row,
+                    C_GMT,
+                    raw_gmt,
+                    f"GMT day {raw_gmt.strip()} does not match the date {raw_date} (day {doy} of the year).",
+                    "Raw kept verbatim; no correction attempted.",
+                )
 
 
 def check_columns(ctx: Ctx, row: RawRow, o2_initial: float | None) -> None:
@@ -118,18 +135,20 @@ def check_columns(ctx: Ctx, row: RawRow, o2_initial: float | None) -> None:
         try:
             v, _ = T.number(raw)
         except T.NotClean as exc:
-            ctx.flag("non_numeric", row, col, raw, exc.detail,
-                     "Not a canonical field; raw kept, no value read.")
+            ctx.flag("non_numeric", row, col, raw, exc.detail, "Not a canonical field; raw kept, no value read.")
             continue
-        if col == C_O2F and v is not None and o2_initial is not None and (
-            abs(v - o2_initial) > FINAL_O2_MAX_CHANGE
-        ):
-            ctx.flag("implausible_value", row, col, raw,
-                     f"Final O2 {raw.strip()} % against initial O2 {o2_initial:g} % on the same row: a "
-                     f"change of more than {FINAL_O2_MAX_CHANGE:g} percentage points, far beyond every other "
-                     "test. The values on this row may be shifted between columns, so its initial O2 and "
-                     "initial CO2 (kept as written) may also be affected.",
-                     "Not a canonical field; raw kept, no value read, no shift applied.")
+        if col == C_O2F and v is not None and o2_initial is not None and (abs(v - o2_initial) > FINAL_O2_MAX_CHANGE):
+            ctx.flag(
+                "implausible_value",
+                row,
+                col,
+                raw,
+                f"Final O2 {raw.strip()} % against initial O2 {o2_initial:g} % on the same row: a "
+                f"change of more than {FINAL_O2_MAX_CHANGE:g} percentage points, far beyond every other "
+                "test. The values on this row may be shifted between columns, so its initial O2 and "
+                "initial CO2 (kept as written) may also be affected.",
+                "Not a canonical field; raw kept, no value read, no shift applied.",
+            )
 
 
 def _numeric_values(ctx: Ctx, rows: list[RawRow], col: str) -> dict[int, float]:
@@ -155,21 +174,31 @@ def check_zero_co2(ctx: Ctx, rows: list[RawRow]) -> None:
     by_line = {r.line: r for r in rows}
     for ln in zeros:
         row = by_line[ln]
-        ctx.flag("implausible_value", row, C_CO2I, ctx.raw(row, C_CO2I),
-                 f"Initial CO2 0 % while every other numeric initial CO2 in the table reads "
-                 f"{min(others):g} to {max(others):g} %; the final O2, final CO2 and final CO cells on this "
-                 "row read "
-                 + ", ".join(repr(ctx.raw(row, c).strip()) for c in (C_O2F, C_CO2F, C_COF)) + ".",
-                 "Raw and value kept; row flagged for review.")
+        ctx.flag(
+            "implausible_value",
+            row,
+            C_CO2I,
+            ctx.raw(row, C_CO2I),
+            f"Initial CO2 0 % while every other numeric initial CO2 in the table reads "
+            f"{min(others):g} to {max(others):g} %; the final O2, final CO2 and final CO cells on this "
+            "row read " + ", ".join(repr(ctx.raw(row, c).strip()) for c in (C_O2F, C_CO2F, C_COF)) + ".",
+            "Raw and value kept; row flagged for review.",
+        )
 
 
 def check_spelling(ctx: Ctx, rows: list[RawRow]) -> None:
     for variant, usual in SPELLING_VARIANTS.items():
         lines = [r.line for r in rows if variant in ctx.raw(r, C_MAT).lower()]
         if lines:
-            ctx.flag("label_inconsistent", None, C_MAT, variant,
-                     f"'{variant}' is written '{usual}' elsewhere in the table.", "Raw labels kept verbatim.",
-                     rows=lines)
+            ctx.flag(
+                "label_inconsistent",
+                None,
+                C_MAT,
+                variant,
+                f"'{variant}' is written '{usual}' elsewhere in the table.",
+                "Raw labels kept verbatim.",
+                rows=lines,
+            )
 
 
 def adapt(ctx: Ctx) -> None:
@@ -179,8 +208,10 @@ def adapt(ctx: Ctx) -> None:
     check_zero_co2(ctx, rows)
 
     no_p = "The table has no pressure column; the PSI table does not record chamber pressure for these burns."
-    no_flow = ("Fan display, Air display and Flow restrictor are instrument display settings, not velocities "
-               "in cm/s; the table has no flow velocity column.")
+    no_flow = (
+        "Fan display, Air display and Flow restrictor are instrument display settings, not velocities "
+        "in cm/s; the table has no flow velocity column."
+    )
     for row in rows:
         o2 = ctx.num(row, C_O2I, "o2_pct", T.percent)
         check_columns(ctx, row, o2["v"])
@@ -193,17 +224,22 @@ def adapt(ctx: Ctx) -> None:
             "pressure_kpa": ctx.missing("pressure_kpa", reason=no_p),
             "pressure_psi": ctx.missing("pressure_psi", reason=no_p),
             "flow_cm_s": ctx.missing("flow_cm_s", no_flow),
-            "diluent": ctx.constant("diluent", "N2",
-                                    "BASS-II.md Approach: oxygen varied below 21% by adding nitrogen."),
-            "gravity_level": ctx.constant("gravity_level", "microgravity (ISS)",
-                                          "BASS-II.md: flight platform International Space Station (ISS), "
-                                          "hardware Microgravity Science Glovebox (MSG)."),
+            "diluent": ctx.constant(
+                "diluent", "N2", "BASS-II.md Approach: oxygen varied below 21% by adding nitrogen."
+            ),
+            "gravity_level": ctx.constant(
+                "gravity_level",
+                "microgravity (ISS)",
+                "BASS-II.md: flight platform International Space Station (ISS), "
+                "hardware Microgravity Science Glovebox (MSG).",
+            ),
         }
         if ctx.raw(row, C_O2I).strip():
             fields["o2_basis"] = ctx.constant(
-                "o2_basis", "chamber initial",
-                "BASS-II table header 'Calibrated  initial O2 % by vol': the initial working volume "
-                "composition.")
+                "o2_basis",
+                "chamber initial",
+                "BASS-II table header 'Calibrated  initial O2 % by vol': the initial working volume composition.",
+            )
         ctx.emit(row, fields)
 
 

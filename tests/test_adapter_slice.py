@@ -26,8 +26,14 @@ def run() -> tuple[Ctx, FlagLog, Registry]:
     spec = slice.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, flags, reg
@@ -42,8 +48,11 @@ def _codes(flags: FlagLog) -> Counter[str]:
 
 
 def _find(flags: FlagLog, code: str, line: int | None = None, column: str | None = None) -> list[Flag]:
-    return [f for f in flags.items if f.code == code and (line is None or line in f.rows)
-            and (column is None or f.column == column)]
+    return [
+        f
+        for f in flags.items
+        if f.code == code and (line is None or line in f.rows) and (column is None or f.column == column)
+    ]
 
 
 def _raw(reg: Registry, rec: Rec, field: str) -> str | None:

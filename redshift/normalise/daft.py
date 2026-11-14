@@ -29,26 +29,37 @@ C_MAT = "Sample Material"
 
 
 def adapt(ctx: Ctx) -> None:
-    gravity = ctx.constant("gravity", "microgravity (ISS)",
-                           "DAFT-DAFT-2.md: flight platform International Space Station.")
+    gravity = ctx.constant(
+        "gravity", "microgravity (ISS)", "DAFT-DAFT-2.md: flight platform International Space Station."
+    )
     road_lines: list[int] = []
     for row in ctx.rows():
         if "Arizona Road Dust" in ctx.raw(row, C_MAT):
             road_lines.append(row.line)
-        ctx.emit(row, {
-            "test_label": ctx.text(row, C_ID),
-            "test_date": ctx.text(row, C_DAY),
-            "material": ctx.text(row, C_MAT),
-            "notes": ctx.text(row, C_HW),
-            "o2_pct": ctx.missing("o2_pct", "The DAFT table has no oxygen column; nothing was burned."),
-            "pressure_kpa": ctx.missing("pressure_kpa", "The DAFT table has no pressure column."),
-            "pressure_psi": ctx.missing("pressure_psi", "The DAFT table has no pressure column."),
-            "gravity_level": gravity,
-        })
+        ctx.emit(
+            row,
+            {
+                "test_label": ctx.text(row, C_ID),
+                "test_date": ctx.text(row, C_DAY),
+                "material": ctx.text(row, C_MAT),
+                "notes": ctx.text(row, C_HW),
+                "o2_pct": ctx.missing("o2_pct", "The DAFT table has no oxygen column; nothing was burned."),
+                "pressure_kpa": ctx.missing("pressure_kpa", "The DAFT table has no pressure column."),
+                "pressure_psi": ctx.missing("pressure_psi", "The DAFT table has no pressure column."),
+                "gravity_level": gravity,
+            },
+        )
     if road_lines:
-        ctx.flag("label_inconsistent", None, C_MAT, "Arizona Road Dust (ARD Fine)",
-                 "The table names the aerosol standard 'Arizona Road Dust (ARD Fine)'; DAFT-DAFT-2.md "
-                 "Approach calls it 'Arizona Red Dust (ARD)'.", "Raw labels kept verbatim.", rows=road_lines)
+        ctx.flag(
+            "label_inconsistent",
+            None,
+            C_MAT,
+            "Arizona Road Dust (ARD Fine)",
+            "The table names the aerosol standard 'Arizona Road Dust (ARD Fine)'; DAFT-DAFT-2.md "
+            "Approach calls it 'Arizona Red Dust (ARD)'.",
+            "Raw labels kept verbatim.",
+            rows=road_lines,
+        )
 
 
 SPEC = AdapterSpec(

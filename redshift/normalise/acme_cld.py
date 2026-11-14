@@ -45,23 +45,29 @@ def adapt(ctx: Ctx) -> None:
         fill.check(row)
         spelling.check(row)
         day = ctx.text(row, C_DAY)
-        ctx.emit(row, {
-            "test_label": day,
-            "test_date": day,
-            "fuel": ctx.text(row, C_FUEL),
-            "fuel_conc_pct": ctx.num(row, C_CONC, "fuel_conc_pct", S.single_percent("Fuel conc. Range")),
-            "n_flames": ctx.num(row, C_FLAMES, "n_flames"),
-            "o2_pct": ctx.missing("o2_pct", "The table has no oxygen column."),
-            "pressure_kpa": ctx.missing("pressure_kpa", "The table has no pressure column."),
-            "pressure_psi": ctx.missing("pressure_psi", "The table has no pressure column."),
-            "flow_cm_s": ctx.missing(
-                "flow_cm_s", "The table has no flow velocity column; Fuel MFC and N2 MFC are controller "
-                "ranges in slpm, not flows."),
-            "diluent": ctx.constant("diluent", "N2",
-                                    "Table Notes line 2: fuel 'diluted with nitrogen on a volume basis'."),
-            "gravity_level": S.gravity(ctx),
-            "notes": S.notes(ctx, row, [("Test type", C_TYPE, None), ("Notes", C_NOTES, None)]),
-        })
+        ctx.emit(
+            row,
+            {
+                "test_label": day,
+                "test_date": day,
+                "fuel": ctx.text(row, C_FUEL),
+                "fuel_conc_pct": ctx.num(row, C_CONC, "fuel_conc_pct", S.single_percent("Fuel conc. Range")),
+                "n_flames": ctx.num(row, C_FLAMES, "n_flames"),
+                "o2_pct": ctx.missing("o2_pct", "The table has no oxygen column."),
+                "pressure_kpa": ctx.missing("pressure_kpa", "The table has no pressure column."),
+                "pressure_psi": ctx.missing("pressure_psi", "The table has no pressure column."),
+                "flow_cm_s": ctx.missing(
+                    "flow_cm_s",
+                    "The table has no flow velocity column; Fuel MFC and N2 MFC are controller "
+                    "ranges in slpm, not flows.",
+                ),
+                "diluent": ctx.constant(
+                    "diluent", "N2", "Table Notes line 2: fuel 'diluted with nitrogen on a volume basis'."
+                ),
+                "gravity_level": S.gravity(ctx),
+                "notes": S.notes(ctx, row, [("Test type", C_TYPE, None), ("Notes", C_NOTES, None)]),
+            },
+        )
     spelling.finish()
 
 

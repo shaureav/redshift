@@ -26,8 +26,14 @@ def run() -> tuple[Ctx, FlagLog, Registry]:
     spec = cfi.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, flags, reg
@@ -42,8 +48,11 @@ def _codes(flags: FlagLog) -> Counter[str]:
 
 
 def _find(flags: FlagLog, code: str, line: int | None = None, column: str | None = None) -> list[Flag]:
-    return [f for f in flags.items if f.code == code and (line is None or line in f.rows)
-            and (column is None or f.column == column)]
+    return [
+        f
+        for f in flags.items
+        if f.code == code and (line is None or line in f.rows) and (column is None or f.column == column)
+    ]
 
 
 def _raw(reg: Registry, rec: Rec, field: str) -> str | None:
@@ -97,18 +106,17 @@ def test_known_values(run: tuple[Ctx, FlagLog, Registry]) -> None:
     assert reg.get(r24.fields["fuel"]["p"]).raw == "[.75]/[.25] C12H26/iso-dodecane "
 
 
-def test_pressure_is_never_a_number(run: tuple[Ctx, FlagLog, Registry]) -> None:
-    ctx, flags, _ = run
+def test_pressure_read_from_stated_unit(run: tuple[Ctx, FlagLog, Registry]) -> None:
+    ctx, flags, reg = run
     for r in ctx.records:
-        assert r.fields["pressure_kpa"]["v"] is None and r.fields["pressure_psi"]["v"] is None
+        assert r.fields["pressure_kpa"]["v"] is not None
     r60 = _rec(ctx, 60)
-    assert r60.raw["Pressure"] == "0.75 atm" and r60.fields["notes"]["v"] == "0.75 atm"
-    r64 = _rec(ctx, 64)
-    assert r64.fields["notes"]["v"] == "0.5 atm"
-    nn = _find(flags, "non_numeric", column="Pressure")
-    assert len(nn) == 79
-    assert [f.raw for f in _find(flags, "non_numeric", 12, "Pressure")] == ["1 atm "]
-    assert _find(flags, "missing_column", column="pressure_kpa")
+    assert r60.raw["Pressure"] == "0.75 atm"
+    assert abs(r60.fields["pressure_kpa"]["v"] - 0.75 * 101.325) < 1e-9
+    assert "strip_stated_unit" in reg.get(r60.fields["pressure_kpa"]["p"]).transforms
+    assert abs(_rec(ctx, 64).fields["pressure_kpa"]["v"] - 0.5 * 101.325) < 1e-9
+    assert _rec(ctx, 64).fields["notes"]["v"] == "0.5 atm"
+    assert not _find(flags, "non_numeric", column="Pressure")
 
 
 def test_composition_sum_lines_13_to_16(run: tuple[Ctx, FlagLog, Registry]) -> None:
@@ -139,7 +147,7 @@ def test_flag_counts(run: tuple[Ctx, FlagLog, Registry]) -> None:
     _, flags, _ = run
     c = _codes(flags)
     assert c["exact_duplicate"] == 8
-    assert c["non_numeric"] == 79
+    assert "non_numeric" not in c
     assert c["composition_sum"] == 4
     assert c["metadata_inconsistent"] == 1
     assert "out_of_range" not in c

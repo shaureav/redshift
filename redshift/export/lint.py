@@ -9,9 +9,27 @@ from __future__ import annotations
 
 from typing import Any
 
-STRUCTURAL = {"source_row", "row", "page", "rows", "line", "duplicate_of", "schema_version", "total_pages",
-              "page_size", "multiplier", "target_flow_cm_s", "physical_lines", "header_lines", "records_in",
-              "blank_excluded", "duplicates_removed", "non_test_excluded", "tests_out", "blank_excluded_lines"}
+STRUCTURAL = {
+    "source_row",
+    "row",
+    "page",
+    "rows",
+    "line",
+    "duplicate_of",
+    "schema_version",
+    "total_pages",
+    "page_size",
+    "multiplier",
+    "target_flow_cm_s",
+    "physical_lines",
+    "header_lines",
+    "records_in",
+    "blank_excluded",
+    "duplicates_removed",
+    "non_test_excluded",
+    "tests_out",
+    "blank_excluded_lines",
+}
 
 
 def lint(payload: Any, known: set[str], path: str = "$") -> tuple[int, list[str]]:

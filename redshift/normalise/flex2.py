@@ -34,23 +34,29 @@ C_FLOW = "Flow Velocity (cm/s)"
 
 
 def adapt(ctx: Ctx) -> None:
-    o2_basis = ctx.constant("o2_basis", "ambient",
-                            "FLEX-2.md Approach: the chamber was filled with the atmosphere, O2 varied as a "
-                            "mole fraction with the diluent gas making up the balance.")
-    gravity = ctx.constant("gravity", "microgravity (ISS)",
-                           "FLEX-2.md: flight platform International Space Station.")
+    o2_basis = ctx.constant(
+        "o2_basis",
+        "ambient",
+        "FLEX-2.md Approach: the chamber was filled with the atmosphere, O2 varied as a "
+        "mole fraction with the diluent gas making up the balance.",
+    )
+    gravity = ctx.constant("gravity", "microgravity (ISS)", "FLEX-2.md: flight platform International Space Station.")
     for row in ctx.rows():
         kpa, psi = ctx.pressure(row, C_P, "atm")
-        ctx.emit(row, {
-            "test_label": ctx.text(row, C_FUEL),
-            "fuel": ctx.text(row, C_FUEL),
-            "diluent": ctx.text(row, C_GAS),
-            "o2_pct": ctx.num(row, C_O2, "o2_pct", T.fraction_as_pct),
-            "o2_basis": o2_basis,
-            "pressure_kpa": kpa, "pressure_psi": psi,
-            "flow_cm_s": ctx.num(row, C_FLOW, "flow_cm_s"),
-            "gravity_level": gravity,
-        })
+        ctx.emit(
+            row,
+            {
+                "test_label": ctx.text(row, C_FUEL),
+                "fuel": ctx.text(row, C_FUEL),
+                "diluent": ctx.text(row, C_GAS),
+                "o2_pct": ctx.num(row, C_O2, "o2_pct", T.fraction_as_pct),
+                "o2_basis": o2_basis,
+                "pressure_kpa": kpa,
+                "pressure_psi": psi,
+                "flow_cm_s": ctx.num(row, C_FLOW, "flow_cm_s"),
+                "gravity_level": gravity,
+            },
+        )
 
 
 SPEC = AdapterSpec(

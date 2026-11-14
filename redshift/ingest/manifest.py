@@ -36,10 +36,7 @@ def sha256(path: Path) -> str:
 
 
 def raw_files() -> list[Path]:
-    return sorted(
-        p for p in RAW.rglob("*")
-        if p.is_file() and p.name != "MANIFEST.json" and p.name != ".DS_Store"
-    )
+    return sorted(p for p in RAW.rglob("*") if p.is_file() and p.name != "MANIFEST.json" and p.name != ".DS_Store")
 
 
 def _investigation_meta() -> dict[str, dict[str, str]]:
@@ -52,7 +49,7 @@ def _investigation_meta() -> dict[str, dict[str, str]]:
             licence = "not shown"
             if md.exists():
                 m = re.search(r"^\| License \| (.*) \|$", md.read_text(encoding="utf-8"), re.M)
-                if m and m.group(1).strip() not in {"", "-", "—", "?"}:
+                if m and m.group(1).strip() not in {"", "-", "\u2014", "?"}:
                     licence = m.group(1).strip()
             out[folder] = {"psi_id": row["psi_id"], "url": row["psi_url"], "licence": licence}
     return out
@@ -69,14 +66,21 @@ def build() -> dict[str, Any]:
             m = meta[parts[1]]
             entry.update(investigation_id=m["psi_id"], source_url=m["url"], licence=m["licence"])
         elif parts[0] == "psi":
-            entry.update(source_url="https://psi.nasa.gov/physci/repo/search?q=combustion",
-                         licence="harvest index compiled by the team; underlying PSI records as listed")
+            entry.update(
+                source_url="https://psi.nasa.gov/physci/repo/search?q=combustion",
+                licence="harvest index compiled by the team; underlying PSI records as listed",
+            )
         elif p.name == "psi_search_combustion.json":
-            entry.update(source_url="https://psi.nasa.gov/physci/repo/search?q=combustion",
-                         licence="PSI search metadata", retrieved="2026-11-14T08:11:29.891Z")
+            entry.update(
+                source_url="https://psi.nasa.gov/physci/repo/search?q=combustion",
+                licence="PSI search metadata",
+                retrieved="2026-11-14T08:11:29.891Z",
+            )
         elif parts[0] == "reference":
-            entry.update(source_url="https://www.spaceappschallenge.org/ (Flame in Freefall challenge page)",
-                         licence="NASA Space Apps Challenge public challenge text; quoted for reference")
+            entry.update(
+                source_url="https://www.spaceappschallenge.org/ (Flame in Freefall challenge page)",
+                licence="NASA Space Apps Challenge public challenge text; quoted for reference",
+            )
         elif p.suffix == ".zip":
             entry.update(source_url="team harvest (see note)", licence="as per contained files")
         else:

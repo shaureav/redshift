@@ -27,8 +27,14 @@ def out():
     spec = M.SPEC
     t = spec.tables[0]
     reg, flags = Registry(), FlagLog()
-    ctx = Ctx(read_table(spec.investigation_id, t.table_key, t.relpath), reg, flags,
-              doi=_doi(spec.investigation_id), fuel_class=spec.fuel_class, test_kind=spec.test_kind)
+    ctx = Ctx(
+        read_table(spec.investigation_id, t.table_key, t.relpath),
+        reg,
+        flags,
+        doi=_doi(spec.investigation_id),
+        fuel_class=spec.fuel_class,
+        test_kind=spec.test_kind,
+    )
     spec.adapt(ctx)
     ctx.finish()
     return ctx, reg, flags, {r.source_row: r for r in ctx.records}
@@ -45,9 +51,14 @@ def test_reconciliation(out):
     assert (r.records_in, r.tests_out) == (32, 24)
     assert r.blank_excluded == [] and r.non_test_excluded == []
     assert r.duplicates_removed == [
-        {"line": 15, "duplicate_of": 7}, {"line": 19, "duplicate_of": 7}, {"line": 25, "duplicate_of": 7},
-        {"line": 29, "duplicate_of": 7}, {"line": 30, "duplicate_of": 26}, {"line": 31, "duplicate_of": 27},
-        {"line": 32, "duplicate_of": 28}, {"line": 33, "duplicate_of": 7},
+        {"line": 15, "duplicate_of": 7},
+        {"line": 19, "duplicate_of": 7},
+        {"line": 25, "duplicate_of": 7},
+        {"line": 29, "duplicate_of": 7},
+        {"line": 30, "duplicate_of": 26},
+        {"line": 31, "duplicate_of": 27},
+        {"line": 32, "duplicate_of": 28},
+        {"line": 33, "duplicate_of": 7},
     ]
     assert sorted(recs) == [ln for ln in range(2, 34) if ln not in (15, 19, 25, 29, 30, 31, 32, 33)]
 
@@ -57,7 +68,14 @@ def test_flag_counts(out):
     assert Counter(f.code for f in flags.items) == {"exact_duplicate": 8, "missing_column": 7}
     assert sorted(f.rows[0] for f in _flags(flags, "exact_duplicate")) == [15, 19, 25, 29, 30, 31, 32, 33]
     assert {f.column for f in _flags(flags, "missing_column")} == {
-        "o2_pct", "pressure_kpa", "pressure_psi", "flow_cm_s", "co2_pct", "he_pct", "n2_pct"}
+        "o2_pct",
+        "pressure_kpa",
+        "pressure_psi",
+        "flow_cm_s",
+        "co2_pct",
+        "he_pct",
+        "n2_pct",
+    }
 
 
 def test_continuation_rows_kept_without_fill_down(out):
@@ -86,6 +104,7 @@ def test_known_values(out):
     assert reg.get(recs[12].fields["n_flames"]["p"]).row == 12
     assert sum(r.fields["n_flames"]["v"] or 0 for r in recs.values()) == 219
     assert recs[9].fields["notes"]["v"] == (
-        "Test type: First round of tests with coflow burner; Mesh polarity: positive")
+        "Test type: First round of tests with coflow burner; Mesh polarity: positive"
+    )
     assert all(r.fields["o2_pct"]["v"] is None and "o2_basis" not in r.fields for r in recs.values())
     assert all(r.fields["pressure_kpa"]["v"] is None for r in recs.values())
