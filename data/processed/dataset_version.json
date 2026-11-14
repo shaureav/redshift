@@ -1,6 +1,6 @@
 {
- "cite": "Project Redshift (2026). Redshift microgravity fire evidence dataset, version 2026-11-14+6121a570500e. Derived from NASA Physical Sciences Informatics (cite each investigation by its DOI).",
- "content_sha256": "6121a570500ec9ae6a300a811342e2bd6d6ad24251d6bd787d73dbde307d802f",
+ "cite": "Project Redshift (2026). Redshift microgravity fire evidence dataset, version 2026-11-14+e03cf0b3d98f. Derived from NASA Physical Sciences Informatics (cite each investigation by its DOI).",
+ "content_sha256": "e03cf0b3d98f34b40fcb9d59c9ef2787cc1eccd7f210a5094225374cba33902c",
  "retrieved": "2026-11-14",
- "version": "2026-11-14+6121a570500e"
+ "version": "2026-11-14+e03cf0b3d98f"
 }

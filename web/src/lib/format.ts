@@ -1,7 +1,9 @@
 // Formatting only. These functions change how a number is written, never which number it is.
 
+// Default precision: as written up to 2 decimals (8.2 stays 8.2, 56.537 shows 56.54), none above 100.
 export function fmtNumber(v: number, digits?: number): string {
-  const d = digits ?? (Number.isInteger(v) ? 0 : Math.abs(v) >= 100 ? 0 : Math.abs(v) >= 10 ? 1 : 2);
+  const written = (String(v).split(".")[1] ?? "").length;
+  const d = digits ?? (Number.isInteger(v) || Math.abs(v) >= 100 ? 0 : Math.min(written, Math.abs(v) >= 10 ? 1 : 2));
   return v.toLocaleString("en-GB", { minimumFractionDigits: d, maximumFractionDigits: d });
 }
 

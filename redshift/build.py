@@ -321,9 +321,9 @@ def write(result: dict[str, Any]) -> None:
         text = dumps(payload)
         (PROCESSED / name).write_text(text, encoding="utf-8")
         (SNAPSHOT / name).write_text(text, encoding="utf-8")
-    (PROCESSED / "quality_report.md").write_text(
-        quality_markdown(result["quality"], result["version"]), encoding="utf-8"
-    )
+    md = quality_markdown(result["quality"], result["version"])
+    (PROCESSED / "quality_report.md").write_text(md, encoding="utf-8")
+    (SNAPSHOT / "quality_report.md").write_text(md, encoding="utf-8")
     rows = tests_table(payloads["tests.json"]["tests"], result["registry"], {})
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=list(rows[0].keys()), lineterminator="\n")

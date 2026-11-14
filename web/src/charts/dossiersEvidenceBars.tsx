@@ -2,7 +2,7 @@
 // (PSI table filled, published paper outlined). A zero is drawn hatched and written "no tests recorded".
 // Counts come from candidate_evidence.json; this file only draws them.
 import * as d3 from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { ChartFrame, FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
 import { CountCell, FUEL_CLASSES, FuelName } from "../components/dossiersShared";
@@ -17,9 +17,10 @@ const SOURCES = [
 export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: CandidateEvidence; domainMax: number }) {
   const wrap = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(720);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!wrap.current) return;
-    const ro = new ResizeObserver((e) => setWidth(Math.max(300, e[0].contentRect.width)));
+    setWidth(Math.max(240, wrap.current.getBoundingClientRect().width));
+    const ro = new ResizeObserver((e) => setWidth(Math.max(240, e[0].contentRect.width)));
     ro.observe(wrap.current);
     return () => ro.disconnect();
   }, []);

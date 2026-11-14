@@ -12,8 +12,10 @@ import {
   COVERAGE_KEYS,
   COVERAGE_LABEL,
   CoverageChip,
+  type CoverageKey,
   CoverageLegend,
   coverageState,
+  hasRawPublications,
   INV_CLASS_LABEL,
   InvLegend,
   InvMarker,
@@ -33,12 +35,12 @@ import {
 
 type RangeKey = "o2_pct" | "pressure_psi" | "flow_cm_s" | "co2_pct" | "he_pct";
 
-const RANGE_ROWS: { key: RangeKey; label: string; unit: string }[] = [
-  { key: "o2_pct", label: "O2", unit: "% by volume" },
-  { key: "pressure_psi", label: "Pressure", unit: "psi (kPa beside)" },
-  { key: "flow_cm_s", label: "Flow", unit: "cm/s" },
-  { key: "co2_pct", label: "CO2", unit: "% by volume" },
-  { key: "he_pct", label: "He", unit: "% by volume" },
+const RANGE_ROWS: { key: RangeKey; cov: CoverageKey; label: string; unit: string }[] = [
+  { key: "o2_pct", cov: "o2_pct", label: "O2", unit: "%, any basis" },
+  { key: "pressure_psi", cov: "pressure_kpa", label: "Pressure", unit: "psi (kPa beside)" },
+  { key: "flow_cm_s", cov: "flow_cm_s", label: "Flow", unit: "cm/s" },
+  { key: "co2_pct", cov: "co2_pct", label: "CO2", unit: "%" },
+  { key: "he_pct", cov: "he_pct", label: "He", unit: "%" },
 ];
 
 const rangeOf = (s: InvStats | null, k: RangeKey): StatRange | null => (s ? s[k] : null);
@@ -198,6 +200,7 @@ export default function Compare() {
                         domain={domains[row.key]}
                         cls={invClass(r)}
                         hasTable={r.has_table && !!r.stats}
+                        hasColumn={r.coverage?.[row.cov] === true}
                         label={row.label}
                         unitLabel={row.unit}
                       />
@@ -226,6 +229,7 @@ export default function Compare() {
                     {r.contacts && r.contacts.length ? (
                       <ul className="flex flex-col gap-0.5 text-xs text-ink-2">
                         {(fullText ? r.contacts : r.contacts.slice(0, 3)).map((c) => <li key={c.p}>{c.v}</li>)}
+                        {!fullText && r.contacts.length > 3 && <li className="italic text-ink-3">More are listed; use Show full text.</li>}
                       </ul>
                     ) : (
                       <span className="text-xs italic text-ink-3">not recorded</span>
@@ -236,7 +240,16 @@ export default function Compare() {
               <Section label="Publications" sub="first five listed on the PSI page">
                 {cols.map((r) => (
                   <Cell key={r.id}>
-                    <div className="text-xs text-ink-2">Listed: <Value val={r.publication_count} emptyText="none on the PSI page" /></div>
+                    <div className="text-xs text-ink-2">
+                      Listed:{" "}
+                      <Value val={r.publication_count} emptyText={hasRawPublications(r) ? "as text on the PSI page, not counted" : "none on the PSI page"} />
+                    </div>
+                    {hasRawPublications(r) && (
+                      <div className="mt-1.5 text-xs">
+                        <span className="text-ink-3">Titles as written on the PSI page:</span>
+                        <SourcedText val={r.publications_raw?.titles} clamp={!fullText} className="[&>p]:text-xs" />
+                      </div>
+                    )}
                     {r.publications.length > 0 && (
                       <ol className="mt-1.5 flex flex-col gap-1.5">
                         {r.publications.slice(0, 5).map((p) => (
@@ -276,7 +289,7 @@ export default function Compare() {
         <InvLegend />
         <CoverageLegend />
         <p className="text-xs text-ink-3">
-          Range bars run from the lowest to the highest value recorded for that condition in the investigation's PSI table. Hatched: the table does not record the condition, so it is unknown rather than zero.
+          Range bars run from the lowest to the highest value recorded for that condition in the investigation's PSI table. The O2 row spans every basis a table records (chamber initial, ambient or, for inverse flames, the oxidiser stream). Hatched: the table does not record the condition, so it is unknown rather than zero.
           Sources: NASA PSI investigation pages and experiment tables.
         </p>
       </div>

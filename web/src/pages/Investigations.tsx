@@ -30,6 +30,7 @@ import {
   type InvestigationsFile,
   type QualityFile,
   invClass,
+  hasRawPublications,
   invName,
   labelEntries,
   metadataFlags,
@@ -196,7 +197,7 @@ function NotRecorded({ children = "not recorded" }: { children?: React.ReactNode
   return <span className="hatch-bg inline-block rounded border border-line px-1 text-xs"><span className="rounded-sm bg-surface-2 px-0.5 italic text-ink-2">{children}</span></span>;
 }
 
-function RangeLine({ label, range, kpa }: { label: string; range: StatRange; kpa?: StatRange }) {
+function RangeLine({ label, range, kpa, hasColumn }: { label: string; range: StatRange; kpa?: StatRange; hasColumn: boolean }) {
   const has = range.min && range.max && range.min.v !== null && range.max.v !== null;
   return (
     <div className="grid grid-cols-[4.5rem_1fr] gap-2 py-0.5 text-sm">
@@ -212,7 +213,7 @@ function RangeLine({ label, range, kpa }: { label: string; range: StatRange; kpa
             <span className="ml-1 text-xs text-ink-3">(in <Value val={range.recorded} />)</span>
           </>
         ) : (
-          <NotRecorded />
+          <NotRecorded>{hasColumn ? "column in table, no usable values" : "not recorded"}</NotRecorded>
         )}
       </dd>
     </div>
@@ -322,10 +323,15 @@ function InvCard({ r, isOpen, selected, canSelect, onToggleSelect, meta }: CardP
         </div>
         {s && (
           <dl>
-            <RangeLine label="O2" range={s.o2_pct} />
-            <RangeLine label="Pressure" range={s.pressure_psi} kpa={s.pressure_kpa} />
-            <RangeLine label="Flow" range={s.flow_cm_s} />
+            <RangeLine label="O2" range={s.o2_pct} hasColumn={r.coverage?.o2_pct === true} />
+            <RangeLine label="Pressure" range={s.pressure_psi} kpa={s.pressure_kpa} hasColumn={r.coverage?.pressure_kpa === true} />
+            <RangeLine label="Flow" range={s.flow_cm_s} hasColumn={r.coverage?.flow_cm_s === true} />
           </dl>
+        )}
+        {s && s.o2_pct.min && (
+          <p className="mt-1 text-[11px] leading-snug text-ink-3">
+            Lowest to highest value in the table. The O2 range covers whichever basis the table records (chamber initial, ambient or, for inverse flames, the oxidiser stream) and can mix them; Evidence gives the basis of each test.
+          </p>
         )}
       </div>
 
@@ -360,7 +366,10 @@ function InvCard({ r, isOpen, selected, canSelect, onToggleSelect, meta }: CardP
         <MetaFlagBadges flags={meta} />
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
           {r.has_table && <QualityLink id={r.id} />}
-          <span className="text-ink-2">Publications: <Value val={r.publication_count} emptyText="none listed" /></span>
+          <span className="text-ink-2">
+            Publications:{" "}
+            <Value val={r.publication_count} emptyText={hasRawPublications(r) ? "listed as text on the PSI page, not counted" : "none listed"} />
+          </span>
           {r.psi_url?.v && <a className="text-accent underline underline-offset-2" href={r.psi_url.v} target="_blank" rel="noreferrer">PSI page</a>}
           <Link className="text-accent underline underline-offset-2" to={`/investigations/compare?ids=${r.id}`}>Compare with others</Link>
         </div>

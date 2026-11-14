@@ -96,6 +96,8 @@ export interface InvRecord {
   contacts: TextVal[] | null;
   publication_count: Val<number | null>;
   publications: Publication[];
+  // Ground studies list publications as one raw text block on the PSI search record, not as a parsed list.
+  publications_raw: { authors: TextVal; titles: TextVal } | null;
   table_file_count: Val<number> | null;
   table_files: TextVal[];
   stats: InvStats | null;
@@ -196,8 +198,10 @@ export function coverageState(r: InvRecord, k: CoverageKey): CoverageState {
   return v ? "recorded" : "not";
 }
 
+// "recorded" means the table has a column for the variable. Values in that column can still be blank or
+// unreadable in some or all tests; stats[k].recorded gives the number of tests with a usable value.
 export const COVERAGE_STATE_TEXT: Record<CoverageState, string> = {
-  recorded: "recorded",
+  recorded: "column in table",
   not: "not recorded",
   notable: "no table",
 };
@@ -289,8 +293,8 @@ export function CoverageChip({ state, label }: { state: CoverageState; label: st
 export function CoverageLegend() {
   return (
     <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-2" aria-label="Coverage legend">
-      <li className="flex items-center gap-1.5"><span className="inline-block h-3 w-4 rounded-sm bg-accent" /> Recorded in the PSI table</li>
-      <li className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-4 rounded-sm border border-line" /> Not recorded</li>
+      <li className="flex items-center gap-1.5"><span className="inline-block h-3 w-4 rounded-sm bg-accent" /> Column in the PSI table (values can still be blank)</li>
+      <li className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-4 rounded-sm border border-line" /> Not recorded: unknown, not zero</li>
       <li className="flex items-center gap-1.5"><span className="inline-block h-3 w-4 rounded-sm border border-dashed border-ink-3" /> No experiment table</li>
     </ul>
   );
@@ -371,6 +375,14 @@ export function labelEntries(c: LabelCounts | undefined): { label: string; val: 
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
     .map(([label, n]) => ({ label, val: { v: n, u: n === 1 ? "test" : "tests", p: c.p } }));
 }
+
+// True when the PSI page lists publications only as unparsed text (ground studies).
+export function hasRawPublications(r: InvRecord): boolean {
+  return r.publications.length === 0 && !!r.publications_raw?.titles?.v;
+}
+
+// Background class for a focusable SVG row: highlighted on hover and on keyboard focus.
+export const SVG_ROW_HIGHLIGHT = "group-hover:fill-[color:var(--surface-3)] group-focus-visible:fill-[color:var(--surface-3)] group-focus-visible:stroke-[color:var(--focus)]";
 
 export function Tooltip({ x, y, children }: { x: number; y: number; children: ReactNode }) {
   return (

@@ -30,6 +30,8 @@ interface CellProps {
   domain: Domain | null;
   cls: InvClass;
   hasTable: boolean;
+  // The table has a column for this condition, even if no cell in it holds a usable value.
+  hasColumn?: boolean;
   label: string;
   unitLabel: string;
 }
@@ -43,7 +45,7 @@ export function RangeCell(props: CellProps) {
   );
 }
 
-function RangeCellBody({ range, kpa, domain, cls, hasTable, label, unitLabel, width }: CellProps & { width: number }) {
+function RangeCellBody({ range, kpa, domain, cls, hasTable, hasColumn, label, unitLabel, width }: CellProps & { width: number }) {
   if (!hasTable || !range) {
     return (
       <div className="rounded border border-dashed border-line px-2 py-2 text-xs italic text-ink-3">No experiment table</div>
@@ -52,7 +54,9 @@ function RangeCellBody({ range, kpa, domain, cls, hasTable, label, unitLabel, wi
   if (!range.min || !range.max || range.min.v === null || range.max.v === null || !domain) {
     return (
       <div className="hatch-bg rounded border border-line px-2 py-2 text-xs">
-        <span className="rounded-sm bg-surface-2 px-1 italic text-ink-2">{label} not recorded in this table</span>
+        <span className="rounded-sm bg-surface-2 px-1 italic text-ink-2">
+          {hasColumn ? `${label} column in this table, no usable values` : `${label} not recorded in this table`}
+        </span>
       </div>
     );
   }

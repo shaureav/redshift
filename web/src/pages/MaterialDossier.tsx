@@ -164,7 +164,7 @@ export default function MaterialDossier() {
               </div>
             }
           >
-            <div className="-mx-1 max-h-[34rem] overflow-auto px-1">
+            <div className="-mx-1 max-h-[34rem] overflow-auto px-1" role="region" aria-label={`Tests of ${name}, scrollable`} tabIndex={0}>
               <table className="w-full min-w-[720px] text-sm">
                 <caption className="sr-only">Tests of {name}</caption>
                 <thead className="sticky top-0 bg-surface-2 text-left text-xs text-ink-3">
@@ -184,7 +184,11 @@ export default function MaterialDossier() {
                     <tr key={t.test_id} className="border-t border-line align-top">
                       <td className="py-1.5 pr-3">
                         <Link className="mono text-xs underline" to={evidenceHref([t.test_id])}>{t.test_id}</Link>
-                        {t.flags.length > 0 && <span className="ml-1 text-[11px] text-ink-3" title={t.flags.join(", ")}>flagged</span>}
+                        {t.flags.length > 0 && (
+                          <span className="ml-1 text-[11px] text-ink-3" title={t.flags.join(", ")}>
+                            flagged<span className="sr-only">: {t.flags.join(", ")}</span>
+                          </span>
+                        )}
                       </td>
                       <td className="py-1.5 pr-3"><Value val={t.fields.test_label} /></td>
                       <td className="py-1.5 pr-3">{t.investigation}</td>

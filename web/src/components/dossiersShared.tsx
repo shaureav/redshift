@@ -187,7 +187,7 @@ export function StatusBadge({ status }: { status: DossierStatus }) {
       {status === "none" ? (
         <span className="hatch-bg inline-block h-2.5 w-4 rounded-sm border border-line" aria-hidden="true" />
       ) : (
-        <FuelMarker fuel={status === "here" ? "solid" : "gas"} size={10} outlined={status !== "here"} />
+        <FuelMarker fuel={status === "here" ? "solid" : "none"} size={10} outlined={status !== "here"} />
       )}
       {STATUS_TEXT[status]}
     </span>

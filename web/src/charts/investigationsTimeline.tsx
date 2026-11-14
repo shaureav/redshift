@@ -14,6 +14,7 @@ import {
   invMarkerPath,
   invName,
   parsePsiDate,
+  SVG_ROW_HIGHLIGHT,
   Tooltip,
   useElementWidth,
 } from "./investigationsShared";
@@ -177,8 +178,9 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                 onFocus={(e) => show(e, tipFor(r))}
                 onBlur={() => setTip(null)}
                 style={{ cursor: "pointer" }}
+                className="group"
               >
-                <rect x={-m.left} y={i * rowH} width={width} height={rowH} fill={on ? "var(--surface-3)" : "transparent"} />
+                <rect x={-m.left} y={i * rowH} width={width} height={rowH} fill={on ? "var(--surface-3)" : "transparent"} className={SVG_ROW_HIGHLIGHT} />
                 <text x={-10} y={cy} dy="0.32em" textAnchor="end" fontSize={narrow ? 10.5 : 11.5} fontWeight={on ? 600 : 400} fill={on ? "var(--ink)" : "var(--ink-2)"}>
                   {label(r)}
                 </text>
@@ -190,7 +192,7 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                     height={8}
                     rx={2}
                     fill={r.has_table ? col : "var(--surface-2)"}
-                    fillOpacity={r.has_table ? 0.55 : 1}
+                    fillOpacity={r.has_table ? 0.8 : 1}
                     stroke={col}
                     strokeWidth={r.has_table ? 0 : 1.5}
                   />
@@ -245,8 +247,9 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                     onFocus={(e) => show(e, tipFor(r))}
                     onBlur={() => setTip(null)}
                     style={{ cursor: "pointer" }}
+                    className="group"
                   >
-                    <rect x={cx - 12} y={cy - 12} width={Math.max(40, slot - 6)} height={24} rx={4} fill={on ? "var(--surface-3)" : "var(--surface-2)"} stroke="var(--line)" />
+                    <rect x={cx - 12} y={cy - 12} width={Math.max(40, slot - 6)} height={24} rx={4} fill={on ? "var(--surface-3)" : "var(--surface-2)"} stroke="var(--line)" className={SVG_ROW_HIGHLIGHT} />
                     <path
                       d={invMarkerPath(c, 5)}
                       transform={`translate(${cx},${cy})`}

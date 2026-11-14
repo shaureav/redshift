@@ -3,7 +3,7 @@
 // candidates' O2 drawn for reference, and a plain statement that pressure was not recorded.
 // Values come from tests.json and candidates.json; this file only positions them.
 import * as d3 from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChartFrame, FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
 import { Pressure, Value } from "../components/Value";
@@ -13,11 +13,12 @@ import type { Candidate, TestRow } from "../lib/types";
 
 const KPA_PER_PSI = 6.894757293168361; // secondary axis labelling only
 
-function useWidth(min = 300) {
+function useWidth(min = 240) {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(720);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ref.current) return;
+    setWidth(Math.max(min, ref.current.getBoundingClientRect().width));
     const ro = new ResizeObserver((e) => setWidth(Math.max(min, e[0].contentRect.width)));
     ro.observe(ref.current);
     return () => ro.disconnect();
@@ -35,7 +36,7 @@ export function materialMapMode(tests: TestRow[]): MapMode {
 
 function TestsTable({ tests, label }: { tests: TestRow[]; label: string }) {
   return (
-    <div className="max-h-96 overflow-auto">
+    <div className="max-h-96 overflow-auto" role="region" aria-label={`Tests of ${label}, scrollable`} tabIndex={0}>
       <table className="w-full text-sm">
         <caption className="sr-only">Tests of {label} with their recorded oxygen and pressure</caption>
         <thead className="sticky top-0 bg-surface-2 text-left text-xs text-ink-3">

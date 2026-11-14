@@ -58,7 +58,7 @@ export function SourceLegend() {
     <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-2" aria-label="Source types">
       <li className="flex items-center gap-1.5"><FuelMarker fuel="gas" /> PSI table (solid marker)</li>
       <li className="flex items-center gap-1.5"><FuelMarker fuel="solid" outlined /> Published paper, human verified (outlined)</li>
-      <li className="flex items-center gap-1.5"><span className="italic">2,415 K</span> Derived calculation (italic)</li>
+      <li className="flex items-center gap-1.5"><span className="italic underline decoration-dotted">italic</span> Derived calculation</li>
       <li className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-5 rounded-sm border border-line" /> No tests recorded (hatched)</li>
     </ul>
   );

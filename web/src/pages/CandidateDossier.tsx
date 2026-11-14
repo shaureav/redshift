@@ -6,6 +6,7 @@ import { DossierEvidenceBars } from "../charts/dossiersEvidenceBars";
 import { ErrorNote, Loading, SourceLegend } from "../components/Common";
 import { Pressure, ProvDetails, Value } from "../components/Value";
 import { missingLong } from "../components/dossiersMissing";
+import { CandidateSummary } from "../components/AiText";
 import {
   AwaitingVerification,
   BackLink,
@@ -158,6 +159,7 @@ export default function CandidateDossier() {
 
       <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,400px)]">
         <div className="flex min-w-0 flex-col gap-5">
+          <CandidateSummary candidateId={c.id} />
           <Section
             id="evidence"
             title="Evidence near this atmosphere"
@@ -208,7 +210,7 @@ export default function CandidateDossier() {
             )}
             <details className="mt-3 rounded-lg border border-line p-3 text-sm">
               <summary className="cursor-pointer font-medium">How this was computed</summary>
-              {ftProv ? <FlameMethod prov={ftProv} /> : <p className="mt-2 text-xs text-ink-3">{prov.isLoading ? "Loading the method record..." : "No method record found."}</p>}
+              {ftProv ? <FlameMethod prov={ftProv} c={c} /> : <p className="mt-2 text-xs text-ink-3">{prov.isLoading ? "Loading the method record..." : "No method record found."}</p>}
             </details>
           </Section>
 
@@ -268,7 +270,7 @@ function NearestTable({ c, ev, testById, invByName }: { c: Candidate; ev: Candid
           <p className="rounded-md bg-surface-2 p-3 text-sm text-ink-2">No tests recorded near {c.name}: the build lists no nearest tests for this atmosphere.</p>
         </div>
       ) : (
-        <div className="-mx-1 overflow-x-auto px-1">
+        <div className="-mx-1 overflow-x-auto px-1" role="region" aria-label={`Nearest tests to ${c.name}, scrollable`} tabIndex={0}>
           <table className="w-full min-w-[640px] text-sm">
             <caption className="sr-only">Nearest tests to {c.name}</caption>
             <thead className="text-left text-xs text-ink-3">
@@ -298,7 +300,7 @@ function NearestTable({ c, ev, testById, invByName }: { c: Candidate; ev: Candid
                     <td className="py-1.5 pr-3 text-xs text-ink-2">{n.source_type === "published_paper" ? "Published paper, verified" : "PSI table"}</td>
                     <td className="py-1.5 pr-3">{t ? <Value val={t.fields.o2_pct} /> : <span className="text-ink-3">see source</span>}</td>
                     <td className="py-1.5 pr-3">{t ? <Pressure psi={t.fields.pressure_psi} kpa={t.fields.pressure_kpa} /> : <span className="text-ink-3">see source</span>}</td>
-                    <td className="py-1.5 text-right"><Value val={n.distance} digits={2} /></td>
+                    <td className="py-1.5 text-right"><Value val={n.distance} digits={n.distance.v < 0.01 ? 4 : 2} /></td>
                   </tr>
                 );
               })}
@@ -310,7 +312,7 @@ function NearestTable({ c, ev, testById, invByName }: { c: Candidate; ev: Candid
   );
 }
 
-function FlameMethod({ prov }: { prov: Prov }) {
+function FlameMethod({ prov, c }: { prov: Prov; c: Candidate }) {
   const params = prov.params ?? {};
   const keys = Object.keys(PARAM_LABEL).filter((k) => k in params);
   return (
@@ -327,7 +329,9 @@ function FlameMethod({ prov }: { prov: Prov }) {
             <div key={k} className="contents">
               <dt className="text-ink-3">{PARAM_LABEL[k]}</dt>
               <dd>
-                {typeof v === "number" ? (
+                {typeof v === "number" && k === "pressure_psi" ? (
+                  <Pressure psi={{ v, u: "psi", p: prov.id }} kpa={c.pressure_kpa} />
+                ) : typeof v === "number" ? (
                   <Value val={{ v, u: PARAM_UNIT[k], p: prov.id }} />
                 ) : (
                   <span className={k === "mechanism" || k === "cantera_version" ? "mono" : ""}>{String(v)}</span>

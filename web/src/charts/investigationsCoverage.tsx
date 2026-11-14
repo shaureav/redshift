@@ -17,6 +17,7 @@ import {
   invMarkerPath,
   invName,
   statFor,
+  SVG_ROW_HIGHLIGHT,
   useElementWidth,
 } from "./investigationsShared";
 
@@ -51,7 +52,7 @@ export function InvestigationsCoveragePanel({ items, openId, onOpen }: Props) {
                   <td key={k} className={`pr-3 ${st === "recorded" ? "" : "text-ink-3"}`}>
                     {COVERAGE_STATE_TEXT[st]}
                     {st === "recorded" && s && (
-                      <span className="block text-xs text-ink-2">in <Value val={s.recorded} /></span>
+                      <span className="block text-xs text-ink-2">usable value in <Value val={s.recorded} /></span>
                     )}
                   </td>
                 );
@@ -67,7 +68,7 @@ export function InvestigationsCoveragePanel({ items, openId, onOpen }: Props) {
     <ChartFrame
       id="investigation-coverage"
       title="What each table records"
-      caption="Rows are investigations, columns are the conditions and test descriptors a PSI experiment table can carry. Filled: the column is present with at least one value. Hatched: not recorded in this table, so the value is unknown rather than zero. Dashed: no experiment table at all."
+      caption="Rows are investigations, columns are the conditions and test descriptors a PSI experiment table can carry. Filled: the table has a column for it; some or all of its cells can still be blank, and the table view gives the number of tests with a usable value. Hatched: not recorded in this table, so the value is unknown rather than zero. Dashed: no experiment table at all."
       sources="NASA PSI experiment tables, column mapping by the Redshift build (see Methods)."
       table={table}
     >
@@ -143,7 +144,7 @@ function CoverageMatrix({ items, openId, onOpen }: Props) {
               style={{ cursor: "pointer" }}
               className="group"
             >
-              <rect x={0} y={y0} width={svgW} height={rowH} fill={on ? "var(--surface-3)" : "transparent"} className="group-hover:fill-[color:var(--surface-3)]" />
+              <rect x={0} y={y0} width={svgW} height={rowH} fill={on ? "var(--surface-3)" : "transparent"} className={SVG_ROW_HIGHLIGHT} />
               <path
                 d={invMarkerPath(invClass(r), 4)}
                 transform={`translate(7,${y0 + rowH / 2})`}
