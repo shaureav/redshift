@@ -41,3 +41,43 @@ def test_compare_bounds() -> None:
 def test_openapi_schema() -> None:
     schema = client.get("/openapi.json").json()
     assert "/tests" in schema["paths"] and "/candidates/{cand_id}/dossier" in schema["paths"]
+    assert "/probe" in schema["paths"]
+
+
+def test_probe_matches_candidate_evidence_at_every_candidate() -> None:
+    cands = json.loads((PROCESSED / "candidates.json").read_text())["candidates"]
+    evs = {e["candidate_id"]: e for e in json.loads((PROCESSED / "candidate_evidence.json").read_text())["evidence"]}
+    for c in cands:
+        r = client.get("/probe", params={"o2": c["o2_pct"]["v"], "p": c["pressure_psi"]["v"]}).json()
+        assert r["candidate_id"] == c["id"]
+        ev = evs[c["id"]]
+        for fc, by_src in ev["near"].items():
+            for st, val in by_src.items():
+                assert r["near"][fc][st]["v"] == val["v"], (c["id"], fc, st)
+            assert r["o2_match_pressure_unknown"][fc]["v"] == ev["o2_match_pressure_unknown"][fc]["v"]
+        assert r["near_total"]["v"] == ev["near_total"]["v"] == len(r["near_tests"])
+        assert r["flame_temperature"]["exact"] and r["flame_temperature"]["value"]["v"] == ev["flame_temperature"]["v"]
+
+
+def test_probe_snaps_and_rejects_undocumented_steps() -> None:
+    r = client.get("/probe", params={"o2": 33.8, "p": 8.23}).json()
+    assert r["node"]["o2_pct"]["v"] == 34.0 and r["node"]["pressure_psi"]["v"] == 8.2
+    assert client.get("/probe", params={"o2": 34, "p": 8.2, "m": 2}).status_code == 422
+    off = client.get("/probe", params={"o2": 60, "p": 30}).json()
+    assert off["inside_grid"] is False
+    mid = client.get("/probe", params={"o2": 31, "p": 9}).json()
+    assert mid["flame_temperature"]["exact"] is False and mid["flame_temperature"]["at"] is not None
+
+
+def test_probe_snapshot_8_2_psi_34_pct() -> None:
+    """The demo point. To accept an intended change, delete the file, rerun, review the diff and commit."""
+    from pathlib import Path
+
+    path = Path(__file__).parent / "snapshots" / "probe_c8_2_34.json"
+    body = client.get("/probe", params={"o2": 34, "p": 8.2}).json()
+    body.pop("dataset_version")
+    text = json.dumps(body, indent=1, sort_keys=True) + "\n"
+    if not path.exists():
+        path.write_text(text, encoding="utf-8", newline="\n")
+        pytest.skip("snapshot written; review and commit it")
+    assert body == json.loads(path.read_text(encoding="utf-8"))

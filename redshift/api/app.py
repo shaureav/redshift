@@ -2,6 +2,8 @@
 
 Serves exactly the files written by `python -m redshift.build` (data/processed). It filters and slices
 them but never computes a new number, so the API, the static snapshot and the website always agree.
+/probe reads the build's probe grid; to list which tests are near a node it runs the pipeline's own
+nearness rule and refuses to answer if that listing disagrees with the build's counts.
 OpenAPI schema: /openapi.json; interactive docs: /docs.
 """
 
@@ -15,9 +17,11 @@ from typing import Any, Literal
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from redshift.paths import PROCESSED
+from redshift.science.nearness import FUEL_CLASSES, SOURCE_TYPES, Evidence, Steps, distance
+from redshift.science.probe import unrle
 
 app = FastAPI(
     title="Redshift API",
@@ -26,7 +30,7 @@ app = FastAPI(
     "value. Every numeric value is an object {v, u, p}: value, unit and a provenance id resolvable at "
     "/provenance/{id}. Data: NASA Physical Sciences Informatics (cite each investigation by DOI).",
 )
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"], allow_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "POST"], allow_headers=["*"])
 
 
 class Val(BaseModel):
@@ -198,6 +202,235 @@ def planner(
 @app.get("/quality")
 def quality() -> dict[str, Any]:
     return dict(load("quality_report.json"))
+
+
+class ProbeTest(BaseModel):
+    test_id: str
+    investigation_id: str
+    investigation: str
+    fuel_class: str
+    source_type: str
+    label: str
+    doi: str | None
+    o2: Val
+    pressure_kpa: Val
+
+
+class FlameAtProbe(BaseModel):
+    value: Val | None
+    exact: bool
+    approximate: bool | None
+    at: dict[str, Val] | None
+    note: str
+
+
+class ProbeResponse(BaseModel):
+    requested: dict[str, float]
+    inside_grid: bool
+    node: dict[str, Val]
+    multiplier: float
+    candidate_id: str | None
+    near: dict[str, dict[str, Val]]
+    near_total: Val
+    o2_match_pressure_unknown: dict[str, Val]
+    unknown: dict[str, Val]
+    near_tests: list[ProbeTest]
+    flame_temperature: FlameAtProbe
+    prebreathe: dict[str, Any]
+    dataset_version: str
+
+
+@lru_cache(maxsize=1)
+def _grid() -> dict[str, Any]:
+    g = load("probe_grid.json")
+    n = g["axes"]["o2_pct"]["n"] * g["axes"]["pressure_psi"]["n"]
+    layers = {}
+    for layer in g["layers"]:
+        series = {(fc, st): unrle(layer["near"][fc][st]["rle"]) for fc in FUEL_CLASSES for st in SOURCE_TYPES}
+        assert all(len(s) == n for s in series.values()), "probe grid series length mismatch"
+        layers[layer["multiplier"]] = {"series": series, "total": unrle(layer["total"]["rle"]), "raw": layer}
+    return {"file": g, "layers": layers}
+
+
+def _snap(values: list[float], v: float) -> int:
+    step = values[1] - values[0]
+    return max(0, min(len(values) - 1, round((v - values[0]) / step)))
+
+
+@app.get("/probe", response_model=ProbeResponse)
+def probe(
+    o2: float = Query(..., ge=0, le=100, description="Oxygen, % by volume"),
+    p: float = Query(..., gt=0, le=50, description="Cabin pressure, psi"),
+    m: float = Query(1.0, description="Nearness step multiplier; one of the documented stops (0.75, 1, 1.5)"),
+) -> dict[str, Any]:
+    """Everything the evidence panel shows for one point of the plane, with provenance.
+
+    The point snaps to the nearest node of the build's probe grid (O2 every 0.5 points, pressure every
+    0.1 psi); `node` says which node is shown. Counts come from probe_grid.json. `near_tests` lists the
+    tests counted, found with redshift.science.nearness; the endpoint fails rather than answer if the
+    listing and the build's counts disagree.
+    """
+    G = _grid()
+    g = G["file"]
+    if m not in G["layers"]:
+        raise HTTPException(422, f"m must be one of {sorted(G['layers'])}")
+    L = G["layers"][m]
+    o2s, psis, kpas = (
+        g["axes"]["o2_pct"]["values"],
+        g["axes"]["pressure_psi"]["values"],
+        g["axes"]["pressure_kpa"]["values"],
+    )
+    i, j = _snap(o2s, o2), _snap(psis, p)
+    idx = i * len(psis) + j
+    ap = g["axes"]["p"]
+    raw = L["raw"]
+    near = {
+        fc: {st: {"v": L["series"][(fc, st)][idx], "u": "tests", "p": raw["near"][fc][st]["p"]} for st in SOURCE_TYPES}
+        for fc in FUEL_CLASSES
+    }
+    nz = g["nearness"]
+    steps = Steps(o2=nz["o2_step"] * m, log_p=nz["log_pressure_step"] * m, flow=0.0, threshold=nz["threshold"])
+    listed: list[tuple[float, dict[str, Any]]] = []
+    for t in g["inputs"]:
+        ev = Evidence(
+            id=t["id"],
+            investigation_id=t["investigation_id"],
+            investigation=t["investigation"],
+            fuel_class=t["fuel_class"],
+            source_type=t["source_type"],
+            o2_pct=t["o2"]["v"],
+            pressure_kpa=t["kpa"]["v"],
+            flow_cm_s=None,
+            o2_basis="ambient",
+            label=t["label"],
+            o2_range=tuple(t["o2_range"]["v"]) if t.get("o2_range") else None,  # type: ignore[arg-type]
+            pressure_range_kpa=tuple(t["pressure_range_kpa"]["v"]) if t.get("pressure_range_kpa") else None,  # type: ignore[arg-type]
+        )
+        d = distance(ev, o2s[i], kpas[j], steps)
+        if d is not None and d <= steps.threshold:
+            listed.append((d, t))
+    listed.sort(key=lambda x: (x[0], x[1]["id"]))
+    for fc in FUEL_CLASSES:
+        for st in SOURCE_TYPES:
+            n_listed = sum(1 for _, t in listed if t["fuel_class"] == fc and t["source_type"] == st)
+            if n_listed != near[fc][st]["v"]:
+                raise HTTPException(
+                    500, f"probe listing disagrees with the build at {o2s[i]}% {psis[j]} psi ({fc}/{st})"
+                )
+
+    cands = load("candidates.json")["candidates"]
+    cand = next((c for c in cands if c["o2_pct"]["v"] == o2s[i] and c["pressure_psi"]["v"] == psis[j]), None)
+    if cand is not None:
+        ev = next(e for e in load("candidate_evidence.json")["evidence"] if e["candidate_id"] == cand["id"])
+        ft = ev["flame_temperature"]
+        flame = {
+            "value": {k: ft[k] for k in ("v", "u", "p")},
+            "exact": True,
+            "approximate": ft.get("approximate"),
+            "at": None,
+            "note": "Computed for this candidate atmosphere. Explains how hot a flame can get; "
+            "does not predict ignition or spread.",
+        }
+    else:
+        fg = load("flame_temperature_grid.json")
+        xs, ys = fg["o2_pct"], fg["pressure_psi"]
+        if xs[0] <= o2s[i] <= xs[-1] and ys[0] <= psis[j] <= ys[-1]:
+            fi = min(range(len(xs)), key=lambda k: abs(xs[k] - o2s[i]))
+            fj = min(range(len(ys)), key=lambda k: abs(ys[k] - psis[j]))
+            flame = {
+                "value": {"v": fg["temperature_K"][fj][fi], "u": "K", "p": fg["p"]},
+                "exact": False,
+                "approximate": fg["approximate"][fj][fi],
+                "at": {
+                    "o2_pct": {"v": xs[fi], "u": "%", "p": fg["p"]},
+                    "pressure_psi": {"v": ys[fj], "u": "psi", "p": fg["p"]},
+                },
+                "note": "Nearest computed grid point; values between computed points are not interpolated.",
+            }
+        else:
+            flame = {
+                "value": None,
+                "exact": False,
+                "approximate": None,
+                "at": None,
+                "note": "Not computed at this point.",
+            }
+    pb = load("prebreathe.json")
+    pb_point = next((x for x in pb["points"] if cand and x["atmosphere"] == cand["name"]), None)
+    pb_pending = next((x for x in pb["pending"] if cand and x["atmosphere"] == cand["name"]), None)
+    prebreathe = (
+        {"status": "published", "point": pb_point, "caveat": pb["caveat"]}
+        if pb_point
+        else {"status": "awaiting_verification", "finding_id": pb_pending["finding_id"]}
+        if pb_pending
+        else {"status": "no_published_figure"}
+    )
+    return {
+        "requested": {"o2_pct": o2, "pressure_psi": p},
+        "inside_grid": o2s[0] <= o2 <= o2s[-1] and psis[0] <= p <= psis[-1],
+        "node": {
+            "o2_pct": {"v": o2s[i], "u": "%", "p": ap},
+            "pressure_psi": {"v": psis[j], "u": "psi", "p": ap},
+            "pressure_kpa": {"v": kpas[j], "u": "kPa", "p": ap},
+        },
+        "multiplier": m,
+        "candidate_id": cand["id"] if cand else None,
+        "near": near,
+        "near_total": {"v": L["total"][idx], "u": "tests", "p": raw["total"]["p"]},
+        "o2_match_pressure_unknown": {
+            fc: {
+                "v": raw["o2_match_pressure_unknown"][fc]["by_o2"][i],
+                "u": "tests",
+                "p": raw["o2_match_pressure_unknown"][fc]["p"],
+            }
+            for fc in FUEL_CLASSES
+        },
+        "unknown": g["unknown"],
+        "near_tests": [
+            {
+                "test_id": t["id"],
+                "investigation_id": t["investigation_id"],
+                "investigation": t["investigation"],
+                "fuel_class": t["fuel_class"],
+                "source_type": t["source_type"],
+                "label": t["label"],
+                "doi": t["doi"],
+                "o2": t["o2"],
+                "pressure_kpa": t["kpa"],
+            }
+            for _, t in listed
+        ],
+        "flame_temperature": flame,
+        "prebreathe": prebreathe,
+        "dataset_version": load("dataset_version.json")["version"],
+    }
+
+
+class AskRequest(BaseModel):
+    question: str = Field(..., min_length=3, max_length=500)
+    o2: float = Field(34.0, ge=0, le=100)
+    psi: float = Field(8.2, gt=0, le=50)
+    m: float = 1.0
+
+
+class AskResponse(BaseModel):
+    status: Literal["answered", "rejected", "unavailable"]
+    paragraphs: list[dict[str, Any]]
+    not_covered: str | None
+    problems: list[str]
+
+
+@app.post("/ask", response_model=AskResponse)
+def ask(req: AskRequest) -> dict[str, Any]:
+    """Ask the evidence. Retrieves only from the built dataset around the given point, asks the model to answer
+    in slots (it may not write numbers), and rejects any answer with a bare number, an unknown slot or citation,
+    banned wording or no 'not covered' statement. Needs ANTHROPIC_API_KEY on this host; otherwise 'unavailable'."""
+    from redshift.ai import ask as A
+
+    p = probe(o2=req.o2, p=req.psi, m=req.m)
+    findings = load("key_findings.json")["findings"]
+    ctx = A.build_context(p, load("access_gap.json"), findings, load("investigations.json")["investigations"])
+    return A.answer(req.question, ctx)
 
 
 @app.get("/sensitivity")

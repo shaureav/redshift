@@ -1,0 +1,845 @@
+{
+ "candidate_id": "c8_2_34",
+ "flame_temperature": {
+  "approximate": false,
+  "at": null,
+  "exact": true,
+  "note": "Computed for this candidate atmosphere. Explains how hot a flame can get; does not predict ignition or spread.",
+  "value": {
+   "p": "ft:c8_2_34",
+   "u": "K",
+   "v": 2570.4
+  }
+ },
+ "inside_grid": true,
+ "multiplier": 1.0,
+ "near": {
+  "droplet": {
+   "psi_table": {
+    "p": "probe:1:droplet:psi_table",
+    "u": "tests",
+    "v": 17
+   },
+   "published_paper": {
+    "p": "probe:1:droplet:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  },
+  "emulator": {
+   "psi_table": {
+    "p": "probe:1:emulator:psi_table",
+    "u": "tests",
+    "v": 0
+   },
+   "published_paper": {
+    "p": "probe:1:emulator:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  },
+  "gas": {
+   "psi_table": {
+    "p": "probe:1:gas:psi_table",
+    "u": "tests",
+    "v": 20
+   },
+   "published_paper": {
+    "p": "probe:1:gas:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  },
+  "solid": {
+   "psi_table": {
+    "p": "probe:1:solid:psi_table",
+    "u": "tests",
+    "v": 0
+   },
+   "published_paper": {
+    "p": "probe:1:solid:published_paper",
+    "u": "tests",
+    "v": 0
+   }
+  }
+ },
+ "near_tests": [
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% ethane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L129:C5",
+    "u": "%",
+    "v": 34.080788
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L129:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L129"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% ethane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L130:C5",
+    "u": "%",
+    "v": 33.4933586
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L130:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L130"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% ethane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L131:C5",
+    "u": "%",
+    "v": 33.2446428
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L131:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L131"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L40:C5",
+    "u": "%",
+    "v": 35.2937762
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L40:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L40"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L39:C5",
+    "u": "%",
+    "v": 35.3756802
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L39:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L39"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L37:C5",
+    "u": "%",
+    "v": 35.424096
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L37:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L37"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L38:C5",
+    "u": "%",
+    "v": 35.424096
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L38:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L38"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L157:C5",
+    "u": "%",
+    "v": 35.5439854
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L157:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L157"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L36:C5",
+    "u": "%",
+    "v": 35.8532281
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L36:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L36"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% ethane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L128:C5",
+    "u": "%",
+    "v": 36.3879118
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L128:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L128"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L35:C5",
+    "u": "%",
+    "v": 36.9281404
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L35:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L35"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L156:C5",
+    "u": "%",
+    "v": 37.2051768
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L156:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L156"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% ethane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L127:C5",
+    "u": "%",
+    "v": 37.5900202
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L127:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L127"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L34:C5",
+    "u": "%",
+    "v": 37.7171369
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L34:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L34"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L155:C5",
+    "u": "%",
+    "v": 37.8521822
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L155:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L155"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L154:C5",
+    "u": "%",
+    "v": 38.317216
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L154:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L154"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L33:C5",
+    "u": "%",
+    "v": 38.4638613
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L33:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L33"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L38:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L38:C5",
+    "u": "kPa",
+    "v": 71.23414144736842
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L38"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L39:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L39:C5",
+    "u": "kPa",
+    "v": 71.24747368421052
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L39"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L40:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L40:C5",
+    "u": "kPa",
+    "v": 71.31413486842105
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L40"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L20:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L20:C5",
+    "u": "kPa",
+    "v": 71.87408881578948
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L20"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L21:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L21:C5",
+    "u": "kPa",
+    "v": 71.92741776315789
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L21"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L23:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L23:C5",
+    "u": "kPa",
+    "v": 72.06074013157895
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L23"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L22:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L22:C5",
+    "u": "kPa",
+    "v": 72.07407236842106
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L22"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L153:C5",
+    "u": "%",
+    "v": 38.86
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L153:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L153"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "30% ethane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L126:C5",
+    "u": "%",
+    "v": 38.87
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L126:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L126"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L24:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L24:C5",
+    "u": "kPa",
+    "v": 72.23405921052631
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L24"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L25:C6",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L25:C5",
+    "u": "kPa",
+    "v": 72.36738157894736
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L25"
+  },
+  {
+   "doi": "10.60555/cyt1-kh64",
+   "fuel_class": "gas",
+   "investigation": "ACME CFI-G",
+   "investigation_id": "PSI-159",
+   "label": "50% butane",
+   "o2": {
+    "p": "cell:PSI-159:normal:L32:C5",
+    "u": "%",
+    "v": 39.26
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-159:normal:L32:C7",
+    "u": "kPa",
+    "v": 50.665000000000006
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-159-normal-L32"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L42:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L42:C5",
+    "u": "kPa",
+    "v": 71.23414144736842
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L42"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L44:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L44:C5",
+    "u": "kPa",
+    "v": 71.31413486842105
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L44"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L43:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L43:C5",
+    "u": "kPa",
+    "v": 71.32746710526315
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L43"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L41:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L41:C5",
+    "u": "kPa",
+    "v": 71.34079934210527
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L41"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L26:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L26:C5",
+    "u": "kPa",
+    "v": 71.63410855263157
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L26"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Methanol",
+   "o2": {
+    "p": "cell:PSI-69:main:L27:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L27:C5",
+    "u": "kPa",
+    "v": 71.78076315789474
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L27"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L29:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L29:C5",
+    "u": "kPa",
+    "v": 71.95408223684211
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L29"
+  },
+  {
+   "doi": "10.60555/mbq8-0451",
+   "fuel_class": "droplet",
+   "investigation": "FLEX",
+   "investigation_id": "PSI-69",
+   "label": "Heptane",
+   "o2": {
+    "p": "cell:PSI-69:main:L28:C6",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cell:PSI-69:main:L28:C5",
+    "u": "kPa",
+    "v": 72.08740460526316
+   },
+   "source_type": "psi_table",
+   "test_id": "PSI-69-main-L28"
+  }
+ ],
+ "near_total": {
+  "p": "probe:1:total",
+  "u": "tests",
+  "v": 37
+ },
+ "node": {
+  "o2_pct": {
+   "p": "probe:axes",
+   "u": "%",
+   "v": 34.0
+  },
+  "pressure_kpa": {
+   "p": "probe:axes",
+   "u": "kPa",
+   "v": 56.53700980398055
+  },
+  "pressure_psi": {
+   "p": "probe:axes",
+   "u": "psi",
+   "v": 8.2
+  }
+ },
+ "o2_match_pressure_unknown": {
+  "droplet": {
+   "p": "probe:1:o2match:droplet",
+   "u": "tests",
+   "v": 0
+  },
+  "emulator": {
+   "p": "probe:1:o2match:emulator",
+   "u": "tests",
+   "v": 16
+  },
+  "gas": {
+   "p": "probe:1:o2match:gas",
+   "u": "tests",
+   "v": 20
+  },
+  "solid": {
+   "p": "probe:1:o2match:solid",
+   "u": "tests",
+   "v": 0
+  }
+ },
+ "prebreathe": {
+  "finding_id": "FND-EA-PB-8.2",
+  "status": "awaiting_verification"
+ },
+ "requested": {
+  "o2_pct": 34.0,
+  "pressure_psi": 8.2
+ },
+ "unknown": {
+  "basis_differs": {
+   "p": "probe:state:basis_differs",
+   "u": "tests",
+   "v": 263
+  },
+  "unknown_both": {
+   "p": "probe:state:unknown_both",
+   "u": "tests",
+   "v": 665
+  },
+  "unknown_o2": {
+   "p": "probe:state:unknown_o2",
+   "u": "tests",
+   "v": 11
+  },
+  "unknown_pressure": {
+   "p": "probe:state:unknown_pressure",
+   "u": "tests",
+   "v": 166
+  }
+ }
+}

@@ -113,7 +113,11 @@ def _input_entry(ev: Evidence, rec: TestRecord | None, registry: Registry, doi: 
     if ev.o2_range:
         entry["o2_range"] = {"v": list(ev.o2_range), "u": "%", "p": (o2 or {}).get("p", "probe:grid")}
     if ev.pressure_range_kpa:
-        entry["pressure_range_kpa"] = {"v": list(ev.pressure_range_kpa), "u": "kPa", "p": (kpa or {}).get("p", "probe:grid")}
+        entry["pressure_range_kpa"] = {
+            "v": list(ev.pressure_range_kpa),
+            "u": "kPa",
+            "p": (kpa or {}).get("p", "probe:grid"),
+        }
     if ev.o2_list:
         lst = rec.fields.get("o2_list_pct") if rec is not None else None
         entry["o2_list"] = lst if lst is not None else {"v": list(ev.o2_list), "u": "%", "p": "probe:grid"}
@@ -137,8 +141,8 @@ def build(
     # A test's state (placed, pressure unknown, basis differs...) does not depend on the point.
     states: dict[str, str] = {}
     for ev in evidence:
-        st, _ = classify(ev, 21.0, 101.325, Steps.from_params(near_params), bases)
-        states[ev.id] = "placed" if st in PLACED else st
+        state, _ = classify(ev, 21.0, 101.325, Steps.from_params(near_params), bases)
+        states[ev.id] = "placed" if state in PLACED else state
     placed = [ev for ev in evidence if states[ev.id] == "placed"]
     p_unknown = [ev for ev in evidence if states[ev.id] == "unknown_pressure"]
 
@@ -169,7 +173,9 @@ def build(
         counts = {fc: {st: np.zeros((len(o2), len(kpa)), dtype=np.int32) for st in SOURCE_TYPES} for fc in FUEL_CLASSES}
         for ev in placed:
             counts[ev.fuel_class][ev.source_type] += _near_mask(ev, o2, kpa, steps)
-        total = sum((counts[fc][st] for fc in FUEL_CLASSES for st in SOURCE_TYPES), np.zeros_like(counts["gas"]["psi_table"]))
+        total = sum(
+            (counts[fc][st] for fc in FUEL_CLASSES for st in SOURCE_TYPES), np.zeros_like(counts["gas"]["psi_table"])
+        )
         near_out: dict[str, Any] = {}
         for fc in FUEL_CLASSES:
             near_out[fc] = {}
@@ -233,7 +239,9 @@ def build(
         )
         unknown[state] = value(len(ids), "tests", pid)
 
-    inputs = [_input_entry(ev, by_id.get(ev.id), registry, dois.get(ev.id)) for ev in sorted(placed, key=lambda e: e.id)]
+    inputs = [
+        _input_entry(ev, by_id.get(ev.id), registry, dois.get(ev.id)) for ev in sorted(placed, key=lambda e: e.id)
+    ]
     p_unknown_inputs = [
         _input_entry(ev, by_id.get(ev.id), registry, dois.get(ev.id)) for ev in sorted(p_unknown, key=lambda e: e.id)
     ]
