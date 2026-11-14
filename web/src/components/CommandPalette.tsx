@@ -1,13 +1,13 @@
 // Command palette (Cmd+K or Ctrl+K): jump to any atmosphere or point, material, investigation, test id
 // or page. Typing "8.2 psi 34%" moves the probe there.
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useData } from "../lib/data";
+import { requestPlane, type PlaneRequest } from "../lib/planeRequest";
 import type { ProbeGridFile } from "../lib/probe";
 import type { Candidate, Investigation } from "../lib/types";
 import { parsePoint } from "../lib/view";
 import { SearchIcon } from "./Icons";
-import { SHORTCUTS_EVENT } from "./ShortcutSheet";
 import { TOUR_EVENT } from "./Tour";
 
 export const PALETTE_EVENT = "redshift:palette";
@@ -39,6 +39,7 @@ export function CommandPalette() {
   const input = useRef<HTMLInputElement>(null);
   const opener = useRef<Element | null>(null);
   const navigate = useNavigate();
+  const onPlane = useLocation().pathname === "/";
   const cands = useData<{ candidates: Candidate[] }>("candidates.json");
   const grid = useData<ProbeGridFile>("probe_grid.json");
   const invs = useData<{ investigations: Investigation[] }>(open ? "investigations.json" : "candidates.json");
@@ -69,6 +70,15 @@ export function CommandPalette() {
 
   const items = useMemo<Item[]>(() => {
     const go = (to: string) => () => { setOpen(false); navigate(to); };
+    // Something the plane page does (lib/planeRequest.ts). On the plane the view in the address bar stays as it
+    // is; from another page the plane opens with its defaults. The request is stored, not timed, so a plane page
+    // still downloading takes it when it mounts. It is made once the palette has closed and handed focus back, so
+    // the sheet or the intro takes focus from there and returns it there.
+    const toPlane = (r: PlaneRequest) => () => {
+      setOpen(false);
+      if (!onPlane) navigate("/");
+      setTimeout(() => requestPlane(r), 0);
+    };
     const out: Item[] = [];
     const pt = parsePoint(q);
     if (pt) out.push({ id: "pt", group: "Go to a point", label: `${pt.o2}% O2, ${pt.psi} psi`, hint: "Move the probe", run: go(`/?o2=${pt.o2}&p=${pt.psi}`) });
@@ -98,11 +108,11 @@ export function CommandPalette() {
       { id: "a-gap", group: "Actions", label: "Open the access gap chart", run: go("/?view=gap") },
       { id: "a-theme", group: "Actions", label: "Switch light or dark theme", run: () => { setOpen(false); window.dispatchEvent(new Event(THEME_EVENT)); } },
       { id: "a-tour", group: "Actions", label: "Replay the tour", run: () => { setOpen(false); navigate("/"); setTimeout(() => window.dispatchEvent(new Event(TOUR_EVENT)), 50); } },
-      { id: "a-keys", group: "Actions", label: "Show keyboard shortcuts", run: () => { setOpen(false); navigate("/"); setTimeout(() => window.dispatchEvent(new Event(SHORTCUTS_EVENT)), 50); } },
+      { id: "a-keys", group: "Actions", label: "Show keyboard shortcuts", run: toPlane("shortcuts") },
     ];
     for (const a of acts) if (!q || matches(q, a.label)) out.push(a);
     return out.slice(0, 40);
-  }, [q, cands.data, grid.data, invs.data, navigate]);
+  }, [q, cands.data, grid.data, invs.data, navigate, onPlane]);
 
   useEffect(() => setActive(0), [q]);
 

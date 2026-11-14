@@ -4,8 +4,6 @@ import { Fragment, useEffect, useRef } from "react";
 import { PLANE_KEYS, SHORTCUT_KEYS } from "../lib/shortcuts";
 import { CloseIcon } from "./Icons";
 
-export const SHORTCUTS_EVENT = "redshift:shortcuts";
-
 function Keys({ keys }: { keys: string[] }) {
   // "1 to 5" is a range; any other list is keys pressed together.
   const range = keys.length === 2 && keys[0] === "1" && keys[1] === "5";

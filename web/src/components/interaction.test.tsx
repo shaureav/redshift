@@ -2,15 +2,16 @@
 // (decision D6, no new dependencies). Home renders from the real data snapshot (web/public/data) with the
 // query cache pre-filled, as in panel.test.tsx, so nothing touches the network.
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { act, useState, type ReactNode } from "react";
+import { act, lazy, Suspense, useState, type ReactNode } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { MemoryRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { SOUND_KEY } from "../lib/geiger";
+import { geiger, SOUND_KEY } from "../lib/geiger";
 import { decodeGrid, readAt, totalsAlongO2, type ProbeGridFile } from "../lib/probe";
 import { loadSnapshot } from "../lib/snapshot.fixture";
 import { useView } from "../lib/view";
 import Home from "../pages/Home";
+import { CommandPalette } from "./CommandPalette";
 import { ErrorBoundary, RouteBoundary } from "./ErrorBoundary";
 import { Toaster } from "./Toaster";
 import { Tour, TOUR_EVENT } from "./Tour";
@@ -26,9 +27,12 @@ const FILES = [
 let root: Root | null = null;
 let host: HTMLDivElement | null = null;
 let lastSearch = "";
+let lastPath = "";
 
 function LocationSpy() {
-  lastSearch = useLocation().search;
+  const loc = useLocation();
+  lastSearch = loc.search;
+  lastPath = loc.pathname;
   return null;
 }
 
@@ -522,5 +526,76 @@ describe("feel (Phase 4)", () => {
     expect(made).toBe(0);
     act(() => { document.dispatchEvent(new Event("pointerup")); });
     expect(made).toBe(1);
+  });
+});
+
+describe("plane requests from the command palette, and sound under Solids only (Phase 4 review)", () => {
+  const sheet = () => document.querySelector('[role="dialog"][aria-labelledby="shortcut-title"]');
+  /** Opens the palette with Ctrl+K, types into its field as a person would, and runs the first result. */
+  function runFromPalette(text: string) {
+    press("k", { ctrlKey: true });
+    const field = document.querySelector<HTMLInputElement>('[role="combobox"]')!;
+    act(() => {
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(field, text);
+      field.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    act(() => {
+      field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }));
+    });
+  }
+  const settle = () => act(async () => { await new Promise((r) => setTimeout(r, 0)); });
+
+  it("opens the shortcut sheet from another page, even while the plane page is still downloading", async () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    // The plane page arrives only when the test says so, long after the old 50 ms event would have been lost.
+    let arrive: () => void = () => {};
+    const SlowHome = lazy(() => new Promise<{ default: typeof Home }>((r) => { arrive = () => r({ default: Home }); }));
+    mount(
+      <>
+        <CommandPalette />
+        <Routes>
+          <Route path="/" element={<Suspense fallback={<p>Loading the plane</p>}><SlowHome /></Suspense>} />
+          <Route path="/evidence" element={<p>Evidence</p>} />
+        </Routes>
+      </>,
+      "/evidence",
+    );
+    runFromPalette("keyboard shortcuts");
+    await settle();
+    await act(async () => { await new Promise((r) => setTimeout(r, 120)); });
+    expect(lastPath).toBe("/");
+    expect(sheet()).toBeNull(); // still downloading
+    await act(async () => { arrive(); await Promise.resolve(); });
+    await settle();
+    expect(sheet()?.textContent).toContain("Keyboard shortcuts");
+  });
+
+  it("on the plane, opens the sheet and keeps the view in the address bar", async () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<><CommandPalette /><Home /></>, "/?o2=21&p=14.7&solids=1");
+    runFromPalette("keyboard shortcuts");
+    await settle();
+    expect(sheet()).not.toBeNull();
+    expect(lastSearch).toBe("?o2=21&p=14.7&solids=1");
+  });
+
+  it("keeps the Geiger clicks silent at a habitat candidate under Solids only, and follows the total without it", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(SOUND_KEY, "on");
+    const set = vi.spyOn(geiger, "setTotal");
+    try {
+      mount(<Home />, "/?o2=21&p=14.7&solids=1");
+      const last = () => set.mock.calls[set.mock.calls.length - 1]?.[0];
+      expect(document.querySelector('svg[role="application"]')?.getAttribute("aria-label")).toContain("at sea");
+      expect(last()).toBe(0);
+      press("s"); // Solids only off: the land the clicks follow is back
+      const total = readAt(decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json")), 21, 14.7, 1).total.v;
+      expect(total).toBeGreaterThan(0);
+      expect(last()).toBe(total);
+      press("s");
+      expect(last()).toBe(0);
+    } finally {
+      set.mockRestore();
+    }
   });
 });

@@ -2,7 +2,10 @@
 // turns it on with a gesture; the choice is kept per device and survives blocked storage; the click rate is
 // proportional to the near-test total at the probe, and open sea is silent.
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { clickRate, CLICKS_PER_TEST, createGeiger, MAX_RATE, SOUND_KEY, type GeigerDeps } from "./geiger";
+import { coastFor, isLand } from "./coast";
+import { clickRate, CLICKS_PER_TEST, createGeiger, MAX_RATE, SOUND_KEY, soundTotal, type GeigerDeps } from "./geiger";
+import { decodeGrid, readAt, type ProbeGridFile } from "./probe";
+import { loadSnapshot } from "./snapshot.fixture";
 
 /** A stand-in AudioContext that counts what the module asks of it. */
 function fakeAudio() {
@@ -147,5 +150,39 @@ describe("the audio module", () => {
     const silent = createGeiger({ AudioContext: null, storage: () => memoryStorage(), isGesture: () => true, doc: () => document });
     expect(silent.enable()).toBe(false);
     expect(silent.enabled).toBe(false); // nothing recorded for a sound that cannot play
+  });
+});
+
+describe("soundTotal: the clicks follow the coast that is drawn", () => {
+  const grid = decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json"));
+  const at = (o2: number, psi: number, m: number, solids: boolean) => {
+    const r = readAt(grid, o2, psi, m);
+    return soundTotal(r, solids, isLand(coastFor(grid, m, "solids"), r.i, r.j));
+  };
+
+  it("follows the all-fuel near total normally, so a habitat candidate on land clicks", () => {
+    const r = readAt(grid, 21, 14.7, 1);
+    expect(r.total.v).toBeGreaterThan(0);
+    expect(at(21, 14.7, 1, false)).toBe(r.total.v);
+    expect(clickRate(at(21, 14.7, 1, false))).toBeGreaterThan(0);
+  });
+
+  it("is silent at every habitat candidate under Solids only, where the plane draws open sea", () => {
+    const cands = loadSnapshot<{ candidates: { o2_pct: { v: number }; pressure_psi: { v: number }; role: string }[] }>("candidates.json").candidates;
+    for (const m of grid.multipliers) {
+      for (const c of cands) {
+        const r = readAt(grid, c.o2_pct.v, c.pressure_psi.v, m);
+        expect(isLand(coastFor(grid, m, "solids"), r.i, r.j)).toBe(false);
+        expect(at(c.o2_pct.v, c.pressure_psi.v, m, true)).toBe(0);
+        expect(clickRate(at(c.o2_pct.v, c.pressure_psi.v, m, true))).toBe(0);
+      }
+    }
+  });
+
+  it("on solid land, follows one built solid value (the larger), never the sum of two", () => {
+    const r = { total: { v: 40 }, near: { solid: { psi_table: { v: 3 }, published_paper: { v: 5 } } } };
+    expect(soundTotal(r, true, true)).toBe(5);
+    expect(soundTotal(r, true, false)).toBe(0);
+    expect(soundTotal(r, false, false)).toBe(40);
   });
 });

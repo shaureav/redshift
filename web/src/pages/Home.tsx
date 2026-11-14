@@ -11,14 +11,15 @@ import { AskBox } from "../components/AskBox";
 import { FuelMarker } from "../components/Common";
 import { EvidencePanelView, flameAt, prebreatheFor, type FlameFile, type PanelData, type PrebreatheFile } from "../components/EvidencePanel";
 import { KeyboardIcon, PinIcon } from "../components/Icons";
-import { ShortcutSheet, SHORTCUTS_EVENT } from "../components/ShortcutSheet";
+import { ShortcutSheet } from "../components/ShortcutSheet";
 import { copyPageLink, toast } from "../components/Toaster";
 import { Tour } from "../components/Tour";
 import { Value } from "../components/Value";
-import { coastFor, evidenceWord, type EvidenceWord } from "../lib/coast";
+import { coastFor, evidenceWord, isLand, type EvidenceWord } from "../lib/coast";
 import { useData } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
-import { geiger } from "../lib/geiger";
+import { geiger, soundTotal } from "../lib/geiger";
+import { PLANE_REQUEST_EVENT, takePlaneRequest } from "../lib/planeRequest";
 import { useReducedMotion } from "../lib/motion";
 import { decodeGrid, inGrid, nearInputs, nodeOf, readAt, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "../lib/probe";
 import type { Candidate, CandidateEvidence, Val } from "../lib/types";
@@ -125,9 +126,11 @@ export default function Home() {
     return { box: b, any };
   }, [view.box, grid]);
 
-  // Geiger mode: the click rate follows the near-test total at the probe (a built value; open sea is silent).
-  // Turned on only inside the Sound tool's click; when it was left on, it waits for the first tap or key press.
-  const total = data?.reading.total.v ?? 0;
+  // Geiger mode: the click rate follows the built near-test total of the coast that is drawn, so open sea is
+  // silent; under Solids only that is the solid land alone (lib/geiger.ts, soundTotal). Turned on only inside the
+  // Sound tool's click; when it was left on, it waits for the first tap or key press.
+  const solidCoast = useMemo(() => (grid ? coastFor(grid, view.m, "solids") : null), [grid, view.m]);
+  const total = data && solidCoast ? soundTotal(data.reading, view.solids, isLand(solidCoast, data.reading.i, data.reading.j)) : 0;
   useEffect(() => geiger.setTotal(sound ? total : 0), [sound, total]);
   useEffect(() => {
     if (sound) geiger.armOnGesture();
@@ -167,10 +170,15 @@ export default function Home() {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [cands.data, view.solids, compareLink, onProbe, setView, navigate]);
+  // Requests from the command palette (lib/planeRequest.ts): one made from another page waits for this page to
+  // mount; one made here arrives through the event. Neither touches the view in the address bar.
   useEffect(() => {
-    const open = () => setSheet(true);
-    window.addEventListener(SHORTCUTS_EVENT, open);
-    return () => window.removeEventListener(SHORTCUTS_EVENT, open);
+    const take = () => {
+      if (takePlaneRequest() === "shortcuts") setSheet(true);
+    };
+    take();
+    window.addEventListener(PLANE_REQUEST_EVENT, take);
+    return () => window.removeEventListener(PLANE_REQUEST_EVENT, take);
   }, []);
 
   const habitatHeadline = useMemo(() => {

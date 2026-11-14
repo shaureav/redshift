@@ -20,6 +20,21 @@ export function clickRate(total: number): number {
   return Number.isFinite(total) && total > 0 ? Math.min(MAX_RATE, total * CLICKS_PER_TEST) : 0;
 }
 
+/** The built value the clicks follow at the probe: the one for the coast that is drawn, so the sound never says
+ *  land where the plane shows sea. Normally that is the near-test total over every fuel class (land is where it is
+ *  above zero). Under Solids only the plane draws the solid land alone: off it the clicks stop; on it they follow
+ *  the larger of the two built solid values at the node (PSI's tables, verified papers), never their sum, so the
+ *  browser makes no new count. */
+export function soundTotal(
+  r: { total: { v: number }; near: { solid: { psi_table: { v: number }; published_paper: { v: number } } } },
+  solids: boolean,
+  onSolidLand: boolean,
+): number {
+  if (!solids) return r.total.v;
+  if (!onSolidLand) return 0;
+  return Math.max(r.near.solid.psi_table.v, r.near.solid.published_paper.v);
+}
+
 type Ctx = Pick<AudioContext, "currentTime" | "sampleRate" | "destination" | "createBuffer" | "createBufferSource" | "createGain" | "resume" | "suspend">;
 type CtxCtor = new () => Ctx;
 
