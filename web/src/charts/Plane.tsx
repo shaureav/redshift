@@ -75,8 +75,9 @@ function useFrame(w: number, h: number, view: View, rawStrips: Strip[]): Frame {
   const z = ZOOMS[view.zoom];
   const showStrip = view.layers.has("strip");
   const stripH = showStrip ? 32 + strips.reduce((a, s) => a + stripRowHeight(s, view.solids) + 4, 0) : 0;
-  const left = narrow ? 40 : 56;
-  const right = narrow ? 40 : 56;
+  // Narrow margins still fit the rotated axis titles beside their tick labels and the strip lane labels.
+  const left = narrow ? 50 : 56;
+  const right = narrow ? 52 : 56;
   const top = 16;
   const bottom = 48 + stripH;
   const iw = w - left - right;
@@ -435,28 +436,28 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
               <text x={-8} dy="0.32em" textAnchor="end" fontSize={12} fill="var(--ink-2)" className="num">{p}</text>
             </g>
           ))}
-          <text transform={`translate(${-(narrow ? 30 : 40)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={14} fill="var(--ink)">Pressure (psi, log scale)</text>
+          <text transform={`translate(${-(narrow ? 38 : 40)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={14} fill="var(--ink)">Pressure (psi, log scale)</text>
           {kpaTicks.map((k) => (
             <g key={k} transform={`translate(${iw},${y(k / KPA_PER_PSI)})`}>
               <line x2={4} stroke="var(--ink-3)" />
               <text x={8} dy="0.32em" fontSize={12} fill="var(--ink-3)" className="num">{k}</text>
             </g>
           ))}
-          <text transform={`translate(${iw + (narrow ? 30 : 44)},${ih / 2}) rotate(90)`} textAnchor="middle" fontSize={14} fill="var(--ink-2)">kPa</text>
+          <text transform={`translate(${iw + (narrow ? 36 : 44)},${ih / 2}) rotate(90)`} textAnchor="middle" fontSize={14} fill="var(--ink-2)">kPa</text>
         </g>
 
-        {layers.has("strip") && <StripLayer strips={strips} solids={solids} x={x} z={z} iw={iw} top={ih + 56} />}
+        {layers.has("strip") && <StripLayer strips={strips} solids={solids} x={x} z={z} iw={iw} top={ih + 56} narrow={narrow} />}
       </g>
     </svg>
   );
 });
 
 /** Tests whose pressure is not recorded, in O2-only strips under the plot. */
-const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top }: { strips: Strip[]; solids: boolean; x: d3.ScaleLinear<number, number>; z: { o2: [number, number] }; iw: number; top: number }) {
+const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top, narrow }: { strips: Strip[]; solids: boolean; x: d3.ScaleLinear<number, number>; z: { o2: [number, number] }; iw: number; top: number; narrow: boolean }) {
   let yy = 8;
   return (
     <g transform={`translate(0,${top})`} className="animate-fade">
-      <text x={0} y={0} fontSize={12} fontWeight={500} fill="var(--ink-2)">Oxygen recorded, pressure not recorded: cannot be placed on the plane</text>
+      <text x={0} y={0} fontSize={12} fontWeight={500} fill="var(--ink-2)">{narrow ? "Oxygen recorded, no pressure: not placeable" : "Oxygen recorded, pressure not recorded: cannot be placed on the plane"}</text>
       {strips.map((s) => {
         const hh = stripRowHeight(s, solids);
         const at = yy;

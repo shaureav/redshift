@@ -1,7 +1,7 @@
 // The plane, full screen, with the live evidence panel docked beside it. This page is the product:
 // pick an atmosphere (drag, click, arrow keys or a candidate chip), see the evidence instantly, go deeper,
 // take it with you. Every view state lives in the URL.
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AccessGap, type AccessGapData } from "../charts/AccessGap";
 import { Plane, type ProbeMode } from "../charts/Plane";
@@ -83,14 +83,13 @@ export default function Home() {
     };
   }, [grid, cands.data, candEv.data, flame.data, pb.data, gap.data, shown.o2, shown.psi, view.m, drag, preview]);
 
-  // Tests inside a brushed area: a filter of the reader's own making, like the Evidence Explorer's.
+  // A brushed area: whether any placed test sits inside it, never how many. The browser does not make new
+  // counts (D24 withdraws D20); the Evidence Explorer, filtered to the area, lists the tests themselves.
   const selection = useMemo(() => {
     if (!view.box || !grid) return null;
     const b = view.box;
-    const ids = grid.file.inputs
-      .filter((t) => t.o2?.v != null && t.kpa?.v != null && t.o2.v >= b.o2[0] && t.o2.v <= b.o2[1] && t.kpa.v / KPA_PER_PSI >= b.psi[0] && t.kpa.v / KPA_PER_PSI <= b.psi[1])
-      .map((t) => t.id);
-    return { box: b, ids };
+    const any = grid.file.inputs.some((t) => t.o2?.v != null && t.kpa?.v != null && t.o2.v >= b.o2[0] && t.o2.v <= b.o2[1] && t.kpa.v / KPA_PER_PSI >= b.psi[0] && t.kpa.v / KPA_PER_PSI <= b.psi[1]);
+    return { box: b, any };
   }, [view.box, grid]);
 
   const share = () => {
@@ -142,13 +141,13 @@ export default function Home() {
           </h1>
           <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
             {/* On a phone the controls scroll sideways in one row, so the plane stays above the fold. */}
-            <button type="button" role="switch" aria-checked={view.solids} onClick={() => setView({ solids: !view.solids })} className={`chip ${view.solids ? "border-[color:var(--solid)] text-ink" : ""}`} id="tour-solids">
+            <button type="button" role="switch" aria-checked={view.solids} onClick={() => setView({ solids: !view.solids })} className={`chip flex-none whitespace-nowrap ${view.solids ? "border-[color:var(--solid)] text-ink" : ""}`} id="tour-solids">
               <span className="switch" aria-checked={view.solids} aria-hidden="true" /> Solids only
             </button>
             <span className="mx-1 hidden h-6 w-px bg-[color:var(--line)] sm:block" aria-hidden="true" />
             <span className="flex flex-none gap-1 sm:flex-wrap" role="group" aria-label="Snap to a candidate atmosphere">
               {cands.data.candidates.map((c) => (
-                <button key={c.id} type="button" className="chip h-8 px-3 text-xs" aria-pressed={candId === c.id} onClick={() => onProbe(c.o2_pct.v, c.pressure_psi.v, "commit")}>
+                <button key={c.id} type="button" className="chip h-8 whitespace-nowrap px-3 text-xs" aria-pressed={candId === c.id} onClick={() => onProbe(c.o2_pct.v, c.pressure_psi.v, "commit")}>
                   {c.name.replace(" O2", "")}
                 </button>
               ))}
@@ -187,7 +186,9 @@ export default function Home() {
         <Legend />
       </section>
 
-      <aside className="border-t border-line bg-[color:var(--surface)] lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-t-0" id="tour-panel" aria-label="Evidence near the probe">
+      {/* relative: the panel is the containing block for anything absolutely placed inside it (such as a
+          visually hidden label), so nothing escapes its scroller and stretches the page. */}
+      <aside className="relative border-t border-line bg-[color:var(--surface)] lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-t-0" id="tour-panel" aria-label="Evidence near the probe">
         {selection && (
           <div className="animate-rise border-b border-line bg-[color:var(--surface-2)] px-5 py-4">
             <div className="flex items-center justify-between gap-2">
@@ -195,9 +196,11 @@ export default function Home() {
               <button type="button" className="btn btn-sm btn-quiet" onClick={() => setView({ box: null })}>Clear</button>
             </div>
             <p className="mt-2 text-sm">
-              {selection.ids.length === 0 ? "No placed tests in this area." : `${selection.ids.length} placed ${selection.ids.length === 1 ? "test" : "tests"} in this area (your selection).`}
+              {selection.any
+                ? "Placed tests sit inside this area. The Evidence Explorer lists them, each with its source."
+                : "No placed test sits inside this area. Empty means unknown, not safe."}
             </p>
-            {selection.ids.length > 0 && (
+            {selection.any && (
               <button type="button" className="btn btn-sm mt-2" onClick={() => navigate(`/evidence?box=${[selection.box.o2[0], selection.box.o2[1], selection.box.psi[0], selection.box.psi[1]].join(",")}`)}>
                 Filter the Evidence Explorer to this area
               </button>
@@ -229,22 +232,50 @@ export default function Home() {
   );
 }
 
+const MENU_W = 256;
+
 function LayerMenu({ layers, onToggle }: { layers: Set<string>; onToggle: (l: (typeof LAYERS)[number]["id"]) => void }) {
   const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState<{ top: number; left: number; width: number; maxHeight: number } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const btn = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (!open) return;
     const off = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
-    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const esc = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      btn.current?.focus();
+    };
     document.addEventListener("mousedown", off);
     document.addEventListener("keydown", esc);
     return () => { document.removeEventListener("mousedown", off); document.removeEventListener("keydown", esc); };
   }, [open]);
+  // The menu is fixed to the viewport under its button, not placed inside the controls row: on a phone that
+  // row scrolls sideways, and a scrolling box clips anything absolutely placed inside it. It stays in the DOM
+  // right after its button, so Tab still moves from the button into the menu.
+  useLayoutEffect(() => {
+    if (!open) return;
+    const place = () => {
+      const r = btn.current?.getBoundingClientRect();
+      if (!r) return;
+      const vw = document.documentElement.clientWidth;
+      const vh = document.documentElement.clientHeight;
+      const width = Math.min(MENU_W, vw - 32);
+      const left = Math.max(16, Math.min(r.right - width, vw - width - 16));
+      const top = r.bottom + 8;
+      setPos({ top, left, width, maxHeight: Math.max(160, vh - top - 16) });
+    };
+    place();
+    window.addEventListener("resize", place);
+    window.addEventListener("scroll", place, true);
+    return () => { window.removeEventListener("resize", place); window.removeEventListener("scroll", place, true); };
+  }, [open]);
   return (
-    <div className="relative" ref={ref}>
-      <button type="button" className="btn" aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>Layers</button>
-      {open && (
-        <div className="animate-rise absolute right-0 top-full z-30 mt-2 w-64 rounded-lg border border-line-strong bg-surface-2 p-2" style={{ boxShadow: "var(--shadow)" }} role="group" aria-label="Layers">
+    <div ref={ref}>
+      <button ref={btn} type="button" className="btn" aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>Layers</button>
+      {open && pos && (
+        <div className="animate-rise fixed z-30 overflow-y-auto rounded-lg border border-line-strong bg-surface-2 p-2" style={{ top: pos.top, left: pos.left, width: pos.width, maxHeight: pos.maxHeight, boxShadow: "var(--shadow)" }} role="group" aria-label="Layers">
           {LAYERS.map((l) => (
             <button key={l.id} type="button" role="switch" aria-checked={layers.has(l.id)} onClick={() => onToggle(l.id)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-[color:var(--surface-3)]">
               {l.label}
@@ -259,7 +290,7 @@ function LayerMenu({ layers, onToggle }: { layers: Set<string>; onToggle: (l: (t
 
 function Legend() {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6" id="tour-legend">
       {(["gas", "droplet", "solid", "emulator"] as const).map((f) => (
         <span key={f} className="flex items-center gap-1.5"><FuelMarker fuel={f} /> {FUEL_LABEL[f]}</span>
       ))}
@@ -279,7 +310,7 @@ function GapDialog({ onClose }: { onClose: () => void }) {
     return () => document.removeEventListener("keydown", esc);
   }, [onClose]);
   return (
-    <div className="animate-fade fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[color:var(--bg)]/80 p-4 backdrop-blur-sm sm:p-8" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+    <div className="animate-fade scrim fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 backdrop-blur-sm sm:p-8" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label="The access gap" className="animate-rise w-full max-w-3xl outline-none">
         <div className="mb-2 flex justify-end"><button type="button" className="btn" onClick={onClose}>Close</button></div>
         <AccessGap />

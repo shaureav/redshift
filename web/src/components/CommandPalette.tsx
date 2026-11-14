@@ -113,16 +113,18 @@ export function CommandPalette() {
   };
 
   return (
-    <div className="animate-fade fixed inset-0 z-[80] flex items-start justify-center bg-[color:var(--bg)]/70 px-4 pt-[12vh] backdrop-blur-sm" onMouseDown={(e) => e.target === e.currentTarget && setOpen(false)}>
+    <div className="animate-fade scrim fixed inset-0 z-[80] flex items-start justify-center px-4 pt-[12vh] backdrop-blur-sm" onMouseDown={(e) => e.target === e.currentTarget && setOpen(false)}>
       <div role="dialog" aria-modal="true" aria-label="Command palette" className="animate-rise w-full max-w-[640px] overflow-hidden rounded-lg border border-line-strong bg-surface-2" style={{ boxShadow: "var(--shadow)" }} onKeyDown={onKey}>
-        <div className="flex items-center gap-3 border-b border-line px-4">
+        {/* The field is always focused while the palette is open. Its focus shows as a 2 px accent rule
+            inside the search row: the usual outline would sit outside the field and be clipped by the box. */}
+        <div className="flex items-center gap-3 border-b border-line px-4 focus-within:shadow-[inset_0_-2px_0_var(--focus)]">
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--ink-3)" strokeWidth="1.5" /><path d="M11 11l3 3" stroke="var(--ink-3)" strokeWidth="1.5" /></svg>
           <input
             ref={input}
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Atmosphere, point (8.2 psi 34%), material, investigation or test id"
-            className="h-14 w-full bg-transparent text-base text-ink outline-none placeholder:text-ink-3"
+            className="h-14 w-full bg-transparent text-base text-ink outline-none placeholder:text-ink-3 focus-visible:outline-none"
             role="combobox"
             aria-expanded="true"
             aria-controls="palette-list"

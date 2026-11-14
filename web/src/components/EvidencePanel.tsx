@@ -69,7 +69,8 @@ export interface PanelData {
 
 function Section({ title, children, id }: { title: ReactNode; children: ReactNode; id?: string }) {
   return (
-    <section className="border-t border-line px-5 py-4" aria-labelledby={id}>
+    // scroll-mt clears the sticky nav when a section is scrolled to the top (the tour's access-gap step).
+    <section className="scroll-mt-16 border-t border-line px-5 py-4" aria-labelledby={id}>
       <h2 id={id} className="eyebrow mb-3">{title}</h2>
       {children}
     </section>
@@ -107,7 +108,8 @@ export function FuelRows({ r }: { r: Reading }) {
               ) : (
                 <span className="bar absolute inset-y-0 left-0 rounded-sm" style={{ width: `${Math.max(2, (n / max) * 100)}%`, background: `var(--${f})`, opacity: 0.85 }} aria-hidden="true" />
               )}
-              <span className={`relative ml-auto flex items-baseline gap-2 rounded-sm px-2 text-sm ${n === 0 ? "bg-[color:var(--surface-2)] text-ink-2" : "bg-[color:var(--surface-2)]/80"}`}>
+              {/* A solid chip, so the count and the paper label never sit on the bar's fill (AA in both themes). */}
+              <span className={`relative ml-auto flex items-baseline gap-2 rounded-sm bg-surface-2 px-2 text-sm ${n === 0 ? "text-ink-2" : ""}`}>
                 {n === 0 ? <span className="italic">no tests recorded</span> : null}
                 <span className="font-semibold"><Value val={r.near[f].psi_table} unit={false} /></span>
                 <span className="text-xs text-ink-3">paper <Value val={r.near[f].published_paper} unit={false} /></span>
@@ -229,7 +231,10 @@ export function EvidencePanelView({ data, actions, ask }: { data: PanelData; act
         <FuelRows r={r} />
         {nearShown.length > 0 && (
           <details className="group mt-4">
-            <summary className="cursor-pointer text-sm text-ink-2 hover:text-ink">Nearest tests</summary>
+            <summary className="flex cursor-pointer list-none items-center gap-2 text-sm text-ink-2 hover:text-ink [&::-webkit-details-marker]:hidden">
+              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" className="flex-none transition-transform duration-200 group-open:rotate-90"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              Nearest tests
+            </summary>
             <ul className="mt-2 divide-y divide-[color:var(--line)] text-sm">
               {nearShown.map(({ input }) => (
                 <li key={input.id} className="flex items-baseline justify-between gap-3 py-2">

@@ -10,7 +10,7 @@ The click path a presenter runs in front of judges, with what to say at each bea
 2. Browser window at 1440 x 900, page zoom 100%, dark theme.
 3. Dismiss the tour once beforehand with **Skip tour** (the browser remembers it). The tour also runs cleanly to the end now (Phase 0 fixed the step 3 crash), but it is not part of the 30 seconds.
 4. Open `http://localhost:4173/?o2=21&p=14.7`. The probe starts on Earth sea-level air, so the drag in beat 2 has somewhere to go.
-5. Rehearse the path below twice. If any screen fails, Redshift shows its error screen with **Reload the page**; the address bar keeps the view, so a reload returns to the same point.
+5. Rehearse the path below twice, timing each beat. Beat 4 now includes a panel scroll; if it runs past 23 s, shorten the beat 3 line rather than the cited numbers. If any screen fails, Redshift shows its error screen with **Reload the page**; the address bar keeps the view, so a reload returns to the same point.
 
 ## The path
 
@@ -21,7 +21,7 @@ The numbers are the ones the screen shows from the current build (`web/public/da
 | 0 to 6 s | Land on the plane. Sweep a hand across it. | The plane: oxygen across, cabin pressure up, every placed test shaped and coloured by fuel class, the candidate habitat atmospheres pinned, hatched areas with no tests. | "NASA has not chosen the air for a Moon base. Here is every microgravity fire test NASA's own tables let us place." |
 | 6 to 12 s | Drag the probe down and to the right, onto the **8.2 psi / 34%** pin. It snaps to the pin. | Panel: candidate atmosphere 34% O2, 8.2 psi (56.5 kPa). "37 tests sit near this point." | "Drag to 8.2 psi and 34 percent oxygen, an atmosphere NASA has named. 37 tests nearby." |
 | 12 to 17 s | Point at the fuel-class rows; then switch on **Solids only**. | Gas flame 20, droplet 17, solid material 0 (hatched, "no tests recorded"). With Solids only, the plane empties ("No solid-material test can be placed on this plane") and the headline reads "No solid burn in PSI's tables records pressure." | "Not one is a solid material. Hatched means unknown, not safe." |
-| 17 to 23 s | In the panel's **The access gap** section, click **Open the access gap chart**. | The chart, step by step: 263 solid-fuel burn rows in PSI tables, 129 with oxygen recorded, 0 with pressure recorded, 0 near a habitat candidate. | "NASA's tables hold 263 solid burns. 129 record the oxygen. None records the pressure, so none can be placed." |
+| 17 to 23 s | Scroll the panel down to **The access gap** (it sits under Prebreathe; at 1440 x 900 its button starts below the fold), then click **Open the access gap chart**. Start the scroll while still speaking the end of beat 3. | The chart, step by step: 263 solid-fuel burn rows in PSI tables, 129 with oxygen recorded, 0 with pressure recorded, 0 near a habitat candidate. | "PSI's tables hold 263 solid-fuel burn rows. 129 record the oxygen. None records the pressure, so none can be placed." |
 | 23 to 30 s | Close the chart (Escape). In **Ask the evidence**, click the question chip "If NASA has already burned fabric in near-Moon-base air, why can't a researcher download it?" | The checked answer, with its citations, every number a button to its source, and its label "AI-assisted, awaiting human check". | "So we ask NASA: if you have already burned fabric in near-Moon-base air, why can't a researcher download it?" |
 
 ## If something does not go to plan
@@ -29,7 +29,7 @@ The numbers are the ones the screen shows from the current build (`web/public/da
 | Problem | Recovery |
 | --- | --- |
 | The drag misses the pin | Click the **8.2 psi / 34%** chip above the plane, or focus the plane and press Shift with an arrow key to jump between candidates. |
-| The panel is scrolled away from the access gap section | Scroll the panel; the section sits under prebreathe. The command palette (Ctrl+K) also reaches every view. |
+| The panel is scrolled away from the access gap section | Scroll the panel; the section sits under prebreathe. The command palette (Ctrl+K, type "access gap") also opens the chart, but it lands on the default point (8.2 psi / 34%) with Solids only off. |
 | The tour opens | Click **Skip tour**. It does not open again in this browser. |
 | A screen shows the error screen | Click **Reload the page**. The view is in the address bar, so it comes back where it was. |
 

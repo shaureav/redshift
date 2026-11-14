@@ -4,13 +4,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, useState, type ReactNode } from "react";
 import { createRoot, type Root } from "react-dom/client";
-import { MemoryRouter, useLocation } from "react-router-dom";
+import { MemoryRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { loadSnapshot } from "../lib/snapshot.fixture";
 import { useView } from "../lib/view";
 import Home from "../pages/Home";
-import { ErrorBoundary } from "./ErrorBoundary";
-import { Tour } from "./Tour";
+import { ErrorBoundary, RouteBoundary } from "./ErrorBoundary";
+import { Tour, TOUR_EVENT } from "./Tour";
 
 const FILES = [
   "probe_grid.json", "trade_map.json", "candidates.json", "candidate_evidence.json", "flame_temperature_grid.json",
@@ -60,6 +60,15 @@ function click(label: string) {
   });
 }
 
+/** A key press where focus is, as the browser would send it (jsdom does not move focus on Tab itself). */
+function press(key: string, init: KeyboardEventInit = {}) {
+  act(() => {
+    (document.activeElement ?? document.body).dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true, cancelable: true, ...init }));
+  });
+}
+
+const replayTour = () => act(() => window.dispatchEvent(new Event(TOUR_EVENT)));
+
 let errors: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
@@ -106,6 +115,74 @@ describe("tour", () => {
     expect(page.querySelector('[aria-label="The oxygen and pressure plane"]')).not.toBeNull();
     expect(localStorage.getItem("redshift-tour-v1")).toBe("done");
     expect(updateDepthErrors()).toEqual([]);
+  });
+
+  it("replays from the command palette's event three times in a row, each time to the end, without a loop", () => {
+    localStorage.setItem("redshift-tour-v1", "done"); // a returning visitor: the tour opens only on replay
+    const page = mount(<Home />, "/?o2=21&p=14.7");
+    expect(page.textContent).not.toContain("Step 1 of 3");
+    for (let pass = 1; pass <= 3; pass++) {
+      replayTour();
+      expect(page.textContent).toContain("Step 1 of 3");
+      click("Next");
+      expect(page.textContent).toContain("Step 2 of 3");
+      click("Next");
+      expect(page.textContent).toContain("Step 3 of 3");
+      expect(new URLSearchParams(lastSearch).get("solids")).toBe("1");
+      expect(page.textContent).toContain("No solid burn in PSI's tables records pressure.");
+      click("Done");
+      expect(page.textContent).not.toContain("Step 3 of 3");
+      expect(page.querySelector('[aria-label="The oxygen and pressure plane"]')).not.toBeNull();
+    }
+    expect(updateDepthErrors()).toEqual([]);
+  });
+
+  it("keeps Tab inside the card while open, and hands focus back when it closes", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(
+      <>
+        <button type="button">Outside</button>
+        <Tour />
+      </>,
+    );
+    const outside = button("Outside");
+    act(() => outside.focus());
+    replayTour();
+    const dialog = document.querySelector('[role="dialog"]');
+    expect(document.activeElement).toBe(dialog);
+    // Shift+Tab from the card wraps to its last button, Tab from the last wraps to the first: never behind.
+    press("Tab", { shiftKey: true });
+    expect(document.activeElement?.textContent).toBe("Next");
+    press("Tab");
+    expect(document.activeElement?.textContent).toBe("Skip tour");
+    press("Tab", { shiftKey: true });
+    expect(document.activeElement?.textContent).toBe("Next");
+    // Focus that has fallen outside the card is brought back in on the next Tab.
+    act(() => outside.focus());
+    press("Tab");
+    expect(dialog?.contains(document.activeElement)).toBe(true);
+    click("Next");
+    click("Next");
+    click("Done");
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(document.activeElement).toBe(outside);
+  });
+
+  it("closes on Escape and returns focus too", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(
+      <>
+        <button type="button">Outside</button>
+        <Tour />
+      </>,
+    );
+    const outside = button("Outside");
+    act(() => outside.focus());
+    replayTour();
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+    press("Escape");
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(document.activeElement).toBe(outside);
   });
 
   it("runs each step's action exactly once per step change, even when the parent passes a new callback every render", () => {
@@ -163,8 +240,14 @@ describe("error boundary", () => {
         <Boom />
       </ErrorBoundary>,
     );
-    expect(page.querySelector('[role="alert"]')).not.toBeNull();
+    // main stays the main landmark; only the short title is the alert; focus moves to the title.
+    const main = page.querySelector("main");
+    expect(main).not.toBeNull();
+    expect(main?.getAttribute("role")).toBeNull();
+    expect(main?.getAttribute("aria-labelledby")).toBe("app-error-title");
+    expect(page.querySelector('[role="alert"]')?.textContent).toBe("Something failed while this screen was drawing.");
     expect(page.querySelector("h1")?.textContent).toBe("Something failed while this screen was drawing.");
+    expect(document.activeElement).toBe(page.querySelector("h1"));
     expect(page.textContent).toContain("Redshift shows nothing it cannot source.");
     expect(page.textContent).toContain("What failed");
     expect(page.textContent).toContain("render failed on purpose");
@@ -194,5 +277,35 @@ describe("error boundary", () => {
     act(() => go("/compare"));
     expect(page.textContent).toContain("Another page");
     expect(page.querySelector('[role="alert"]')).toBeNull();
+  });
+
+  it("App's RouteBoundary catches a route that throws and clears on navigation", () => {
+    errors.mockImplementation(() => {});
+    let navigateTo: (to: string) => void = () => {};
+    function Navigator() {
+      // Outside the boundary, as the browser's own Back button and address bar are.
+      navigateTo = useNavigate();
+      return null;
+    }
+    const page = mount(
+      <>
+        <Navigator />
+        <RouteBoundary onReload={() => {}}>
+          <Routes>
+            <Route path="/" element={<p>The plane</p>} />
+            <Route path="/broken" element={<Boom />} />
+          </Routes>
+        </RouteBoundary>
+      </>,
+      "/broken",
+    );
+    expect(page.querySelector("h1")?.textContent).toBe("Something failed while this screen was drawing.");
+    expect(page.textContent).not.toContain("The plane");
+    act(() => navigateTo("/"));
+    expect(page.textContent).toContain("The plane");
+    expect(page.querySelector('[role="alert"]')).toBeNull();
+    // A second visit to the broken route shows the screen again: the boundary is not stuck either way.
+    act(() => navigateTo("/broken"));
+    expect(page.querySelector('[role="alert"]')).not.toBeNull();
   });
 });

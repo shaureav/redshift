@@ -53,12 +53,20 @@ function ReferenceMenu() {
   const activeRef = REFERENCE.some(([to]) => loc.pathname.startsWith(to));
   return (
     <div className="relative" ref={ref}>
-      <button type="button" className={`btn btn-quiet ${activeRef ? "text-ink" : ""}`} aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>
+      <button type="button" className={`btn btn-quiet max-sm:px-2 ${activeRef ? "text-ink" : ""}`} aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>
         Reference
         <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" className={`transition-transform ${open ? "rotate-180" : ""}`}><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.5" /></svg>
       </button>
       {open && (
-        <ul className="animate-rise absolute left-0 top-full z-50 mt-2 w-72 rounded-lg border border-line-strong bg-surface-2 p-2" style={{ boxShadow: "var(--shadow)" }}>
+        // On a phone the menu spans the screen under the nav, so it never runs past the right edge.
+        <ul className="animate-rise absolute left-0 top-full z-50 mt-2 w-72 rounded-lg border border-line-strong bg-surface-2 p-2 max-sm:fixed max-sm:inset-x-4 max-sm:top-14 max-sm:w-auto" style={{ boxShadow: "var(--shadow)" }}>
+          {/* Below 640 px Compare lives here rather than in the nav row, so the row fits a 360 px screen. */}
+          <li className="sm:hidden">
+            <NavLink to="/compare" className={({ isActive }) => `block rounded-md px-3 py-2 ${isActive ? "bg-[color:var(--surface-3)]" : "hover:bg-[color:var(--surface-3)]"}`}>
+              <span className="block text-sm text-ink">Compare</span>
+              <span className="block text-xs text-ink-3">Two atmospheres side by side</span>
+            </NavLink>
+          </li>
           {REFERENCE.map(([to, label, hint]) => (
             <li key={to}>
               <NavLink to={to} className={({ isActive }) => `block rounded-md px-3 py-2 ${isActive ? "bg-[color:var(--surface-3)]" : "hover:bg-[color:var(--surface-3)]"}`}>
@@ -82,23 +90,25 @@ export function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-[90] focus:rounded focus:bg-surface-2 focus:p-2">Skip to content</a>
-      <nav className="sticky top-0 z-40 h-14 border-b border-line bg-[color:var(--surface)]/95 backdrop-blur" aria-label="Main">
-        <div className="flex h-full items-center gap-2 px-4 lg:px-6">
-          <Link to="/" className="mr-2 flex items-center gap-2" aria-label="Redshift, the plane">
-            <img src="/favicon.svg" alt="" className="h-6 w-6" />
+      {/* The nav must fit a 360 px screen: below 640 px the buttons are tighter, Compare moves into the
+          Reference menu, and the logo never shrinks (images default to max-width 100%). */}
+      <nav className="glass sticky top-0 z-40 h-14 border-b border-line backdrop-blur" aria-label="Main">
+        <div className="flex h-full items-center gap-1 px-4 sm:gap-2 lg:px-6">
+          <Link to="/" className="mr-1 flex flex-none items-center gap-2 sm:mr-2" aria-label="Redshift, the plane">
+            <img src="/favicon.svg" alt="" className="h-6 w-6 max-w-none flex-none" />
             <span className="hidden text-base font-semibold tracking-tight sm:inline">Redshift</span>
             <span className="hidden text-xs text-ink-3 xl:inline">The Atmosphere Trade Studio</span>
           </Link>
-          <NavLink to="/" end className={({ isActive }) => `btn btn-quiet ${isActive ? "text-ink" : ""}`}>Plane</NavLink>
-          <NavLink to="/compare" className={({ isActive }) => `btn btn-quiet ${isActive ? "text-ink" : ""}`}>Compare</NavLink>
+          <NavLink to="/" end className={({ isActive }) => `btn btn-quiet max-sm:px-2 ${isActive ? "text-ink" : ""}`}>Plane</NavLink>
+          <NavLink to="/compare" className={({ isActive }) => `btn btn-quiet max-sm:hidden ${isActive ? "text-ink" : ""}`}>Compare</NavLink>
           <ReferenceMenu />
-          <span className="ml-auto flex items-center gap-2">
-            <button type="button" className="btn btn-quiet" onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))} aria-label="Search and jump (Command K)">
+          <span className="ml-auto flex flex-none items-center gap-1 sm:gap-2">
+            <button type="button" className="btn btn-quiet max-sm:px-2" onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))} aria-label="Search and jump (Command K)">
               <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" /><path d="M11 11l3 3" stroke="currentColor" strokeWidth="1.5" /></svg>
               <span className="hidden md:inline">Search</span>
               <span className="kbd hidden md:inline">{isMac ? "⌘" : "Ctrl"} K</span>
             </button>
-            <button type="button" className="btn btn-quiet" onClick={toggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}>
+            <button type="button" className="btn btn-quiet max-sm:px-2" onClick={toggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}>
               {theme === "light" ? (
                 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 9.5A5.5 5.5 0 1 1 6.5 3a4.5 4.5 0 0 0 6.5 6.5z" fill="currentColor" /></svg>
               ) : (

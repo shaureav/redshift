@@ -1,6 +1,6 @@
 # Redshift: plan for an exceptional interface
 
-Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23).
+Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23), with its review fixes (D24, D25).
 Follows `docs/redesign/PLAN.md` (the plane-first redesign, done) and `docs/REDESIGN_AUDIT.md`.
 
 > **The one job.** "If we pick this cabin atmosphere, what do we actually know about fire there, and what's missing?"

@@ -1,7 +1,8 @@
 // App-wide error boundary. If a screen throws while it draws, the reader gets the designed error screen
 // (what failed, why Redshift shows nothing rather than guess, a reload) instead of a blank page.
-// App.tsx wraps the routes in it and passes the path as resetKey, so Back or a link recovers.
-import { Component, type ReactNode } from "react";
+// App.tsx wraps the routes in RouteBoundary, which passes the path as resetKey, so Back or a link recovers.
+import { Component, useEffect, useRef, type ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
@@ -32,23 +33,36 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 }
 
+/** Every route draws inside the boundary, keyed on the path: a screen that throws shows the error screen, never a blank page, and Back or a link to another page clears it. */
+export function RouteBoundary({ children, onReload }: { children: ReactNode; onReload?: () => void }) {
+  const { pathname } = useLocation();
+  return <ErrorBoundary resetKey={pathname} onReload={onReload}>{children}</ErrorBoundary>;
+}
+
 // A lazily loaded screen whose file is gone (usually because the site was updated) fails with one of these.
 const CHUNK = /dynamically imported module|importing a module script failed|loading chunk|failed to fetch/i;
 
 export function ErrorScreen({ error, onReload }: { error: Error; onReload: () => void }) {
   const base = import.meta.env.BASE_URL;
   const missingCode = CHUNK.test(error.message);
+  const title = useRef<HTMLHeadingElement>(null);
+  // The screen replaces whatever had focus, so focus would fall to the page itself; put it on the title.
+  useEffect(() => title.current?.focus(), []);
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)] px-4 py-6 sm:px-8">
       <a href={base} className="flex items-center gap-2 self-start" aria-label="Redshift, the plane">
-        <img src={`${base}favicon.svg`} alt="" className="h-6 w-6" />
+        <img src={`${base}favicon.svg`} alt="" className="h-6 w-6 max-w-none flex-none" />
         <span className="text-base font-semibold tracking-tight">Redshift</span>
       </a>
-      <main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-start justify-center gap-4 py-12" role="alert" aria-labelledby="app-error-title">
+      {/* main stays the page's main landmark; only the short title is the alert, so a screen reader says
+          what happened once, not the whole screen. */}
+      <main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-start justify-center gap-4 py-12" aria-labelledby="app-error-title">
         <span className="eyebrow">This screen stopped</span>
-        <h1 id="app-error-title" className="text-xl font-semibold">
-          {missingCode ? "Part of Redshift did not download." : "Something failed while this screen was drawing."}
-        </h1>
+        <div role="alert">
+          <h1 id="app-error-title" ref={title} tabIndex={-1} className="text-xl font-semibold focus:outline-none">
+            {missingCode ? "Part of Redshift did not download." : "Something failed while this screen was drawing."}
+          </h1>
+        </div>
         <p className="text-base text-ink-2">
           Redshift shows nothing it cannot source. When a screen cannot finish, it stops here rather than show a
           half-drawn page or a number it cannot trace. Your view is kept in the address bar, so a reload brings you

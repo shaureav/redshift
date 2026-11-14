@@ -32,6 +32,7 @@ Line references to raw files are physical line numbers (header is line 1), from 
 | Q18 | The new cached answer "If NASA has already burned fabric in near-Moon-base air, why can't a researcher download it?" (qa-download) is checked by code but awaits a team member's check (scripts/check_ai_text.py). | Team | Sign-off |
 | Q19 | Should the nearness step slider offer more than the three documented stops (for example 0.5x and 2x)? That adds multipliers to redshift/params.json and changes the dataset version. | Team | Decision (D17 keeps three) |
 | Q20 | The light-theme fuel glyphs get a 1 px darker ring so each reaches 3:1 against white (plan decision D3, D22). The rings still need a colour-blindness re-check with a simulator (protanopia, deuteranopia, tritanopia) before submission. Who runs it? | Team | A named checker and the simulator screenshots in docs/redesign/ |
+| Q21 | Should a brushed area on the plane show how many placed tests it holds? D20 allowed that client-side count without team sign-off and D24 withdrew it: the area now says only whether tests sit inside and links to the filtered Evidence Explorer. If the team wants the number back, a named team member ratifies it and it renders through a Value-like component whose card says it is the reader's own filter, not a built count. | Team | Ratify (restore the count with its card) or leave withdrawn |
 
 ## Closed
 
