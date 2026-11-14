@@ -130,8 +130,8 @@ def compute() -> dict[str, Any]:
     }
     hi = flex["high_o2_no_suppressant"]
     actual["flex_high_o2_total"] = hi["total"]["v"]
-    actual["flex_high_o2_labels"] = hi["outcome_labels"]
-    actual["flex_high_o2_fuels"] = hi["fuels"]
+    actual["flex_high_o2_labels"] = {k: v["v"] for k, v in hi["outcome_labels"].items()}
+    actual["flex_high_o2_fuels"] = {k: v["v"] for k, v in hi["fuels"].items()}
     actual["flex_band_480_600"] = flex["in_band"]["v"]
     for i, g in enumerate(flex["groups"]):
         actual[f"flex_co2_{i}"] = f"{g['extinguished']['v']}/{g['total']['v']}"
@@ -202,11 +202,31 @@ def compute() -> dict[str, Any]:
         "p": summary_id,
     }
 
+    steps_id = registry.add(
+        Prov(
+            id="params:nearness",
+            source_type="derived",
+            method="nearness rule parameters (redshift/params.json)",
+            method_version="1",
+            params=near_params,
+            note="Judgement; see the sensitivity table.",
+        )
+    )
     payloads: dict[str, Any] = {
         "tests.json": {"tests": tests_payload, "p": summary_id},
         "investigations.json": {"investigations": invs, "p": summary_id},
         "candidates.json": {"candidates": cands},
-        "candidate_evidence.json": {"evidence": cand_ev, "params": near_params, "p": "sensitivity"},
+        "candidate_evidence.json": {
+            "evidence": cand_ev,
+            "params": near_params,
+            "steps": {
+                "threshold": value(near_params["threshold"], "steps", steps_id),
+                "o2_step": value(near_params["o2_step_pct_points"], "O2 points", steps_id),
+                "pressure_ratio": value(near_params["pressure_step_log"], None, steps_id),
+                "flow_step": value(near_params["flow_step_cm_s"], "cm/s", steps_id),
+            },
+            "p": "sensitivity",
+        },
         "sensitivity.json": sens,
         "flame_temperature_grid.json": grid,
         "planner_grid.json": planner,

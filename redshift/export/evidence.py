@@ -298,6 +298,17 @@ def access_gap(
     }
 
 
+def _label_counts(registry: Registry, prefix: str, recs: list[TestRecord], field: str) -> dict[str, dict[str, Any]]:
+    """Counts of each verbatim label, each with the ids of the tests carrying it."""
+    by: dict[str, list[str]] = {}
+    for r in recs:
+        by.setdefault(str(_v(r, field)), []).append(r.test_id)
+    return {
+        k: _count_value(registry, f"{prefix}:{k}", len(ids), f"count of tests with {field} {k!r} (verbatim)", {}, ids)
+        for k, ids in sorted(by.items())
+    }
+
+
 def flex_suppression(registry: Registry, records: list[TestRecord], bands: dict[str, Any]) -> dict[str, Any]:
     flex = [r for r in records if r.investigation_id == "PSI-69"]
     lo, hi = bands["near_10_4_psi_mmhg"]
@@ -319,9 +330,7 @@ def flex_suppression(registry: Registry, records: list[TestRecord], bands: dict[
             and (_v(r, "he_pct") or 0) == 0
         ]
         ext = [r for r in sel if _v(r, "outcome_label") == bands["extinguished_label"]]
-        labels: dict[str, int] = {}
-        for r in sel:
-            labels[str(_v(r, "outcome_label"))] = labels.get(str(_v(r, "outcome_label")), 0) + 1
+        labels = _label_counts(registry, f"flex:co2:{i}:label", sel, "outcome_label")
         groups.append(
             {
                 "label": g["label"],
@@ -354,14 +363,27 @@ def flex_suppression(registry: Registry, records: list[TestRecord], bands: dict[
         and hb["o2_pct"][0] <= _v(r, "o2_pct") <= hb["o2_pct"][1]
         and _v(r, "suppressant") == "none"
     ]
-    high_labels: dict[str, int] = {}
-    high_fuels: dict[str, int] = {}
-    for r in high:
-        high_labels[str(_v(r, "outcome_label"))] = high_labels.get(str(_v(r, "outcome_label")), 0) + 1
-        high_fuels[str(_v(r, "fuel"))] = high_fuels.get(str(_v(r, "fuel")), 0) + 1
+    high_labels = _label_counts(registry, "flex:high:label", high, "outcome_label")
+    high_fuels = _label_counts(registry, "flex:high:fuel", high, "fuel")
+    high_ext = [r for r in high if _v(r, "outcome_label") == bands["extinguished_label"]]
+    band_id = registry.add(
+        Prov(
+            id="flex:band:limits",
+            source_type="derived",
+            method="FLEX pressure band limits converted from mmHg (mmhg_to_kpa, kpa_to_psi)",
+            method_version="1",
+            params={"pressure_mmhg": [lo, hi]},
+            note="Band frozen in redshift/params.json before any count was run.",
+        )
+    )
     zero_p = [r.test_id for r in flex if _v(r, "pressure_kpa") is None]
     return {
         "band_mmhg": [lo, hi],
+        "band_kpa": [value(lo * KPA_PER_MMHG, "kPa", band_id), value(hi * KPA_PER_MMHG, "kPa", band_id)],
+        "band_psi": [
+            value(lo * KPA_PER_MMHG / psi_to_kpa(1.0), "psi", band_id),
+            value(hi * KPA_PER_MMHG / psi_to_kpa(1.0), "psi", band_id),
+        ],
         "in_band": _count_value(
             registry,
             "flex:band",
@@ -382,6 +404,14 @@ def flex_suppression(registry: Registry, records: list[TestRecord], bands: dict[
             ),
             "outcome_labels": high_labels,
             "fuels": high_fuels,
+            "extinguished": _count_value(
+                registry,
+                "flex:high:ext",
+                len(high_ext),
+                "FLEX high-O2 count with outcome label 'Extinction'",
+                hb,
+                [r.test_id for r in high_ext],
+            ),
         },
         "pressure_not_recorded": zero_p,
         "annotation": "CO2 at 35% or more is far beyond what a crew can breathe; these tests show "

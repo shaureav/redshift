@@ -175849,6 +175849,21 @@
   "transforms": [],
   "verified": true
  },
+ "flex:band:limits": {
+  "id": "flex:band:limits",
+  "method": "FLEX pressure band limits converted from mmHg (mmhg_to_kpa, kpa_to_psi)",
+  "method_version": "1",
+  "note": "Band frozen in redshift/params.json before any count was run.",
+  "params": {
+   "pressure_mmhg": [
+    480.0,
+    600.0
+   ]
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
  "flex:co2:0:ext": {
   "id": "flex:co2:0:ext",
   "inputs": [],
@@ -175869,6 +175884,23 @@
     600.0
    ]
   },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:co2:0:label:Disruption": {
+  "id": "flex:co2:0:label:Disruption",
+  "inputs": [
+   "PSI-69-main-L89",
+   "PSI-69-main-L90",
+   "PSI-69-main-L91",
+   "PSI-69-main-L92",
+   "PSI-69-main-L93",
+   "PSI-69-main-L94"
+  ],
+  "method": "count of tests with outcome_label 'Disruption' (verbatim)",
+  "method_version": "1",
+  "params": {},
   "source_type": "derived",
   "transforms": [],
   "verified": true
@@ -175939,6 +175971,62 @@
     600.0
    ]
   },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:co2:1:label:Completion": {
+  "id": "flex:co2:1:label:Completion",
+  "inputs": [
+   "PSI-69-main-L109",
+   "PSI-69-main-L98"
+  ],
+  "method": "count of tests with outcome_label 'Completion' (verbatim)",
+  "method_version": "1",
+  "params": {},
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:co2:1:label:Disruption": {
+  "id": "flex:co2:1:label:Disruption",
+  "inputs": [
+   "PSI-69-main-L106",
+   "PSI-69-main-L107",
+   "PSI-69-main-L108",
+   "PSI-69-main-L175",
+   "PSI-69-main-L176",
+   "PSI-69-main-L180",
+   "PSI-69-main-L97"
+  ],
+  "method": "count of tests with outcome_label 'Disruption' (verbatim)",
+  "method_version": "1",
+  "params": {},
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:co2:1:label:Extinction": {
+  "id": "flex:co2:1:label:Extinction",
+  "inputs": [
+   "PSI-69-main-L100",
+   "PSI-69-main-L101",
+   "PSI-69-main-L102",
+   "PSI-69-main-L105",
+   "PSI-69-main-L177",
+   "PSI-69-main-L178",
+   "PSI-69-main-L179",
+   "PSI-69-main-L184",
+   "PSI-69-main-L185",
+   "PSI-69-main-L186",
+   "PSI-69-main-L187",
+   "PSI-69-main-L95",
+   "PSI-69-main-L96",
+   "PSI-69-main-L99"
+  ],
+  "method": "count of tests with outcome_label 'Extinction' (verbatim)",
+  "method_version": "1",
+  "params": {},
   "source_type": "derived",
   "transforms": [],
   "verified": true
@@ -176016,6 +176104,34 @@
     600.0
    ]
   },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:co2:2:label:Completion": {
+  "id": "flex:co2:2:label:Completion",
+  "inputs": [
+   "PSI-69-main-L112",
+   "PSI-69-main-L113"
+  ],
+  "method": "count of tests with outcome_label 'Completion' (verbatim)",
+  "method_version": "1",
+  "params": {},
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:co2:2:label:Extinction": {
+  "id": "flex:co2:2:label:Extinction",
+  "inputs": [
+   "PSI-69-main-L103",
+   "PSI-69-main-L104",
+   "PSI-69-main-L110",
+   "PSI-69-main-L111"
+  ],
+  "method": "count of tests with outcome_label 'Extinction' (verbatim)",
+  "method_version": "1",
+  "params": {},
   "source_type": "derived",
   "transforms": [],
   "verified": true
@@ -176098,6 +176214,39 @@
   "transforms": [],
   "verified": true
  },
+ "flex:co2:3:label:Extinction": {
+  "id": "flex:co2:3:label:Extinction",
+  "inputs": [
+   "PSI-69-main-L114",
+   "PSI-69-main-L116",
+   "PSI-69-main-L117",
+   "PSI-69-main-L118",
+   "PSI-69-main-L119",
+   "PSI-69-main-L120",
+   "PSI-69-main-L121",
+   "PSI-69-main-L122",
+   "PSI-69-main-L123",
+   "PSI-69-main-L124",
+   "PSI-69-main-L125",
+   "PSI-69-main-L126",
+   "PSI-69-main-L127",
+   "PSI-69-main-L128",
+   "PSI-69-main-L129",
+   "PSI-69-main-L130",
+   "PSI-69-main-L131",
+   "PSI-69-main-L141",
+   "PSI-69-main-L142",
+   "PSI-69-main-L143",
+   "PSI-69-main-L144",
+   "PSI-69-main-L148"
+  ],
+  "method": "count of tests with outcome_label 'Extinction' (verbatim)",
+  "method_version": "1",
+  "params": {},
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
  "flex:co2:3:total": {
   "id": "flex:co2:3:total",
   "inputs": [
@@ -176141,6 +176290,103 @@
     600.0
    ]
   },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:high:ext": {
+  "id": "flex:high:ext",
+  "inputs": [],
+  "method": "FLEX high-O2 count with outcome label 'Extinction'",
+  "method_version": "1",
+  "params": {
+   "o2_pct": [
+    30.0,
+    34.0
+   ],
+   "pressure_mmhg": [
+    534.0,
+    543.0
+   ]
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:high:fuel:Heptane": {
+  "id": "flex:high:fuel:Heptane",
+  "inputs": [
+   "PSI-69-main-L20",
+   "PSI-69-main-L24",
+   "PSI-69-main-L25",
+   "PSI-69-main-L28",
+   "PSI-69-main-L29",
+   "PSI-69-main-L40",
+   "PSI-69-main-L43",
+   "PSI-69-main-L44"
+  ],
+  "method": "count of tests with fuel 'Heptane' (verbatim)",
+  "method_version": "1",
+  "params": {},
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:high:fuel:Methanol": {
+  "id": "flex:high:fuel:Methanol",
+  "inputs": [
+   "PSI-69-main-L21",
+   "PSI-69-main-L22",
+   "PSI-69-main-L23",
+   "PSI-69-main-L26",
+   "PSI-69-main-L27",
+   "PSI-69-main-L38",
+   "PSI-69-main-L39",
+   "PSI-69-main-L41",
+   "PSI-69-main-L42"
+  ],
+  "method": "count of tests with fuel 'Methanol' (verbatim)",
+  "method_version": "1",
+  "params": {},
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:high:label:Completion": {
+  "id": "flex:high:label:Completion",
+  "inputs": [
+   "PSI-69-main-L21",
+   "PSI-69-main-L26"
+  ],
+  "method": "count of tests with outcome_label 'Completion' (verbatim)",
+  "method_version": "1",
+  "params": {},
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "flex:high:label:Disruption": {
+  "id": "flex:high:label:Disruption",
+  "inputs": [
+   "PSI-69-main-L20",
+   "PSI-69-main-L22",
+   "PSI-69-main-L23",
+   "PSI-69-main-L24",
+   "PSI-69-main-L25",
+   "PSI-69-main-L27",
+   "PSI-69-main-L28",
+   "PSI-69-main-L29",
+   "PSI-69-main-L38",
+   "PSI-69-main-L39",
+   "PSI-69-main-L40",
+   "PSI-69-main-L41",
+   "PSI-69-main-L42",
+   "PSI-69-main-L43",
+   "PSI-69-main-L44"
+  ],
+  "method": "count of tests with outcome_label 'Disruption' (verbatim)",
+  "method_version": "1",
+  "params": {},
   "source_type": "derived",
   "transforms": [],
   "verified": true
@@ -214309,6 +214555,35 @@
   "transforms": [],
   "verified": true
  },
+ "params:nearness": {
+  "id": "params:nearness",
+  "method": "nearness rule parameters (redshift/params.json)",
+  "method_version": "1",
+  "note": "Judgement; see the sensitivity table.",
+  "params": {
+   "flow_rule": "Flow is used only when both the test and the target have a recorded flow. Candidate atmospheres have no flow value, so nearness to a candidate uses O2 and pressure only.",
+   "flow_step_cm_s": 10.0,
+   "judgement": "Step sizes and threshold are judgement, taken from the team's concept document.",
+   "metric": "euclidean",
+   "o2_basis_counted": [
+    "ambient",
+    "chamber initial"
+   ],
+   "o2_basis_rule": "Inverse flames record the oxygen of the oxidiser stream, not of an atmosphere, so they are reported separately and not counted as near a cabin atmosphere.",
+   "o2_step_pct_points": 5.0,
+   "pressure_step_log": 1.25,
+   "sensitivity_multipliers": [
+    0.75,
+    1.0,
+    1.5
+   ],
+   "threshold": 1.5,
+   "unknown_rule": "If a test's O2 or pressure is null, nearness is 'unknown', never 'not near'."
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
  "planner:cell:100:10.2:droplet:n": {
   "id": "planner:cell:100:10.2:droplet:n",
   "inputs": [],
@@ -227512,6 +227787,34 @@
     14.7
    ],
    "relevance": "exp(-d^2 / (2 x 1.5^2)), where d is the nearness distance from the cell to the nearest habitat candidate (suit excluded)."
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "planner:levels": {
+  "id": "planner:levels",
+  "method": "planner grid levels (pressure converted with psi_to_kpa)",
+  "method_version": "1",
+  "note": "Grid levels are judgement.",
+  "params": {
+   "o2_levels_pct": [
+    21.0,
+    26.5,
+    30.0,
+    34.0,
+    40.0,
+    50.0,
+    100.0
+   ],
+   "pressure_levels_psi": [
+    4.3,
+    6.0,
+    8.2,
+    10.2,
+    12.0,
+    14.7
+   ]
   },
   "source_type": "derived",
   "transforms": [],

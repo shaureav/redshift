@@ -84,11 +84,16 @@ interface Props {
   zoom: ZoomKey;
   highlight?: string;
   height?: number;
+  steps?: { threshold: Val<number>; o2_step: Val<number>; pressure_ratio: Val<number> };
 }
 
 type Tip = { x: number; y: number; html: React.ReactNode } | null;
 
-export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe, layers, solidsOnly, zoom, highlight, height = 600 }: Props) {
+export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe, layers, solidsOnly, zoom, highlight, height = 600, steps }: Props) {
+  // Nearness parameters from the build (candidate_evidence.json steps); used for the halo geometry only.
+  const thr = steps?.threshold.v ?? 1.5;
+  const o2Step = steps?.o2_step.v ?? 5;
+  const pRatio = steps?.pressure_ratio.v ?? 1.25;
   const wrap = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(900);
   const [tip, setTip] = useState<Tip>(null);
@@ -185,10 +190,10 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
   const evById = useMemo(() => new Map(evidence.map((e) => [e.candidate_id, e])), [evidence]);
 
   const halo = (c: Candidate) => {
-    // The nearness region: 1.5 steps (5 O2 points and a 25% pressure change per step).
+    // The nearness region, from the build's nearness parameters.
     const pts: [number, number][] = d3.range(0, 2 * Math.PI + 0.01, Math.PI / 48).map((t) => [
-      x(c.o2_pct.v + 7.5 * Math.cos(t)),
-      y(c.pressure_psi.v * Math.pow(1.25, 1.5 * Math.sin(t))),
+      x(c.o2_pct.v + thr * o2Step * Math.cos(t)),
+      y(c.pressure_psi.v * Math.pow(pRatio, thr * Math.sin(t))),
     ]);
     return d3.line()(pts) ?? "";
   };
@@ -247,7 +252,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
             {/* candidate halos (nearness region) */}
             {layers.has("cand") && candidates.filter((c) => c.id === highlight || c.id === hoverCand).map((c) => (
               <path key={`h${c.id}`} d={halo(c)} fill="var(--accent)" fillOpacity={0.08} stroke="var(--accent)" strokeDasharray="5 3" strokeWidth={1.5}>
-                <title>Nearness region of {c.name}: within 1.5 steps (one step is 5 O2 points or a 25% pressure change)</title>
+                <title>{`Nearness region of ${c.name}: within ${fmtNumber(thr)} steps (one step is ${fmtNumber(o2Step)} O2 points or a pressure ratio of ${fmtNumber(pRatio)})`}</title>
               </path>
             ))}
 
@@ -312,11 +317,11 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                 >
                   <circle r={on ? 9 : 7} fill="var(--surface-2)" stroke={on ? "var(--accent)" : "var(--candidate)"} strokeWidth={on ? 3 : 2.25} />
                   <circle r={2.5} fill={on ? "var(--accent)" : "var(--candidate)"} />
-                  <text x={11} y={-8} fontSize={narrow ? 10 : 12} fontWeight={600} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
+                  <text x={11} y={c.role === "scenario" ? 20 : -8} fontSize={narrow ? 10 : 12} fontWeight={600} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
                     {c.name}
                   </text>
                   {!narrow && (
-                    <text x={11} y={6} fontSize={10.5} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
+                    <text x={11} y={c.role === "scenario" ? 34 : 6} fontSize={10.5} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
                       {solidsOnly
                         ? `${(ev?.near.solid.psi_table.v ?? 0) + (ev?.near.solid.published_paper.v ?? 0)} solid tests near`
                         : `${ev?.near_total.v ?? 0} tests near`}
@@ -390,7 +395,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
       </svg>
       {offscreen > 0 && layers.has("ev") && (
         <p className="absolute right-3 top-3 rounded bg-surface-2/90 px-2 py-1 text-[11px] text-ink-3">
-          {offscreen} test {offscreen === 1 ? "group" : "groups"} outside this view
+          Some tests lie outside this view; choose "All tests" to see them
         </p>
       )}
       {tip && (

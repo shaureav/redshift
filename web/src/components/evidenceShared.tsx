@@ -165,7 +165,7 @@ export function FieldValue({ val, k }: { val: Val | undefined; k: string }) {
 }
 
 // Severity is a data-quality grade from the pipeline, written as the pipeline writes it. Amber marks
-// warning and error (error with a heavier outline); no red is used.
+// warning and error (error with a heavier outline), from the token palette only.
 export function SeverityBadge({ severity }: { severity: string }) {
   if (severity === "error") {
     return (

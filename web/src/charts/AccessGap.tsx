@@ -106,10 +106,11 @@ export function AccessGap() {
           size: 12,
           pill: true,
           text,
+          maxWidth: twoLines ? iw - 20 : undefined,
           node: awaiting ? (
-            <span className={twoLines ? "inline-block whitespace-normal" : ""} style={twoLines ? { maxWidth: iw - 28 } : undefined}>
+            <>
               <Value val={step.count} unit={false} /> verified; <Value val={pending} /> awaiting human verification
-            </span>
+            </>
           ) : (
             <>
               <Value val={step.count} unit={false} />, none recorded
@@ -194,7 +195,7 @@ export function AccessGap() {
           width={width}
           height={height}
           role="img"
-          aria-label={`Stepped bar chart of solid-material burns. PSI tables: ${data.psi_steps.map((s) => `${s.label.replace(/^\.\.\.\s*/, "")} ${valText(s.count)}`).join("; ")}. Published papers: counts at zero until findings are verified; ${valText(pending)} findings awaiting human verification.`}
+          aria-label={`Stepped bar chart of solid-material burns. PSI tables: ${data.psi_steps.map((s) => `${s.label.replace(/^\.\.\.\s*/, "")} ${valText(s.count)}`).join("; ")}. Published papers: ${data.paper_steps.map((s) => `${s.label.replace(/^\.\.\.\s*/, "")} ${valText(s.count)}`).join("; ")}; ${valText(pending, pending.u)} awaiting human verification.`}
           className="block select-none"
         >
           <defs><Hatch id="hatch-gap" /></defs>

@@ -126,3 +126,53 @@ export function countMatching(rows: readonly TestRow[], f: EvidenceFilters): num
   for (const r of rows) if (matchesFilters(r, f, idSet)) n += 1;
   return n;
 }
+
+// Data Quality flag list filters (search, code, severity, investigation). This filters a list; it
+// does not count anything for display.
+export interface FlagFilters {
+  q: string;
+  code: string;
+  sev: string;
+  inv: string;
+}
+
+export function parseFlagFilters(sp: URLSearchParams): FlagFilters {
+  return { q: sp.get("fq") ?? "", code: sp.get("code") ?? "", sev: sp.get("sev") ?? "", inv: sp.get("inv") ?? "" };
+}
+
+export function writeFlagFilters(f: FlagFilters, base: URLSearchParams): URLSearchParams {
+  const next = new URLSearchParams(base);
+  const put = (k: string, v: string) => (v.trim() ? next.set(k, v) : next.delete(k));
+  put("fq", f.q);
+  put("code", f.code);
+  put("sev", f.sev);
+  put("inv", f.inv);
+  next.delete("fpage");
+  return next;
+}
+
+export interface FlagLike {
+  id: string;
+  code: string;
+  severity: string;
+  title: string;
+  investigation_id: string;
+  file: string | null;
+  column: string | null;
+  raw: string | null;
+  detail: string;
+  action: string;
+  test_ids: string[];
+}
+
+export function flagMatches(fl: FlagLike, f: FlagFilters): boolean {
+  if (f.code && fl.code !== f.code) return false;
+  if (f.sev && fl.severity !== f.sev) return false;
+  if (f.inv && fl.investigation_id !== f.inv) return false;
+  const terms = f.q.toLowerCase().split(/\s+/).filter(Boolean);
+  if (!terms.length) return true;
+  const hay = [fl.id, fl.code, fl.severity, fl.title, fl.investigation_id, fl.file ?? "", fl.column ?? "", fl.raw ?? "", fl.detail, fl.action, ...fl.test_ids]
+    .join(" \u0001 ")
+    .toLowerCase();
+  return terms.every((t) => hay.includes(t));
+}

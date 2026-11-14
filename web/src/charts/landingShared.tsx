@@ -94,6 +94,8 @@ export interface OverlayLabel {
   text: string;
   /** Draw a surface-coloured pill behind the label (used on hatched bars). */
   pill?: boolean;
+  /** Let the label wrap within this width (the chart reserves the height). */
+  maxWidth?: number;
 }
 
 /** SVG twins of the overlay labels: invisible on screen, present in the downloaded SVG. */
@@ -103,14 +105,20 @@ export function ExportLabels({ labels }: { labels: OverlayLabel[] }) {
       {labels.map((l) => {
         const size = l.size ?? 12;
         const anchor = l.anchor === "end" ? "end" : l.anchor === "middle" ? "middle" : "start";
-        const w = textWidth(l.text, size) + 14;
-        const px = anchor === "end" ? l.x - w + 7 : anchor === "middle" ? l.x - w / 2 : l.x - 7;
+        const lines = l.maxWidth ? wrapWords(l.text, Math.max(8, Math.floor((l.maxWidth - (l.pill ? 18 : 0)) / (size * 0.55)))) : [l.text];
+        const lh = size * 1.3;
+        const longest = lines.reduce((a, b) => (b.length > a.length ? b : a), "");
+        const w = textWidth(longest, size) + 16;
+        const h = lines.length * lh + size * 0.5;
+        const px = anchor === "end" ? l.x - w : anchor === "middle" ? l.x - w / 2 : l.x;
+        const tx = anchor === "start" && l.pill ? l.x + 8 : l.x;
+        const top = l.y - ((lines.length - 1) * lh) / 2;
         return (
           <g key={l.key}>
-            {l.pill && <rect x={px} y={l.y - size * 0.85} width={w} height={size * 1.7} rx={size * 0.85} fill="var(--surface-2)" stroke="var(--line)" />}
+            {l.pill && <rect x={px} y={l.y - h / 2} width={w} height={h} rx={Math.min(h / 2, size)} fill="var(--surface-2)" stroke="var(--line)" />}
             <text
-              x={l.x}
-              y={l.y}
+              x={tx}
+              y={top}
               dominantBaseline="central"
               textAnchor={anchor}
               fontSize={size}
@@ -118,7 +126,9 @@ export function ExportLabels({ labels }: { labels: OverlayLabel[] }) {
               fontStyle={l.italic ? "italic" : undefined}
               fill={`var(--${l.tone ?? "ink"})`}
             >
-              {l.text}
+              {lines.map((ln, i) => (
+                <tspan key={i} x={tx} dy={i === 0 ? 0 : lh}>{ln}</tspan>
+              ))}
             </text>
           </g>
         );
@@ -136,10 +146,10 @@ export function OverlayLayer({ labels }: { labels: OverlayLabel[] }) {
         return (
           <div
             key={l.key}
-            className={`absolute whitespace-nowrap leading-tight ${TONE_CLASS[l.tone ?? "ink"]} ${l.italic ? "italic" : ""} ${
+            className={`absolute leading-tight ${l.maxWidth ? "whitespace-normal" : "whitespace-nowrap"} ${TONE_CLASS[l.tone ?? "ink"]} ${l.italic ? "italic" : ""} ${
               l.pill ? "rounded-full border border-line bg-surface-2 px-2 py-0.5" : ""
             }`}
-            style={{ left: l.x, top: l.y, transform: `translate(${tx},-50%)`, fontSize: l.size ?? 12, fontWeight: l.weight ?? 400 }}
+            style={{ left: l.x, top: l.y, transform: `translate(${tx},-50%)`, fontSize: l.size ?? 12, fontWeight: l.weight ?? 400, maxWidth: l.maxWidth }}
           >
             {l.node}
           </div>

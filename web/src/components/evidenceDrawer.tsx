@@ -75,7 +75,7 @@ export function EvidenceDrawer({ row, flags, onClose }: DrawerProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
-      <button type="button" aria-label="Close test details" tabIndex={-1} className="absolute inset-0 cursor-default bg-[color:var(--ink)] opacity-30" onClick={onClose} />
+      <button type="button" aria-label="Close test details" tabIndex={-1} className="absolute inset-0 cursor-default bg-[color:var(--surface)] opacity-70" onClick={onClose} />
       <div
         ref={panelRef}
         role="dialog"
@@ -168,6 +168,12 @@ export function EvidenceDrawer({ row, flags, onClose }: DrawerProps) {
             </div>
           ) : (
             <p className="text-xs text-ink-3">No raw cells stored for this row.</p>
+          )}
+          {rawEntries.some(([h]) => /^\s*Tad\b/.test(h)) && (
+            <p className="mt-2 text-xs italic text-ink-2">
+              Tad is the source table&rsquo;s adiabatic flame temperature. Flame temperature explains, does not predict: it says how
+              hot a flame can get, not whether one ignites or spreads.
+            </p>
           )}
         </Section>
 

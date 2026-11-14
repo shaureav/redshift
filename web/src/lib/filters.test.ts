@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { csvCell, evidenceCsv, evidenceCsvFilename } from "../components/evidenceCsv";
 import {
   applyFilters, countMatching, EMPTY_FILTERS, hasActiveFilters, matchesFilters, parseFilters,
-  pressureRecorded, searchText, writeFilters, type EvidenceFilters,
+  flagMatches, parseFlagFilters, pressureRecorded, searchText, writeFilters, writeFlagFilters, type EvidenceFilters,
 } from "./filters";
 import type { FuelClass, TestRow } from "./types";
 
@@ -122,5 +122,29 @@ describe("CSV export", () => {
     expect(header.slice(-4)).toEqual(["o2_pct", "o2_pct_provenance", "outcome_label", "outcome_label_provenance"]);
     expect(lines[lines.length - 1].endsWith("21,cell:A:o2,Disruption,cell:A:out")).toBe(true);
     expect(evidenceCsvFilename(version)).toBe("redshift-evidence-2026-11-14+abc.csv");
+  });
+});
+
+describe("flag filters", () => {
+  const flag = {
+    id: "F0309", code: "out_of_range", severity: "error", title: "Value outside the physical range",
+    investigation_id: "PSI-107", file: "data/raw/psi/SPICE/t.csv", column: "Air Rate (cm/s)", raw: "-0.28",
+    detail: "flow_cm_s = -0.28 cm/s is outside the physical range.", action: "Raw kept; value set to null.",
+    test_ids: ["PSI-107-main-L296"],
+  };
+  it("matches by code, severity, investigation and text", () => {
+    const none = { q: "", code: "", sev: "", inv: "" };
+    expect(flagMatches(flag, none)).toBe(true);
+    expect(flagMatches(flag, { ...none, code: "out_of_range", sev: "error", inv: "PSI-107" })).toBe(true);
+    expect(flagMatches(flag, { ...none, sev: "info" })).toBe(false);
+    expect(flagMatches(flag, { ...none, q: "air rate L296" })).toBe(true);
+    expect(flagMatches(flag, { ...none, q: "-0.28 bass" })).toBe(false);
+  });
+  it("round trips through the URL and resets the flag page", () => {
+    const f = { q: "air", code: "out_of_range", sev: "", inv: "PSI-107" };
+    const sp = writeFlagFilters(f, new URLSearchParams("fpage=3&flag=F0309"));
+    expect(sp.get("fpage")).toBeNull();
+    expect(sp.get("flag")).toBe("F0309");
+    expect(parseFlagFilters(sp)).toEqual(f);
   });
 });

@@ -4,7 +4,7 @@
 // labelled "no tests recorded". Candidate atmospheres are drawn as rings in their cells.
 // Every value comes from planner_grid.json; this file only places and shades them.
 import * as d3 from "d3";
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import { FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
 import { FUEL_LABEL, fmtNumber } from "../lib/format";
 import type { Candidate, Val } from "../lib/types";
@@ -31,8 +31,10 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
   const [tip, setTip] = useState<Tip>(null);
   const [active, setActive] = useState<Record<string, string>>({});
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!wrap.current) return;
+    // Measure before the first paint so the chart never renders wider than its container.
+    setWidth(Math.max(300, wrap.current.clientWidth));
     const ro = new ResizeObserver((entries) => setWidth(Math.max(300, entries[0].contentRect.width)));
     ro.observe(wrap.current);
     return () => ro.disconnect();
@@ -56,9 +58,8 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
   const op = (v: number) => (v <= 0 || maxPrio <= 0 ? 0 : MIN_OPACITY + (MAX_OPACITY - MIN_OPACITY) * (v / maxPrio));
 
   const cols = width >= 880 ? mats.length : 1;
-  const narrow = width < 520;
   const gap = cols > 1 ? 20 : 0;
-  const m = { top: 34, right: 8, bottom: 40, left: narrow ? 46 : 58 };
+  const m = { top: 34, right: 8, bottom: 40, left: 68 };
   const panelW = (width - gap * (cols - 1)) / cols;
   const iw = panelW - m.left - m.right;
   const cw = iw / o2s.length;
@@ -107,7 +108,7 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
   const describe = (c: PlannerGridCell) => {
     const cands = candAt.get(`${c.o2_pct}|${c.pressure_psi}`) ?? [];
     const n = c.n_near.v === 0 ? "no tests recorded nearby" : `${fmtNumber(c.n_near.v)} ${c.n_near.v === 1 ? "test" : "tests"} near`;
-    const cand = cands.length ? `. Candidate atmosphere here: ${cands.map((x) => x.name).join(", ")}` : "";
+    const cand = cands.length ? `. Candidate atmosphere here: ${cands.map((x) => x.short).join(", ")}` : "";
     return `${FUEL_LABEL[c.material]}, ${c.o2_pct}% O2, ${c.pressure_psi} psi: ${n}; priority ${fmtNumber(c.priority[preset].v, 3)} (${PRESET_LABEL[preset]})${cand}. Press Enter for details`;
   };
 
@@ -175,7 +176,7 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
                       >
                         <rect width={cw} height={ch} fill="var(--surface-2)" />
                         <rect width={cw} height={ch} fill="var(--accent)" fillOpacity={op(pr)} />
-                        {empty && <rect width={cw} height={ch} fill="url(#hatch-planner)" opacity={0.75} />}
+                        {empty && <rect width={cw} height={ch} fill="url(#hatch-planner)" opacity={0.6} />}
                         <rect x={0.5} y={0.5} width={cw - 1} height={ch - 1} fill="none" stroke="var(--line)" />
                         {empty ? (
                           <text x={cw / 2} y={ch / 2} textAnchor="middle" fontSize={labelSize} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3} strokeLinejoin="round">
@@ -212,7 +213,7 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
                   );
                 })}
                 {(pi % cols === 0) && (
-                  <text transform={`translate(${-(m.left - 10)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={11} fill="var(--ink)">Pressure (psi)</text>
+                  <text transform={`translate(${-(m.left - 9)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={11} fill="var(--ink)">Pressure (psi)</text>
                 )}
                 {/* x axis: O2 levels */}
                 {o2s.map((o2, i) => (
@@ -236,7 +237,7 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
             {tip.cell.n_near.v === 0 ? "No tests recorded nearby" : `${fmtNumber(tip.cell.n_near.v)} ${tip.cell.n_near.v === 1 ? "test" : "tests"} near this cell`}
           </div>
           <div className="num">Priority ({PRESET_LABEL[preset]}): <span className="italic">{fmtNumber(tip.cell.priority[preset].v, 3)}</span></div>
-          {tip.cands.length > 0 && <div className="mt-0.5">Candidate atmosphere: {tip.cands.map((c) => c.name).join(", ")}</div>}
+          {tip.cands.length > 0 && <div className="mt-0.5">Candidate atmosphere: {tip.cands.map((c) => c.short).join(", ")}</div>}
           <div className="mt-1 text-ink-3">Click or press Enter for details</div>
         </div>
       )}

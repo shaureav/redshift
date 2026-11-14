@@ -1670,5 +1670,26 @@
   ],
   "threshold": 1.5,
   "unknown_rule": "If a test's O2 or pressure is null, nearness is 'unknown', never 'not near'."
+ },
+ "steps": {
+  "flow_step": {
+   "p": "params:nearness",
+   "u": "cm/s",
+   "v": 10.0
+  },
+  "o2_step": {
+   "p": "params:nearness",
+   "u": "O2 points",
+   "v": 5.0
+  },
+  "pressure_ratio": {
+   "p": "params:nearness",
+   "v": 1.25
+  },
+  "threshold": {
+   "p": "params:nearness",
+   "u": "steps",
+   "v": 1.5
+  }
  }
 }

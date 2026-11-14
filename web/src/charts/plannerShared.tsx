@@ -160,7 +160,7 @@ export function CountCell({ val, compact = false }: { val: Val<number>; compact?
     return (
       <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
         <span className="hatch-bg inline-block h-3 w-4 rounded-sm border border-line" aria-hidden="true" />
-        <span className="text-ink-2">{compact ? "none recorded" : "no tests recorded"}</span>
+        <span className={`text-ink-2 ${compact ? "text-xs" : ""}`}>no tests recorded</span>
         <span className="text-[11px] text-ink-3">
           (<Value val={val} unit={false} />)
         </span>
@@ -218,7 +218,7 @@ export function PlannerFormula({ grid, nearness, nearP }: { grid: PlannerFile; n
           the evidence constant, <Value val={k} />: with <var>k</var> tests nearby the evidence term falls to one half (judgement)
         </dd>
         <dt className="font-medium text-ink"><var>d</var></dt>
-        <dd>nearness distance in steps from the cell to the nearest habitat candidate (the suit candidate is excluded)</dd>
+        <dd>nearness distance in steps (oxygen and pressure only) from the cell to the nearest habitat or scenario candidate; the suit candidate is excluded</dd>
         <dt className="font-medium text-ink"><var>&theta;</var></dt>
         <dd>
           the nearness threshold

@@ -24,7 +24,7 @@ export const DEFAULT_COLUMNS = [
   "flow_cm_s", "fuel", "material", "outcome_label", "flags",
 ];
 
-const NUMERIC = new Set(["o2_pct", "o2_list_pct", "pressure", "pressure_psi", "pressure_kpa", "co2_pct", "he_pct", "n2_pct", "flow_cm_s", "fuel_conc_pct", "n_flames"]);
+const NUMERIC = new Set(["o2_pct", "o2_list_pct", "pressure", "co2_pct", "he_pct", "n2_pct", "flow_cm_s", "fuel_conc_pct", "n_flames"]);
 const WIDE = new Set(["notes", "material", "o2_basis", "table_file"]);
 
 // Sort key for a stored value: missing values sort last in either direction (never as zero).
@@ -101,6 +101,8 @@ function buildColumns(fieldKeys: string[], open: (id: string) => void): ColumnDe
 
   const fields: ColumnDef<TestRow>[] = [];
   for (const k of fieldKeys) {
+    // Pressure is always written in psi with kPa beside it, so the two stored fields share one column.
+    if (k === "pressure_kpa") continue;
     if (k === "pressure_psi") {
       fields.push({
         id: "pressure",
@@ -110,10 +112,11 @@ function buildColumns(fieldKeys: string[], open: (id: string) => void): ColumnDe
         sortUndefined: "last",
         cell: ({ row }) => <Pressure psi={row.original.fields.pressure_psi} kpa={row.original.fields.pressure_kpa} />,
       });
+      continue;
     }
     fields.push({
       id: k,
-      header: k === "pressure_psi" ? "Pressure (psi)" : fieldLabel(k),
+      header: fieldLabel(k),
       accessorFn: (r) => sortKey(r.fields[k]),
       sortingFn: mixedSort,
       sortUndefined: "last",

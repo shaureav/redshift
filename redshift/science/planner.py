@@ -38,6 +38,16 @@ def build(
     steps = Steps.from_params(near_params, 1.0)
     k = params["evidence_constant"]
     cells = []
+    lvl_id = registry.add(
+        Prov(
+            id="planner:levels",
+            source_type="derived",
+            method="planner grid levels (pressure converted with psi_to_kpa)",
+            method_version=METHOD_VERSION,
+            params={"o2_levels_pct": params["o2_levels_pct"], "pressure_levels_psi": params["pressure_levels_psi"]},
+            note="Grid levels are judgement.",
+        )
+    )
     for p_psi in params["pressure_levels_psi"]:
         for o2 in params["o2_levels_pct"]:
             ev = evaluate(evidence, o2, psi_to_kpa(p_psi), near_params, 1.0)
@@ -91,6 +101,7 @@ def build(
                         "o2_pct": o2,
                         "pressure_psi": p_psi,
                         "material": mat,
+                        "pressure_kpa": value(psi_to_kpa(p_psi), "kPa", lvl_id),
                         "n_near": value(n, "tests", n_id),
                         "relevance": value(round(rel, 6), None, r_id),
                         "priority": prios,

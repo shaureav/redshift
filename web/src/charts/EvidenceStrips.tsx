@@ -133,13 +133,20 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
         const val = e?.near[f][r.key];
         const k = `${c.id}${f}${r.key}`;
         if (!val || val.v === 0) {
+          // A paper zero while findings await verification means "not yet verified", not "no burns".
+          const unverified = r.key === "published_paper" && !!pending && typeof pending.v === "number" && pending.v > 0;
+          const zeroText = unverified && !narrow ? "none verified" : "no tests";
           marks.push(
             <g key={k}>
               <rect x={cx} y={cy - 7} width={colW - 10} height={14} rx={3} fill="url(#hatch-strips)" opacity={0.75} />
               <text x={cx + 6} y={cy} dominantBaseline="central" fontSize={10.5} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
-                no tests
+                {zeroText}
               </text>
-              <title>{`${FUEL_LABEL[f]}, ${r.label}: no tests recorded near ${c.name}`}</title>
+              <title>
+                {unverified
+                  ? `${FUEL_LABEL[f]}, ${r.label}: none verified yet near ${c.name}; findings are awaiting human verification`
+                  : `${FUEL_LABEL[f]}, ${r.label}: no tests recorded near ${c.name}`}
+              </title>
             </g>,
           );
           return;
@@ -223,7 +230,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
     <ChartFrame
       id="evidence-strips"
       title="Tests near each candidate, by fuel class and source"
-      caption="One strip per candidate atmosphere. Filled bars are PSI experiment table rows within the nearness region (1.5 steps); outlined bars are results from human-verified papers. All strips share one scale. Hatched cells have no tests recorded: unknown, not low risk. The bottom row of each strip counts tests whose O2 matches but whose pressure is not recorded, so they cannot be placed on the plane."
+      caption="One strip per candidate atmosphere. Filled bars are PSI experiment table rows within the nearness threshold set in the build's sensitivity settings; outlined bars are results from human-verified papers. All strips share one scale. Hatched cells have no tests recorded: unknown, not low risk. A hatched paper cell reads ‘none verified’ while findings await human verification, which is not the same as no burns. The bottom row of each strip counts tests whose O2 matches but whose pressure is not recorded, so they cannot be placed on the plane."
       sources="NASA PSI experiment tables (DOI per investigation); human-verified papers (NTRS); nearness counts by the Redshift build."
       table={table}
     >

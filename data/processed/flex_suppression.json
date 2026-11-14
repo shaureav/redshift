@@ -1,8 +1,32 @@
 {
  "annotation": "CO2 at 35% or more is far beyond what a crew can breathe; these tests show suppression chemistry, not a cabin atmosphere.",
+ "band_kpa": [
+  {
+   "p": "flex:band:limits",
+   "u": "kPa",
+   "v": 63.99473684210526
+  },
+  {
+   "p": "flex:band:limits",
+   "u": "kPa",
+   "v": 79.99342105263158
+  }
+ ],
  "band_mmhg": [
   480.0,
   600.0
+ ],
+ "band_psi": [
+  {
+   "p": "flex:band:limits",
+   "u": "psi",
+   "v": 9.281651858219021
+  },
+  {
+   "p": "flex:band:limits",
+   "u": "psi",
+   "v": 11.602064822773775
+  }
  ],
  "groups": [
   {
@@ -13,7 +37,11 @@
    },
    "label": "25% O2 + 15% CO2",
    "outcome_labels": {
-    "Disruption": 6
+    "Disruption": {
+     "p": "flex:co2:0:label:Disruption",
+     "u": "tests",
+     "v": 6
+    }
    },
    "total": {
     "p": "flex:co2:0:total",
@@ -29,9 +57,21 @@
    },
    "label": "23 to 24% O2 + 20 to 25% CO2",
    "outcome_labels": {
-    "Completion": 2,
-    "Disruption": 7,
-    "Extinction": 14
+    "Completion": {
+     "p": "flex:co2:1:label:Completion",
+     "u": "tests",
+     "v": 2
+    },
+    "Disruption": {
+     "p": "flex:co2:1:label:Disruption",
+     "u": "tests",
+     "v": 7
+    },
+    "Extinction": {
+     "p": "flex:co2:1:label:Extinction",
+     "u": "tests",
+     "v": 14
+    }
    },
    "total": {
     "p": "flex:co2:1:total",
@@ -47,8 +87,16 @@
    },
    "label": "21% O2 + 30% CO2",
    "outcome_labels": {
-    "Completion": 2,
-    "Extinction": 4
+    "Completion": {
+     "p": "flex:co2:2:label:Completion",
+     "u": "tests",
+     "v": 2
+    },
+    "Extinction": {
+     "p": "flex:co2:2:label:Extinction",
+     "u": "tests",
+     "v": 4
+    }
    },
    "total": {
     "p": "flex:co2:2:total",
@@ -64,7 +112,11 @@
    },
    "label": "15 to 20% O2 + 35 to 50% CO2",
    "outcome_labels": {
-    "Extinction": 22
+    "Extinction": {
+     "p": "flex:co2:3:label:Extinction",
+     "u": "tests",
+     "v": 22
+    }
    },
    "total": {
     "p": "flex:co2:3:total",
@@ -74,13 +126,34 @@
   }
  ],
  "high_o2_no_suppressant": {
+  "extinguished": {
+   "p": "flex:high:ext",
+   "u": "tests",
+   "v": 0
+  },
   "fuels": {
-   "Heptane": 8,
-   "Methanol": 9
+   "Heptane": {
+    "p": "flex:high:fuel:Heptane",
+    "u": "tests",
+    "v": 8
+   },
+   "Methanol": {
+    "p": "flex:high:fuel:Methanol",
+    "u": "tests",
+    "v": 9
+   }
   },
   "outcome_labels": {
-   "Completion": 2,
-   "Disruption": 15
+   "Completion": {
+    "p": "flex:high:label:Completion",
+    "u": "tests",
+    "v": 2
+   },
+   "Disruption": {
+    "p": "flex:high:label:Disruption",
+    "u": "tests",
+    "v": 15
+   }
   },
   "total": {
    "p": "flex:high:total",

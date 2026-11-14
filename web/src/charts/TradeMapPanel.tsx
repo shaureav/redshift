@@ -5,7 +5,7 @@ import { ChartFrame, FuelLegend, SourceLegend } from "../components/Common";
 import { Value } from "../components/Value";
 import { useData } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
-import type { Candidate, CandidateEvidence } from "../lib/types";
+import type { Candidate, CandidateEvidence, Val } from "../lib/types";
 import { ALL_LAYERS, type FlameGrid, type Layer, type PlannerCell, type PrebreathePoint, TradeMap, type TradeMapData, ZOOMS, type ZoomKey } from "./TradeMap";
 
 const DEFAULT_LAYERS: Layer[] = ["cand", "ev", "strip", "blind", "ft", "pb"];
@@ -40,7 +40,7 @@ export function TradeMapPanel({ height = 620, defaults = {}, compact = false }: 
   const st = useMapState(defaults);
   const map = useData<TradeMapData>("trade_map.json");
   const cands = useData<{ candidates: Candidate[] }>("candidates.json");
-  const ev = useData<{ evidence: CandidateEvidence[] }>("candidate_evidence.json");
+  const ev = useData<{ evidence: CandidateEvidence[]; steps: { threshold: Val<number>; o2_step: Val<number>; pressure_ratio: Val<number> } }>("candidate_evidence.json");
   const grid = useData<FlameGrid>("flame_temperature_grid.json");
   const planner = useData<{ cells: PlannerCell[] }>("planner_grid.json");
   const pb = useData<{ points: PrebreathePoint[]; pending: { atmosphere: string; status: string }[]; caveat: string }>("prebreathe.json");
@@ -90,7 +90,7 @@ export function TradeMapPanel({ height = 620, defaults = {}, compact = false }: 
     <ChartFrame
       id="trade-map"
       title="Trade Map: oxygen against cabin pressure"
-      caption="Each glyph is one or more microgravity fire tests at the recorded oxygen and pressure, coloured and shaped by fuel class. Rings show each candidate's nearness region (1.5 steps). Hatched cells have no tests nearby: unknown, not safe. Flame temperature lines explain how hot a flame can get; they do not predict ignition or spread."
+      caption="Each glyph is one or more microgravity fire tests at the recorded oxygen and pressure, coloured and shaped by fuel class. Hover or select a candidate to see its nearness region. Hatched cells have no tests nearby: unknown, not low risk. Flame temperature lines explain how hot a flame can get; they do not predict ignition or spread."
       sources="NASA PSI experiment tables (DOI per investigation); human-verified papers (NTRS); Cantera with GRI-Mech 3.0."
       table={table}
       actions={
@@ -132,8 +132,12 @@ export function TradeMapPanel({ height = 620, defaults = {}, compact = false }: 
         zoom={st.zoom}
         highlight={st.highlight}
         height={height}
+        steps={ev.data.steps}
       />
       <div className="mt-3 flex flex-col gap-2">
+        <p className="text-xs text-ink-2">
+          Near means within <Value val={ev.data.steps.threshold} digits={1} /> of a candidate, where one step is <Value val={ev.data.steps.o2_step} /> or a pressure ratio of <Value val={ev.data.steps.pressure_ratio} digits={2} />. <Link className="underline" to="/methods">How this was chosen</Link>
+        </p>
         <FuelLegend />
         <SourceLegend />
         <p className="text-xs text-ink-3">
