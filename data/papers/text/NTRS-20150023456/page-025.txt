@@ -1,0 +1,58 @@
+ 
+NASA/TP—2015-216046 19 
+Appendix A.—Detailed Experimental Results 
+This appendix provides a detailed listing of all the results of 
+the Flame Extinguishment Experiment (FLEX) tests from 
+March 2009 through December 2010. In addition to the data 
+printed in this section, electronic  data files are available with 
+the detailed results on the digital video disc (DVD) addendum. 
+A.1 Summary Data 
+The following list explains the column headings in Table IX: 
+ 
+FLEX test—number used by the FLEX science team 
+FLEX identifier—used by the Combustion Integrated Rack 
+(CIR) engineering team 
+Test date—date the test was performed 
+Test t ime—time the test was performed (Greenwich Mean 
+Time, GMT) 
+Fuel—fuel used for the test: methanol (C H3OH) or heptane 
+(C7H16) 
+Actual D0—initial droplet diameter or droplet dia meter at  
+time zero where time zero is the time when the igniters  are 
+turned ON 
+Burning rate—average burning rate constant from a linear fit 
+of the droplet diameter squared versus time from shortly after 
+ignition to extinction 
+Visible flame extinction diam eter—droplet diameter at the 
+time the visible flame extinguishe d, where  “-” indicates 
+flame extinction did not occur either because the droplet 
+burned to completion or because a droplet disruption ended 
+the test. For cases where the droplet left the HiBMs  field of 
+view ( FOV) before extinction, we did estimate (extrapolate 
+the burning history) to determine the extinction droplet 
+diameter if there was sufficient burning history and the length 
+of time to extrapolate was not that long.   If the droplet was 
+not i n the HiBMS FOV for enough time, the extinction 
+droplet diameter is not listed. 
+Notes—specific observations for a particular test, as explained 
+in the notes at the bottom of the table 
+Fiber—Yes or No depending on whether a support fiber was in 
+place for the tests 
+P—absolute ambient pressure 
+O2—ambient oxygen mole fraction from detailed records of the 
+chamber fill, recirculation, filter, and combustion history 
+CO2—ambient carbon dioxide mole fraction from detailed 
+records of the chamber fill, recirculation, filter, and 
+combustion history 
+N2—ambient nitrogen mole fraction from detailed records of the 
+chamber fill, recirculation, filter, and combustion history 
+H2O—ambient water vapor mole fraction from detailed records 
+of the chamber fill, recir culation, filter , and combustion 
+history 
+Heptane—ambient heptane ( C7H16) vapor mole fraction from 
+detailed records of the chamber fill, recirculation, filter , and 
+combustion history 
+Methanol—ambient methanol (CH3OH) vapor mole fraction 
+from detailed records of the chamber fill, recirculation, filter, 
+and combustion history 
+  

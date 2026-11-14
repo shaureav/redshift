@@ -1,0 +1,52 @@
+10
+Prebreathe Validation Approach
+•
+ What prebreathe is sufficient to meet NASA
+-
+STD
+-
+3001 standards in a Lunar/Mars 
+environment?
+–
+ Equilibrate to Exploration Atmosphere: 
+ 8.2psi/34% 
+O
+2 
+for 48 
+hrs
+–
+ Minimum prebreathe duration:
+ 20 min ≥ 6.2psi
+–
+ Simulated EVA:
+ 4.3psi/85% O
+2
+–
+ Simulate EVA workload:
+ 6 tasks for 6hrs across workload ranges
+                    
+   
+   
+   
+  
+   
+  
+           
+          
+   
+   
+   
+               
+            
+                
+        
+        
+            
+           
+                
+               
+               
+                             
+                    
+        
+                

@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 280 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 256.—Test FLEX–256. Free-floating heptane droplet burning in a 0.23/0.52/0.25 O2/N2/He, 
+0.70-atm ambient environment. The droplet drifted east after deployment and ignition in the High-Bit-
+Depth Multispectral (HiBMs) field of view (FOV), leaving the FOV just prior to extinction or burnout. 
+The droplet burned to a very small size and then appeared to disrupt or rapidly change direction 
+after the droplet left the HiBMs FOV. The measured burning rate constant was used to extrapolate 
+the extinction droplet diameter from the droplet history from the time that the droplet left the FOV 
+until the flame extinguished. The small droplet size at extinction suggests that the droplet burned 
+almost to completion. 
+  

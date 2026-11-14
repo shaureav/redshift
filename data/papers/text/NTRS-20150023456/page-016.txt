@@ -1,0 +1,54 @@
+ 
+NASA/TP—2015-216046 10 
+ 
+ 
+ 
+ 
+ 
+TABLE I.—FLEX TEST MATRIX FOR TESTS CONDUCTED IN CABIN AIR  
+[Droplet not supported by a fiber; tests conducted in ambient air—0.21 oxygen mole fraction,  
+0.005 carbon dioxide mole fraction, 0.79 nitrogen mole fraction (balance) at 1.0-atm pressure.] 
+Test Date Fuel Initial droplet diameter,  
+D0, 
+mm 
+Pressure,  
+P, 
+atm 
+001 Mar. 5, 2009 Methanol 1.80 1.00 
+002 Mar. 5, 2009 Methanol 2.00 1.00 
+003 Mar. 5, 2009 Methanol 1.71 1.01 
+004 Mar. 31, 2009 Methanol 2.19 1.00 
+005 Mar. 31, 2009 Methanol 1.95 1.00 
+ 
+006 Mar. 31, 2009 Methanol 2.90 1.00 
+007 Apr. 10, 2009 Heptane 1.91 1.00 
+008 Apr. 10, 2009 Heptane 2.89 1.00 
+009 Apr. 10, 2009 Heptane 3.00 1.00 
+ 
+ 
+ 
+ 
+ 
+ 
+TABLE II.—FLEX TEST MATRIX FOR TESTS CONDUCTED IN HIGH-PRESSURE,  
+CARBON-DIOXIDE-ENRICHED AMBIENT ENVIRONMENTS 
+[Droplet not supported by a fiber; 0.21 oxygen mole fraction, 0.700 carbon  
+dioxide mole fraction, 0.090 nitrogen mole fraction.] 
+Test Date Fuel Initial droplet diameter, 
+D0, 
+mm 
+Pressure, 
+P, 
+atm 
+010 May 22, 2009 Methanol 3.88 3.05 
+011 May 22, 2009 Methanol 3.02 3.05 
+012 May 22, 2009 Heptane 3.09 3.05 
+013 June 25, 2009 Methanol 2.72 2.73 
+014 June 29, 2009 Methanol 3.71 2.70 
+ 
+015 June 29, 2009 Methanol 4.43 2.72 
+016 June 29, 2009 Methanol 1.80 2.73 
+017 July 1, 2009 Methanol 2.81 2.03 
+018 July 1, 2009 Heptane 2.92 2.04 
+ 
+  

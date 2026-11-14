@@ -1,0 +1,51 @@
+40
+Preliminary
+ EVA Summary : DCS
+•
+ 3 day:
+–
+ Meets study criteria?
+–
+ 6 exposures, 0 DCS
+•
+ 11 day:
+–
+ EVA1: 6 exposures, 1 DCS
+–
+ EVA2: 4 exposures, 0 DCS (1 GLO, 1 mask fit) 
+•
+ (*1 DCS in DT)
+–
+ EVA3: 5 exposures, 0 DCS (1 mask fit) (DT in GLO)
+–
+ EVA4: 5 exposures, 0 DCS (1 MSK)
+–
+ EVA5: 5 exposures, _ DCS
+•
+ 11 + 3 day:
+–
+ EVA0  0/6
+–
+ EVA1  1/12
+–
+ EVA2  1/16
+–
+ EVA3  1/21
+–
+ EVA4  1/26
+–
+ EVA5 _/31  
+•
+ 11
+-
+day
+–
+ EVA1  1/6
+–
+ EVA2  1/10
+–
+ EVA3  1/15
+–
+ EVA4  1/20
+–
+ EVA5 _/25 

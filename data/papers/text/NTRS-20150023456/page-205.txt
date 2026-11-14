@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 199 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 175.—Test FLEX–172. Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 
+1.0-atm ambient environment. This was the first test after the needle and window were changed out 
+(cleaner window for the Low Light Level Ultra-Violet (LLUV)). The droplet remained in the High-Bit-
+Depth Multispectral (HiBMs) field of view (FOV) for the entire test with very little residual motion. The 
+LLUV image was very bright with none of the asymmetry observed in the previous tests. The flame 
+extinguished when the droplet was relatively large, and the droplet continued to vaporize at a 
+relatively high and nearly constant rate after the visible flame extinguished—indicating cool flame 
+burning and extinction after visible flame extinction. The color camera Image Processing and 
+Storage Unit (IPSU) did not record any images after deployment. 
+  

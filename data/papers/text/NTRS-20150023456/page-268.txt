@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 262 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 238.—Test FLEX–238. Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/He, 
+1.0-atm ambient environment. The droplet was almost motionless after deployment and ignition. 
+This was a large droplet, and it remained in High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV) for the entire test. After ignition, the flame grew but became increasingly dimmer, and it 
+quickly extinguished because of radiative loss. After the visible flame extinguished, the droplet 
+continued to vaporize at almost the same rate well after the flame extinguished when a plateau 
+occurred coincident with the formation of a large vapor cloud. Both phenomena indicate cool flame 
+burning and extinction after visible flame extinction. The color camera Image Processing and 
+Storage Unit (IPSU) did not record any images after deployment. 
+  

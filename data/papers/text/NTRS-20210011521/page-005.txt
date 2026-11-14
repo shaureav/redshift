@@ -1,0 +1,64 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+5 
+embers, or both. However, since the embers are typically isolated in a larger area of charred material and the flamelets 
+are typically at the edge of unburned fuel, it is likely that survival of a flamelet led to the reignition. 
+Delayed extinguishment was also seen on Saffire IV, sample 2 (Figure 4). In this case the sample was a non-charring 
+thick material (PMMA) burning on both sides. While the flow was on, the flame grew and was marked by continuous 
+small disturbances (3-5 mm in diameter) in the flame due to fuel vapor b ursting out of the melted polymer. The long 
+burning interval allowed the sample to accumulate heat such that when the flow was turned off, the sample continued 
+to bubble actively. These jets of fuel emerging  from the surface provided sufficient mixing to keep the flame alive  
+over the 15 second interval of no flow. The flame continued to grow extensively until it produced enough soot that it 
+damaged the outlet screens and reduced the air  flow. Similar behavior with bubbling jets of fuel va por was seen by 
+Kimzey in a flammability test with nylon on Skylab. 5 On Saffire V, an approach was tested to promote more rapid 
+extinguishment. Instead of abruptly turning off the flow after a 65 s interval of reduced air flow as in Saffire IV-2, the 
+air flow for Saffire V samples 3 and 4 was reduced from the starting condition of 20 cm/s to 5 cm/s and held at 5 cm/s 
+for 300 seconds . This extended time at reduced flow allowed the sample to cool more effectively than in the 
+ 
+quiescent conditions seen in Saffire IV  while preventing the accumulation of fuel vapor  near the sample surface. 
+Consequently, when the fan was turned off in Saffire V -3 and V-4, the sample extinguished immediately (Figures 5 
+and 6). These results indicate that extinction of the fire cannot be assumed to occur quickly under quiescent conditions. 
+Thin materials, higher oxygen concent rations and heating  of the solid fuel can all support extended bur ning. 
+Furthermore, using reduced air flow rather than going to zero  air flow can lead to more rapid extinction  due to the 
+convective cooling. However, as an extinguishment strategy, this would carry other risk s given the uncertainty of 
+configurations and flow rates in a spacecraft.  
+B.  Ignition  
+Two Saffire samples (IV-2 and V-4) exhibited intense ignition processes of deflagration because of a stratified mixture 
+as recorded in both the video and the radiometer data. Unlike in normal gravity where  buoyancy tends to move hot 
+vapors away from  the source, in low gravity  hot fuel vapors can more easily accumulate. Figure 7 shows the edge 
+view of Saffire IV-2 after the flow was reduced to 5 cm/s.  The flame persisted on the upper surface w ith a series of 
+pulsations induced by bursting bubbles of molten PMMA, which ejected MMA vapor from the sample surface. On 
+the lower surface, the flame has extinguished but continued em itting vapor. In the image t he flame has penetrated 
+through a gap at the leading edge of the sample to the lower area. Immediately afterwards, a strong deflagration spread 
+below the sample and the induced flow  generated a strong flame  above the sample  as well.  
+                                  
+Figure 4: Air flow speed, fan speed, and radiant flux for Saffire IV -2 (2 sided PMMA in air). Although the 
+flame shrank during the reduced flow starting at 1150 seconds, the flame recovered and grew substantially when 
+the air flow was restarted at about 1300 seconds.  After 1400 seconds the air flow reduced due to apparent 
+blockage of the outlet screen. 
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+-5
+0
+5
+10
+15
+20
+25
+30
+600 800 1000 1200 1400 1600
+Incidnet Flux (mW/cm^2)
+Air Speed (cm/s)
+Fan Speed (RPM/1000)
+Time (s)
+Inlet Duct Anemometer Fan Speed Radiometer 4

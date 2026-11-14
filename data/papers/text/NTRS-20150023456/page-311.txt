@@ -1,0 +1,72 @@
+ 
+NASA/TP—2015-216046 305 
+References 
+Banu, Bilkis: Fluids and Combustion Facility (FCF) —
+Combustion Integrated Rack (CIR). Payload 
+Accommodations Handbook, NASA CIR‒DOC‒4064, 
+2008. Available from the NASA Center for AeroSpace 
+Information. 
+Choi, M.Y.; and Dryer, F.L.: Microgravity Droplet 
+Combustion. Microgravity Combustion: Fire in Free Fall,  
+Howard D. Ross, ed., ch. 4, Academic Press, San Diego, 
+CA, 2001, pp. 183–297. 
+Dietrich, D.L., et al.: Droplet Combustion Experiments in 
+Spacelab. Proceedings of the 1996 26th International 
+Symposium on Combustion, vol. 1, 1996, pp. 1201–1207. 
+Faeth, G.M.: Current Status of Droplet and Liquid 
+Combustion. Prog. Energy Combust. Sci., vol. 3, no. 4, 
+1977, pp. 191–224. 
+Godsave, G.A.E.: Studies of the Combustion of Drops in a 
+Fuel Spray: The Burning of Single Drops of Fuel. 
+Proceedings of the Fourth Symposium (International) on 
+Combustion, Combustion Institute, 1952, pp. 818–830. 
+Goldsmith, M.: Experiments on the Burning of Single Drops 
+of Fuel. Jet Propulsion, vol. 26, no. 3, 1956, pp. 172–178. 
+Hall, A.R.; and Diederichsen, J.: An Experimental Study of 
+the Burning of Single Drops of Fuel in Air at Pressures 
+up to Twenty Atmospheres. Proceedings of the Fourth 
+Symposium (International) on Combustion, 1953,  
+pp. 837–846. 
+Kumagai, Seiichiro; and Isoda, Hiroshi: Combustion of Fuel 
+Droplets in a Falling Chamber. Proceedings of the Sixth 
+Symposium (International) on Combustion, 1956,  
+pp. 726–731. 
+Law, C.K.: Recent Advances in Droplet Vaporization and 
+Combustion. Progress in Energy and Combustion 
+Science, vol. 8, no. 3, 1982, pp. 171–201. 
+Marchese, A.J., et al.: Hydroxyl Radical Chemiluminescence 
+Imaging and the Structure of Microgravity Droplet 
+Flames. Proceedings of the 1996 26th International 
+Symposium on Combustion, 1996, pp. 1219–1226. 
+Nayagam, V., et al.: Microgravity n -Heptane Droplet 
+Combustion in Oxygen-Helium Mixtures at Atmospheric 
+Pressure. AIAA J., vol. 36, no. 8, 1998, pp. 1369–1378. 
+National Institutes of Health: ImageJ, Image Processing and 
+Analysis in Java. 2011. http://rsbweb.nih.gov/ij/ 
+Accessed Dec. 11, 2012. 
+Robbins, Jesse; and Shinn, Clarise: Multi -user Droplet 
+Combustion Apparatus FLEX2. Reflight Safety Data 
+Package, NASA MDC‒DOC‒1790A, Rev. A, 2010. 
+Available from the NASA Center for AeroSpace 
+Information. 
+Sirignano, William A.: Fuel Droplet Vapor ization and Spray 
+Combustion Theory. Prog. Energy Combust. Sci., vol. 9, 
+no. 4, 1983, pp. 291–322. 
+Spalding, D.B.: The Combustion of Liquid Fuels. 
+Proceedings of the Fourth Symposium (International) on 
+Combustion, 1952, pp. 847–864. 
+Spalding, D.B.: Experim ents on the Burning and Extinction 
+of Liquid Fuel Spheres. Fuel, Vol. XXXII, 1953,  
+pp. 169–185. 
+Suh, H.K.; Choi, M.Y.; and Ferkul, P.V.: New Observations 
+of Sooting Behavior of Isolated Droplets of n-Heptane in 
+Microgravity Conditions. Proceedings of the 7th U.S. 
+National Combustion Meeting, Atlanta, GA, 2011. 
+Williams, Alan: Combustion of Droplets of Liquid Fuels: A 
+Review. Combust. Flame, vol. 21, no. 1, 1973, pp. 1–31.  
+Williams, Forman A.: Droplet Burning. Combustion 
+Experiments in a Zero -Gravity Laboratory, Thomas H. 
+Cochran, ed., vol. 73, ch. 2, 1981, pp. 31–60.  
+Wise, Henry; and Agoston, George A.: Burning of a Liquid 
+Droplet. Adv. Chem., ch. 10, vol. 20, 1958, pp. 116–135.  
+ 

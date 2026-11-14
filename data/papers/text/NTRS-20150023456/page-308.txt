@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 302 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 278.—Test FLEX–278. Fiber-supported methanol droplet burning in a 0.17/0.38/0.45 O2/N2/He, 
+0.70-atm ambient environment. The droplet migrated slowly west in the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV) after ignition, but it remained in the FOV the entire test. There was a small 
+spot on the fiber that burned off early in the burn, which was a short burn to extinction. This was near 
+the limiting oxygen index (LOI) in this ambient mixture. 
+  

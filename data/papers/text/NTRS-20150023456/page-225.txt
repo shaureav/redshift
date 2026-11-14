@@ -1,0 +1,17 @@
+ 
+NASA/TP—2015-216046 219 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 195.—Test FLEX–192. Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 
+1.0-atm ambient environment. This smaller droplet drifted to the lower igniter after deployment. The 
+igniter seemed to stop the drift, and the droplet remained near the center of the field of view (FOV) 
+for the duration of the entire test. The droplet burned to diffusive extinction. 
+  

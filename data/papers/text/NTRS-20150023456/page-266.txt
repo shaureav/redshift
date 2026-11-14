@@ -1,0 +1,23 @@
+ 
+NASA/TP—2015-216046 260 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 236.—Test FLEX–236. Fiber-supported heptane droplet burning in a cabin air (0.21/0.79 
+O2/N2), 1.0-atm ambient environment. The droplet oscillated on the fiber throughout the burn, but it 
+remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). Large soot agglomerates 
+interfered with the measurement of droplet size for a portion of the burn. The flame extinguished 
+radiatively after a very long, slow, high-amplitude oscillation. This was followed by rapid 
+vaporization and the formation of a vapor cloud coincident with the plateau. The droplet moved 
+during the vaporization, but this did not seem to impact the size measurement significantly. There 
+was a small disruption near the end of the vaporization and a small jump in droplet size—maybe a 
+gas bubble that burst. A cool flame and cool flame extinction probably followed the visible flame 
+extinction. 
+  

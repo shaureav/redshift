@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 75 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 51.—Test FLEX−047. Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2),  
+1.0-atm ambient environment. The droplet drifted east out of the High-Bit-Depth Multispectral (HiBMs) 
+field of view (FOV) about halfway through the test. The droplet oscillated for several seconds before 
+the droplet left the FOVs of all the cameras. It left the Low Light Level Ultra-Violet (LLUV) FOV last, 
+oscillating as it translated south out of the FOV. The radiometer showed that the flame persisted even 
+after the droplet left the FOV. Extrapolating the burning history to when the radiometer indicated 
+extinction (with large error bars) showed that the droplet burned nearly to extinction. There was no 
+evidence of disruptive burning in any of the camera views. The color camera did not capture the flame 
+history correctly because it did not zoom out. 
+  

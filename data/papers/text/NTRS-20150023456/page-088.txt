@@ -1,0 +1,24 @@
+ 
+NASA/TP—2015-216046 82 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 58.—Test FLEX−054. Free-floating methanol droplet burning in a 0.20/0.80 O2/N2, 0.7-atm 
+ambient environment. The droplet had almost no residual motion after ignition. About halfway through 
+the test, the droplet began to move abruptly north-northeast and then quickly changed direction to the 
+northeast. The droplet left the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after the 
+second change in direction. The color camera views indicate that there may have been some small 
+gas bubbles in the droplet. There also was some distortion in the droplet history right before the droplet 
+changed direction. This could have been due to the expanding gas bubbles distorting the droplet, then 
+bursting and imparting a momentum to the droplet. The burning rate constant and flame standoff data 
+are for the portion of the test before the disruption and change in direction. Because the droplet was in 
+the HiBMs FOV for only a limited time and because there were disruptions in the droplet during the 
+burn, no extinction droplet diameter is reported. 
+  

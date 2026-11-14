@@ -1,0 +1,68 @@
+ 
+NASA/TP—2015-216046 24 
+FLEX Test  Fuel Ambient 
+pressure,  
+mmHg 
+Initial ambient 
+composition, 
+mole fraction 
+Droplet 
+initial 
+diameter, 
+mm 
+Visible 
+flame 
+extinction 
+diameter, 
+mm 
+Burning 
+rate, 
+mm2/s 
+Burn 
+time,  
+s 
+Test end 
+Test Identifier Date Greenwich 
+mean time 
+O2 N2 CO2 He 
+FLEX–136 C21H302 10/6/10 17:30:58 Heptane 768.1 .24 .56 .2 0 3.08 – .51 17 Completion 
+FLEX–137 C21H303 10/6/10 17:53:35 Heptane 768.2 .24 .56 .2 0 3.13 – .55 17.5 Disruption 
+FLEX–138 C21H304 10/6/10 18:08:43 Heptane 768.6 .24 .56 .2 0 – – – – Disruption 
+FLEX–139 C21H305 10/6/10 19:09:45 Heptane 768 .24 .56 .2 0 1.75 – .63 5.4 Disruption 
+FLEX–140 C14M101 11/4/10 16:52:39 Methanol 533.5 .15 .35 .5 0 3.98 3.95 .2 1.3 Extinction 
+               
+FLEX–141 C14M201 11/4/10 18:07:51 Methanol 534.1 .15 .35 .5 0 2.86 2.73 .3 2.3 Extinction 
+FLEX–142 C14M301 11/4/10 19:11:39 Methanol 534.5 .15 .35 .5 0 1.86 1.48 .39 3.4 Extinction 
+FLEX–143 C14M302 11/4/10 20:19:22 Methanol 534.7 .15 .35 .5 0 2.25 2.06 .36 2.7 Extinction 
+FLEX–144 C01M101 11/16/10 9:42:08 Methanol 761.9 .2 .75 .05 0 3.53 1.53 .45 23.8 Extinction 
+FLEX–145 C01M201 11/16/10 10:21:24 Methanol 763.5 .2 .75 .05 0 3.33 1.61 .45 20 Extinction 
+               
+FLEX–146 C01M301 11/16/10 10:54:23 Methanol 765.5 .2 .75 .05 0 4.35 1.95 .41 39.2 Extinction 
+FLEX–147 C13M102 9/13/10 17:35:49 Methanol 535.7 .17 .38 .45 0 3.02 2.49 .4 7.8 Extinction 
+FLEX–148 C01H101 11/18/10 8:39:27 Heptane 764.4 .2 .75 .05 0 2.58 1.15 .54 11.8 Disruption 
+FLEX–149 C01H201 11/18/10 9:25:38 Heptane 766.2 .2 .75 .05 0 2.21 .82 .53 8.9 Disruption 
+FLEX–150 C01H302 11/18/10 10:17:02 Heptane 767.6 .2 .75 .05 0 3.18 2.54 .46 8 Extinction 
+               
+FLEX–151 C03M101 12/8/10 18:31:22 Methanol 762.5 .18 .67 .15 0 3.86 – .36 31.3 Completion 
+FLEX–152 C03M201 12/8/10 20:10:32 Methanol 765 .18 .67 .15 0 3.33 1.23 .43 23.2 Extinction 
+FLEX–153 C03M301 12/8/10 21:08:17 Methanol 765.6 .18 .67 .15 0 2.78 1.19 .42 15.7 Extinction 
+FLEX–154 C03H101 12/9/10 16:02:14 Heptane 762.3 .18 .67 .15 0 3.7 3.6 .34 2.2 Extinction 
+FLEX–155 C03H201 12/9/10 17:49:08 Heptane 764.9 .18 .67 .15 0 2.73 2.52 .39 2.7 Extinction 
+               
+FLEX–157 C03H401 12/9/10 19:12:27 Heptane 765.7 .18 .67 .15 0 1.34 .45 .48 3.2 Completion 
+FLEX–158 C05M101 12/14/10 13:41:00 Methanol 762.1 .16 .59 .25 0 4.24 3.96 .3 7.6 Extinction 
+FLEX–159 C05M201 12/14/10 14:30:46 Methanol 764.4 .16 .59 .25 0 3.7 3.22 .37 10.1 Extinction 
+FLEX–160 C05M301 12/14/10 15:17:59 Methanol 765.5 .16 .59 .25 0 2.71 1.34 .38 14.9 Extinction 
+FLEX–161 C05M401 12/14/10 17:51:58 Methanol 767.6 .16 .59 .25 0 2.77 1.52 .38 14.8 Extinction 
+               
+FLEX–162 C06M101 12/28/10 11:41:39 Methanol 763.3 .15 .54 .32 0 3.72 3.5 .28 6 Extinction 
+FLEX–163 C06M201 12/28/10 12:05:23 Methanol 764.4 .15 .53 .32 0 3.05 2.54 .37 8.5 Extinction 
+FLEX–164 C06M301 12/28/10 13:00:43 Methanol 765.9 .15 .53 .32 0 2.59 1.63 .37 11.6 Extinction 
+FLEX–165 C06M401 12/28/10 13:36:43 Methanol 766.1 .15 .53 .32 0 2.59 1.79 .42 8.9 Extinction 
+FLEX–166 C03H302 12/9/10 18:51:34 Heptane 765.4 .18 .67 .15 0 1.96 1.39 .54 3.9 Extinction 
+               
+FLEX–167 C07M101 1/12/11 21:56:45 Methanol 760.8 .14 .5 .36 0 3.22 3.08 .28 3.4 Extinction 
+FLEX–168 C07M201 1/12/11 22:11:40 Methanol 761.6 .14 .5 .36 0 2.32 1.84 .37 5.9 Extinction 
+FLEX–169 C15M101 1/18/11 12:54:25 Methanol 763.4 .21 .64 .15 0 3.03 1.57 .48 15.6 Disruption 
+FLEX–170 C15M201 1/18/11 14:19:29 Methanol 766.1 .21 .64 .15 0 3.05 1.28 .51 16.7 Extinction 
+FLEX–171 C15M301 1/18/11 15:58:46 Methanol 766.7 .21 .64 .15 0 3.53 1.59 .46 23.6 Extinction 

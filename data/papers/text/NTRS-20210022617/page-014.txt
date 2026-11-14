@@ -1,0 +1,21 @@
+14
+JASMAC-33
+10/15/2021
+o A new phenomenon where a hot flame extinction leads 
+to a low-temperature, “cool-flame” burning in 
+microgravity has been observed for the first time 
+o These cool flames produce partially oxidized fuel and 
+potentially re-ignite to hot flames posing fire safety 
+concerns in spacecraft environments
+o Existing, widely-used detailed chemical kinetic models 
+do not accurately predict the 2nd stage cool flame 
+extinction (and warm flame) and need further 
+improvement
+o Improved low temperature chemistry will have wide 
+ranging applications including advanced internal 
+combustion engine design and development
+o The new phenomena may lead to new innovative 
+burner designs and fuel reforming technologies
+o A wealth of experimental data with a variety of fuels, 
+fuel mixtures, and ambient conditions (over 1500 tests)
+Conclusions

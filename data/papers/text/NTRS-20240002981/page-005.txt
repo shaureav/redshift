@@ -1,0 +1,121 @@
+5 
+International Conference on Environmental Systems 
+ 
+ 
+Figure 7 presents the smoke concentrations at the FFD 
+and the response of a terrestrial ionization detector. The 
+smoke levels can be seen to rise rapidly and subsequently 
+decrease, presumably due to pa rticle loss from impaction 
+on multiple surfaces. Selecting 1 mg/m 3 as a relatively 
+tight alarm threshold, the FFD detector reached that 
+threshold at 981 seconds. By this point, much of the 
+hazardous gas release had occurred. This is comparable to 
+predictions based on smoke versus hazardous product 
+emission by overheated materials 9. Although the CO and 
+CO2 diluted rapidly in these tests, the increases observed 
+from these tests are quite significant from a toxicology  standpoint. For carbon monoxide, NASA establishes a 
+Spacecraft Maximum Allowed Concentration (SMAC) value based on the expo sure duration. For carbon monoxide, 
+the 1-hour SMAC is 425 ppm, and the 24-hour SMAC is 100 ppm7. For carbon dioxide, which is prevalent in manned 
+spacecraft, the limits are establishe d differently in NASA-STD-3001 8 which limits the 1-hour average CO 2 partial 
+pressure to no more than 3 mm Hg. As can be seen in Table 2, the allowable CO 2 level was exceeded by both of the 
+PMMA tests on Saffire VI. For carbon monoxide the levels were well above the 24-hour SMAC and quite close to the 
+1-hour level. 
+ 
+ 
+ 
+Figure 7. Far field ioniza tion smoke detector and 
+particulate matter measurements for Saffire VI-3 
+(two-sided PMMA).  
+ 
+Figure 5. Inlet and outlet oxygen concentrations 
+for Saffire VI-3 (two-sided PMMA) with the 
+calculated heat release  based on the oxygen 
+consumption. The flow was changed from 20 cm/s 
+to 5 cm/s at 1120 s and terminated at 1420 s. The 
+dip at 1120 s is due to the impact of the transient 
+flow change on the oxygen sampling. 
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+0
+1
+2
+3
+4
+5
+6
+7
+8
+500 700 900 1100 1300 1500
+Heat Release Rate(W) and Radiometer (x10) 
+(mW/cm^2)
+Oxygen mass flow rate (mg/s)
+Time (s)
+Inlet O2
+ Outlet O2 Heat Release Rate
+Radiometer #4 (x10) 10 per mov. avg.
+ 
+Figure 4. Temperature results for Saffire VI-3 
+(two-sided PMMA). The duct flow was reduced at 
+1120 s and terminated at 1420 s so the inlet and 
+outlet traces end. The forward port sensor is the 
+nearest to the Saffire flow duct outlet. 
+‐0.1
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+0 500 1000 1500 2000 2500
+Igniter Current (A)
+Temperature (degC)
+Time (s)
+SFU Outlet FFD Inlet Forward‐Port Igniter Current
+ 
+Figure 6. CO and CO 2 concentrations for Saffire 
+VI-3 (two-sided PMMA) The duct flow terminated 
+at 1420 s so the outlet traces end. The flow was 
+changed from 20 cm/s to 5 cm/s at 1120 s. At this 
+lower flow rate, the outlet CO 2 and CO levels 
+increased due to the lo wer ambient flow. The 
+forward port sensor is the nearest to the Saffire 
+flow duct outlet and the zenith sensor is near the 
+far field device.
+0
+500
+1000
+1500
+2000
+2500
+0
+10000
+20000
+30000
+40000
+50000
+60000
+70000
+0 500 1000 1500 2000 2500
+CO Concentration (ppm)
+CO2 Concentration (ppm)
+Time (s)
+SFU Outlet CO2 FFD CO2 SFU Outlet CO FFD CO

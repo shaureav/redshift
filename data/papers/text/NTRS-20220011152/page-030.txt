@@ -1,0 +1,63 @@
+30
+EVA Simulation 
+–
+ Rationale for Tasks
+•
+ 61 exploration EVA tasks
+[2]
+ were decomposed into 126 subtasks then characterized by functional 
+requirements of each subtask
+•
+ Categories:
+–
+ Body Positioning:   
+Seated, Kneeling, Standing, Mobile, etc. 
+–
+ Muscle Groups:   
+Whole/Both, Upper, Lower
+–
+ Ambulation:   
+None, Walking, Walking (terrain), Walking (slopes), Crawling, Climbing
+–
+ Loading Bearing:   
+None, Carrying, Pushing/Pulling, Attached to Suit
+–
+ Loads:   
+None, Minimal (<5 
+lbs
+), Variable, Heavy (>30 
+lbs
+)
+–
+ Upper Body Reach (Workspace):   
+None, Standard, Extended
+–
+ Hand Usage:   
+None, Fine Motor Skills, Grip Strength, Vibration, Shock, Other/Combination
+–
+ Task Occurrence:   
+Rare (<10% of EVAs), Some (~30%), Many (~50%), Most (~75%), Nearly All (>90%)
+–
+ Task Duration (expected)
+–
+ Task Frequency:   
+1
+-
+2 times per EVA, Every 2 hours during EVA, Every hour during EVA, 1
+-
+30 minutes during EVA
+2
+Coan D. Exploration EVA System Concept of Operations. NASA TR, EVA
+-
+EXP
+-
+0042 
+RevB
+. 2020
+24%
+17%52%
+7%
+Upper body
+Lower body
+Both Upper and Lower body
+Minimal work

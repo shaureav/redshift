@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 224 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 200.—Test FLEX–197. Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet drifted east out of the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV) just before the flame extinguished radiatively. A large vapor cloud 
+formed 15 to 20 s after the visible flame extinguished (visible in the color camera), indicating that 
+cool flame burning and extinction were likely after the visible flame extinguished. The measured 
+burning rate constant (later in the droplet lifetime) was used to extrapolate the extinction droplet 
+diameter from the droplet history, and the Low Light Level Ultra-Violet (LLUV) was used to 
+determine the time of extinction. 
+  

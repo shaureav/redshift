@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 41 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 17.—Test FLEX−013. Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 
+3.0-atm ambient environment. The droplet drifted west in the High-Bit-Depth Multispectral (HiBMs) 
+field of view (FOV), hit the igniter, drifted southeast after the igniter was withdrawn, and left the FOV. 
+It reappeared for a short time before disappearing again. The glow from the igniter influenced the 
+droplet size measurement early, the HiBMs and illumination package settings were not good enough 
+for reliable droplet size measurements. Because the droplet was not in the HiBMs FOV for enough 
+of the test, no extinction droplet diameter is reported. The color camera Image Processing and 
+Storage Unit (IPSU) did not record any images after deployment. 
+  

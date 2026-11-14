@@ -1,0 +1,31 @@
+ 
+  
+ 9 of 11 
+3.6 Cool Flames Investigation with Gases (CFI-G) 
+This purpose of this experiment, selected for spaceflight by the Center for the Advancement of Science in Space (CASIS) 
+and the National Science Foundation (NSF), is to observe non-premixed quasi-steady spherical cool flames on porous 
+burners.  As previously mentioned, non-premixed cool flames were discovered in droplet combustion research 
+conducted in the CIR in 2012 but droplet combustion involves unsteady burning rates.  Although ignition and flame 
+propagation in engines depend on cool flames, computational tools used to design the engines neglect cool flame chemistry.  
+Advances in cool flames kinetic mechanisms could enable cleaner burning, more efficient internal combustion engines.  
+Testing is underway where the normal- and inverse-flame tests are being conducted with ethane, propane, and n-butane. 
+Cool flames were discovered in CFI-G testing with n-butane as can be seen in Fig. 10 which features a sequence of images 
+from an intensified camera filtered for formaldehyde emissions.  As expected, the cool flames are significantly smaller 
+than the corresponding hot flames. 
+ 
+ Fig. 10 Appearance of a cool flame after the hot flame quenches in a normal-flame test with diluted n-butane 
+ 
+4. Concluding Remarks 
+ACME testing is still underway, but well over a thousand flames have been ignited for the six experiments since science 
+operations began in Nov. 2017.  Early results have been presented and published 36-48) and more papers will follow.  
+ACME’s open-source data and results are gradually being made available through NASA’s Physical Sciences Informatics 
+website 60).  As an example, data from the E-FIELD Flames investigation, the first study for which the ISS testing was 
+completed, is now available online.  It is tentatively expected that all ISS testing for ACME will be completed in 2022, after 
+which the CIR facility will be used for the experiments of the Solid Fuel Ignition and Extinction (SoFIE) project 61) which 
+is focused on flammability, flame spread, and spacecraft fire safety. 
+ 
+Acknowledgements 
+The author is grateful for the critical contributions of the ACME investigators (identified in Table 2); their graduate 
+students, and collaborators including especially Howard Baum, Yu-Chien (Alice) Chien, and Jesse Tinajero.  Of course, 
+the research wouldn’t have been possible without the ZIN Technologies engineering team who developed the ACME 
+hardware and software, where key members have included Brian Borowski, Adrian Drake, Jeffrey Eggers, Timothy Gobeli, 

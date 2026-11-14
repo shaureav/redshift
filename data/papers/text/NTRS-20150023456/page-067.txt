@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 61 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 37.—Test FLEX−033. Free-floating methanol droplet burning in a 0.21/0.79 O2/N2, 1.0-atm 
+ambient environment. The droplet drifted slightly north and then east in the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV). It eventually left the HiBMs FOV, but that was well after the flame 
+extinguished. The color camera Image Processing and Storage Unit (IPSU) did not record any images 
+after deployment. 
+  

@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 115 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 91.—Test FLEX−087. Fiber-supported methanol droplet with no translation and burning in a 
+0.13/0.87 O2/N2, 1.0-atm ambient environment. Throughout the burn, there were significant axial 
+oscillations along the fiber axis. The oscillations were significant and persistent. The droplet 
+remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test, 
+and it burned for a relatively long time in this low-O2 ambient environment. Because the flame was 
+very dim, the Low Light Level Ultra-Violet (LLUV) flame size measurements are not reliable. 
+  

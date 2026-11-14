@@ -1,0 +1,22 @@
+History Leading to ISS FLEX Experiments
+o NASA drop-tower experiments: 1974-present
+2.2 second tower, Zero gravity facility (5 seconds)
+Lear Jet, KC-135, DC-9 parabolic flights 
+o Fiber-supported droplet combustion (FSDC): 
+STS73-USML-2,1995
+o Droplet combustion experiment (DCE):
+STS94-MSL-1,1997
+FSDC-2 during the 2nd flight
+o Flame Extinguishment experiments (FLEX): ISS 2008-2016
+• FLEX
+• FLEX-2
+• FLEX-ICEGA
+• FLEXJ
+o Cool Flame Investigation (CFI): ISS 2017
+2
+JASMAC-33
+10/15/2021
+o The first publication in the field:
+S. Kumagai, “Combustion of fuel droplets in falling 
+chambers with special reference to the effect of natural 
+convection”,  Jet Propulsion, Vol. 26, 1956, p. 786.

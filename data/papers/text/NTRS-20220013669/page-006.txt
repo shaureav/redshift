@@ -1,0 +1,96 @@
+2022 ASCEND AIAA 
+ 
+6 
+ 
+ 
+Table 1  Surface Habitat Functional Categories 
+ 
+ 
+Function 
+Volume 
+(m³)  
+Area 
+(m²) 
+ Crew Habitation 
+Access to Personal Stowage 2.60 1.08 
+Changing Clothes 2.40 1.00 
+Sleep Accommodation 3.64 1.82 
+Stretching 3.36 1.40 
+EVA Support 
+Computer Display and Control Interface 2.24 1.12 
+Suit Component Testing and Repair 3.28 1.37 
+Temporary EVA Items Stowage 0.25 0.25 
+Exercise  
+Exercise on a Resistive Device 3.60 1.50 
+Group Socialization and Recreation 
+Group Movie Viewing 5.04 2.10 
+Group Tabletop Games 3.89 1.62 
+Personal Recreation 3.89 1.62 
+Human Waste Collection 
+Emesis Waste Collection 2.18 0.91 
+Menses Waste Collection 2.18 0.91 
+Liquid Waste Collection 2.18 0.91 
+Solid Waste Collection 2.18 0.91 
+WMS Maintenance and Repair 2.18 0.91 
+Function 
+Volume 
+(m³)  
+Area 
+(m²) 
+Meal Consumption 
+Full Crew Dining 3.89 1.62 
+Medical Operations 
+Autonomous Ambulatory Care 2.68 1.12 
+Basic Medical Care (Space Motion 
+Sickness, First Aid, etc.) 4.49 1.87 
+Computer Interface for Telemedicine 
+and Data Entry 2.69 1.12 
+Mission Planning  
+Mission Planning Computer Display and 
+Control Interface Access 4.37 1.82 
+Mission Planning Work Surface Access 3.89 1.62 
+Team Meetings 4.37 1.82 
+Spacecraft Monitoring and Commanding 
+Computer Interface for Teleoperation & 
+Communication 4.37 1.82 
+Direct Window Viewing 1.35 0.56 
+Spacecraft Command and Control 
+Interface 4.37 1.82 
+Translation Paths 
+Crew Translation Paths --- 
+1.00m 
+wide 
+Trash Management 
+Trash Packing for Disposal 2.73 1.59 
+Utilization 
+Internal Utilization Accommodation --- --- 
+ 
+Function 
+Volume 
+(m³)  
+Area 
+(m²) 
+Hygiene 
+Appearance Viewing and Body 
+Inspection 2.54 1.06 
+Facial Cleaning 2. 54 1.06 
+Fingernail/Toenail Clipping 2.11 0.88 
+Full Body Cleaning 2.54 1.06 
+Hair Styling/Grooming 2.54 1.06 
+Hand Cleaning 2.54 1.06 
+Oral Hygiene 2.11 0.88 
+Shaving 2.11 0.88 
+Skin Care 2.11 0.88 
+Towel and Clothes Drying 2.11 0.88 
+Logistics 
+Logistics Packing and Inventory 
+Management 3.28 1.37 
+Maintenance and Repair 
+Maintenance Workstation for 
+Equipment Diagnostics 3.28 1.37 
+System Component and Electronics 
+Repair 3.28 1.37 
+Meal Preparation 
+Food Item Sorting 1.35 0.56 
+Food Preparation 1.35 0.56 
+ 

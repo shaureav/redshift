@@ -1,0 +1,55 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+11 
+ 
+IV Summary of Results 
+To date, the Saffire Experiments have produced a notable set of results that are relevant to spacecraft fire safety design 
+and assessment. These results include: 
+Extinguishment 
+• Extinguishment of thin charring fuels at increased oxygen cannot be assumed  to occur rapidly in quiescent 
+conditions. 
+• Extinguishment of bubbling polymers cannot be assumed to occur rapidly in quiescent conditions 
+• In some circumstances, reducing air flow to a small value rather than quiescent conditions may be useful to 
+disperse fuel vapor and help cool the material to enable extinction 
+Ignition  
+• Overheated materials in quiescent conditions or in low-flow zones in low gravity can produce stratified fuel 
+mixtures that can result in dramatic deflagrations during ignition. 
+Flow/configuration 
+• The dimensions of the flow environment relative to the size of the flame can have a significant effect on the 
+spread rate over thin materials. 
+• Near the entrance of a flow  environment, the undeveloped boundary layer  can lead to flame sizes that are 
+initially 30% larger than occur with developed flow until the flame spreads into a region with developed 
+flow. 
+• In opposed spread over  thick materials, the size of ridges or other surface shape structures  can have a 
+significant effect on flame spread. 
+Spread and Growth 
+• Flames were seen to deve lop to nearly steady lengths in all configurations. This includes concurrent and 
+opposed spread on thin fuels  and on thick fuels . The steady  state size was affected by the oxygen 
+concentration and the flow  velocity. This contrasts w ith upward spread in normal gr avity which usually 
+shows continued growth. 
+• Flames on thick fuels in concurrent flow did not spread and were instead pinned to  the leading edge of the 
+sample and propagated as the fuel was consumed. In opposed flow the flames spread toward the leading edge 
+where they became pinned. As it spread, the flame  did not grow, instead the downstream tail extinguished 
+behind it as it spread.  
+• Once a flame achieved its limiting size, downstream flames were inhibited or extinguish ed by the oxygen 
+“shadow” of the upstream flame. 
+• Thick fuel flame growth was found to be dissimilar from that seen in NASA STD 6001 Test 1. This does not 
+invalidate the test but does affect the interpretation of the test results 
+• In one case, a flame was seen to jump a 4.5 cm gap to ignite a previously warmed PMMA surface. 
+ 
+Collectively, these results provide new understanding of the behavior of fires in low gravity in practical configurations. 
+These observations and the accompanying analyses described in the refe rences will be incorporated into spacecraft 
+fire safety requirements and guidelines for exploration spacecraft and habitats. Saffire- VI is in storage and, when 
+flown, will undoubtedly provide additional data and observations to strengthen or clarify the conclusions of this paper. 
+The continued analysis of the data from Saffire-I-VI will extend the application of these results to quantify the impact 
+of a fire to exploration spacecraft.  
+.  
+Acknowledgments 
+The authors acknowledge the support of the NASA Advanced Exploration Systems Division for the sponsorship of 
+the Spacecraft Fire Safety Demonstration Project and the Saffire experiments.  In addition, the authors acknowledge 
+the support of the various space and research agencies that have supported this work including but not limited to 
+JAXA, ESA, RSA, CNES, DLR, the Russian Academy of Sciences and NASA. The excellent support by the  
+engineering team (NASA and Zin Technologies ), Northrup Grumman and the on -orbit crew are gratefully 
+acknowledged. 

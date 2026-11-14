@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 70 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 46.—Test FLEX−042. Fiber-supported heptane droplet burning in a 0.30/0.70 O2/N2, 0.70-atm 
+ambient environment. The droplet was sooted relatively heavily immediately after ignition. Shortly after 
+ignition, the droplet began to distort severely, periodically expelling small droplets of fuel that continued to 
+burn. A large disruption completely dislodged the droplet from the fiber. Afterward, the droplet drifted north 
+in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), then south (after another disruption). It 
+then burned relatively cleanly to disruption at a small size. The burning rate constant was that during the 
+relatively clean period after the droplet was dislodged from the fiber. The color camera Image Processing 
+and Storage Unit (IPSU) did not record any images after deployment. 
+  

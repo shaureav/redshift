@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 245 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 221.—Test FLEX–220. Free-floating methanol droplet in a 0.14/0.86 O2/N2, 1.0-atm ambient 
+environment. The droplet drifted north after deployment and ignition and then out of High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV). Just after the visible flame extinguished, the droplet drifted 
+back into the HiBMs FOV. This was a weak flame with a long burn to diffusive extinction. The 
+extinction droplet diameter was derived from a spline fit between the periods of time when the droplet 
+was in the HiBMs FOV. 
+  

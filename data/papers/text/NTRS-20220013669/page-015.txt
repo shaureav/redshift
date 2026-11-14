@@ -1,0 +1,59 @@
+2022 ASCEND AIAA 
+ 
+15 
+ 
+ 
+ Due to volume constraints, several functional areas exist that would ideally be separated instead of overlapping 
+within the Surface Habitat. On the first level, the suitports open directly into the maintenance area and the EVA 
+computer station. The maintenance and geology user work volumes also overlap. The geology station and Oxygen 
+Generation Assembly (OGA) pallets overlap with cargo suitport access. The vertical ladder also intrudes into potential 
+maintenance work areas. 
+ On the second level, there is no direct access between the Urine Processor (UP) and Brine Processor (BP) pallets 
+and the three Waste Processor Assembly (WPA) pallets. It is necessary to walk around either hygiene and exercise or 
+around UWMS and biology to reach the UP and BP pallets. Additionally, the center WPA pallet is very tightly wedged 
+in between the other two. It most likely cannot be removed for maintenance without first removing one of the others. 
+The UP & BP pallets cannot be removed for maintenance without first disconnecting and removing all three WPA 
+pallets. 
+ On both the second and third levels, access to the thermal control subsystem is above the WPA and Air 
+Revitalization System (ARS) pallets, making it difficult to physically reach. Also, on both levels, access to the 
+subsystems adjacent to the vertical translation path intersects the path itself, such that there may be a risk of falling 
+down the translation path for any subsystems access work. 
+ On the third level, access to one of the crew quarters is only available by traversing through the medical area. The 
+two crew quarters bunks are directly beside each other, with the only acoustic isolation being that which is available 
+in the wall partition. A substantial amount of habitat stowage is also in medical. Stowage lockers in the Human 
+Research Lab and Physics Lab are so tightly packed that it is not possible to simultaneously open two lockers that are 
+side by side. 
+ While the utilization allocation in the internal layout carries a wide variety of proposed scientific capabilities, there 
+was insufficient volume in the Surface Habitat to include a general-purpose work surface, freezers, and additional 
+stowage [3]. The ability to incorporate these components in the internal layout would have a significant impact on 
+utilization productivity. 
+ The volume allocated for maintenance and repair is limited to a small table and wall-mounted stowage. Additional 
+volume for maintenance and repair tools could increase the number of hardware failures the Surface Habitat can 
+respond to. This ideally should encompass both metal and plastic additive and non-additive manufacturing, 
+thermoplastics, and textiles. 
+VIII. Forward Work 
+ Several of the aforementioned limitations exist due to architectural, resource, volume, and mass constraints. In 
+order to truly evaluate the feasibility of an internal layout, a combination of further analyses should be considered. 
+These studies can include a tabletop evaluation, a VR evaluation, and/or a human-in-the-loop evaluation.  
+ A tabletop evaluation can be conducted using two-dimensional images of the habitat CAD model. The test subject 
+will view a series of such images that provide a pictorial walk-through of the habitat. An accompanying document 
+with questionnaires will ask the subject to rate the acceptability of workstation design, the expected performance of 
+tasks, and other human interactions with the spacecraft. A tabletop evaluation has as a key advantage its low cost.  
+Tabletop evaluations can be performed without any support personnel beyond that of a CAD modeler to capture screen 
+shots of the CAD model for use in the evaluation. This does come as a tradeoff because this evaluation is most 
+appropriate at an early design stage where the CAD model is limited in detail. Some components may be sufficiently 
+low in fidelity that only engineers intimately familiar with the associated component can recognize what they are. It 
+may be impossible, for instance, for test subjects to differentiate between oxygen tanks, nitrogen tanks, potable water 
+tanks, wastewater tanks, or propellant tanks making it difficult to assess the acceptability of their placement within 
+the spacecraft. 
+ Should funding be available to implement the Surface Habitat in Virtual Reality (VR), a VR evaluation can instead 
+be conducted. A VR evaluation has the advantage that the three-dimensional immersion of the test subject makes it 
+inherently easier for the test subject to perceive the habitat environment more fully. The subject is able to navigate 
+through the interior of the habitat and visualize how a crew member would perform various tasks or take other actions 
+inside an actual spacecraft. Additionally, it is possible to embed explanatory labels, text, or other information that 
+cannot be conveyed in a two-dimensional tabletop evaluation. Questionnaires can also be imbedded inside the virtual 
+environment, with the ability to capture not only multiple-choice responses, but freeform text, audio clips, and even 
+snapshot images. As the use of VR for HITL evaluations grows, new capabilities are often added by human factors 
+researchers. 
+ Lastly, a human-in-the-loop (HITL) evaluation can both identify other areas of improvement that have escaped 
+initial notice and can help prioritize the total set of needed improvements. The act of creating the layout described in 

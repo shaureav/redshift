@@ -1,0 +1,22 @@
+{
+ "caveat": "NASA labels these 'Unvalidated estimates (i.e., not yet available for flight use)' and assumes a 6 h EVA at 4.3 psia (NTRS 20220011152, p. 6).",
+ "p": "prebreathe:layer",
+ "pending": [
+  {
+   "atmosphere": "14.7 psi / 21% O2",
+   "finding_id": "FND-EA-PB-14.7",
+   "status": "published figure found; awaiting human verification"
+  },
+  {
+   "atmosphere": "10.2 psi / 26.5% O2",
+   "finding_id": "FND-EA-PB-10.2",
+   "status": "published figure found; awaiting human verification"
+  },
+  {
+   "atmosphere": "8.2 psi / 34% O2",
+   "finding_id": "FND-EA-PB-8.2",
+   "status": "published figure found; awaiting human verification"
+  }
+ ],
+ "points": []
+}

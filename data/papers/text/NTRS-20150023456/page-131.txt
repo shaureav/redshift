@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 125 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 101.—Test FLEX−097. Free-floating methanol droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 
+0.70-atm ambient environment. The droplet drifted north with a relatively high velocity in the High-Bit-
+Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, and it drifted out of the 
+FOV shortly after ignition. The droplet appeared to drift close enough to the needle to start a needle 
+fire (also visible on the Low Light Level Ultra-Violet, LLUV). This changed the droplet direction from 
+north to east in the color camera FOV, and it pushed the droplet north in the LLUV FOV. While the 
+needle was still burning, the droplet quickly left the color camera FOV, but it remained in the LLUV 
+FOV, drifting south after deployment and ignition until it left the LLUV FOV before extinction or 
+disruption.  
+  

@@ -1,0 +1,26 @@
+2022 ASCEND AIAA 
+ 
+2 
+ 
+ 
+sufficient: it is capable of providing its own communications, power, thermal control, radiation shielding, 
+environmental control, life support, waste management, and science utilization [1]. The Surface Habitat serves as a 
+home base for lunar astronauts, a hub for communications, a science facility, an extravehicular activity (EVA) 
+equipment repair site, a waste processing facility, a supply hub, a surface operations base, and a test bed for sustained 
+surface presence and preparation for Mars missions. 
+ It will be used to test out operations for Mars surface habitation and will offer additional safety to lunar surface 
+crews during simulated operations. The Surface Habitat is required to accommodate a nominal crew of two, with the 
+ability to temporarily accommodate up to four during nominal swap-out periods and safe haven contingency operations 
+of up to seven days [2]. The nominal surface mission is thirty days in duration. 
+ The Surface Habitat houses an environmental control and life support system (ECLSS) with assumed regenerative 
+capability including water processing, urine and condensate processing, CO2 reduction and recovery, and high pressure 
+oxygen generation for both itself and the Pressurized Rover.  It has the capability to operate at atmospheric pressures 
+of 8.2 psi with 34% oxygen concentration and 10.2 psi with 26.5% oxygen. 
+ 
+Fig. 1  An artist's concept of the Artemis Base Camp with the three proposed primary mission elements – the 
+Lunar Terrain Vehicle (unpressurized rover), the Pressurized Rover, and the Surface Habitat 
+ The NASA reference design for the Surface Habitat is not the actual vehicle that will be manufactured and launched 
+to the Moon. It is instead a proof of concept, derived from a set of Ground Rules and Assumptions (GR&As), geared 
+toward making NASA a smart buyer and to identify risk reduction activities required.  The reference concept can help 
+ensure consistency and sufficiency of the GR&As before requirements are drafted and levied on a commercial partner 
+for the build. 

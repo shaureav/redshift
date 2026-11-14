@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 234 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 210.—Test FLEX–208. Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 
+1.0-atm ambient environment. The droplet drifted southeast after deployment, drifted into the igniter, 
+and changed direction to the north after the igniter was withdrawn. The droplet drifted north during the 
+burn and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The flame grew, 
+remained stable (no oscillations), and then shrank to a disruptive extinction at a relatively small size. 
+The droplet remained in the Low Light Level Ultra-Violet (LLUV) FOV for the entire test, but the Multi-
+User Droplet Combustion Apparatus (MDCA) color camera did not record images onboard for this 
+test (the downlinked video is available). 
+  

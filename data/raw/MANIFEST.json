@@ -1,0 +1,728 @@
+{
+  "files": [
+    {
+      "file": "data/raw/Redshift_PSI_Combustion.zip",
+      "licence": "as per contained files",
+      "retrieved": "2026-11-14",
+      "sha256": "afe4cb9c80859cf1e7f2d2d78401dbbdf1b5cf7d1ba08e0557ebc98309dc2497",
+      "size": 3140414,
+      "source_url": "team harvest (see note)"
+    },
+    {
+      "file": "data/raw/psi/ACME-BRE/ACME-BRE.md",
+      "investigation_id": "PSI-20",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "c4c3f1ba220f4d83e1d3f976801864cb612439f862fe366fd79f2c9fad73c822",
+      "size": 11086,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+    },
+    {
+      "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
+      "investigation_id": "PSI-20",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "4aa5d3f98708ceacced5c620d46858b9965f8d4d941b203229f46467d53e5ab7",
+      "size": 1113,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+    },
+    {
+      "file": "data/raw/psi/ACME-BRE/publications.csv",
+      "investigation_id": "PSI-20",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "2ad4d57fe192965489e7d4119a2379a813200f60b5238113d292250c2efde1ae",
+      "size": 3609,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+    },
+    {
+      "file": "data/raw/psi/ACME-BRE/representative_image.jpg",
+      "investigation_id": "PSI-20",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "b21b40b48e0817851e3315b75a665193f7735dbbc67fd9667c0a2336b2dc24fb",
+      "size": 122696,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+    },
+    {
+      "file": "data/raw/psi/ACME-CFI-G/ACME-CFI-G.md",
+      "investigation_id": "PSI-159",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "e15f08d35edcdcb6c98932ac05396819927f19663141db56df04719df89635bb",
+      "size": 4995,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+    },
+    {
+      "file": "data/raw/psi/ACME-CFI-G/experiment_table/PSI-159_Experimental table_CFI-G_Inverse Flames.csv",
+      "investigation_id": "PSI-159",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "d4d44f8b9896936728748e34d1b6ad0812032a92fa5289599b708c138e3a9b39",
+      "size": 39422,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+    },
+    {
+      "file": "data/raw/psi/ACME-CFI-G/experiment_table/PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+      "investigation_id": "PSI-159",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "d95a621c3fbd27d204dd32ed29fa17d68f2b779d6a523cde8479ed7ebaa5251a",
+      "size": 22166,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+    },
+    {
+      "file": "data/raw/psi/ACME-CFI-G/publications.csv",
+      "investigation_id": "PSI-159",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "7765c9697732b9519f5ff4c7ed1571ddb6be4dc21d6f25250f06a3120f3c94f9",
+      "size": 565,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+    },
+    {
+      "file": "data/raw/psi/ACME-CFI-G/representative_image.jpg",
+      "investigation_id": "PSI-159",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "bf89cf938c09c799c6edb23f962ba0c7abb9cfd633cbc7264099e133cd8f6201",
+      "size": 9866,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+    },
+    {
+      "file": "data/raw/psi/ACME-CLD-Flame/ACME-CLD-Flame.md",
+      "investigation_id": "PSI-21",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "12af20fa8192c80f8abe63f600c8e91fac74c883eb5134d6a0f48df5b0a4682c",
+      "size": 11572,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21"
+    },
+    {
+      "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
+      "investigation_id": "PSI-21",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "9fafbc5b3dddaf715ce8025ed9154ce297803f7b69a935f077ec26c8249e44c0",
+      "size": 2454,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21"
+    },
+    {
+      "file": "data/raw/psi/ACME-CLD-Flame/publications.csv",
+      "investigation_id": "PSI-21",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "24b7632959461f0ed4f86040dbcf20670b00287f3fdb33bf17524b6b7d27973e",
+      "size": 4747,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21"
+    },
+    {
+      "file": "data/raw/psi/ACME-CLD-Flame/representative_image.jpg",
+      "investigation_id": "PSI-21",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "c744d5dfb522067dd22edebf2945fc9fc2f9537310649c363448d8780ee54c0e",
+      "size": 26001,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21"
+    },
+    {
+      "file": "data/raw/psi/ACME-E-FIELD-Flames/ACME-E-FIELD-Flames.md",
+      "investigation_id": "PSI-22",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "66f845e6d121aa8421af2f19b62aa50f41f46db83255f20c7ef8b9a226be325b",
+      "size": 11016,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+    },
+    {
+      "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
+      "investigation_id": "PSI-22",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "69090c357b83ae38d161d29001d1d32b40fd77b13324ca6585ee990cdceef524",
+      "size": 2475,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+    },
+    {
+      "file": "data/raw/psi/ACME-E-FIELD-Flames/publications.csv",
+      "investigation_id": "PSI-22",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "96e00895165ab505f54a9cdb5e9bc6bee70784bc39f50d31d9ec76ecbb22fe8c",
+      "size": 5027,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+    },
+    {
+      "file": "data/raw/psi/ACME-E-FIELD-Flames/representative_image.jpg",
+      "investigation_id": "PSI-22",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "2080c77b4a0e16e2646827c0ec9a2887d2447dae08ae33b6e6c74a669dc610da",
+      "size": 162135,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+    },
+    {
+      "file": "data/raw/psi/ACME-Flame-Design/ACME-Flame-Design.md",
+      "investigation_id": "PSI-10",
+      "licence": "not shown",
+      "retrieved": "2026-11-14",
+      "sha256": "f8bdb25b27757e529bd6b074f42210b07d306698103bce1990fe8dbaa9392c12",
+      "size": 12571,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+    },
+    {
+      "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
+      "investigation_id": "PSI-10",
+      "licence": "not shown",
+      "retrieved": "2026-11-14",
+      "sha256": "97933ee9ae0b9ebc6b948a67485a0fe2f8218f753253a4f2be93c40d374c44e4",
+      "size": 17314,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+    },
+    {
+      "file": "data/raw/psi/ACME-Flame-Design/experiment_table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
+      "investigation_id": "PSI-10",
+      "licence": "not shown",
+      "retrieved": "2026-11-14",
+      "sha256": "4a663292bd3f65201943cc71bd661a70383639276a9176f64105b285bf0b6deb",
+      "size": 26933,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+    },
+    {
+      "file": "data/raw/psi/ACME-Flame-Design/publications.csv",
+      "investigation_id": "PSI-10",
+      "licence": "not shown",
+      "retrieved": "2026-11-14",
+      "sha256": "559f8c7ae7006301e712b612d89d7f154cc582e33c144c4c79e1b9983db63e27",
+      "size": 7801,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+    },
+    {
+      "file": "data/raw/psi/ACME-Flame-Design/representative_image.jpg",
+      "investigation_id": "PSI-10",
+      "licence": "not shown",
+      "retrieved": "2026-11-14",
+      "sha256": "427198f8a60ae6e9fae772d1217940a36d8638e800e68622bd03d5ed1c9fdfd6",
+      "size": 380532,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+    },
+    {
+      "file": "data/raw/psi/ACME-s-Flame/ACME-s-Flame.md",
+      "investigation_id": "PSI-23",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "387dd577f698c8e5b4abdca88ba02931c30a8e38ed1766ead2e634b990380f9f",
+      "size": 14916,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+    },
+    {
+      "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
+      "investigation_id": "PSI-23",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "16cd10f50bd2e962887c8eb4077e5a9b3e790c78de8e0361c0b77e19300be7cf",
+      "size": 2456,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+    },
+    {
+      "file": "data/raw/psi/ACME-s-Flame/publications.csv",
+      "investigation_id": "PSI-23",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "e755046078fea7f7fcad4e3ffdf989750d912176ad46c94e5f97b61cd9a6fca9",
+      "size": 7947,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+    },
+    {
+      "file": "data/raw/psi/ACME-s-Flame/representative_image.jpg",
+      "investigation_id": "PSI-23",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "8ff4d3e862f3495556d1e95aaf26200850f7a2fe37eeabd3f647da333b71a250",
+      "size": 128949,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+    },
+    {
+      "file": "data/raw/psi/BASS/BASS.md",
+      "investigation_id": "PSI-26",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "6622cbbe3674fdaebbf2b6f647be169951c84cea1984a567f27a1dbe80c653c4",
+      "size": 7801,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+    },
+    {
+      "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
+      "investigation_id": "PSI-26",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "ccfc3c54d948b64a1c5d2596a63c7c8019e51df0c91a1d62f039f48fa28c300f",
+      "size": 4726,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+    },
+    {
+      "file": "data/raw/psi/BASS/publications.csv",
+      "investigation_id": "PSI-26",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "5b43f762f4b2a7a58abe62de62917815dcc5e762767ef1370a082e97feb93a88",
+      "size": 2202,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+    },
+    {
+      "file": "data/raw/psi/BASS/representative_image.jpg",
+      "investigation_id": "PSI-26",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "d7dcf7a392a0cf904d76347a1df2b64c4329fc8bdfce8f33660d1effdc76cbc1",
+      "size": 32895,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+    },
+    {
+      "file": "data/raw/psi/BASS-II/BASS-II.md",
+      "investigation_id": "PSI-25",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "1503fa4c2c9182b1087cc7dc29a12eae8a1a61938cbd92f904c7cb2edfe3cdeb",
+      "size": 8749,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+    },
+    {
+      "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
+      "investigation_id": "PSI-25",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "71e792bf6b5fb5ea620c5dd70fbbac05515992e12aefcf5dff47312caa48c042",
+      "size": 16590,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+    },
+    {
+      "file": "data/raw/psi/BASS-II/publications.csv",
+      "investigation_id": "PSI-25",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "046070c50ca544941dcbc2f87b89d850c58ac0655452e07413bcc1186f0fa390",
+      "size": 3653,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+    },
+    {
+      "file": "data/raw/psi/BASS-II/representative_image.jpg",
+      "investigation_id": "PSI-25",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "aa0bf2369cf77833e95e353519e634ab5cbb5b2918db08849e9bde82267aade3",
+      "size": 37525,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+    },
+    {
+      "file": "data/raw/psi/CFI/CFI.md",
+      "investigation_id": "PSI-39",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "b119c75106dc34d5ca4dbe6a334dd5194efd48ecf68bcd176ff0bbf153f092c3",
+      "size": 6504,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+    },
+    {
+      "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
+      "investigation_id": "PSI-39",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "fb898e28762353aa132c16b886dbd207a024b1dd3c9bed5928d70d8036d2ec7e",
+      "size": 7792,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+    },
+    {
+      "file": "data/raw/psi/CFI/publications.csv",
+      "investigation_id": "PSI-39",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "959f98feeb00fa1326d3d1e116aefb3fce6662ef0773786715b2356e953832f2",
+      "size": 1481,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+    },
+    {
+      "file": "data/raw/psi/CFI/representative_image.jpg",
+      "investigation_id": "PSI-39",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "e3a1710a2cbec01eb0a10e433ecc4d9d705b3f47488554bd72210e7c07582c88",
+      "size": 74062,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+    },
+    {
+      "file": "data/raw/psi/DAFT-DAFT-2/DAFT-DAFT-2.md",
+      "investigation_id": "PSI-47",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "a7c60f5094ad2aa8b6ad0658c7e7fac743eef67e9009f3b0fdbf62397db6e576",
+      "size": 5106,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+    },
+    {
+      "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
+      "investigation_id": "PSI-47",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "d9d1a436c6e7bbc410b433e04575fe7dedaff763b5237d688089929b7393b5c0",
+      "size": 518,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+    },
+    {
+      "file": "data/raw/psi/DAFT-DAFT-2/publications.csv",
+      "investigation_id": "PSI-47",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "91aa4cb1be0fc9fa5304d0d17aa978797af7dc83d4b68289bca60ab184830cf9",
+      "size": 429,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+    },
+    {
+      "file": "data/raw/psi/DAFT-DAFT-2/representative_image.jpg",
+      "investigation_id": "PSI-47",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "7e2c5cb00e3f1deb94bd137204b6e72e8735d4ed03573f303d6360e99a85217d",
+      "size": 1312134,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+    },
+    {
+      "file": "data/raw/psi/FLEX/FLEX.md",
+      "investigation_id": "PSI-69",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "6481f63875a4bfb1a05271cee831328f6f4d3f442fa2f8ca26aecf03971a4710",
+      "size": 19668,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69"
+    },
+    {
+      "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
+      "investigation_id": "PSI-69",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "37c88ce8ae9391b7544ff630a45ce87543d04d317cdbfbed104fe7d5c27e1b96",
+      "size": 24776,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69"
+    },
+    {
+      "file": "data/raw/psi/FLEX/publications.csv",
+      "investigation_id": "PSI-69",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "31a1e79055cef523f728936c3c0cd8ab4f96f4552fa6a8c096ef422bdbc08421",
+      "size": 10893,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69"
+    },
+    {
+      "file": "data/raw/psi/FLEX/representative_image.jpg",
+      "investigation_id": "PSI-69",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "74ac30dd7d54197806b4ae0f28fd370a03159bca175e1f2bb951705769df76c8",
+      "size": 29547,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69"
+    },
+    {
+      "file": "data/raw/psi/FLEX-2/FLEX-2.md",
+      "investigation_id": "PSI-68",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "35a9afa6408a510a004f76ca673b84cdda42c3f023fec99f7858d2a10a5c952a",
+      "size": 18086,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68"
+    },
+    {
+      "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+      "investigation_id": "PSI-68",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "cc57ad1bd9977aa13e7ac6c3aa618303012686e232b36c052c6a9f1a74e5f528",
+      "size": 1029,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68"
+    },
+    {
+      "file": "data/raw/psi/FLEX-2/publications.csv",
+      "investigation_id": "PSI-68",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "f0a24bb3aeb0333733bd5d4c5c0d16b028e83b378541442ad2063b14814aca12",
+      "size": 9688,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68"
+    },
+    {
+      "file": "data/raw/psi/FLEX-2/representative_image.jpg",
+      "investigation_id": "PSI-68",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "6e677d9419f5b5d0dc6135e51713ac91cca46f26e6cdde0e9b912cc1e7081ce4",
+      "size": 40890,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68"
+    },
+    {
+      "file": "data/raw/psi/README.md",
+      "licence": "harvest index compiled by the team; underlying PSI records as listed",
+      "retrieved": "2026-11-14",
+      "sha256": "b27a4cc09ede0b1a0e02212c8778e4b1fe87b4468c777008db8174f3f7134857",
+      "size": 1600,
+      "source_url": "https://psi.nasa.gov/physci/repo/search?q=combustion"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-I/SAFFIRE-I.md",
+      "investigation_id": "PSI-98",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "2789a8469f49cf7b91bcfda08faf838930d4d087bdeeed25a78ec0fda1778578",
+      "size": 6283,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
+      "investigation_id": "PSI-98",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "c01f29c62455f0a3b512290ab85e5687ecded326733189f002f580368402308d",
+      "size": 469,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-I/publications.csv",
+      "investigation_id": "PSI-98",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "8880c86835b2c7d86965b534e927e271e54f66707924f95c7cddce2452132738",
+      "size": 1580,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-II/SAFFIRE-II.md",
+      "investigation_id": "PSI-99",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "0b6a685f0920bb9eb034d0f5fd1e01f6b0b161497d57b090b71eee9a98a7bf99",
+      "size": 6653,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
+      "investigation_id": "PSI-99",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "3c24390b9ef86f3d1ebaab911a1a3cc95a8759aebf42062371370e6d4b31b8ac",
+      "size": 1973,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-II/publications.csv",
+      "investigation_id": "PSI-99",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "9dcd082d480784581caeee7dfb0c21b74a5a79f338fb926054b67eb7b0275ab1",
+      "size": 1983,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-III/SAFFIRE-III.md",
+      "investigation_id": "PSI-100",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "437d56626e593f59ce688e1860e1c8f6292bf9ce53426ea044fdf66296200bcf",
+      "size": 4892,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-III/experiment_table/PSI-100_Experimental table_SAFFIRE-3.csv",
+      "investigation_id": "PSI-100",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "4d3c717ec20dd0247db670b2784a9fd7d746788bc54a936f80693e48eb8cd117",
+      "size": 239,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100"
+    },
+    {
+      "file": "data/raw/psi/SAFFIRE-III/publications.csv",
+      "investigation_id": "PSI-100",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "29a1c96cb91bbc30f5baa2d084686a5114d19acabb2ef58d404f9eea413b3414",
+      "size": 619,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100"
+    },
+    {
+      "file": "data/raw/psi/SAME/SAME.md",
+      "investigation_id": "PSI-102",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "0e0e0ca730feec41f36c271963aa899e793895e3e9990590c330e1d997806dc4",
+      "size": 9110,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+    },
+    {
+      "file": "data/raw/psi/SAME/experiment_table/PSI-102_Experimental table_SAME.csv",
+      "investigation_id": "PSI-102",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "268d1e121d2f211b124407dd32b9475617bd269ede2c2d1749441da3e949a2af",
+      "size": 331,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+    },
+    {
+      "file": "data/raw/psi/SAME/publications.csv",
+      "investigation_id": "PSI-102",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "ab5b29fe53f83480c54d8d59bd81365a41998e4f55c1fe9b3bb56b1b784fc911",
+      "size": 3297,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+    },
+    {
+      "file": "data/raw/psi/SAME/representative_image.jpg",
+      "investigation_id": "PSI-102",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "14c5dd9b31c4958b661a3bc5ccf7d7b1ebd88aee32e3a7f99080af432d3a374d",
+      "size": 21620,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+    },
+    {
+      "file": "data/raw/psi/SAME-R/SAME-R.md",
+      "investigation_id": "PSI-101",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "5d651fe8b113fe0a6cfd89ac0816743c67a52be09440d8d4f3e97ccf135357d4",
+      "size": 7365,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+    },
+    {
+      "file": "data/raw/psi/SAME-R/experiment_table/PSI-101_Experimental table_SAME-R.csv",
+      "investigation_id": "PSI-101",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "87164b7dc9168a4273c159f7a9f23699afbd06ad97b77974377e79b9bf8a3bef",
+      "size": 5674,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+    },
+    {
+      "file": "data/raw/psi/SAME-R/publications.csv",
+      "investigation_id": "PSI-101",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "4b73e963704896914b8b77a14f3c4eadf03edf8e8830eec395c32ff374cb9ce8",
+      "size": 1346,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+    },
+    {
+      "file": "data/raw/psi/SAME-R/representative_image.jpg",
+      "investigation_id": "PSI-101",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "1ba3f639e630f788c9e156a9b6fa785b9250053f8daa08be792ea32ce99b3076",
+      "size": 86024,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+    },
+    {
+      "file": "data/raw/psi/SLICE/SLICE.md",
+      "investigation_id": "PSI-106",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "e213c75e8645508b221c0332afd9ddf7db6bebf5f185e074658f81e687ee62c8",
+      "size": 5388,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106"
+    },
+    {
+      "file": "data/raw/psi/SLICE/experiment_table/PSI-106_Experimental table_Slice.csv",
+      "investigation_id": "PSI-106",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "89ef980810ca6d9aa8be817b42e36cd2adff23f5e9058361b5a33d18b4363f4d",
+      "size": 734,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106"
+    },
+    {
+      "file": "data/raw/psi/SLICE/publications.csv",
+      "investigation_id": "PSI-106",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "490e6e9f0ffe38781056b6ed01e95f2c5231fecd9debb51d6e5d7e14ef412954",
+      "size": 1541,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106"
+    },
+    {
+      "file": "data/raw/psi/SLICE/representative_image.jpg",
+      "investigation_id": "PSI-106",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "981e2a914eab855306d0bdc5ce50a14d9748f7d23f61a6c3dfca68d36ea57f36",
+      "size": 105938,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106"
+    },
+    {
+      "file": "data/raw/psi/SPICE/SPICE.md",
+      "investigation_id": "PSI-107",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "8546eaa3c08840f29926df15700253b2524f24089ac943c530469130875d827c",
+      "size": 5904,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+    },
+    {
+      "file": "data/raw/psi/SPICE/experiment_table/PSI-107_Experimental table_Spice.csv",
+      "investigation_id": "PSI-107",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "fb0d7e60cf5367afb429089e9901d27288f78038efd26c8de1db4fbe04117136",
+      "size": 31205,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+    },
+    {
+      "file": "data/raw/psi/SPICE/publications.csv",
+      "investigation_id": "PSI-107",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "54b71c2f55e4b04e435c763291bfddaa7697d72f17d40fc8444cdd389de11d34",
+      "size": 1816,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+    },
+    {
+      "file": "data/raw/psi/SPICE/representative_image.jpg",
+      "investigation_id": "PSI-107",
+      "licence": "Creative Commons Zero v1.0 Universal",
+      "retrieved": "2026-11-14",
+      "sha256": "d5da82b88b991b0b216b1873d7059b82e8a7b69893d75b502ae3d16d2279e6da",
+      "size": 13546,
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+    },
+    {
+      "file": "data/raw/psi/index.csv",
+      "licence": "harvest index compiled by the team; underlying PSI records as listed",
+      "retrieved": "2026-11-14",
+      "sha256": "18cd8487955941e1104ca9b6053d8f1da5602b3b9d5b12326bc980eeb005c7c2",
+      "size": 5471,
+      "source_url": "https://psi.nasa.gov/physci/repo/search?q=combustion"
+    },
+    {
+      "file": "data/raw/psi/publications_all.csv",
+      "licence": "harvest index compiled by the team; underlying PSI records as listed",
+      "retrieved": "2026-11-14",
+      "sha256": "99be9fbdf418189375a8c9325230dd44697a875eed1d56083594aa74cca403ea",
+      "size": 75239,
+      "source_url": "https://psi.nasa.gov/physci/repo/search?q=combustion"
+    },
+    {
+      "file": "data/raw/psi_search_combustion.json",
+      "licence": "PSI search metadata",
+      "retrieved": "2026-11-14T08:11:29.891Z",
+      "sha256": "59b0bcc007eb84297c4f6280a9bf64496057bc2dc432ea32fc4a302aa867990f",
+      "size": 170937,
+      "source_url": "https://psi.nasa.gov/physci/repo/search?q=combustion"
+    },
+    {
+      "file": "data/raw/reference/challenge_statement.md",
+      "licence": "NASA Space Apps Challenge public challenge text; quoted for reference",
+      "retrieved": "2026-11-14",
+      "sha256": "6a40f748997db31e36d4f789f002d2d9e8eddb13d192437582242e4e5841fb92",
+      "size": 8659,
+      "source_url": "https://www.spaceappschallenge.org/ (Flame in Freefall challenge page)"
+    }
+  ],
+  "note": "Harvest by the team on 2026-11-14 from NASA Physical Sciences Informatics via the JSON endpoints the PSI site uses (see data/raw/psi/README.md). Shared as Redshift_PSI_Combustion.zip."
+}

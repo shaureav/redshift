@@ -1,0 +1,23 @@
+ 
+NASA/TP—2015-216046 81 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 57.—Test FLEX−053. Fiber-supported heptane droplet burning in a cabin air (0.21/0.79 
+O2/N2), 1.0-atm ambient environment. There were no High-Bit-Depth Multispectral (HiBMs) data 
+for this test. There was poor alignment between the needle and the droplet, and the droplet did not 
+deploy on the fiber. It drifted north in the color camera field of view (FOV) after deployment and 
+ignition and out of the FOV before the end of the test. However, the droplet remained in the Low 
+Light Level Ultra-Violet (LLUV) FOV for the entire test. The discrepancy in the flame size between 
+the LLUV and color camera was due to the flame being much brighter at the leading edge than at 
+the trailing edge, which resulted in some of the flame being cropped from the color camera images 
+during analysis. 
+  

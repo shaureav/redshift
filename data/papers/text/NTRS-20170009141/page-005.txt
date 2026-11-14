@@ -1,0 +1,30 @@
+Sub Topic: Fire 
+ 5 
+To further inspect the influence of radiation, it is interesting to look at the net heat flux as a function 
+of flame height for the two burners. Figure 5a demonstrates that the heat flux is higher for the 50 
+mm burner at the same flame height. It can be suspected that the greater gas volume for the 50 mm 
+burner radiates at a higher rate which increases the net heat flux. This reinforces the claim of higher 
+radiation for the 50 mm burner. 
+ 
+Figure 5b shows that the predicted flame height is lower than the experimental reading. However, 
+according to the transient analysis and experimental data, steady state is not achieved during these 
+tests. Preliminary analysis using the 2D combustion model yielded positive results for the flame 
+height. Hence, we need to look at the 2D model to predict the flame height. 
+  
+Figure 5a: Net het flux as a function of flame height for 25 mm and 50 mm burners (left) 
+Figure 5b: Comparison of theoretical and experimental dimensionless flame height (right) 
+ 
+Effect of ambient pressure and oxygen content 
+ 
+The analysis in the previous subsection could not fully capture the effect of changes in ambient 
+pressure and the oxygen content in air. The pressure of the ambient air is varied in the current 
+study from 0.5 – 1.0 atm whereas the oxygen mole fraction in air ranges from 0.21 – 0.30. To 
+comprehend the effect of parameters such as pressure and oxygen content, the tests with similar 
+mass flow rates are inspected for the same burner and fuel. Two sets of tests with 30% oxygen 
+content are chosen to study the influence of ambient pressure on heat of gasification as can be seen 
+in Figure 6a. The heat of gasification follows an upward trend with an increase in ambient pressure. 
+Figure 6b correspondingly shows the effect of oxygen mole fraction on heat of gasification. The 
+two sets of tests selected for this analysis have the same mass flow rate and 1 atm pressure. The 
+heat of gasification shows a monotonic rise with the oxygen content. The theoretical models 
+employed for the present work show a dependence of results on the oxygen mole fraction. 
+However, there is no dependence on ambient pressure.  

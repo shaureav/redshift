@@ -1,0 +1,84 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+4 
+cotton and 25% fiberglass) 1  with a total area density of 18.05 
+mg/cm2; cotton jersey material  with an area density of 18.1 
+mg/cm2; or cast polymethyl methacrylate (PMMA) (either one-
+sided 5 mm thick or two- sided (10 mm thick) . Two of the 
+PMMA samples had flat surfaces and one was a “structured” 
+sample that had  a series of grooves and ridges of increasing 
+dimension or separation. More details of the PMMA tests are in 
+Refs 2 and 3. The exhaust gases exited the SFU and entered the 
+forward port standoff of the spacecraft. The overall flow in the 
+spacecraft carried the gases to the FFD in the hatch area.  The 
+FFD contained aer osol and species diagnostics and  a smoke 
+cleanup system . More details of  the smoke transport  and 
+preliminary FFD results are in Ref. 4.  
+III Results and Their Fire Safety Implications 
+A. Flame Extinction 
+One of the salient concerns  in any fire response strategy is 
+assuring fire extinguishment.  Many thicker materials  will self 
+extinguish in quiescent  conditions, but under some 
+circumstances, thin materials  and bubbling materials  will 
+continue to burn. This delayed extinguishment was seen for a 
+thin material in Saffire V sample 2 (cotton fabric). Figure 3 
+presents the surface temperature  of the sample  and the fan 
+speed. The sample burned steadily for the initial 300 seconds  while the fan was on.  At approximately 280 seconds, 
+the fan was turned off and remained off for 70 seconds. Despite this long interval, the flame grew back when the flow 
+was turned on again and continued to burn for another 150 seconds  until the material was consumed. This result 
+demonstrates that, for thinner materials, it is possible for flames to persist for an extended period without forced air 
+flow. As seen in the image in Figure 3, there were both surviving flamelets and glowing char embers at the moment 
+imaging stopped (~ 10 s after the flow was turned off). Since both flamelets and embers were present when the imaging 
+stopped, it is not possible to determine if the flame survived the next 60 seconds  due to the small flamelets, the char 
+      
+Figure 2 Sample c ard layouts for Saffire IV 
+(left) and Saffire V (right) Red dots indicate 
+the location of the igniter wires. 
+SIBAL Fabric
+Test 2
+Air and Normoxic O2
+with forced flow
+Test 1
+Test 4
+2-sided PMMA (1 cm thick.)
+1-sided PMMA (0.5 cm thick.)
+Nomex Fabric
+Test 3
+Cotton Fabric
+Test 3
+Normoxic O2 with 
+forced flow
+Test 2
+Test 1
+1-sided PMMA (0.5 cm thick.)
+Structured PMMA (1 cm thick.)
+Test 4
+                     
+Figure 3 Surface temperature and flow speed for Saffire V-2 (cotton jersey; left) and last recorded top-view 
+image of the flame taken 10 seconds after the fan was turned off (right). The image covers the last 20 cm of the 
+sample after the flow is turned off. Visible in the image are both glowing char embers and small blue flamelets. 
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+500
+-2
+3
+8
+13
+18
+23
+28
+0 100 200 300 400 500 600
+Sample Temperature (deg C)
+Flow Speed (cm/s)
+Relative Time (s)
+Flow Speed (cm/s) Sample Thermocouple #8

@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 37 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 13.—Test FLEX−009. Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 
+1.0-atm ambient environment. The deployment was very poor, and the droplet drifted out of the 
+fields of view (FOVs) of all the cameras very shortly after deployment and ignition. No Image 
+Processing and Storage Unit (IPSU) data were downlinked for this test. The color camera 
+analysis was from the downlinked video.  
+  

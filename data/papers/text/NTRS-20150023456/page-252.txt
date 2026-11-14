@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 246 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 222.—Test FLEX–221. Free-floating methanol droplet burning in a 0.13/0.87 O2/N2, 1.0-atm 
+ambient environment. The droplet drifted east; then just after the visible flame extinguished, it drifted 
+south and out of the southeast corner of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). 
+The flame oscillated for several seconds before it extinguished radiatively. The flame oscillations are 
+very difficult to discern in the Low Light Level Ultra-Violet (LLUV) view because the flame luminosity 
+barely registered on the LLUV. The color camera Image Processing and Storage Unit (IPSU) did not 
+record any images for this test. 
+  

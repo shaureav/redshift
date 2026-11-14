@@ -1,0 +1,34 @@
+Sub Topic: Fire 
+ 3 
+The above problem could be compared to a flame on a burner surface with the surface of the burner 
+at temperature 𝑇𝑠 and the ambient temperature at 𝑇∞. To get an estimate of the flame height, a 
+reasonable assumption is made that the thin flame sheet is at a dimensionless temperature (
+𝑇−𝑇∞
+𝑇𝑠−𝑇∞
+) 
+of 0.2. The flame height and heat flux can be calculated for the same test shown in Figure 1 so that 
+they could be easily compared. Figure 2 shows the comparison of flame height and heat flux with 
+the experimental readings. It is evident from the figures that the heat flux approaches quasi-steady 
+state at the end of 5 seconds whereas the flame height is far from steady state. For the particular 
+case shown in Figure 2a, the flame height reaches only about 37% of steady state after 5 seconds. 
+Hence, to get a better idea about flame behavior in microgravity, longer duration tests need to be 
+conducted aboard the International Space Station. 
+ 
+Figure 2a (left): Flame height vs. time for a typical 25 mm burner test,  
+Figure 2b (right): Surface heat flux vs time for a typical 25 mm burner test 
+ 
+3. Theory 
+ 
+Two models are suggested to correlate the results of the drop experiments. The first model 
+compares the BRE tests to the burning of a stagnant layer of liquid pool [7,8]. The model is one-
+dimensional and steady in nature. The heat transfer at the liquid-gas interface is only due to 
+diffusion from the flame and the flow is assumed to be laminar. The other model [9] analyzes 
+quasi-steady burning of small particles with shapes ranging from a needle to a circular disc. This 
+model is two-dimensional and works with ellipsoidal coordinates to condense the problem into a 
+one-dimensional solution. The objective of these models is to obtain expressions for the burning 
+rate and flame height to verify the experimental results. According to both models, the burning 
+rate of the fuel is identically expressed as: 
+𝑚̇ ′′ = ( 8𝑘 𝜋𝑐𝑝𝐷) ln(1 + 𝐵)                                                                                                                          (3) 
+The flame height is derived using the one-dimensional model and is given as: 
+𝑦𝑓
+𝐷 ≡ (𝜋 8) ln[(1 + 𝐵)/(𝑌𝑂2,∞/(𝑟𝑌𝐹,𝑜) + 1)] 𝑙𝑛(1 + 𝐵) [ 𝐵 ln(1 + 𝐵)]                                                                    (4) 

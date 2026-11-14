@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 85 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 61.—Test FLEX−057. Fiber-supported heptane droplet translating 3 mm/s and burning in a 
+0.20/0.80 O2/N2, 0.70-atm ambient environment. There were moderate transverse and axial 
+oscillations on the fiber after deployment, during the entire visible flame, and after the visible flame 
+extinguished. The flame extinguished after the translation stopped, with the trailing edge of the flame 
+visibly weaker and extinguishing first. There were unusual, recirculating flow patterns in the High-Bit-
+Depth Multispectral (HiBMs) fuel from soot that moved toward the droplet, accelerated 
+circumferentially in a short arc, and then moved radially toward the flame and back again. A small 
+vapor cloud formed in the color camera view approximately 20 s after the visible flame extinguished. It 
+is not clear whether cool flame burning and extinction was present in this test. 
+  

@@ -1,0 +1,49 @@
+Sub Topic: Fire 
+ 1 
+10th U. S. National Combustion Meeting 
+Organized by the Eastern States Section of the Combustion Institute 
+April 23-26, 2017 
+College Park, Maryland 
+ 
+Emulation of condensed fuel flames using a Burning Rate 
+Emulator (BRE) in microgravity 
+ 
+A. Markan1, J. G. Quintiere1, P. B. Sunderland1, J. L. de Ris2, D. P. Stocker3 
+ 
+1Fire Protection Engineering, University of Maryland, College Park, MD 
+2retired, FM Global, Norwood, MA 
+3NASA Glenn Research Center, Cleveland, OH 
+*Corresponding Author Email: akshit.markan@gmail.com 
+ 
+Abstract: The Burning Rate Emulator (BRE) is a gaseous fuel burner developed to emulate the 
+burning of condensed phase fuels. The current study details several tests at the NASA Glenn 5-s 
+drop facility to test the BRE technique in microgravity conditions. The tests are conducted for two 
+burner diameters, 25 mm and 50 mm respectively, with methane and ethylene as the fuels. The 
+ambient pressure, oxygen content and fuel flow rate are additional parameters.  
+ 
+The microgravity results exhibit a nominally hemispherical flame with decelerating growth and 
+quasi-steady heat flux after about 5 seconds. The BRE burner was evaluated with a transient analysis 
+to assess the extent of steady-state achieved. The burning rate and flame height recorded at the end 
+of the drop are correlated using two steady-state purely diffusive models. A higher burning rate for 
+the bigger burner as compared to theory indicates the significance of gas radiation. The effect of the 
+ambient pressure and oxygen concentration on the heat of gasification are also examined. 
+Keywords: condensed fuel flames, Burning Rate Emulator, microgravity 
+ 
+1. Introduction 
+ 
+It is theorized that a condensed fuel flame having four characteristic properties: heat of 
+combustion, surface temperature, smoke point and heat of gasification, can be modeled by a 
+circular gas burner known as the Burning Rate Emulator (BRE) [1]. This concept has been 
+previously demonstrated in normal gravity [2]. The present study verifies the BRE technique in a 
+microgravity environment by performing drop tests at the NASA Glenn 5-s Zero Gravity Facility. 
+Two burners, with diameters 25 mm and 50 mm respectively, are tested. The burner is installed in 
+a quiescent chamber which undergoes free fall at the facility. The measurements during the test 
+include heat flux from the flame to the burner surface, the heat flux sensor temperature, and the 
+temperature of the perforated outlet plate at its center and the offset radius 𝑅∗. The fuel mass flow 
+rate is measured and the flame height is determined by analyzing the image data. 
+ 
+The aforementioned key fuel properties are determined to emulate the burning of different 
+condensed fuels. The heat of combustion and the smoke point are attained from literature [3-5]. 
+The other properties, viz., the surface temperature and the heat of gasification are obtained from 
+the experimental measurements. The measured temperature of the outlet plate gives the surface 
+temperature. The determination of the heat of gasification is crucial to this study. For the steady 

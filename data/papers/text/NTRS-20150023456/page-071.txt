@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 65 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 41.—Test FLEX−037. Fiber-supported methanol droplet translating approximately 3 mm/s and 
+burning in a 0.34/0.66 O2/N2, 0.7-atm ambient environment. The droplet remained within the High-Bit-
+Depth Multispectral (HiBMs) field of view (FOV) for the entire test. After ignition and the start of 
+translation, there was significant transverse motion. There was a lot of scatter in the droplet history 
+because of the motion of the droplet on the fiber. The color camera showed a bright flame with a lot 
+of sparklers throughout the burn. The transverse droplet motion became more severe toward the end 
+of the test, with the droplet deforming. The flame extinguished when a complete disruption tore the 
+droplet off the fiber. 
+  

@@ -1,0 +1,46 @@
+ 
+ 
+ 
+ 1 of 11  
+ 
+Presentation No. *Program Committee will fill it. 
+Recent Research on Flames of Gaseous Fuel Aboard the 
+International Space Station  
+Dennis P. STOCKER1 
+1 NASA Glenn Research Center, Cleveland, Ohio, USA  
+ 
+Abstract 
+Research for a set of six independent experiments with flames of gaseous fuels has been carried out on the International 
+Space Station (ISS) since 2017 using the Combustion Integrated Rack (CIR) and a set of modular hardware.  While ISS 
+testing has been completed for most of the studies in the Advanced Combustion via Microgravity Experiments (ACME) 
+project, it is expected to continue into 2022.  The objectives and selected findings for each investigation are briefly 
+discussed after a short review of the advantages of studying combustion in microgravity, previous research conducted in 
+space, and the experimental hardware and its operation. 
+ 
+1. Introduction 
+1.1 Combustion in Microgravity 
+Microgravity, i.e., apparent near weightlessness, is a unique environment for conducting combustion research.  Many 
+flames are dramatically influenced by the near elimination of buoyant convection, where the resulting effects are often 
+advantageous 1-2).  For example, it is possible to create spherically symmetric flames enabling one-dimensional analysis.  
+More generally, the effective elimination of flicker yields quasi-steady flames.  Furthermore, the length scales are 
+increased in microgravity flames facilitating analysis of their structure.  Microgravity flames tend to have a much stronger 
+sensitivity to their atmosphere than normal-gravity flames and exhibit a much broader range of characteristics.  For 
+example, the long residence times in microgravity flames can lead to strong soot production, but many microgravity flames 
+are soot free due to radiative heat loss.  Even neglecting soot, microgravity flames can be appropriate for studies of limit 
+and stability behavior where chemical kinetics are important.  It is also possible to study momentum-dominated flames 
+at low velocities.  And of course, microgravity is the appropriate environment for studies related to spacecraft fire safety. 
+Although microgravity combustion research has long been conducted in drop facilities and research aircraft flying 
+parabolic maneuvers, spacecraft like the International Space Station (ISS) offer significant advantages.  Drop durations, 
+which are ~5 s or less in NASA facilities, are too short for soot to achieve quasi-steady conditions.  They are also too short 
+to first establish a flame and then vary conditions such as the flow rate, for example, to investigate stability or extinction 
+limits.  Meanwhile, low-momentum flames can be dramatically disturbed by the g-jitter present in aircraft testing, which 
+is nominally ±0.02 g for a ~20 s duration.  The jitter can be avoided by floating an experiment within the aircraft, but that 
+reduces the test duration to mere seconds.  As a result, space-based testing is often necessary to get microgravity 
+conditions of sufficient duration and quality for combustion research. 
+ 
+1.2 Previous Research on Flames of Gaseous Fuels Conducted in Space 
+Five different experiments burning gaseous fuels were conducted during space shuttle missions in 1997 and 2003.  
+Three of those studies are similar to the recent ISS investigations addressed in this paper in that they featured non-
+premixed flames in which the fuel and oxygen were separated by the flame sheet.  More specifically, in the three 
+investigations the fuel issued from a burner into an oxidizer atmosphere.  Each of the other two studies instead featured 
+premixed flames in which a combustion vessel was filled with a mixture of the reactants.  In terms of facilities, three of 

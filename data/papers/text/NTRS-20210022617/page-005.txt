@@ -1,0 +1,22 @@
+5
+JASMAC-33
+10/15/2021
+o Large droplets => Radiative 
+extinction
+o Second-stage cool-flame combustion
+o Cool flame extinction
+o Vapor cloud formation
+o Similar observations for other 
+n-alkanes:
+n-octane 
+n-decane 
+n-dodecane fuels
+n-heptane
+Quasi-steady Cool Flames
+• One of the major findings during FLEX experiments is the observation of low-temperature chemistry 
+controlled, quasi-steady burning and extinction of n-alkane fuel droplets.
+air
+18%O2
+82%N2
+18%O2
+15%CO2

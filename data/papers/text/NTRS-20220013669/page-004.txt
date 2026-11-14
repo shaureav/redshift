@@ -1,0 +1,58 @@
+2022 ASCEND AIAA 
+ 
+4 
+ 
+ 
+III. Surface Habitat Ground Rules and Assumptions Impacting Layout 
+ NASA has developed a set of Ground Rules and Assumptions (GR&As) that can be applied to Surface Habitat 
+concepts. Ground rules are relatively unlikely to change throughout the development process while assumptions are 
+less rigid and either represent constraints that require further assessment or features that are desired. Assumptions are 
+thus more likely to undergo updates as NASA’s Moon to Mars architecture is refined [2]. The following sections 
+summarize descriptions of those GR&As in effect at the time of this study that most directly impact Surface Habitat 
+layout.  Each GR&A includes a description and rationale. 
+A. Key Ground Rules Impacting Layout [2] 
+1. Crew Size/ Habitable Duration 
+Description: At delivery, the SH will support a crew of two for approximately 30 days. Additionally, in a 
+contingency it will be capable of providing a safe haven for four crew for seven days. 
+2. Allowable Mass 
+Description: The SH allowable landed mass will be 12 metric tons. 
+3. Habitability Functions 
+Description: The SH will provide the following habitability functions as a minimum: dust mitigation, suit and 
+habitat maintenance provisions, solar particle event (SPE) radiation protection, micrometeoroid and orbital 
+debris (MMOD) protection, exercise, medical, galley, private habitation/sleep areas, private hygiene, 
+private waste management, group socialization and recreation, external direct viewing (at least 1-2 
+windows), logistics/stowage/inventory management, and subsystems monitoring and commanding. The 
+habitat will provide for meaningful IVA crew work including physical and life sciences. The habitat design 
+will enable crew awareness of surroundings and interaction with the environment and others; provide the 
+means for customization and adaptability to changing resources, mission, and environmental dynamics; 
+promote productive and responsible resource utilization; maximize completion of mission objectives; 
+facilitate purposeful, personal, and social actions and activities; and provide for effective transition, flow, 
+and sequencing of actions. Chapter 8 of the Human Integration Design Handbook (NASA/SP-2010-3407) 
+may be consulted for guidance. 
+4. Habitable Volume and Functional Volume Layout Process 
+Description: The SH will be capable of independent spacecraft operation and supporting crew needs with all 
+required spacecraft subsystems, crew support equipment, logistics, and spares appropriate for long-
+duration missions. A functional volume layout will be performed to verify the volume provided is adequate 
+to accommodate all required equipment, storage, and crew functions. 
+5. Logistics Storage 
+Description: The SH will be capable of stowing required Cargo Transfer Bag Equivalents (CTBE) of logistics 
+at the start of a mission. Re-supply logistics will be delivered to the surface of the Moon and must be 
+transferred to the SH. 
+6. Ancillary systems and elements 
+Description: Any mass or volume needed for crew access, habitat offloading, and any other ancillary systems 
+or elements needed for the initial crew mission must be manifested with SH delivery. 
+7. Supportability 
+Description: SH systems must be reliable and maintainable over approximately 30-day mission without 
+resupply from Earth. Systems must have demonstrated a sufficient level of reliability based on flight 
+heritage and ground testing. 
+B. Key Assumptions Impacting Layout [2] 
+1. Expanded Habitation Considerations 
+Description: NASA is interested in options for expanding the SH to support four crew for approximately 30 
+days and four crew for approximately 60 days. 
+2. Assumed Delivery and Operational Timeline 
+Description: The SH will be delivered within the next decade. The SH will be delivered on either a large cargo 
+lander or a cargo variant of a crewed lander. It is assumed that the lander will provide the avionics and 
+propulsion to deliver the habitat to the surface. Habitat offloading to the surface is not required in the 
+current NASA reference ConOps. Optional habitat offloading equipment is not included in the lander mass. 
+3. Crew Operational Periods 
+Description: Assume the crew will be present only during mostly illuminated periods. 

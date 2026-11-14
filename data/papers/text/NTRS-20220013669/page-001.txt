@@ -1,0 +1,48 @@
+2022 ASCEND AIAA 
+ 
+1 
+ 
+ 
+Internal Layout of a Lunar Surface Habitat 
+Callie Burke1 
+Binera, Inc. 77 S. Washington St., Rockville, MD 20850, United States of America 
+Robert L. Howard, Jr.2 
+NASA Johnson Space Center, Houston, TX, 77058, United States of America  
+Paul Kessler3 
+NASA Marshall Space Flight Center, Huntsville, AL, 35812, United States of America  
+ NASA is currently developing concepts for sustained crewed missions to the lunar surface. Sustained 
+missions will occur on annual basis for durations of 30 days or more. To house and support the crew, NASA is 
+exploring the use of a lunar Surface Habitat. NASA relies on conceptual spacecraft design to assist in planning 
+and mission analysis. A crucial component of this habitation design is the internal layout: the interior location 
+of systems, workstations, crew quarters, etc. 
+ The purpose of this paper is to describe the process and resulting layout of a specific Surface Habitat design. 
+This paper describes the SH’s hybrid inflatable structure then details the habitat’s interior layout. The 
+proposed SH’s internal layout is depicted inside a hybrid inflatable structure using a low-fidelity CAD model. 
+Multiple NASA references were consulted to determine the SH’s required functionality, minimal Net Habitable 
+Volume, and minimal functional dimensions. These functions and volumes contribute to the placement and 
+location of systems and spaces inside the habitat. In addition to functional volume, the layout includes systems 
+and logistics placement. The resulting design will aid NASA in mission planning and further systems analysis.  
+ 
+I. Introduction 
+ NASA is currently developing concepts for sustained crew missions to the lunar surface. A crucial component of 
+these concepts is the need for elements to house and support the crew for durations of 30 days or more. A lunar surface 
+habitat is one option for crew habitation. The Surface Habitat (SH) would support 2 to 4 crew with adequate space for 
+logistics storage, systems, and crew living and work functions. One important aspect of habitation design is the internal 
+layout, where systems, workstations, crew quarters, etc. are placed within the habitat. 
+ The purpose of this paper is to describe the process and resulting layout of a specific SH design. Developing a 
+conceptual internal layout in conjunction with a structural design can lead to greater understanding of the capabilities 
+and constraints of the proposed structure. An internal layout can also be used to determine net habitable volume, 
+validate required functionality, and establish allocations for science and utilization capabilities. Lastly, internal layout 
+designs provide habitability guidance and lessons learned that can be applied to habitat designs under the current or 
+future architectures. 
+ This paper provides NextSTEP companies, future habitation partners, space architecture programs, and other space 
+exploration professionals with insight into the current NASA reference configuration for the internal layout of the 
+Artemis lunar Surface Habitat. 
+II.Surface Habitat Overview 
+ The Surface Habitat is the core habitation capability for the Artemis Base Camp. As a non-mobile, habitable 
+element, it effectively anchors long-term, human-lead exploration at the South Pole of the Moon. The habitat is self-
+ 
+ 
+1 Senior Analyst, Binera, Inc., AIAA Member. 
+2 Habitability Domain Lead, Human Systems Engineering and Integration Division, AIAA Senior Member. 
+3 Surface Habitat Architecture Lead, Habitation Systems Development Office (HP40). 

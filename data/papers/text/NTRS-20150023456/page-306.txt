@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 300 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 276.—Test FLEX–276. Fiber-supported heptane droplet burning in a 0.17/0.38/0.45 O2/N2/He, 
+0.70-atm ambient environment. The droplet exhibited significant axial and radial oscillations 
+throughout the test, and the burning rate and extinction diameter data were strongly influenced by 
+this motion. The residual droplet on the fiber had a large gas bubble that resulted in the size jump 
+after the visible flame extinguished. 
+  

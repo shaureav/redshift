@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 277 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 253.—Test FLEX–253. Free-floating methanol droplet burning in a 0.14/0.51/0.35 O2/N2/He, 
+1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition in 
+the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). It started to drift south as it burned, and 
+it left the FOV well after the visible flame extinguished. The droplet burned for only a very short time, 
+and the flame was very dim, almost undetectable in both the Low Light Level Ultra-Violet (LLUV) and 
+color camera. The droplet was very near or even below the flammability limit. 
+  

@@ -1,0 +1,10 @@
+ 
+NASA/TP—2015-216046 6 
+ 
+Figure 4.—Test sequence as recorded by the High-Bit-Depth Multispectral (HiBMs) (left), Low Light Level Ultra-Violet 
+(LLUV) (center), and Multi-User Droplet Combustion Apparatus (MDCA) color (right) cameras. The chamber 
+illumination for the MDCA color camera turns off when the needles retract. The sequence shows (from top to bottom) 
+the droplet stretched between the needles, droplet deployment, ignition, and an image during the burn. This test is a 
+heptane droplet burning in a cabin air (0.21/0.79 O2/N2 mole fraction), 1.0-atm ambient environment. Each row of 
+images is from the same instant of time. Missing images for the LLUV and MDCA color cameras are dark-field 
+images. 

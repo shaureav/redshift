@@ -1,0 +1,19 @@
+Methanol Droplet Combustion
+4
+JASMAC-33
+10/15/2021
+no burn
+diffusive extinction
+o A wide range of conditions were investigated:
+13% < O2 < 30%
+5% < CO2 < 75%
+5% < He < 45%
+1 < D0 < 4.5 mm
+o Diffusive extinction due to water absorption, and 
+radiative extinction were observed. The limiting oxygen 
+index (LOI) ~ 12-13% oxygen at atmospheric pressure.
+o Simplified theoretical models (Nayagam, 2013), and 
+numerical simulations (Farouk & Dryer,2012) explain 
+experimental observations reasonably well.
+Bubble size proportional to oxygen concentration
+water vapor

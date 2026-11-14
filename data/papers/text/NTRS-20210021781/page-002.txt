@@ -1,0 +1,63 @@
+ 
+  
+ 2 of 11 
+the five studies were conducted in the Combustion Module (CM), a space shuttle precursor to the ISS’ Combustion 
+Integrated Rack (CIR), while one was conducted in the Middeck Glovebox (MGBX) and another in a Get-Away Special 
+(GAS) canister in the shuttle’s cargo bay.  The latter investigation was automated, while the other four were crew 
+operated. 
+Two crew-operated experiments with gaseous fuels were subsequently conducted in the ISS’ Microgravity Science 
+Glovebox (MSG) with an improved version of the Enclosed Laminar Flames (ELF) hardware used in a 1997 shuttle mission.  
+Both featured non-premixed flames, where there have thus far been no investigations with premixed flames conducted on 
+the ISS.  The Soot Processes In Coflow Experiment (SPICE) was a follow-on to Laminar Soot Processes (LSP), although it 
+was carried out without Prof. G. Faeth, the LSP Principal Investigator, who unfortunately died before SPICE’s launch. 
+These seven past investigations are briefly summarized in Table 1, where they are listed in chronological order.  The 
+first person listed for each experiment was its Principal Investigator.  Meanwhile, STS is an abbreviation for the space 
+shuttle, i.e., Space Transportation System.  The experiments with premixed flames are of limited relevance to the recent 
+research addressed in this paper and are shown in italics. 
+1.3 Advanced Combustion via Microgravity Experiments (ACME) 
+Tests for six independent experiments with flames of gaseous fuels have been conducted on the ISS as part of the 
+Advanced Combustion via Microgravity Experiments (ACME) project 2, 33-35).  On-orbit preparations began in Sept. 2017, 
+but the Structure & Liftoff In Combustion Experiment (SLICE), a planned precursor to ACME’s Coflow Laminar Diffusion 
+Flame (CLD Flame) investigation, was conducted in 2012.  Table 2 provides an overview of each study, where the first 
+investigator listed is the Principal Investigator.  Additional information, including preliminary findings, about each of the 
+six experiments will be presented after a description of the experimental hardware and operations.  Final testing remains 
+for two of the studies, where it is tentatively expected that all ISS testing for ACME will be completed in 2022. 
+The ACME experiments are primarily focused on energy and environmental concerns, but there is a secondary emphasis 
+with the BRE experiment on spacecraft fire prevention.  The primary objective is to gain fundamental understanding that 
+can enable improved efficiency and reduced emissions in practical combustion processes on Earth, for example through 
+the development and verification of models for chemical kinetics and transport processes in computational simulations.  
+In addition to enhanced performance, improved modeling capability can lead to reductions in the time and cost for 
+combustor design.  Some specific goals are to improve our understanding of combustion at fuel lean conditions where 
+both optimum performance and low emissions can be achieved, cool flame chemistry, flame stability and extinction limits, 
+materials flammability, oxygen-enriched combustion which could enable practical carbon sequestration, soot control and 
+reduction, and the use of electric fields for combustion control. 
+Table 1 Past research on non-premixed and premixed flames of gaseous fuels conducted in space 
+Experiment Investigator(s) Facility Mission (year) Selected references 
+Laminar Soot Processes (LSP) Gerard M. Faeth  CM STS-83 (1997), STS-94 (1997), STS-107 (2003) 3-8) 
+Structure Of Flame Balls At Low 
+Lewis-number (SOFBALL) Paul D. Ronney CM STS-83 (1997), STS-94 (1997), STS-107 (2003) 9-13) 
+Enclosed Laminar Flames (ELF) 
+Lea-Der Chen 
+Dennis P. Stocker 
+John E. Brooker 
+MGBX STS-87 (1997) 14-17) 
+Turbulent Gas-jet Diffusion 
+Flames (TGDF) 
+M. Yousef Bahadori 
+Uday G. Hegde  GAS STS-87 (1997) 18-23) 
+Water-Mist Fire Suppression 
+(Mist) 
+J. Thomas McKinnon 
+Angel Abbud-Madrid CM STS-107 (2003) 24) 
+Soot Processes In Coflow 
+Experiment (SPICE) 
+David L. Urban 
+Peter B. Sunderland MSG ISS (2009, 2012) 25-28) 
+Structure & Liftoff In 
+Combustion Experiment (SLICE) 
+Marshall B. Long 
+Mitchell D. Smooke 
+Fumiaki Takahashi 
+Dennis P. Stocker 
+MSG ISS (2012) 29-32) 
+ 

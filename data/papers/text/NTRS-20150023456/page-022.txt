@@ -1,0 +1,102 @@
+ 
+NASA/TP—2015-216046 16 
+4.2 Analyzed Data 
+The digital image data from the FLEX experiments yielded a 
+wealth of information regarding the combustion of liquid fuel 
+droplets in quiescent and subbuoyant flow (achieved by 
+translating the fiber) microgravity environments. The data 
+archived in this report include the following: 
+ 
+(1) Droplet size as a function of time 
+(2) LLUV flame size as a function of time 
+(3) Color camera flame size as a function of time 
+ 
+The video records also provide qualitative information of the 
+combustion process including, but not limited to, 
+ 
+(1) Droplet shape as a function of time 
+(2) Qualitative sooting propensity as a function of time 
+(3) Flame shape and flame dynamics as a function of time 
+(4) Disruptive burning 
+(5) Droplet/fiber interactions 
+(6) Postcombustion vaporization and vapor cloud formation 
+ 
+In an effort to document and archive the results from the 
+FLEX experiments, all data for (1) to (6) are  archived in this 
+report. Appendix A gives the detailed  results of the 
+experiments. The data are also available electronically as text 
+files and compressed video recordings of the HiBMs and color 
+camera views. 
+5.0 Observations and Discussion 
+5.1 General Observations 
+The primary objective for this report was to detail and archive 
+the results from the FLEX exper iments from March 2009 to 
+December 2010. Appendix B presents the detailed results for 
+the droplet size (droplet diameter squared) and flame sizes  
+(from both the LLUV and color camera views) as functions of 
+time. These results , along with the raw experiment  data, are 
+available from the NASA Physical Science Informatics data 
+repository (psi.nasa.gov, registration required). 
+In each test, there is a clear ambiguity in the droplet size 
+during ignition (after deployment and before the igniters 
+withdraw). This was the result of the broadband glow from the 
+igniters changing the discrimination between the droplet and 
+the background. This was especially present from the FLEX–
+001 test to the FLEX–009 test. For these tests, the shutter speed 
+(integration time of the array) was 1/30 s (inverse of the framing 
+rate). After the FLEX–009 test, the shutter speed decreased to a 
+much smaller value (1/1000 s) with a corresponding increase in 
+the illumination  level. This minimiz ed the image distortion 
+caused by the igniters and the broadband flame radiation (from 
+soot for heptane), resulting in more accurate droplet size data. 
+The great majority of the tests were of free -floating droplets 
+(no support tether). For these tests , the droplets were rarely 
+completely motionless; they ha d some residual velocity from 
+deployment and ignition and then drifted more as a result of the 
+residual acceleration of the spacecraft (g -jitter). As a result of 
+this, the droplets did drift out of the FOV of one (typically the 
+HiBMs) or more of the CIR cameras. For tests where the droplet 
+drifted out of the FOV of the camera, the data end abruptly (e.g., 
+the droplet regression during the FLEX–011 test). This does not 
+correspond to the end of the test, just to the end of the data from 
+that particular view (note that the flame histories continue 
+during the FLEX–011 test). For a minority of tests, the droplet 
+drifted out of the HiBM s FOV as a result of the deployment , 
+ignition, and/or g-jitter. However, it then actually drifted back 
+into the FOV. In this case, there is a gap in the history of that 
+view ( e.g., the droplet history for  the FLEX–013 test). The 
+sharp decline in the droplet size on either side of that gap 
+corresponds to the time when the droplet (usually) or flame 
+(rarely) was partially in and partially out of the FOV. 
+For some tests, some of the CIR cameras failed to record data 
+for a portion of the test, and for other tests, none of the test was 
+recorded. These show up in the plots in Appendix A as either 
+missing traces or gaps in the data (e.g., the FLEX–024 test, for 
+which the HiBMs failed to record any data). 
+The detailed data plots in Appendix B show two different 
+measurements of flame diameter, one from the LLUV camera 
+and the other from the color camera. For almost all of the tests, 
+the diameter measured by the LLUV  is larger than that 
+measured by the color camera. The flame diameters from the 
+color camera are typically about three-fourths of those from the 
+LLUV camera. This discrepancy is not  unusual and is a re sult 
+of the  LLUV being sensitive to the OH • chemiluminescence, 
+which typically peaks outside of the visible flame. For heptane 
+tests, where there is significant  soot luminosity (which is not 
+visible in the LLUV, but dominates the color camera), the 
+discrepancy is even larger because the peak of the soot 
+luminosity is typically inside the blue flame envelope. 
+5.2 Fuel Needle Contamination 
+During the assembly of the MDCA hardware , a conformal 
+coating was applied to the fuel-dispensing needles. The product 
+was applied in two layers, a primer (Dow Corning 1204) and a 
+conformal coat  (Dow Corning 3140 RTV ( MIL–A–46146) 
+coating). Subsequent testing showed that the coating can both 
+dissolve and “ flake” off in both methanol and heptane. When 
+this occurred, the deployed fuel droplet was clearly not pure but 
+contained an unknown amount of the conformal coating. Once 
+this problem was discovered, the mitigation was to prepare and 
+fly new uncoated needles.  All tests subsequent to these (to be 
+reported in the future) will not have contamination. From 
+extensive testing,  careful analysis of the experimental data, 
+comparison with space -based data from uncontaminated 

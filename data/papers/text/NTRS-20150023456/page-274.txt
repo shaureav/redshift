@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 268 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 244.—Test FLEX–244. Fiber-supported heptane droplet burning in a 0.17/0.63/0.20 O2/N2/He, 
+1.0-atm ambient environment. This was a smaller droplet. After ignition, there was a lot of motion on 
+the fiber. It was not really disruptive burning, in which the droplet becomes dislodged from the fiber, but 
+the motion clearly influenced the burning history. The droplet burned to completion, and the color 
+camera did not record to the onboard Image Processing and Storage Unit (IPSU) for this test. 
+  

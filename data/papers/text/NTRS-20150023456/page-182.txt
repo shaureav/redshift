@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 176 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 152.—Test FLEX–148. Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 
+1.0-atm ambient environment. There was very little residual motion after deployment and ignition. 
+The droplet remained in the fields of view (FOVs) of all the cameras for the entire test. It burned 
+cleanly to small size, then it disrupted coincident with when the flame extinguished. The extinction 
+droplet size is the size when the droplet disrupted. The High-Bit-Depth Multispectral (HiBMs) Image 
+Processing and Storage Unit (IPSU) stopped recording data sometime before deployment to part 
+way through the burn. The plotted data used the first measured droplet as time zero even though the 
+droplet had been burning for some time before that point. 
+  

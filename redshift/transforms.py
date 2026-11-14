@@ -15,6 +15,8 @@ ALLOWED: dict[str, str] = {
     "trim": "Remove leading and trailing whitespace.",
     "empty_to_null": "An empty cell becomes an explicit null, displayed as 'not recorded'.",
     "parse_number": "Read a plain decimal number (digits, one optional point, optional sign or exponent).",
+    "strip_stated_unit": "Read '<number> <unit>' when the unit written in the cell is exactly the unit expected "
+                         "for the column (for example '0.75 atm' in a pressure column read as atm).",
     "strip_percent_sign": "Remove a single trailing '%' from a number already in percent.",
     "fraction_to_pct": "Multiply a mole fraction by 100 to give percent.",
     "mmhg_to_kpa": "Multiply by 101.325/760 (exact definition of the conventional mmHg).",
@@ -85,9 +87,19 @@ def fraction_as_pct(raw: str | None) -> tuple[float | None, list[str]]:
 _PRESSURE_TRANSFORM = {"mmHg": "mmhg_to_kpa", "atm": "atm_to_kpa", "bar": "bar_to_kpa", "psi": "psi_to_kpa"}
 
 
+def number_with_unit(raw: str | None, unit: str) -> tuple[float | None, list[str]]:
+    """Parse a plain number, or a number followed by exactly ``unit`` (for example '0.75 atm')."""
+    s, applied = text(raw)
+    if s is None:
+        return None, applied
+    if s.endswith(unit) and _NUMBER.match(s[: -len(unit)].strip()):
+        return float(s[: -len(unit)].strip()), [*applied, "strip_stated_unit", "parse_number"]
+    return number(raw)
+
+
 def pressure_kpa(raw: str | None, unit: str) -> tuple[float | None, list[str]]:
-    """Parse a pressure written in ``unit`` and convert it to kPa."""
-    v, applied = number(raw)
+    """Parse a pressure written in ``unit`` (optionally with that unit written in the cell) and convert to kPa."""
+    v, applied = number_with_unit(raw, unit)
     if v is None:
         return None, applied
     if unit == "kPa":

@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 147 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 123.—Test FLEX−119. Fiber-supported heptane droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 
+0.70-atm ambient environment. After ignition the flame extinguished quickly, probably radiatively. It is 
+quite possible that this ambient condition was below the flammability limit for heptane. The droplet 
+had some unusual oscillations on the fiber during the burn that seemed to disappear for most of the 
+test (after the flame extinguished). The color camera Image Processing and Storage Unit (IPSU) did 
+not record any images for this test. There was a brief period of significant vaporization after the visible 
+flame extinguished; then a small vapor cloud formed. This is indicative of cool flame burning and 
+extinction following visible flame extinction. 
+  

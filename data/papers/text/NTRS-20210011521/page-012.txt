@@ -1,0 +1,45 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+12 
+References 
+ 
+1 Urban, D. L., Ferkul, P., Olson, S., Ruff, G.  A., Easton, J., T'ien, J. S., Liao, Y. T., Li, C., Fernandez-Pello, C., Torero, J. L., 
+Legros, G., Eigenbrod, C., Smirnov, N., Fujita, O., Rouvreau, S., Toth, B., and Jomaas, G., “Flame spread: Effects of Microgravity 
+and Scale,” Combustion and Flame, Volume 199, 2019, pp. 168-182 
+2Olson, S., Urban, D. L., Ruff, G. A., Ferkul, P., Toth, B., Eigenbrod, C., Meyer, F., and Jomaas, G., ”Concurrent Flame Spread 
+Over Two-Sided Thick PMMA Slabs in Microgravity,” Fire Technol 56, 49–69 (2020). 
+3Eigenbrod, C., Meyer, F., Jomaas, G., Urban, D. L., Ruff, G. A., Olson, S., Ferkul, P., and Toth, B., “Opposed flame spreading 
+along a structured PMMA sample in exploration atmosphere under microgravity,” 50th International Conference on Environmental 
+Systems, 12-15 July 2021, ICES-2021-218. 
+4Fortenberry, C., Casteel, M., Graf, J., Easton, J., Niehaus, J., Meyer, M., Urban, D., Ruff, G., “Evaluation of Combustion 
+Products from Large-Scale Spacecraft Fires during the Saffire-IV and Saffire -V Experiments,” 50th International Conference on 
+Environmental Systems, 12-15 July 2021, ICES-2021-244. 
+5Kimzey, J.H. , “Skylab Experiment M479 Zero Gravity Flammability” in Skylab Results,  Proc. Third Space P rocessing 
+Symposium, NASA Marshall Space Flight Center M-74-5, Vol. 1, June 1974, pp. 115-130. 
+6Li, C., Liao, Y. T., T’ien, J. S., Urban, D. L. , Ferkul, P., Olson, S., Ruff, G. A., Easton, J., “Transient flame growth and spread 
+processes over a large solid fabric in concurrent low-speed flows in microgravity –Model versus experiment,” Proceedings of the 
+Combustion Institute 37 (2019) 4163–4171. 
+7Li, Y., Liao, Y. T., and Ferkul, P. (August 14, 2020). "Numerical Study of the Effects of Confinement on Concurrent -Flow 
+Flame Spread in Microgravity." ASME. J. Heat Transfer. November 2020; 142(11): 111301 
+8Li, Y., Liao, Y. T., Ferkul, P., Johnston, M. C. and Bunnell, C., “Experimental study of concurrent -flow flame spread over 
+thin solids in confined space in microgravity” Combustion and Flame 227 (2021) 39–51 
+9Eigenbrod, C., Hauschildt, J., Meyer, F., Urban, D.L., Ruff, G.A., Olson, S.L., Ferkul, P., Jomaas, G. and Toth, B., 
+Experimental results on the effect of surface structures on the flame propagation velo city of PMMA in microgravity. 47th 
+International Conference on Environmental Systems. ICES 2017-67, Charleston, SC, July 2017. 
+10Würzburg, N., “Experiments on the vertical flame propagation along surface-structured PMMA-samples; Influence of sample 
+thickness”, Universität Bremen, B.Sc., Universität Bremen, 2015, pp. 1-60. 
+11Thomsen, M., Fernandez-Pello, C., Ruff, G. A., and Urban, D. L., "Buoyancy effects on concurrent flame spread over thick 
+PMMA." Combustion and Flame 199, 2019, pp. 279-291.  
+12Honda, L.K. and Ronney, P.D., Mechanisms of concurrent -flow flame spread over solid fuel beds, Proc. Combust Inst. 28, 
+2793-2801 (2000). 
+13Tseng, Y.-T. and T’ien, J. S.: Limiting length, steady spread and non-growing flames in concurrent flow over solids, Journal 
+of Heat Transfer, Vol. 132, September, 091201 (2010). 
+14Prasad, K., Nakamura, Y., Olson, S. L., Fujita, O., Nishizawa, K., Ito, K., Kashiwagi, T., “Effect of wind velocity on flame 
+spread in microgravity,” Proceedings of the Combustion Institute, Volume 29, Issue 2, 2002, Pages 2553-2560. 
+15Roslon, M., Olenick, S., Zhou, Y.Y., Walther, D., Fernandez-Pello, A.C., Torero, J.L.,  and Ross, H. D., “Microgravity 
+Ignition Delay of Solid Fuels in Low Velocity Flows” AIAA Journal, 39, No.12, 2336-2342, 2001 
+16NASA-STD-6001B w/Change 2, Flammability, Offgassing, and Compatibility Requirements and Test Procedures, National 
+Aeronautics and Space Administration, 2016-04-21 
+ 

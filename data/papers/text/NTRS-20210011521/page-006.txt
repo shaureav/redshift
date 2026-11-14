@@ -1,0 +1,58 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+6 
+ 
+                                              
+Figure 5: Flow speed and radiant flux for Saffire V -3. After an extended (300 second) interval at reduced air 
+flow (5 cm/s), the flame extinguished quickly when the flow was turned off.  
+0
+50
+100
+150
+200
+250
+300
+-2
+3
+8
+13
+18
+23
+28
+0 500 1000 1500 2000
+Incident Flux (mW/cm^2)
+Flow Speed (cm/s)
+Time (s)
+Flow Speed Radiometer 4
+                                               
+Figure 6: Radiant flux and flow speed for Saffire V -4 Evident is the rapid extinction after 300 seconds of 
+cooling at low air flow (5 cm/s) before the flow was stopped completely. 
+0
+20
+40
+60
+80
+100
+120
+140
+160
+-2
+3
+8
+13
+18
+23
+28
+0 500 1000 1500 2000 2500
+Incident Flux (mW/cm^2)
+Flow Speed (cm/s)
+Time (s)
+Flow Speed Radiometer 4
+ 
+Figure 7 Deflagration during Saffire IV-2, Images are edge view, the red line denotes the approximate middle 
+of the sample edge. Air flow is from left to right at 5 cm/s. In the left image a weak flame on the upper surface of 
+sample is just beginning to propagate t o the lower side where the flame has been extinguished for 6.4 seconds. 
+The right image is 267 ms later and the flame has filled the entire region below the sample and has induced a 
+stronger flame above the sample. 

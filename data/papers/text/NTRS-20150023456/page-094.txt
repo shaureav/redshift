@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 88 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 64.—Test FLEX−060. Fiber-supported methanol droplet translating 3 mm/s and burning in a 
+0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet moved east in the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV) with translation and continued to move east along the fiber 
+and out of the FOV after the translation stopped. It also drifted partially out of the Low Light Level 
+Ultra-Violet (LLUV) FOV. The droplet then oscillated between the regions where the flame impinged on 
+the fiber for several seconds before becoming quiescent and burning until the flame extinguished, 
+presumably diffusively. There was no apparent disruption at or near flame extinction. 
+  

@@ -1,0 +1,34 @@
+ 
+NASA/TP—2015-216046 28 
+FLEX Test  Fuel Ambient 
+pressure,  
+mmHg 
+Initial ambient 
+composition, 
+mole fraction 
+Droplet 
+initial 
+diameter, 
+mm 
+Visible 
+flame 
+extinction 
+diameter, 
+mm 
+Burning 
+rate, 
+mm2/s 
+Burn 
+time,  
+s 
+Test end 
+Test Identifier Date Greenwich 
+mean time 
+O2 N2 CO2 He 
+FLEX–276 H15H201 11/30/11 12:09:00 Heptane 532.5 .17 .38 0 .45 1.61 .91 1.06 1.4 Completion 
+FLEX–277 H15M102 12/5/11 22:54:10 Methanol 530.4 .17 .38 0 .45 2.79 2.3 .63 4 Extinction 
+FLEX–278 H15M201 12/5/11 23:39:04 Methanol 531.5 .17 .38 0 .45 2.68 2.31 .66 2.9 Extinction 
+FLEX–279 H19H101 12/8/11 22:29:44 Heptane 764.7 .21 .64 0 .15 3.54 2.91 .55 7.6 Extinction 
+FLEX–280 H19H201 12/8/11 23:41:45 Heptane 766.2 .21 .64 0 .15 2.82 .73 .65 11.7 Extinction 
+ 
+  

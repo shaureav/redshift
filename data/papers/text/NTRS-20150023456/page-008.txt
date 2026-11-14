@@ -1,0 +1,104 @@
+ 
+NASA/TP—2015-216046 2 
+Cleveland, Ohio. During periodically scheduled experiment 
+intervals, about 4 to 10 droplets are burned in this remote 
+operation, with use made mainly of the color camera to guide 
+the procedure, which involves a number of manual steps. 
+In addressing the experimental procedures and data analysis, 
+this report details the methods, data downlink, and format, and 
+it provides error estimates.  The results include histories of 
+droplet diameters obtained from the backlit camera and 
+histories of flame diameters obta ined from both the hydroxyl -
+filter camera and the color camera. Both flame diameter 
+measurements are of the outer  edge of the flame, and the 
+diameters in the color-camera images are the smaller of the two, 
+approximately three- fourths of the LLUV results. Average 
+burning-rate constants for each burn also are reported, as are 
+extinction diameters, for the cases where the flame extinguished 
+at a finite droplet size. Both radiative and diffusive extinctions 
+occurred during the testing. 
+The fuels studied in thes e experiments were methanol and  
+n-heptane. The droplets had initial diameters between 2 and 
+5 mm, and they were burned in oxidizing atmospheres at ambient 
+temperature and various pressures between 0.70 and 3.05 atm, 
+over ranges of dilution of oxygen with nitrogen, with carbon 
+dioxide, and with mixtures thereof. Most of the tests were 
+conducted at pressures between 0.7 and 1 atm, and many of the 
+tests were in air. A principle objective was to determine the 
+limiting oxygen index (LOI), the oxygen percentage below which 
+combustion would not occur. This objective reflected the FLEX 
+focus on investigating fire safety in spacecraft. Observed LOI 
+values for these fuels appear to be slightly lower than initially 
+expected. Besides documenting both radiative extinc tion at 
+higher dilutions and diffusive extinctions at lower dilutions for 
+both fuels, the results exhibited disruptive extinctions and 
+provided information pertinent to soot production for heptane. 
+The continuing experiments are providing additional data for 
+these two fuels, as well as droplet -combustion data for other 
+fuels, and NASA intends to catalog these data in similar reports. 
+ 
+1.0 Introduction 
+The spherically symmetrical combustion of a liquid fuel 
+droplet in a quiescent  ambient gaseous oxidizing atmos phere  
+is a classical problem in combustion research, having been 
+addressed first more than 50 years ago by Godsave (1952),  
+Hall and Diederichsen (1953) , and Spalding (1952,  1953). 
+Numerous reviews of the subject are now available in the 
+literature, among  them those of Wise and Agoston (1958), 
+Williams (1973), Faeth (1977), Law (1982), Sirignano (1983), 
+and Choi and Dryer (2001). An advantage of spherical sym -
+metry is that only one spatial dimension enters the description 
+of the combustion process, so that one-dimensional (spherically 
+symmetrical) time -dependent conservation equations apply.  
+This greatly facilitates both computational and theoretical  
+descriptions of the problem, thereby enhancing understanding 
+of experimental results, which becomes much m ore difficult, 
+uncertain, and inaccurate in multidimensional situations. 
+Natural convection, however, destroys the spherical symmetry 
+of combustion in normal gravity, as was quite evident in the 
+earliest experiments of Hall and Diederichsen (1953) and 
+Goldsmith (1956). Kumagai and Isoda (1956) were the first to 
+realize that microgravity experiments afforded the opportunity  
+to achieve spherical symmetry —a fact that  NASA has taken 
+advantage of in fundamental combustion investigations for a 
+number of years (W illiams, 1981; Dietrich et al., 1996; 
+Nayagam et al., 1998). 
+The Flame Extinguishment Experiment (FLEX)  is a droplet 
+combustion experiment performed on the International Space 
+Station (ISS). FLEX is the first experiment in the multipurpose 
+facility develop ed at the NASA Glenn Research Center —the 
+Combustion Integrated Rack (CIR). The CIR provides the 
+combustion chamber, most of the diagnostics,  the gas- 
+mixing system, and the primary interface between the ISS and 
+the ground controllers at Glenn. The Multi -User Droplet 
+Combustion Apparatus (MDCA)  is the hardware that deploys 
+and ignites the liquid fuel droplets and provides some of the 
+diagnostics. The MDCA  is located in the CIR combustion 
+chamber, but  it communicates through the CIR to ground 
+controllers at Glenn. 
+The purpose of this report is to detail and permanently 
+archive the results of a subset of the FLEX experiments, namely 
+those occurring between March 2009 and the end of December 
+2011. It is not intended to interpret the data from those experi-
+ments or to draw any scientific conclusions ; that will occur 
+through future NASA reports and peer-reviewed journal articles 
+that reference this report . The next section provides a brief 
+description of the experimental hardware and test procedures. 
+This is followed by a section that provides details of the data 
+analysis. The last  two sections provide details of the 
+experimental results. 
+2.0 Experiment Setup 
+The FLEX experiments are conducted on the ISS in the 
+combustion chamber of the CIR facility—a multipurpose  
+facility dedicated to combustion experiments. The CIR, a large 
+rack-level experiment in the Destiny module, was developed at 
+Glenn. The FLEX experiments were the first experiments to be 
+conducted in the CIR. 
+2.1 Experimental Hardware 
+The CIR facility (Fig. 1), described in detail elsewhere (Banu, 
+2008), consists of a 90- liter combustion  chamber that can  
+operate at pressures of approximately 0 to 9 atm. Although the 
+chamber can operate at a working pressure  of 9 atm, the 
+maximum pressure for a given experiment  is frequently much  
+ 
+ 

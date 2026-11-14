@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 141 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 117.—Test FLEX−113. Free-floating methanol droplet burning in a 0.20/0.45/0.35 O2/N2/CO2, 
+0.70-atm ambient environment. The droplet drifted northwest after deployment in the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV), hit the igniter, and then drifted southeast after ignition and 
+out of the FOV approximately 8 s after the igniter was withdrawn. The droplet burned with a very 
+weak relatively steady flame for a long period of time before oscillating before extinction. The 
+extinction droplet diameter is based on an extrapolation of the droplet history to the time of extinction. 
+The measured burning rate constant from just before the droplet left the HiBMs FOV was used in the 
+extrapolation. 
+  

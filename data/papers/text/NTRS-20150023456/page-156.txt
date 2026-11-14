@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 150 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 126.—Test FLEX−122. Free-floating methanol droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 
+0.7-atm ambient environment. The droplet was almost motionless after deployment and ignition. It 
+then slowly drifted south and eventually out of the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV), but this was after the flame extinguished. The droplet burned for about 15 s. Even though the 
+flame appeared to be weak, it persisted for quite a while. This was a nice clean burn with no 
+distortion or disruption. The flame appeared to oscillate radially (primarily in intensity) a few seconds 
+before it extinguished.  
+  

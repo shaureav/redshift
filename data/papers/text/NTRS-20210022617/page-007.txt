@@ -1,0 +1,14 @@
+7
+JASMAC-33
+10/15/2021
+o FLEX-377
+• N-decane
+• ½ atm 
+• air
+• D0 =4.0 mm
+Quasi-steady Cool Flames (with cool flame imaging)
+Hot flame Cool flame
+o Cool flames are very weak (frame averaged here)
+o They are broad (unlike hot flames)
+o They are located closer to the droplet surface 
+compared to the hot flames

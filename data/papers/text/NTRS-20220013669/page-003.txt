@@ -1,0 +1,14 @@
+2022 ASCEND AIAA 
+ 
+3 
+ 
+ 
+ 
+Fig. 2   NASA Reference Design for the Surface Habitat 
+ The NASA Reference design is a hybrid inflatable where the lower deck is an aluminum pressure vessel, and the 
+upper two decks are contained within an inflatable. The inflatable portion of the habitat is approximately 6.5 meters 
+in outer diameter and 5.2 meters in height with an inner core of 3.3 meters in diameter. The metallic portion is 2.6 
+meters in height and 4.4 meters in diameter. The layout was performed on the fully deployed vehicle given the 
+dimensions above including hatchways, EVA airlock, and core structure used to house systems. 
+ 
+Fig. 3  Surface Habitat Dimensions 

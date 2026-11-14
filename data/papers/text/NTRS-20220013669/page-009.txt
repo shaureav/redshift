@@ -1,0 +1,37 @@
+2022 ASCEND AIAA 
+ 
+9 
+ 
+ 
+ After placing the functional spaces inside of the Surface Habitat structural design, the functional volumes and 
+areas in the final layout were typically greater than the recommended minimum. Table 4 lists both the recommended 
+minimums and the final allotted areas for each combined functional space.  
+Table 4  Recommended vs. Final Areas in SH Internal Layout 
+Combined Functional Space 
+Recommended 
+Min. Area (m²) Area in Layout (m²) 
+Stretching 1.40 2.68 (1.34/crewmember) 
+Sleeping 1.82 3.70 (1.85/crewmember) 
+Medical 1.87 3.43 
+Exercise 1.5 2.09 
+UWMS 0.91 1.04 
+Hygiene 1.06 1.04 
+Ward Table 1.62 2.23 
+Work Surface 1.37 1.30 
+EVA Computer Station ---- 0.97 
+General Computer Station 1.82 2.10 
+Galley – Work Surface 0.56 0.95 
+Galley – Meal Prep 0.56 1.17 
+Utilization ---- 5.07 
+Translation Paths, Ladder Access 
+& Airlock/Suitport Access ----- 8.65 
+Systems & Storage Access ----- 5.79 
+Total 14.6 42.63 
+Total per Crewmember 7.3 21.31 
+Airlock 5.00 5.18 
+ 
+V. Surface Habitat Structure and Layout 
+ The proposed Surface Habitat’s internal layout is depicted inside the hybrid inflatable structure using a low-fidelity 
+CAD model. The habitat enclosure provides approximately 127 m3 habitable volume. For two crew, this is nearly 64 
+m3 of habitable volume per crewmember. The internal layout accommodates all the functions listed in the previously 
+mentioned Net Habitable Volume study and includes added functionality for science and utilization tasks.  

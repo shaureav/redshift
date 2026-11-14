@@ -1,0 +1,22 @@
+12
+Characterize Adaption to Exploration Atmosphere
+•
+ Hypoxic stress:
+–
+ PiO
+2
+ = 128mmHg
+•
+ Equivalent Air Altitude: 4000ft
+–
+ PCO
+2
+ < 3mmHg
+•
+ Early look at potential Artemis concerns:
+–
+ Materials/Flammability mitigation
+–
+ Food system
+–
+ Procedures

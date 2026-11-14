@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 162 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 138.—Test FLEX–134. Free-floating heptane droplet in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm 
+ambient environment. There were problems with gas bubbles during dispensing, stretching, and 
+deployment. During this test, a small gas bubble burst during ignition and caused the droplet to 
+oscillate. The droplet drifted slowly southeast and out of the High-Bit-Depth Multispectral (HiBMs) 
+field of view (FOV) a few seconds after the flame extinguished radiatively. The droplet continued 
+to vaporize at a relatively high rate after the flame extinguished, although only a few seconds 
+passed before the droplet left the HiBMs FOV. A vapor cloud formed 10 to 20 s after the visible 
+flame extinguished. The post-visible-flame-extinction behavior is indicative of cool flame burning 
+and extinction. 
+  

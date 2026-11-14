@@ -1,0 +1,41 @@
+21
+Conclusion
+•
+ Successfully carried out 11
+-
+day test
+–
+ Chamber pressure parameters within goal
+–
+ Chamber oxygen parameter within control band, but reviewing sensor calibration
+–
+ Prebreathe duration within seconds of target duration
+–
+ No DCS Type II
+–
+ Two DCS Type I cases; symptoms fully resolved
+–
+ Excellent cross
+-
+organization teamwork and integration of test support teams
+•
+ Lessons Learned
+–
+ 1
+-
+day and 3
+-
+day tests extremely valuable for test team, subjects, and protocol verification
+–
+ Several subjects with mask fit problems
+–
+ Sleep timing and accommodations borderline 
+–
+ implemented schedule fixes, but forward 
+work on bunks
+–
+ Various habitability tweaks to implement on future runs (hygiene system, 
+etc
+)
+–
+ Importance of backup subjects/critical test team members realized due to COVID surge

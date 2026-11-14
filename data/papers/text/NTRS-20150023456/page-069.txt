@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 63 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 39.—Test FLEX−035. Free-floating heptane droplet in a cabin air (0.21/0.79 O2/N2), 1.0-atm 
+ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV) for the entire test including a long time after the visible flame extinguished. The flame oscillated 
+before the visible flame extinguished, and this was apparent in both the Low Light Level Ultra-Violet 
+(LLUV) and color camera. After the flame extinguished, the droplet vaporized very vigorously with 
+droplet-diameter-squared versus time behavior that was nearly perfectly linear. The vaporization rate 
+was only slightly lower than the burning rate constant before the flame extinguished. The droplet 
+vaporization rate then plateaued coincident with the formation of a very large vapor cloud. This behavior 
+is indicative of cool flame burning and extinction. 
+  

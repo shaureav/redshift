@@ -1,0 +1,35 @@
+Sub Topic: Fire 
+ 6 
+  
+Figure 6a: Effect of ambient pressure on heat of gasification 
+Figure 6b: Effect of oxygen mole fraction on heat of gasification  
+ 
+5. Conclusions 
+ 
+Tests were conducted at the NASA 5-s Zero Gravity Facility using the BRE burners. A simplistic 
+transient model was applied which demonstrated that the experimental flame height is not steady 
+whereas the surface heat flux could be assumed to approach quasi-steady state. The 1D purely 
+diffusive model gives reasonable results. However, for analysis of flame height, it is necessary to 
+look at the 2D combustion model. It appears that the ratio of radiation loss to total heat release 
+becomes significant as the burner diameter increases. Hence, there is also a need for an inclusive 
+model which considers the effect of radiation. 
+ 
+6. Acknowledgements 
+ 
+This research was funded by NASA’s International Space Station Research Program. 
+ 
+7. References 
+ 
+[1] Y. Zhang, M. Kim, H. Guo, P.B. Sunderland, J.G. Quintiere, J. de Ris, D. Stocker, Combustion and 
+Flame, 162 (2015) 3449-3455. 
+[2] Y. Zhang, M. Kim, P.B. Sunderland, J.G. Quintiere, J. de Ris, Experimental Thermal and Fluid 
+Science, 73 (2016) 87-93. 
+[3] D.B. Splading, Convective Mass Transfer, McGraw-Hill Book Co., New York, 1963. pp. 23, 42. 
+[4] L. Li, P.B. Sunderland, Combust. Sci. Technol. 184 (2012) 829–841. 
+[5] K. Akita, Yumoto, Proc. Combust. Inst. 10 (1965) 943–948. 
+[6] H. S. Carslaw and J. C. Jaeger, Conduction of Heat in Solids, Oxford University Press, 2nd ed, London, 
+1959, p. 215. 
+[7] J.G. Quintiere, Fundamentals of Fire Phenomena, John Wiley & Sons Ltd., Chichester, U.K., 2006. 
+[8] M. Zarzecki, J.G. Quintiere, R.E. Lyon, T. Rossmann, F.J. Diez, Combust. Flame 160 (2013) 1519-
+1530. 
+[9] H. Baum and A. Atreya, Fire Safety Science 11, 2014. 

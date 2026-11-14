@@ -1,0 +1,23 @@
+ 
+NASA/TP—2015-216046 131 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 107.—Test FLEX−103. Fiber-supported heptane droplet translating 3 mm/s and burning in a 
+0.21/0.49/0.30, 0.70-atm ambient environment. A short time after translation stopped, the droplet 
+moved axially on the fiber and partially out of the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV). By the end of the HiBMs Image Processing and Storage Unit (IPSU) recording, it had moved 
+completely back into the HiBMs FOV. A small droplet or debris on the fiber ignited and burned briefly, 
+but it burned out before the flame extinguished radiatively before translation stopped. For a while, the 
+droplet continued to vaporize at a relatively high rate. Then the vaporization rate slowed coincident 
+with the formation of a visible vapor cloud that formed a toroidal ring around the droplet. The 
+background intensity in the HiBMs decreased significantly as the vapor cloud formed. The post-
+visible-flame-extinction behavior is indicative of cool flame burning and extinction. 
+  

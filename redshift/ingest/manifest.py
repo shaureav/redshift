@@ -74,6 +74,9 @@ def build() -> dict[str, Any]:
         elif p.name == "psi_search_combustion.json":
             entry.update(source_url="https://psi.nasa.gov/physci/repo/search?q=combustion",
                          licence="PSI search metadata", retrieved="2026-11-14T08:11:29.891Z")
+        elif parts[0] == "reference":
+            entry.update(source_url="https://www.spaceappschallenge.org/ (Flame in Freefall challenge page)",
+                         licence="NASA Space Apps Challenge public challenge text; quoted for reference")
         elif p.suffix == ".zip":
             entry.update(source_url="team harvest (see note)", licence="as per contained files")
         else:

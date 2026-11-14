@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 78 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 54.—Test FLEX−050. Fiber-supported heptane droplet translating 3 mm/s and burning in a cabin 
+air (0.21/0.79 O2/N2), 1-atm ambient environment. There were moderate transverse oscillations on 
+the fiber throughout the test, and unique circulation patterns in the gas phase were evident from the 
+soot motion. The droplet continued to vaporize linearly after the visible flame extinguished, and a 
+large vapor cloud formed nearly coincident with a plateau in the droplet history. This is evidence of 
+cool flame burning and extinction following visible flame extinction. 
+  

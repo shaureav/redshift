@@ -1,0 +1,36 @@
+ 
+  
+ 6 of 11 
+The ACME experiments are configured, but not conducted, by the ISS crew.  Instead, the tests are commanded from 
+the ground, specifically from the NASA Glenn Research Center in Cleveland, Ohio.  They are conducted in a nominally 
+automated mode using pre-programmed scripts.  But the role of the crew is critical and thus far 30 different crew members 
+from Canada, Germany, Italy, Japan, Russia, and the United States have supported ACME operations. 
+Weekly operations have typically included a two-shift day for testing, a two-shift day to downlink the resulting image 
+data, and a day in which an ISS crew member prepares the hardware for the next test day.  Replacement of gas bottles is 
+the most common crew activity, where less frequent replacements include mass flow controllers and igniter tips.  But the 
+transition to a different experiment can require many other changes, such as the reconfiguration of imaging systems as 
+shown in Fig. 1. 
+ 
+3. Experiments and Selected Findings 
+3.1 Coflow Laminar Diffusion Flame (CLD Flame) 
+Past research, including that conducted in microgravity, had revealed shortfalls in the ability to accurately model flames 
+at the extremes of fuel dilution, namely for sooty pure-fuel flames and dilute flames that are near extinction.  This 
+investigation’s objective is to extend the range of flame conditions that can be accurately predicted by developing and 
+experimentally verifying chemical kinetic and soot formation submodels.  The dependence of normal coflow flames on 
+injection velocity and fuel dilution is carefully examined for flames at both very dilute and highly sooting conditions.  
+Measurements including flame temperature, CH* concentration, soot temperature, and soot volume fraction are made of 
+the structure of diluted methane and ethylene flames in an air coflow, where the fuel and air velocities are typically 
+matched.  Lifted flames are a focus of the research to avoid flame dependence on heat loss to the burner, where examples 
+from ISS testing can be seen in Fig. 5.  The results are directly applicable to practical combustion issues such as turbulent 
+combustion, ignition, and flame stability. 
+For sooty attached flames, preliminary results have revealed that the soot volume fraction can be several times greater 
+in microgravity flames than in comparison normal-gravity flames.  These microgravity flames are also taller and wider.  
+Meanwhile, dilution limits for both methane and ethylene flames were extended in microgravity, where the microgravity 
+flames are more stable, allowing for lifted flames at lower fuel concentrations. 
+ 
+Fig. 5 Composite overlay of three dilute methane coflow flames as a function of the matched fuel/coflow velocity 
+3.2 Electric-Field Effects on Laminar Diffusion Flames (E-FIELD Flames) 
+An electric field can strongly influence flames because of its effect on the chemi-ions produced by the combustion.  The 
+direct ion transport and the induced ion wind can modify the flame shape, alter the soot or flammability limits, direct heat 
+transfer, and reduce pollutant emission.  This experiment’s purpose is to improve understanding of chemi-ionization in 
+flames and the interplay between ion generation & ion-driven flows and explore how electric fields can be used to control 

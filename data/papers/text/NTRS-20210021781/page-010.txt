@@ -1,0 +1,53 @@
+ 
+  
+ 10 of 11 
+Stephen Lawn, and Christopher Mroczka.  ACME also benefited significantly from Fumiaki Takahashi and NASA 
+Glenn’s microgravity facilities staff, led by Eric Neumann, in the conduct of ground-based microgravity tests to evaluate 
+hardware and flame behavior in the experimental development.  Testing could not be accomplished without the ISS 
+crews and the many members of the CIR operations team, including especially Angela Adams and Melani Smajdek.  The 
+author is thankful for the support of colleagues Daniel Dietrich, Uday Hegde, Vedha Nayagam, Justin Niehaus, and Jay 
+Owens.  The leadership of Kelly Bailey, Lauren Brown, William Foster, J. Mark Hickman, Kevin McPherson, Martin 
+O’Toole, Andrew Suttles, and David Urban has also contributed to the success of the research. 
+ 
+References 
+1) H. D. Ross, ed.: Microgravity Combustion: Fire in Free Fall, Academic Press, London, UK, 2001.  
+2) S. A. Gokoglu, D. L. Dietrich, D. P. Stocker, P. V. Ferkul, S. L. Olson and M. C. Hicks: ISS Researcher’s Guide to: Combustion 
+Science, 2015, https://www.nasa.gov/connect/ebooks/researchers_guide_combustion_science_detail.html. 
+3) D. L. Urban, Z.-G. Yuan, P. B. Sunderland, G. T. Linteris, J. E. Voss, K.-C. Lin, Z. Dai, K. Sun and G. M. Faeth: AIAA J., 36 (1998) 
+1346. 
+4) K.-C. Lin, G. M. Faeth, P. B. Sunderland, D. L. Urban and Z.-G. Yuan: Combust. Flame, 116 (1999) 415. 
+5) D. L. Urban, Z.-G. Yuan, P. B. Sunderland, K.-C. Lin, Z. Dai and G. M. Faeth: Proc. Combust. Inst., 28 (2000) 1965. 
+6) G. M. Faeth: Microgravity Combustion: Fire in Free-Fall, Academic Press, London, UK, 2001, 83. 
+7)  C. Aalburg, F. J. Diez, G. M. Faeth, P. B. Sunderland, D. L. Urban and Z.-G. Yuan: Combust. Flame, 142 (2005) 1. 
+8) F. J. Diez, C. Aalburg, P. B. Sunderland, D. L. Urban, Z.-G. Yuan and G. M. Faeth: Combust. Flame, 156 (2009) 1514. 
+9) P. D. Ronney, M.-S. Wu, H. G. Pearlman and K. J. Weiland: AIAA J., 36 (1998) 1361. 
+10) M.-S. Wu, J.-B. Liu and P. D. Ronney: Proc. Combust. Inst., 27 (1998) 2543. 
+11) J. D. Buckmaster and P. D. Ronney: Proc. Combust. Inst., 27 (1998) 2603. 
+12) M. Abid, M.-S. Wu, J.-B. Liu, P. D. Ronney, M. Ueki, K. Maruta, H. Kobayashi, T. Niioka and D. M. VanZandt: Combust. Flame, 
+116 (1999) 348. 
+13) O. C. Kwon, M. Abid, J.-B. Liu, P. D. Ronney, P. M. Struk and K. J. Weiland: 42nd AIAA Aerospace Sciences Meeting, Reno, NV, 5-
+8 Jan. 2004. 
+14) J. E. Brooker, D. P. Stocker and L.-D. Chen: Central States Meeting of the Combustion Institute, Lexington, KY, 31 May - 2 June 
+1998.  
+15) J. E. Brooker, K. Jia, D. P. Stocker and L.-D. Chen: Fourth U.S. Microgravity Payload: One Year Report, Sept. 1999, 151. 
+16) K. Jia and L.-D. Chen: 38th AIAA Aerospace Sciences Meeting, Reno, NV, 10-13 Jan. 2000. 
+17) R. Venuturumilli and L.-D. Chen: Fuel 88 (2009) 1435. 
+18) U. Hegde, M. Y. Bahadori and D. P. Stocker: 37th AIAA Aerospace Sciences Meeting, Reno, NV, 11-14 Jan. 1999. 
+19) M. Y. Bahadori, U. Hegde and D. P. Stocker: 37th AIAA Aerospace Sciences Meeting, Reno, NV, 11-14 Jan. 1999. 
+20) M. Y. Bahadori, U. Hegde and D. P. Stocker: Fall Western States Meeting of the Combustion Institute, Irvine, CA, 25-26 Oct. 1999. 
+21) M.Y. Bahadori, U. Hegde and D. P. Stocker: 38th AIAA Aerospace Sciences Meeting, Reno, NV, 10-13 Jan. 2000. 
+22) U. Hegde, M. Y. Bahadori and D. P. Stocker: AIAA J., 38 (2000) 1219. 
+23) M. Y. Bahadori and U. Hegde: AIAA-2001-0621, 39th AIAA Aerospace Sciences Meeting, Reno, NV, 8-11 Jan. 2001. 
+24) A. Abbud-Madrid, F. K. Amon and J. T. McKinnon: 42nd AIAA Aerospace Sciences Meeting, Reno, NV, 5-8 Jan. 2004. 
+25) K. T. Dotson, P. B. Sunderland, Z.-G. Yuan and D. L. Urban: Eastern States Meeting of the Combustion Institute, College Park, MD, 
+18-21 Oct. 2009. 
+26) K. T. Dotson, P. B. Sunderland, Z.-G. Yuan and D. L. Urban: 48th AIAA Aerospace Sciences Meeting, Orlando, FL, 4-7 Jan. 2010. 
+27) K. T. Dotson, P. B. Sunderland, Z.-G. Yuan and D.L. Urban: 6th International Seminar on Fire and Explosion Hazards, Leeds, 
+England, 11-16 April 2010. 
+28) K. T. Dotson, P. B. Sunderland, Z.-G. Yuan and D.L. Urban: Fire Saf. J., 46 (2011) 550. 
+29) B. Ma, S. Cao, D. Giassi, D. P. Stocker, F. Takahashi, B. A. V. Bennett, M. D. Smooke and M. B. Long: Proc. Combust. Inst., 35 (2015) 
+839. 
+30) S. Cao, B. Ma, B. A. V. Bennett, D. Giassi, D. P. Stocker, F. Takahashi, M. B. Long and M. D. Smooke: Proc. Combust. Inst., 35 (2015) 
+897.  
+31) D. Giassi, B. Liu and M. B. Long: Appl. Opt., 54 (2015) 4580.  
+32) D. Giassi, S. Cao, B. A. V. Bennett, D. P. Stocker, F. Takahashi, M. D. Smooke and M. B. Long: Combust. Flame, 167 (2016) 198. 

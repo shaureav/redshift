@@ -1,0 +1,19 @@
+15
+JASMAC-33
+10/15/2021
+Principal Investigator
+Prof. Forman A. Williams, UCSD
+Co- Investigators
+Prof. C. Thomas Avedisian, Cornell
+Prof. Mun Y. Choi, U Conn
+Prof. Frederick L. Dryer, Princeton
+Prof. Tanvir Farouk, U South Carolina 
+Dr. Michael C. Hicks, NASA GRC
+Dr. Vedha Nayagam, CWRU/GRC
+Prof. Benjamin D. Shaw, UC Davis
+Project Scientist
+Dr. Daniel L. Dietrich, NASA GRC
+Dr. Paul V. Ferkul, USRA/GRC
+Project Manager
+Mr. J. Mark Hickman, NASA GRC
+Flame Extinguishment Experiment (FLEX) Science Team

@@ -33,10 +33,11 @@ NUMERIC_FIELDS: dict[str, tuple[str, tuple[float, float] | None]] = {
     "n2_pct": ("%", (0.0, 100.0)),
     "flow_cm_s": ("cm/s", (0.0, 1000.0)),
     "fuel_conc_pct": ("%", (0.0, 100.0)),
+    "n_flames": ("count", (0.0, 10000.0)),
 }
 TEXT_FIELDS: tuple[str, ...] = (
     "test_label", "test_date", "fuel", "material", "diluent", "outcome_label", "suppressant",
-    "gravity_level", "notes",
+    "gravity_level", "o2_basis", "notes",
 )
 
 _SPREADSHEET_ERROR = re.compile(r"^#(VALUE|DIV/0|REF|NAME\?|N/A|NUM|NULL)!?$", re.I)
@@ -234,6 +235,15 @@ class Ctx:
         if pid not in self.registry:
             self.registry.add(Prov(id=pid, source_type="psi_page", investigation_id=self.inv,
                                    file=self.table.path, note=note, doi=self.doi))
+        return value(v, None, pid)
+
+    def derived_text(self, row: RawRow, field_name: str, v: str | None, method: str,
+                     inputs: list[dict[str, Any]]) -> dict[str, Any]:
+        """A text label computed from other recorded values of the same row (never a number)."""
+        pid = f"derived:{self.inv}:{self.table.table_key}:L{row.line}:{field_name}"
+        self.registry.add(Prov(id=pid, source_type="derived", investigation_id=self.inv, file=self.table.path,
+                               row=row.line, method=method, method_version="1",
+                               inputs=[i["p"] for i in inputs], doi=self.doi))
         return value(v, None, pid)
 
     # ---------- output ----------

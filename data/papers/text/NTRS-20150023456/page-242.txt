@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 236 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 212.—Test FLEX–210. Fiber-supported heptane droplet in a cabin air (0.21/0.79 O2/N2), 1.0-atm 
+ambient environment. The droplet drifted east some on the fiber after ignition and early in the droplet 
+lifetime. The soot agglomerates that were near the droplet created a lot of noise in the droplet 
+measurement for the first half of the burn. The droplet also moved significantly on the fiber late in the 
+droplet lifetime. There was evidence of some unusual soot dynamics—large soot particles moving 
+slowly toward the droplet and then being more rapidly pushed away (presumably by the Stefan flow). 
+The droplet burned to completion. 
+  

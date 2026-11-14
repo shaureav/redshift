@@ -1,0 +1,101 @@
+ 
+NASA/TP—2015-216046 8 
+background intensity varied between tests. The value was set 
+manually to optimally distin guish between t he droplet and 
+background for the entire test. Detailed analysis of a single test 
+showed that within reasonable limits the threshold value had 
+little impact on the droplet size and , thus, was not a major 
+source of error. 
+(5) Fill holes and manually remove stray objects. If there 
+was a bright spot in the middle of the droplet, this step ma de 
+that region the same average intensity as the surrounding 
+droplet. This step also involve d manually removing stray 
+objects that might interfere with the droplet size measurement. 
+(6) Measure the area, center of mass, and perimeter of 
+the flame in the image.  The measurement was converted to a 
+flame size using the appropriate scale factor (32.5  pixels/mm) 
+for most of the tests herein. 
+(7) Perform steps 2 through 6 for each image identi fied 
+in step 1. 
+3.1.2 Error Analysis 
+The error or uncertainty in the measurement of droplet 
+diameter comes from a few sources.  The first is the spatial 
+resolution of the camera. The FOV for the HiBMs is 30.25 mm2. 
+For all but the first few tests, the HiBM s operated at full frame 
+(not binned), or 1024 by 1024 pixels. Therefore, the minimum 
+spatial resolution was ±29.5 µm. 
+There was additional uncertainty  in estimating the appro -
+priate segmentation value, especially since the background gray 
+level in the HiBMs view was not spatially uniform. The FLEX 
+science team performed extensive ground testing in the func -
+tionally identical (to the CIR HiBM s on the ISS) Ground 
+Interface Unit (GIU) HiBM s system with precision spheres of 
+known size. This testing provided the guidelines for setting the 
+appropriate threshold (segmentation) value to determine the 
+edge of the droplet. 
+Also, it was  obvious that there was noise in the image that  
+could contribute to the uncertainty  in droplet size. The uncer -
+tainty as a result of the se last two sources was greatly reduced 
+by measuring the projected area (as opposed to a single spatial 
+dimension) of the droplet.  As a result, we estimate d the 
+uncertainty in the droplet size to be ±50 µm. 
+3.2 LLUV Image Analysis 
+3.2.1 Procedure 
+The flame size is m uch more difficult to measure than the 
+droplet size. The flames are quite dim, and as a result, there is a 
+significant amount of noise in the LLUV  images. The damage 
+to the window in the CIR chamber for the LLUV camera made 
+the noise worse for the tests in  this report. There was also 
+ambiguity in the flame definition, the peak in flame tem -
+perature, the peak in OH • emission, or the outer edge of OH •  
+ 
+emission. The damage to the CIR window, coupled with  
+the very dim images, precluded the deconvolution of the LLUV 
+images (e.g., Marchese et al., 1996)  to get the radial distribu -
+tion of the OH • chemiluminescence. The flame dimension 
+detailed in this report repr esents the outer edge of the OH • 
+chemiluminescence. 
+The image sequences were analyzed  in a semiautom atic 
+manner using the commercially avail able image -processing 
+packages, Image J (National Institutes of Health, 2011) or Igor 
+Pro ( http://www.wavemetrics.com). Analysis of the LLUV  
+images proceeded as follows. 
+ 
+(1) Determine which frames to analyze. 
+(2) Perform a gaussian blur to reduce the noise in the 
+image. 
+(3) Remove outliers. This process removed any pixel values 
+that were near saturation. These values were not from the flame 
+but were a result of the intensifier on the LLUV camera. 
+(4) Adjust the contrast, and set the threshold value.  This 
+was the value that set the threshold between the background and 
+the object (flame). The value was manually set to optimally 
+distinguish between the flame and the background for an 
+individual image. For some tests a constant threshold value could 
+be used for the entire test. For others the threshold value was a 
+function of the flame luminosity with brighter flames using a 
+higher threshold value. The segmentation (threshold) value was 
+typically relatively low (compared with the maximum in an 
+image) and, therefore, represented a very dim part of the flame or 
+the very outer edge of the flame. The value is likely somewhat 
+larger than a flame diameter based on the dimension of maximum 
+temperature or OH• chemiluminescence. 
+(5) Fill holes, and manually remove stray objects. There 
+was a darker region inside the flame, and this “ hole” was 
+included in the area measurement of the flame. 
+(6) Measure the area, center of mass, and perimeter of 
+the droplet in the image.  The measurement was converted to 
+a droplet size using the appropriate scale factor (8.86 pixels/mm 
+for most of the tests herein). 
+(7) Perform steps 2 through 6 for each image identified 
+in step 1. 
+3.2.2 Error Analysis 
+The error or uncertainty in the measurement of flame 
+diameter is more difficult to determine than the dro plet size 
+measurement. The FOV for the LLUV  is 57.8 mm2. For all of 
+the tests in this report, the LLUV operated with 2 by 2 binning 
+or a resolution of 512 by  512 pixels. Therefore, the minimum 
+spatial resolution was ±113 µm. 
+There is additional uncertainty  in estimating the appropriate 
+segmentation value. The value represents the outer edge of the  
+ 

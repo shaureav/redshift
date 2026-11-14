@@ -1,0 +1,54 @@
+ 
+NASA/TP—2015-216046 3 
+ 
+Figure 1.—Astronaut Mike Fincke to the left of the 
+Combustion Integrated Rack (CIR) facility shortly after 
+it was installed in the Destiny module of the 
+International Space Station (ISS). 
+ 
+ 
+less than that depending on a rigorous (and very conservative) 
+safety analysis. For the FLEX experiments, this analysis 
+reduced the maximum working pressures to approximately  
+3 atm. The interior  of the CIR chamber contains the 
+mechanical, fluid, and electrical interfaces necessary to mount 
+experiment-specific hardware inside the chamber. 
+The CIR facility can accurately control the ambient environ-
+ment inside the chamber. This capability is provided by the Fuel 
+and Oxidizer Mixing Apparatus (FOMA). The FOMA consists 
+of gas bottles, a connection for ISS nitrogen connected through 
+a series of valves, pressure transducers , and mass flow 
+controllers to the combustion chamber. The contents of the 
+chamber can be evacuated via a vacuum pump connected to the 
+ISS overboard vent. 
+The hardware for the FLEX experiments , the MDCA , is 
+pictured in Figure 2 and shown schematically in Figure 3. The 
+MDCA facility, which is described in detail elsewhere (Robbins 
+and Shinn, 2010), is based on the design of the s pace shuttle 
+Droplet Combustion Experiment (DCE, Nayagam et al., 1998).  
+ 
+ 
+ 
+Figure 2.—Multi-User Droplet Combustion Apparatus 
+(MDCA) with hardware installed in the Combustion 
+Integrated Rack (CIR). 
+ 
+ 
+Figure 3.—Multi-User Droplet Combustion Apparatus 
+(MDCA) looking down from the top, with hardware 
+installed in the Combustion Integrated Rack (CIR). 
+ 
+ 
+The MDCA can deploy both free and fiber -supported droplets 
+in a quiescent microgravity environment. 
+Stainless-steel tubes with 250 -µm outside diameter s and 
+specially treated ends are used for the deployment. Each needle 
+is connected via flexible Teflon (DuPont) tubing to a fuel 
+reservoir, or cartridge , which  consists of a gas -tight syringe 
+connected to a remotely actuated, gas-tight solenoid valve. The 
+crew can easily replace the two reservoirs mounted in the 
+MDCA during nominal operations. For the experiments  
+reported herein, each reservoir contained one of the experiment 
+fuels—heptane or methanol. The amount of fuel put in the 
+syringe was a function of the detailed safety analysis , approxi-
+mately 2.5 ml for methanol and 1.25 ml for heptane. 

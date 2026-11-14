@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 76 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 52.—Test FLEX−048. Fiber-supported methanol droplet translating 3 mm/s and burning in a 
+cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted east after the start of 
+translation and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-fifth of 
+the way through the test. The flame remained within the FOVs of the Low Light Level Ultra-Violet 
+(LLUV) and color camera for the entire test. There was disruptive burning at the end of the test. 
+  

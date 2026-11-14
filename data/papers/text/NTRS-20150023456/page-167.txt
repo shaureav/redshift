@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 161 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 137.—Test FLEX–133. Free-floating heptane droplet in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm 
+ambient environment. The droplet drifted northwest and out of the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV) before the end of the test (about halfway). After ignition, the droplet 
+flame was luminous, quickly changing to a nearly all blue, dim flame. The flame then began to 
+oscillate for several seconds before becoming stable and brighter. It burned until a small 
+disruption coincident with when the flame extinguished. The extinction droplet diameter is the 
+diameter of the droplet when the flame disrupted; it was estimated from the burning rate constant 
+while the droplet was in the HiBMs FOV and the time of extinction from either the Low Light Level 
+Ultra-Violet (LLUV) or color camera. 
+  

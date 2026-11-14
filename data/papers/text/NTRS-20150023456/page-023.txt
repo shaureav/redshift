@@ -1,0 +1,55 @@
+ 
+NASA/TP—2015-216046 17 
+needles, numerical modeling efforts, and ground-based testing, 
+we can make the following assertions about the experimental 
+data reported herein: 
+ 
+(1) Burning-rate constants  were average, and the droplet 
+history was minimally influenced by the con taminant. The 
+contaminant was likely present in trace amounts and was a very 
+low volatility compound. Because methanol and heptane are 
+relatively high volatility  fuels, the droplet regression history 
+was dominated by the fuel not by the contaminant. 
+(2) The flame size and flame history were similarly 
+minimally influenced by the contaminant. 
+(3) In the few tests where unusual features were observed 
+in the flame view , such as minor disruptions and visual 
+“sparklers,” these features were probably influenced, and 
+possibly caused, by the presence of the contaminant. 
+(4) Disruptive extinction of methanol is probably due to the 
+presence of the contaminant. 
+(5) Disruptive extinction of heptane may be due to the 
+presence of the contaminant. Subsequent tests with clean 
+needles and fuel, however, also exhibit ed disruptive extinction 
+at small droplet sizes, so no conclusion can be drawn regarding 
+disruptive burning for heptane in the tests reported herein. 
+(6) The diffusive extinction droplet diameters (smaller 
+diameters) for methanol (where there is no disruption) were 
+minimally influenced by the presence of the contaminant. 
+(7) Radiative extinction droplet diameters (larger diameters) 
+were not influenced by the presence of the contaminant. 
+(8) Distorted droplets (e.g., the HiBMs video from the 
+FLEX–088 test) for methanol droplet burning (approxi mately 
+four tests) are probably the result of the contaminant. 
+6.0 Conclusions 
+Histories of droplet and flame diameters, as well as burning-
+rate constants and extinction diameters, were obtained in Flame 
+Extinguishment Experiment ( FLEX) program experiments 
+performed on the International Space Station for methanol and 
+n-heptane droplets with initial diameters between 2 and 5 mm. 
+Burning was done in oxidizing atmospheres at ambient 
+temperature and at various pressures between 0.70 and 
+3.05 atm, over ranges of dilution  of oxygen with nitrogen,  
+oxygen with carbon dioxide , and mixtures thereof . The 
+experimental methods and data analysis procedures are reported 
+here, and the results are presented and catalogued. More than  
+100 useful combustion histories were obtained. These extensive 
+experimental results are not interpreted  here; the intent is 
+merely to make the data readily available for future scientific 
+interpretation. 
+ 
+ 
+Glenn Research Center 
+National Aeronautics and Space Administration 
+Cleveland, Ohio, November 21, 2015
+  

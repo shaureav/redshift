@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 123 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 99.—Test FLEX−095. Fiber-supported heptane droplet translating 3 mm/s (for approximately 
+4 s) and burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. The droplet had 
+very little axial or transverse oscillation on the fiber, and it remained within the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV) for the entire test. Shortly after the fiber translation 
+stopped, the visible flame extinguished, but the droplet continued to vaporize at a relatively high 
+rate. Then there was some axial oscillation on the fiber, followed by a significant reduction in the 
+vaporization rate. The marked decrease in vaporization was coincident with the formation of a 
+large vapor cloud, with a toroidal vapor cloud in the immediate vicinity of the droplet. This is 
+indicative of cool flame burning and extinction following visible flame extinction. 
+  

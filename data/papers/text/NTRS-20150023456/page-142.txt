@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 136 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 112.—Test FLEX−108. Fiber-supported methanol droplet translating 3 mm/s and burning in a 
+0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. There was significant oscillatory motion 
+of the droplet on the fiber during the burn both before and after the translation. The droplet swelled 
+and eventually disrupted before the flame extinguished, leaving a small residual droplet on the 
+fiber. 
+  

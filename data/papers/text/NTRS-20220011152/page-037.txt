@@ -1,0 +1,43 @@
+37
+Lessons Learned
+•
+ Overall were able to conduct both a 3
+-
+day and 11
+-
+day test successfully
+–
+ Significant concern from management on provoking DCS
+–
+ Mitigated, but not totally resolved by 11
+-
+day study
+•
+ 3
+-
+day test was 
+critical
+ from both a team readiness and subject training 
+perspective
+–
+ Unanimous recommendation by subjects to do such a test 
+–
+ even at 14.7psi
+•
+ Single science block/procedures training much preferred
+–
+ Vs single/ ‘1
+-
+off’ trainings by each ‘department’
+–
+ Integrates well with a 3
+-
+day (or even 1.5 day)
+–
+ Less ‘pre/post’ data collections, or add more days to ‘study’ (not just chamber days)
+•
+ Sleep:
+–
+ Biggest concern in both of timing (acceptably ‘fixed’) and comfort (still far from ‘fixed’)
+•
+ Limit individual duty hours for support/science team

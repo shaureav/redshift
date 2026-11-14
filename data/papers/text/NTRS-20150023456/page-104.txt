@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 98 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 74.—Test FLEX−070. Free-floating heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient 
+environment. Extra fuel was dispensed after the automated sequence started. After deployment, the 
+droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), hit the upper 
+igniter, and quickly drifted southeast and out of the HiBMs FOV. The post deployment/ignition velocity 
+was quite high, approximately 8 mm/s. The color camera Image Processing and Storage Unit (IPSU) 
+did not record any images after deployment. It is not known whether there was cool flame burning and 
+extinction for this test. 
+  

@@ -1,0 +1,17 @@
+ 
+NASA/TP—2015-216046 166 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 142.—Test FLEX−138. Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 
+1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and 
+Storage Unit (IPSU) did not record any images for this test. The flame grew in size initially, became 
+very dim, but then shrank, became brighter, and burned to disruption at a small size. 
+  

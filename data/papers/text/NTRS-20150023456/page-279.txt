@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 273 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 249.—Test FLEX–249. Free-floating heptane droplet burning in a 0.16/0.59/0.25 O2/N2/He, 1.0-
+atm ambient environment. This smaller droplet was nearly motionless after deployment and ignition, 
+and it remained in the fields of view (FOVs) of all the cameras. The flame surrounding the droplet 
+extinguished at a very small size, near the limit of what we can reasonably measure. The flame size 
+was nearly constant throughout the burn, decreasing only slightly toward the end of the burn after 
+increasing only slightly in size initially. The flame standoff increased linearly throughout the burn. 
+  

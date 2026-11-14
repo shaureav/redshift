@@ -1,0 +1,22 @@
+17
+JASMAC-33
+10/15/2021
+o FLEX-377
+• N-decane
+• ½ atm 
+• air
+• D0 =4.0 mm
+• Dhfe=3.3 mm
+• Dcfe=2.7 mm
+Quasi-steady Cool Flames (with radiometers)
+hot flame
+cool flame
+evaporation
+hot flame
+cool flame
+evaporation
+narrow-band
+radiation
+wide-band
+radiation
+n-decane

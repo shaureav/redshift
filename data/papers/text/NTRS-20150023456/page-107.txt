@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 101 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 77.—Test FLEX−073. Free-floating heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm 
+ambient environment. There was an error in the automated test sequence, and the Multi-User Droplet 
+Combustion Apparatus (MDCA) dispensed fuel before deployment. The result was a very large 
+droplet, much larger than intended. The droplet drifted northwest in the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV) after deployment, then it hit the igniter and began to drift southeast and 
+quickly out of the FOV. The droplet lifetime was very short with the flame extinguishing only a few 
+seconds after the igniter was withdrawn. The color camera Image Processing and Storage Unit 
+(IPSU) did not record any images after deployment, and there is not enough evidence to know 
+whether this test exhibited cool flame burning and extinction after the visible flame extinguished. 
+  

@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 49 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 25.—Test FLEX−021. Free-floating methanol droplet burning in a 0.34/0.66 O2/N2, 0.70-atm 
+ambient environment. This was the first successful test after switching from the high-CO2, high-
+pressure ambient environments, where we had significant deployment problems. The droplet had a 
+high burning rate and remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the 
+entire test. Before the flame extinguished, the droplet distorted. Eventually, the droplet shattered 
+coincident with flame extinction. 
+  

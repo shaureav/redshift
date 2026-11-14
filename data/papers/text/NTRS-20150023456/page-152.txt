@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 146 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 122.—Test FLEX−118. Fiber-supported heptane droplet burning in a 0.20/0.45/0.25 O2/N2/CO2, 
+0.70-atm ambient environment. The droplet ignited, and shortly after ignition, a small droplet or 
+debris ignited to the west (color camera) or north (Low Light Level Ultra-Violet, LLUV) of the droplet. 
+This small droplet or particle burned for only a short time and was not visible in the High-Bit-Depth 
+Multispectral (HiBMs). The droplet burns for only a short time before the visible flame extinguished 
+radiatively. Rapid vaporization continued, however, and approximately 5 s after the visible flame 
+extinguished, a vapor cloud formed. This is an indication of cool flame burning and extinction 
+following visible flame extinction. 
+  

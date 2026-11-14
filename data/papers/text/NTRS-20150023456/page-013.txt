@@ -1,0 +1,101 @@
+ 
+NASA/TP—2015-216046 7 
+droplet in this image is misshape d by the needle retraction but 
+assumes the expected spherical shape within approximately 1 s. 
+Figure 4(c) shows the views from all three cameras during 
+ignition. 
+Given the large size of the CIR chamber and the need to 
+minimize res ource utilization, the chamber atmosphere was 
+frequently reused. The ambient atmosphere in this report was  
+that computed from the downlink from the pressure and tem -
+perature data during the FOMA operations and corrected for the 
+fuel vaporized, oxygen consumed, and carbon dioxide and 
+water vapor produced during test-point operations. 
+2.4 Experiment Data Downlink and Format 
+The CIR diagnostics  systems can store the ca mera data for 
+several on-orbit tests. The exact number depends on the length 
+of recording, the recording format (binned versus unbinned on 
+the cameras), and other factors. Typically after one or two test-
+point days, there is a dedicated time to transfer the data between 
+CIR computers and then downlink the image data from the ISS 
+to ground computers at the NASA Johnson Space Center. From 
+Johnson, the data are eventually transferred to the servers at the 
+TSC at Glenn. This process typically takes approximately 24 hr 
+for three to six test points. The data from the CIR cameras is  
+compressed, and once at th e TSC, the CIR staff decompress es 
+and transfers the raw data to the science team. 
+The data transferred to the FLEX science team for analysis 
+consist of a number of text files that contain the following  
+information: 
+ 
+(1) HiBMs camera settings 
+(2) LLUV camera settings 
+(3) MDCA color camera settings (two files) 
+(4) CIR chamber and pressure data 
+(5) Radiometer data 
+(6) CIR facility settings 
+(7) MDCA settings 
+(8) Test comments for any anomalies encountered (e.g., 
+missing data) during the acquisition, transfer , and 
+downlink process 
+ 
+In addition, there are text files for each camera that include 
+the image number, the image name, and the time of acquisition 
+for each camera image. Each frame from the HiBMs and LLUV 
+cameras is stored as a 12-bit tagged-image file format ( TIFF) 
+image, and each frame from the color camera is stored as a 
+bitmap (BMP) image. 
+This represents a large amount of data, much of it 
+unnecessary for scientific analysis of the FLEX data. For this 
+report, the FLEX science team extracted a small subset of the 
+total downlinked data —only that which was important for 
+scientific analysis. 
+3.0 Data Analysis 
+The three camera views are the primary data for the FLEX 
+experiments. The backlit HiBMs view of the droplet provides 
+the droplet size and droplet dynamics as a function of time. This 
+camera operated at full resolution (1024 by 1024 pixels) and 
+30 fps for all but the first few tests documented in this report. 
+The images provided to the FLEX team are 12 -bit grayscale 
+images scaled to 16 -bit images. The droplet appears as a dark 
+object on a light background. The images from this view also 
+allow the determination of the soot volume fraction surrounding 
+the droplet for tests that produce soot. Those data are not 
+detailed in this report, but will be available elsewhere (e.g., Suh 
+et al., 2011). 
+The LLUV view provides the flame chemiluminescence from 
+OH• as a function of time. The viewing window for the LLUV 
+camera became dirty or smudged early in the FLEX testing. For 
+the majority of tests in this report, this contamination showed 
+up as asymmetries  in the LLUV view. This coupled with the 
+very dim flames added to the uncertainty in the flame meas -
+urements. The flame sizes documented  in this report are the 
+dimensions of the flame directly from the TIFF images. No 
+effort was made to perform the deconvolution to determine the 
+peak radial location of OH• chemiluminescence (e.g., Marchese 
+et al., 1996) because of the a symmetrical noisy images  that 
+resulted from the smudged window. 
+The color camera provided  a direct view of the combustion 
+process. This view provided the size and dynamics of the visual 
+flame as a function of time. The following subsections provide 
+detailed descriptions of the analysis of each view. 
+3.1 HiBMS Image Analysis 
+3.1.1 Procedure 
+The image s were analyzed  in a semiautomatic manner by 
+using the commercially available image -processing packages, 
+Image J  (National Institutes of Health , 2011)  or Igor Pro 
+(http://www.wavemetrics.com). Analysis of the HiBMs images 
+proceeded as follows: 
+ 
+(1) Determine which frames to analyze. The droplets were 
+typically deployed with some residual velocity. In addi tion, 
+g-jitter caused the droplet to drift.  In a significant number of 
+tests, the droplet drifted out of the HiBMs FOV (and sometimes 
+back into the FOV) before recording stops. This stage involved 
+identifying the frames where the droplet was within the FOV. 
+(2) Crop the image to limit the region to analyze. 
+(3) Despeckle the image to reduce noise. 
+(4) Adjust the contrast and set the segmentation value.  
+This is the value that set the threshold between the background 
+and the object (droplet).  It varied from test to test because the  
+ 

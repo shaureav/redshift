@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 231 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 207.—Test FLEX–204. Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 
+1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras for the 
+entire burn, but it drifted south and out of the High-Bit-Depth Multispectral (HiBMs) FOV shortly after 
+the flame extinguished diffusively. Image Processing and Storage Unit (IPSU) did not record every 
+frame. 
+  

@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 258 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 234.—Test FLEX–234. Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 
+1.0-atm ambient environment. The droplet drifted southeast and out of the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV) about halfway through the burn. The flame began to 
+oscillate and then drifted south and out of the Low Light Level Ultra-Violet (LLUV) FOV before the 
+flame extinguished. The color camera Image Processing and Storage Unit (IPSU) did not record 
+any images during the burn. It is not clear whether the droplet continued to burn in the LLUV FOV 
+or for how long it burned if it continued to burn. The oscillations were significant, but the flame 
+appeared to decrease in size. From the radiometer, it appears that the droplet burned with a stable 
+flame after the flame oscillations stopped. 
+  

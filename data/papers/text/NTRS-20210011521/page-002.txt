@@ -1,0 +1,55 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+2 
+from these tests and their impact on the spacecraft are presented with emphasis on the fire 
+safety implications of the results. The experiments included, a post-fire cleanup system, vehicle 
+internal volume measurements, and transport of acid gases (HCl and HF). Measurements 
+included video images, flame spread rate, flame temperatures and radiant heat output; energy 
+release through oxygen calorimetry; distributed measurements of CO 2 concentration and 
+temperature at six locations in the spacecraft; CO 2, CO, O 2, HF and HCl concentrations; 
+vehicle pressurized volume; and aerosol concentrations. Details of the flame growth and 
+spread are discussed in other papers as are details of the post -fire cleanup system 
+performance. The fire events had a measurable impact on the vehicle pressure, temperature, 
+and carbon dioxide concentration.  However, despite having heat release rates up to 10 kW, 
+the average vehicle conditions did not rise to unacceptable levels. The combined results of the 
+experiments provide significant new understanding of  the impact of sample and flow duct 
+height on flame spread and growth in addition to an improved perspective of the impact of a 
+fire event on a spacecraft.  
+Nomenclature 
+FFD = Far Field Diagnostics 
+NG = Northrup Grumman 
+MMA = methyl methacrylate 
+PMMA  = polymethyl methacrylate 
+SFU = Saffire Flow Unit 
+SIBAL =  Solid Inflammation Boundary at Low Speed 
+I. Introduction 
+ssessing the risk due to spacecraft fires and developing measures to prevent and respond to fire events requires a 
+thorough understanding of the rate of growth of potential fires and their impact on the space craft environment. 
+The current level of understanding is  insufficient to reliably predict the growth and ultimate size of spacecraft  fires 
+and to predict the impact of the fires on the spacecraft. Addressing these issues has been the purpose of a series of five 
+spacecraft experiments referred to as Saffire I – V. The objectives of these flights were to: (1) observe the growth and 
+spread of realistic fires in low gr avity over thin and thi ck solid fuel samples at a range of atmospheric condi tions 
+including the current and anti cipated environments for exploration missions; (2) to assess the impact of the fire  on 
+spacecraft and the transport of the heat and smoke; and (3) to provide a technology demonstration test of combustion 
+product measurement and post-fire cleanup systems. The first three flights have been discussed previously.1,2 the most 
+recent experiments were conducted in May of  2020 and January of 2021 on the NG -13 and NG-14 flights of the 
+Northrup Grumman Cygnus vehicle . As described in Refs. 1,2 the prior flights had a signif icant impact on our 
+understanding of flame spread and growth in long duration and large-scale experiments. These tests demonstrated that 
+spacecraft fires could grow to significant size and persist long enough to be of concern to the crew and the spacecraft. 
+To examine the impact of the fires on the spacecraft and to further expand the size of the fires being studied, the Saffire 
+concept was expanded to e nable release of more of the heat from the fire into the sp acecraft and to include remote 
+diagnostics and fire response hardware elsewhere in the spacecraft. These tests were to be conducted over three flights 
+as Saffire IV -VI. The first t wo flights (IV an d V) ar e discussed in this paper  with emphasis on the fire safety 
+implications of the fire growth and spread results. Further analysis of the burning of the structured PMMA sample on 
+Saffire V are presented in Ref. 3, and details of the smoke and product transport are presented in Ref 4.  
+II. Experiment Description 
+ 
+The Saffire Flow Unit (SFU) for flights IV and V was very similar to that used for Saffire I-III1,2 with the addition of 
+side view cameras, and gas sensors in the inlet and outlet to measure the oxygen consumption and production of carbon 
+oxides. To accommodate the second set of cameras, the duct height was reduced from 25 cm to 15 cm (perpendicular 
+to the sample surface) preserving the 45 cm width. The relative location of the Saffire units are shown in Figure 1 with 
+the Saffire Flow Unit near the end cone  of the Cygnus vehicle and the Far Field Diagnostics  (FFD) containing the 
+smoke cleanup system and smoke sensors was installed in a mid-deck locker accommodation location adjacent to the 
+A 

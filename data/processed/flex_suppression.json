@@ -1,0 +1,100 @@
+{
+ "annotation": "CO2 at 35% or more is far beyond what a crew can breathe; these tests show suppression chemistry, not a cabin atmosphere.",
+ "band_mmhg": [
+  480.0,
+  600.0
+ ],
+ "groups": [
+  {
+   "extinguished": {
+    "p": "flex:co2:0:ext",
+    "u": "tests",
+    "v": 0
+   },
+   "label": "25% O2 + 15% CO2",
+   "outcome_labels": {
+    "Disruption": 6
+   },
+   "total": {
+    "p": "flex:co2:0:total",
+    "u": "tests",
+    "v": 6
+   }
+  },
+  {
+   "extinguished": {
+    "p": "flex:co2:1:ext",
+    "u": "tests",
+    "v": 14
+   },
+   "label": "23 to 24% O2 + 20 to 25% CO2",
+   "outcome_labels": {
+    "Completion": 2,
+    "Disruption": 7,
+    "Extinction": 14
+   },
+   "total": {
+    "p": "flex:co2:1:total",
+    "u": "tests",
+    "v": 23
+   }
+  },
+  {
+   "extinguished": {
+    "p": "flex:co2:2:ext",
+    "u": "tests",
+    "v": 4
+   },
+   "label": "21% O2 + 30% CO2",
+   "outcome_labels": {
+    "Completion": 2,
+    "Extinction": 4
+   },
+   "total": {
+    "p": "flex:co2:2:total",
+    "u": "tests",
+    "v": 6
+   }
+  },
+  {
+   "extinguished": {
+    "p": "flex:co2:3:ext",
+    "u": "tests",
+    "v": 22
+   },
+   "label": "15 to 20% O2 + 35 to 50% CO2",
+   "outcome_labels": {
+    "Extinction": 22
+   },
+   "total": {
+    "p": "flex:co2:3:total",
+    "u": "tests",
+    "v": 22
+   }
+  }
+ ],
+ "high_o2_no_suppressant": {
+  "fuels": {
+   "Heptane": 8,
+   "Methanol": 9
+  },
+  "outcome_labels": {
+   "Completion": 2,
+   "Disruption": 15
+  },
+  "total": {
+   "p": "flex:high:total",
+   "u": "tests",
+   "v": 17
+  }
+ },
+ "in_band": {
+  "p": "flex:band",
+  "u": "tests",
+  "v": 103
+ },
+ "p": "flex:suppression",
+ "pressure_not_recorded": [
+  "PSI-69-main-L115"
+ ]
+}

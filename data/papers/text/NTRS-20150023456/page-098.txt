@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 92 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 68.—Test FLEX−064. Fiber-supported heptane droplet translating 3 mm/s (for approximately 
+4 s) and burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet had moderate 
+transverse oscillations and remained within the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV) for the entire test. The flame grew and became dim blue. During translation, the leading edge 
+of the flame was bright and the fiber glowed brightly. The trailing edge of the flame was much dimmer 
+and the fiber did not glow. After the translation stopped, the flame extinguished and the droplet 
+vaporized significantly. A small disruption very late in the droplet lifetime left a small residual droplet 
+on the fiber. The behavior after the visible flame extinguished is indicative of cool flame burning and 
+extinction. 
+  

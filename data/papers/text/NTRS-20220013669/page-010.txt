@@ -1,0 +1,25 @@
+2022 ASCEND AIAA 
+ 
+10 
+ 
+ 
+ 
+Fig. 4 Surface Habitat – Interior Layout 
+ 
+ The Surface Habitat is made up of three separate levels: a metallic base level with an internal Suitport-Airlock and 
+two additional levels in the inflatable portion. Each level is accessed by a ladder that runs through the center of the 
+hab. The habitat layout includes locations for 10 Collins Airspace Universal Pallets dedicated to environmental control 
+systems spread throughout the habitat.  The ECLSS is a closed-loop system that provides cabin atmosphere and potable 
+water. Collins Pallets are currently designed with a common pallet structure with a nominal length of 72” and a 
+maximum allowable cross-section of 30.19” so as to translate through a NASA Standard Hatch. [7] Additional system 
+volume is allocated throughout the habitat for sub-systems dedicated to power, avionics, food processing, and thermal. 
+Logistics are stowed on board and stowage is located primarily on the third level in middeck lockers.  
+ The first level is confined within the metallic portion of the habitat. This level contains a work bench with 
+functionality for maintenance, logistics, and trash packaging. It has a Utilization workstation for geology (located on 
+the first level for the possibility of a sample transfer port) and a Computer Station dedicated primarily to extravehicular 
+activity (EVA) Support. There is also access to a Cargo Suitport for pressurized logistics transfer and two Collins 
+Pallets for High Pressure Oxygen Generation Assembly. The other half of the first level is dedicated to a Suitport-
+Airlock with both an exterior-facing and interior-facing hatch and two suitports. Incorporating the suitports into the 
+airlock enables more rapid EVAs than a traditional airlock. The center of the first level is open volume reserved for 
+access to the Suitport-Airlock as well as for vertical translation to the second level. 
+ 

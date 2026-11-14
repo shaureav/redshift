@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 155 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 131.—Test FLEX–127. Fiber-supported methanol with no translation burning in a 0.17/0.38/0.45 
+O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV) for the entire test. The flame then became very dim blue and was nearly 
+cylindrical because of flame quenching due to the support fiber. There was little fiber glow (broadband 
+radiation from the heated fiber) after the droplet stopped translating, and the flame measurements 
+from the color camera indicated that the flame size oscillated periodically after the droplet stopped 
+translating. The HiBMs Image Processing and Storage Unit (IPSU) stopped recording for a relatively 
+large block of time: from just before the igniter withdrew to about halfway through the burn. 
+  

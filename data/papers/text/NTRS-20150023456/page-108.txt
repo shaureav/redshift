@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 102 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 78.—Test FLEX−074. Fiber-supported heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm 
+ambient environment. The droplet oscillated significantly on the fiber after deployment and throughout 
+the burn. The oscillations caused the droplet to become misshapen and caused large errors and 
+scatter in the droplet size measurements. This was a very short burn and, although there was not a 
+large disruption, the oscillations compromised the test data. 
+  

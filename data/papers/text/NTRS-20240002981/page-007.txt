@@ -1,0 +1,19 @@
+7 
+International Conference on Environmental Systems 
+ 
+ 
+4 Eigenbrod, C., Meyer, F., Jomaas, G., Urban, D. L., Ruff, G. A., Olson, S., Ferkul, P., and Toth, B., “Opposed flame spreading 
+along a structured PMMA sample in exploration atmosphere under microgravity,” 50th International Conference on Environmental 
+Systems, 12-15 July 2021, ICES-2021-218. 
+5 Fortenberry, C., Casteel, M., Graf, J., Easton, J., Niehaus, J., Meyer, M., Urban, D., Ruff, G., “Evaluation of Combustion 
+Products from Large-Scale Spacecraft Fires during the Saffire-IV a nd Saffire-V Experiments,” 50th International Conference on 
+Environmental Systems, 12-15 July 2021, ICES-2021-244. 
+6 Huggett, C., “Estimation of Rate of Heat Release by Means of Oxygen Consumption Measurements,” Fire and Materials, 
+vol. 14, no. 2, 1980, pp. 61-65. 
+7 Spacecraft Maximum Allowable Concentrations for Airborne Contaminants, JSC 20584, Revision A, April 2020, NASA 
+JSC, Houston TX. 
+8 Nasa Spaceflight Human-System Standard Volume 2: Human Factors, Habitability, And Environmental Health, NASA-
+STD-3001, Volume 2, Revision D, 2023-09-15 NASA JSC, Houston TX. 
+9 Urban, D., Dietrich, D., Brooker, J., Meyer, M., and Ruff, G., Fire Detection Tradeoffs as a Function of Vehicle 
+Parameters, 46th International Conference on Environmental Systems, ICES-2016-318, 10-14 July 2016, Vienna, Austria 
+ 

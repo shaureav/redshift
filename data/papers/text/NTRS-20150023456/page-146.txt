@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 140 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 116.—Test FLEX–112. Fiber-supported methanol droplet burning in a 0.21/0.49/0.30 O2/N2/CO2, 
+0.70-atm ambient environment. There was no fiber translation during this test. The droplet initially 
+moved west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) before stopping and then 
+slowly moving back to the center of the image. A little disruption (maybe a small gas bubble popping) 
+occurred near flame extinction coincident with a small satellite droplet being ejected from the droplet. 
+  

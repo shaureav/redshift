@@ -1,0 +1,27 @@
+4
+Why Exploration Atmosphere?
+•
+ Significantly increased frequency of EVAs is expected during planetary 
+ops vs. ISS
+–
+ Up to 24 
+hrs
+ / person / week
+•
+ DCS risk is increased by ambulation and physical activity vs microgravity
+[1]
+Apollo had 100% O2
+cabin and zero EVA 
+prebreathe
+Current ISS prebreathe protocols would add significant timeline 
+overhead and are NOT validated for planetary EVA
+–
+ Shuttle & ISS protocols are applicable to microgravity only
+1
+Conkin J, et al. Venous gas emboli and ambulation at 4.3 
+psia
+. 
+Aerosp
+ Med Hum Perform. 2017; 88(4):370
+–
+376.

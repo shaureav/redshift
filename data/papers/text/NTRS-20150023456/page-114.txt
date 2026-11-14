@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 108 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 84.—Test FLEX−080. Fiber-supported heptane droplet translating 3 mm/s and burning in a 
+0.13/0.87 O2/N2, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image 
+Processing and Storage Unit (IPSU) did not record any images for this test. This test had a very 
+short flame lifetime, with the flame extinguishing before the droplet began to translate. A small 
+vapor cloud formed sometime after the visible flame extinguished. It is not clear whether there was 
+cool flame burning and extinction following visible flame extinction. 
+  

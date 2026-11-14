@@ -1,0 +1,26 @@
+34
+Test Summaries
+•
+ Testing history:
+–
+ Nov 2021: Overnight test @ 14.7 psi / 21% O2 (n=8)
+–
+ Feb 2022: 1
+-
+day test @ 8.2 psi / 4.3psi O2 (n=2)
+–
+ May2022: 3
+-
+day test @ 8.2 psi / 34% O2 (n=8)
+–
+ June 2022: 11
+-
+day test @ 8.2 psi / 34% O2 (n=8)
+•
+ Future Goal:
+–
+ Multiple 11
+-
+day tests/year and 3
+-
+day ‘training’ runs

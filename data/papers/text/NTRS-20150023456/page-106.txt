@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 100 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 76.—Test FLEX−072. Free-floating heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm 
+ambient environment. This was a very small droplet, smaller than would be typically recommended 
+to burn in the apparatus. The droplet drifted north-northwest in the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV) after deployment and ignition with a significant (7 to 8 mm/s) velocity, 
+and it left the FOV before the test was complete. The droplet burned with a dim blue flame to 
+completion without disruption. After ignition, there was only a little luminous region. This may have 
+been due to a small bubble burst during ignition (indicated by the droplet history). 
+  

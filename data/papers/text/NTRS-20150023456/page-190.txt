@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 184 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 160.—Test FLEX–157. Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 
+1.0-atm ambient environment. This very small droplet had a high northwest drift velocity in the High-
+Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet left the HiBMs FOV about one-third 
+of the way through the test, and it moved past the northwest igniter before the igniter began to 
+withdraw. The color camera Image Processing and Storage Unit (IPSU) failed to record any frames 
+after deployment. Because the droplet was in the HiBMs FOV for only a short fraction of the entire 
+test, no extinction diameter is reported. 
+  

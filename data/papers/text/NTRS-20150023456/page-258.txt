@@ -1,0 +1,17 @@
+ 
+NASA/TP—2015-216046 252 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 228.—Test FLEX–227. Free-floating methanol droplet in a 0.20/0.75.0.05 O2/N2/He, 1.0-atm 
+ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage 
+Unit (IPSU) failed to start, so no droplet data were recorded. The flame was bright and burned for 
+over 5 s until it (presumably) extinguished diffusively. 
+  

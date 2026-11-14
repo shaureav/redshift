@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 119 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 95.—Test FLEX−091. Fiber-supported methanol droplet translating 3 mm/s and burning in a 
+0.25/0.60/0.15 O2/N2/CO2, 0.70-atm ambient environment. There were moderate axial oscillations on 
+the fiber (lower frequency than for some of the tests with severe oscillations) while the droplet was 
+translating. The oscillations stopped and the droplet burned nicely until the end of the test, when 
+there was a disruption coincident with flame extinction. The increase in droplet size at the end of the 
+test was probably the result of bubble nucleation and growth. 
+  

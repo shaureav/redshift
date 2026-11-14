@@ -1,0 +1,110 @@
+6 
+International Conference on Environmental Systems 
+ 
+ 
+ 
+IV. Conclusion 
+Practical scale fires ranging from 1.5 to 3.2 kW were tested in unmanned spacecraft with free air volumes of 17 to 
+19 cubic meters. Despite these fires, the temperature only increased significantly very near to the fire itself. However, 
+the ambient concentrations of carbon monoxide and carbon dioxide rose significantly with the PMMA tests exceeding 
+the 1-hour carbon dioxide limit and the 24-hour carbon monoxide limit. The smoke from the fire event was readily 
+detected by an ionization detector and a light scattering system but a typical alarm threshold was only achieved at 981 
+seconds. By this time most of the hazardous gas release had occurred. Collectively these results demonstrate that the 
+human hazard from a fire in a spacecraft is very similar to terrestrial fires wh ere the heat from the fire is not the 
+principal hazard and rather the smoke and gaseous products are a much greater concern. These results are helpful for 
+defining fire response approaches for spacecraft. Further wo rk will be needed to extend these results to the partial 
+gravity environment expected on future mission to the moon and Mars. Additional analysis and modeling of these fire 
+scenarios will be the topic of future articles. 
+Acknowledgments 
+The authors acknowledge the support of the NASA Mars Campaign Office, for the sponsorship of the Spacecraft 
+Fire Safety Demonstration Project and the Saffire experime nts. In addition, the authors acknowledge the support of 
+the various space and research agencies that have supported this work including but not limited to the Japan Aerospace 
+Exploration Agency (JAXA), the European Space Agency, the Russian Space Agency, the National Centre for Space 
+Studies (CNES), the German aerospace Center (DLR), the European Union, the Russian Academy of Sciences and 
+NASA. The excellent support by the engineering team (NASA and Zin Technologies), Northrup Grumman and the 
+on-orbit crew are gratefully acknowledged. 
+References 
+1 Urban, D. L., Ferkul, P., Olson, S., Ruff, G. A., Easton, J., T'ien, J. S., Liao, Y. T., Li, C., Fernandez-Pello, C., Torero, J. L., 
+Legros, G., Eigenbrod, C., Smirnov, N., Fujita, O., Rouvreau, S., Toth, B., and Jomaas, G., “Flame spread: Effects of Microgravity 
+and Scale,” Combustion and Flame, Volume 199, 2019, pp. 168-182. 
+2 Olson, S., Urban, D. L., Ruff, G. A., Ferkul, P., Toth, B. , Eigenbrod, C., Meyer, F., and Jomaas, G.,” Concurrent Flame 
+Spread Over Two-Sided Thick PMMA Slabs in Microgravity,” Fire Technol 56, 49–69 (2020). 
+3 Urban, D. L., Ruff, G. A, Ferkul, P., Easton, J., Owens, J., Olson, S., Meyer, M., Fortenberry, C., Brooker, Graf, J., Casteel, 
+M., Toth, B. Meyer, F, Eigenbrod, C., T'ien, J. S., Liao, Y. T., Li, C., Fernandez- Pello, C., Legros, G., Guibaud, A., Smirnov, N., 
+Fujita, O., Jomaas, G., Fire Safety Implications of Preliminar y Results from Saffire IV and V Experiments on Large Scale 
+Spacecraft Fires,” 50th International Conference on Environmental Systems, ICES-2021-266, 12-15 July 2021 
+Table 2. Saffire IV-VI Heat release and increase of carbon oxides*. 
+  
+Oxygen 
+Consumption 
+Calorimetry 
+Fuel Consumption 
+Calorimetry 
+ 
+Saffire 
+Flight/ 
+Sample 
+Material Burn 
+duration 
+(s) 
+Peak 
+Heat 
+Release 
+(W) 
+Total 
+Heat 
+Release 
+(kJ) 
+Average 
+Heat 
+Release 
+(W) 
+Total 
+Heat 
+Release 
+(kJ) 
+Max 
+Temp 
+at 
+SFU 
+outlet 
+(°C) 
+Max 
+Temp at 
+FFD or 
+nearest 
+location 
+(°C) 
+FFD 
+inlet 
+CO2 
+increase 
+(ppm) 
+CO2 partial 
+pressure 
+increase 
+(mmHg) 
+FFD 
+inlet CO 
+increase 
+(ppm) 
+IV-1 SIBAL 130 
+  
+3,150 409 45 25 1390 1.03 80 
+V-2 Cotton 
+Jersey 
+200 
+  
+2,800 560 46 23 2360 1.26 83 
+VI-2 SIBAL 112 3217 580 3,650 409 48 20 2800 1.15 120 
+VI-3 2-sided 
+PMMA 
+780 3080 1280 
+  
+77 21 8539 3.51 308 
+VI-4 1-sided 
+PMMA 
+1200 1507 830 
+  
+57 21 8117 3.37 320 
+*Empty fields were cases where the data were not available. 

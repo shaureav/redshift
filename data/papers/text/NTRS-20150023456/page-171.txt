@@ -1,0 +1,23 @@
+ 
+NASA/TP—2015-216046 165 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 141.—Test FLEX−137. Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet drifted northwest and out of the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV) about halfway through the test. After deployment, there 
+was a disruption (maybe a bubble burst because these droplets had issues with gas bubbles) that 
+caused significant droplet deformation and oscillations. There also was a moderate degree of 
+sooting. The droplet burned to a relatively small size before disruptive extinction. The noise in the 
+beginning of the droplet history was due to soot influencing the droplet size measurement. The color 
+camera Image Processing and Storage Unit (IPSU) failed to record any images after deployment. 
+The Low Light Level Ultra-Violet (LLUV) IPSU stopped recording images for a brief time in the 
+middle of the burn. 
+  

@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 67 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 43.—Test FLEX−039. Fiber-supported heptane droplet translating 3 mm/s and burning in a 
+0.34/0.66 O2/N2, 0.70-atm ambient environment. There were significant transverse and axial 
+oscillations on the fiber during the entire burn, but the droplet remained within the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV) for the entire test. There also was significant sooting with 
+large aggregates throughout the test. The sooting was so severe that the threshold intensity for droplet 
+discrimination had to be reduced to get reasonable droplet size measurements. The flame was bright 
+yellow and very luminous throughout the entire test. A disruption dislocated the droplet from fiber 
+coincident with flame extinction. 
+  

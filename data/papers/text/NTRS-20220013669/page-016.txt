@@ -1,0 +1,49 @@
+2022 ASCEND AIAA 
+ 
+16 
+ 
+ 
+this study does not establish whether or not it is acceptable for Artemis crew usage. It does, however, present a habitat 
+that is ready for such an assessment. HITL evaluations are important tools to evaluate the feasibility of a design layout 
+for human use. HITL evaluations should be performed as part of each design cycle as a way to identify areas where 
+design changes are needed, or to measure the impacts of design changes performed in the preceding cycle. Various 
+forms of HITL evaluations can be conducted. Early in the development of a habitable spacecraft, before physical 
+prototypes are constructed, it is appropriate to perform walk-through evaluations. A walk-through evaluation is one 
+where the test subject conducts a visual inspection of the habitat environment but does not operate or use any of the 
+habitat components. This is used when the fidelity of the habitat representation is too low for any aspects of the habitat 
+to be sufficiently functional to utilize. Walk-through evaluations are an efficient use of resources when trading early 
+design concepts because these evaluations help to locate items that require resources that informs the overall design 
+such as cable routing, cooling loops, and mechanical mounting interfaces. The evaluation can be conducted in several 
+different ways, with a tabletop evaluation and virtual reality evaluation representing the extremes of the trade spac  
+IX. Conclusion 
+Designing an internal layout highlights important capabilities and constraints of the current structural SH 
+architecture. The layout process can also give more insight into the --- of specific functional spaces and net habitable 
+volume. Lastly, an internal layout, in conjunction with mass estimates, can supply planners with information about 
+how to best meet mass limits. Three-dimensional CAD models go a long way in representing potential layout options, 
+but to truly understand the full capabilities and limitations of an internal layout, further research utilizing multiple 
+methods of analysis must be completed.  
+ 
+References 
+[1]  P. Kessler, T. Prater, T. Nickens and D. Harris, "Artemis Deep Space Habitation: Enabling a Sustained Human 
+Presence on the Moon and Beyond," in IEEE Aerospace, Big Sky, Montana, 2022.  
+[2]  D. Harris, P. Kessler, T. Nickens, A. Choate, B. Horvath, M. Simon and C. Stromgren, "Moon to Mars (M2M) 
+Habitation Considerations A Snap Shot As of January 2022," NASA, Huntsville, Alabama, 2022. 
+[3]  NASA Langley Research Center, "Foundation Surface Habitat Function-Driven Net Habitable Volume," 
+December 2020. 
+[4]  National Aeronautics and Space Administration, "Net Habitable Volume Verification Method (JSC-63557)," 
+NASA Human Health and Performance Directorate, 2014. 
+[5]  C. Stromgren, C. Burke, J. Cho, M. Rucker and M. Garcia-Robles, "Defining the Required Net Habitable 
+Volume for Long-Duration Exploration Missions," in ASCEND, Las Vegas, Nevada, 2020.  
+[6]  R. Howard, "Notional Habitat Science Outfitting for a Lunar Surface Habitat or Mars Transit Habitat," in 2021 
+ASCEND, Virtual Conference, 2021.  
+[7]  NASA, NASA Space Flight Human-System Standard Volume 2, Rev. B: Human Factors, Habitability, and 
+Environmental Health, Rev B. ed., vol. Vol 2, Houston, TX: NASA, 2019.  
+[8]  NASA, NASA Space Flight Human-System Standard Volume 2, Rev. C: Human Factors, Habitability, and 
+Environmental Health, Rev C ed., vol. Vol 2, Houston, TX: NASA, 2022.  
+[9]  W. Fernandez and A. Kreykes, "IMPACT 1.0—Task Impairment: A Novel Approach for Assessing Impairment 
+during Exploration-Class Missions," in 72nd International Astronautical Congress (IAC), Dubai, United Arab 
+Emirates, 2001.  
+[10]  M. Interbartolo, W. O'Neill, M. Bannon, R. Howard, B. Montoya, H. Litaker and J. Black, "The Lunar Lab 
+Initiative," in IEEE Aerospace, Big Sky, Montana, 2022.  
+ 
+ 

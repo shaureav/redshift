@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 116 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 92.—Test FLEX−088. Free-floating methanol droplet burning in a 0.25/0.60/0.15 O2/N2/CO2, 
+0.70-atm ambient environment. The droplet deployed and ignited with almost no residual motion. 
+It remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. 
+The droplet burned cleanly with a brighter-than-usual blue flame during the entire test. Near the 
+end of the test, the droplet deformed (becoming football shaped). Then the droplet disrupted 
+coincident with flame extinction. The droplet shattered at the end of the test, indicating that it was 
+probably compromised by contamination from the conformal coating on the needle. 
+  

@@ -1,0 +1,17 @@
+15
+11
+-
+day Study Chamber Pressure 
+–
+ EVA Sims
+•
+ Average EVA pressure: 4.27psi (target 4.3psia +/
+-
+ 0.1)
+–
+ Time outside limits: 0
+-
+20min/EVA (goal ≤2 min/EVA)
+•
+ Longest excursion 16min
+ Within Goals

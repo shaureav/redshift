@@ -1,0 +1,98 @@
+ 
+NASA/TP—2015-216046 9 
+flame and likely overestimates a measure based on the maxi-
+mum radial intensity. Also, it is  obvious that there is noise in 
+the image that can contribute to the  uncertainty in flame size. 
+The uncertainty as a result of these last two sources was greatly 
+reduced by measuring the projected area (as opposed to a single 
+spatial dimension) of the flame. As a result, we estimate d the 
+uncertainty in the flame size to be ±200 µm. 
+3.3 Multi-User Droplet Combustion 
+Apparatus Color Camera Analysis 
+3.3.1 Procedure 
+The procedure to measure the flame size from the MDCA 
+color camera was almost identical to that used on the LLUV  
+images. The flames were also quite dim, and as a result, there is 
+a significant amount of noise in the color camera images. There 
+also is ambiguity as to the definition of the flame. The flame 
+dimension detailed in this report represents the outer edge of the 
+visible flame. 
+The image sequences were analyzed  in a semiautomatic 
+manner using the commercially avail able image -processing 
+packages, Image J (National Institutes of Health, 2011) or Igor 
+Pro (http://www.wavemetrics.com). The a nalysis used on the 
+MDCA color camera images follows. 
+ 
+(1) Determine which frames to analyze. 
+(2) Crop the image so that it contains only the flame. 
+(3) Remove outliers.  This process remove d any pixel 
+values that were near saturation. These values were not from 
+the flame but were a resul t of the intensifier on the LLUV 
+camera. 
+(4) Adjust the contrast and set the segmentation value.  
+This is the value that sets the threshold between the background 
+and the object (flame). It was constant throughout the test but 
+varied from test to test. The value was set manually to optimally 
+distinguish between the flame and background for the entire 
+test. The segmentation (threshold) value was typically 
+relatively low and therefore represented a very dim part of the 
+flame or the very outer edge of the flame. The value was likely 
+somewhat larger than a flame diameter based on the dimension 
+of the maximum temperature or OH• chemiluminescence. 
+(5) Fill holes and manually remove stray objects.  There 
+was a darker region inside the flame,  and this “ hole” was 
+included in the area measurement of the flame. 
+(6) Measure the area, center of mass, and perimeter of 
+the droplet in the image.  The measurement was converted to 
+a droplet size using the appropriate scale factor (6.87 pixels/mm 
+for most of the tests herein). 
+(7) Perform steps 2 through 6 for each image identified 
+in step 1. 
+3.3.2 Error Analysis 
+The error or uncertainty in the measurement of the flame 
+diameter is more difficult to determine than the droplet size 
+measurement. The FOV for the LLUV  is 93.2 mm wide , and 
+the video camera has  standard National Television System 
+Committee (NTSC) resolution, or 640 by 480 pixels. Therefore, 
+the minimum spatial resolution is ±146 µm. 
+There is additional uncertainty in estimating the appropriate 
+segmentation value. The value represents the outer edge of the 
+flame and likely overestimates a measure based on maximum 
+radial intensity. Also, it is  obvious that there is noise in the 
+image that can contribute to the uncertainty in flame size. The 
+uncertainty as a result of these last two s ources was greatly 
+reduced by measuring the projected area (as opposed to a single 
+spatial dimension) of the flame. As a result, we estimate d the 
+uncertainty in the flame size to be ±250 µm. 
+4.0 Experimental Results 
+4.1 Test Matrix—March 2009 through 
+December 2011 
+This report documents the results of the FLEX experiments 
+from March 2009 through December 2011. The tests were 
+conducted in numerical order, so there was a small amount of 
+accumulated carbon dioxide, water vapor, and fuel vapor. 
+Table I outlines the first tests, which were performed in cabin 
+air on the ISS. The ambient gas composition on the ISS is 
+nominally that of air (0.21 oxygen mole fraction, 0.005 carbon 
+dioxide mole fraction, balance nitrogen) at 1.0 -atm pressure. 
+Once filled, the atmosphere was not changed for any of these 
+tests. These tests were not part of the nominal FLEX test 
+matrix, but were performed to determine the proper operation 
+of the CIR and MDCA integrated systems. The tests do, 
+however, provide scientifically relevant data, so the results are 
+reported in this document. 
+Table II provides details for the next series of tests, which were 
+in high -pressure, carbon -dioxide-enriched ambient e nviron-
+ments. These tests were next in sequence in order to optimize the 
+use of limited on -orbit gas resources. During these tests, 
+however, the engineering and science teams noticed that the fuel 
+system did not respond well to cycling from high to low 
+pressures. As a result, after only a few tests were conducted in 
+these ambient environments, the tea ms decided to change the 
+order of the tests in the test matrix. 
+After the test matrix  was reordered, the FLEX experiments  
+focused on low -pressure ( ≤1-atm), nitrogen -diluted, ambient 
+environments. Table III provides details for the initial tests, 
+which focused on ambient conditions with higher oxygen mole 
+ 
+ 

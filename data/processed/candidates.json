@@ -1,0 +1,119 @@
+{
+ "candidates": [
+  {
+   "context": "Named as a NASA-considered atmosphere in the ACME BRE flight objectives.",
+   "id": "c14_7_21",
+   "name": "14.7 psi / 21% O2",
+   "o2_pct": {
+    "p": "cand:c14_7_21:o2",
+    "u": "%",
+    "v": 21.0
+   },
+   "pressure_kpa": {
+    "p": "cand:c14_7_21:kpa",
+    "u": "kPa",
+    "v": 101.3529322095749
+   },
+   "pressure_psi": {
+    "p": "cand:c14_7_21:psi",
+    "u": "psi",
+    "v": 14.7
+   },
+   "role": "habitat",
+   "short": "Earth sea level and ISS reference",
+   "source": "cand:c14_7_21"
+  },
+  {
+   "context": "Named as a NASA-considered atmosphere in the ACME BRE flight objectives.",
+   "id": "c10_2_26_5",
+   "name": "10.2 psi / 26.5% O2",
+   "o2_pct": {
+    "p": "cand:c10_2_26_5:o2",
+    "u": "%",
+    "v": 26.5
+   },
+   "pressure_kpa": {
+    "p": "cand:c10_2_26_5:kpa",
+    "u": "kPa",
+    "v": 70.32652439031727
+   },
+   "pressure_psi": {
+    "p": "cand:c10_2_26_5:psi",
+    "u": "psi",
+    "v": 10.2
+   },
+   "role": "habitat",
+   "short": "Intermediate candidate",
+   "source": "cand:c10_2_26_5"
+  },
+  {
+   "context": "The challenge statement says the Moon base will likely use 30% O2 or more at 10.2 psi or less. This is a bound from the challenge text, not a named NASA candidate.",
+   "id": "c10_2_30",
+   "name": "10.2 psi / 30% O2",
+   "o2_pct": {
+    "p": "cand:c10_2_30:o2",
+    "u": "%",
+    "v": 30.0
+   },
+   "pressure_kpa": {
+    "p": "cand:c10_2_30:kpa",
+    "u": "kPa",
+    "v": 70.32652439031727
+   },
+   "pressure_psi": {
+    "p": "cand:c10_2_30:psi",
+    "u": "psi",
+    "v": 10.2
+   },
+   "role": "scenario",
+   "short": "Challenge statement scenario",
+   "source": "cand:c10_2_30"
+  },
+  {
+   "context": "Named as a NASA-considered atmosphere in the ACME BRE flight objectives.",
+   "id": "c8_2_34",
+   "name": "8.2 psi / 34% O2",
+   "o2_pct": {
+    "p": "cand:c8_2_34:o2",
+    "u": "%",
+    "v": 34.0
+   },
+   "pressure_kpa": {
+    "p": "cand:c8_2_34:kpa",
+    "u": "kPa",
+    "v": 56.53700980398055
+   },
+   "pressure_psi": {
+    "p": "cand:c8_2_34:psi",
+    "u": "psi",
+    "v": 8.2
+   },
+   "role": "habitat",
+   "short": "Low-pressure, high-oxygen candidate",
+   "source": "cand:c8_2_34"
+  },
+  {
+   "context": "The spacesuit atmosphere, from the challenge statement. Not a habitat candidate.",
+   "id": "c4_3_100",
+   "name": "4.3 psi / 100% O2",
+   "o2_pct": {
+    "p": "cand:c4_3_100:o2",
+    "u": "%",
+    "v": 100.0
+   },
+   "pressure_kpa": {
+    "p": "cand:c4_3_100:kpa",
+    "u": "kPa",
+    "v": 29.647456360623952
+   },
+   "pressure_psi": {
+    "p": "cand:c4_3_100:psi",
+    "u": "psi",
+    "v": 4.3
+   },
+   "role": "suit",
+   "short": "Spacesuit",
+   "source": "cand:c4_3_100"
+  }
+ ]
+}

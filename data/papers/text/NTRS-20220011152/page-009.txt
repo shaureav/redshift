@@ -1,0 +1,57 @@
+9
+Expected Results
+•
+ DCS is a potential outcome of this 
+testing
+–
+ 24/7 medical coverage, and dual 
+coverage w/ docs in
+-
+person during EVAs
+–
+ Portable hyperbaric (treatment) 
+chamber will be located inside B7 to 
+enable immediate DCS treatment if 
+required
+–
+ Protocol is IRB approved
+–
+ External Data Safety Monitoring Board 
+providing additional oversight
+•
+ Approach is based on (and consistent 
+with) Shuttle & ISS prebreathe protocol 
+validation testing
+Test Series 1 
+(11 days)
+Test Series 
+2 (11 days)
+DSMB Review;
+Modify 
+Prebreathe
+Neither 
+Accept 
+nor Reject
+Reject
+Reject
+Neither 
+Accept nor 
+Reject
+Additional Test 
+Series
+Reject
+Validated Prebreathe 
+Protocol
+Test Series 1 
+(11 days)
+Test Series 
+2 (11 days)
+DSMB Review;
+Modify 
+Prebreathe
+Neither 
+Accept 
+nor Reject
+Reject
+Reject
+Accept

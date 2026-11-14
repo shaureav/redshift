@@ -1,0 +1,1674 @@
+{
+ "evidence": [
+  {
+   "candidate_id": "c14_7_21",
+   "flame_temperature": {
+    "approximate": false,
+    "p": "ft:c14_7_21",
+    "u": "K",
+    "v": 2224.2
+   },
+   "near": {
+    "droplet": {
+     "psi_table": {
+      "p": "near:c14_7_21:droplet:psi_table",
+      "u": "tests",
+      "v": 137
+     },
+     "published_paper": {
+      "p": "near:c14_7_21:droplet:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "emulator": {
+     "psi_table": {
+      "p": "near:c14_7_21:emulator:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c14_7_21:emulator:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "gas": {
+     "psi_table": {
+      "p": "near:c14_7_21:gas:psi_table",
+      "u": "tests",
+      "v": 106
+     },
+     "published_paper": {
+      "p": "near:c14_7_21:gas:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "solid": {
+     "psi_table": {
+      "p": "near:c14_7_21:solid:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c14_7_21:solid:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    }
+   },
+   "near_total": {
+    "p": "near:c14_7_21:total",
+    "u": "tests",
+    "v": 243
+   },
+   "nearest": [
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L203",
+      "u": "steps",
+      "v": 0.0001
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L203"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L207",
+      "u": "steps",
+      "v": 0.0001
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L207"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L123",
+      "u": "steps",
+      "v": 0.001
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L123"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L145",
+      "u": "steps",
+      "v": 0.001
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L145"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L10",
+      "u": "steps",
+      "v": 0.0012
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L10"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L5",
+      "u": "steps",
+      "v": 0.0012
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L5"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L6",
+      "u": "steps",
+      "v": 0.0012
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L6"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L7",
+      "u": "steps",
+      "v": 0.0012
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L7"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L12",
+      "u": "steps",
+      "v": 0.0022
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L12"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L8",
+      "u": "steps",
+      "v": 0.0064
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L8"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L13",
+      "u": "steps",
+      "v": 0.0073
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L13"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L146",
+      "u": "steps",
+      "v": 0.0077
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L146"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L204",
+      "u": "steps",
+      "v": 0.0082
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L204"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L3",
+      "u": "steps",
+      "v": 0.0105
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L3"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L9",
+      "u": "steps",
+      "v": 0.0129
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L9"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L147",
+      "u": "steps",
+      "v": 0.0142
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L147"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L208",
+      "u": "steps",
+      "v": 0.0147
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L208"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L2",
+      "u": "steps",
+      "v": 0.0148
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L2"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L209",
+      "u": "steps",
+      "v": 0.0158
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L209"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L206",
+      "u": "steps",
+      "v": 0.0172
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L206"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L124",
+      "u": "steps",
+      "v": 0.0174
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L124"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-69-main-L169",
+      "u": "steps",
+      "v": 0.0188
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L169"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L86",
+      "u": "steps",
+      "v": 0.0209
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L86"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L87",
+      "u": "steps",
+      "v": 0.0209
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L87"
+    },
+    {
+     "distance": {
+      "p": "dist:c14_7_21:PSI-159-normal-L88",
+      "u": "steps",
+      "v": 0.0209
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L88"
+    }
+   ],
+   "o2_match_pressure_unknown": {
+    "droplet": {
+     "p": "o2match:c14_7_21:droplet",
+     "u": "tests",
+     "v": 80
+    },
+    "emulator": {
+     "p": "o2match:c14_7_21:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "o2match:c14_7_21:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "o2match:c14_7_21:solid",
+     "u": "tests",
+     "v": 129
+    }
+   },
+   "unknown": {
+    "basis_differs": {
+     "p": "state:c14_7_21:basis_differs",
+     "u": "tests",
+     "v": 263
+    },
+    "unknown_both": {
+     "p": "state:c14_7_21:unknown_both",
+     "u": "tests",
+     "v": 681
+    },
+    "unknown_o2": {
+     "p": "state:c14_7_21:unknown_o2",
+     "u": "tests",
+     "v": 11
+    },
+    "unknown_pressure": {
+     "p": "state:c14_7_21:unknown_pressure",
+     "u": "tests",
+     "v": 229
+    }
+   }
+  },
+  {
+   "candidate_id": "c10_2_26_5",
+   "flame_temperature": {
+    "approximate": false,
+    "p": "ft:c10_2_26_5",
+    "u": "K",
+    "v": 2415.4
+   },
+   "near": {
+    "droplet": {
+     "psi_table": {
+      "p": "near:c10_2_26_5:droplet:psi_table",
+      "u": "tests",
+      "v": 68
+     },
+     "published_paper": {
+      "p": "near:c10_2_26_5:droplet:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "emulator": {
+     "psi_table": {
+      "p": "near:c10_2_26_5:emulator:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c10_2_26_5:emulator:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "gas": {
+     "psi_table": {
+      "p": "near:c10_2_26_5:gas:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c10_2_26_5:gas:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "solid": {
+     "psi_table": {
+      "p": "near:c10_2_26_5:solid:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c10_2_26_5:solid:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    }
+   },
+   "near_total": {
+    "p": "near:c10_2_26_5:total",
+    "u": "tests",
+    "v": 68
+   },
+   "nearest": [
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L93",
+      "u": "steps",
+      "v": 0.309
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L93"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L94",
+      "u": "steps",
+      "v": 0.3112
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L94"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L90",
+      "u": "steps",
+      "v": 0.3114
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L90"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L89",
+      "u": "steps",
+      "v": 0.3116
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L89"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L92",
+      "u": "steps",
+      "v": 0.3135
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L92"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L91",
+      "u": "steps",
+      "v": 0.3157
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L91"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L175",
+      "u": "steps",
+      "v": 0.5013
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L175"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L176",
+      "u": "steps",
+      "v": 0.5015
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L176"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L95",
+      "u": "steps",
+      "v": 0.5027
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L95"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L250",
+      "u": "steps",
+      "v": 0.503
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L250"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L252",
+      "u": "steps",
+      "v": 0.5033
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L252"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L96",
+      "u": "steps",
+      "v": 0.5034
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L96"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L97",
+      "u": "steps",
+      "v": 0.5034
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L97"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L253",
+      "u": "steps",
+      "v": 0.5036
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L253"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L177",
+      "u": "steps",
+      "v": 0.5062
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L177"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L178",
+      "u": "steps",
+      "v": 0.5064
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L178"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L254",
+      "u": "steps",
+      "v": 0.7009
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L254"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L255",
+      "u": "steps",
+      "v": 0.7009
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L255"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L251",
+      "u": "steps",
+      "v": 0.7011
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L251"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L179",
+      "u": "steps",
+      "v": 0.7019
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L179"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L105",
+      "u": "steps",
+      "v": 0.7022
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L105"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L98",
+      "u": "steps",
+      "v": 0.7023
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L98"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L42",
+      "u": "steps",
+      "v": 0.7024
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L42"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L180",
+      "u": "steps",
+      "v": 0.7024
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L180"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:PSI-69-main-L184",
+      "u": "steps",
+      "v": 0.7024
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L184"
+    }
+   ],
+   "o2_match_pressure_unknown": {
+    "droplet": {
+     "p": "o2match:c10_2_26_5:droplet",
+     "u": "tests",
+     "v": 61
+    },
+    "emulator": {
+     "p": "o2match:c10_2_26_5:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "o2match:c10_2_26_5:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "o2match:c10_2_26_5:solid",
+     "u": "tests",
+     "v": 51
+    }
+   },
+   "unknown": {
+    "basis_differs": {
+     "p": "state:c10_2_26_5:basis_differs",
+     "u": "tests",
+     "v": 263
+    },
+    "unknown_both": {
+     "p": "state:c10_2_26_5:unknown_both",
+     "u": "tests",
+     "v": 681
+    },
+    "unknown_o2": {
+     "p": "state:c10_2_26_5:unknown_o2",
+     "u": "tests",
+     "v": 11
+    },
+    "unknown_pressure": {
+     "p": "state:c10_2_26_5:unknown_pressure",
+     "u": "tests",
+     "v": 229
+    }
+   }
+  },
+  {
+   "candidate_id": "c10_2_30",
+   "flame_temperature": {
+    "approximate": false,
+    "p": "ft:c10_2_30",
+    "u": "K",
+    "v": 2504.6
+   },
+   "near": {
+    "droplet": {
+     "psi_table": {
+      "p": "near:c10_2_30:droplet:psi_table",
+      "u": "tests",
+      "v": 52
+     },
+     "published_paper": {
+      "p": "near:c10_2_30:droplet:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "emulator": {
+     "psi_table": {
+      "p": "near:c10_2_30:emulator:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c10_2_30:emulator:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "gas": {
+     "psi_table": {
+      "p": "near:c10_2_30:gas:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c10_2_30:gas:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "solid": {
+     "psi_table": {
+      "p": "near:c10_2_30:solid:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c10_2_30:solid:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    }
+   },
+   "near_total": {
+    "p": "near:c10_2_30:total",
+    "u": "tests",
+    "v": 52
+   },
+   "nearest": [
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L42",
+      "u": "steps",
+      "v": 0.0575
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L42"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L44",
+      "u": "steps",
+      "v": 0.0625
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L44"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L43",
+      "u": "steps",
+      "v": 0.0633
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L43"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L41",
+      "u": "steps",
+      "v": 0.0642
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L41"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L26",
+      "u": "steps",
+      "v": 0.0826
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L26"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L27",
+      "u": "steps",
+      "v": 0.0917
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L27"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L29",
+      "u": "steps",
+      "v": 0.1025
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L29"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L28",
+      "u": "steps",
+      "v": 0.1108
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L28"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L38",
+      "u": "steps",
+      "v": 0.8021
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L38"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L39",
+      "u": "steps",
+      "v": 0.8021
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L39"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L40",
+      "u": "steps",
+      "v": 0.8024
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L40"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L20",
+      "u": "steps",
+      "v": 0.8059
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L20"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L21",
+      "u": "steps",
+      "v": 0.8063
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L21"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L23",
+      "u": "steps",
+      "v": 0.8074
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L23"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L22",
+      "u": "steps",
+      "v": 0.8075
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L22"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L24",
+      "u": "steps",
+      "v": 0.8089
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L24"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L25",
+      "u": "steps",
+      "v": 0.8102
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L25"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L93",
+      "u": "steps",
+      "v": 1.0027
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L93"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L94",
+      "u": "steps",
+      "v": 1.0034
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L94"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L90",
+      "u": "steps",
+      "v": 1.0035
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L90"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L89",
+      "u": "steps",
+      "v": 1.0035
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L89"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L92",
+      "u": "steps",
+      "v": 1.0041
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L92"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L91",
+      "u": "steps",
+      "v": 1.0048
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L91"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L175",
+      "u": "steps",
+      "v": 1.2005
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L175"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:PSI-69-main-L176",
+      "u": "steps",
+      "v": 1.2006
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L176"
+    }
+   ],
+   "o2_match_pressure_unknown": {
+    "droplet": {
+     "p": "o2match:c10_2_30:droplet",
+     "u": "tests",
+     "v": 0
+    },
+    "emulator": {
+     "p": "o2match:c10_2_30:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "o2match:c10_2_30:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "o2match:c10_2_30:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "unknown": {
+    "basis_differs": {
+     "p": "state:c10_2_30:basis_differs",
+     "u": "tests",
+     "v": 263
+    },
+    "unknown_both": {
+     "p": "state:c10_2_30:unknown_both",
+     "u": "tests",
+     "v": 681
+    },
+    "unknown_o2": {
+     "p": "state:c10_2_30:unknown_o2",
+     "u": "tests",
+     "v": 11
+    },
+    "unknown_pressure": {
+     "p": "state:c10_2_30:unknown_pressure",
+     "u": "tests",
+     "v": 229
+    }
+   }
+  },
+  {
+   "candidate_id": "c8_2_34",
+   "flame_temperature": {
+    "approximate": false,
+    "p": "ft:c8_2_34",
+    "u": "K",
+    "v": 2570.4
+   },
+   "near": {
+    "droplet": {
+     "psi_table": {
+      "p": "near:c8_2_34:droplet:psi_table",
+      "u": "tests",
+      "v": 17
+     },
+     "published_paper": {
+      "p": "near:c8_2_34:droplet:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "emulator": {
+     "psi_table": {
+      "p": "near:c8_2_34:emulator:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c8_2_34:emulator:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "gas": {
+     "psi_table": {
+      "p": "near:c8_2_34:gas:psi_table",
+      "u": "tests",
+      "v": 20
+     },
+     "published_paper": {
+      "p": "near:c8_2_34:gas:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "solid": {
+     "psi_table": {
+      "p": "near:c8_2_34:solid:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c8_2_34:solid:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    }
+   },
+   "near_total": {
+    "p": "near:c8_2_34:total",
+    "u": "tests",
+    "v": 37
+   },
+   "nearest": [
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L129",
+      "u": "steps",
+      "v": 0.4917
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L129"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L130",
+      "u": "steps",
+      "v": 0.5018
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L130"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L131",
+      "u": "steps",
+      "v": 0.5141
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L131"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L40",
+      "u": "steps",
+      "v": 0.5554
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L40"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L39",
+      "u": "steps",
+      "v": 0.5632
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L39"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L37",
+      "u": "steps",
+      "v": 0.568
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L37"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L38",
+      "u": "steps",
+      "v": 0.568
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L38"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L157",
+      "u": "steps",
+      "v": 0.5804
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L157"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L36",
+      "u": "steps",
+      "v": 0.6155
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L36"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L128",
+      "u": "steps",
+      "v": 0.6853
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L128"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L35",
+      "u": "steps",
+      "v": 0.7645
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L35"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L156",
+      "u": "steps",
+      "v": 0.8077
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L156"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L127",
+      "u": "steps",
+      "v": 0.8701
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L127"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L34",
+      "u": "steps",
+      "v": 0.8912
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L34"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L155",
+      "u": "steps",
+      "v": 0.9138
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L155"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L154",
+      "u": "steps",
+      "v": 0.9935
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L154"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L33",
+      "u": "steps",
+      "v": 1.0191
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L33"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-69-main-L38",
+      "u": "steps",
+      "v": 1.0356
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L38"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-69-main-L39",
+      "u": "steps",
+      "v": 1.0364
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L39"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-69-main-L40",
+      "u": "steps",
+      "v": 1.0406
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L40"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-69-main-L20",
+      "u": "steps",
+      "v": 1.0756
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L20"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-69-main-L21",
+      "u": "steps",
+      "v": 1.079
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L21"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-69-main-L23",
+      "u": "steps",
+      "v": 1.0873
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L23"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-69-main-L22",
+      "u": "steps",
+      "v": 1.0881
+     },
+     "fuel_class": "droplet",
+     "investigation": "PSI-69",
+     "source_type": "psi_table",
+     "test_id": "PSI-69-main-L22"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:PSI-159-normal-L153",
+      "u": "steps",
+      "v": 1.0892
+     },
+     "fuel_class": "gas",
+     "investigation": "PSI-159",
+     "source_type": "psi_table",
+     "test_id": "PSI-159-normal-L153"
+    }
+   ],
+   "o2_match_pressure_unknown": {
+    "droplet": {
+     "p": "o2match:c8_2_34:droplet",
+     "u": "tests",
+     "v": 0
+    },
+    "emulator": {
+     "p": "o2match:c8_2_34:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "o2match:c8_2_34:gas",
+     "u": "tests",
+     "v": 20
+    },
+    "solid": {
+     "p": "o2match:c8_2_34:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "unknown": {
+    "basis_differs": {
+     "p": "state:c8_2_34:basis_differs",
+     "u": "tests",
+     "v": 263
+    },
+    "unknown_both": {
+     "p": "state:c8_2_34:unknown_both",
+     "u": "tests",
+     "v": 681
+    },
+    "unknown_o2": {
+     "p": "state:c8_2_34:unknown_o2",
+     "u": "tests",
+     "v": 11
+    },
+    "unknown_pressure": {
+     "p": "state:c8_2_34:unknown_pressure",
+     "u": "tests",
+     "v": 229
+    }
+   }
+  },
+  {
+   "candidate_id": "c4_3_100",
+   "flame_temperature": {
+    "approximate": true,
+    "p": "ft:c4_3_100",
+    "u": "K",
+    "v": 2903.5
+   },
+   "near": {
+    "droplet": {
+     "psi_table": {
+      "p": "near:c4_3_100:droplet:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c4_3_100:droplet:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "emulator": {
+     "psi_table": {
+      "p": "near:c4_3_100:emulator:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c4_3_100:emulator:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "gas": {
+     "psi_table": {
+      "p": "near:c4_3_100:gas:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c4_3_100:gas:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    },
+    "solid": {
+     "psi_table": {
+      "p": "near:c4_3_100:solid:psi_table",
+      "u": "tests",
+      "v": 0
+     },
+     "published_paper": {
+      "p": "near:c4_3_100:solid:published_paper",
+      "u": "tests",
+      "v": 0
+     }
+    }
+   },
+   "near_total": {
+    "p": "near:c4_3_100:total",
+    "u": "tests",
+    "v": 0
+   },
+   "nearest": [],
+   "o2_match_pressure_unknown": {
+    "droplet": {
+     "p": "o2match:c4_3_100:droplet",
+     "u": "tests",
+     "v": 0
+    },
+    "emulator": {
+     "p": "o2match:c4_3_100:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "o2match:c4_3_100:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "o2match:c4_3_100:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "unknown": {
+    "basis_differs": {
+     "p": "state:c4_3_100:basis_differs",
+     "u": "tests",
+     "v": 263
+    },
+    "unknown_both": {
+     "p": "state:c4_3_100:unknown_both",
+     "u": "tests",
+     "v": 681
+    },
+    "unknown_o2": {
+     "p": "state:c4_3_100:unknown_o2",
+     "u": "tests",
+     "v": 11
+    },
+    "unknown_pressure": {
+     "p": "state:c4_3_100:unknown_pressure",
+     "u": "tests",
+     "v": 229
+    }
+   }
+  }
+ ],
+ "p": "sensitivity",
+ "params": {
+  "flow_rule": "Flow is used only when both the test and the target have a recorded flow. Candidate atmospheres have no flow value, so nearness to a candidate uses O2 and pressure only.",
+  "flow_step_cm_s": 10.0,
+  "judgement": "Step sizes and threshold are judgement, taken from the team's concept document.",
+  "metric": "euclidean",
+  "o2_basis_counted": [
+   "ambient",
+   "chamber initial"
+  ],
+  "o2_basis_rule": "Inverse flames record the oxygen of the oxidiser stream, not of an atmosphere, so they are reported separately and not counted as near a cabin atmosphere.",
+  "o2_step_pct_points": 5.0,
+  "pressure_step_log": 1.25,
+  "sensitivity_multipliers": [
+   0.75,
+   1.0,
+   1.5
+  ],
+  "threshold": 1.5,
+  "unknown_rule": "If a test's O2 or pressure is null, nearness is 'unknown', never 'not near'."
+ }
+}

@@ -1,0 +1,29 @@
+Sub Topic: Fire 
+ 2 
+burning of a condensed fuel, the heat of gasification L is given by the ratio of the net heat flux and 
+the burning rate. 
+ 
+Methane, ethylene, and nitrogen-diluted ethylene are the three gaseous fuels studied during these 
+tests. Pressure, oxygen content in the combustion chamber, and fuel flow rate are varied to 
+ascertain their effect on the nature of the flame. A typical test for the 25 mm burner is shown Figure 
+1. Here, the sequence of images shows the flame growth during the 5s duration. The flames are 
+ignited in normal gravity just before the drop begins. The flames during the drop transform from 
+a 1-g diffusion flame to a microgravity hemispherical flame. The graph in Figure 1 shows the 
+transient behavior of the heat flux signal and the flame height. The heat flux signal falls quickly 
+as the drop starts and appears to reach quasi-steady state by the end of the drop. In contrast, the 
+flame height rises slowly and doesn’t appear to reach steady state after 5 seconds. Hence, the 
+assumption that quasi-steady state has been achieved by the end of the drop is applied only to the 
+heat flux data and not to the flame height. 
+ 
+Figure 1: A typical drop test for the 25 mm burner 
+ 
+2. Transient Analysis 
+ 
+To establish the extent of steady state achieved during the 5-s drop, the results are compared to a 
+simple transient analysis. The model considers a heated sphere at temperature 𝑇𝑠 immersed in a 
+cool environment with ambient temperature 𝑇∞. The sphere has a radius 𝑅 and the environment 
+has a specific heat 𝑐𝑝, density 𝜌 and thermal conductivity 𝑘. There is no flow through the sphere 
+and it loses heat to the surroundings only through conduction. The solution for the unsteady 
+temperature 𝑇 and surface heat flux 𝑞̇𝑠𝑢𝑟𝑓𝑎𝑐𝑒 ′′  is available in literature [6] and is given below. 
+𝑇 = 𝑇∞ + 𝑅(𝑇𝑠 − 𝑇∞) 𝑟 𝑒𝑟𝑓𝑐 ( 𝑟 − 𝑅 2√𝑘𝑡/𝜌𝑐𝑝 )                                                                                             (1) 
+𝑞̇𝑠𝑢𝑟𝑓𝑎𝑐𝑒 ′′ = 𝑘(𝑇𝑠 − 𝑇∞) 𝑅 + 𝑘(𝑇𝑠 − 𝑇∞) √𝜋𝑘𝑡/𝜌𝑐𝑝                                                                                                      (2) 

@@ -1,0 +1,14 @@
+12
+JASMAC-33
+10/15/2021
+Simplified Theoretical Model: Cool flame extinction
+Agreements for heptane and octane seem 
+reasonable, but dodecane extinction 
+diameters are over predicted appreciably.
+(a) 21% O2 – He varies –displaces N2
+(b) O2 varies –rest N2
+(c) Xe or He displaces air
+(a)
+(b)
+(c)
+Nayagam, V., Dietrich, D. L., and Williams, F. A., Combustion and Flame (2021). 

@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 145 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 121.—Test FLEX−117. Free-floating heptane droplet burning in a 0.20/0.45/0.35 O2/N2/CO2, 
+0.70-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) 
+field of view (FOV) after deployment and ignition and out of the FOV after the visible flame 
+extinguished. The droplet had a very low burning rate constant. A relatively large vapor cloud formed 
+well after the visible flame extinguished, which indicates that there was probably cool flame burning 
+and extinction after visible flame extinction. 
+  

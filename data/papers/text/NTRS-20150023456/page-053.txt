@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 47 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 23.—Test FLEX−019. Free-floating heptane droplet burning in a 0.34/0.66 O2/N2, 0.70-atm ambient 
+environment. The droplet was almost motionless after deployment, but after the igniters began to heat, a 
+large impulse moved the droplet southwest and quickly out of High-Bit-Depth Multispectral (HiBMs) field 
+of view (FOV). The droplet was nearly out of the FOV when the igniters began to move away from the 
+droplet. There was significant sooting with large aggregates, so the data from this test are not reliable. 
+  

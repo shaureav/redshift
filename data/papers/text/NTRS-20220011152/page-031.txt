@@ -1,0 +1,88 @@
+31
+EVA Simulation 
+–
+ Final Task Circuit
+3Astrand I. Degree of strain during building work as related to individual aerobic work capacity. Ergonomics. 1967;10(3):293-303.
+4Jørgensen K. Permissible loads based on energy expenditure measurements. Ergonomics. 1985;28(1):365-9.
+5Epstein Y, Rosenblum J, Burstein R, Sawka MN. External load can alter the energy cost of prolonged exercise. Eur J Appl Physiol Occup Physiol. 1988;57(2):243-7.
+6Webb J, Krock L, Gernhardt M. Oxygen consumption at altitude as a risk factor for altitude decompression sickness. 2010; 81(11): 987-992. 
+•
+ Navigate, ascend/descend, and traverse terrain
+–
+ Step
+-
+ups (low and high)
+: lower/full body task, no powered 
+equipment required, can alter workload with step size and 
+cadence
+•
+ Retrieve, transport, and stow equipment/tools
+–
+ Weight transfer: 
+mobile whole
+-
+body task
+•
+ Collect samples, conduct repairs, or install connectors
+–
+ Kneeling task board: 
+stationary task, mild cognitive 
+engagement
+–
+ Standing task board: 
+stationary task, mild cognitive 
+engagement
+•
+ Deploy/operate experimental package
+–
+ Arm ergometer: 
+stationary upper body task, can 
+standardize workload with rpm and resistance
+•
+ Target: Maintain an average of 30
+-
+40% VO
+2
+max
+[3
+-
+5]
+–
+ High
+-
+step included a fast 2
+-
+min period (70%), as high 
+levels of activity have been shown to highly correlate with 
+DCS risk
+[6]
+Task ConOps Workload Rx
+1
+High Steps Ambulation on Uneven 
+Terrain
+Step Height at 12 inch
+Cadence to target 50-
+70% VO2peak
+2
+Standing Task Board Maintenance R&R and 
+Procedures
+---
+3
+Weight Transfer Transport Equipment/Tools Number of transfers 
+(15 or 25lb weights)
+DOP Doppler / Rest Rest ---
+4
+Low Steps Ambulation on Flat Terrain Step Height at 6-inch 
+Cadence to target 50% 
+VO2peak
+5
+Arm Ergometer Deploy Experiments and 
+Use Sampling Tools
+Resistance at 30W
+Cadence to target 
+30%VO2peak
+6
+Kneeling Task Board Kneeling, Fine Motor, 
+Upper Body
+---
+DOP Doppler / Rest Rest ---

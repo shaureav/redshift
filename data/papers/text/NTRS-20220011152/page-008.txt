@@ -1,0 +1,42 @@
+8
+Exploration Atmosphere Validation
+• Accept Criteria (per NASA-STD-3001):
+•  15% incidence of Type I DCS (@95% CL)
+•  20% incidence of Grade IV VGE (@95% CL)
+• No Type II DCS
+• Reject Criteria
+• > 15% incidence of Type I DCS (@70% CL)
+• > 20% incidence of Grade IV VGE (@70% CL)
+• Any Type II DCS
+• Neither
+• Requires review and additional data
+Test Series 1 
+(11 days)
+Test Series 
+2 (11 days)
+DSMB Review;
+Modify 
+Prebreathe
+Neither 
+Accept 
+nor Reject
+Reject
+Reject
+Accept
+Neither 
+Accept nor 
+Reject
+Additional Test 
+Series
+Reject
+Validated Prebreathe 
+Protocol
+DSMB: Data Safety Monitoring Board
+•
+ We can accept the protocol 
+with:
+•
+ no
+ DCS in 19 exposures
+•
+ 1 DCS in 30 exposures 

@@ -1,0 +1,71 @@
+ 
+NASA/TP—2015-216046 13 
+ 
+ 
+ 
+ 
+ 
+TABLE V.—FLEX TEST MATRIX FOR HEPTANE TESTS CONDUCTED IN NITROGEN-DILUTED  
+AMBIENT ENVIRONMENTS, INCLUDING TESTS IN ENVIRONMENTS WITH  
+LOWER OXYGEN MOLE FRACTIONS (BELOW 0.21) 
+Test Date Initial droplet diameter, 
+D0, 
+mm 
+Fiber Pressure,  
+P, 
+atm 
+Mole fraction of 
+oxygen Mole fraction of nitrogen 
+035 Nov. 27, 2009 3.91 No 1.01 0.210 0.790 
+047 Jan. 12, 2010 3.42 No 1.01 .209 .786 
+049 Jan. 19, 2010 3.58 Yes 1.01 .208 .786 
+050 Jan. 19, 2010 3.69 Yes 1.01 .208 .786 
+051 Jan. 19, 2010 2.45 Yes 1.01 .208 .786 
+ 
+053 Jan. 12, 2010 3.4 No 1.01 .209 .786 
+056 Jan. 29, 2010 3.64 No .72 .196 .795 
+057 Jan. 29, 2010 3.17 Yes .72 .196 .794 
+062 Mar. 11, 2010 3.48 No 1.00 .175 .815 
+063 Mar. 11, 2010 2.28 No 1.01 .175 .815 
+ 
+064 Mar. 11, 2010 2.74 Yes 1.01 .175 .815 
+069 Mar. 19, 2010 1.29 Yes 1.01 .145 .845 
+070 Mar. 23, 2010 1.30 No 1.01 .145 .845 
+073 Mar. 23, 2010 4.72 No 1.00 .145 .845 
+ 
+074 Mar. 23, 2010 1.53 Yes 1.01 .145 .845 
+079 Mar. 30, 2010 3.06 No 1.01 .134 .853 
+080 Mar. 30, 2010 4.00 Yes 1.01 .134 .853 
+081 Mar. 30, 2010 2.40 Yes 1.01 .134 .853 
+ 
+ 
+ 
+ 
+ 
+Following the completion of the nitrogen-diluted ambient test 
+matrix, testing proceeded with carbon -dioxide-diluted ambient 
+environments. These tests also began at the highest oxygen 
+mole fraction ambient environment; then increasing amounts of 
+CO2 were added while the ambient pressure was maintained 
+constant. Testing concluded when quasi-steady burning was not 
+observed, again the determination of the LOI. This also 
+represented the minimum carbon dioxide mole fraction required 
+to extinguish or prevent the spread of a flame. The tests were 
+conducted in a 1.0 -atm, 0.21 oxygen mole fraction (initially) 
+ambient environment and a 0.70- atm, 0.30 oxygen mole 
+fraction (initially) ambient environment. These two ambient 
+environments represent the nominal environment  on the ISS 
+and the extravehicular activity (EVA) pre-breathe environment 
+on the ISS and the maximum proposed oxygen mole fraction on 
+future exploration vehicles . Table VI (for methanol) and   
+Table VII (for heptane) detail the test matrices in the nominally 
+0.7-atm ambient environment. These tests start at a relatively 
+high carbon dioxide mole fraction (0.15) to minimize the  
+testing in higher oxygen mole fraction ambient environments.  
+Table VIII details the test matrix in the 1.0 -atm ambient 
+environment.
+ 
+ 
+ 
+ 
+ 

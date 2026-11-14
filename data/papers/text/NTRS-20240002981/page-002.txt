@@ -1,0 +1,54 @@
+2 
+International Conference on Environmental Systems 
+ 
+ 
+spacecraft environments that rep resent practical spacecraft fires . These tests spanned 1.5 to 
+3.2 kW with free air volumes of 17 to 19 cubic met ers. The final flight in the series of six 
+experiments examined concurrent spread over large samples (all 41 cm wide) including a thin 
+sheet of flammable fuel (cotton/fiberglass 50  cm long); 2-sided spread over 1 cm thick 
+polymethyl methacrylate (PMMA) (18 cm lo ng); 1-sided spread over 0.5 cm thick (18 cm 
+long); and Nomex fabric (7 cm long). Results are presented for the PMMA samples, the SIBAL 
+sample, and the thin cotton samples from Sa ffire IV and V. The flame heat release is 
+determined and compared to the overall temperature rise in the spacecraft and the change in 
+the concentration of carbon di oxide and carbon monoxide in  the spacecraft. Overall, the 
+temperature and pressure rise in the spacecraft were found to be less significant than the 
+increase in carbon dioxide and carbon monoxide. 
+Nomenclature 
+FFD = Far Field Diagnostics 
+PMMA  = polymethyl methacrylate 
+Saffire  = Spacecraft Fire Safety Demonstration Project 
+SFU = Saffire Flow Unit 
+SIBAL =  Solid Inflammati on Boundary at Low Speed 
+SMAC = Spacecraft Maximum Allowed Concentration  
+I. Introduction 
+lthough spacecraft fires have long been recognized as a potentially catastrophic hazard, the impact of a spacecraft 
+fire on the vehicle habitability was not examined experimentally before the initiation of the Saffire experiment 
+series. In terrestrial fires, the smoke and its constituents are generally a greater hazard than the heat from the fires. In 
+the confined space of an orbiting spacecraft, any of these hazards can become a critical hazard for the mission and the 
+crew. Specifically, excessive temperature rise will potentially  cause thermal injury, while increase in the levels of 
+carbon dioxide and carbon monoxide may pose a more signifi cant and acute hazard to the crew. Given the difficulty 
+in predicting the impact of the heat an d pressure rise from a spacecraft fire compared to the hazardous products, one 
+of the major goals of the Saffire VI flight was to provid e such a comparison. This in creased understanding of the 
+relative impact of various fire impacts can be used to guide spacecraft designs. Other than the thin cellulose samples 
+on prior flights, the heat release on Saffire IV and V for the thick PMMA samples was not determined. The first three 
+flights have been discussed previously.1,2 and flights IV and V were presented in Urban et al. 2021 3. As described in 
+Refs. 1,2, and 3 the prior flights had a significant impact on our understanding of flame spread and growth in long 
+duration and large-scale experiments . The prior flights revealed that, under typical spacecraft conditions, fires can 
+develop to significant size. Overall, the average temperature and pressure ri se were not particularly of concern 
+however the increase in hazardous products (carbon monoxide and carbon dioxide) were enough to be of health 
+concern. However, the utility of these results as referen ce data sets for model validation was limited owing to the 
+absence of heat release data for the PMMA (high heat rele ase) cases. Improvements were made for the final Saffire 
+VI flight to ensure accurate heat re lease measurements. Further analysis of  the burning of the structured PMMA 
+sample on Saffire V are presented in Ref. 4, and details of the smoke and product transport are presented in Ref. 5.  
+II. Experimental Hardware 
+The Saffire Flow Unit (SFU) for flights IV - VI was very similar to that used for Saffire I-III 1,2 with the addition of 
+side view cameras, and gas sensors in the inlet and outlet to measure the oxygen consumption and production of carbon 
+oxides. On Saffire IV and V, the outlet gas sensor location was found to have been moved from the location where 
+mixing had been verified and therefore not see a fully mixed outlet flow, so the gas measurements were not useful. 
+For Saffire VI it was moved to the verified location at the end of the duct to provide oxygen consumption calorimetry 
+needed to enable measurement of the heat release from th e flame. To accommodate the second set of cameras, the 
+duct half-height was reduced from 25 cm (for Saffire I-III) to  15 cm for Saffire IV-VI (perpendicular to the sample 
+surface) preserving the 45 cm width. The locations of the Saffire units are show n in Figure 1 with the Saffire Flow 
+Unit near the end cone of the Cygnus vehicle and the Fa r Field Diagnostics (FFD) containing the smoke cleanup 
+system and smoke sensors was installed in a mid-deck lo cker accommodation location adjacent to the hatch. Six 
+A

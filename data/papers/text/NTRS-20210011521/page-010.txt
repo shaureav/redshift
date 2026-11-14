@@ -1,0 +1,37 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+10 
+disturbance over the middle of the structured sample . The combined interpretation of these results demonstrates the 
+strong influence of the flow characteristics on flame spread and growth in low gravity. Unlike in normal gravity where 
+flames can induce substantial flow through buoyancy, in low gravity, the flame growth is controlled by the flow 
+environment. This dependency on flow makes assessment of the fire growth or spread in low gravity more difficult , 
+as one cannot assume simple growth predictions (e.g. t2) as is typically done for normal gravity fires. 
+Furthermore, the best fire prevention strategies may be different from  the best extinguishment strategies . As seen 
+above, quiescent conditions reduce the air flow, but bubbling fuels or charring materials may extinguish more rapidly 
+if there is some convective cooling and mass transport. For ignition, however, quiescent conditions will likely make 
+the sample less ignitable than with convection present. The most ignitable condition is likely to be at low flow rates 
+since as the flow velocity increases , ignition becomes delayed or deterred due to heat losses from the surface of the 
+fuel the adjacent flow.15 
+One of the more subtle observations from  these tests is that the test configuration to assess the flammability of 
+materials for use in spacecraft, NASA STD 6001 Test 116 does not correspond to overall fire behavior in low gravity. 
+Various aspects of this test and how it relates to low -gravity conditions discrepancy have been discussed in the past, 
+but the Saffire experiments have shown phenomena of relevance. NASA Test 1 is based on an upward flammability 
+test where a 30 cm long  material sample is ignited a t the bottom and if the flame grows or spreads past 15  cm, the 
+sample is deemed to fail the test at that condition . As discussed above, flames on thick fuels will not grow or spread 
+concurrently in low gravity and instead depend on surface regression to move  the flame forward; instead, spread is 
+more likely to be seen in opposed (downward) spread. This result does not indicate that the normal gravity test is not 
+useful. The test is quite successful at identifying highly flammable materials; however, the test cannot be assumed to 
+indicate that a material will not burn under those c onditions in low gravity. Another significant result was the 
+demonstration of the importance of surface structure on the flammability. Although the Saffire V -4 sample was 10 
+mm thick, the relevant dimension for flame spread was the width of the ribs. NASA STD 6001 requires testing with 
+the worst case (usually the thinnest) sample. These results indicate that relatively thin surface structures must be 
+considered. 
+  
+                                     
+Figure 12:  Edge view of the flow  visualization after all tests are completed . Sample V-4 is in the middle of 
+the image and V-3 is to the right. The crumpled char from sample V -2 is evident on the left as are the distorted 
+smoke traces from heated rosin on a wire at the duct inlet.  Air flow is from left to right at 20 cm/s the red line 
+denotes the approximate middle of the sample edge. 
+10 cm

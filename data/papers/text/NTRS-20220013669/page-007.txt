@@ -1,0 +1,32 @@
+2022 ASCEND AIAA 
+ 
+7 
+ 
+ 
+ Most identified functions do not require dedicated volumes or floor areas, allowing several functions to share a 
+common space. Individual spaces can accommodate multiple functions, as long as the execution of those functions 
+are separated in time and are operationally compatible. Potential overlaps were referenced from the internal NASA 
+guidance [3] and used to create combined functional spaces. As indicated in Figure 6 and Figure 7, the size of each 
+combined functional space is listed in terms of area. These areas are based on the standard heights listed above, 
+however, the deck heights in the structural design are, in most cases, greater than the recommended standard heights, 
+resulting in slightly larger volumes than the recommended minimums.  
+Table 2  Combined Functional Capabilities 
+  
+Stretching and sleep combined multiple functions to establish the volume of each crew quarters.  It is important to 
+note that the individual minimum areas must be correctly mapped to a gravity environment. The reason for this is that 
+crew sleeping in gravity requires a crew member to lie horizontally, unlike microgravity spacecraft that can minimize 
+volume by sleeping in a vertical orientation. Generally, a crewmember needs slightly under two cubic meters for sleep 
+volume, with a length driven by body stature. This stature length is generally a little less than floor to ceiling height, 
+thus the minimum sleep volume is achieved when sleep is in the vertical orientation, something only possible in 
+microgravity. In microgravity, sleeping and changing clothes – also done in the vertical orientation – can share the 
+same volume, as is done in the ISS crew quarters. But in a gravity environment, the preferred orientation for changing 
+clothes is perpendicular to sleeping. Also, because humans psychologically prefer sleeping on an elevated platform 
+(when in gravity), changing clothes cannot easily overlap with sleeping, but must instead be adjacent to the sleep 
+volume. Consequently, changing clothes and sleeping functions cannot overlap, a minimum volume crew quarters in 
+gravity will generally be larger than a functionally equivalent crew quarters in microgravity. 
+ Medical Care includes both basic medical and autonomous ambulatory care. These functions should be compared 
+against more recent medical guidance. Basic Medical Care and Autonomous Ambulatory Care were derived from 
+descriptions of Medical Level of Care standards in NASA-STD-3001 [4], but the Revision C update [5] to the standard 
+no longer uses this terminology. Instead, new and developing tools such as the Integrated Medical Model (IMM) [5] 
+and the Informing Mission Planning via Analysis of Complex Tradespaces (IMPACT) [6] are now being used to drive 
+minimum medical capabilities. 

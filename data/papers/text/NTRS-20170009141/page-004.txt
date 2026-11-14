@@ -1,0 +1,22 @@
+Sub Topic: Fire 
+ 4 
+4. Correlation of Results 
+ 
+It is hypothesized that the BRE burner could emulate the burning of any condensed phase fuel. 
+This can be visualized by examining the mass burning rate as a function of heat of gasification as 
+shown in Figure 3. The burning rate decreases with heat of gasification but the burning perseveres 
+even at high values of the heat of gasification 𝐿. Figure 3 also shows that the BRE burner could 
+emulate fuels with heat of gasification in the range of 0.4 – 4 kJ/g which corresponds to a number 
+of solid and liquid fuels [7].  
+ 
+Figure 3: Microgravity burning rate as a function of the derived heat of gasification 
+ 
+The steady state theory discussed in the previous section is utilized to predict the burning rate and 
+flame height for the BRE experiments. Eqs. (3) and (4) give the dimensionless mass flux and flame 
+height respectively. These are compared to the experimental results in Figures 4 and 5b. The 
+dimensionless burning rate in Figure 4 follows two distinct curves corresponding to the two burner 
+diameters. This different trend for the two burners may be due to a possible higher rate of gas 
+phase radiation relative to total heat release for the bigger burner. The steady state theory assumes 
+negligible radiation which might be the reason for over-prediction.  
+ 
+Figure 4: Comparison of theoretical and experimental dimensionless burning rate (left)  

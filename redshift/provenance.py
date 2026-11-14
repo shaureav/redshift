@@ -8,6 +8,8 @@ Source types:
 - ``psi_page``: a quoted line of a harvested PSI investigation page (file, line, exact quote).
 - ``published_paper``: a value quoted from a paper (DOI or NTRS ID, page, exact quote). These
   start ``verified=False`` and only reach the UI after a named team member verifies them.
+- ``reference_document``: an exact quote from a reference document held in data/raw/reference (the
+  official challenge statement), checked automatically against the file.
 - ``derived``: computed by the pipeline (method, version, parameters, inputs).
 """
 
@@ -17,7 +19,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-SourceType = Literal["psi_table", "psi_page", "published_paper", "derived"]
+SourceType = Literal["psi_table", "psi_page", "published_paper", "reference_document", "derived"]
 
 
 class Prov(BaseModel):

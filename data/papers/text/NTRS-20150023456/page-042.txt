@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 36 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 12.—Test FLEX−008. Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm 
+ambient environment. The droplet drifted southeast out of the High-Bit-Depth Multispectral (HiBMs) field 
+of view (FOV) a few seconds after the igniter was withdrawn. Significant sooting was apparent in the 
+HiBMs. The droplet also drifted out of the color camera FOV. It remained in the Low Light Level Ultra-
+Violet (LLUV) FOV for the entire burn. There is a lot of noise in the droplet diameter data because of the 
+soot, but the LLUV showed that the droplet disrupted at the end of the burn. 
+  

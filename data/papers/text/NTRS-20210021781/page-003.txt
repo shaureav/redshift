@@ -1,0 +1,64 @@
+ 
+  
+ 3 of 11 
+ 
+2. Experimental  
+2.1 Hardware 
+The ACME research is conducted using a single modular set of hardware with the Combustion Integrated Rack (CIR) 2, 
+33, 49).  That facility is shown in Figures 1 and 2 with Japanese astronaut Norishige Kanai when he reconfigured the optics 
+for one of its cameras on 5 March 2018.  The CIR provides a nominally 100-liter combustion chamber, gas delivery, 
+venting, water cooling, imaging, and other general functions needed to carry out an array of combustion research.  The 
+facility was launched in 2008 and then used from 2009 to 2017 for a set of investigations featuring the combustion of liquid 
+droplets.  That research notably led to the discovery of non-premixed cool flames 50-55) and inspired ACME’s Cool Flames 
+Investigation with Gases (CFI-G). 
+ 
+Fig. 1 Japanese astronaut Norishige Kanai reconfiguring a Combustion Integrated Rack (CIR) camera [ISS055e096568] 
+Table 2 Recent research on non-premixed flames of gaseous fuel conducted on the ISS (listed in chronological order) 
+Experiment Investigators (*former) Lead Russian collaborator ISS operations Selected references 
+Coflow Laminar Diffusion 
+Flame (CLD Flame) 
+Marshall B. Long 
+Mitchell D. Smooke Sergey S. Minaev 
+Nov. 2017–Feb. 2018 
+May-Sept. 2018 
+Feb.-March 2021 
+36-37) 
+Electric-Field Effects on 
+Laminar Diffusion Flames 
+(E-FIELD Flames) 
+Derek Dunn-Rankin 
+Sunny Karnani  
+Felix J. Weinberg* 
+Zeng-Guang Yuan* 
+Sergey S. Minaev March-May 2018 Sept.-Nov. 2018 38-40) 
+Burning Rate Emulator (BRE) 
+James G. Quintiere 
+Peter B. Sunderland 
+John L. de Ris 
+Alexander Y. 
+Snegirev 
+Jan.-April 2019 
+July 2020–Jan. 2021 41-45) 
+Flame Design 
+Richard L. Axelbaum  
+Beei-Huan Chao* 
+Peter B. Sunderland 
+David L. Urban 
+Sergei M. Frolov April-July 2019 ? - ? 46-48) 
+Structure and Response of 
+Spherical Diffusion Flames 
+(s-Flame) 
+Chung K. Law 
+Stephen D. Tse 
+Kurt R. Sacksteder 
+Vladimir V. 
+Gubernov 
+July 2019–Jan. 2020 
+April-July 2020 None 
+Cool Flames Investigation 
+with Gases (CFI-G) 
+Peter B. Sunderland 
+Richard L. Axelbaum 
+Forman A. Williams  
+None March-June 2021  June 2021 - ?  None 
+ 

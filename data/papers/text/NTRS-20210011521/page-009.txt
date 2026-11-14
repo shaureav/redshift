@@ -1,0 +1,46 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+9 
+burning in air grew to 9.5 cm after 400 seconds. In Saffire V-3, the one-sided PMMA sample flame (in 25.4% oxygen) 
+grew to 11 cm after 450 seconds. This result is similar to the limiting flame size seen for the thin samples. In all these 
+cases the flame length  reached an upper limit  contrary to similar  1-g tests that did not reach a steady length .9,10,11 
+Reaching a limiting length, especially for a thick solid, may seem a surprise since for a sample of this size an upward 
+flame will continue its growth in normal gravity . It has been suggested that the reason why the flame tip stops 
+advancing has to do with the surface energy balance at the pyrolysis front (flame tip) region.12,13 Assuming convection 
+is the primary heat transfer mode, the magnitude of gas phase heat flux to the pyrolysis front decreases with 
+downstream distance. When its magnitude becomes comparable to the surface radiative heat loss, the net heat feedback 
+and hence the local solid burning rate become vanishing small, local flame tip quenching occurs and the flame become 
+stationary for a thick solid . Increasing the ambient oxygen concentration can be expected to reduce the standoff 
+distance. Consequently, the final length of the Saffire V-3 flame is greater than the other samples due to the enhanced 
+oxygen concentration. This oxygen limitation was also seen in Saffire V-4 where the opposed flame spread was also 
+affected by limited oxygen availability as seen in Figure 11. Visible in the left-hand image is a downstream flame that 
+developed on the adjacent sample, V-3, which established quickly on the warm sample but then was extinguished 
+when the upstream flames grew to sufficient size to consume the available oxygen. The downstream V-3 sample was 
+4.5 cm from the upstream sample and was ignited by the upstream flame that was driven to a larger size because the 
+igniter was adding substantial heat to the system even after the flame was ignited. Unlike in normal gravity, the PMMA 
+extinguishes behind the spreading flames potentially due to the oxygen shadow 14 combined with the surface energy 
+balance issue described above 12,13 resulting in nearly constant sizes for the flames in Figure 11. 
+ 
+Also evident in Figure 11  is the difference in spread rate as function of the rib width. The ribs of the structured 
+PMMA were 3 mm high which was sufficient to support an individual flame at the top of the rib, making the effective 
+sample size the rib width. The top rib is 1mm wide, the second rib is 2 mm wide and so forth until the tenth rib which 
+is 10 mm wide. The distance between adjoining rib faces is a constant 2 cm so that the flow in the “channel” between 
+ribs is expected to be similar . The flame spread more rapidly on the thin ribs at the top of the image with decreasing 
+spread rate as the ribs become wider . This change in spread rate is non-monotonic as seen with rib 7 lagging behind 
+the thicker rib 8. This is attributed to a partial flow obstruction caused by the curled char and ash from cotton sample 
+V-2. This curled char occurred late in the burn for sample V-2 and is clearly evident on the post-test images, (Figure 
+12). The curled char is most prominent in the middle of the sample, well aligned with the locations of the delayed 
+flame spread on the middle r ibs on sample V -4. The post-test flow visualization  (smoke traces) validated the flow  
+ 
+Figure 11: Opposed flame spread on ribbed PMMA . Images are top view. Flow is form left to right at 20 
+cm/s. Sample rib centerlines (red lines) are indicated. Ribs are 3 mm high with widths increasing from 1 mm to 
+10 mm by 1 mm increments from the top to the bottom red line. There is 2 cm between adjoining rib faces. Flow 
+is from the left to the right. Images are 100 seconds apart. On the wider ribs, the flames at the corners spread 
+ahead of the center. In the right -hand image, two flames are visible on some ribs (front and back sides of the 
+sample). In the first image (left) a flame can be seen near the right side of the frame. This is a flame that developed 
+on the adjacent downstream sampl e (V -3). This flame developed briefly at the start of the test and then 
+extinguished, presumably due to oxygen deprivation. 
+ 
+10 cm

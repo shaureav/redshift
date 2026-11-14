@@ -1,0 +1,17 @@
+ 
+NASA/TP—2015-216046 229 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 205.—Test FLEX–202. Free-floating methanol droplet in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm 
+ambient environment. The droplet had very little residual motion after deployment and ignition, drifting 
+very slowly south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet 
+remained in the FOVs of all the cameras for the entire test. 
+  

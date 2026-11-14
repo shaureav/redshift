@@ -1,0 +1,36 @@
+2022 ASCEND AIAA 
+ 
+12 
+ 
+ 
+ The third level provides space for two private crew quarters, each with volume for sleeping, stretching, and access 
+to a personal desk. It is not yet determined if this is a seated or standing desk. The exact placement of the desk is also 
+forward work and is not shown in the figure. Storage is located primarily on the third level deck in Middeck Lockers 
+that line the outer perimeter. There is a medical station with a stowable stretcher that can possibly be made private 
+using privacy curtains. However, one of the crew quarters can only be accessed by traversing through the medical 
+station. There is a general computer station for command and control and other functions. A station for food 
+preparation and meal sorting is co-located next to the wardroom table, which can be used for eating, recreation, and 
+team meetings. Three additional Collins Pallets are located in the core for the Air Revitalization System. Lastly, there 
+is space for two more Utilization workstations: a Physics Lab and a Human Research Lab both currently based on ISS 
+systems. 
+ 
+ Fig. 7  Surface Habitat Third Level 
+VI. Functional Changes Related to Mass Constraints 
+ The interior layout meets most of the required functionality that will be expected of a lunar-based habitat. The 
+volume of each functional area was also measured and validated against the recommended functional volumes. Most 
+of these volumes met or exceed the recommended minimums. However, for a habitat to be a viable option, volume 
+and functionality must be considered alongside mass. Mass is a major factor for element decisions. Mass limits may 
+require a deferred delivery of certain interior components and sub-systems. 
+ The Surface Habitat has a ground rule limiting its landed mass to 12 metric tons [2]. This is intended to constrain 
+the mass to within the capacity of the anticipated range of HLS-class landers [2]. Thus, irrespective of the layout 
+indicated in this paper, only 12 tons of capability can be landed in the habitat delivery flight. 
+ The Master Equipment List (MEL), based on the May 2022 update, indicates a predicted mass of 12,517 kg for 
+the Surface Habitat, roughly 517 kg over the mass limit. However, this MEL is not synchronized with the internal 
+layout.  It is beyond the scope of this paper to perform mass estimates for each component in the CAD model, but it 
+will be identified where entire functional areas are present in the CAD model but not in the MEL. If an element is 
+present in the CAD model it will be assumed that there is agreement between the mass allocation in the MEL and the 
+actual mass of the modeled components. On Level 1, the Geology Lab, EVA Computer Station, and OGA do not 
+appear in the MEL. On Level 2, the Biology Lab, UP, BP, and WPA does not appear. On Level 3, the Human Research 
+Lab and Physics Lab do not appear. 
+ The labs included in the layout represent ISS systems and are not optimized for lunar surface operations. The 
+masses of each are as follows: Biology Lab - 890 kg, the Human Research Lab - 724 kg, the Physics Lab - 1172 kg, 

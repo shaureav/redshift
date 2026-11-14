@@ -1,0 +1,17 @@
+ 
+NASA/TP—2015-216046 170 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 146.—Test FLEX–142. Free-floating methanol droplet burning in a 0.15/0.35/0.50 O2/N2/CO2, 
+0.70-atm ambient environment. The droplet deployed with a relatively high (~6 mm/s) drift velocity to 
+the northwest. The burn time was relatively short, and the droplet remained in the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV) for the entire test. 
+  

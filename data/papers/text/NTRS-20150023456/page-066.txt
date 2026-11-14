@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 60 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 36.—Test FLEX−032. Free-floating heptane droplet burning in a 0.30/0.70 O2/N2, 1.0-atm 
+ambient environment. There was significant sooting with large agglomerates throughout the test. A 
+very luminous flame persisted throughout the droplet lifetime until disruptive extinction. The droplet 
+drifted northwest out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) one-third of the 
+way through the test. It remained in the Low Light Level Ultra-Violet (LLUV) and color camera FOVs 
+for the entire test. The significant sooting made accurate measurement of the droplet size difficult. 
+  

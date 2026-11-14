@@ -1,0 +1,24 @@
+5
+Timeline Implications
+2
+ Abercromby et al. 
+ “Suited Ground Vacuum Chamber Testing Decompression Sickness Tiger Team Report”, 
+2018 NASA Technical Report
+3
+ Abercromby, et al. 
+“Using the Shuttle Staged Prebreathe Atmosphere and Variable Pressure Spacesuits for Exploration Extravehicular Activity”
+, 2018 
+AsMA
+. 
+4
+ Abercromby et al. 
+“Modeling Oxygen Prebreathe Protocols for Exploration EVA Using Variable Pressure Suits”, 
+2017 
+AsMA
+. 
+Exploration conops are incompatible with multi
+-
+hour prebreathe durations
+• Timelines are notional and for purposes of comparison only
+• All prebreathe durations are model-based estimates [2-4]
+• Detailed depress profiles being worked with CX3

@@ -1,0 +1,64 @@
+6
+Rationale for Exploration Atmosphere
+Saturation 
+Atmosphere
+Microgravity 
+Prebreathe* (h:mm)
+Planetary 
+Prebreathe*
+14.7 psi, 21% O2 4:00 (resting) 6:30-7:00 2
+10.2 psi, 26.5% O2 0:40 3:00-3:30 3
+8.2 psi, 34% O2 0:00-0:15 0:00-0:30 4,5
+5.0 psi, 100% O2 
+(Apollo, Gemini) 0:00 0:00
+2
+ Abercromby et al. 
+Suited Ground Vacuum Chamber Testing Decompression Sickness Tiger Team Report, (
+2019
+) NASA Technical Report
+. NASA/TP
+-
+2019
+–
+220343 
+3
+ Abercromby et al. 
+Using the Shuttle Staged Prebreathe Atmosphere and Variable Pressure Spacesuits for Exploration Extravehicular Activity
+, (
+2018
+) AsMA. 
+4
+ Abercromby et al. 
+Modeling Oxygen Prebreathe Protocols for Exploration EVA Using Variable Pressure Suits, (
+2017
+) AsMA. 
+5
+ Abercromby et al
+. 
+Modeling a 
+15
+-
+min extravehicular activity prebreathe protocol using NASA
+ ׳
+s exploration atmosphere (
+56.5 
+kPa/
+34
+% O
+2
+)
+.
+ Acta 
+Astronautica,
+ 109 
+(
+2015
+), pp.
+76
+-
+87
+.
+Unvalidated estimates 
+(i.e., not yet available for flight use)
+*Assumes 6hr EVA @ 4.3 psia and 
+approximately equal DCS risk level

@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colour tokens. No red anywhere. Fuel-class hues validated for colour-vision deficiency (all pairs,
+   light and dark) and always paired with a marker shape. */
+:root {
+  color-scheme: light;
+  --surface: #f7f8fa;
+  --surface-2: #ffffff;
+  --surface-3: #eef1f5;
+  --ink: #0f1b2d;
+  --ink-2: #44506a;
+  --ink-3: #5f6b80;
+  --line: #d9dee7;
+  --accent: #1f7a72;
+  --accent-ink: #ffffff;
+  --amber-ink: #8a5a00;
+  --gas: #2a78d6;
+  --droplet: #1baf7a;
+  --solid: #eda100;
+  --emulator: #e87ba4;
+  --hatch: #9aa4b5;
+  --candidate: #0f1b2d;
+  --isotherm: #8c96a8;
+  --prebreathe: #6250d6;
+  --focus: #1f7a72;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #0b1424;
+    --surface-2: #111d31;
+    --surface-3: #18263d;
+    --ink: #e9eef6;
+    --ink-2: #b6c0d1;
+    --ink-3: #93a0b6;
+    --line: #26354f;
+    --accent: #3fb6a8;
+    --accent-ink: #0b1424;
+    --amber-ink: #e3a72f;
+    --gas: #3987e5;
+    --droplet: #199e70;
+    --solid: #c98500;
+    --emulator: #e87ba4;
+    --hatch: #5b6a84;
+    --candidate: #e9eef6;
+    --isotherm: #6c7a93;
+    --prebreathe: #9085e9;
+    --focus: #3fb6a8;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #0b1424;
+  --surface-2: #111d31;
+  --surface-3: #18263d;
+  --ink: #e9eef6;
+  --ink-2: #b6c0d1;
+  --ink-3: #93a0b6;
+  --line: #26354f;
+  --accent: #3fb6a8;
+  --accent-ink: #0b1424;
+  --amber-ink: #e3a72f;
+  --gas: #3987e5;
+  --droplet: #199e70;
+  --solid: #c98500;
+  --emulator: #e87ba4;
+  --hatch: #5b6a84;
+  --candidate: #e9eef6;
+  --isotherm: #6c7a93;
+  --prebreathe: #9085e9;
+  --focus: #3fb6a8;
+}
+
+html, body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.num { font-family: "IBM Plex Sans", Inter, system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.card { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; }
+
+.hatch-bg {
+  background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px 7px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+@media print {
+  nav, footer, .no-print { display: none !important; }
+  .card { border-color: #ccc; }
+}

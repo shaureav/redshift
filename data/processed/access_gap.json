@@ -1,0 +1,60 @@
+{
+ "note": "Paper-derived burns appear only after a named team member verifies the quote and page.",
+ "paper_findings_awaiting_verification": {
+  "p": "gap:pending",
+  "u": "findings",
+  "v": 63
+ },
+ "paper_steps": [
+  {
+   "count": {
+    "p": "gap:paper:0",
+    "u": "tests",
+    "v": 0
+   },
+   "label": "Solid burns near a habitat candidate, described in papers (human-verified)"
+  },
+  {
+   "count": {
+    "p": "gap:paper:1",
+    "u": "tests",
+    "v": 0
+   },
+   "label": "... of those, available as rows in PSI tables"
+  }
+ ],
+ "psi_steps": [
+  {
+   "count": {
+    "p": "gap:psi:0",
+    "u": "tests",
+    "v": 263
+   },
+   "label": "Solid-fuel burn rows in PSI experiment tables"
+  },
+  {
+   "count": {
+    "p": "gap:psi:1",
+    "u": "tests",
+    "v": 129
+   },
+   "label": "... with oxygen recorded"
+  },
+  {
+   "count": {
+    "p": "gap:psi:2",
+    "u": "tests",
+    "v": 0
+   },
+   "label": "... with pressure recorded"
+  },
+  {
+   "count": {
+    "p": "gap:psi:3",
+    "u": "tests",
+    "v": 0
+   },
+   "label": "... near a habitat candidate (downloadable as rows)"
+  }
+ ]
+}

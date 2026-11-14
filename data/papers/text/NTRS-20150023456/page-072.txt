@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 66 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 42.—Test FLEX−038. Fiber-supported methanol droplet translating and burning in a 0.34/0.66 
+O2/N2, 0.7-atm ambient environment. The burn was very smooth, with little motion of the droplet 
+relative to the fiber for most of the test. About 80 percent of the way through the burn, the droplet 
+began to vibrate transversely on the fiber. The vibrations grew in magnitude until the droplet disrupted 
+and disintegrated, extinguishing the flame and leaving no fuel droplet on the fiber. The Low Light Level 
+Ultra-Violet (LLUV) Image Processing and Storage Unit (IPSU) stopped recording for about one-half of 
+the test (in the middle). 
+  

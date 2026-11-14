@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 156 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 132.—Test FLEX–128. Fiber-supported methanol droplet burning in a 0.17/0.38/0/45 O2/N2/CO2, 
+0.70-atm ambient environment. Shortly after ignition, the droplet began to move west along the fiber 
+at ~8 mm/s. It left the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-third of the 
+way through the test. The flame was brighter at the leading edge during the translation. When the 
+translation stopped, the flame was quenched by the fiber at both ends, making the flame more 
+cylindrical than spherical. Because the droplet was in the HiBMs FOV for only a short fraction of the 
+burn, no extinction droplet diameter is reported. 
+  

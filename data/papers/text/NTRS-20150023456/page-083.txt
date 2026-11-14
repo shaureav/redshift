@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 77 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 53.—Test FLEX−049. Fiber-supported heptane droplet translating 3 mm/s and burning in a cabin 
+air (0.21/0.79 O2/N2), 1-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image 
+Processing and Storage Unit (IPSU) stopped recording for a few seconds, which resulted in a gap in 
+the droplet history. The droplet oscillated on the fiber throughout the test, with the amplitude and 
+frequency changing. There also was some unusual gas-phase recirculation evident from soot particle 
+motion. The droplet vaporized vigorously after the visible flame extinguished, and a large vapor cloud 
+formed near the end of the recording period. This is evidence of cool flame burning and extinction 
+following visible flame extinction. 
+  

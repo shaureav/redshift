@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 164 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 140.—Test FLEX–136. Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet drifted northwest in the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV) after deployment, then it hit the igniter and moved northeast and out 
+of the HiBMs FOV. Because the droplet was in the HiBMs FOV for only a small fraction of the 
+droplet lifetime, no extinction droplet diameter is reported. It is not clear whether the droplet 
+burned to completion or the flame extinguished at a finite droplet size. However, given the ambient 
+conditions and the expected burning behavior, burnout is more likely. 
+  

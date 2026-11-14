@@ -1,0 +1,101 @@
+ 
+NASA/TP—2015-216046 5 
+test-point operations, the crew removed the alignment guides to 
+the Passive Rack Isolation System (PaRIS). PaRIS isolated the 
+CIR from the lower level, higher frequency vibrations or g -jitter 
+of the ISS to provide a cleaner gravitational environment for  
+the FLEX experiments. The CIR rack had accelerometer heads  
+to monitor the gravitational (g) and vibrational environment  
+during testing. For all of the experiments in this report, the 
+g-environment was low enough that buoyant flow could be 
+considered to be negl igible; however, g-jitter was evident when 
+the droplet began to move in a particular direction and potentially 
+out of the camera FOV (particularly with the HiBMs). 
+Once the fuel reservoirs and gas bottles were in place and the 
+alignment guides removed, the test operations began. Personnel 
+at the Telescience Support Center (TSC) at Glenn controlled all 
+functions of the FLEX experiments. Test-point operations typi-
+cally required three operators, two controlling the functions of 
+the CIR, and one dedicated to the MDCA. In addition, for most 
+tests a representative of the science team was present to help 
+make any necessary real -time decisions regarding the testing. 
+The sequence for test-point operations follows: 
+ 
+(1) Activate the CIR. The CIR operators activated the rack 
+and perform ed all housekeeping necessary for test -point 
+operations. 
+(2) Operate the FOMA.  The CIR operators operate d the 
+FOMA to fill the CIR chamber to the appropriate ambient  
+pressure and gas composition. During these operations, the CIR 
+and ground computers recorded  in detail the pressure history 
+during the fill and evacuation procedures  so that the actual 
+chamber composition could be computed a posteriori. 
+(3) Activate the MDCA.  Once the ambient environment 
+was set, the MDCA was activated. The MDCA console operator 
+at the TSC then perform ed all necessary house keeping on the 
+MDCA to prepare for test -point operations. All commands to 
+and from the MDCA passed through the CIR computers. 
+(4) Open the fuel valve and purge line.  Typically, all the 
+fuel in the  fuel lines between  the reservoir and needle tip had  
+evaporated. The MDCA operator then slowly dis pensed fuel 
+(advances the linear stepper motor attached to the fuel syringe 
+containing the fuel) until fuel visually appear ed from the fuel 
+needle. 
+(5) Perform the test-point operation. 
+(a) Dispense the fuel droplet. The MDCA operator 
+slowly dispense d fuel to form a droplet  of the appropriate 
+size. In theory, the operator could just advance the st epper 
+motor the theoretical amount to dispense the fuel volume for 
+a given droplet size. In practice, however, the MDCA 
+operator use d the step per motor counts as a guide and 
+estimated the appropriate droplet size (with consultation from 
+the science team) . The needles were together at this point , 
+and the dispensed fuel bridge d the small gap between the 
+needles.  
+(b) Stretch the fuel droplet.  The MDCA  operator 
+slowly moved the needles apart to a distance slightly smaller 
+than that where the fuel would spontaneously pull off.  This 
+distance was a function of the fuel type and fuel volume and 
+was performed manually according to  the judgment of the 
+MDCA operator. 
+(c) Burn the droplet. The MDCA computer could per-
+form steps (1) to (5)(b) in a preprogrammed manne r. Early 
+testing, however, showed that manual operation was more 
+efficient. Consequently, for these tests, o nce the droplet had 
+the appropriate stretch, the MDCA operator zoomed out the 
+color camera, turned off the illumination from the LED (the 
+backlight for the HiBMs, however, remained on), and turned 
+over control to the MDCA onboard computer. The MDCA 
+computer the n performed the following steps in a rapid 
+progression: 
+(i) Start data recording.  The CIR HiBM s and 
+LLUV and the MDCA color camera beg an recording 
+images.  
+(ii) Deploy the droplet.  The needles were rapidly 
+and simultaneously retracted. 
+(iii) Ignite the droplet. The small hot-wire igniters 
+located nearly orthogonal to the deployment needles and 
+close to the droplet (a ground-controllable distance) were 
+turned on for a preset time and power level (a ground -
+controllable voltage). 
+(iv) Retract the igniter.  The igniters were turned 
+off and rapidly retracted a relatively large distance from 
+the droplet. 
+(v) Stop data recording.  The CIR  and MDCA  
+cameras stop ped recording data after a preset time  
+(typically on the order of 40 s). 
+(6) Conduct posttest operations. The CIR and MDCA 
+operators then performed a number of housekeeping operations 
+to prepare for the next test -point operations (if necessary).  If 
+another test was to be performed in the same ambient  
+environment, the circu lation fan located in the cham ber was 
+turned on for a brief period of time (approximately 1 min) to 
+mix the gases uniformly inside the chamber. 
+ 
+Figure 4 shows sequence (1) to (6) as recorded by the HiBMs, 
+LLUV, and MDCA color cameras. Figure 4(a) (HiBMs and 
+MDCA color cameras only) shows the droplet stretched 
+between the fuel needles just before the automated sequence 
+was run. Figure 4(b) (HiBMs only) shows the droplet 
+immediately after the deploym ent needles had retracted. The  
+ 

@@ -1,0 +1,27 @@
+Warm Flames at Elevated Pressures (CFI)
+13
+FLEX-1250:
+N-dodecane – Air -1 atm - D0 = 4 mm
+KHF = 0.383 mm2/s
+De,HF = 3.55 mm
+KCF = 0.387 mm2/s
+De,CF = 0.40 mm
+FLEX-1256:
+N-dodecane – Air -3 atm - D0 = 4.2 mm
+KHF = 0.350 mm2/s
+De,HF = 3.73 mm
+KwF = 0.491 mm2/s
+De,wF = 0 mm
+JASMAC-33
+10/15/2021
+FSR
+FSR
+o Behavior changes when ambient pressure is increased.
+o Cool flame reignition
+o Warm flames 
+o Warm flames are still not visible
+o Flame temperature is higher than cool flame (radiation)
+o Flame standoff ratio is higher (close to that of HF) 
+o Oscillatory extinction observed for the first time
+Farouk, T. I., Dietrich, D., & Dryer, F. L. (2019). 
+Proceedings of the Combustion Institute.

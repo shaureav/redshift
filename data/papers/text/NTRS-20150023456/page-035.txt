@@ -1,0 +1,32 @@
+ 
+NASA/TP—2015-216046 29 
+Appendix B.—Droplet and Flame Sizes 
+Figures 5 to 280 show the results of each experiment. These 
+figures show the droplet diameter squared and the flame 
+diameter (for both the Low Light Level Ultra -Violet (LLUV) 
+and Multi-User Droplet Combustion Apparatus (MDCA) color 
+camera) as functions of time. Time zero in the plots corresponds 
+to when the igniter was energized. This time came from data 
+files downlinked from the CIR after a test. The data for each 
+test are also available in a text file associated with this report. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 5.—Test FLEX–001. Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm 
+ambient environment. This was the first FLEX test. The droplet remained in the fields of view (FOVs) of 
+all the cameras for the entire test. Because the Low Light Level Ultra-Violet (LLUV) camera settings were 
+not optimal, the LLUV data are not reliable. The droplet probably disrupted at the end of the test 
+coincident with flame extinction. The igniters were too bright and overexposed the High-Bit-Depth 
+Multispectral (HiBMs) images during ignition, so the droplet diameter could not be measured accurately. 
+ 
+ 
+ 
+ 
+  

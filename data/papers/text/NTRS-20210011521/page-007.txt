@@ -1,0 +1,34 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+7 
+Saffire V sample 4 also exhibited a deflagration when it was first igniting (Figure 8). In this case, the ambient gas flow 
+was 20 cm/s and ignition first occurred on the underside of the sample. Within 100 ms, the flame had expanded to fill 
+the field of view. Development of the stratified mixture in this case was not expected given the gas velocity however 
+the curled ash from sample 2 may have provided enough recirculation to enable the stratification. The relative ease by 
+which these stratified mixtures could develop poses risk for fire response strategies and suggests that reduced air flow 
+and complex flow obstructions can allow the accumulation of fuel vapor, thereby creating a re adily-ignited mixture 
+that can produce a strong deflagration.  
+ 
+C. Flow / Configuration Effects on Thin Fuel Flame Spread 
+In the first Saffire flights (I -III), the duct size and boundary layer development were shown to affect the flame 
+spread and flame size.1,6 As described in detail in a prior paper,1 one of the objectives of the Saffire experiments was 
+to determine if steady concurrent  flame spread would be observed for thin fuels. In all of thes e tests on Saffire I-V, 
+the Cotton and SIBAL fuel samples established a steady opposed spread rate and flame size as identified in Figure 9 
+and Table 2. Although upward flame spread is usually acceleratory  in 1-g, as discussed in Ref. 1, steady spread was 
+seen in ground tests with SIBAL cloth if the flame size was constrained  by heat loss or lower pressure. As expected, 
+this spread rate was affected by oxygen concentration and flow rate,  but it was also shown to be affected by duct 
+height which was discussed in detail by Li et al.7,8 Using a numerical model, these studies showed that, for concurrent 
+flame spread and beyond a critical separation distance, increasing the duct height reduced the air velocity  above the 
+flame owing to the reduced impact of the flow restriction caused by the flame. Since the concurrent flame spread rate 
+increases with air velocity, increasing the duct height slowed the flame spread. Saffire IV continued this investigation 
+by including another SIBAL sample and using the reduced duct height in Saffire IV-V. The additional data point is 
+ 
+Figure 8: Saffire V-4 deflagration during initial ignition of sample  Images are edge view, the red lines  
+denote the approximate middle of the sample edge. Air flow is from left to right at 20 cm/s.  Ignition occurred 
+after a planned 10 minutes of preheating (top image) within 100 ms (bottom image) the flame has bloomed to 
+fill the field of view. Images correspond to the sharp peak at 645 s in figure 6. 
+                                    
+Figure 9: Pyrolysis lengths and positions of the flame bases and tips for Saffire I-V. Sample dimensions and 
+conditions are in Table 2. 

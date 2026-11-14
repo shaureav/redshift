@@ -1,0 +1,29 @@
+3
+JASMAC-33
+10/15/2021
+FLEX Hardware: CIR & MDCA
+ Diluent Manifold
+Oxygen 
+Manifold
+N2/Diluent Manifold
+Gaseous Fuel 
+Manifold
+Adsorber 
+Cartridge
+Chamber
+Combustion Integrated Rack (CIR)
+o Chamber
+• 100 Liters capacity
+• Operating pressure: 0.02 to 5 atmospheres and 
+contains pressures up to 9 atmospheres
+• 8 Sapphire windows
+o Supplies gaseous fuel, oxidizers and diluents 
+to the combustion chamber
+o Multi-user Droplet Combustion Apparatus(MDCA)
+o Diagnostics 
+• Backlit, black and white high speed 
+camera (droplet view)
+• LLUV flame view camera (OH*,CH*)
+• Color camera (downlinked, operations)
+• Radiometers (Wide band 0.6 – 10.0 µm,
+and narrow band 5.0 – 6.5 µm )

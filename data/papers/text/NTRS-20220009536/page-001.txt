@@ -1,0 +1,30 @@
+VALIDATION OF DECOMPRESSION SICKNESS RISK MITIGATION PROTOCOLS FOR 
+PLANETARY SPACEFLIGHT MISSIONS 
+ 
+Andrew F. J. Abercromby1, Alejandro Garbino, E. Lichar Dillon, Patrick Estep, Monica Hew, Grant 
+Harman, Karina Marshall-Goebel, Jason Norcross, Kadambari Suri 
+1NASA Johnson Space Center, Houston, Texas 77058 
+ 
+BACKGROUND: Apollo missions used a 100% O2 cabin atmosphere which effectively eliminated the 
+risk of decompression sickness (DCS) during extravehicular activity (EVA) on the moon. NASA’s future 
+missions to the moon and Mars are expected to use nitrox gas mixtures of up to 34% O2, 66% N2, which 
+will reduce flammability risk compared with Apollo, but will necessitate Oxygen prebreathe prior to EVA 
+to reduce DCS risk to acceptable levels. Prebreathe protocols used on the space shuttle and International 
+Space Station are validated for microgravity EVAs, but the significantly increased risk of DCS during 
+equivalent ambulatory EVAs make these protocols inapplicable to planetary EVA. An “exploration 
+atmosphere” of 56.5 kPa (8.2 psia), 34% O2, 66% N2 has been recommended by NASA as a compromise 
+that balances prebreathe duration, hypoxia, and flammability risk, assuming a 29.6 kPa (4.3 psi) spacesuit. 
+However, this atmosphere may not be used for vehicles that do not support frequent EVA, and with 
+commercial providers and international providers expected to provide landers, pressurized rovers, 
+habitats, and spacesuits, different combinations of vehicle and spacesuit atmospheres are possible and will 
+each require validated prebreathe protocols.  
+OVERVIEW: Key components of a multi-year strategic roadmap include: 1) Establish hypobaric 
+chamber facility capable of supporting 8-person EVA prebreathe validation tests at saturation 
+atmospheres up to 36% O2; 2) validate an EVA physical workload simulation for use during prebreathe 
+validation testing; 3) validate the recommended “exploration atmosphere” prebreathe protocol; 4) validate 
+prebreathe protocols for additional atmospheric combinations that bound the most likely potential 
+operating ranges of future vehicles and spacesuits; and 5) update DCS risk estimation models based on 
+results of prebreathe validation studies.  
+DISCUSSION: Details and data from completion of the first two steps of the strategic roadmap will be 
+presented; the third step is currently underway, with pilot results provided in a companion presentation. 
+Steps four and five will require a multi-year series of chamber tests; collaborations are being pursued.  

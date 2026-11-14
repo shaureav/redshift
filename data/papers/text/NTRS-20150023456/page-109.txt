@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 103 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 79.—Test FLEX−075. Fiber-supported methanol droplet translating 3 mm/s and burning in a 
+0.13/0.85 O2/N2, 1.0-atm ambient environment. After deployment, there was some transverse, but 
+no axial, motion along the fiber. The transverse motion persisted throughout the test, but it stopped 
+after the flame extinguished. There was no axial motion relative to the fiber; that is, the droplet 
+started and stopped with the start and stop of the fiber. There also was no disruption during this test. 
+  

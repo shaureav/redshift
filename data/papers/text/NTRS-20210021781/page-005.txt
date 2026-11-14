@@ -1,0 +1,31 @@
+ 
+  
+ 5 of 11 
+in some circumstances, such as the blending of different gaseous fuels.  ACME tests have been most often conducted with 
+ethylene (C2H4) and methane (CH4) where other fuels used included hydrogen (H2), ethane (C2H6), propane (C3H8), n-
+butane (C4H10), and hydrogen/methane mixtures.  Nitrogen dilution is common, but tests for the Structure and Response 
+of Spherical Diffusion Flames (s-Flame) study were also conducted with helium as the inert in both the fuel and oxidizer. 
+ 
+Fig. 4 Advanced Combustion via Microgravity Experiments (ACME) chamber insert used within the CIR facility 
+ 
+The chamber insert provides an assortment of non-imaging instrumentation such as a crew-exchangeable array of 
+thermopile detectors to measure thermal radiation.  There is also a set of PhotoMultiplier Tubes (PMTs) providing 
+measurements of chemiluminescent emissions from the excited-state species CH* and OH* as well as a broadband 
+measurement.  A crew-exchangeable thermocouple rake, intended for studies of spherical flames, can be installed.  
+While not shown in Fig. 4, the chamber insert is also equipped with a translating, crew-exchangeable array of 14-micron 
+silicon carbide (SiC) fibers for making measurements of flame temperature via Thin Filament Pyrometry (TFP) e.g., 36-37, 46-
+48, 56). 
+Five different cameras and two illumination systems have been used in the recent research, although usually only a 
+fraction of the cameras have been used because of operational constraints.  There is an analog camera mounted on the 
+chamber insert for which the color video is always downlinked during testing in near real time.  The other four cameras 
+are mounted around the periphery of the black combustion chamber seen in the center of Fig. 1.  A high-definition color 
+camera, carefully characterized prior to launch, is always used.  Both provide flame imaging, but the high-definition 
+camera can furthermore be used to optically determine the CH* concentration, flame and soot temperature (via 
+pyrometry), and soot volume fraction e.g., 36-37, 46-48, 56-57).  The latter can also be determined using a gray-scale camera 
+with an opposed collimated light source via a light extinction technique 58-59).  Two intensified cameras have been used, 
+one filtered for OH* emissions, while the other allows for imaging of CH*, the primary source of blue light in hydrocarbon 
+flames, or formaldehyde (CH2O) emissions associated with cool flame chemistry. 
+2.2 Procedure 
+All ACME experiments are constant volume (rather than constant pressure) studies, where the chamber’s free volume 
+is approximately 83 liters depending on the installed hardware.  The tests are typically only a few minutes in duration, 
+limiting the pressure rise, vitiation of the chamber atmosphere, and acquisition of data which is an operational constraint. 

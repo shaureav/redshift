@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 46 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 22.—Test FLEX−018. Free-floating heptane droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 2.0-atm 
+ambient environment. There was a luminous yellow flame immediately after ignition, with the High-Bit-
+Depth Multispectral (HiBMs) view showing significant soot formation. Then the luminous flame 
+disappeared, and a dim blue flame surrounded the droplet. The flame oscillated and then appeared to 
+extinguish in both the Low Light Level Ultra-Violet (LLUV) and color camera fields of view (FOVs). 
+However, the droplet continued to vaporize vigorously, and the radiometer did not settle to its baseline 
+value. There was “hazing” around the droplet in the HiBMs FOV during combustion, almost like there 
+was significant internal liquid motion. The droplet disrupted after it drifted out of the HiBMs FOV. There 
+probably was cool flame burning after the visible flame extinguished. 
+  

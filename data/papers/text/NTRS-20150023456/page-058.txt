@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 52 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 28.—Test FLEX−024. Free-floating heptane droplet burning in a 0.34/0.66 O2/N2, 0.70-atm 
+ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage 
+Unit (IPSU) did not record any images for this test. There appeared to be a needle fire. The color 
+camera and Low Light Level Ultra-Violet (LLUV) IPSUs stopped recording before the test was 
+complete. In addition, the LLUV images were recorded at 8-bit depth (instead of 12-bit depth), 
+which resulted in more uncertainty in the LLUV flame size measurements. 
+  

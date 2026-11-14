@@ -1,0 +1,23 @@
+ 
+NASA/TP—2015-216046 34 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 10.—Test FLEX–006. Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm 
+ambient environment. The droplet was misshapen on the needles before it stretched and deployed. 
+Ignition imparted a significant drift velocity on the droplet to the east. This could be due to a small air 
+bubble that distorted the droplet and then popped when the igniters turned on. The droplet drifted out of 
+the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and then drifted back in the FOV. The flame 
+extinguished without disruption. This was a calibration test. Because the Low Light Level Ultra-Violet 
+(LLUV) settings were not optimized for these tests, late in the flame lifetime the flame was not discernable 
+in the LLUV. 
+  

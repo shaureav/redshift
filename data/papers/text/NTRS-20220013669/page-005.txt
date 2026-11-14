@@ -1,0 +1,44 @@
+2022 ASCEND AIAA 
+ 
+5 
+ 
+ 
+4. EVA Capability 
+Description: The total EVA time per crew will not exceed 24 hours per week. The SH will support a maximum 
+surge rate of one two-person eight-hour EVA in a 24-hour period. The SH will provide egress/ingress 
+capability to enable EVA. The SH will enable EVA suit maintenance. 
+5. Utilization 
+Description: The SH will house a minimum of TBD kg of science and utilization payloads. Volume and 
+resources required by these systems are TBD. 
+6. Trash and Waste Disposal 
+Description: Surface logistics containers will be used to store trash and waste in a safe state on the lunar surface 
+for TBD years. 
+IV. Surface Habitat Functionality 
+ The layout’s required functionality, minimum Net Habitable Volume, and minimum functional dimensions were 
+derived from an internal NASA study called “Foundational Surface Habitat Net Habitable Volume 
+Recommendations” [3]. This reference guide defines recommended functional capabilities of a Surface Habitat for 
+the lunar surface and lists corresponding habitable volume and area recommendations for each function. The guide 
+also defines three recommended relationships between functional volumes: possible overlaps among functional 
+volumes, suggestions for colocations of functional volumes, and identification of functional volumes that should have 
+physical separation. The approach for defining these functional volumes and overlaps was adapted from NASA’s 
+established process for measuring the Net Habitable Volume of a spacecraft, outlined in Net Habitable Volume 
+Verification Method (JSC-63557) [3] and a corresponding study that applies this process to long-duration missions 
+outlined in “Defining the Net Habitable Volume for Long-Duration Exploration Missions” [4]. 
+ The study estimated the habitable volume needed for 2 Crew (4 Crew in transfer & contingency situations). 
+Because the Surface Habitat will operate in a low-gravity environment, habitable volume is generally determined by 
+estimating a surface area and multiplying by a standard height to yield a volume. Volumes are defined based on 
+anthropometric data from the 99th percentile male and female bodies and account for additional space based on safety 
+standards. Based on these conditions, the standard height for most functional volumes is 2.4 meters. There are three 
+exceptions: Sleep Accommodation (1 meter), Temporary EVA Items Stowage (1 meter), and Airlock Functions (2.6 
+meters). Sleep Accommodation necessitates enough height above the sleeping platform for a crewmember to sit up 
+comfortably, this would allow for the possibility of bunkbeds, however individual crew quarters is highly 
+recommended. Temporary EVA Items Stowage represents a volume that can accommodate stowage for items that 
+need to be removed from the airlock when it is depressurized, thus does not require the full height recommended for 
+a standing crewmember. Airlock Functions, on the other hand, include EVA Don/Doff functionality, which is 
+estimated at a height of at least 2.6 meters to give adequate headroom to crewmembers when they’re donning and 
+doffing their suits. 
+ The recommended minimum volume and dimensions were applied to the Surface Habitat to ensure that habitable 
+volumes are adequate for each function. For ECLSS hardware, volumes representing the Collins Aerospace ECLSS 
+pallets were used. In addition to the recommended functions, extensive utilization [1] was incorporated to demonstrate 
+potential for full science capability. Table 1 lists the functional volumes that were defined in the NASA reference 
+guide. These volumes outline the foundation for designing the subsequent internal layout. 

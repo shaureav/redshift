@@ -1,0 +1,30 @@
+3
+Decompression Sickness (DCS)
+•
+ Decreasing ambient pressure causes release of nitrogen 
+dissolved in tissues, which may result in DCS
+–
+ Grade IV VGE: 
+Venous Gas Emboli “Silent bubbles” (no symptoms or 
+clinical findings) can be detected by Doppler; Grade IV is the most 
+severe form, and is correlated with risk of DCS
+–
+ Type I DCS: 
+Joint pain; single extremity tingling or numbness; mild 
+skin symptoms
+–
+ Type II DCS: 
+Central neurological or cardiopulmonary symptoms; can 
+be life
+-
+threatening
+•
+ Pre
+-
+EVA 
+denitrogenation
+ via oxygen prebreathe 
+reduces
+DCS risk during EVA
+Flight prebreathe protocols must be validated via human 
+ground testing prior to operational implementation

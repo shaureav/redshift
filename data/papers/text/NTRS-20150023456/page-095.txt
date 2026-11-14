@@ -1,0 +1,17 @@
+ 
+NASA/TP—2015-216046 89 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 65.—Test FLEX−061. Fiber-supported methanol droplet with no translation and burning in a 
+0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet remained stationary on the fiber and 
+within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The flame was 
+very dim in both the Low Light Level Ultra-Violet (LLUV) and color camera views. 
+  

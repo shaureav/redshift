@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 167 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 143.—Test FLEX–139. Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet deformed shortly after deployment, presumably because 
+of a gas bubble that burst. This caused the droplet to drift slowly northeast in the High-Bit-Depth 
+Multispectral (HiBMs). A large flash coincident with ignition caused the droplet to drift southwest at 
+approximately 6 mm/s. The droplet drifted with a constant trajectory until it left the HiBMs field of 
+view (FOV) about halfway through the test. The burning rate was relatively high, and the flame was 
+distorted by the large drift velocity. The droplet burned to a small size, then disrupted when the flame 
+extinguished. 
+  

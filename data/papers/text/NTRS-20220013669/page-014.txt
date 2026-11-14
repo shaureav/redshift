@@ -1,0 +1,40 @@
+2022 ASCEND AIAA 
+ 
+14 
+ 
+ 
+ 
+Fig. 9  Forge Study Multi-Module Mobile Lab 
+  
+ Besides options that reduce functionality or offload that functionality to other elements, the only other possibility 
+is relaxing constraints on delivery mass. The Surface Habitat is specifically limited to 12 metric tons due to lunar 
+lander constraints. If the habitat mass exceeds the performance envelope of the lander, then it cannot be placed on the 
+surface at all. NASA is currently prioritizing maintaining a competition for lander providers above maximizing 
+Surface Habitat performance, thus the driver is not accommodating all desired habitat functionality. Should the option 
+to use more capable landers emerge, a logical follow-on action would be to increase the control mass allocation to the 
+Surface Habitat.  
+ Options aside from fully outfitting the habitat as assessed in this study would allow greater volume to those 
+functions and would result in potentially more optimal layouts within the same volume. It is also likely that if less 
+functionality is needed within the habitat, its size could be better optimized (reduced) or more modular approaches 
+may be more beneficial. Mass constraints play an important role in determining final layout and should be considered 
+in further iterations of a NASA Reference SH layout. 
+VII. Results 
+ The NASA Reference Surface Habitat layout demonstrates an accommodation of habitat hardware and crew living 
+and working spaces. This layout is a key initial step towards developing official habitat requirements and identifying 
+paths for additional design and development. The resulting layout has uncovered the need for further analysis in 
+several key areas. To improve the suitability of the Surface Habitat for crew usage continued study should be done on 
+crew quarter expansion and dimensions, separating out additional combined functional spaces, systems and stowage 
+access, and additional volume for utilization and maintenance and repair. 
+ Interest has been repeatedly expressed in expanding the crew quarters to accommodate four crew.  Current Artemis 
+plans call for sending four crew to the lunar surface with two living in the Pressurized Rover and two living in the 
+Surface Habitat. However, there are some mission advantages if it is possible to house all four crew in the Surface 
+Habitat. If there is a failure of the Pressurized Rover that requires the crew to abandon the vehicle, there is currently 
+insufficient accommodation in the Surface Habitat for them to reside for more than 7 contingency days. Unless those 
+crew can live in the Human Landing System (HLS) for the remainder of the surface mission the entire crew will need 
+to retreat to HLS and terminate the surface mission early. It would also be more challenging for a future crew to 
+conduct a recovery mission to repair the PR, both from habitation and repair functionality perspectives, if only two 
+can be accommodated in the SH during the surface mission. 
+ There is also some interest in adjusting the dimension and layout of each crew quarters. Currently, the crew 
+quarters have a triangular section at the foot of each bunk that is difficult to use efficiently. It is also preferable from 
+a sound mitigation perspective for two bunks to not share the same wall. And the volume within each crew quarters 
+limits the space available to provide a desk for private work activity.   

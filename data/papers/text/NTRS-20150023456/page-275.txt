@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 269 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 245.—Test FLEX–245. Free-floating methanol droplet in a 0.17/0.63/0.20 O2/N2/He, 1.0-atm 
+ambient environment. The droplet had a strong north to northeast drift after deployment, nearly hitting 
+the igniter before it withdrew. The droplet had a relatively high drift velocity after ignition and only 
+remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for one-fourth of the burn. 
+Because the droplet was in the FOV for only a short time, no extinction diameter is reported. The flame 
+extinguished diffusively. 
+  

@@ -1,0 +1,23 @@
+ 
+NASA/TP—2015-216046 247 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 223.—Test FLEX–222. Free-floating methanol droplet burning in a 0.13/0.87 O2/N2, 1.0-atm 
+ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV) for most of the test. For a short period near visible flame extinction, the droplet drifted partially 
+out of the FOV. It drifted back into the HiBMs FOV for the remainder of the HiBMs Image Processing 
+and Storage Unit (IPSU) recording time. The flame was very dim, barely above the background level, 
+in both the Low Light Level Ultra-Violet (LLUV) and color cameras. The extinction droplet diameter 
+was interpolated from the droplet history from when the droplet left the HiBMs FOV to when it 
+reentered a short time after the visible flame extinguished. The interpolation polynomial is a fourth-
+order polynomial with the constraint that the values and burning rate constants at both ends match 
+the experimental values. 
+  

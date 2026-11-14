@@ -1,0 +1,49 @@
+53rd International Conference on Environmental Systems ICES-2024-365 
+21-25 July 2024, Louisville, Kentucky 
+Preliminary Results from the Saffire VI Experiment 
+ 
+David L. Urban1, Gary A. Ruff2, Paul Ferkul3, John Easton4, Michael Johnston5, Jay Owens6, Sandra Olson7, Claire 
+Fortenberry8 
+NASA Glenn Research Center, Cleveland, OH, USA 
+John Graf9, Oageng George 10         Balazs Toth11   
+NASA Johnson Space Center, Houston, TX, USA     ESTEC, Noordwijk, Netherlands 
+Florian Meyer12, Christian Eigenbrod13      James S. T’ien14, Ya-Ting T. Liao15  
+University of Bremen (ZARM), Bremen, Germany   Case Western Reserve University, Cleveland, OH, USA 
+A. Carlos Fernandez-Pello16        Guillaume Legros 17   
+UC Berkeley, Berkeley, CA, USA    CNRS-ICARE, Univ. Orléans, Orléans, France 
+Augustin Guibaud18         Nickolay Smirnov19  
+University College, London, UK    Moscow State University, Russian Federation   
+                            Osamu Fujita20      and        Ulises Rojas Alva21, Grunde Jomaas22 
+             Hokkaido University, Sapporo, Japan  FRISSBE, ZAG, Ljubljana, Slovenia 
+Preliminary results are presented for one test  of the last flight  of the Spacecraft Fire 
+Experiment (Saffire VI) which was conducted on  an orbiting Cygnus  spacecraft. These 
+experiments directly address the risks associated  with our understanding of spacecraft fire 
+behavior at practical length scales and geomet ries. The lack of this experimental data has 
+forced spacecraft designers to base their designs and safety precautions on 1-g understanding 
+of flame spread, flame self-extinguishment, fire detection, and su ppression. The Saffire 
+experiment was developed by an international team of investigators with the goal of 
+addressing open issues in spacecraft fire safety. NASA’s Spacecraft Fire Safety Demonstration 
+Project was formulated with the goal of conduc ting a series of large-scale experiments in 
+ 
+1 Branch Chief, Low gravity Exploration Technology (LTX), MS 77-5, 21000 Brookpark Rd, Cleveland, OH, USA. 
+2 Saffire Project Manager, Exploration Systems Office,21000 Brookpark Road, Cleveland, OH, USA. 
+3 Staff Scientist, Universities Space Research Assoc. (USRA), 21000 Brookpark Road, Cleveland, OH, USA. 
+4 Staff Scientist, Case Western Reserve University (CWRU) MS 110-3, 21000 Brookpark Road, Cleveland, OH, USA. 
+5 Aerospace Engineer, LTX, MS 77-5, 21000 Brookpark Road, Cleveland, OH, USA. 
+6 Engineer, USRA, MS 77-5, 21000 Brookpark Road, Cleveland, OH, USA. 
+7 Aerospace Engineer, LTX, MS 77-5, 21000 Brookpark Road, Cleveland, OH, USA. 
+8 Aerospace Engineer, LTX, MS 77-5, 21000 Brookpark Road, Cleveland, OH, USA. 
+9 Aerospace Engineer, Life Support Systems Branch, MS-EC3, 2101 E NASA Pkwy, Houston, TX, USA. 
+10 Jacobs Engineering, Project Engineer, ECLSS, JE4EA, 2224 Bay Area Boulevard, Houston, TX 77058. 
+11 Payload System Engineer, ESA/ESTEC, Keplerlaan, 2201 Noordwijk, The Netherlands. 
+12 Senior Researcher, ZARM, University of Bremen, Am Fallturm 2, 28359 Bremen, Germany. 
+13 Researcher, ZARM Univ. of Bremen, Am Fallturm, 28359 Bremen, Germany. 
+14 Professor Emeritus, Dept. Mech. and Aero. Engineering, CWRU, Cleveland, OH, USA. 
+15 Associate Professor, Dept. Mech. and Aero. Engineering, CWRU, Cleveland, OH, USA. 
+16 Professor, Dept. Mech. Engineering, Univ. of California at Berkeley, Berkeley, CA, USA. 
+17 Professor, Université Orléans, 45071 Orléans, Cedex 2 France. 
+18 Post. Doc. Environmental and Geomatic Engineering, University College, London, UK. 
+19 Professor, Mechanics and Mathematics, Moscow M.V. Lomonosov State University, Moscow 119899, Russia 
+20 Professor, Hokkaido University, Sapporo, Japan 
+21 Senior Researcher, FRISSBE, ZAG, Ljubljana, Slovenia 
+22 FRISSBE ERA Chair holder and Head of department, FRISSBE, ZAG, Ljubljana, Slovenia 

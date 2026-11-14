@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 114 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 90.—Test FLEX−086. Fiber-supported methanol droplet translating 3 mm/s and burning in a 
+0.13/0.87 O2/N2, 1.0-atm ambient environment. The droplet oscillated transversely on the fiber 
+throughout the test. It continued to move (relative to the fiber) even after the fiber stopped translating. 
+It drifted out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and to the edge of the 
+Low Light Level Ultra-Violet (LLUV) FOV. Only about half of the test was captured by the HiBMs. The 
+color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. 
+The extinction droplet diameter was based on extrapolating the droplet history using the measured 
+burning rate constant while the droplet was within the HiBMs FOV (and extinction from the LLUV). 
+  

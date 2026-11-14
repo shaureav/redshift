@@ -1,0 +1,33 @@
+2022 ASCEND AIAA 
+ 
+8 
+ 
+ 
+ The Hygiene Station combines numerous hygiene functions.  Collectively, these functions enable both whole body 
+and facial hygiene activities. It is important to note that both “wet” and “dry” activities are combined in this same 
+volume, which should be flagged as an important design attribute when developing human-in-the-loop evaluations. 
+ The Universal Waste Management System (UWMS) similarly combines multiple functions related to human waste 
+collection – emesis waste collection, menses waste collection, liquid waste collection, and solid waste collection. 
+Additionally, any maintenance and repair of the UWMS is intended to be conducted within its compartment.  
+Table 3  Combined Functional Capabilities cont. 
+  
+ 
+ As has been done in many habitat designs, the Wardroom Table is the sole volume for non-private social activity. 
+It is intended to support movie watching, tabletop games, dining, or any non-private personal recreational activity. 
+Recreation is essentially limited to seated activities – there is no option for physical activities such as sports in the 
+Surface Habitat. Physical activity requirements are satisfied by exercise and a high frequency of EVAs. A window is 
+also potentially located near the table, adding both operational and recreational external viewing to the combined 
+functional capabilities associated with the table. In addition, the table is also used for team meetings and as a horizontal 
+work surface for mission planning. 
+ The Work Surface on Level One primarily supports maintenance and repair, specifically equipment diagnostics 
+and electronics repair. It also supports EVA suit component testing and repair and temporary EVA items stowage.  
+When not needed for maintenance or EVA support, it can be used for logistics purposes such as packing and inventory 
+management. It can also be used for packing trash prior to disposal. 
+ The General Computer Station primarily serves the function of spacecraft monitoring and commanding. In 
+addition, mission planning is supported by this computer station in conjunction with the Wardroom Table. Because 
+the General Computer Station is adjacent to the medical area, it also serves as the Medical Operations computer. This 
+necessitates the ability for computing stations to accommodate multiple functions and have the ability to quickly 
+switch between those capabilities in certain cases (e.g. medical emergencies). 
+ The Galley only minimally combines functional capabilities.  It has a deployable horizontal surface that provides 
+surface area to support food item sorting. The Galley’s primary purpose, of course, is meal preparation, including both 
+rehydration and food warming. 

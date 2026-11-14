@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 74 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 50.—Test FLEX−046. Fiber-supported methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 
+1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of 
+view (FOV) for the entire test. There was significant oscillatory axial motion during the most of the test, 
+but at the very end, the droplet became stationary and there was some deformation, growth, and shape 
+change. A small disruption occurred coincident with flame extinction. 
+  

@@ -1,0 +1,20 @@
+ 
+  
+ 4 of 11 
+ 
+Fig. 2 CIR facility returned to its normal configuration by Japanese astronaut Norishige Kanai [ISS055e096658] 
+ 
+ACME’s chamber insert, which is ~0.4 m in diameter, provides common mounting for a variety of burners (but only one 
+at a time) on the chamber axis.  Tests have been conducted with gas-jet, coflow, and spherical burners, in addition to a 
+fourth type developed for the Burning Rate Emulator (BRE) investigation.  The resistively-heated igniter has a crew-
+exchangeable tip and arm (to accommodate the various burners) and its stepper-motor drive allows for precise positioning 
+and retraction from the flame.  The insert is partially withdrawn from the chamber in Figure 3, taken on 10 May 2019 
+when Canadian astronaut David Saint-Jacques replaced the igniter tip.  Although relatively small, a porous spherical 
+burner can be seen in the photo. 
+ 
+Fig. 3 Canadian astronaut David Saint-Jacques working with the ACME chamber insert [ISS059e060847] 
+The chamber insert includes three mass flow controllers, visible on the left of Fig. 4, for the delivery of fuel, oxidizer or 
+inert (e.g., helium), and nitrogen to either the burner or the chamber.  The crew can exchange the mass flow controllers to 
+provide appropriate ranges to improve flow control and accuracy.  The gas delivery system enables on-orbit dilution of 
+the fuel or oxidizer (but not both simultaneously), coflow, and inverse flames, where the oxidizer issues from the burner 
+into the chamber filled with a gaseous fuel.  Gases are also delivered premixed to the space station where that is necessary 

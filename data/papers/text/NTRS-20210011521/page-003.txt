@@ -1,0 +1,56 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+3 
+hatch. Six remote sensors  containing a thermocouple and a carbon dioxide sensor were located in each of the four  
+standoffs at the mid plane of the vehicle, in the end cone and in th e hatch area. After the spacecraft left the space 
+station and  arrived at the planned orbit for the testing, the system was powered up and stepped through the test 
+sequence. Each test was separately triggered by ground command,  but the detailed steps for the tests were 
+predetermined by a command file. 
+The sample cards contained three or four samples and were configured for four ignitions. As will be discussed below, 
+two samples on Saffire IV and one sample on Saffire V were not ignited. The conditions for the five successful tests 
+are presented in Table 1 and the sample card layout is shown in Figure 2. The tests were conducted in a rectangular 
+flow tunnel that was 30 cm high by 45 cm wide by 109 cm long.  The ends of the ducts were equipped with flow  
+straighteners that connected to plenums . The inlet and outlet ducts  connected to these plenums and were parallel  to 
+the flow duct producing a folded geometry. These ducts enabled flow mixing  and temperature and measurement  of 
+the concentrations of oxygen, carbon dioxide and carbon monoxide on the inlet and outlet. The flow was induced by 
+a fan in the inlet duct and measured by a vane anemometer at the entrance of the inlet duct. The samples were affixed 
+to a metal frame in the middle of the duct as depicted in fi gure 2. The sample materials were: “SIBAL” fabric (75% 
+ 
+ 
+Figure 1. Rendering of the position of the Saffire Flow Unit (A) and the Far Field Diagnostics (B) in the 
+empty Cygnus module(left) and as fully packed for Saffire IV (right). The remote sensors in the standoffs are 
+indicated with red dots and the ones in the end cone and hatch area with green dots. The four open wedge-shaped 
+areas in the right image are referred to as the standoffs in the Cygnus vehicle.  The top surface of both images is 
+the port side of the vehicle with the bottom side being the starboard.  The right-hand side of the cylinder is the 
+forward side and the left is the aft. The SFU intake is in the aft-port standoff and the outlet is in the forward-port 
+standoff. The standoffs provided a communication path for the air from the  hatch area (zenith) (front surface in 
+the images) to the end cone (nadir). 
+A
+B
+Hatch/Zenith
+Nadir/End Cone
+Table 1: Saffire IV-V Sample Test Conditions 
+ 
+Flight/Sample IV-1 IV-2 V-2 V-3 V-4 
+Material/configuration SIBAL 
+Cloth 
+2-sided 
+PMMA 
+Cotton 
+Jersey 
+1 sided 
+PMMA 
+Structured 
+PMMA 
+Length (cm) 50  18 50 18 20 
+Air Flow Rate (cm/s) 20 20 20 20 20 
+Flow Direction Concurrent Concurrent Concurrent Concurrent Opposed 
+Ambient Pressure (kPa) 100.0 100.0 70.7 71.3 72.6 
+Oxygen Concentration (mol 
+%) 
+22.0 22.0 26.2 25.4 25.7 
+Pressurized Volume (m3) 18.7 19.2 
+Free volume (m3) 17.9 19.0 
+ 

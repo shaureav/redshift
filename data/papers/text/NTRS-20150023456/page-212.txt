@@ -1,0 +1,21 @@
+ 
+NASA/TP—2015-216046 206 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 182.—Test FLEX–179. Free-floating heptane droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 
+0.7-atm ambient environment. The droplet drifted slowly east in the High-Bit-Depth Multispectral 
+(HiBMs) field of view (FOV), but it remained in the HiBMs FOV for the entire recording time 
+(including after extinction). There was some rapid postextinction vaporization, but it was not as 
+pronounced as in other heptane tests. This was followed by a plateau in the droplet history. The 
+flame extinguished radiatively, and this was probably followed by a cool flame and cool flame 
+extinction. The color camera Image Processing and Storage Unit (IPSU) failed to record any images 
+after deployment. 
+  

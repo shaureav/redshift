@@ -1,0 +1,565 @@
+{
+ "p": "sensitivity",
+ "rows": [
+  {
+   "candidate_id": "c14_7_21",
+   "counts": {
+    "droplet": {
+     "p": "sens:c14_7_21:0.75:droplet",
+     "u": "tests",
+     "v": 110
+    },
+    "emulator": {
+     "p": "sens:c14_7_21:0.75:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c14_7_21:0.75:gas",
+     "u": "tests",
+     "v": 106
+    },
+    "solid": {
+     "p": "sens:c14_7_21:0.75:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 0.75,
+   "target_flow_cm_s": null,
+   "variant": "0.75x steps"
+  },
+  {
+   "candidate_id": "c14_7_21",
+   "counts": {
+    "droplet": {
+     "p": "sens:c14_7_21:1:droplet",
+     "u": "tests",
+     "v": 137
+    },
+    "emulator": {
+     "p": "sens:c14_7_21:1:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c14_7_21:1:gas",
+     "u": "tests",
+     "v": 106
+    },
+    "solid": {
+     "p": "sens:c14_7_21:1:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": null,
+   "variant": "1x steps"
+  },
+  {
+   "candidate_id": "c14_7_21",
+   "counts": {
+    "droplet": {
+     "p": "sens:c14_7_21:1.5:droplet",
+     "u": "tests",
+     "v": 247
+    },
+    "emulator": {
+     "p": "sens:c14_7_21:1.5:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c14_7_21:1.5:gas",
+     "u": "tests",
+     "v": 112
+    },
+    "solid": {
+     "p": "sens:c14_7_21:1.5:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.5,
+   "target_flow_cm_s": null,
+   "variant": "1.5x steps"
+  },
+  {
+   "candidate_id": "c14_7_21",
+   "counts": {
+    "droplet": {
+     "p": "sens:c14_7_21:1-flow0:droplet",
+     "u": "tests",
+     "v": 137
+    },
+    "emulator": {
+     "p": "sens:c14_7_21:1-flow0:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c14_7_21:1-flow0:gas",
+     "u": "tests",
+     "v": 106
+    },
+    "solid": {
+     "p": "sens:c14_7_21:1-flow0:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": 0.0,
+   "variant": "1x steps, flow used against a quiescent target (0 cm/s) where recorded"
+  },
+  {
+   "candidate_id": "c10_2_26_5",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_26_5:0.75:droplet",
+     "u": "tests",
+     "v": 54
+    },
+    "emulator": {
+     "p": "sens:c10_2_26_5:0.75:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_26_5:0.75:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c10_2_26_5:0.75:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 0.75,
+   "target_flow_cm_s": null,
+   "variant": "0.75x steps"
+  },
+  {
+   "candidate_id": "c10_2_26_5",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_26_5:1:droplet",
+     "u": "tests",
+     "v": 68
+    },
+    "emulator": {
+     "p": "sens:c10_2_26_5:1:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_26_5:1:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c10_2_26_5:1:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": null,
+   "variant": "1x steps"
+  },
+  {
+   "candidate_id": "c10_2_26_5",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_26_5:1.5:droplet",
+     "u": "tests",
+     "v": 171
+    },
+    "emulator": {
+     "p": "sens:c10_2_26_5:1.5:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_26_5:1.5:gas",
+     "u": "tests",
+     "v": 118
+    },
+    "solid": {
+     "p": "sens:c10_2_26_5:1.5:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.5,
+   "target_flow_cm_s": null,
+   "variant": "1.5x steps"
+  },
+  {
+   "candidate_id": "c10_2_26_5",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_26_5:1-flow0:droplet",
+     "u": "tests",
+     "v": 68
+    },
+    "emulator": {
+     "p": "sens:c10_2_26_5:1-flow0:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_26_5:1-flow0:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c10_2_26_5:1-flow0:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": 0.0,
+   "variant": "1x steps, flow used against a quiescent target (0 cm/s) where recorded"
+  },
+  {
+   "candidate_id": "c10_2_30",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_30:0.75:droplet",
+     "u": "tests",
+     "v": 23
+    },
+    "emulator": {
+     "p": "sens:c10_2_30:0.75:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_30:0.75:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c10_2_30:0.75:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 0.75,
+   "target_flow_cm_s": null,
+   "variant": "0.75x steps"
+  },
+  {
+   "candidate_id": "c10_2_30",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_30:1:droplet",
+     "u": "tests",
+     "v": 52
+    },
+    "emulator": {
+     "p": "sens:c10_2_30:1:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_30:1:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c10_2_30:1:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": null,
+   "variant": "1x steps"
+  },
+  {
+   "candidate_id": "c10_2_30",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_30:1.5:droplet",
+     "u": "tests",
+     "v": 93
+    },
+    "emulator": {
+     "p": "sens:c10_2_30:1.5:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_30:1.5:gas",
+     "u": "tests",
+     "v": 68
+    },
+    "solid": {
+     "p": "sens:c10_2_30:1.5:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.5,
+   "target_flow_cm_s": null,
+   "variant": "1.5x steps"
+  },
+  {
+   "candidate_id": "c10_2_30",
+   "counts": {
+    "droplet": {
+     "p": "sens:c10_2_30:1-flow0:droplet",
+     "u": "tests",
+     "v": 52
+    },
+    "emulator": {
+     "p": "sens:c10_2_30:1-flow0:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c10_2_30:1-flow0:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c10_2_30:1-flow0:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": 0.0,
+   "variant": "1x steps, flow used against a quiescent target (0 cm/s) where recorded"
+  },
+  {
+   "candidate_id": "c8_2_34",
+   "counts": {
+    "droplet": {
+     "p": "sens:c8_2_34:0.75:droplet",
+     "u": "tests",
+     "v": 9
+    },
+    "emulator": {
+     "p": "sens:c8_2_34:0.75:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c8_2_34:0.75:gas",
+     "u": "tests",
+     "v": 19
+    },
+    "solid": {
+     "p": "sens:c8_2_34:0.75:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 0.75,
+   "target_flow_cm_s": null,
+   "variant": "0.75x steps"
+  },
+  {
+   "candidate_id": "c8_2_34",
+   "counts": {
+    "droplet": {
+     "p": "sens:c8_2_34:1:droplet",
+     "u": "tests",
+     "v": 17
+    },
+    "emulator": {
+     "p": "sens:c8_2_34:1:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c8_2_34:1:gas",
+     "u": "tests",
+     "v": 20
+    },
+    "solid": {
+     "p": "sens:c8_2_34:1:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": null,
+   "variant": "1x steps"
+  },
+  {
+   "candidate_id": "c8_2_34",
+   "counts": {
+    "droplet": {
+     "p": "sens:c8_2_34:1.5:droplet",
+     "u": "tests",
+     "v": 26
+    },
+    "emulator": {
+     "p": "sens:c8_2_34:1.5:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c8_2_34:1.5:gas",
+     "u": "tests",
+     "v": 20
+    },
+    "solid": {
+     "p": "sens:c8_2_34:1.5:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.5,
+   "target_flow_cm_s": null,
+   "variant": "1.5x steps"
+  },
+  {
+   "candidate_id": "c8_2_34",
+   "counts": {
+    "droplet": {
+     "p": "sens:c8_2_34:1-flow0:droplet",
+     "u": "tests",
+     "v": 17
+    },
+    "emulator": {
+     "p": "sens:c8_2_34:1-flow0:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c8_2_34:1-flow0:gas",
+     "u": "tests",
+     "v": 20
+    },
+    "solid": {
+     "p": "sens:c8_2_34:1-flow0:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": 0.0,
+   "variant": "1x steps, flow used against a quiescent target (0 cm/s) where recorded"
+  },
+  {
+   "candidate_id": "c4_3_100",
+   "counts": {
+    "droplet": {
+     "p": "sens:c4_3_100:0.75:droplet",
+     "u": "tests",
+     "v": 0
+    },
+    "emulator": {
+     "p": "sens:c4_3_100:0.75:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c4_3_100:0.75:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c4_3_100:0.75:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 0.75,
+   "target_flow_cm_s": null,
+   "variant": "0.75x steps"
+  },
+  {
+   "candidate_id": "c4_3_100",
+   "counts": {
+    "droplet": {
+     "p": "sens:c4_3_100:1:droplet",
+     "u": "tests",
+     "v": 0
+    },
+    "emulator": {
+     "p": "sens:c4_3_100:1:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c4_3_100:1:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c4_3_100:1:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": null,
+   "variant": "1x steps"
+  },
+  {
+   "candidate_id": "c4_3_100",
+   "counts": {
+    "droplet": {
+     "p": "sens:c4_3_100:1.5:droplet",
+     "u": "tests",
+     "v": 0
+    },
+    "emulator": {
+     "p": "sens:c4_3_100:1.5:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c4_3_100:1.5:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c4_3_100:1.5:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.5,
+   "target_flow_cm_s": null,
+   "variant": "1.5x steps"
+  },
+  {
+   "candidate_id": "c4_3_100",
+   "counts": {
+    "droplet": {
+     "p": "sens:c4_3_100:1-flow0:droplet",
+     "u": "tests",
+     "v": 0
+    },
+    "emulator": {
+     "p": "sens:c4_3_100:1-flow0:emulator",
+     "u": "tests",
+     "v": 0
+    },
+    "gas": {
+     "p": "sens:c4_3_100:1-flow0:gas",
+     "u": "tests",
+     "v": 0
+    },
+    "solid": {
+     "p": "sens:c4_3_100:1-flow0:solid",
+     "u": "tests",
+     "v": 0
+    }
+   },
+   "multiplier": 1.0,
+   "target_flow_cm_s": 0.0,
+   "variant": "1x steps, flow used against a quiescent target (0 cm/s) where recorded"
+  }
+ ]
+}

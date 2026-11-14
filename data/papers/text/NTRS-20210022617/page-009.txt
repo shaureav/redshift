@@ -1,0 +1,25 @@
+9
+JASMAC-33
+10/15/2021
+Simplified Theoretical Model: Cool Flames
+6-step simplified chemical kinetics (based on San Diego Mechanism)*
+A – (cm3/mol.s) (for bimolecular reactions) & 1/s (for unimolecular reactions)
+Ta – (K )
+Heat release can be associated with this step 4
+*Williams and Nayagam (Combustion Theory and Modelling (2019)
+*Williams and Nayagam (Combustion and Flame (2020)
+rr ~ A Exp[-Ta/T]
+Step 1: H-atom abstraction 
+RH + OH → R + H2O
+Step 2: First oxygen addition
+R + O2 → ROO
+Step 2a: Internal Isomerization
+ROO → QOOH
+Step 3: 2nd oxygen addition
+QOOH + O2 → KET + OH 
+Step 4: KET decomposition
+KET → P’s + OH 
+Step 5: Intermediate – T path
+QOOH  → S’s
+Step 6: High-T path
+R → S’s

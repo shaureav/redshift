@@ -1,0 +1,60 @@
+4 
+International Conference on Environmental Systems 
+ 
+ 
+and V, the tests were conducted in a rectangular flow tunnel that was 30 cm high by 45 cm wide by 109 cm long. The 
+ends of the ducts were equipped with flow straightener s that connected to plenums.  The inlet and outlet ducts 
+connected to these plenums and were parallel to the flow duct producing a folded geometry. These ducts enabled flow 
+mixing and measurement of the temperature and concentrations of oxygen, carbon dioxide and carbon monoxide on 
+the inlet and outlet. The flow was induced by a fan in the inlet duct and measured by a vane anemometer at the entrance 
+of the inlet duct. The samples were affixed to a metal frame (Figure 2) in the middle of the duct. Similar to Saffire IV 
+& V, the sample materials were: “SIBAL” fabric (75% cotton and 25% fiberglass)1 with a total area density of 18.05 
+mg/cm2; or flat, cast, polymethyl methacrylate (PMMA) (either one-sided 5 mm thick or two-sided (10 mm thick). 
+The Nomex sample did not ignite and so it will not be included in this paper. The 
+exhaust gases exited the SFU and entered the forward port standoff of the spacecraft. 
+The overall flow in the spacecraft carried the gases to the FFD in the hatch area. The 
+FFD contained aerosol and sp ecies diagnostics and a sm oke cleanup system. More 
+details of the smoke transport and preliminary FFD results are in Fortenberry et al.5. 
+III. Results and Their Fire Safety Implications  
+Representative front-view images of the flames are shown in Figure 3. Overall, the 
+flame growth and spread were consistent  with prior Saffire flights discussed 
+previously3. The SIBAL sample (left image) achieved a steady size and spread rate 
+quite rapidly where the two PMMA samples grew continuously until the flow speed was reduced. This continued 
+growth is evident in Figure 4 where the outlet duct temperature rises continuously. Likewise, the oxygen consumption 
+(Fig. 5) and the CO and CO2 (Fig. 6) concentrations at the SFU outlet increase continuously until the flow is reduced 
+at 1120 seconds. At the same time the temperatures and gas temperature at the outlet of the SFU outlet is significant 
+(70 °C) the temperature near the FFD (z enith) only changes slightly from the prior baseline. The CO and CO 2 levels 
+are also very high exiting the SFU, but they are also attenuated at the location of the FFD (Fig. 6). The increase at the 
+FFD is reported in Table 2. Since carbon dioxide scrubbing only occurred twice on the Saffire flights and there was 
+limited carbon monoxide removal, the values reported here are the increases in the average concentration in the space 
+craft due to each test.  
+Figure 5 presents the heat releas e calculated from the oxygen consum ption using the method of Huggett 6 where 
+the heat release is estimated for a wide range of combustible s to be 13.1 kJ per gram of oxygen consumed. The heat 
+release can be seen to be consistent with the radiometer. These results are tabulated in Table 2 with the thin fuel results 
+from Saffire IV and V and all the successful ignitions from Saffire VI. The fires were ge nerally of 1.5 to 3 kW in 
+intensity which is a small fire by terrestrial standards. The table also includes the heat release calculated using the fuel 
+consumption rate for the thin materials. For the thick materials, much of the material burning is from the surface which 
+cannot be detected by the cameras, so it is not possible to  estimate the heat release from  the flame imaging. For the 
+VI-2 sample (SIBAL) both methods were used and agree within 15% which is reasonable for this type of analysis.  
+     
+ 
+Figure 2. Sample card 
+layout for Saffire VI 
+Red dots indicate the 
+location of the igniter 
+wires. The Nomex 
+sample did not ignite. 
+SIBAL Fabric
+Test 3
+Normoxic O2 with 
+forced flow
+Test 2
+Test 4
+2‐sided PMMA (1 cm thk.)
+1‐sided PMMA (0.5 cm thk.)
+Nomex Fabric
+Test 1
+           
+Figure 3. Representative front-view (sample surface) images for each Saffire VI test 
+after the flame is well established. From left: SIBAL fabric (test 2), 2-sided PMMA (test 
+3), and 1-sided PMMA (test 4). Oxidizer flow is from the left at 20 cm/s in all cases. 

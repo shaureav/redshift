@@ -53,8 +53,12 @@ def psi_to_kpa(value_psi: float) -> float:
 
 
 def fraction_to_pct(value: float) -> float:
-    """Mole fraction (0 to 1) to percent (0 to 100)."""
-    return value * 100.0
+    """Mole fraction (0 to 1) to percent (0 to 100).
+
+    Rounded to 9 decimal places to remove binary floating-point artefacts (0.23 x 100 would otherwise
+    be 23.000000000000004). No recorded value has more than 4 decimal places, so nothing is lost.
+    """
+    return round(value * 100.0, 9)
 
 
 def round_sig(value: float, digits: int = 6) -> float:

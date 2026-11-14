@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 288 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 264.—Test FLEX–264. Free-floating heptane droplet in a 0.21/.0.49/0.30 O2/N2/He, 0.7-atm 
+ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV) for the entire test. The flame grew to a maximum size shortly after ignition, then remained at a 
+constant size until extinction. It is not clear whether the flame extinguished diffusively or radiatively. 
+There was no evidence of prolonged cool flame burning after the visible flame extinguished; there 
+was no rapid vaporization after extinction and no vapor cloud formed in the color camera view. 
+  

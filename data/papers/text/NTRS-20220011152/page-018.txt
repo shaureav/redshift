@@ -1,0 +1,35 @@
+18
+EVA Summary: 
+Preliminary 
+DCS Data
+DCS Incidence rate during 11
+-
+day study:
+•
+ EVA 1
+: 6 subjects participated, 1 DCS case
+•
+ EVA 2
+: 4 subjects participated, no DCS*
+•
+ 1 subject sat out EVA per protocol on ground level oxygen due to DCS on EVA1
+•
+ 1 subject sat out EVA due to mask fit issues
+•
+ EVA 3
+: 5 subjects participated, no DCS
+•
+ 1 subject sat out EVA due to mask fit issues
+•
+ EVA 4
+: 5 subjects participated, no DCS 
+•
+ 1 subject sat out EVA due to musculoskeletal issues 
+•
+ EVA 5
+: 6 subjects participated, 1 DCS case
+•
+ 1 subject excluded due to musculoskeletal issues 
+Summary: 2 DCS cases out of 25 total simulated EVAs during the 11-
+day study (8% DCS)
+* DCS case in Doppler Technician – not a study subject

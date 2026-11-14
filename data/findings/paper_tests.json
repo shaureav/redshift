@@ -1,0 +1,26 @@
+{
+  "_note": "Maps verified paper findings to individual tests for the trade map. Each test takes its O2 and pressure from named values of a finding; a test appears only when every finding it cites is verified. Written by hand (by the AI assistant) and checked by the build: every finding id and value name must exist.",
+  "tests": [
+    {"id": "Saffire-VI-2", "investigation": "Saffire VI", "label": "SIBAL cloth (cotton/fibreglass), 50 cm", "material": "SIBAL cloth", "fuel_class": "solid",
+     "o2": ["FND-S6-COND-P-O2", "VI-2 oxygen concentration"], "pressure_kpa": ["FND-S6-COND-P-O2", "VI-2 ambient pressure"], "flow_cm_s": ["FND-S6-COND-MAT-FLOW", "Air flow rate (all columns)"]},
+    {"id": "Saffire-VI-3", "investigation": "Saffire VI", "label": "Two-sided PMMA, 18 cm", "material": "PMMA (two-sided)", "fuel_class": "solid",
+     "o2": ["FND-S6-COND-P-O2", "VI-3 oxygen concentration"], "pressure_kpa": ["FND-S6-COND-P-O2", "VI-3 ambient pressure"], "flow_cm_s": ["FND-S6-COND-MAT-FLOW", "Air flow rate (all columns)"]},
+    {"id": "Saffire-VI-4", "investigation": "Saffire VI", "label": "One-sided PMMA, 18 cm", "material": "PMMA (one-sided)", "fuel_class": "solid",
+     "o2": ["FND-S6-COND-P-O2", "VI-4 oxygen concentration"], "pressure_kpa": ["FND-S6-COND-P-O2", "VI-4 ambient pressure"], "flow_cm_s": ["FND-S6-COND-MAT-FLOW", "Air flow rate (all columns)"]},
+    {"id": "Saffire-V-2", "investigation": "Saffire V", "label": "Cotton jersey, 50 cm", "material": "Cotton jersey", "fuel_class": "solid",
+     "o2": ["FND-S5-COND-P-O2", "V-2 oxygen concentration"], "pressure_kpa": ["FND-S5-COND-P-O2", "V-2 ambient pressure"]},
+    {"id": "Saffire-V-3", "investigation": "Saffire V", "label": "One-sided PMMA, 18 cm", "material": "PMMA (one-sided)", "fuel_class": "solid",
+     "o2": ["FND-S5-COND-P-O2", "V-3 oxygen concentration"], "pressure_kpa": ["FND-S5-COND-P-O2", "V-3 ambient pressure"]},
+    {"id": "Saffire-V-4", "investigation": "Saffire V", "label": "Structured PMMA, 20 cm", "material": "PMMA (structured)", "fuel_class": "solid",
+     "o2": ["FND-S5-COND-P-O2", "V-4 oxygen concentration"], "pressure_kpa": ["FND-S5-COND-P-O2", "V-4 ambient pressure"]},
+    {"id": "Saffire-IV-1", "investigation": "Saffire IV", "label": "SIBAL cloth, 50 cm", "material": "SIBAL cloth", "fuel_class": "solid",
+     "o2": ["FND-S4-COND-P-O2", "IV-1 oxygen concentration"], "pressure_kpa": ["FND-S4-COND-P-O2", "IV-1 ambient pressure"]},
+    {"id": "Saffire-IV-2", "investigation": "Saffire IV", "label": "Two-sided PMMA, 18 cm", "material": "PMMA (two-sided)", "fuel_class": "solid",
+     "o2": ["FND-S4-COND-P-O2", "IV-2 oxygen concentration"], "pressure_kpa": ["FND-S4-COND-P-O2", "IV-2 ambient pressure"]}
+  ],
+  "prebreathe": [
+    {"finding": "FND-EA-PB-14.7", "atmosphere": "14.7 psi / 21% O2", "pressure_psi": "Saturation pressure", "o2_pct": "Oxygen", "duration_text": "4:00 (microgravity, resting); 6:30 to 7:00 (planetary)"},
+    {"finding": "FND-EA-PB-10.2", "atmosphere": "10.2 psi / 26.5% O2", "pressure_psi": "Saturation pressure", "o2_pct": "Oxygen", "duration_text": "0:40 (microgravity); 3:00 to 3:30 (planetary)"},
+    {"finding": "FND-EA-PB-8.2", "atmosphere": "8.2 psi / 34% O2", "pressure_psi": "Saturation pressure", "o2_pct": "Oxygen", "duration_text": "0:00 to 0:15 (microgravity); 0:00 to 0:30 (planetary)"}
+  ]
+}

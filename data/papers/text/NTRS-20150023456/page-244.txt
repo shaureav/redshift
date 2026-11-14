@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 238 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 214.—Test FLEX−212. Free-floating heptane droplet burning in a 0.16/0.84 O2/N2, 1.0-atm 
+ambient environment. The droplet drifted north in the color camera field of view (FOV). The High-
+Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any 
+images for this test, but the droplet remained in the FOVs of the Low Light Level Ultra-Violet 
+(LLUV) and color camera. The flame burned for a short time to radiative extinction. This was 
+probably followed by cool flame burning and extinction. The color camera showed that a large 
+vapor cloud formed sometime after the visible flame extinguished. 
+  

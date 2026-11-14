@@ -1,0 +1,22 @@
+ 
+NASA/TP—2015-216046 33 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 9.—Test FLEX–005. Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm 
+ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras. Because this 
+was a calibration run, the Low Light Level Ultra-Violet (LLUV) settings were not optimal. Consequently, 
+halfway through the burn the flame became undetectable in the LLUV. There was no evidence of 
+disruptive burning near extinction. The flame, however, seemed to shrink quickly after ignition—maybe 
+because of a small bubble burst. 
+  

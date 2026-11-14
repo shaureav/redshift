@@ -1,0 +1,32 @@
+2022 ASCEND AIAA 
+ 
+13 
+ 
+ 
+and the Geology Lab - 835 kg. There is also a General-Purpose Station not modeled in the CAD with a mass estimate 
+of 3760 kg. The subsystems not included in the MEL total up to 2234 kg. All of this mass is in excess of the 12.517 
+metric tons already contained within the Surface Habitat MEL and consequently none of these components can be 
+landed with the Surface Habitat. Additionally, the additional upsizing of the power and thermal systems to support 
+these assets is not included in the MEL. 
+ The first option to meet the control mass limit is to eliminate components and delivered functionality from the 
+Surface Habitat and scar for future outfitting. This would mean that the regenerative ECLSS and science utilization 
+are not included in the habitat at delivery. The subsystems excluded result in an open-loop life support system with 
+the expectation of either accepting the additional logistics resupply mass required or scarring for outfitting regenerative 
+ECLSS on the surface. While open-loop life support provides lower cost and risk to habitation, it does prevent the 
+ability to decrease the logistic resupply mass. It is currently assumed that “Logistics resupply of solid goods and water 
+to the SH is provided through the transport of small logistics carriers through the airlock” [2]. These same carriers can 
+be used on additional missions to deliver science lab instruments, payloads, and consumables. The buildup of the 
+laboratory capabilities over time would therefore become a function of the flight rate(s) of the associated lander(s) 
+delivering these logistics carriers and the available crew time in subsequent expeditions to perform installation and 
+checkout operations. 
+ Another option is to transfer some desired habitation functionality from the Surface Habitat to one or more other 
+surface elements, potentially adding additional elements to the Artemis Base Camp. This could remove significant 
+mass-driving components from the Surface Habitat and allow other elements to focus on those components and their 
+associated functions. This option does, of course, have the complication of acquiring additional elements and landers 
+and it adds complexity to surface operations as crew would now need to move back and forth between the elements. 
+This option was explored by the Johnson Space Center’s innovation team, the Forge, in a rapid turnaround study [4].  
+The Forge team created two high-level, multi-module concepts: a stationary lab facility docked to the Surface Habitat, 
+shown in Figure 12, and a mobile facility that can traverse the lunar surface, shown in Figure 13. 
+  
+ 
+Fig. 8  Forge Study Multi-Module Stationary Lab 

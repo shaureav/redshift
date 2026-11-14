@@ -1,0 +1,103 @@
+ 
+NASA/TP—2015-216046 4 
+During each FLEX test, the syringe assembly dispense d the 
+fluid between the horizontally opposed needles. The needles 
+then slowly stretch ed to a distance slightly  smaller than the 
+distance where the fluid would pull off one of the needles. Just 
+before ignition, the needles rapidly retracted , ideally leaving a 
+motionless droplet floating in the middle of the CIR combustion 
+chamber. 
+Once the needles retract ed, the control computer energized  
+two hot-wire igniters located 180° to each other and in the same 
+plane as the deployment needles. After a preset time, the control 
+computer deenergized  the igniters and activate d the linear 
+motors to retract them away from the droplet. 
+The MDCA also perform ed tests with fiber-supported drop-
+lets, either for cases where the drift velocity of the droplets  
+ 
+exceeded values acceptable to the science team or for tests 
+where the science team wished  to examine the effect of a 
+subbuoyant convective flow on the combustion process. For 
+fiber-supported tests, the procedure was  exactly the same,  
+except that the droplets were deployed on a small 80- µm 
+support fiber. For tests with translation, after ignition , the 
+control computer translated the fiber (in the direction parallel to 
+the orientation of the fiber) at a prescribed  speed and for a 
+prescribed time duration. 
+2.2 Experiment Diagnostics 
+The primary diagnostics for the FLEX experiment were 
+provided by the CIR facility and are described in detail 
+elsewhere (Banu, 2008). They include d a backlit view of the 
+droplet and an orthogonal view of the flame. The illumination 
+for the backlit view was a laser diode source and a collimating 
+optical system. They provide d monochromatic illumination 
+with a  center wavelength between 650 to  660 nm. The laser 
+diode operated below the lasing threshold current and thus acted 
+as a noncoherent illumination source. The image system for the 
+backlit view was the High -Bit-Depth Multispectral (HiBMs) 
+imaging package. The HiBMs p ackage had a telemetric imag-
+ing optical system and a high -resolution 12-bit output digital 
+camera.  
+Almost all of the tests reported herein 1 used the full 1024 by 
+1024 array with a fixed field of view  (FOV) of approximately 
+30 mm on a side.  The images used the full  12-bit output and a 
+framing rate of approximately 30 frames per second (fps). The 
+HiBMs package, when used in conjunction with the illumi -
+nation package, can  measure the droplet size as a function of 
+time and the soot volume fraction for soot -producing flames 
+(i.e., heptane for the tests described in this report). 
+The CIR also provided a LLUV package to image the 
+chemiluminescence from hydroxyl (OH •) emissions from the 
+                                                           
+1The exception is the first few “engineering” test points that used ISS 
+cabin air as the ambient. The primary purpose of these tests was an 
+engineering evaluation of the integrated hardware. These tests used a 
+camera configuration that was slightly different. 
+burning droplet. The LLUV package was a 1024 by 1024 
+monochrome frame -transfer charged -coupled device (CCD) 
+array with 12-bit digital imaging capability. The CCD array was 
+directly coupled to an 18 -mm Gen II –UV microchannel plate 
+intensifier to provide maximum response at short wavelengths. 
+The intensifier included intensifier and gating control that 
+allowed varied exposure times depending on the expected 
+brightness of the flames. The LLUV also had a spectral notch 
+filter integrated to image the chemiluminescence at 310 nm (the 
+filter had a 10 -nm full width at half maximum (FWHM) 
+bandwidth). Ground control of the LLUV enabled pretest setting 
+of the gain, pixel binning, and gate to optimally image the flames 
+surrounding the droplets. All of the tests reported herein used the 
+2 by 2 binned (512 by 512) array with a fixed FOV of approxi -
+mately 50 mm on a side. The framing rate for the majority of the 
+tests was 30 fps, with a smaller number at 15 fps as an attempt to 
+improve flame contrast for very dim flames. The intensifier gain 
+did vary somewhat over the tests in this report.  
+The MDCA provide d two diagnostics: a color camera and 
+radiometers. The color camera provide d a visual overview of 
+the FLEX experiments. This camera view was augmented with 
+illumination from a white -light-emitting diode ( LED) located 
+on the MDCA inside the CIR chamber. This camera had a zoom 
+lens that provide d a closeup view of the needles and droplet 
+during droplet formation. The white LED was turned on at this 
+time to allow the operator to see the droplet formation process.  
+Immediately prior to droplet deployment and ignition , the 
+camera zoomed out and the white LED turned off to provide an 
+overview of the combustion process. The FOV of t his camera 
+was approximately 110 by 90 mm. This view, which provided 
+flame size, shape, and color information, was downlinked to the 
+ground during nominal test point operations. 
+The MDCA provided two radiometers: a broadband radiom-
+eter to detect the total radiative output of the flame and a 
+radiometer with a filter to examine the emission from the water 
+vapor. For the tests reported herein, these radiometers were not 
+sensitive enough to provide reliable quantitative information 
+about flame radiometric output, so the data are  not reported. A 
+replacement radiometer package will be available for future 
+FLEX tests. 
+2.3 Experimental Procedures 
+During nominal operati ons, there was very little crew 
+involvement in the FLEX experiments. The FLEX experiments 
+required crew time to replace gas bottles, fuel reservoirs, and 
+fiber assemblies during nominal operations. Crew time also was 
+required during malfunction operations to diagnose hardware  
+and replace damaged components. Finally, immediately prior to 
+  

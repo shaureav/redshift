@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 200 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 176.—Test FLEX–173. Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) 
+field of view (FOV) for the entire test. The Low Light Level Ultra-Violet (LLUV) provided good 
+distortion-free, bright images. The flame extinguished radiatively. The visible flame extinction was 
+followed by rapid vaporization, a plateau when the droplet became quite small, and the formation of 
+a visible vapor cloud late in the recording history. The post-visible-flame-extinction behavior was 
+consistent with cool flame burning and extinction. 
+  

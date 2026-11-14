@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 226 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 202.—Test FLEX–199. Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet drifted north after deployment and ignition and out of 
+High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet left the HiBMs FOV before the 
+flame extinguished disruptively when the droplet was very small. The measured burning rate 
+constant was used to extrapolate the extinction droplet diameter from the droplet history until 
+disruption occurred. 
+  

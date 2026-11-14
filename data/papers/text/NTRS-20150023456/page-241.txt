@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 235 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 211.—Test FLEX–209. Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 
+1.0-atm ambient environment. The droplet drifted southeast after deployment, did not touch the 
+igniter, and continued to drift southeast in the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV) and out of the FOV. The droplet also drifted south and out of the Low Light Level Ultra-Violet 
+(LLUV) FOV. The color camera Image Processing and Storage Unit (IPSU) did not record color 
+camera data. It is not clear whether disruption occurred.  
+  

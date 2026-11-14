@@ -1,0 +1,46 @@
+ 
+International Conference on Environmental Systems 
+ 
+ 
+8 
+plotted with the results from Saffire I-III1 in figure 10. As expected, the spread rate increased (about 100%)  with the 
+reduced height flow duct compared to Saffire I and III.  Saffire I and III also produced  the novel observation of a 
+(~30%) flame size overshoot owing to the boundary layer development  on the sample surface.1 This overshoot was 
+not seen for the SIBAL samples on Saffire II , which were positioned on the sample card such that there was a long 
+entrance length. At the beginning of the duct, the undeveloped boundary layer is thinner with higher velocities  near 
+the sample surface. These higher ve locities induce faster spread as expected.  The st eady state flame lengths  are 
+summarized in Table 2. Compared to Saffire I-III, thin-sample flame sizes increased owing to the reduced duct height 
+on Saffire IV and with the Saffire V cotton sample, which was a thinner material and was in a higher ambient oxygen 
+concentration. From a fire safety perspective, these results are significant because they demonstrate that under a variety 
+of conditions, concurrent flames spreading over thin fuels will achieve a limiting  size. This behavior contrasts with 
+normal gravity upward spread where flames tend to grow continuously. 
+D. Flow / Configuration Effects on Thick Fuel Flame Spread and Growth 
+The Saffire IV and V flights included three successful tests burning PMMA slabs as described in Table 1 and in 
+more detail in Refs. 2 and 3. These tests produced several  results relevant to spacecraft fire safety. Both concurrent 
+samples (IV-2 and V -3) did not  spread appreciably and instead remained fixed at the leading edge of the sample , 
+advancing through surface regression only. This phenomenon is typical for thick fuels in low gravity but is different 
+from what is seen in normal gravity. These concurrent flames initially grew but then assumed a steady flame size for 
+the remainder of the burn duration. For Saffire II, the two PMMA 5 cm wide, two-sided samples grew to flame lengths 
+of 8.0 cm for the grooved sample and 9.5 for the flat sample.2 For Saffire IV-2, the two-sided PMMA sample flame 
+Table 2 Test Conditions and flame size for thin samples 
+Flight-Sample I-1 II-5 II-6 III-1 IV-1 V-2 
+Air flow (cm/s) 20 20 25 25 20 20 
+Oxygen concentration (%)  21 21 21 21 22 26.2 
+Pressure (kPa) 100 100 100 100 100 70.7 
+Material SIBAL SIBAL SIBAL SIBAL SIBAL Cotton jersey 
+Steady state size (cm) 4 4 5 5 8.5 10.0 
+Maximum size (cm) 6.2 4 5 8.2 11.0 14.0 
+Duct Height (cm) 46 46 46 46 30 30 
+Sample Width (cm) 41 5 5 41 41 41 
+Sample length (cm) 94 30 30 94 50 50 
+ 
+                                           
+Figure 10: Steady spread rate summary for the cotton -fiberglass fabric burning in microgravity. 1 
+Concurrent flames are shown on the left of the origin and opposed to the right. Saffire I-III were in a 46 cm duct 
+and Saffire IV was in a 30 cm duct. 
+BASS concurrent 2 cm wide
+BASS concurrent 1 cm wide
+BASS opposed 2 cm wide
+Saffire I& III: 40 cm wide
+Saffire II: 5 cm wide 
+Saffire IV: 40 cm wide

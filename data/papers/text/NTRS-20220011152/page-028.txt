@@ -1,0 +1,33 @@
+28
+Protocol: Hypoxia Characterization
+•
+ Even Days:
+Rest + Hypoxia Characterization
+–
+ Various 
+physiologic and cognitive 
+measurements will be taken to characterize 
+the effects of hypobaric hypoxia in the 
+exploration atmosphere. 
+Day 1 3hr PB @ 100% O2, 14.7 psia; Depress to 8.2 psia, equilibrate
+Day 2 Equilibrate + Hypoxia Characterization
+Day 3 Prebreathe; 6hr EVA @ 4.3 psia, 85% O2
+Day 4 Hypoxia Characterization
+Day 5 Prebreathe; 6hr EVA @ 4.3 psia, 85% O2
+Day 6 Hypoxia Characterization
+Day 7 Prebreathe; 6hr EVA @ 4.3 psia, 85% O2
+Day 8 Hypoxia Characterization
+Day 9 Prebreathe; 6hr EVA @ 4.3 psia, 85% O2
+Day 10 Hypoxia Characterization
+Day 11 Prebreathe; 6hr EVA @ 4.3 psia, 85% O2
+Day 1 3hr PB @ 100% O2, 14.7 psia; Depress to 8.2 psia, equilibrate
+Day 2 Equilibrate + Hypoxia Characterization
+Day 3
+Day 4 Hypoxia Characterization
+Day 5
+Day 6 Hypoxia Characterization
+Day 7
+Day 8 Hypoxia Characterization
+Day 9
+Day 10 Hypoxia Characterization
+Day 11

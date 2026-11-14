@@ -1,0 +1,67 @@
+2
+•
+ DCS is a potential outcome of this testing 
+•
+ Type I DCS is also a potential outcome during flight implementation 
+per NASA STD
+-
+3001:
+≤ 15% Type I DCS @ 95% statistical confidence; No Type II DCS
+≤ 20% VGE (bubbles)
+•
+ Purpose of test series is to ensure 
+acceptably low incidence
+ of Type I DCS, not zero DCS
+Executive Summary
+1 
+Conkin et al. “Venous gas emboli and ambulation at 4.3 psia” 
+Aerosp
+ Med Hum Perform. 2017; 88(4):370
+–
+376.
+•
+ The
+ Exploration Atmosphere Prebreathe Validation Studies 
+will validate prebreathe plans for Artemis to reduce 
+decompression sickness (DCS) risk to acceptable levels* 
+–
+ Lunar EVA (walking) is significantly more provocative for DCS than microgravity EVA (floating) 
+[1]
+–
+ Shuttle & ISS protocols are therefore applicable to microgravity only 
+–
+ Apollo had 100% O2 cabin and zero EVA prebreathe; unacceptable flammability risk for Artemis
+–
+ Artemis habitat and suit atmospheric parameters have not been finalized
+•
+ 20’ Hypobaric Chamber in B7 at JSC has been outfitted to support multi
+-
+day human testing
+•
+ Initial 
+prebreathe
+ validation studies have crew living at 8.2 psi, 34% O
+2
+, 66% N
+2 
+(aka “Exploration Atmosphere”)
+•
+ During simulated EVAs, chamber operates at 4.3 psi with subjects on O
+2
+ masks
+–
+ No pressurized suits will be used during the simulated EVAs
+•
+ Funded by EVA Program; multiple participating organizations
+•
+ A 3
+-
+day hypobaric chamber evaluation with 6 subjects and 2 in
+-
+chamber technicians took place in May 2022
+•
+ An 11
+-
+day hypobaric chamber test with 6 subjects and 2 in
+-
+chamber technicians took place in June 2022

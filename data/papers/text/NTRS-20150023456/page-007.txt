@@ -1,0 +1,71 @@
+ 
+NASA/TP—2015-216046 1 
+Detailed Results From the Flame Extinguishment Experiment (FLEX) 
+March 2009 to December 2011 
+ 
+Daniel L. Dietrich 
+National Aeronautics and Space Administration 
+Glenn Research Center 
+Cleveland, Ohio 44135 
+ 
+Paul V. Ferkul, Victoria M. Bryg, and M. Vedha Nayagam 
+National Center for Space Exploration Research  
+Glenn Research Center 
+Cleveland, Ohio 44135 
+ 
+Michael C. Hicks 
+National Aeronautics and Space Administration 
+Glenn Research Center 
+Cleveland, Ohio 44135 
+ 
+Forman A. Williams 
+University of California, San Diego 
+La Jolla, California  92093 
+ 
+Frederick L. Dryer 
+Princeton University 
+Princeton, New Jersey 08544 
+ 
+Benjamin D. Shaw 
+University of California, Davis 
+Davis, California  95616 
+ 
+Mun Y. Choi 
+University of Connecticut 
+Storrs, Connecticut  06269 
+ 
+C. Thomas Avedisian 
+Cornell University  
+Ithaca, New York 14853 
+ 
+Executive Summary 
+The Flame Extinguishment  Experiment (FLEX) program  
+is a continuing set of experiments on droplet combus tion, 
+performed employing the Multi -User Droplet Combustion 
+Apparatus (MDCA), inside the chamber of the Combustion 
+Integrated Rack (CIR), which is located in the Destiny module 
+of the International Space Station (ISS). This report describes 
+the experimental hardware, the diagnostic equipment, the 
+experimental procedures, and the methods of data analysis for 
+FLEX. It also presents the results of the first 284 tests 
+performed. The intent is not to interpret the experimental results 
+but rather to make  them available to the  entire scientific 
+community for possible future interpretations. 
+The apparatus for the FLEX  experiments was transported to 
+the ISS and installed late in 2009. It includes canisters for fuel  
+storage, two opposed-needle syringes for injecting fuel to form 
+a droplet, two opposed hot-wire igniters for initiating combus-
+tion, and a long, fine fiber that can be used to tether the droplet 
+and move it at a programmable low velocity through the gas in 
+the chamber. The combustion history is recorded photograph -
+ically, with a visible -light color camera that views the entire 
+field, a backlit camera that highlights  the droplet to determine 
+its diameter accurately as a function of time during burning, and 
+a camera with a filter centered at 310 nm, intended to record 
+emissions from excited hydroxyl radicals produced in the flame 
+(Low Light Level Ultra -Violet, LLUV) , thereby providing a 
+measure of the flame diameter . Although the ISS crew must 
+change the fuel canisters and the gas bottles needed to establish 
+the atmosphere in the combustion chamber, each droplet -
+burning experiment  is run remotely from the Telescience 
+Support Center at the NASA Glenn Research Center i n 

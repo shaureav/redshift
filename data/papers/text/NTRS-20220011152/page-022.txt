@@ -1,0 +1,43 @@
+22
+Next Steps
+•
+ Finalize post
+-
+11
+-
+day test:
+–
+ Resolve O2 sensor issues
+–
+ Review pressure control mechanism
+•
+ Possible to adjust control logic to oscillate 8.15
+-
+8.25psi instead of 8.10
+-
+8.20?
+•
+ Consider tweaking low bias on 4.3psi set point
+–
+ Maintain proficiency of all test personnel
+•
+ Consider short test to review sensors and maintain proficiency
+–
+ Complete data analysis for secondary measures
+•
+ Will we need further ‘hypoxia characterization’ testing?
+•
+ Provide study debrief and ‘data quick look’ at multiple forums (‘roadshow’)
+•
+ Determine objectives and schedule for next chamber tests
+–
+ Aiming for ~two 11
+-
+day chamber tests per year
+•
+ Establish and kick
+-
+off ‘Open Atmospheres’ research forum to cross
+-
+pollinate 
+across DCS research groups

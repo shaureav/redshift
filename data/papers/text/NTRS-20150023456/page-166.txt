@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 160 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 136.—Test FLEX–132. Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet drifted slowly northeast after ignition, but it remained in 
+the field of view (FOV) for the entire test. The droplet was initially luminous with a bright yellow 
+flame that eventually turned blue with a little yellow and then blue until the end of the test. The 
+droplet burned to a small size before a small disruption when the flame extinguished. The Low 
+Light Level Ultra-Violet (LLUV) Image Processing and Storage Unit (IPSU) stopped recording for 
+about 7 s in the middle of the test. 
+  

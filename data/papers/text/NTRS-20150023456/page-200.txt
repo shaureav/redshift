@@ -1,0 +1,17 @@
+ 
+NASA/TP—2015-216046 194 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 170.—Test FLEX–167. Free-floating methanol droplet burning in a 0.14/0.50/0.36 O2/N2/CO2, 
+1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras. This 
+was a short burn to radiative extinction, and the color camera Image Processing and Storage Unit 
+(IPSU) did not record any images after deployment. 
+  

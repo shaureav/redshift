@@ -1,0 +1,51 @@
+16
+11
+-
+day Study Chamber Oxygen
+•
+ Average Chamber O2: 33.96% (target 34% +/
+-
+1%)
+–
+ 10
+th
+-
+90
+th
+ percentile: 33.78
+-
+34.17%
+–
+ Allowed excursion: 30min/day (chamber average)
+•
+ Longest excursion: 26 min
+•
+ Oxigraf
+ calibration still being characterized
+–
+ Single
+ gas grab sample 30.25%  (Gas Lab)
+–
+ If chamber was 
+actually
+ at 8.15psi, 30.25% FiO2:
+–
+ EAA: 4000 ft 
+-
+> 6500 ft
+–
+ P(DCS): 2.7% 
+-
+> 3.9% per exposure
+Even if O
+2
+ levels were lower than 
+intended, results are still applicable to 
+Exploration Atmosphere; flight 
+atmosphere would be more protective
+Forward work:
+EC4
+-
+EHP FY23 ITA being developed to 
+understand & resolve O2 measurement/
+monitoring methods

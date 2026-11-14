@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 185 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 161.—Test FLEX–158. Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 
+1.0-atm ambient environment. This relatively large droplet was nearly motionless after deployment 
+and ignition, and it remained in the fields of view (FOVs) of all the cameras. The flame oscillated for 
+a few cycles (increasing in magnitude with time) until it extinguished radiatively. Because the flame 
+was dim and there was contamination on the Low Light Level Ultra-Violet (LLUV) viewing window, 
+the flame was difficult to see with the LLUV. 
+  

@@ -1,0 +1,54 @@
+{
+  "_note": "Every parameter here is a documented choice. Values marked judgement are not derived from data. Changing any value changes the dataset version.",
+  "nearness": {
+    "o2_step_pct_points": 5.0,
+    "pressure_step_log": 1.25,
+    "flow_step_cm_s": 10.0,
+    "threshold": 1.5,
+    "metric": "euclidean",
+    "flow_rule": "Flow is used only when both the test and the target have a recorded flow. Candidate atmospheres have no flow value, so nearness to a candidate uses O2 and pressure only.",
+    "unknown_rule": "If a test's O2 or pressure is null, nearness is 'unknown', never 'not near'.",
+    "o2_basis_counted": ["ambient", "chamber initial"],
+    "o2_basis_rule": "Inverse flames record the oxygen of the oxidiser stream, not of an atmosphere, so they are reported separately and not counted as near a cabin atmosphere.",
+    "sensitivity_multipliers": [0.75, 1.0, 1.5],
+    "judgement": "Step sizes and threshold are judgement, taken from the team's concept document."
+  },
+  "flex_bands": {
+    "near_10_4_psi_mmhg": [480.0, 600.0],
+    "high_o2_no_suppressant": {"o2_pct": [30.0, 34.0], "pressure_mmhg": [534.0, 543.0]},
+    "co2_groups": [
+      {"label": "25% O2 + 15% CO2", "o2_pct": [25.0, 25.0], "co2_pct": [15.0, 15.0]},
+      {"label": "23 to 24% O2 + 20 to 25% CO2", "o2_pct": [23.0, 24.0], "co2_pct": [20.0, 25.0]},
+      {"label": "21% O2 + 30% CO2", "o2_pct": [21.0, 21.0], "co2_pct": [30.0, 30.0]},
+      {"label": "15 to 20% O2 + 35 to 50% CO2", "o2_pct": [15.0, 20.0], "co2_pct": [35.0, 50.0]}
+    ],
+    "extinguished_label": "Extinction",
+    "judgement": "Bands frozen before any count was run (see docs/DECISIONS.md)."
+  },
+  "flame_temperature": {
+    "mechanism": "gri30.yaml",
+    "fuel": "CH4",
+    "equivalence_ratio": 1.0,
+    "initial_temperature_K": 298.15,
+    "equilibrium": "HP",
+    "helium_model": "Helium modelled as argon (GRI-Mech 3.0 has no helium); approximation.",
+    "grid_o2_pct": {"start": 15.0, "stop": 100.0, "step": 2.5},
+    "grid_pressure_psi": {"start": 3.0, "stop": 16.0, "step": 0.5},
+    "isotherms_K": [2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900],
+    "approximate_above_K": 2700,
+    "approximate_rule": "Above 2,700 K dissociation dominates and the result depends strongly on how it is modelled; such values are shown as approximate."
+  },
+  "planner": {
+    "o2_levels_pct": [21.0, 26.5, 30.0, 34.0, 40.0, 50.0, 100.0],
+    "pressure_levels_psi": [4.3, 6.0, 8.2, 10.2, 12.0, 14.7],
+    "material_classes": ["solid", "droplet", "gas"],
+    "evidence_constant": 5,
+    "relevance": "exp(-d^2 / (2 x 1.5^2)), where d is the nearness distance from the cell to the nearest habitat candidate (suit excluded).",
+    "presets": {
+      "balanced": {"solid": 1.0, "droplet": 0.6, "gas": 0.4},
+      "equal": {"solid": 1.0, "droplet": 1.0, "gas": 1.0},
+      "solids_only": {"solid": 1.0, "droplet": 0.0, "gas": 0.0}
+    },
+    "judgement": "Levels, weights, relevance function and the constant 5 are judgement. The planner ranks experiment gaps, never atmospheres."
+  }
+}

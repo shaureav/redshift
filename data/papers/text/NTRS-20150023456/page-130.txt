@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 124 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 100.—Test FLEX−096. Fiber-supported heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 
+1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and 
+Storage Unit (IPSU) did not record any images for this test. There were significant oscillations on the 
+fiber, so severe that the droplet dislodged from the fiber and drifted south and out of the color camera 
+and Low Light Level Ultra-Violet (LLUV) fields of view (FOVs). 
+  

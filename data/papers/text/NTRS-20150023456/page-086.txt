@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 80 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 56.—Test FLEX−052. Fiber-supported heptane droplet translating 3 mm/s and burning in a 
+0.30/0.70 O2/N2, 1.0-atm ambient environment. The droplet oscillated significantly on the fiber 
+throughout the burn. There also was significant sooting, with large agglomerates stuck to the fiber 
+(which created scatter in the droplet history). The droplet drifted partially out of the High-Bit-Depth 
+Multispectral (HiBMs) field of view (FOV) for a short time before moving back in. Late in the test, 
+significant oscillations, shape changes, and ejection of material from the droplet ended with a 
+disruption. 
+  

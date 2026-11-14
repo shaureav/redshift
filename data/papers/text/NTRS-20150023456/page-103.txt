@@ -1,0 +1,18 @@
+ 
+NASA/TP—2015-216046 97 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 73.—Test FLEX−069. Fiber-supported heptane droplet with no translation burning in a 0.15/0.85 
+O2/N2, 1.0-atm ambient environment. There was significant droplet motion during the entire very short 
+burn, and there appeared to be some visible distortions where the droplet edge intersected the fiber. 
+This small droplet had significant motion on the fiber, which had a marked influence on the burning 
+characteristics. 
+  

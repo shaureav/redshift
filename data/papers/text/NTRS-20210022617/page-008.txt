@@ -1,0 +1,19 @@
+8
+JASMAC-33
+10/15/2021
+• Fuel is oxidized using chemical kinetic pathways
+• The chemical kinetic pathways change from LTC chemistry to HTC chemistry in the NTC zone
+• Cool flames arise in the Negative Temperature Coefficient (NTC) region 
+• Cool flames are fundamentally different compared to hot-flames (chemical kinetics controlled)!
+RH (fuel)
+R
+RO2
+QOOH
+O2QOOH
+KET
++ O2
++ O2
+Low-T branching
+alkenes + R’
+Intermediate-T
+Quasi-steady Cool Flames

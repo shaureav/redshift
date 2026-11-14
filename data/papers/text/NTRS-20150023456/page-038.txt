@@ -1,0 +1,24 @@
+ 
+NASA/TP—2015-216046 32 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 8.—Test FLEX–004. Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm 
+ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view 
+(FOV) after deployment and ignition, leaving the HiBMs FOV one-third of the way through the burn. 
+There was some evidence of flame disruption before the flame extinguished, but it was difficult to judge 
+from the color camera images. This was a calibration test point. The igniter overwhelmed the HiBMs and 
+made measuring the droplet impossible until the igniters moved out of the FOV. The Low Light Level 
+Ultra-Violet (LLUV) setting was not optimal, and the flame nearly disappeared from the LLUV halfway 
+through the burn, coincident with when the color camera showed a noticeable change in the flame 
+behavior.  
+  

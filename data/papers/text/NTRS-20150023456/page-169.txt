@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 163 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 139.—Test FLEX–135. Fiber-supported heptane droplet with no translation in a 0.24/0.56/0.20 
+O2/N2/CO2, 1.0-atm ambient environment. A small droplet to the west of the main droplet ignited and 
+quickly burned off. There was significant transverse and axial motion of the droplet on the fiber 
+during most of the test. The droplet drifted west on the fiber after deployment; then it stopped and 
+oscillated (irregularly) axially and transversely during the entire burn. The shape changed briefly 
+from spherical when there was a discrete change in droplet size that corresponded to something 
+being ejected from the droplet (visible on the color camera). 
+  

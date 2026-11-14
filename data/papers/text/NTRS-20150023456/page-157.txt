@@ -1,0 +1,20 @@
+ 
+NASA/TP—2015-216046 151 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 127.—Test FLEX−123. Fiber-supported methanol droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 
+0.70-atm ambient environment. There was no fiber translation, and the large droplet appeared to 
+extinguish radiatively. The color camera Image Processing and Storage Unit (IPSU) did not record 
+any images after deployment. The Low Light Level Ultra-Violet (LLUV) IPSU lost data for about 5 s 
+during the test. Also, the Low Light Level Ultra-Violet (LLUV) images were very dim, and it was almost 
+impossible to detect the edges of the flame. In the LLUV view, the flame appeared to be quenched 
+where the flame and fiber met.  
+  

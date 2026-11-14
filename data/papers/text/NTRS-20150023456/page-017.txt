@@ -1,0 +1,65 @@
+ 
+NASA/TP—2015-216046 11 
+TABLE III.—FLEX TEST MATRIX FOR THE TESTS CONDUCTED IN NITROGEN-DILUTED AMBIENT  
+ENVIRONMENTS, INCLUDING TESTS IN ENVIRONMENTS WITH HIGHER OXYGEN MOLE FRACTIONS 
+Test Date Fuel Initial droplet diameter, 
+D0, 
+mm 
+Fiber Pressure, 
+P, 
+atm 
+Mole fraction 
+of oxygen Mole fraction of nitrogen 
+019 Aug. 26, 2009 Heptane 3.43 No 0.71 0.400 0.600 
+020 Oct. 24, 2009 Methanol 3.46 No .71 .400 .600 
+021 Oct. 24,  2009 Methanol 3.49 No .71 .400 .600 
+022 Oct. 24,  2009 Methanol 3.55 No .71 .400 .600 
+023 Oct. 24,  2009 Heptane 3.18 No .71 .400 .600 
+ 
+024 Oct. 24,  2009 Heptane 4.0 No .71 .400 .600 
+025 Nov. 9, 2009 Methanol 2.65 No .71 .300 .700 
+026 Nov. 9,  2009 Methanol 3.70 No .71 .300 .700 
+027 Nov. 9,  2009 Heptane 4.00 No .71 .300 .700 
+028 Nov. 9,  2009 Heptane 3.46 No .71 .300 .700 
+ 
+029 Nov. 13, 2009 Methanol 2.65 No 1.01 .300 .700 
+030 Nov. 13, 2009 Methanol 3.32 No 1.01 .300 .700 
+031 Nov. 13, 2009 Heptane 3.51 No 1.01 .300 .700 
+032 Nov. 13, 2009 Heptane 3.08 No 1.01 .300 .700 
+ 
+037 Jan. 7, 2010 Methanol 3.41 Yes .70 .337 .662 
+038 Jan. 7, 2010 Methanol 3.51 Yes .70 .337 .661 
+039 Jan. 7, 2010 Heptane 2.91 Yes .70 .336 .661 
+040 Jan. 8, 2010 Methanol 3.77 Yes .70 .297 .699 
+041 Jan. 8, 2010 Methanol 3.33 Yes .70 .297 .699 
+042 Jan. 8, 2010 Heptane 3.02 Yes .70 .298 .700 
+043 Jan. 8, 2010 Heptane 3.02 Yes .70 .298 .700 
+ 
+044 Jan. 11, 2010 Methanol 3.52 Yes 1.01 .298 .697 
+045 Jan. 11, 2010 Methanol 2.46 Yes 1.01 .298 .697 
+052 Jan. 11, 2010 Heptane 3.64 Yes 1.01 .297 .697 
+ 
+ 
+ 
+ 
+ 
+fractions. As testing progressed, however, the science team 
+noticed a propensity for the droplets to burn disruptively and 
+not exhibit flame extinction (at a finite-sized droplet diameter). 
+The latter half of the test matrix focused on lower oxygen mole 
+fraction ambient environments where both diffusive and 
+radiative extinction occurred ; these results  are detailed in 
+Table IV for methanol and in Table V for heptane. The tests in 
+the lower oxygen mole fraction ambient  environments started 
+at the maximum ambient oxygen mole fraction, 0.21 ( at 1-atm 
+pressure). Testing proceeded as the ambient gas in the chamber 
+was gradually diluted with increasing amounts of nitrogen until 
+the limit where quasi -steady burning was not observed. This 
+limit represented the limiting  oxygen index (LOI), identi -
+fication of which was one of the primary objectives of the 
+FLEX experiments. Typically in a given ambient environment, 
+tests were conducted with both fuels (on different test days) 
+over a small range  of droplet sizes (typically 3 to  4 mm). In 
+many cases, tests with fiber-supported droplets and  a brief 
+translation of the fiber were conducted in addition to the 
+quiescent, free-floating droplet tests.  

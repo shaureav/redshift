@@ -1,0 +1,18 @@
+10
+JASMAC-33
+10/15/2021
+Simplified Theoretical Model
+o Simplified theory provides useful insights
+o KET is produced over a large region
+o Fuel and Oxygen leaks through the flame
+o Flame temperatures are low ~ 800K
+o Leaked fuel can condense forming vapor cloud
+6-step simplified chemical kinetics – cool diffusion flame structure – Activation Energy Asymptotic 
+Theory*
+*Williams and Nayagam (Combustion Theory and Modelling (2019)
+*Williams and Nayagam (Combustion and Flame (2020)
+F – fuel
+R – alkyl radical
+I  – intermediate
+K – ketohydroperoxide
+P, Q, S – products

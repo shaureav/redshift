@@ -1,0 +1,19 @@
+ 
+NASA/TP—2015-216046 118 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 94.—Test FLEX−090. Fiber-supported methanol droplet with no translation in a 0.25/0.60/0.15 
+O2/N2/CO2, 0.70-atm ambient environment. There were significant axial and transverse oscillations 
+on the fiber after ignition. While the droplet was oscillating on the fiber, “sparklers” were evident on 
+the color camera view. Then the oscillations diminished and the droplet burned cleanly (on the color 
+camera view as well). A few seconds before the flame extinguished, there was a disruption (without 
+dislocation), followed by a complete disruption, dislocation, and flame extinction. 
+  
