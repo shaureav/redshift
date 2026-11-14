@@ -30,6 +30,7 @@ from redshift.science import candidates as C
 from redshift.science import flame_temperature as FT
 from redshift.science import planner as P
 from redshift.science import prebreathe as PB
+from redshift.science import probe as PR
 
 RETRIEVED = "2026-11-14"
 
@@ -85,6 +86,8 @@ def compute() -> dict[str, Any]:
     planner = P.build(registry, all_ev, habitats, near_params, params["planner"])
     prebreathe = PB.build(registry, checked)
     tmap = E.trade_map(registry, all_ev)
+    test_dois = {r.test_id: registry.get(next(iter(v["p"] for v in r.fields.values()))).doi for r in records}
+    probe_grid = PR.build(registry, records, all_ev, near_params, test_dois)
 
     # ---- flags: stable ids ----
     ordered = flags.sorted()
@@ -235,6 +238,7 @@ def compute() -> dict[str, Any]:
         "key_findings.json": {"findings": public_findings, "status": fstatus, "p": "summary"},
         "prebreathe.json": prebreathe,
         "trade_map.json": tmap,
+        "probe_grid.json": probe_grid,
         "investigation_stats.json": {"stats": stats, "p": summary_id},
         "quality_report.json": quality,
         "adapters.json": {
@@ -337,26 +341,27 @@ def write(result: dict[str, Any]) -> None:
     payloads = result["payloads"]
     PROCESSED.mkdir(parents=True, exist_ok=True)
     SNAPSHOT.mkdir(parents=True, exist_ok=True)
+    # newline="\n": outputs are byte-identical on every platform (Windows would otherwise write CRLF).
     for name, payload in payloads.items():
         text = dumps(payload)
-        (PROCESSED / name).write_text(text, encoding="utf-8")
-        (SNAPSHOT / name).write_text(text, encoding="utf-8")
+        (PROCESSED / name).write_text(text, encoding="utf-8", newline="\n")
+        (SNAPSHOT / name).write_text(text, encoding="utf-8", newline="\n")
     md = quality_markdown(result["quality"], result["version"])
-    (PROCESSED / "quality_report.md").write_text(md, encoding="utf-8")
-    (SNAPSHOT / "quality_report.md").write_text(md, encoding="utf-8")
+    (PROCESSED / "quality_report.md").write_text(md, encoding="utf-8", newline="\n")
+    (SNAPSHOT / "quality_report.md").write_text(md, encoding="utf-8", newline="\n")
     rows = tests_table(payloads["tests.json"]["tests"], result["registry"], {})
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=list(rows[0].keys()), lineterminator="\n")
     w.writeheader()
     w.writerows(rows)
-    (PROCESSED / "tests.csv").write_text(buf.getvalue(), encoding="utf-8")
+    (PROCESSED / "tests.csv").write_text(buf.getvalue(), encoding="utf-8", newline="\n")
     import pandas as pd
 
     df = pd.DataFrame(rows)
     df.to_parquet(PROCESSED / "tests.parquet", index=False)
-    (PROCESSED / "flags.csv").write_text(_flags_csv(result["summary_flags"]), encoding="utf-8")
-    (SNAPSHOT / "flags.csv").write_text(_flags_csv(result["summary_flags"]), encoding="utf-8")
-    (SNAPSHOT / "tests.csv").write_text(buf.getvalue(), encoding="utf-8")
+    (PROCESSED / "flags.csv").write_text(_flags_csv(result["summary_flags"]), encoding="utf-8", newline="\n")
+    (SNAPSHOT / "flags.csv").write_text(_flags_csv(result["summary_flags"]), encoding="utf-8", newline="\n")
+    (SNAPSHOT / "tests.csv").write_text(buf.getvalue(), encoding="utf-8", newline="\n")
 
 
 def _flags_csv(flags: list[dict[str, Any]]) -> str:
