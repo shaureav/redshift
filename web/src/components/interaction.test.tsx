@@ -14,7 +14,7 @@ import Home from "../pages/Home";
 import { CommandPalette } from "./CommandPalette";
 import { ErrorBoundary, RouteBoundary } from "./ErrorBoundary";
 import { Toaster } from "./Toaster";
-import { Tour, TOUR_EVENT } from "./Tour";
+import { INTRO_KEY } from "./Intro";
 
 const FILES = [
   "probe_grid.json", "trade_map.json", "candidates.json", "candidate_evidence.json", "flame_temperature_grid.json",
@@ -74,16 +74,28 @@ function press(key: string, init: KeyboardEventInit = {}) {
   });
 }
 
-const replayTour = () => act(() => window.dispatchEvent(new Event(TOUR_EVENT)));
+/** Opens the palette with Ctrl+K, types into its field as a person would, and runs the first result. */
+function runFromPalette(text: string) {
+  press("k", { ctrlKey: true });
+  const field = document.querySelector<HTMLInputElement>('[role="combobox"]')!;
+  act(() => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(field, text);
+    field.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  act(() => {
+    field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }));
+  });
+}
+const settle = () => act(async () => { await new Promise((r) => setTimeout(r, 0)); });
 
 let errors: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
-  // jsdom has no layout: give the plane and the tour the browser APIs they call, doing nothing.
+  // jsdom has no layout: give the plane and the intro the browser APIs they call, doing nothing.
   vi.stubGlobal("ResizeObserver", class { observe() {} unobserve() {} disconnect() {} });
   vi.stubGlobal("matchMedia", (q: string) => ({ matches: false, media: q, onchange: null, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, dispatchEvent: () => false }));
   Element.prototype.scrollIntoView = () => {};
-  localStorage.clear(); // a first visit, so the tour opens
+  localStorage.clear(); // a first visit, so the story intro opens on the bare plane
   errors = vi.spyOn(console, "error");
 });
 
@@ -98,121 +110,136 @@ afterEach(() => {
 
 const updateDepthErrors = () => errors.mock.calls.filter((c: unknown[]) => c.some((a) => String(a instanceof Error ? a.message : a).includes("Maximum update depth")));
 
-describe("tour", () => {
-  it("steps through Home's tour without an update-depth loop", () => {
-    const page = mount(<Home />, "/?o2=21&p=14.7");
-    expect(page.textContent).toContain("Step 1 of 3");
-    click("Next");
-    expect(page.textContent).toContain("Step 2 of 3");
-    click("Next");
-    // Step 3 moves the probe to 8.2 psi and 34% and turns on solids only: once, not forever.
-    expect(page.textContent).toContain("Step 3 of 3");
-    expect(new URLSearchParams(lastSearch).get("o2")).toBe("34");
-    expect(new URLSearchParams(lastSearch).get("p")).toBe("8.2");
-    expect(new URLSearchParams(lastSearch).get("solids")).toBe("1");
-    expect(page.querySelector('[aria-label="The oxygen and pressure plane"]')).not.toBeNull();
+describe("story intro", () => {
+  const BEAT_TITLES = ["NASA has not chosen the Moon-base atmosphere.", "These are the fire tests PSI lets us place.", "Now only solid materials."];
+  const dialog = () => document.querySelector<HTMLElement>('[role="dialog"][aria-labelledby="intro-title"]');
+  const title = () => document.getElementById("intro-title")?.textContent;
+  /** The beat the live plane is drawing (charts/Plane.tsx, data-intro), or null once the intro has handed over. */
+  const stage = () => document.querySelector('section[aria-label="The oxygen and pressure plane"] [data-intro]')?.getAttribute("data-intro") ?? null;
+  const q = () => new URLSearchParams(lastSearch);
+
+  it("opens on a first visit and walks all three beats with the arrow keys over the live plane, writing nothing to the address bar", () => {
+    const page = mount(<Home />, "/");
+    const cands = loadSnapshot<{ candidates: unknown[] }>("candidates.json").candidates;
+    expect(dialog()).not.toBeNull();
+    expect(dialog()?.getAttribute("aria-modal")).toBe("true");
+    expect(document.activeElement?.textContent).toBe("Next");
+    // Beat 1: open sea, the pins appear and pulse, and they carry their names alone (no land yet).
+    expect(title()).toBe(BEAT_TITLES[0]);
+    expect(stage()).toBe("pins");
+    expect(page.querySelectorAll(".pin-pulse")).toHaveLength(cands.length);
+    expect([...page.querySelectorAll("svg[data-chart] text tspan")].some((t) => /inland|coast|sea/.test(t.textContent ?? ""))).toBe(false);
+    // Beat 2: the land rises and the glyphs come in by fuel class.
+    press("ArrowRight");
+    expect(title()).toBe(BEAT_TITLES[1]);
+    expect(stage()).toBe("land");
+    expect(page.querySelectorAll(".pin-pulse")).toHaveLength(0);
+    expect(page.querySelectorAll(".glyph-class").length).toBeGreaterThan(1);
+    // Beat 3: the land sinks; the plane says no solid test can be placed.
+    press("ArrowDown");
+    expect(title()).toBe(BEAT_TITLES[2]);
+    expect(stage()).toBe("solids");
+    expect(page.textContent).toContain("No solid-material test can be placed on this plane");
+    // The last beat stays the last; back and forward again.
+    press("ArrowRight");
+    expect(title()).toBe(BEAT_TITLES[2]);
+    press("ArrowLeft");
+    expect(stage()).toBe("land");
+    press("PageDown");
+    expect(stage()).toBe("solids");
+    // Nothing was written to the address bar while the intro played: only Explore hands over.
+    expect(lastSearch).toBe("");
+    click("Explore");
+    expect(dialog()).toBeNull();
+    expect(stage()).toBeNull();
+    expect([q().get("o2"), q().get("p"), q().get("solids")]).toEqual(["34", "8.2", "1"]);
+    expect(localStorage.getItem(INTRO_KEY)).toBe("done");
+    // The keyboard is handed to the plane, so the arrow keys move the probe at once.
+    expect(document.activeElement?.getAttribute("aria-roledescription")).toBe("plane");
     expect(page.textContent).toContain("No solid burn in PSI's tables records pressure.");
-    // Back and forward again, then finish: still no loop, and the plane stays on screen.
-    click("Back");
-    expect(page.textContent).toContain("Step 2 of 3");
-    click("Next");
-    expect(page.textContent).toContain("Step 3 of 3");
-    click("Done");
-    expect(page.textContent).not.toContain("Step 3 of 3");
-    expect(page.querySelector('[aria-label="The oxygen and pressure plane"]')).not.toBeNull();
-    expect(localStorage.getItem("redshift-tour-v1")).toBe("done");
     expect(updateDepthErrors()).toEqual([]);
   });
 
-  it("replays from the command palette's event three times in a row, each time to the end, without a loop", () => {
-    localStorage.setItem("redshift-tour-v1", "done"); // a returning visitor: the tour opens only on replay
-    const page = mount(<Home />, "/?o2=21&p=14.7");
-    expect(page.textContent).not.toContain("Step 1 of 3");
-    for (let pass = 1; pass <= 3; pass++) {
-      replayTour();
-      expect(page.textContent).toContain("Step 1 of 3");
-      click("Next");
-      expect(page.textContent).toContain("Step 2 of 3");
-      click("Next");
-      expect(page.textContent).toContain("Step 3 of 3");
-      expect(new URLSearchParams(lastSearch).get("solids")).toBe("1");
-      expect(page.textContent).toContain("No solid burn in PSI's tables records pressure.");
-      click("Done");
-      expect(page.textContent).not.toContain("Step 3 of 3");
-      expect(page.querySelector('[aria-label="The oxygen and pressure plane"]')).not.toBeNull();
+  it("cites the access-gap counts in its last beat, each through Value with its provenance", () => {
+    mount(<Home />, "/");
+    press("ArrowRight");
+    press("ArrowRight");
+    const steps = loadSnapshot<{ psi_steps: { count: { p: string; v: number } }[] }>("access_gap.json").psi_steps;
+    const cited = [...dialog()!.querySelectorAll("[data-prov]")].map((e) => [e.getAttribute("data-prov"), e.textContent]);
+    expect(cited).toEqual(steps.map((s) => [s.count.p, String(s.count.v)]));
+    // No other digit anywhere in the card.
+    const walk = document.createTreeWalker(dialog()!, NodeFilter.SHOW_TEXT);
+    for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+      if (/\d/.test(n.textContent ?? "")) expect(n.parentElement?.closest("[data-prov]")).not.toBeNull();
     }
-    expect(updateDepthErrors()).toEqual([]);
   });
 
-  it("keeps Tab inside the card while open, and hands focus back when it closes", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
-    mount(
-      <>
-        <button type="button">Outside</button>
-        <Tour />
-      </>,
-    );
-    const outside = button("Outside");
-    act(() => outside.focus());
-    replayTour();
-    const dialog = document.querySelector('[role="dialog"]');
-    expect(document.activeElement).toBe(dialog);
-    // Shift+Tab from the card wraps to its last button, Tab from the last wraps to the first: never behind.
-    press("Tab", { shiftKey: true });
-    expect(document.activeElement?.textContent).toBe("Next");
-    press("Tab");
-    expect(document.activeElement?.textContent).toBe("Skip tour");
-    press("Tab", { shiftKey: true });
-    expect(document.activeElement?.textContent).toBe("Next");
-    // Focus that has fallen outside the card is brought back in on the next Tab.
-    act(() => outside.focus());
-    press("Tab");
-    expect(dialog?.contains(document.activeElement)).toBe(true);
-    click("Next");
-    click("Next");
-    click("Done");
-    expect(document.querySelector('[role="dialog"]')).toBeNull();
-    expect(document.activeElement).toBe(outside);
-  });
-
-  it("closes on Escape and returns focus too", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
-    mount(
-      <>
-        <button type="button">Outside</button>
-        <Tour />
-      </>,
-    );
-    const outside = button("Outside");
-    act(() => outside.focus());
-    replayTour();
-    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+  it("skips with Escape at any beat, keeps the view, and does not open again on this device", () => {
+    mount(<Home />, "/");
+    press("ArrowRight");
     press("Escape");
-    expect(document.querySelector('[role="dialog"]')).toBeNull();
-    expect(document.activeElement).toBe(outside);
+    expect(dialog()).toBeNull();
+    expect(stage()).toBeNull();
+    expect(lastSearch).toBe("");
+    expect(localStorage.getItem(INTRO_KEY)).toBe("done");
+    act(() => root?.unmount());
+    host?.remove();
+    mount(<Home />, "/");
+    expect(dialog()).toBeNull();
   });
 
-  it("runs each step's action exactly once per step change, even when the parent passes a new callback every render", () => {
-    const seen: number[] = [];
-    function Parent() {
-      const [, setRenders] = useState(0);
-      // A fresh function on every render that also re-renders the parent: the shape that used to loop.
-      return <Tour onStep={(i) => { seen.push(i); setRenders((n) => n + 1); }} />;
-    }
-    mount(<Parent />);
-    expect(seen).toEqual([0]);
-    click("Next");
-    click("Next");
-    expect(seen).toEqual([0, 1, 2]);
-    click("Back");
-    expect(seen).toEqual([0, 1, 2, 1]);
+  it("steps on a click on the plane, and one beat per scroll gesture without scrolling the page", () => {
+    mount(<Home />, "/");
+    const catcher = document.querySelector("[data-intro-catcher]")!;
+    act(() => { catcher.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+    expect(stage()).toBe("land");
+    const layer = catcher.parentElement!;
+    const wheel = (deltaY: number) => {
+      const e = new WheelEvent("wheel", { deltaY, bubbles: true, cancelable: true });
+      act(() => { layer.dispatchEvent(e); });
+      return e;
+    };
+    // A burst of wheel events is one gesture: one beat.
+    for (let k = 0; k < 6; k++) expect(wheel(30).defaultPrevented).toBe(true);
+    expect(stage()).toBe("solids");
+    expect(wheel(-30).defaultPrevented).toBe(true); // still the same gesture
+    expect(stage()).toBe("solids");
+  });
+
+  it("keeps Tab inside its card", () => {
+    mount(<Home />, "/");
+    press("ArrowRight"); // Skip intro, Back, Next
+    expect(document.activeElement?.textContent).toBe("Next");
+    press("Tab");
+    expect(document.activeElement?.textContent).toBe("Skip intro");
+    press("Tab", { shiftKey: true });
+    expect(document.activeElement?.textContent).toBe("Next");
+  });
+
+  it("waits on a shared link, replays from the palette, and Skip leaves the link's view as it was", async () => {
+    mount(<><CommandPalette /><Home /></>, "/?o2=21&p=14.7");
+    expect(dialog()).toBeNull();
+    runFromPalette("replay the intro");
+    await settle();
+    expect(title()).toBe(BEAT_TITLES[0]);
+    expect(lastSearch).toBe("?o2=21&p=14.7");
+    click("Skip intro");
+    expect(dialog()).toBeNull();
+    expect(lastSearch).toBe("?o2=21&p=14.7");
     expect(updateDepthErrors()).toEqual([]);
   });
 
-  it("does not open again once finished", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
-    const page = mount(<Home />);
-    expect(page.textContent).not.toContain("Step 1 of 3");
+  it("under reduced motion shows the same three beats as still frames, with no pulse", () => {
+    vi.stubGlobal("matchMedia", (m: string) => ({ matches: m.includes("reduce"), media: m, onchange: null, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, dispatchEvent: () => false }));
+    const page = mount(<Home />, "/");
+    const seen: (string | null | undefined)[] = [];
+    for (let k = 0; k < 3; k++) {
+      seen.push(title());
+      expect(page.querySelectorAll(".pin-pulse")).toHaveLength(0);
+      press("ArrowRight");
+    }
+    expect(seen).toEqual(BEAT_TITLES);
+    expect(stage()).toBe("solids");
   });
 });
 
@@ -321,7 +348,7 @@ describe("instrument panel", () => {
   const grid = () => decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json"));
 
   it("expands and collapses the context strip from its button", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     mount(<Home />, "/?o2=34&p=8.2");
     const more = button("More");
     const region = document.getElementById(more.getAttribute("aria-controls") ?? "");
@@ -336,7 +363,7 @@ describe("instrument panel", () => {
   });
 
   it("moves the sparkline cursor with the keyboard and reads each count from the grid row", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     mount(<Home />, "/?o2=34&p=8.2");
     const g = grid();
     const r = readAt(g, 34, 8.2, 1);
@@ -360,7 +387,7 @@ describe("instrument panel", () => {
   });
 
   it("runs the plane's controls from its floating toolbar, by click and by keyboard", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     mount(<Home />, "/?o2=34&p=8.2");
     const tool = (name: string) => document.querySelector<HTMLButtonElement>(`[role="toolbar"] [aria-label="${name}"]`)!;
     const press1 = (el: Element) => act(() => { el.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
@@ -399,7 +426,7 @@ describe("instrument panel", () => {
   });
 
   it("copies the link from Share and says so in a toast", async () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     const writeText = vi.fn(() => Promise.resolve());
     Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
     try {
@@ -422,7 +449,7 @@ describe("feel (Phase 4)", () => {
   const q = () => new URLSearchParams(lastSearch);
 
   it("runs the plane's shortcuts from anywhere on the page: 1 to 5, S, G, ? and C", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     mount(<Home />, "/?o2=31&p=9");
     expect(document.activeElement).toBe(document.body);
     press("2");
@@ -461,7 +488,7 @@ describe("feel (Phase 4)", () => {
   });
 
   it("draws the probe trail as the probe moves, and none under reduced motion, where Layers says why", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     const moveProbe = () => {
       const plane = document.querySelector<SVGSVGElement>('svg[role="application"]')!;
       act(() => plane.focus());
@@ -483,7 +510,7 @@ describe("feel (Phase 4)", () => {
   });
 
   it("never fires a shortcut while someone types in a field", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     mount(<Home />, "/?o2=31&p=9");
     const field = document.getElementById("ask-input") as HTMLInputElement;
     act(() => field.focus());
@@ -493,7 +520,7 @@ describe("feel (Phase 4)", () => {
   });
 
   it("has sound off by default, and says so when this browser has no audio", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     mount(<><Home /><Toaster /></>, "/?o2=34&p=8.2");
     const sound = document.querySelector<HTMLButtonElement>('[role="toolbar"] [aria-label="Geiger clicks"]')!;
     expect(sound.getAttribute("role")).toBe("switch");
@@ -505,7 +532,7 @@ describe("feel (Phase 4)", () => {
   });
 
   it("left on from a last visit, makes no AudioContext until the first tap", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     localStorage.setItem(SOUND_KEY, "on");
     let made = 0;
     class FakeCtx {
@@ -531,22 +558,9 @@ describe("feel (Phase 4)", () => {
 
 describe("plane requests from the command palette, and sound under Solids only (Phase 4 review)", () => {
   const sheet = () => document.querySelector('[role="dialog"][aria-labelledby="shortcut-title"]');
-  /** Opens the palette with Ctrl+K, types into its field as a person would, and runs the first result. */
-  function runFromPalette(text: string) {
-    press("k", { ctrlKey: true });
-    const field = document.querySelector<HTMLInputElement>('[role="combobox"]')!;
-    act(() => {
-      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(field, text);
-      field.dispatchEvent(new Event("input", { bubbles: true }));
-    });
-    act(() => {
-      field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }));
-    });
-  }
-  const settle = () => act(async () => { await new Promise((r) => setTimeout(r, 0)); });
 
   it("opens the shortcut sheet from another page, even while the plane page is still downloading", async () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     // The plane page arrives only when the test says so, long after the old 50 ms event would have been lost.
     let arrive: () => void = () => {};
     const SlowHome = lazy(() => new Promise<{ default: typeof Home }>((r) => { arrive = () => r({ default: Home }); }));
@@ -571,7 +585,7 @@ describe("plane requests from the command palette, and sound under Solids only (
   });
 
   it("on the plane, opens the sheet and keeps the view in the address bar", async () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     mount(<><CommandPalette /><Home /></>, "/?o2=21&p=14.7&solids=1");
     runFromPalette("keyboard shortcuts");
     await settle();
@@ -580,7 +594,7 @@ describe("plane requests from the command palette, and sound under Solids only (
   });
 
   it("keeps the Geiger clicks silent at a habitat candidate under Solids only, and follows the total without it", () => {
-    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(INTRO_KEY, "done");
     localStorage.setItem(SOUND_KEY, "on");
     const set = vi.spyOn(geiger, "setTotal");
     try {

@@ -44,8 +44,8 @@ export function isTyping(target: EventTarget | null): boolean {
 
 type KeyPress = Pick<KeyboardEvent, "key" | "ctrlKey" | "metaKey" | "altKey" | "repeat" | "defaultPrevented" | "target"> & { isComposing?: boolean };
 
-/** The shortcut for a key press, or null when none applies. `modalOpen`: a modal dialog (the palette, the tour,
- *  the access gap, this sheet) is on screen, so the page behind it does not react. */
+/** The shortcut for a key press, or null when none applies. `modalOpen`: a modal dialog (the palette, the story
+ *  intro, the access gap, this sheet) is on screen, so the page behind it does not react. */
 export function shortcutFor(e: KeyPress, modalOpen = false): Shortcut | null {
   if (e.defaultPrevented || e.repeat || e.isComposing || e.ctrlKey || e.metaKey || e.altKey) return null;
   if (modalOpen || isTyping(e.target)) return null;

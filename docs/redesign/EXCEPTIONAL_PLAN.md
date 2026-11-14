@@ -1,6 +1,6 @@
 # Redshift: plan for an exceptional interface
 
-Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23), with its review fixes (D24, D25). Phase 1 is done (D26), with its review fixes (D27). Phase 2 is done (D28). Phase 3 is done (D29). Phase 4 is done (D30), with P (pin) left for the notebook of Phase 9.
+Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23), with its review fixes (D24, D25). Phase 1 is done (D26), with its review fixes (D27). Phase 2 is done (D28). Phase 3 is done (D29). Phase 4 is done (D30), with P (pin) left for the notebook of Phase 9, and its review fixes (D31). Phase 5 is done (D32): the story intro has replaced the tour.
 Follows `docs/redesign/PLAN.md` (the plane-first redesign, done) and `docs/REDESIGN_AUDIT.md`.
 
 > **The one job.** "If we pick this cabin atmosphere, what do we actually know about fire there, and what's missing?"

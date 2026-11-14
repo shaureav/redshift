@@ -326,6 +326,22 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 @keyframes coast-pulse { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
 .trail { transition: opacity var(--t-move) var(--ease-out); }
 .trail[data-rest="true"] { opacity: 0; transition-duration: var(--t-scene); }
+/* The story intro (plan, Phase 5; components/Intro.tsx) plays over the live plane, which carries data-intro with
+   the beat. Beat 1: open sea, and the pins appear one after another and pulse three times. Beat 2: the land rises
+   (the Solids only mask, run backwards) and the glyphs fade in, one fuel class after another (--k), then the strip
+   of tests with no recorded pressure. Beat 3: the
+   land sinks. The probe, the toolbar and the page around the plane wait, dimmed, until the intro hands over.
+   Under reduced motion the beats are static frames: no pulse, and every change is the short opacity crossfade. */
+.intro-hide, .intro-dim { transition: opacity var(--t-scene) var(--ease-out); }
+[data-intro] .intro-hide { opacity: 0; pointer-events: none; }
+[data-intro] .intro-dim { opacity: 0.15; }
+[data-intro="pins"] .glyph-class { opacity: 0; }
+[data-intro] .glyph-class { transition: opacity var(--t-scene) var(--ease-out) calc(var(--t-move) + var(--k, 0) * var(--t-scene)); }
+[data-intro="pins"] .intro-strip { opacity: 0; }
+[data-intro] .intro-strip { transition: opacity var(--t-scene) var(--ease-out) calc(var(--t-move) + 2 * var(--t-scene)); }
+.pin-appear { animation: fade var(--t-scene) var(--ease-out) both; }
+.pin-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; animation: pin-pulse calc(3 * var(--t-scene)) var(--ease-out) var(--t-scene) 3 both; }
+@keyframes pin-pulse { 0% { opacity: 0.8; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(2.6); } }
 /* Swap content by opacity alone; the one transition kept under reduced motion. */
 .crossfade { transition: opacity var(--t-fade) linear; }
 /* A count that changed while pinned: the new value fades in where the old one stood. It never counts through
@@ -336,7 +352,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   :root { --t-fast: 0ms; --t-base: 0ms; --t-move: 0ms; --t-scene: 0ms; }
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
   /* Opacity crossfades stay, short and linear: they show that something changed without moving anything. */
-  .crossfade, .layer, .glyph, .glyph-group { transition: opacity var(--t-fade) linear !important; }
+  .crossfade, .layer, .glyph, .glyph-group, .glyph-class, .intro-strip, .intro-hide, .intro-dim { transition: opacity var(--t-fade) linear !important; }
   .swap-in { animation: fade var(--t-fade) linear both !important; }
 }
 

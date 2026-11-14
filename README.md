@@ -30,7 +30,7 @@ One main flow, then reference pages.
 3. **Go deeper.** Open the candidate's dossier, the matching tests in the Evidence Explorer, or a side-by-side compare of two to four atmospheres (`/compare`). Drag a selection on the plane to filter the Evidence Explorer to that area.
 4. **Take it with you.** A cited one-page brief (`/brief`) prints to PDF and downloads the nearby tests as CSV and the sources as BibTeX. Every view state is in the URL, so a copied link reproduces it.
 
-**Ask the evidence** answers from checked cached answers on the static site, and live from the API when a model key is configured there (below). **Command palette**: Cmd+K or Ctrl+K jumps to any atmosphere or typed point ("8.2 psi 34%"), material, investigation or test id. A three-step tour runs on the first visit.
+**Ask the evidence** answers from checked cached answers on the static site, and live from the API when a model key is configured there (below). **Command palette**: Cmd+K or Ctrl+K jumps to any atmosphere or typed point ("8.2 psi 34%"), material, investigation or test id. On a first visit to the plane a three-beat story intro plays over it and hands over at 8.2 psi / 34% O2 with Solids only on; the palette replays it.
 
 **Reference** (one menu): Evidence Explorer, Investigations (cards, timeline, coverage matrix, compare of 2 to 4 investigations), Dossiers, Test Planner (ranks experiments to run, never atmospheres), Data Quality, Methods, About.
 

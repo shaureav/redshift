@@ -15,7 +15,9 @@ import type { Candidate, CandidateEvidence, Investigation } from "../lib/types";
 import AtmosphereCompare from "../pages/AtmosphereCompare";
 import Brief, { briefBibtex, briefCsv } from "../pages/Brief";
 import Home from "../pages/Home";
+import type { AccessGapData } from "../charts/AccessGap";
 import { chartSvgMarkup } from "./Common";
+import { Intro } from "./Intro";
 import { Readout } from "./panelReadout";
 
 const FILES = [
@@ -288,5 +290,33 @@ describe("the instrument panel", () => {
     const bar = panelOf("/?o2=34&p=8.2").querySelector('nav[aria-label="Take this point further"]');
     expect([...(bar?.querySelectorAll("li") ?? [])].map((li) => li.textContent)).toEqual(["Dossier", "Tests", "Compare", "Brief", "Share"]);
     expect(bar?.parentElement?.className).toContain("sticky bottom-0");
+  });
+});
+
+describe("the story intro", () => {
+  const gap = loadSnapshot<AccessGapData>("access_gap.json");
+  const beat = (b: number) => {
+    const host = document.createElement("div");
+    host.innerHTML = render("/", <Intro beat={b} gap={gap} onBeat={() => {}} onClose={() => {}} />);
+    return host;
+  };
+
+  it.each([0, 1, 2])("beat %i matches its snapshot, with every number through Value", (b) => {
+    const host = beat(b);
+    expect(bareNumbers(host)).toEqual([]);
+    expect(tidy(host.innerHTML)).toMatchSnapshot();
+  });
+
+  it("cites the four access-gap steps in the last beat, and only there", () => {
+    expect(beat(0).querySelectorAll("[data-prov]")).toHaveLength(0);
+    expect(beat(1).querySelectorAll("[data-prov]")).toHaveLength(0);
+    expect([...beat(2).querySelectorAll("[data-prov]")].map((e) => e.getAttribute("data-prov"))).toEqual(gap.psi_steps.map((s) => s.count.p));
+  });
+
+  it("says the counts are loading rather than show a number it does not have", () => {
+    const host = document.createElement("div");
+    host.innerHTML = render("/", <Intro beat={2} gap={null} onBeat={() => {}} onClose={() => {}} />);
+    expect(host.textContent).toContain("The cited counts are still loading.");
+    expect(bareNumbers(host)).toEqual([]);
   });
 });

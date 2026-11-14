@@ -8,7 +8,6 @@ import type { ProbeGridFile } from "../lib/probe";
 import type { Candidate, Investigation } from "../lib/types";
 import { parsePoint } from "../lib/view";
 import { SearchIcon } from "./Icons";
-import { TOUR_EVENT } from "./Tour";
 
 export const PALETTE_EVENT = "redshift:palette";
 export const THEME_EVENT = "redshift:theme";
@@ -107,7 +106,7 @@ export function CommandPalette() {
       { id: "a-solids", group: "Actions", label: "Show solids only", run: go("/?solids=1") },
       { id: "a-gap", group: "Actions", label: "Open the access gap chart", run: go("/?view=gap") },
       { id: "a-theme", group: "Actions", label: "Switch light or dark theme", run: () => { setOpen(false); window.dispatchEvent(new Event(THEME_EVENT)); } },
-      { id: "a-tour", group: "Actions", label: "Replay the tour", run: () => { setOpen(false); navigate("/"); setTimeout(() => window.dispatchEvent(new Event(TOUR_EVENT)), 50); } },
+      { id: "a-intro", group: "Actions", label: "Replay the intro", hint: "The access gap in three beats", run: toPlane("intro") },
       { id: "a-keys", group: "Actions", label: "Show keyboard shortcuts", run: toPlane("shortcuts") },
     ];
     for (const a of acts) if (!q || matches(q, a.label)) out.push(a);

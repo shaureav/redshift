@@ -86,6 +86,10 @@ The home page is one big map of oxygen against cabin pressure with a panel besid
 
 The map is drawn like a coastline: land wherever the build counted at least one test near a point, hatched open sea wherever it counted none, and the coast as the line between. Turn on "Solids only" and the land sinks, because no solid-material test can be placed anywhere; the candidate pins then all read "at sea". The words on the pins (inland, on the coast, at sea) describe the recorded evidence around that point, never fire risk, and the plane's controls sit in one small toolbar in its corner.
 
+## The story intro (`web/src/components/Intro.tsx`)
+
+On a first visit the plane tells its own story in three beats: the atmospheres NASA is weighing appear as pins on an empty map, the fire tests NASA's tables let us place rise as land, and then, with only solid materials kept, the land sinks and the card cites the counts that explain why (each count opens its source). Click, scroll or press the arrow keys to move on, skip at any time, and press Explore to take over the plane at 8.2 psi and 34% oxygen with solids only on. It shows once per device and the command palette can replay it.
+
 ## Feel: trail, keys, toasts and sound (`web/src/lib/shortcuts.ts`, `web/src/lib/geiger.ts`, `web/src/components/Toaster.tsx`)
 
 As the probe moves it leaves a short fading trail, thick over land and thin over sea; crossing the coast makes the nearby stretch of coast flash (and a phone buzz), and snapping to a candidate sends a ring out from its pin. Keys 1 to 5 jump to the candidates, S shows solids only, G opens the access gap, C opens Compare and ? lists every key; none of them fire while you type. An optional Geiger mode, off until you switch it on, clicks faster where more tests sit near the probe and falls silent at sea, so the plane can be heard as well as seen.

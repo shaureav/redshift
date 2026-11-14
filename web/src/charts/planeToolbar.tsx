@@ -50,7 +50,7 @@ export function PlaneToolbar(p: Props) {
   };
   return (
     <div ref={bar} role="toolbar" aria-label="Plane tools" className="toolbar flex-wrap" onKeyDown={onKeyDown} onPointerOver={aimTip} onFocus={aimTip}>
-      <button type="button" role="switch" aria-checked={p.solids} aria-label="Solids only" data-tip="Keep only solid-material evidence (S)" onClick={p.onSolids} className="tool" id="tour-solids">
+      <button type="button" role="switch" aria-checked={p.solids} aria-label="Solids only" data-tip="Keep only solid-material evidence (S)" onClick={p.onSolids} className="tool">
         <span className="switch" aria-hidden="true" /> Solids only
       </button>
       <span className="toolbar-sep" aria-hidden="true" />

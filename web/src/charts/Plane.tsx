@@ -11,7 +11,7 @@
 // moves, so a drag stays within a frame even with every glyph on the plane. The floating toolbar sits in the
 // plane's top left corner, above both.
 import * as d3 from "d3";
-import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
 import { coastFor, coastNear, EVIDENCE_WORD_NOTE, gridExtent, isLand, landPath, type Coast, type EvidenceWord } from "../lib/coast";
@@ -50,6 +50,11 @@ function buzz() {
 
 export type ProbeMode = "hover" | "drag" | "commit";
 
+/** A beat of the story intro (components/Intro.tsx) over this live plane. "pins": open sea and the candidate pins
+ *  alone, which appear and pulse; "land": the land rises and the glyphs fade in, one fuel class after another;
+ *  "solids": the land sinks under Solids only. The probe and the toolbar wait until the intro hands over. */
+export type IntroStage = "pins" | "land" | "solids";
+
 interface Props {
   map: TradeMapData;
   candidates: Candidate[];
@@ -62,6 +67,8 @@ interface Props {
   words: Partial<Record<string, EvidenceWord>>;
   /** Solids only changed while this page was open, so the land sinks (or rises) on screen. */
   scene: boolean;
+  /** The story intro's beat while it plays over the plane; null or absent once it has handed over. */
+  stage?: IntroStage | null;
   toolbar?: ReactNode;
   brushMode: boolean;
   onProbe: (o2: number, psi: number, mode: ProbeMode) => void;
@@ -133,6 +140,7 @@ type Rect = { x0: number; x1: number; y0: number; y1: number };
 
 export function Plane(props: Props) {
   const { map, candidates, grid, flame, prebreathe, view, probe, words, scene, toolbar, brushMode, onProbe, onHoverEnd, onBrush, onOpenCandidate, onToggleBrush } = props;
+  const stage = props.stage ?? null;
   const [wrap, { w, h }] = useSize<HTMLDivElement>({ w: 960, h: 640 });
   const [tbRef, tb] = useSize<HTMLDivElement>({ w: 300, h: 40 }, 0);
   const overlay = useRef<SVGSVGElement>(null);
@@ -334,7 +342,7 @@ export function Plane(props: Props) {
   const tagLeft = pxp + 16 + tagW > iw;
   const glide = dragging ? "none" : "transform var(--t-move) var(--ease-out)";
   const candWord = onCand ? words[onCand.id] : undefined;
-  const showTip = !!onCand && (pointerOn || focused) && view.layers.has("cand") && !dragging;
+  const showTip = !!onCand && (pointerOn || focused) && view.layers.has("cand") && !dragging && !stage;
   const tipRight = pxp + 16 + 256 > iw;
 
   // ---- feel (plan, Phase 4): snap ping, coast pulse, trail and haptics, all on the overlay ----
@@ -391,13 +399,13 @@ export function Plane(props: Props) {
   }, [trail]);
 
   return (
-    <div ref={wrap} className="relative h-full w-full select-none" onPointerLeave={() => setHoverBin(null)}>
+    <div ref={wrap} className="relative h-full w-full select-none" data-intro={stage ?? undefined} onPointerLeave={() => setHoverBin(null)}>
       {toolbar && (
-        <div ref={tbRef} className="absolute z-10" style={{ left: tbLeft, top: tbTop, maxWidth: w - tbLeft - 8 }}>
+        <div ref={tbRef} className="intro-hide absolute z-10" style={{ left: tbLeft, top: tbTop, maxWidth: w - tbLeft - 8 }}>
           {toolbar}
         </div>
       )}
-      <LandLayer frame={f} grid={grid} multiplier={view.m} solids={view.solids} scene={scene} hatch={view.layers.has("blind")} />
+      <LandLayer frame={f} grid={grid} multiplier={view.m} solids={view.solids} risen={stage !== "pins"} scene={scene} hatch={view.layers.has("blind")} />
       <PlaneBase
         frame={f}
         grid={grid}
@@ -411,7 +419,8 @@ export function Plane(props: Props) {
         scene={scene}
         reserve={reserve}
         placedSolid={map.points.some((p) => p.fuel_class === "solid")}
-        activeCandidate={onCand?.id ?? null}
+        activeCandidate={stage ? null : onCand?.id ?? null}
+        pulse={stage === "pins" && !reduced}
       />
       <svg
         ref={overlay}
@@ -466,17 +475,20 @@ export function Plane(props: Props) {
             {onCand && ping > 0 && (
               <circle key={ping} cx={x(onCand.o2_pct.v)} cy={y(onCand.pressure_psi.v)} r={12} className="snap-ping" fill="none" stroke="var(--probe)" strokeWidth={2} pointerEvents="none" />
             )}
-            <g style={{ transform: `translate(${pxp}px, ${pyp}px)`, transition: glide }} pointerEvents="none">
-              <g className="layer" data-on={view.layers.has("halo")}>
-                <ellipse rx={halo.rx} ry={halo.ry} fill="url(#plane-halo)" />
-              </g>
-              <line x1={-pxp} x2={iw - pxp} y1={0} y2={0} stroke="var(--probe)" strokeOpacity={0.35} />
-              <line y1={-pyp} y2={ih - pyp} x1={0} x2={0} stroke="var(--probe)" strokeOpacity={0.35} />
-              <circle r={12} fill="none" stroke="var(--probe)" strokeWidth={2} />
-              <circle r={3} fill="var(--probe)" />
-              <g transform={`translate(${tagLeft ? -16 - tagW : 16},${pyp < 40 ? 16 : -32})`}>
-                <rect width={tagW} height={24} rx={4} fill="var(--surface)" stroke="var(--line-strong)" />
-                <text ref={tagText} x={8} y={16} fontSize={12} fill="var(--ink)" className="num">{tag}</text>
+            {/* The probe waits while the story intro plays, then fades in where the intro hands over. */}
+            <g className="intro-hide">
+              <g style={{ transform: `translate(${pxp}px, ${pyp}px)`, transition: glide }} pointerEvents="none">
+                <g className="layer" data-on={view.layers.has("halo")}>
+                  <ellipse rx={halo.rx} ry={halo.ry} fill="url(#plane-halo)" />
+                </g>
+                <line x1={-pxp} x2={iw - pxp} y1={0} y2={0} stroke="var(--probe)" strokeOpacity={0.35} />
+                <line y1={-pyp} y2={ih - pyp} x1={0} x2={0} stroke="var(--probe)" strokeOpacity={0.35} />
+                <circle r={12} fill="none" stroke="var(--probe)" strokeWidth={2} />
+                <circle r={3} fill="var(--probe)" />
+                <g transform={`translate(${tagLeft ? -16 - tagW : 16},${pyp < 40 ? 16 : -32})`}>
+                  <rect width={tagW} height={24} rx={4} fill="var(--surface)" stroke="var(--line-strong)" />
+                  <text ref={tagText} x={8} y={16} fontSize={12} fill="var(--ink)" className="num">{tag}</text>
+                </g>
               </g>
             </g>
           </g>
@@ -505,7 +517,7 @@ export function Plane(props: Props) {
         </div>
       )}
       {/* A bin's count, only while the pointer is on its glyph: a Value, so it opens the bin's source. */}
-      {hoverBin && !dragging && (
+      {hoverBin && !dragging && !stage && (
         <div
           ref={badge}
           key={hoverBin.p.p}
@@ -549,19 +561,22 @@ function stretch(line: [number, number][], k: number, half: number): [number, nu
 
 /** Land, sea and coast: contours of the probe grid at "more than zero", cached per multiplier and mode. A layer
  *  of its own (its own SVG, composited apart), so the Solids only sink repaints only this, never the glyphs. */
-const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, scene, hatch }: {
-  frame: Frame; grid: Grid; multiplier: number; solids: boolean; scene: boolean; hatch: boolean;
+const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, risen, scene, hatch }: {
+  /** risen: false while the story intro's first beat shows open sea alone, before the land rises. */
+  frame: Frame; grid: Grid; multiplier: number; solids: boolean; risen: boolean; scene: boolean; hatch: boolean;
 }) {
   const { w, h, m, iw, ih, x, y, z } = frame;
   const land = useMemo(() => landPath(coastFor(grid, multiplier, "all"), grid, x, y), [grid, multiplier, x, y]);
   const solidLand = useMemo(() => landPath(coastFor(grid, multiplier, "solids"), grid, x, y), [grid, multiplier, x, y]);
   const extent = useMemo(() => gridExtent(grid, x, y), [grid, x, y]);
-  // Only a change of Solids only animates the land: the transition is on from that change until it ends, so a
-  // resize meanwhile or afterwards redraws at once, and a new zoom or step size draws a new coast at once (key).
-  const [sinkFor, setSinkFor] = useState(solids);
+  // The land is sunk under Solids only and before the intro raises it. Only a change of that animates the land:
+  // the transition is on from that change until it ends, so a resize meanwhile or afterwards redraws at once, and
+  // a new zoom or step size draws a new coast at once (key).
+  const sunk = solids || !risen;
+  const [sinkFor, setSinkFor] = useState(sunk);
   const [sinking, setSinking] = useState(false);
-  if (sinkFor !== solids) {
-    setSinkFor(solids);
+  if (sinkFor !== sunk) {
+    setSinkFor(sunk);
     setSinking(true);
   }
   return (
@@ -579,7 +594,7 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, sce
             stroke="black"
             strokeLinejoin="round"
             className={scene && sinking ? "land-sink" : undefined}
-            style={{ strokeWidth: solids ? land.erode : 0 }}
+            style={{ strokeWidth: sunk ? land.erode : 0 }}
             onTransitionEnd={() => setSinking(false)}
           />
         </mask>
@@ -593,7 +608,7 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, sce
           <g className="layer" data-on={hatch}>
             <rect x={extent.x} y={extent.y} width={extent.w} height={extent.h} fill="url(#hatch-sea)" style={{ opacity: "var(--sea-hatch-opacity)" }} />
           </g>
-          {solids && solidLand.d && (
+          {solids && risen && solidLand.d && (
             <g>
               <path d={solidLand.d} fill="var(--land)" />
               <path d={solidLand.d} fill="none" stroke="var(--coast)" strokeWidth={1} />
@@ -610,10 +625,12 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, sce
 });
 
 /** Everything else that does not move with the probe. Memoised: a drag never re-renders or repaints it. */
-const PlaneBase = memo(function PlaneBase({ frame, grid, placed, candidates, words, flame, prebreathe, layers, solids, scene, reserve, placedSolid, activeCandidate }: {
+const PlaneBase = memo(function PlaneBase({ frame, grid, placed, candidates, words, flame, prebreathe, layers, solids, scene, reserve, placedSolid, activeCandidate, pulse }: {
   frame: Frame; grid: Grid; placed: Placed[]; candidates: Candidate[]; words: Partial<Record<string, EvidenceWord>>;
   flame?: FlameGrid; prebreathe?: PrebreathePoint[]; layers: Set<string>; solids: boolean; scene: boolean; reserve: Rect; placedSolid: boolean;
   activeCandidate: string | null;
+  /** The story intro's first beat: the pins appear one after another and pulse (never under reduced motion). */
+  pulse: boolean;
 }) {
   const { w, h, m, iw, ih, narrow, x, y, z, strips } = frame;
 
@@ -766,11 +783,13 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, candidates, wor
           </g>
 
           <g className="layer" data-on={layers.has("cand")}>
-            {pins.map(({ c, cx, cy, word, below, left }) => {
+            {pins.map(({ c, cx, cy, word, below, left }, k) => {
               const on = c.id === activeCandidate;
               const tx = left ? -10 : 10;
+              const delay = pulse ? { animationDelay: `calc(${k} * var(--t-fast))` } : undefined;
               return (
-                <g key={c.id} transform={`translate(${cx},${cy})`}>
+                <g key={c.id} transform={`translate(${cx},${cy})`} className={pulse ? "pin-appear" : undefined} style={delay}>
+                  {pulse && <circle cy={-14} r={9} className="pin-pulse" fill="none" stroke="var(--candidate)" strokeWidth={2} style={delay} />}
                   <path d={PIN} fill="var(--candidate)" stroke="var(--sea)" strokeWidth={1.5} strokeLinejoin="round" />
                   <circle cy={-14} r={2.25} fill="var(--sea)" />
                   {!on && (
@@ -828,7 +847,8 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, candidates, wor
           <text transform={`translate(${iw + (narrow ? 36 : 44)},${ih / 2}) rotate(90)`} textAnchor="middle" fontSize={14} fill="var(--ink-2)">kPa</text>
         </g>
 
-        {layers.has("strip") && <StripLayer strips={strips} solids={solids} x={x} z={z} iw={iw} top={ih + 56} narrow={narrow} />}
+        {/* The strip of tests with no recorded pressure comes in after the glyphs in the story intro (index.css). */}
+        {layers.has("strip") && <g className="intro-strip"><StripLayer strips={strips} solids={solids} x={x} z={z} iw={iw} top={ih + 56} narrow={narrow} /></g>}
       </g>
     </svg>
   );
@@ -863,8 +883,10 @@ const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top, nar
 
 /** Every bin once, its marker sized by its count; the count itself shows only on hover (the overlay's badge).
  *  Under Solids only the other classes fade as one group (one opacity to animate, not one per glyph), so the
- *  fade does not hold up the land sinking beneath it. */
+ *  fade does not hold up the land sinking beneath it. Inside, one group per fuel class in the build's order
+ *  (which keeps the drawing order), so the story intro can fade the classes in one after another (--k). */
 const GlyphLayer = memo(function GlyphLayer({ on, placed, solids }: { on: boolean; placed: Placed[]; solids: boolean }) {
+  const others = [...new Set(placed.map((g) => g.p.fuel_class))].filter((f) => f !== "solid");
   const glyph = ({ p, px, py, r }: Placed) => {
     const outline = p.source_type === "published_paper";
     return (
@@ -881,8 +903,12 @@ const GlyphLayer = memo(function GlyphLayer({ on, placed, solids }: { on: boolea
   };
   return (
     <g className="layer" data-on={on}>
-      <g className="glyph-group" data-ghost={solids}>{placed.filter((g) => g.p.fuel_class !== "solid").map(glyph)}</g>
-      <g>{placed.filter((g) => g.p.fuel_class === "solid").map(glyph)}</g>
+      <g className="glyph-group" data-ghost={solids}>
+        {others.map((f, k) => (
+          <g key={f} className="glyph-class" style={{ "--k": k } as CSSProperties}>{placed.filter((g) => g.p.fuel_class === f).map(glyph)}</g>
+        ))}
+      </g>
+      <g className="glyph-class" style={{ "--k": others.length } as CSSProperties}>{placed.filter((g) => g.p.fuel_class === "solid").map(glyph)}</g>
     </g>
   );
 });

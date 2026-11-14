@@ -2,7 +2,7 @@
 // pick an atmosphere (drag, click, arrow keys or a candidate chip), see the evidence instantly, go deeper,
 // take it with you. Every view state lives in the URL.
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AccessGap, type AccessGapData } from "../charts/AccessGap";
 import { Plane, type ProbeMode } from "../charts/Plane";
 import { PlaneToolbar } from "../charts/planeToolbar";
@@ -11,9 +11,9 @@ import { AskBox } from "../components/AskBox";
 import { FuelMarker } from "../components/Common";
 import { EvidencePanelView, flameAt, prebreatheFor, type FlameFile, type PanelData, type PrebreatheFile } from "../components/EvidencePanel";
 import { KeyboardIcon, PinIcon } from "../components/Icons";
+import { EXPLORE_AT, Intro, INTRO_STAGES, introSeen } from "../components/Intro";
 import { ShortcutSheet } from "../components/ShortcutSheet";
 import { copyPageLink, toast } from "../components/Toaster";
-import { Tour } from "../components/Tour";
 import { Value } from "../components/Value";
 import { coastFor, evidenceWord, isLand, type EvidenceWord } from "../lib/coast";
 import { useData } from "../lib/data";
@@ -24,7 +24,7 @@ import { useReducedMotion } from "../lib/motion";
 import { decodeGrid, inGrid, nearInputs, nodeOf, readAt, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "../lib/probe";
 import type { Candidate, CandidateEvidence, Val } from "../lib/types";
 import { shortcutFor } from "../lib/shortcuts";
-import { useView, type Box } from "../lib/view";
+import { useView, type Box, type Layer, type View } from "../lib/view";
 
 const KPA_PER_PSI = 6.894757293168361; // selection filter only; never printed
 
@@ -58,27 +58,42 @@ export default function Home() {
     setScene(true);
   }
 
-  // Each candidate's evidence word, read from the grid at its node for the current step size and mode. A word
-  // about the recorded evidence there, never about risk (lib/coast.ts).
+  // The story intro (components/Intro.tsx): its beat, or null once it has handed over. It opens by itself on a
+  // device's first visit to the plane, unless the link carries a view (a shared link opens on that view, not on
+  // a story), and from the command palette. While it plays the plane draws each beat from a stage of its own:
+  // nothing is written to the address bar until Explore, inside its click.
+  const { search } = useLocation();
+  const [beat, setBeat] = useState<number | null>(() => (search === "" && !introSeen() ? 0 : null));
+  const stage = beat === null ? null : INTRO_STAGES[beat];
+  const closeIntro = useCallback(
+    (explore: boolean) => {
+      setBeat(null);
+      if (explore) setView({ ...EXPLORE_AT, solids: true });
+    },
+    [setView],
+  );
+  // What the plane draws: the view, except during the intro, when the beat decides Solids only and the glyphs,
+  // pins and sea hatching are always on (the strip below the plot stays as set, so the plot keeps its size).
+  const planeView = useMemo<View>(() => {
+    if (!stage) return view;
+    const layers = new Set<Layer>(["ev", "cand", "blind"]);
+    if (view.layers.has("strip")) layers.add("strip");
+    return { ...view, solids: stage === "solids", layers };
+  }, [view, stage]);
+
+  // Each candidate's evidence word, read from the grid at its node for the current step size and the mode that
+  // is drawn. A word about the recorded evidence there, never about risk (lib/coast.ts). The intro's first beat
+  // shows no land yet, so its pins carry their names alone.
   const words = useMemo(() => {
     const out: Partial<Record<string, EvidenceWord>> = {};
-    if (!grid || !cands.data) return out;
-    const coast = coastFor(grid, view.m, view.solids ? "solids" : "all");
+    if (!grid || !cands.data || stage === "pins") return out;
+    const coast = coastFor(grid, view.m, planeView.solids ? "solids" : "all");
     for (const c of cands.data.candidates) {
       const n = nodeOf(grid, c.o2_pct.v, c.pressure_psi.v);
       if (n) out[c.id] = evidenceWord(coast, n.i, n.j);
     }
     return out;
-  }, [grid, cands.data, view.m, view.solids]);
-
-  // The tour's step 3 shows the access gap: 8.2 psi, 34% O2, solids only. A stable callback (setView is
-  // stable), and the tour runs it once per step, so the view change cannot re-trigger it.
-  const onTourStep = useCallback(
-    (step: number) => {
-      if (step === 2) setView({ o2: 34, psi: 8.2, solids: true });
-    },
-    [setView],
-  );
+  }, [grid, cands.data, view.m, planeView.solids, stage]);
 
   const pinned = { o2: view.o2, psi: view.psi };
   const shown = drag ?? preview ?? pinned;
@@ -128,9 +143,10 @@ export default function Home() {
 
   // Geiger mode: the click rate follows the built near-test total of the coast that is drawn, so open sea is
   // silent; under Solids only that is the solid land alone (lib/geiger.ts, soundTotal). Turned on only inside the
-  // Sound tool's click; when it was left on, it waits for the first tap or key press.
+  // Sound tool's click; when it was left on, it waits for the first tap or key press. Quiet while the story intro
+  // plays: the probe it would follow is not on the plane until Explore.
   const solidCoast = useMemo(() => (grid ? coastFor(grid, view.m, "solids") : null), [grid, view.m]);
-  const total = data && solidCoast ? soundTotal(data.reading, view.solids, isLand(solidCoast, data.reading.i, data.reading.j)) : 0;
+  const total = data && solidCoast && !stage ? soundTotal(data.reading, view.solids, isLand(solidCoast, data.reading.i, data.reading.j)) : 0;
   useEffect(() => geiger.setTotal(sound ? total : 0), [sound, total]);
   useEffect(() => {
     if (sound) geiger.armOnGesture();
@@ -174,7 +190,9 @@ export default function Home() {
   // mount; one made here arrives through the event. Neither touches the view in the address bar.
   useEffect(() => {
     const take = () => {
-      if (takePlaneRequest() === "shortcuts") setSheet(true);
+      const r = takePlaneRequest();
+      if (r === "shortcuts") setSheet(true);
+      else if (r === "intro") setBeat(0);
     };
     take();
     window.addEventListener(PLANE_REQUEST_EVENT, take);
@@ -201,9 +219,9 @@ export default function Home() {
   const pointQs = `o2=${data.reading.o2.v}&p=${data.reading.psi.v}${view.m !== 1 ? `&m=${view.m}` : ""}`;
 
   return (
-    <div className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:h-[calc(100vh-56px)] lg:grid-cols-[minmax(0,1fr)_400px] lg:grid-rows-1 lg:overflow-hidden">
+    <div className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:h-[calc(100vh-56px)] lg:grid-cols-[minmax(0,1fr)_400px] lg:grid-rows-1 lg:overflow-hidden" data-intro={stage ?? undefined}>
       <section className="flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
-        <header className="px-4 pb-2 pt-4 lg:px-6">
+        <header className="intro-hide px-4 pb-2 pt-4 lg:px-6">
           {/* The Heading role (plan, section 5): the panel's point readout keeps the larger Title role. The plane's
               controls float in its toolbar, so only the headline sits above it. Under Solids only the cited
               headline lands once the land has sunk (instantly under reduced motion). */}
@@ -224,17 +242,18 @@ export default function Home() {
             </span>
           </h1>
         </header>
-        <div className="relative h-[62vh] min-h-[420px] px-2 pb-2 lg:h-auto lg:flex-1 lg:px-4" id="tour-plane">
+        <div className="relative h-[62vh] min-h-[420px] px-2 pb-2 lg:h-auto lg:flex-1 lg:px-4">
           <Plane
             map={map.data}
             candidates={cands.data.candidates}
             grid={grid}
             flame={flame.data}
             prebreathe={pb.data?.points}
-            view={view}
+            view={planeView}
             probe={shown}
             words={words}
-            scene={scene}
+            scene={scene || stage !== null}
+            stage={stage}
             toolbar={
               <PlaneToolbar
                 solids={view.solids}
@@ -267,7 +286,7 @@ export default function Home() {
 
       {/* relative: the panel is the containing block for anything absolutely placed inside it (such as a
           visually hidden label), so nothing escapes its scroller and stretches the page. */}
-      <aside className="relative border-t border-line bg-[color:var(--surface)] lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-t-0" id="tour-panel" aria-label="Evidence near the probe">
+      <aside className="intro-dim relative border-t border-line bg-[color:var(--surface)] lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-t-0" aria-label="Evidence near the probe">
         {selection && (
           <div className="animate-rise border-b border-line bg-[color:var(--surface-2)] px-5 py-4">
             <div className="flex items-center justify-between gap-2">
@@ -305,7 +324,7 @@ export default function Home() {
 
       {view.panel === "gap" && <GapDialog onClose={() => setView({ panel: "evidence" })} />}
       {sheet && <ShortcutSheet candidates={cands.data.candidates.map((c) => c.name)} onClose={() => setSheet(false)} />}
-      <Tour onStep={onTourStep} />
+      {beat !== null && <Intro beat={beat} gap={gap.data ?? null} onBeat={setBeat} onClose={closeIntro} />}
     </div>
   );
 }
@@ -314,7 +333,7 @@ export default function Home() {
  *  room for a keyboard, the door to the shortcut sheet. */
 function Legend({ onShortcuts }: { onShortcuts: () => void }) {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6" id="tour-legend">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6">
       <span className="flex items-center gap-1.5"><span className="inline-block h-3 w-5 rounded-sm border border-[color:var(--coast)] bg-[color:var(--land)]" /> Land: tests near</span>
       <span className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-5 rounded-sm border border-line bg-[color:var(--sea)]" /> Sea: no tests near, unknown, not safe</span>
       {(["gas", "droplet", "solid", "emulator"] as const).map((f) => (

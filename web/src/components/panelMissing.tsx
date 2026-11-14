@@ -49,7 +49,6 @@ function linesFor(r: Reading, candidate: Candidate | null, prebreathe: Prebreath
 export function MissingCallout({ r, candidate, prebreathe, gap, onOpenGap }: { r: Reading; candidate: Candidate | null; prebreathe: PrebreatheStatus; gap: AccessGapData | null; onOpenGap?: () => void }) {
   const lines = linesFor(r, candidate, prebreathe, gap);
   return (
-    // The tour's access-gap step spotlights this section (Tour.tsx finds it by its heading's id).
     <section className="px-5 pb-4" aria-labelledby="sec-gap">
       <div className="raised relative py-2 pl-4 pr-3">
         {/* A hatched edge: what follows is unknown, not safe. */}
