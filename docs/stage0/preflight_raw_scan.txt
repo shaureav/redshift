@@ -1,0 +1,169 @@
+PRE-FLIGHT SCAN: NASA PSI combustion harvest (read only; nothing was created, edited or deleted)
+
+BASE = /private/tmp/claude-501/-Users-shaureavardhan-Library-Application-Support-Claude-scratch-workspaces-9a5f780f-576a-4077-a67e-1bc214592fa1-3288d428-88a8-4495-99c1-ba918d4c4a16-scratch-2026-11-14-123c11/7c722892-e353-484f-8376-ac0b6c8729ec/scratchpad/rawzip/Redshift_PSI_Combustion
+JSON = /Users/shaureavardhan/Library/Containers/net.whatsapp.WhatsApp/Data/tmp/documents/61EAFD3A-60E7-4E68-9D5C-1254BB148F3C/redshift_psi_investigations.json
+
+How I counted: I wrote a CSV parser in perl (handles quotes, doubled quotes, commas and newlines inside quotes, CRLF endings and a UTF-8 BOM) and piped it to perl. Every table uses CRLF, and the number of CRs equals the number of LFs in every file, so no record spans two lines. That means record n is always physical line n+1. All row references below are physical file line numbers, with the header on line 1. "Duplicates" means extra byte-identical copies after parsing, not counting the first occurrence. Every table's size matches the size listed in its own .md "Experimental table" row (for example FLEX 24,776 B = 24.2 KB, FLEX-2 1,029 B = 1.0 KB, CFI-G 39,422 + 22,166 B = 60.1 KB). So these look like the original PSI files, with none swapped.
+
+=== A. Per-table inventory (paths relative to BASE) ===
+Format: physical lines | header rows | data records | fully blank | duplicates | columns
+1. ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv: 19 | 1 | 18 | 0 | 0 | Year, Month, Date, Burner Size (mm), Fuel Bottle, Oxygen Conc (percent), Flames Ignited, Notes
+2. ACME-CFI-G/.../PSI-159_Experimental table_CFI-G_Inverse Flames.csv: 1016 | 1 | 1015 | 861 (lines 156-1016, each exactly 19 commas) | 0 | Flame Type, Day, Fuel, Test, "Xf  before test", "Xf  after test", approx p (bar), XO2, HC burnrate (mg/s), O2 flow rate (mg/s), TFP, Tad (K), Zst, Hot ignition, burn time (sec), "Self -ext or flow term", Peak burner Temp (C), Peak burner temp (K), Color, Comments
+3. ACME-CFI-G/.../PSI-159_Experimental table_CFI-G_Normal Flames.csv: 180 | 1 | 179 | 0 | 0 | Flame Type, Day, Fuel, Test, Cool flame?, " XO2 before test", "XO2  after test", approx p (bar), Xf, mHC (mg/s), TFP, Tad (K), Zst, Hot ignition, burn time (sec), Self-ext or flow term, "Peak burner T (C )", Comments
+4. ACME-CLD-Flame/.../PSI-21_Experimental table_CLD Flame.csv: 33 | 1 | 32 | 0 | 0 | Test Type, Test Day, Fuel MFC, N2 MFC, Fuel Bottle, Fuel conc. Range, Flames ignited, Notes
+5. ACME-E-FIELD-Flames/.../PSI-22_Experimental table_ACME E-FIELD Flames.csv: 33 | 1 | 32 | 0 | 8 | Test Type, Test Day, Year, Month, Date, Mesh Polarity, Fuel Bottle, Fuel Conc, Flames Ignited, Notes
+6. ACME-Flame-Design/.../PSI-10_Experimental table_Flame Design_Inverse Flame.csv: 121 | 1 | 120 | 0 | 0 | Flame Type, Day, Test, XO2, mO2 (mg/s), mN2 (mg/s), mtot (mg/s), XC2H4 initial, XC2H4 final, pinit (atm), pfinal (atm), pmean (atm), mean Zst, Tad (K)
+7. ACME-Flame-Design/.../PSI-10_Experimental table_Flame Design_Normal Flame.csv: 208 | 1 | 207 | 0 | 0 | Flame Type, Day, Fuel, Test, Xfuel, mfuel (mg/s), mN2 (mg/s), mtot (mg/s), XO2 (init), XO2 (final), pinit (atm), pfinal (atm), pmean (atm), mean Zst, Tad (K)
+8. ACME-s-Flame/.../PSI-23_Experimental table_ACME s-Flame.csv: 19 | 1 | 18 | 0 | 0 | Test Type, Test Day*, Year, Month, Date, Atmosphere*, Fuel Bottle, Flames Ignited*, Notes
+9. BASS-II/.../PSI-25_Experimental table_BASS-II.csv (UTF-8 BOM): 130 | 1 | 129 | 0 | 0 | PI, Test #, Date, GMT, Sample #, Fuel Sample Material, Flow restrictor, Fan display, Air display, "Radiometer gain   (1000   250   50   10)", Total Frames Shot, "Calibrated  initial O2 % by vol ", Calibrated final O2 % by vol, Initial CO2 % by vol, Final CO2 % by vol, Initial CO (ppm), Final CO (ppm)
+10. BASS/.../PSI-26_Experimental table_BASS.csv (UTF-8 BOM): 123 | 1 | 122 | 0 | 0 | Date, GMT, As Run Test #, Test #, Sample #, Fuel Sample Material
+11. CFI/.../PSI-39_Experimental table_CFI.csv: 88 | 1 | 87 | 0 | 8 | Flex Number, Test Date, Local Time, "CIR ", Pressure, Oxygen, Nitrogen, Helium, Fiber, "Fuel "
+12. DAFT-DAFT-2/.../PSI-47_Experimental table_DAFT.csv: 3 | 1 | 2 | 0 | 0 | Session Name, Actual Day, Hardware Description, Sample Material, Sampled Location
+13. FLEX-2/.../PSI-68_Experimental table_Flex2.csv: 9 | 1 | 8 | 0 | 0 | Sample (Fuel Type), Initial Droplet Diameter (mm), "Ambient Gas Mixture ", Oxygen Mole Fraction, Ambient Pressure (atm), " Ambient Temperature (C)", Flow Velocity (cm/s)
+14. FLEX/.../PSI-69_Experimental table_FLEX.csv: 275 | 1 | 274 | 0 | 0 | FLEX Test #, FLEX Identifier, Test Date, Test GMT, Fuel, Ambient pressure; mmHg, O initial ambient composition; mole fraction, N initial..., CO initial..., He initial..., Droplet initial diameter; mm, Visible flame extinction diameter; mm, Burning rate; mm, Burn time; s, Test end. (The subscripts were lost from the headers: "O" is O2, "N" is N2, "CO" is CO2.)
+15. SAFFIRE-I/.../PSI-98_Experimental table_SAFFIRE-1.csv: 5 | 1 | 4 | 0 | 0 | "Sample Number ", Material, Sample Thickness (cm), Sample Length (cm), Sample Width (cm), Air Flow (cm/s), Percent O2, Ignition Power (W), Ignition Time (s), Burn Time (s), "Flow Direction ", Camera 1, Camera 2
+16. SAFFIRE-II/.../PSI-99_Experimental table_SAFFIRE-2.csv: 16 | 1 | 15 | 0 | 0 | Sample Number, Material, "Samle Thickness " (typo in the source), "Sample Length ", Sample Width (cm), Air Flow (cm/s), Percent O2 (Note 1), Ignition Power (W), Ignition Time (s), Burn Time (s), Flow Direction, "?-g Burn Length", "?-g Spread Length" (the micro sign was lost and is a literal "?"), 1-g Burn Length, 1-g Spread Rate, Camera 1, Camera 2
+17. SAFFIRE-III/.../PSI-100_Experimental table_SAFFIRE-3.csv: 3 | 1 | 2 | 0 | 0 | "Sample Number ", Material, Sample Thickness, Sample Length, Sample Width, "Air Flow ", Direction, Camera 1, Camera 2
+18. SAME-R/.../PSI-101_Experimental table_SAME-R.csv: 110 | 1 | 109 | 0 | 0 | Sample Type, SAME Test #, Description, Date, Inlet velocity (cm/s), Rt/R0, Duration (sec), Primary aging time (sec), Primary mixing time (sec), Net aging time (sec)
+19. SAME/.../PSI-102_Experimental table_SAME.csv: 9 | 1 | 8 | 0 | 0 | Sample #, "Sample Material  ", Air Flow (cm/s), Weight loss rate (mg/min), Aging Duration (minutes)
+20. SLICE/.../PSI-106_Experimental table_Slice.csv: 13 | 1 | 12 | 0 | 0 | Test Date, Fuel Type
+21. SPICE/.../PSI-107_Experimental table_Spice.csv: 470 | 1 | 469 | 0 | 34 | GMT date, GMT ignition, "GMT  Flame Off ", Fuel, Nozzle (mm), Fuel Rate (sccm), Fuel Rate (mg/s), HC Fuel Rate (mg/s), Air Rate (cm/s)
+Repeated or second header rows: none in any file. Every record has the same number of fields as its header.
+TOTALS: 21 files; 2,883 physical lines; 21 header lines; 2,862 data records; 861 fully blank (all in the CFI-G Inverse table); 2,001 non-blank records; 50 exact duplicates (E-FIELD 8, CFI 8, SPICE 34); 1,951 unique non-blank records.
+Some non-blank records are not tests at all: E-FIELD has 11 continuation stubs (Test Type empty, mostly only Fuel Conc filled); SAFFIRE-I lines 4-5 are pre-test flow-visualisation entries; SAFFIRE-II has 2 flow-visualisation lines (11-12) and 4 note lines (13-16); BASS line 67 is "SOOT Cleaning"; SAME lines 6-9 are description-only.
+Publications: publications_all.csv has 325 records, 264 with a DOI, and 1 exact duplicate. Per-folder counts match index.csv. ACME-CLD-Flame/publications.csv has 1 exact duplicate.
+
+=== B. Reconciling the earlier claims ===
+Investigations, 24 versus 19: the JSON has exactly 24 records, all with Research Area "Combustion Science". The 19 folders match 19 "Microgravity Investigation" records. The other 5 are "Ground Investigation" records with no acronym and no experiment table in the harvest:
+- PSI-117 (CFD of cool flames, related to PSI-69 and PSI-142)
+- PSI-62 (flame spread modelling against BASS)
+- PSI-60 (SPICE data analysis)
+- PSI-142 (counterflow cool flames)
+- PSI-115 (SAME smoke modelling)
+README.md says these 5 were excluded on purpose. It also lists PSI-181 and PSI-108 as excluded, but neither is in the JSON.
+
+Tables, 22 versus 21: index.csv experiment_table_files adds up to 21 (CFI-G 2, Flame Design 2, the other 17 folders 1 each), and there are 21 files on disk.
+
+Rows, 2,009 versus 2,001: the review's 2,001 is reproduced exactly as 2,862 parsed records minus the 861 blank CFI-G Inverse records. That count still includes the 50 duplicates and excludes the 21 headers.
+The original's 2,009 is 8 more, with 1 more table. The simplest fit is one extra table with exactly 8 data rows. Only two tables have exactly 8 data rows: FLEX-2 (PSI-68) and SAME (PSI-102). So "the FLEX-2 table counted twice, or a duplicate FLEX-2 file" fits both differences exactly.
+The other explanations do not fit:
+- A copy of the FLEX table mislabelled FLEX-2 would add 274 rows, not 8. The FLEX-2 file on disk has its own 8-row summary structure and matches PSI's 1.0 KB listing.
+- Counting header rows would add 21 or 22, not 8.
+- Counting the CFI-G blank rows would add 861.
+- Removing the duplicates (8 E-FIELD, 8 CFI or 34 SPICE) would make the review lower than 2,001, not explain a higher original.
+Unexplained: I could not see the original harvest's manifest, so which 22nd table it held is unconfirmed. The 8-row coincidence is the only exact arithmetic fit I found.
+
+=== C. Known issues ===
+1. ACME BRE "3400%" and "2100%": FOUND. Line 6 (2019, March 7, 50% C2H4): Oxygen Conc = "3400%", Flames Ignited 6. Line 9 (2019, April 1, 100%C2H4): "2100%", Flames Ignited 0. These are probably 34 and 21 after an Excel percent-format error.
+   No pressure column: FOUND. The line 2 Notes say "The chamber pressures were also varied but are not identified".
+   BRE has 18 rows. O2 values, excluding those two cells, run from 21 to 40%; the distinct values are 21, 25, 26.5, 34 and 40. Flames ignited add up to 194.
+   Other BRE points: lines 13 and 14 are out of date order (Dec 5 before Dec 4); "100%C2H4" (lines 8-10) is written differently from "100% C2H4".
+2. CLD Flame fill-down: FOUND. 26 of 32 rows have impossible Fuel Bottle formulas:
+   - lines 3-12: "40% CH5" to "40% CH14"
+   - lines 14-15: "100% CH5", "100% CH6"
+   - lines 17-23: "100% C2H5" to "100% C2H11". Line 18 reads C2H6, which is a real formula (ethane), but it sits inside an ethylene series.
+   - lines 25-29: "50% C2H5" to "50% C2H9"
+   - line 31: "30% C2H5"
+   - line 33: "40% CH5"
+   The only clean rows are lines 2, 13, 16, 24, 30 and 32.
+   s-Flame fill-down: FOUND. Atmosphere reads "~21% O2 with N3" (lines 3 and 7), "N4" (lines 4 and 8), "N5" (line 9), "N6" (line 10). Fuel Bottle reads "50% C2H4 with N3" (line 3) and "45% CH4 with N3" (line 5). That is 8 cells in 7 rows.
+3. SAFFIRE-I length and width swapped: FOUND. Lines 2-3 give Sample Length 40.6 and Width 94 (cm). The .md Approach says about 0.94 m long and 0.4 m wide, and SAFFIRE-III (lines 2-3) gives Length 94 cm, Width 40.6 cm.
+   Possible unit problem: thickness is 0.37 cm here, while SAFFIRE-III has ".33 cm" and SAFFIRE-II has "037 mm" for SIBAL. I could not settle this.
+4. SAFFIRE-I metadata: FOUND in both the JSON (PSI-98) and SAFFIRE-I.md lines 11 and 16.
+   - Dates 03-02-2001 to 02-28-2008 are identical to SAME (PSI-102).
+   - The proposal title "Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection" is about smoke, which is SAME's subject. SAME has publications titled "Smoke: Characterization of Smoke Particulate for Spacecraft Fire Detection" (publications_all.csv lines 61-62).
+   - Caveat: SAME's own proposal title is blank in the JSON, so a copy cannot be proven from these files; the evidence is circumstantial but strong.
+   - Also: the JSON and .md give the platform as ISS, while the hardware is "Saffire 1 enclosure in Cygnus". SAFFIRE-III has the same mismatch; SAFFIRE-II correctly says Cygnus.
+5. SAFFIRE-II: FOUND.
+   - "037 mm" thickness on lines 5, 6 and 7 (samples 2-4, 2-5, 2-6).
+   - Blank Material on line 7 (2-6) and line 10 (2-9).
+   - Camera 2 "S4C1" duplicates Camera 1 on line 5; "S56C2" on line 7; Camera 1 blank on line 4.
+   - Header typo "Samle".
+6. FLEX pressure 0 mmHg: FOUND, one row only. Line 115, test 114, C11M201, 9/6/2010, Methanol, pressure 0, O2 0.2 / CO2 0.35, Extinction. Its GMT 19:14:22 is identical to C11H201 on line 119. Its series (C11, lines 114-119) sits at 531-536 mmHg.
+7. SPICE negative airflow: FOUND, 8 rows.
+   - Air Rate -0.28: lines 296, 298, 299, 300, 301 (GMT day 136, "75 % Propylene")
+   - Air Rate -5.92: lines 337, 338, 339 (day 167, "50 % Propylene", times "LOS")
+   SPICE duplicates: FOUND, 34 extra copies in 31 groups, including three triples: {129,131,132}, {234,235,236}, {240,241,242}. The pairs are 2/3, 6/7, 9/10, 11/12, 13/14, 102/103, 123/125, 142/146, 144/148, 150/153, 151/155, 156/159, 157/160, 162/165, 164/167, 169/172, 170/173, 171/174, 182/184, 183/185, 191/192, 215/216, 220/222, 229/231, 230/232, 251/253, 266/267, 330/336.
+8. E-FIELD duplicates: FOUND, 8, but only 4 are a real duplicated test. Lines 30-33 repeat lines 26-29 (test day 18319, 100% C2H4 at 25/50/80/100%). The other 4 (lines 15, 19, 25, 29) are identical ",,,,,,,100%,," continuation stubs matching line 7.
+9. CFI duplicates: FOUND, 8. Lines 81-88 repeat lines 24-31 exactly (Flex 1285-1289 and 1295-1297).
+10. Flame Design "RAMPED": FOUND. Normal Flame lines 3, 5 and 7 (tests 19115D2, B2, G1) have RAMPED in 6 numeric columns each, 18 cells in all.
+    Also in that file: "RAMP" in 342 cells over 57 rows, and 60 blank cells (day 13 C3H8, lines 189-208: XO2 final, pfinal and pmean blank).
+    Inverse Flame: "RAMP" in 51 cells over 9 rows (lines 31-33, 77, 78, 87, 88, 94, 104) and "LOW O2" in 12 cells (lines 89-90).
+    Missing licence: FOUND. ACME-Flame-Design.md line 19 shows a dash placeholder and names no licence.
+11. CFI-G Inverse structure: FOUND and explained. The file has 1,016 physical lines: 1 header, 154 data rows (lines 2-155, days 1-12, ethane, propane and butane), then 861 empty rows of 19 commas (lines 156-1016). This looks like a spreadsheet export with a formatted but empty range.
+    Also in that file:
+    - Flame Type case: "Inverse" in 64 rows, "inverse" in 90.
+    - "#VALUE!" in Peak burner temp (K) on lines 96-97.
+    - Line 131: blank Peak C with K = 273.15.
+    - Hot ignition values mix Yes, yes, No, no and flash.
+12. BASS-II: FOUND. 129 rows. Calibrated initial O2 runs from 13.6 to 22.2% (all 129 numeric).
+    Calibrated final O2 has impossible values:
+    - 1.6 (line 3, B2)
+    - 0.6 (line 97, P22a)
+    - 39.1 (line 98, P22b)
+    - 0.9 (line 128, T28a)
+    - 40.4 (line 129, T28b)
+    - "none" on lines 15 and 26
+    The a/b split rows look column-shifted.
+13. BASS has no O2 or pressure column: FOUND (6 columns only).
+14. Licence per .md: Creative Commons Zero v1.0 Universal for 18 of the 19 investigations. ACME-Flame-Design has none (dash placeholder). The JSON has no licence field at all, so the .md is the only source.
+
+=== D. FLEX (PSI-69) golden pre-checks ===
+Columns used: col 6 "Ambient pressure; mmHg", col 7 "O initial..." (O2), col 9 "CO initial..." (CO2), col 10 "He initial...", col 5 Fuel, col 15 "Test end". "No suppressant" means CO2 = 0 and He = 0.
+- O2 0.30-0.34, no suppressant, 534-543 mmHg: 17 tests, matching expectations. Outcomes: 15 Disruption, 2 Completion (tests 20 and 25). Fuels: 9 Methanol, 8 Heptane. The tests are 19-28 (lines 20-29) and 37-43 (lines 38-44).
+- Outcome labels present in the whole table (exact strings): "Extinction" 186, "Disruption" 61, "Completion" 27, total 274. Fuels in the whole table: Methanol 157, Heptane 117.
+- FLEX tests between 480 and 600 mmHg: 103 (actual range 526.3-544.4). Test 114 (pressure 0) is excluded.
+- CO2 groups in that band, extinguished / total:
+  - 25% O2 + 15% CO2: 0/6 (6 Disruption; tests 88-93)
+  - 23-24% O2 + 20-25% CO2: 14/23 (7 Disruption, 2 Completion)
+    - 0.24/0.20: 4/7 (tests 94-96 and 174-177)
+    - 0.23/0.20: 1/4 (tests 97, 104, 105, 107)
+    - 0.23/0.25: 9/12 (tests 98-101, 106, 108, 178, 179, 183-186)
+  - 21% O2 + 30% CO2: 4/6 (2 Completion; tests 102, 103, 109-112)
+  - 15-20% O2 + 35-50% CO2: 22/22, made up of 0.20/0.35 5/5, 0.18/0.40 6/6, 0.17/0.45 7/7 and 0.15/0.50 4/4. Including test 114 (p = 0, Extinction) would make it 23/23.
+- Other bands, for context: about 760 mmHg 161 tests; 1,545-1,554 mmHg 2; 2,055-2,320 mmHg 7; 0 mmHg 1.
+
+=== E. Access-gap test (solid fuels) ===
+I found no solid-fuel (fabric or plastic) test with a genuine O2 above 23%.
+- The solid-fuel tables are BASS-II, BASS, SAFFIRE-I, II and III, SAME, SAME-R, and DAFT (dust).
+- BASS-II initial O2 maxes at 22.2; SAFFIRE-I at 21.5-21.7; SAFFIRE-II at 22.1. BASS, SAFFIRE-III, SAME and SAME-R have no O2 column.
+- The only cells above 23% are BASS-II final O2 39.1 (line 98, P22b, 3/8" black rod, initial 20) and 40.4 (line 129, T28b, 1 cm SIBAL, initial 20.7). Both are data errors, not test conditions.
+- No solid-fuel table has a pressure column, so the "below 1 atm" half cannot be tested from the tables at all.
+- Sub-atmospheric or high-O2 conditions appear only for gases and droplets: CFI-G (0.495-0.55 bar), Flame Design (about 0.42-0.52 atm), CFI (0.5 and 0.75 atm), FLEX (526-544 mmHg) and BRE (25-40% O2).
+- BRE is a gas burner that emulates solid burning; its .md cites 10.2 psia at 26.5% and 8.2 psia at 34%, but its table records no pressures. It is the nearest thing to a counter-example, but it is not solid fuel.
+
+=== F. Other problems ===
+- FLEX:
+  - FLEX Identifier 193F001 appears twice (lines 71 and 74, tests 70 and 73) with the same date, GMT and pressure but slightly different values. It is probably one test entered twice.
+  - 34 cells hold byte 0x96 (a Windows-1252 dash used as a missing-value marker) on 32 lines: 6 in initial diameter, 28 in extinction diameter.
+  - 15 rows have a blank or non-numeric diameter or burn time, including "~6" (line 224) and "~9" (line 225).
+  - Dates mix formats: 50 rows use 2-digit years.
+  - 29 rows have composition sums of 0.98-1.01 rather than 1.
+- CFI:
+  - Tests 1219-1222 (lines 13-16) have O2 + N2 = 0.97.
+  - Line 38 is dated 29-Jul-17 but its CIR code f180 means 29 Jun.
+  - Line 52 has the time "02:22:xx pm".
+  - The table's dates are 2017 (confirmed by a flight video named 2017-07-27 ... F208D03), but the JSON and .md give investigation dates 10-01-2020 to 10-20-2021.
+  - The first column is headed "Flex Number".
+- BASS:
+  - Dates "6/29/`12" (line 44) and "5/15/2103" (line 111).
+  - GMT does not match the date on line 100 (113 versus 116) and lines 118-123 (137 or 150 versus 152).
+  - As-Run numbers repeat: 24, 85, and 89-91.
+- BASS-II:
+  - Line 60 (O10) has GMT 213 versus 7/22/2014 (day 203).
+  - T9 and T18 are dated 6/24/2018 in a 2014 campaign.
+  - Columns contain free text such as "video", "300+   +102", "OR", "over" and ">500".
+- CFI-G Normal: "#DIV/0!" in Tad and Zst on lines 69 and 77.
+- SPICE:
+  - 66 records use dotted times (for example 11.38.51).
+  - There are "Ku LOS", "LOS", "no ku" and "n/a" time cells.
+  - 25 rows have a blank Air Rate.
+  - Fuel labels are inconsistent ("75 % Propylene" 119 rows, "75% Propylene" 16).
+  - GMT date holds only the day of year, with no year.
+- SAME-R: test 57 appears as both Lampwick (line 57) and Teflon (line 75) with identical values. No dates have a year.
+- SLICE line 13 has SPICE testing text in the Test Date field, and Test Date cells carry trailing prose.
+- JSON:
+  - Person merges co-investigators into a single First Name string and a single Last Name string (for example PSI-117 "Tanvir Mike" / "Farouk Hicks"), so who is who is lost.
+  - Experiment Hardware is an object, not a string.
+  - CFI-G, SLICE and SPICE have no dates; SAFFIRE-III has no end date. The .md files show these as "?".
+  - PSI-117's public release date is 2026-06-10.

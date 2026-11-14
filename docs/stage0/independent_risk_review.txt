@@ -1,0 +1,200 @@
+INDEPENDENT REVIEW: REDSHIFT BUILD BRIEF
+
+Files read in full:
+- Brief: /Users/shaureavardhan/Library/Containers/net.whatsapp.WhatsApp/Data/tmp/documents/DF83514C-76A5-4100-BD1B-0F938712E797/REDSHIFT_CLAUDE_CODE_PROMPT latest.md (266 lines; cited below as "brief L<n>")
+- Review: /Users/shaureavardhan/Library/Containers/net.whatsapp.WhatsApp/Data/tmp/documents/818F2B66-4C7F-4328-BE68-579C0A150584/Redshift Idea Review and Refined Concept.pdf (7 pages; cited as "review p<n>")
+
+I did not read the raw data, so I could not check any data value myself. Where I give arithmetic, I worked it out from the constants stated in the brief (O2 step 5 pp, pressure step ln 1.25 = 0.2231, threshold 1.5, 1 psi = 6.8948 kPa, 1 mmHg = 0.133322 kPa). Where I say "inference", that is my reasoning, not a checked fact.
+
+======================================================================
+1. DATA INTEGRITY: FIVE BIGGEST RISKS (most severe first)
+======================================================================
+
+DI-1. The headline depends on a nearness rule the brief does not fully define, and the headline flips under the brief's own sensitivity test.
+- Brief L155 gives step sizes and a threshold of 1.5, but never says which distance metric (Euclidean, Manhattan or max). It also never says what flow value a candidate atmosphere has. The candidates are points on the O2 and pressure plane only (L15, L99), but the rule has three axes.
+- The metric changes the golden counts. Take FLEX at 534 mmHg (10.33 psi) and 30% O2 against 8.2 psi / 34%. That is 1.03 steps on pressure and 0.80 on O2. Euclidean distance is 1.31, so the test is near. Manhattan distance is 1.83, so it is not. The golden value "8.2/34: 37 (17 FLEX droplet)" (L99) therefore quietly assumes Euclidean or max.
+- The headline breaks at 1.5x steps, a sensitivity setting the brief requires the UI to show (L155). The review (p2) puts BASS-II at 1 atm and up to 22.2% O2. Against 10.2 psi / 26.5%, Euclidean distance is 1.85 at 1x (not near) but 1.23 at 1.5x (near). So at 1.5x, solid burns from PSI tables appear "near" a candidate. The public sensitivity table would then contradict the line "no solid burn in PSI sits near any candidate" (L19). I could not check the true BASS-II pressures or flows.
+- The golden "14.7/21: 432 (129 solid)" (L99) is suspicious. 129 is exactly BASS-II's row count (review p2). Inference: the earlier count included every BASS-II row and no SAFFIRE-I/II rows (which the review says sit at 21.5 to 22.1%). BASS-II rows at 13.6% O2 are 1.48 steps from 21% on O2 alone, so they only count as near if flow is ignored or almost identical.
+- Silent failure path: in pandas, any comparison against NaN returns False. Rows with unknown pressure or O2 (BASS, flagged FLEX 0 mmHg, BRE 3400%) would silently become "not near". That makes the gap look emptier and props up the headline. ln(0) for FLEX's 0 mmHg rows gives -inf, which also lands in "not near".
+- Mitigation:
+  (a) Before any count is run, record the metric (Euclidean), the axes and the flow handling in a params file and in DECISIONS.md. Hash it and commit it.
+  (b) Make nearness return three states (near, not near, unknown). Add a unit test that NaN, 0 or a flagged input gives "unknown". Show the unknown count beside every count.
+  (c) Reword the headline as a claim about raw ranges that needs no rule, for example "every PSI solid-material row with recorded conditions lies between X and Y% O2 and at Z kPa or above". Report BASS separately as "conditions not in table".
+  (d) Put the 1.5x result on the Methods page openly. Do not hide it.
+
+DI-2. The "golden" values and reported counts may already contain silent fixes, and an AI under time pressure will tune code until they match.
+- Brief L83 says BRE has "about 194 flames at 21 to 40% O2", yet the same line has values such as "3400%" and "2100%" that must be flagged, not fixed. If the 194 count and the 21 to 40% range came from reading 3400% as 34%, the expected value carries a correction that rule C1.3 (L72) forbids.
+- The same risk applies to CLD fill-down cells ("40% CH5...CH14", L84), SAFFIRE-I's swapped length and width (L85) and FLEX 0 mmHg (L87).
+- The FLEX bands are already being chosen to fit numbers: "103 between 480 and 600 mmHg (review) versus 104 (draft). State the band used" (L98), and "22 of 22 versus 23 of 23. Resolve" (L97).
+- Mitigation:
+  (a) Write a whole-table test: for every cell, clean equals raw unless one of the named transforms applies, and it lists every exception.
+  (b) Report golden counts twice, with and without flagged rows.
+  (c) Freeze bands (FLEX pressure band, CO2 groupings) in the params file before running the goldens.
+  (d) Report a golden mismatch as a numbered finding. Never change an adapter after seeing a mismatch without a DECISIONS.md entry written first.
+
+DI-3. Paper-derived values: the quote check proves only that the quote exists, not that the stored number matches it, and human verification will be rushed.
+- Brief L166: the check confirms "the quote string actually exists in the extracted PDF text on that page". It does not confirm that the structured values (Saffire VI o2_pct, pressure_kpa; the review's "981 s" detector time, p5) appear in that quote.
+- This also contradicts L73, "Never let an AI model write a data value". Here the AI drafts the very values that become the Saffire layer on the hero map.
+- Verification falls to a team of non-coders (some under 18, L248) late on Saturday night. "verified: true, name, timestamp" is itself provenance. If it is rubber-stamped, the provenance is false.
+- PDF text extraction (ligatures, hyphenation, two-column layout) will reject many genuine quotes. That creates pressure to loosen the check.
+- Mitigation:
+  (a) Add an automatic rule: every numeric field of a finding must appear literally inside its quote.
+  (b) Store the PDF's SHA-256 and page number in the finding.
+  (c) A human types or confirms each value with the PDF open. A second, different person signs verified_by.
+  (d) Cap the demo-path set at about 10 to 15 findings: Saffire V and VI conditions, the Saffire VI detection facts, the BRE objectives and pressure note, the FLEX "Disruption" definition if one exists, and the prebreathe points.
+  (e) Normalise whitespace and ligatures before matching. Log every normalisation used.
+
+DI-4. Numbers made in the browser, and two data paths, bypass the provenance lint.
+- The lint (L77) scans "built data payloads". It cannot see numbers the frontend computes: filtered counts in the Evidence Explorer, glyph "binned by count" (L199), planner priorities from "live weight sliders" (L211), psi/kPa conversion if done in TypeScript, or percentages in the Access Gap funnel.
+- L162 also makes the frontend use the live API and fall back "automatically" to a snapshot. If the live FastAPI and the snapshot builder differ even slightly (filter logic, rounding), the screen can show different numbers with no visible sign of which source was used.
+- Mitigation:
+  (a) Ship static-only for judging: the snapshot is the only source.
+  (b) Compute both pressure_psi and pressure_kpa, all bins and all funnel steps in the pipeline.
+  (c) Allow client arithmetic in only one small, tested TypeScript module (filter counts). Ban arithmetic elsewhere with a lint rule or code-review checklist.
+  (d) Replace live planner sliders with three or four precomputed weight presets.
+  (e) Add a DOM test (vitest + jsdom) on the demo screens: every text node containing a digit must sit inside a <Value> element with a provenance id.
+
+DI-5. AI text can slip past the number post-check with misattributed or wordy claims.
+- The post-check (L167) only extracts numbers and citations and checks they exist somewhere in the input. It passes a number that exists but is attached to the wrong condition (for example "17 tests at 8.2 psi" when the 17 are at 10.3 to 10.5 psi).
+- It passes number words ("seventeen", "none", "all", "most", "twice").
+- It passes paraphrases that break principle 5. The obvious one is turning FLEX "Disruption" into "the flame did not go out". The review itself paraphrases this way: "none went out", "every flame went out" (p2).
+- Mitigation:
+  (a) AI summaries may not contain digits. Numbers enter only through template slots such as {{count:flex_30_34_no_supp}}, which the pipeline fills from provenance-tagged values.
+  (b) Add a deny-list regex for number words and for "safe", "unsafe", "dangerous", "recommend", "extinguish", "went out" (unless the verbatim label is Extinction).
+  (c) A human reads every cached text before freeze.
+
+Also worth fixing (lower severity):
+- MANIFEST source URLs and retrieval timestamps (L70): the raw files arrived as a harvest zip, with a mislabelled "PSI-69_Experimental table_FLEX 2.csv" (review p4). Do not let the AI fill URLs or timestamps from memory. Record the zip hash and write "unknown" where no URL is known.
+- The review asks the team to delete duplicate FLEX files (p7). That conflicts with "raw is immutable" (L70). Exclude them in the manifest instead.
+- The "exact constants" (L104) are rounded. 14.6959 psi and 0.133322 kPa are not exact; the exact values are 14.69595 and 0.1333224. Define psi as exactly 6.894757293168 kPa and use one conversion path, so that kPa to psi gives the same last digit whichever route is taken.
+
+======================================================================
+2. WINNING: FIVE BIGGEST RISKS (most severe first)
+======================================================================
+
+W-1. One expert sentence can sink the headline, again.
+- Words like "every microgravity fire test" (review p4 pitch), "the one PSI experiment designed for these atmospheres" (review p4) and "designed around exactly these atmospheres" (brief L21) are absolute claims.
+- A Glenn or White Sands judge can point to drop-tower or parabolic-flight solid burns at reduced pressure or high O2. They can also point to non-NASA ISS work, or to ground flammability testing at 10.2 psi / 30% O2. I have not checked whether any of these sit near the candidates. That uncertainty is exactly the risk.
+- A judge may also answer "Saffire isn't in PSI because it wasn't a PSI investigation; the papers are free on NTRS", which makes the access gap sound mundane.
+- Mitigation:
+  (a) Use bounded wording: "in the PSI tables", "in the papers we read (listed)". Label the funnel's "burned by NASA" step as a lower bound with its source list.
+  (b) Quote the BRE objectives verbatim with the page or URL.
+  (c) Make the gap concrete: show which fields (per-test pressure, flow, spread rate) a researcher cannot get as rows.
+  (d) Show that Redshift closes part of it: "we turned N verified Saffire values into citable rows".
+
+W-2. Presentation: the 30-second video is overloaded.
+- The L248 script has seven beats (decision, map, click, gap, funnel, question, link) in 30 seconds with subtitles. That is about 4 seconds a beat, too fast to read.
+- The hero map has seven layers (L196 to L203). Most judges will see only the video and perhaps the landing page.
+- Mitigation:
+  (a) Three beats of about 10 seconds each: "NASA is choosing Moon-base air" (map, 3 candidates, prebreathe pins); "here is every fire test near them" (solids-only toggle, 8.2/34 empty and hatched); "it exists, but you can't download it" (funnel, then the question and the link).
+  (b) Default the landing page to three layers. It must tell the story in 5 seconds without a click.
+  (c) Subtitles no longer than two short lines. Test the cut on someone outside the team.
+
+W-3. Relevance: the core finding is about data access, not fire safety, and the AI is mostly offline.
+- The challenge is "SI-Powered Fire Safety Insights" (L4). The two genuine fire-safety insights, FLEX CO2 extinction only at 35% or more, and the Saffire VI detector at 981 s, are not in the video plan (L248).
+- The challenge asks to "summarise, rank and interpret" investigations (L31). The Investigations tab has cards and compare (L31, L210) but nothing that ranks.
+- Mitigation:
+  (a) Add one fire-safety line to the video, once verified. "Flames near 10.4 psi only went out at CO2 levels no crew could breathe" is reproducible from PSI.
+  (b) Make investigations sortable by objective, reproducible measures: rows, conditions recorded, nearest distance to each candidate, data completeness. That ranks investigations, not atmospheres, so it does not break principle 1.
+  (c) Add an "AI at work" panel with counted, cited figures: papers read, quotes auto-checked, rejected, human-verified.
+
+W-4. Unfinished or broken at freeze.
+- The scope (9 signature graphics, 8 screens, 4 export types, a live API and live AI) does not fit 28 hours; see section 3.
+- A half-built app with blank tabs, console errors or a failed deploy loses Validity and Presentation together.
+- Mitigation:
+  (a) Deploy a static skeleton to Vercel by Saturday night and redeploy after every stage.
+  (b) Hide unfinished tabs rather than show stubs.
+  (c) Freeze the demo path (landing, 8.2/34 dossier, funnel) by Sunday 12:00, not 18:00.
+
+W-5. Eligibility and defensibility.
+- "The idea must be ours" (L4), yet the review was written in an advisory voice ("my guide", p1, p4). If AI helped write it, that must be disclosed with everything else.
+- Judges will question team members who cannot code.
+- Flame Design (PSI-10) has "no licence shown" (L89). Redistributing its raw file in a public repo is a licence risk.
+- Mitigation:
+  (a) A full AI disclosure covering code, text, the review and the summaries.
+  (b) Each team member owns and rehearses two modules from EXPLAINER.md and the three hard questions.
+  (c) Do not commit unlicensed raw files. Ship a fetch script with the expected SHA-256 and list the file as "not redistributed".
+  (d) Confirm with the Local Lead that every external resource is listed in References.
+
+======================================================================
+3. SCOPE REALISM (about 28 working hours)
+======================================================================
+
+Hidden costs before Stage 1:
+- Xcode Command Line Tools must be installed first. They provide git and make. The download is large and needs the admin password, which a human must type.
+- Python: install uv and let uv install Python 3.12. Skip Homebrew entirely.
+- Node LTS from the official pkg installer.
+- GitHub and Vercel accounts and sign-ins (humans only).
+- Budget 1 to 1.5 hours. This is my estimate, not measured.
+
+Waiting time:
+- Nine STOP gates (L230 to L248), each needing a human reply, will leave the single AI session idle, especially overnight.
+- Merge them into four: after reconciliation; after the canonical dataset and goldens; after the hero and funnel; before freeze.
+- Pre-authorise routine continuation while humans sleep.
+
+My rough estimate of AI build time as written:
+- Stages 1 to 2: 5 to 6 h
+- Stage 3: 3 to 4 h
+- Stage 4: 4 to 5 h
+- Stage 5: 5 to 6 h
+- Stage 6: 3 h, plus human verification
+- Stage 7: 2 to 3 h
+- Stage 8: 2 to 3 h
+- Total: about 27 to 33 h with no slack. These are judgement estimates, not measured.
+
+Stages 6 to 8 are at real risk. So are the Investigations compare view and the Evidence Explorer, both on the never-cut list.
+
+Cuts and simplifications that leave the never-cut list (L252) untouched:
+- FastAPI on the Vercel Python runtime: cut for the demo. Ship the static JSON snapshot as the only data source. This saves deployment work and removes the two-path integrity risk (DI-4). Inference: a function bundling pandas, pyarrow and Cantera is likely to exceed Vercel's function size limit. I did not check current limits. FastAPI can remain in the repo for local research use after freeze, if time allows.
+- Generated TypeScript types from OpenAPI: if FastAPI is cut, generate JSON Schema from the pydantic output models and turn it into TypeScript (json-schema-to-typescript), or hand-write types and validate the snapshot against the JSON Schema at frontend build time. Do not spend more than 45 minutes on this.
+- mypy --strict: drop it. Strict typing with pandas and pandera stubs is a known time sink. Keep ruff, plus plain mypy on units.py, provenance.py and science/ only.
+- Hypothesis: keep it only for units.py round trips (small and quick). Elsewhere use ordinary pytest.
+- pandera: optional. Pydantic output models plus explicit range-flag functions cover C4's schema intent.
+- DuckDB: cut. It is not byte-deterministic and breaks the C4 determinism check (L108). CSV is canonical; Parquet is optional and excluded from the byte-identity check.
+- GitHub Actions: either cut, or keep a minimal workflow without Cantera. Save the output of the local "make check" into docs as evidence.
+- Cantera: run it once locally and commit flame_temperature_grid.json with the Cantera version and mechanism in provenance. Tests compare against the committed file and skip recomputation if Cantera is absent. Use a coarse grid. I believe pip wheels exist for macOS but could not check on this machine. If the install fails within 20 minutes, show only the five candidate temperatures from a documented run and drop the contours.
+- Dossier PDF export: cut. Use a print stylesheet so the browser's "Print to PDF" works.
+- PNG/SVG export of every chart: cut to SVG export of the hero map and the Access Gap chart only.
+- BibTeX: keep only if the DOIs are already clean in the pipeline (cheap); otherwise cut.
+- AI paper reading needing PDFs and an API key: cut the runtime script and the API key. The coding AI reads the PDFs in-session and drafts findings. The deterministic quote check (pure-Python PDF text extraction) and verify_findings.py stay, so "verified findings" is preserved. The PDFs are still needed: humans should download Saffire V, Saffire VI and the BRE documents now. Defer the other nine Final Reports.
+- Live Q&A: cached answers only (already on the cut list, L252). Pre-generate the summaries in-session and run the post-check script on them. No API key or server function is needed anywhere.
+- Planner: ranked list with preset weights; no sliders, no heat map.
+- Graphics 5 (timeline), 8 (planner heat map) and 9 (material mini-map): cut. Graphic 6 (coverage matrix): reduce to a plain filled or hatched table, because it supports the never-cut compare view.
+- Snapshot tests: committed snapshot JSON plus a determinism diff is enough.
+- Lighthouse 95+ and the colour-blindness check: run once each in Chrome DevTools before freeze; do not iterate for long.
+
+======================================================================
+4. CONTRADICTIONS AND WEAKNESSES IN THE BRIEF ITSELF
+======================================================================
+
+a. Nearness has three axes (O2, pressure, flow), but the candidates have no flow value, many tests have no flow, and the metric is unstated (L155). The golden counts (L99) encode choices the brief does not make (DI-1).
+
+b. L19 says "every solid-material test in the PSI tables is near 1 atm and roughly 13.6 to 22.2% O2", but L91 says the BASS table "lacks O2 and pressure columns". The claim cannot be reproduced from raw files for BASS, so it breaks the brief's own L24 rule.
+
+c. L73, "never let an AI model write a data value", conflicts with L166, where the AI drafts paper values that feed the Saffire layer and the dossiers.
+
+d. L75, "every count is produced by a pipeline function with a test, nothing computed in the frontend", conflicts with the live planner sliders (L211) and Evidence Explorer filter counts (L216).
+
+e. L83 gives "about 194 flames at 21 to 40% O2" next to "flag, do not fix" for 3400%. The expected value may embed a fix.
+
+f. The ACME BRE claim, "designed around exactly these atmospheres" and "the one PSI experiment" (L21; review p4), has no verbatim quote or page anywhere in either document. It needs an exact quote from the BRE PSI objectives. The superlative "the one" needs a check that no other PSI investigation's objectives name these atmospheres.
+
+g. The planner's priority uses "habitat relevance x material weight" (L156). This is a judgement-weighted score over atmospheres, sitting uneasily with "no single risk number, no ranking of atmospheres" (L38). The constant 5 in n/(n+5) and the 7 O2 levels and 6 pressures are unspecified judgement. Mitigation: show ranks, not priority values; list every weight and level as judgement on the Methods page.
+
+h. The candidate list is inconsistent. A1 (L15) names 14.7/21, 10.2/26.5, 8.2/34 and the suit at 4.3/100. C3 (L99, L100) adds 10.2/30 with no source. The suit point is not a habitat candidate, and showing "0 tests" there invites misreading.
+
+i. The review is inconsistent on Saffire V: "about 26% O2" (p1) against "25 to 26% O2" (p3). Saffire IV is added to the map layer (review p3, brief L20) with no conditions given anywhere.
+
+j. Unverified numbers sit in the brief's own text. The prebreathe figures and EAWG recommendation (L15) are not covered by the quarantine rule (L74 covers only papers, BRE pressures and findings), yet the review says the physiology sources are unopened (p4, item 8). "In our FLEX analysis it separated outcomes no better than O2 fraction alone" (L41) is stated as fact and will appear in a legend, but nothing requires it to be reproduced. The review's "325 publications" (p5) is uncounted.
+
+k. Determinism (L108) is incompatible with the DuckDB file (L151), and possibly with Parquet metadata. The dataset version mixes a date into the identifier (L78); hash the content only, so that rebuilding the same data gives the same version.
+
+l. The process assumes tools that do not exist on this Mac. Stage 0 requires "git init" (L230) and the workflow assumes commit and push (L262), but there is no git yet. The "about 20 minutes" for Stage 0 excludes toolchain installation.
+
+m. Counts conflict. The Investigations tab is "19 cards" (review p5), while the investigation count is unresolved (24 against 19, L82). The tab's size depends on Stage 1.
+
+n. "Verified findings" are on the never-cut list (L252), yet they depend entirely on humans downloading PDFs and verifying quotes, which the AI cannot control. The team should start this now, in parallel, beginning with Saffire V and VI and BRE.
+
+o. The deadline is still unconfirmed: Sunday 23:59 (brief L226) against Monday 12:47 IST (review p4). Planning to Sunday is correct, but confirm before Saturday night's scope cut.
+
+The single most important action: decide and commit the nearness rule (metric, flow, unknowns) and the headline wording before Stage 2 runs any count, because both the headline and the golden checks depend on choices the brief leaves open.

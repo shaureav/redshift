@@ -1,0 +1,302 @@
+AUDIT: Redshift draft concept compared with the guide, brief and review (all four files read in full; the guide section read from line 337 to line 747)
+
+Short names used below:
+- DRAFT: "Redshift The Atmosphere Trade Studio.pdf", 18 pages
+- GUIDE: project-redshift-full-export.md, section H; line numbers are given as Lnnn
+- BRIEF: "REDSHIFT_CLAUDE_CODE_PROMPT latest.md"; line numbers are given as Lnnn
+- REVIEW: "Redshift Idea Review and Refined Concept.pdf", 7 pages. The review overrides the draft where they disagree.
+
+Each claim gets one of these status tags:
+- CONF: confirmed by the brief or the review.
+- CONTRA: contradicted by the brief or the review.
+- NA: not addressed by either.
+- BRIEF-GOLD: the brief lists it only as a golden value to reproduce, not to trust (BRIEF L94-100).
+
+Nothing below was checked against raw PSI files or the NASA papers. I only had the four documents.
+
+========================================
+1. CLAIMS THAT COULD LEAK INTO THE APP OR PITCH
+========================================
+
+A. Atmosphere candidates and physiology (DRAFT)
+
+- EAWG recommended 8.2 psi (56.5 kPa), 34% O2, 66% N2, assuming a 4.3 psi suit (DRAFT p1, citing NTRS 20220009536). CONF as a claim at BRIEF L15, but it is unverified. REVIEW p4 item 8 and BRIEF L261 both list this source as not yet opened. My own arithmetic: 8.2 psi is 56.54 kPa, so the conversion is correct.
+- The Surface Habitat is designed for 8.2 psi/34% and 10.2 psi/26.5% (DRAFT p1, p6). CONF at BRIEF L15. Unverified.
+- "Challenge's Moon base (30%, 10.2 psi)" sits in a table headed "NASA candidate atmosphere" (DRAFT p2, p7). Not sourced to any NASA document.
+  - DRAFT p6 "Candidates" layer names only the EAWG and Surface Habitat points.
+  - BRIEF A1 (L15) omits 10.2/30, but BRIEF C3 (L99-100) includes it among "five candidates".
+  - GUIDE L349, L436-437 treat "30% or more, 10.2 psi or less" as "the planned Moon base" from the challenge text.
+  - Status: NA in REVIEW. The label "NASA candidate" for this point is unsupported.
+- Artemis habitat and suit atmospheres are not finalised (DRAFT p1, p8). CONF in substance (BRIEF L15). Unverified.
+- Prebreathe falls from 6:30 to 7:00 h at 14.7/21 to 0:00 to 0:30 at 8.2/34 (DRAFT p1, p5, p8). CONF at BRIEF L15 ("about"). REVIEW p4 item 8 says it is unverified.
+- 10.2/26.5 prebreathe: "no published figure found" (DRAFT p5). CONF at BRIEF L157 and REVIEW p4 item 7.
+- Fire-management forward work "only recently begun" (DRAFT p1, p8; NTRS 20240003211). CONF in substance at BRIEF L15 ("still forward work"). Unverified.
+- 2018 materials engineers accepted the atmosphere for flammability pending tests (DRAFT p1). NA beyond the source being listed as unverified (BRIEF L261).
+- SoFIE planned range is 10 to 40% O2 at 0.2 to 1.5 atm and "covers 8.2 psi/34%" (DRAFT p3). NA in BRIEF and REVIEW. GUIDE L684 gives the same range plus 0 to 30 cm/s.
+
+B. Flame temperatures (DRAFT p1-2, p5, p7-8, p12)
+
+- Values: 2,224 / 2,415 / 2,505 / 2,570 / 2,903 K for 14.7/21, 10.2/26.5, 10.2/30, 8.2/34 and 4.3/100.
+- Method: Cantera, GRI-Mech 3.0, stoichiometric methane, helium modelled as argon.
+- Status: BRIEF-GOLD (L100). BRIEF L41 and REVIEW p4 item 10 require 2,903 K to be shown as approximate. The draft shows it without a qualifier.
+- "8.2/34 about 155 K hotter than 10.2/26.5" (DRAFT p5). The arithmetic is correct (2,570 minus 2,415). NA.
+
+C. Test counts
+
+- Nearby tests 432 (129 solid), 72 (0), 52 (0), 37 (0), 0 (DRAFT p1-2, p7-8). BRIEF-GOLD (L99). REVIEW p2: "Not reproduced yet".
+- 8.2/34 breakdown: 17 FLEX droplets and 20 CFI-G gas tests (DRAFT p8). BRIEF-GOLD (L99).
+- 17 FLEX tests at 30 to 34% O2 with no suppressant: 15 "Disruption", 2 "Completion" (DRAFT p8). CONF by REVIEW p2 (534 to 543 mmHg, 0 Extinction, 9 methanol, 8 heptane).
+- "None went out" (DRAFT p2, p5, p8, p16). REVIEW p3 and BRIEF L42 say "Disruption" is undefined, so quote the label only. The draft itself flags this on p8 and p16.
+- 104 FLEX tests near 10.4 psi (DRAFT p8). CONTRA: REVIEW p2 counts 103 between 480 and 600 mmHg. BRIEF L98 lists both.
+- CO2 suppression groups (DRAFT p8-9):
+  - 0 of 6, 14 of 23 and 4 of 6: CONF (REVIEW p2).
+  - 15 to 20% O2 + 35 to 50% CO2, "23 of 23": CONTRA. REVIEW p2 counts 22 of 22; BRIEF L97 says "Resolve".
+- "Every flame went out only once CO2 reached 35%" (DRAFT p9). CONF (REVIEW p2, "35% or more").
+- "Below 9 psi, PSI holds only 28 tests: 25 CFI-G gas flames and 3 CFI droplets" (DRAFT p2). NA.
+- All solid-material tests sit at 13.6 to 22.2% O2 near 1 atm (DRAFT p5, p6, p9). CONF only "for PSI tables" (REVIEW p2; BRIEF L19, L91). BASS has no O2 or pressure column, so its conditions must come from documents.
+- Flame-temperature index tested on 273 usable FLEX tests: 86% vs 88% accuracy for methanol, 70% vs 68% for heptane (DRAFT p3).
+  - The qualitative claim is CONF at BRIEF L41.
+  - The 273 count and the four percentages are NA.
+  - For heptane the index scores 70% against 68% for O2 alone, so it does slightly better. "No better than" is loose wording there.
+- Harvest size of 22 tables, 2,009 rows, 24 investigations (DRAFT p11). CONTRA: REVIEW p2 counts 21 table files, 2,001 rows and 19 investigations. BRIEF L82 says reconcile.
+- Duplicates of 34 in SPICE, 8 in E-FIELD and 8 in CFI (DRAFT p12). Listed to verify at BRIEF L88. NA in REVIEW.
+- Known data errors (DRAFT p10, p12):
+  - ACME BRE "3400%"
+  - fill-down errors in CLD Flame and s-Flame
+  - SAFFIRE-I length and width swapped
+  - SPICE negative airflow
+  - Flame Design "RAMPED"
+  - FLEX 0 mmHg
+  - SAFFIRE-II blank materials and "037 mm"
+  - Status: all listed to verify at BRIEF L83-89. BRIEF adds "2100%" for BRE, the SAFFIRE-I metadata problem (REVIEW p4) and the CFI-G line structure.
+- DOI prefix 10.60555 (DRAFT p12). CONF (BRIEF L92).
+- Nearness rule: one step is 5 O2 points, a 25% pressure change and 10 cm/s; "near" means distance 1.5 or less (DRAFT p2, p6, p12). CONF (BRIEF L155).
+- Planner grid of 7 x 6 x 3 = 126 cells, with evidence gap 1 minus n/(n+5) (DRAFT p6, p10, p12). CONF (BRIEF L156). REVIEW p4 says keep it out of the video.
+
+D. Saffire
+
+- DRAFT p9 lists Saffire under the "Prevention" dossiers but gives no Saffire conditions. The draft treats Saffire as absent from the candidate atmospheres.
+- Saffire VI: SIBAL and PMMA at 54 to 55 kPa (about 8 psi), 29 to 31% O2 (REVIEW p1, p3; BRIEF L20).
+- Saffire V: about 26% O2 and 10.4 psi. REVIEW p3 says "25 to 26%". GUIDE L440 gives 25.4 to 26.2%, 10.3 to 10.5 psi (70.7 to 72.6 kPa).
+- Saffire IV: 22%, 14.5 psi (100 kPa) (GUIDE L439). NA in BRIEF and REVIEW.
+- Saffire I and II: about 21.5 to 22.1% (REVIEW p2).
+- Saffire VI detection finding: CO2 past the 1-hour crew limit, CO over the 24-hour limit, detector threshold at 981 s (REVIEW p5).
+  - BRIEF L261 lists this as an open question but never states the 981 s figure.
+  - The DRAFT does not have it.
+- GUIDE Saffire claims, all NA:
+  - limiting flame length 4 to 10 cm (L617)
+  - cotton reignited after a 70 s flow shutoff (L619)
+  - deflagrations within 100 ms (L623)
+
+E. BRE
+
+- The DRAFT omits ACME BRE as evidence. It mentions BRE only for the "3400%" error (p12).
+- REVIEW p3 and BRIEF L21, L83 add the following:
+  - its objectives name 14.7/21, 10.2/26.5 and 8.2/34
+  - 194 flames at 21 to 40% O2
+  - no pressure column
+  - the quote "The chamber pressures were also varied but are not identified in this summary table."
+
+F. Deadlines
+
+- DRAFT p15:
+  - deadline Sunday 15 Nov 2026, 11:59 pm local
+  - submit 21:00, freeze 18:00
+  - "Submission opened Saturday 9:00 am" (NA elsewhere)
+  - "under two days" (p17)
+- BRIEF L226 and REVIEW p4, p6 agree with the draft.
+- GUIDE L382 and L535 contradict them (see section 2).
+
+G. Judging rules and video/slide limits
+
+- Rules in DRAFT p13:
+  - video of 30 s or less, or 7 slides or fewer
+  - English subtitles
+  - public link hosted externally
+  - no NASA logos
+  - no likeness of anyone under 18
+  - "SI disclosure field"
+  - at least one NASA data resource
+- GUIDE L405-409 agrees and adds:
+  - no login on the final link
+  - AI-generated media must carry a watermark
+  - one to six members
+  - it calls the disclosure the "AI field", not the "SI disclosure field"
+- BRIEF L57, L61, L248 confirms the 30 s demo, the 7-slide backup, English subtitles and screen capture only. It does not state the 30 s / 7-slide cap as a disqualification rule.
+- Judging criteria in DRAFT p14: Impact, Creativity, Validity, Relevance, Presentation. BRIEF L53 names the first criterion "Influence".
+- Awards targeted in DRAFT p3: Best Mission Concept, Best Use of Science and Best Use of Data. CONF (BRIEF L59).
+- "Last year's winners" in DRAFT p17: SpaceGenes+, Resonant Exoplanets, Twisters / SkySense, PureFlow. NA anywhere and unverified, so keep them out of the pitch.
+
+H. Unsourced GUIDE claims that could leak (NA in the brief and review)
+
+- Apollo 1 framing is wrong in the video script: L558 says "Fire in space has killed before", but GUIDE L707 itself says Apollo 1 was "a ground test".
+- L559: "The Moon base will breathe richer air than any spacecraft today".
+- L560: "ranks 19 NASA microgravity fire experiments".
+- L591: "the video is a fifth of your score" (overstated, since the video is only part of Presentation).
+- L399: "roughly one Global Nominee per ten projects".
+- Combustion and hardware figures:
+  - flame about 2,300 K, about 8x less dense (L601)
+  - Mir candle burned over 45 min (L603)
+  - cool flames 600 to 1,000 K vs 1,100 to 2,200 K (L611)
+  - ignition heat flux "as low as half" (L623)
+  - CFI-G up to 85% O2 (L680)
+  - E-FIELD up to 10 kV (L629, L677)
+  - ACME over 1,500 flames 2017 to 2022 (L692)
+  - CIR 100 L, 8 windows, STS-126 Nov 2008 (L690)
+  - MSG 255 L, 1,000 W, since 2002 (L693)
+  - MDCA 1 to 5 mm, 0 to 3 atm, up to 40% O2 (L691)
+  - mist extinguishers from Dec 2015 (L627)
+- Historical fires and spinoffs:
+  - Artemis II alarm on a 9-day mission, about 80,000 miles out (L704)
+  - Mir 24 Feb 1997: 3-foot flame, three extinguishers (L705)
+  - Apollo 13: 28 V / 65 V, about 1,000 °F (L706)
+  - Apollo 1: 27 Jan 1967, 3 crew, 90 s hatch (L707)
+  - air tanks: 20 lb, 30 min, 13 lb lighter, 4,500 psi (L714)
+  - 14 fire departments (L716)
+
+========================================
+2. CONTRADICTIONS BETWEEN THE FOUR DOCUMENTS
+========================================
+
+1. Deadline
+   - DRAFT p15, REVIEW p4/p6 and BRIEF L226 all say Sunday 15 Nov 23:59 local, with submission at 21:00.
+   - GUIDE L382 and L535 say Mon 16 Nov 12:47 IST, with submission at 10:45 Mon (hour 46) and feature freeze Sunday 20:45 (L544).
+   - The draft, review and brief freeze at Sunday 18:00.
+
+2. Investigation, table and row counts
+   - DRAFT p11: 24 investigations, 22 tables, 2,009 rows.
+   - REVIEW p2 and p7: 19 investigations, 21 tables, 2,001 rows.
+   - GUIDE L349, L663: 19 investigations.
+   - BRIEF L82 leaves it unresolved.
+   - REVIEW p5 tab 4 says "19 cards". BRIEF L31 says "every PSI combustion investigation".
+   - The 8 vs 9 "direct" investigations differ only by FLEX-2:
+     - GUIDE L550: "8 most direct" (BASS, BASS-II, Saffire I to III, SAME, SAME-R, FLEX).
+     - REVIEW p6, p7: "9 direct" (adds FLEX-2).
+
+3. Whether CFI-G, CLD Flame and Flame Design are in PSI
+   - GUIDE L383 and L680-682 say they are "(not in PSI)".
+   - DRAFT p18 cites CFI-G (PSI-159) and Flame Design (PSI-10) as PSI tables and counts them on p2.
+   - BRIEF L84, L89 treats CLD Flame and Flame Design (PSI-10) as PSI tables.
+
+4. The 4th tab or part
+   - DRAFT p2-3: part 4 is "The evidence engine underneath". The draft names only three tabs (material dossiers "second tab" p9, planner "third tab" p10).
+   - REVIEW p5: tab 4 is Investigations, with 19 cards and a compare view.
+   - BRIEF L31: Investigations, plus an Evidence Explorer, Data Quality, Methods and About screens (L32, L216).
+
+5. Headline pitch
+   - DRAFT p3: "NASA's recommended Moon-base air has never had a fabric or plastic burned in it in microgravity."
+   - REVIEW p1, p3 calls this false because of Saffire VI. BRIEF L22 replaces it with the access gap.
+   - These DRAFT passages make the same claim without "in PSI":
+     - p8: "The materials that would line the habitat have not been burned here in microgravity."
+     - p13 subtitle: "None burned a solid material."
+     - p14 slide 4: "no solid-material tests near any candidate habitat"
+     - p14 pitch: "none of the candidate habitat atmospheres has a solid-material test beside it"
+     - p17: "no solid-material test beside any candidate habitat"
+
+6. AI role
+   - DRAFT p12: one job (summaries). It is cut first (p16).
+   - REVIEW p3, p5-6 and BRIEF L164-168: three jobs (paper findings, summaries, Q&A).
+   - GUIDE L489-516 has an "Ask Redshift" Q&A plus 57 pre-written summaries.
+
+7. Architecture
+   - DRAFT p12: the app "works without a server".
+   - BRIEF L159-162: FastAPI backend on a Vercel Python function, with a static snapshot fallback.
+   - GUIDE L485: Vite/React with a serverless LLM function, Streamlit fallback.
+
+8. Cut order
+   - DRAFT p16: AI summaries, facility filter, detection tab, marker dragging.
+   - REVIEW p6: facility filter, marker dragging, planner heat map, live Q&A, detection tab (except the Saffire VI finding).
+   - BRIEF L252: same as the review plus "investigation timeline". The brief's never-cut list is much longer.
+
+9. Team size
+   - DRAFT p15 names five people: a lead plus four.
+   - BRIEF L4: "a four-person team".
+   - GUIDE L520 assumes six people.
+
+10. Awards
+    - GUIDE L401: Best Use of Data, Best Use of Science, Galactic Impact.
+    - DRAFT p3 and BRIEF L59: Best Mission Concept instead of Galactic Impact.
+
+11. Demo story
+    - DRAFT p13: map, then 8.2/34, then "37 tests, 0 solid", then the planner.
+    - REVIEW p4: keep the planner out of the video.
+    - BRIEF L248: adds the access-gap chart and the question to NASA.
+    - GUIDE L556-562: opens on Apollo 1, uses the 30%/10.2 Moon base, an Ask Redshift answer citing Saffire V, and ends on a "Logo".
+
+12. Small numeric conflicts
+    - 104 vs 103 FLEX tests near 10.4 psi.
+    - 23 of 23 vs 22 of 22 (see section 1C).
+    - Flame Design counted "normal flames" only (DRAFT p2).
+    - Saffire V given as "about 26%" (REVIEW p1) vs "25 to 26%" (REVIEW p3) vs 25.4 to 26.2% (GUIDE L440).
+
+13. Internal inconsistency in the DRAFT (solid-test scope)
+    - The p2 note counts tests only from FLEX, CFI, CFI-G, Flame Design and BASS-II.
+    - Yet p9 says dossiers cover "BASS-II, Saffire and any other solid-fuel" investigation.
+    - The 129 solid tests at 14.7/21 equal BASS-II's 129 rows (REVIEW p2). So Saffire I and II solids at about 21.5 to 22.1% appear to be excluded from that count.
+
+========================================
+3. SOURCE CITATIONS IN THE DRAFT
+========================================
+
+Sources section, exactly as written (DRAFT p18). Link targets were extracted from the PDF.
+
+- "NTRS 20220009536: Exploration EVA prebreathe strategic roadmap abstract"
+  - link: ntrs.nasa.gov/citations/20220009536
+  - The draft cites it on p1 for the EAWG 8.2/34/66% N2 recommendation. That is a different subject from its listed title. Check it.
+- "NTRS 20240003211: Exploration atmosphere and fire management abstract"
+  - link: ntrs.nasa.gov/citations/20240003211
+- "Exploration Atmospheres briefing, NASA JSC, Aug 2022"
+  - link: ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf
+  - That is NTRS 20220011152, which is not named in any text.
+- "Internal Layout of a Lunar Surface Habitat, AIAA ASCEND 2022"
+  - link: ntrs.nasa.gov/api/citations/20220013669/...
+  - That is NTRS 20220013669, which is not named in any text.
+- "Aerospace Medicine and Human Performance 89(9), Sep 2018"
+  - link: asma.kglmeridian.com/.../amhp/89/9/article-p792.pdf
+  - That suggests page 792. No title or authors are given.
+- "NASA PSI combustion experiment tables, downloaded 14 Nov 2026: FLEX (PSI-69), CFI (PSI-39), CFI-G (PSI-159), Flame Design (PSI-10), BASS-II (PSI-25)"
+  - link: psi.nasa.gov/physci/repo/search?q=combustion
+
+In-text tags on DRAFT p1: "(NTRS 20220009536)", "(Internal Layout of a Lunar Surface Habitat)", "(Exploration Atmospheres briefing, 2022)", "(NTRS 20240003211)", "(Aerospace Medicine and Human Performance, 2018)".
+
+Not cited in the DRAFT, but used by the REVIEW and BRIEF: NTRS 20210011521 (Saffire IV/V, ICES 2021-266) and NTRS 20240002981 (Saffire VI, ICES 2024-365).
+
+Status of the five physiology sources:
+- None has been verified (REVIEW p4 item 8, p7; BRIEF L261).
+- None has authors or DOIs.
+- BRIEF L261 does not give the NTRS IDs for the briefing (20220011152) or the habitat paper (20220013669).
+
+========================================
+4. IN THE DRAFT, MISSING FROM THE BRIEF, AND A JUDGE WOULD EXPECT IT
+========================================
+
+1. Hypoxia layer.
+   - DRAFT p2 has a line of equal O2 partial pressure as one of the three risks. BRIEF E3 (L196-204) lists no hypoxia layer. BRIEF A1 mentions hypoxia only as part of the EAWG rationale.
+   - This matters numerically. My arithmetic: 8.2 x 0.34 = 2.79 psi ppO2, against 14.7 x 0.21 = 3.09 psi, so the points are not on the same iso-line.
+
+2. SoFIE, FM2 and FLARE.
+   - DRAFT p3 checks the planner against SoFIE's 10 to 40% / 0.2 to 1.5 atm range, and p4 names the experiment planners for SoFIE, FM2 and FLARE.
+   - The BRIEF planner (L156) has no facility ranges, although L252 cuts a "facility filter" that is never specified.
+
+3. Material and atmosphere status badges.
+   - DRAFT p10 defines four badges: Tested here, Tested nearby, Not tested, Unknown.
+   - REVIEW p5 keeps "a status badge". The BRIEF has only data-quality flag badges.
+
+4. Prepared answers to judges' hard questions.
+   - DRAFT p17-18 has three: is the gap PSI-only, why not predict, did the AI come up with the idea.
+   - REVIEW p2 praises them. The BRIEF has no Q&A preparation.
+
+5. Evidence for "explains, does not predict".
+   - DRAFT p3 gives the 273 FLEX tests and the 86/88% and 70/68% accuracies.
+   - BRIEF L41 asserts the conclusion but has no golden check or test that reproduces these numbers.
+
+6. "Below 9 psi only 28 tests" (DRAFT p2). A strong context number that is absent from the BRIEF golden checks.
+
+7. The SAME/SAME-R smoke particle-size vs ISS detector question.
+   - This is DRAFT p2 Detection. The BRIEF only lists SAME papers (L166) and a cuttable "material detection section".
+
+8. "Is the gap PSI-only" and retrieval-date scoping (DRAFT p17). The BRIEF covers the retrieval timestamp but not an explicit scope statement in the UI.
+
+Not in the DRAFT either, but a judge would expect it (from GUIDE L584, L629): a statement that all evidence is from microgravity or 1 g, and PSI has no partial-gravity (Moon 1/6 g) data. Neither the BRIEF nor the DRAFT says this.
+
+Not checked: any raw PSI table, any NASA or NTRS paper, or the challenge statement. Every "confirmed" above means only that another of these four documents agrees.

@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Node / frontend
+node_modules/
+web/dist/
+.vite/
+
+# Secrets: never commit keys. Set them on the host instead.
+.env
+.env.*
+!.env.example
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+
+# Paper PDFs may carry publisher licences; commit only the extracted, verified findings
+data/papers/*.pdf
+
+# Vercel
+.vercel/
