@@ -235,6 +235,14 @@ def compute() -> dict[str, Any]:
             "note": manifest["note"],
         },
     }
+    # AI-assisted text: checked deterministically against the payloads it cites.
+    from redshift.ai import text as AI
+
+    known_ids = {r.test_id for r in records} | {i["id"] for i in invs} | {cf.id for cf in checked}
+    ai = AI.build(payloads, set(fstatus["verified"]), known_ids)
+    if ai["rejected"]:
+        raise BuildError(f"AI text failed its checks: {ai['rejected']}")
+    payloads["ai_text.json"] = {**ai["ai"], "p": "summary"}
     # Provenance coverage lint over every payload.
     known = set(registry.to_json())
     checked_n, failures = 0, []

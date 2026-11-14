@@ -41,6 +41,7 @@ def record_evidence(records: Iterable[TestRecord], inv_names: dict[str, str]) ->
                 o2_basis=_v(r, "o2_basis"),
                 label=str(_v(r, "fuel") or _v(r, "material") or ""),
                 outcome_label=_v(r, "outcome_label"),
+                o2_list=tuple(_v(r, "o2_list_pct")) if _v(r, "o2_list_pct") else None,
             )
         )
     return out
@@ -413,6 +414,9 @@ def trade_map(registry: Registry, evidence: list[Evidence]) -> dict[str, Any]:
             bins.setdefault(key, []).append(e)
         elif e.o2_pct is not None:
             strips.setdefault((e.fuel_class, e.source_type), {}).setdefault(round(e.o2_pct, 1), []).append(e)
+        elif e.o2_list and e.pressure_kpa is None:
+            for v in sorted(set(e.o2_list)):
+                strips.setdefault((e.fuel_class, e.source_type), {}).setdefault(round(v, 1), []).append(e)
     points = []
     for key, evs in sorted(bins.items()):
         fc, st, o2, kpa = key
@@ -470,7 +474,8 @@ def trade_map(registry: Registry, evidence: list[Evidence]) -> dict[str, Any]:
                     "p": pid,
                 }
             )
-        strip_out.append({"fuel_class": fc, "source_type": st, "items": items})
+        unit = "sessions" if fc == "emulator" else "tests"
+        strip_out.append({"fuel_class": fc, "source_type": st, "unit": unit, "items": items})
     ob_id = registry.add(
         Prov(
             id="map:other_basis",

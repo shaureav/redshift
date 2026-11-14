@@ -344,15 +344,15 @@ function SourcePopover({ id, provId, onClose }: { id: string; provId: string; on
 }
 
 // Width of an element, for responsive SVG geometry.
-export function useElementWidth<T extends HTMLElement>(fallback = 600) {
+export function useElementWidth<T extends HTMLElement>(fallback = 600, min = 260) {
   const ref = useRef<T>(null);
   const [width, setWidth] = useState(fallback);
   useEffect(() => {
     if (!ref.current) return;
-    const ro = new ResizeObserver((entries) => setWidth(Math.max(260, entries[0].contentRect.width)));
+    const ro = new ResizeObserver((entries) => setWidth(Math.max(min, Math.floor(entries[0].contentRect.width))));
     ro.observe(ref.current);
     return () => ro.disconnect();
-  }, []);
+  }, [min]);
   return [ref, width] as const;
 }
 

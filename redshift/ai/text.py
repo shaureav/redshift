@@ -26,7 +26,7 @@ AI_DIR = DATA / "ai"
 SLOT = re.compile(r"\{\{([^}]+)\}\}")
 BARE_NUMBER = re.compile(r"(?<![A-Za-z0-9\-_])\d+(?:[.,:]\d+)*(?![A-Za-z0-9])")
 BANNED = re.compile(r"\b(safe|safer|safest|unsafe|dangerous|recommend\w*|should choose|best atmosphere)\b", re.I)
-SELECTOR = re.compile(r"^([A-Za-z_][\w]*)(?:\[(\w+)=([^\]]+)\])?$")
+SELECTOR = re.compile(r"^([A-Za-z_][\w]*)(?:\[(\w+)=(.+)\])?$")
 
 
 def resolve(payloads: dict[str, Any], ref: str) -> Any:
@@ -35,7 +35,7 @@ def resolve(payloads: dict[str, Any], ref: str) -> Any:
         raise KeyError(f"slot {ref!r} has no '#'")
     name, path = ref.split("#", 1)
     node: Any = payloads[name]
-    for part in path.split("."):
+    for part in _split_path(path):
         m = SELECTOR.match(part)
         if not m:
             raise KeyError(f"bad slot path segment {part!r} in {ref!r}")
@@ -49,14 +49,31 @@ def resolve(payloads: dict[str, Any], ref: str) -> Any:
     return node
 
 
-def check_template(text: str, payloads: dict[str, Any]) -> list[str]:
+def _split_path(path: str) -> list[str]:
+    """Split on '.' outside [...] selectors, so labels such as '... with oxygen recorded' stay whole."""
+    parts, cur, depth = [], "", 0
+    for ch in path:
+        if ch == "[":
+            depth += 1
+        elif ch == "]":
+            depth -= 1
+        if ch == "." and depth == 0:
+            parts.append(cur)
+            cur = ""
+        else:
+            cur += ch
+    parts.append(cur)
+    return parts
+
+
+def check_template(text: str, payloads: dict[str, Any], resolve_slots: bool = True) -> list[str]:
     problems = []
     stripped = SLOT.sub(" ", text)
     for m in BARE_NUMBER.finditer(stripped):
         problems.append(f"bare number {m.group(0)!r} outside a slot")
     if BANNED.search(stripped):
         problems.append(f"banned wording: {BANNED.search(stripped).group(0)!r}")  # type: ignore[union-attr]
-    for ref in SLOT.findall(text):
+    for ref in SLOT.findall(text) if resolve_slots else []:
         try:
             v = resolve(payloads, ref.strip())
         except (KeyError, IndexError, TypeError) as exc:
@@ -104,7 +121,10 @@ def build(payloads: dict[str, Any], verified_findings: set[str], known_ids: set[
             segs_out = []
             problems: list[str] = []
             for seg in it["segments"]:
-                problems += check_template(seg["text"], payloads)
+                ready = all(f in verified_findings for f in seg.get("requires_verified", []))
+                problems += check_template(seg["text"], payloads, resolve_slots=ready)
+                if seg.get("pending_text"):
+                    problems += check_template(seg["pending_text"], payloads)
                 for c in seg.get("cites", []):
                     if c not in known_ids:
                         problems.append(f"unknown citation {c}")

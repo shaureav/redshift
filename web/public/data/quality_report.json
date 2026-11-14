@@ -6481,299 +6481,11 @@
   },
   {
    "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '21; 26.5; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0345",
-   "investigation_id": "PSI-20",
-   "raw": "21; 26.5; 40",
-   "rows": [
-    2
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L2"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '26.5; 34' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0346",
-   "investigation_id": "PSI-20",
-   "raw": "26.5; 34",
-   "rows": [
-    3
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L3"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '21; 26.5; 34; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0347",
-   "investigation_id": "PSI-20",
-   "raw": "21; 26.5; 34; 40",
-   "rows": [
-    4
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L4"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '26.5; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0348",
-   "investigation_id": "PSI-20",
-   "raw": "26.5; 40",
-   "rows": [
-    5
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L5"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '26.5; 34' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0349",
-   "investigation_id": "PSI-20",
-   "raw": "26.5; 34",
-   "rows": [
-    7
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L7"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '26.5; 34' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0350",
-   "investigation_id": "PSI-20",
-   "raw": "26.5; 34",
-   "rows": [
-    8
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L8"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '21; 26.5; 34' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0351",
-   "investigation_id": "PSI-20",
-   "raw": "21; 26.5; 34",
-   "rows": [
-    10
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L10"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '25; 34; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0352",
-   "investigation_id": "PSI-20",
-   "raw": "25; 34; 40",
-   "rows": [
-    11
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L11"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '26.5; 34' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0353",
-   "investigation_id": "PSI-20",
-   "raw": "26.5; 34",
-   "rows": [
-    12
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L12"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '25; 34; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0354",
-   "investigation_id": "PSI-20",
-   "raw": "25; 34; 40",
-   "rows": [
-    13
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L13"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '25; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0355",
-   "investigation_id": "PSI-20",
-   "raw": "25; 40",
-   "rows": [
-    14
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L14"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '25; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0356",
-   "investigation_id": "PSI-20",
-   "raw": "25; 40",
-   "rows": [
-    15
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L15"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '34; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0357",
-   "investigation_id": "PSI-20",
-   "raw": "34; 40",
-   "rows": [
-    16
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L16"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '25; 34; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0358",
-   "investigation_id": "PSI-20",
-   "raw": "25; 34; 40",
-   "rows": [
-    17
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L17"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '21; 26.5; 34' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0359",
-   "investigation_id": "PSI-20",
-   "raw": "21; 26.5; 34",
-   "rows": [
-    18
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L18"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Conc (percent)",
-   "detail": "Oxygen Conc (percent) cell '25; 34; 40' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
-   "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0360",
-   "investigation_id": "PSI-20",
-   "raw": "25; 34; 40",
-   "rows": [
-    19
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-20-main-L19"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
    "code": "out_of_range",
    "column": "Oxygen Conc (percent)",
    "detail": "o2_pct = 3400 % is outside the physical range (0.0, 100.0).",
    "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0361",
+   "id": "F0345",
    "investigation_id": "PSI-20",
    "raw": "3400%",
    "rows": [
@@ -6791,7 +6503,7 @@
    "column": "Oxygen Conc (percent)",
    "detail": "o2_pct = 2100 % is outside the physical range (0.0, 100.0).",
    "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
-   "id": "F0362",
+   "id": "F0346",
    "investigation_id": "PSI-20",
    "raw": "2100%",
    "rows": [
@@ -6809,7 +6521,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH5' follows '40% CH4' (line 2) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0363",
+   "id": "F0347",
    "investigation_id": "PSI-21",
    "raw": "40% CH5",
    "rows": [
@@ -6827,7 +6539,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH6' follows '40% CH5' (line 3) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0364",
+   "id": "F0348",
    "investigation_id": "PSI-21",
    "raw": "40% CH6",
    "rows": [
@@ -6845,7 +6557,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH7' follows '40% CH6' (line 4) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0365",
+   "id": "F0349",
    "investigation_id": "PSI-21",
    "raw": "40% CH7",
    "rows": [
@@ -6863,7 +6575,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH8' follows '40% CH7' (line 5) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0366",
+   "id": "F0350",
    "investigation_id": "PSI-21",
    "raw": "40% CH8",
    "rows": [
@@ -6881,7 +6593,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH9' follows '40% CH8' (line 6) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0367",
+   "id": "F0351",
    "investigation_id": "PSI-21",
    "raw": "40% CH9",
    "rows": [
@@ -6899,7 +6611,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH10' follows '40% CH9' (line 7) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0368",
+   "id": "F0352",
    "investigation_id": "PSI-21",
    "raw": "40% CH10",
    "rows": [
@@ -6917,7 +6629,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH11' follows '40% CH10' (line 8) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0369",
+   "id": "F0353",
    "investigation_id": "PSI-21",
    "raw": "40% CH11",
    "rows": [
@@ -6935,7 +6647,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH12' follows '40% CH11' (line 9) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0370",
+   "id": "F0354",
    "investigation_id": "PSI-21",
    "raw": "40% CH12",
    "rows": [
@@ -6953,7 +6665,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH13' follows '40% CH12' (line 10) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0371",
+   "id": "F0355",
    "investigation_id": "PSI-21",
    "raw": "40% CH13",
    "rows": [
@@ -6971,7 +6683,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH14' follows '40% CH13' (line 11) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0372",
+   "id": "F0356",
    "investigation_id": "PSI-21",
    "raw": "40% CH14",
    "rows": [
@@ -6989,7 +6701,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% CH5' follows '100% CH4' (line 13) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0373",
+   "id": "F0357",
    "investigation_id": "PSI-21",
    "raw": "100% CH5",
    "rows": [
@@ -7007,7 +6719,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% CH6' follows '100% CH5' (line 14) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0374",
+   "id": "F0358",
    "investigation_id": "PSI-21",
    "raw": "100% CH6",
    "rows": [
@@ -7025,7 +6737,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% C2H5' follows '100% C2H4' (line 16) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0375",
+   "id": "F0359",
    "investigation_id": "PSI-21",
    "raw": "100% C2H5",
    "rows": [
@@ -7043,7 +6755,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% C2H6' follows '100% C2H5' (line 17) with its final number increased by 1, the pattern of a spreadsheet fill-down. 'C2H6' is itself a real formula, but it sits inside an incrementing series.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0376",
+   "id": "F0360",
    "investigation_id": "PSI-21",
    "raw": "100% C2H6",
    "rows": [
@@ -7061,7 +6773,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% C2H7' follows '100% C2H6' (line 18) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0377",
+   "id": "F0361",
    "investigation_id": "PSI-21",
    "raw": "100% C2H7",
    "rows": [
@@ -7079,7 +6791,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% C2H8' follows '100% C2H7' (line 19) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0378",
+   "id": "F0362",
    "investigation_id": "PSI-21",
    "raw": "100% C2H8",
    "rows": [
@@ -7097,7 +6809,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% C2H9' follows '100% C2H8' (line 20) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0379",
+   "id": "F0363",
    "investigation_id": "PSI-21",
    "raw": "100% C2H9",
    "rows": [
@@ -7115,7 +6827,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% C2H10' follows '100% C2H9' (line 21) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0380",
+   "id": "F0364",
    "investigation_id": "PSI-21",
    "raw": "100% C2H10",
    "rows": [
@@ -7133,7 +6845,7 @@
    "column": "Fuel Bottle",
    "detail": "'100% C2H11' follows '100% C2H10' (line 22) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0381",
+   "id": "F0365",
    "investigation_id": "PSI-21",
    "raw": "100% C2H11",
    "rows": [
@@ -7151,7 +6863,7 @@
    "column": "Fuel Bottle",
    "detail": "'50% C2H5' follows '50% C2H4' (line 24) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0382",
+   "id": "F0366",
    "investigation_id": "PSI-21",
    "raw": "50% C2H5",
    "rows": [
@@ -7169,7 +6881,7 @@
    "column": "Fuel Bottle",
    "detail": "'50% C2H6' follows '50% C2H5' (line 25) with its final number increased by 1, the pattern of a spreadsheet fill-down. 'C2H6' is itself a real formula, but it sits inside an incrementing series.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0383",
+   "id": "F0367",
    "investigation_id": "PSI-21",
    "raw": "50% C2H6",
    "rows": [
@@ -7187,7 +6899,7 @@
    "column": "Fuel Bottle",
    "detail": "'50% C2H7' follows '50% C2H6' (line 26) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0384",
+   "id": "F0368",
    "investigation_id": "PSI-21",
    "raw": "50% C2H7",
    "rows": [
@@ -7205,7 +6917,7 @@
    "column": "Fuel Bottle",
    "detail": "'50% C2H8' follows '50% C2H7' (line 27) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0385",
+   "id": "F0369",
    "investigation_id": "PSI-21",
    "raw": "50% C2H8",
    "rows": [
@@ -7223,7 +6935,7 @@
    "column": "Fuel Bottle",
    "detail": "'50% C2H9' follows '50% C2H8' (line 28) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0386",
+   "id": "F0370",
    "investigation_id": "PSI-21",
    "raw": "50% C2H9",
    "rows": [
@@ -7241,7 +6953,7 @@
    "column": "Fuel Bottle",
    "detail": "'30% C2H5' follows '30% C2H4' (line 30) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0387",
+   "id": "F0371",
    "investigation_id": "PSI-21",
    "raw": "30% C2H5",
    "rows": [
@@ -7259,7 +6971,7 @@
    "column": "Fuel Bottle",
    "detail": "'40% CH5' follows '40% CH4' (line 32) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0388",
+   "id": "F0372",
    "investigation_id": "PSI-21",
    "raw": "40% CH5",
    "rows": [
@@ -7277,7 +6989,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0389",
+   "id": "F0373",
    "investigation_id": "PSI-21",
    "raw": null,
    "rows": [],
@@ -7291,7 +7003,7 @@
    "column": "flow_cm_s",
    "detail": "The table has no flow velocity column; Fuel MFC and N2 MFC are controller ranges in slpm, not flows.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0390",
+   "id": "F0374",
    "investigation_id": "PSI-21",
    "raw": null,
    "rows": [],
@@ -7305,7 +7017,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0391",
+   "id": "F0375",
    "investigation_id": "PSI-21",
    "raw": null,
    "rows": [],
@@ -7319,7 +7031,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0392",
+   "id": "F0376",
    "investigation_id": "PSI-21",
    "raw": null,
    "rows": [],
@@ -7333,7 +7045,7 @@
    "column": "o2_pct",
    "detail": "The table has no oxygen column.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0393",
+   "id": "F0377",
    "investigation_id": "PSI-21",
    "raw": null,
    "rows": [],
@@ -7347,7 +7059,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0394",
+   "id": "F0378",
    "investigation_id": "PSI-21",
    "raw": null,
    "rows": [],
@@ -7361,7 +7073,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0395",
+   "id": "F0379",
    "investigation_id": "PSI-21",
    "raw": null,
    "rows": [],
@@ -7375,7 +7087,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0396",
+   "id": "F0380",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7393,7 +7105,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0397",
+   "id": "F0381",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7411,7 +7123,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0398",
+   "id": "F0382",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7429,7 +7141,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '25%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0399",
+   "id": "F0383",
    "investigation_id": "PSI-21",
    "raw": "25%-40%",
    "rows": [
@@ -7447,7 +7159,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0400",
+   "id": "F0384",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7465,7 +7177,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '25%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0401",
+   "id": "F0385",
    "investigation_id": "PSI-21",
    "raw": "25%-40%",
    "rows": [
@@ -7483,7 +7195,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '25%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0402",
+   "id": "F0386",
    "investigation_id": "PSI-21",
    "raw": "25%-40%",
    "rows": [
@@ -7501,7 +7213,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0403",
+   "id": "F0387",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7519,7 +7231,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '25%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0404",
+   "id": "F0388",
    "investigation_id": "PSI-21",
    "raw": "25%-40%",
    "rows": [
@@ -7537,7 +7249,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0405",
+   "id": "F0389",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7555,7 +7267,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '50%-80%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0406",
+   "id": "F0390",
    "investigation_id": "PSI-21",
    "raw": "50%-80%",
    "rows": [
@@ -7573,7 +7285,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '50%-100%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0407",
+   "id": "F0391",
    "investigation_id": "PSI-21",
    "raw": "50%-100%",
    "rows": [
@@ -7591,7 +7303,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0408",
+   "id": "F0392",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7609,7 +7321,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '80%-100%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0409",
+   "id": "F0393",
    "investigation_id": "PSI-21",
    "raw": "80%-100%",
    "rows": [
@@ -7627,7 +7339,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '80%-100%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0410",
+   "id": "F0394",
    "investigation_id": "PSI-21",
    "raw": "80%-100%",
    "rows": [
@@ -7645,7 +7357,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '60%-100%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0411",
+   "id": "F0395",
    "investigation_id": "PSI-21",
    "raw": "60%-100%",
    "rows": [
@@ -7663,7 +7375,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '50%-60%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0412",
+   "id": "F0396",
    "investigation_id": "PSI-21",
    "raw": "50%-60%",
    "rows": [
@@ -7681,7 +7393,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '40%-100%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0413",
+   "id": "F0397",
    "investigation_id": "PSI-21",
    "raw": "40%-100%",
    "rows": [
@@ -7699,7 +7411,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '10%-20%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0414",
+   "id": "F0398",
    "investigation_id": "PSI-21",
    "raw": "10%-20%",
    "rows": [
@@ -7717,7 +7429,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '10%-30%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0415",
+   "id": "F0399",
    "investigation_id": "PSI-21",
    "raw": "10%-30%",
    "rows": [
@@ -7735,7 +7447,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '15%-30%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0416",
+   "id": "F0400",
    "investigation_id": "PSI-21",
    "raw": "15%-30%",
    "rows": [
@@ -7753,7 +7465,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '15%-20%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0417",
+   "id": "F0401",
    "investigation_id": "PSI-21",
    "raw": "15%-20%",
    "rows": [
@@ -7771,7 +7483,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '0%-30%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0418",
+   "id": "F0402",
    "investigation_id": "PSI-21",
    "raw": "0%-30%",
    "rows": [
@@ -7789,7 +7501,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '15%-20%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0419",
+   "id": "F0403",
    "investigation_id": "PSI-21",
    "raw": "15%-20%",
    "rows": [
@@ -7807,7 +7519,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '20%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0420",
+   "id": "F0404",
    "investigation_id": "PSI-21",
    "raw": "20%-40%",
    "rows": [
@@ -7825,7 +7537,7 @@
    "column": "Fuel conc. Range",
    "detail": "Fuel conc. Range cell '30%-40%' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-CLD-Flame/experiment_table/PSI-21_Experimental table_CLD Flame.csv",
-   "id": "F0421",
+   "id": "F0405",
    "investigation_id": "PSI-21",
    "raw": "30%-40%",
    "rows": [
@@ -7843,7 +7555,7 @@
    "column": null,
    "detail": "Byte-identical to line 7.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0422",
+   "id": "F0406",
    "investigation_id": "PSI-22",
    "raw": ",,,,,,,100%,,",
    "rows": [
@@ -7859,7 +7571,7 @@
    "column": null,
    "detail": "Byte-identical to line 7.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0423",
+   "id": "F0407",
    "investigation_id": "PSI-22",
    "raw": ",,,,,,,100%,,",
    "rows": [
@@ -7875,7 +7587,7 @@
    "column": null,
    "detail": "Byte-identical to line 7.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0424",
+   "id": "F0408",
    "investigation_id": "PSI-22",
    "raw": ",,,,,,,100%,,",
    "rows": [
@@ -7891,7 +7603,7 @@
    "column": null,
    "detail": "Byte-identical to line 7.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0425",
+   "id": "F0409",
    "investigation_id": "PSI-22",
    "raw": ",,,,,,,100%,,",
    "rows": [
@@ -7907,7 +7619,7 @@
    "column": null,
    "detail": "Byte-identical to line 26.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0426",
+   "id": "F0410",
    "investigation_id": "PSI-22",
    "raw": "Second round of tests with gas-jet burner,18319,2018,11,15,positive,100% C2H4,25%,11,",
    "rows": [
@@ -7923,7 +7635,7 @@
    "column": null,
    "detail": "Byte-identical to line 27.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0427",
+   "id": "F0411",
    "investigation_id": "PSI-22",
    "raw": ",,,,,,,50%,,",
    "rows": [
@@ -7939,7 +7651,7 @@
    "column": null,
    "detail": "Byte-identical to line 28.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0428",
+   "id": "F0412",
    "investigation_id": "PSI-22",
    "raw": ",,,,,,,80%,,",
    "rows": [
@@ -7955,7 +7667,7 @@
    "column": null,
    "detail": "Byte-identical to line 7.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0429",
+   "id": "F0413",
    "investigation_id": "PSI-22",
    "raw": ",,,,,,,100%,,",
    "rows": [
@@ -7971,7 +7683,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0430",
+   "id": "F0414",
    "investigation_id": "PSI-22",
    "raw": null,
    "rows": [],
@@ -7985,7 +7697,7 @@
    "column": "flow_cm_s",
    "detail": "The table has no flow column.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0431",
+   "id": "F0415",
    "investigation_id": "PSI-22",
    "raw": null,
    "rows": [],
@@ -7999,7 +7711,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0432",
+   "id": "F0416",
    "investigation_id": "PSI-22",
    "raw": null,
    "rows": [],
@@ -8013,7 +7725,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0433",
+   "id": "F0417",
    "investigation_id": "PSI-22",
    "raw": null,
    "rows": [],
@@ -8027,7 +7739,7 @@
    "column": "o2_pct",
    "detail": "The table has no oxygen column.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0434",
+   "id": "F0418",
    "investigation_id": "PSI-22",
    "raw": null,
    "rows": [],
@@ -8041,7 +7753,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0435",
+   "id": "F0419",
    "investigation_id": "PSI-22",
    "raw": null,
    "rows": [],
@@ -8055,7 +7767,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column.",
    "file": "data/raw/psi/ACME-E-FIELD-Flames/experiment_table/PSI-22_Experimental table_ACME E-FIELD Flames.csv",
-   "id": "F0436",
+   "id": "F0420",
    "investigation_id": "PSI-22",
    "raw": null,
    "rows": [],
@@ -8069,7 +7781,7 @@
    "column": "Atmosphere*",
    "detail": "'~21% O2 with N3' follows '~21% O2 with N2' (line 2) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0437",
+   "id": "F0421",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N3",
    "rows": [
@@ -8087,7 +7799,7 @@
    "column": "Fuel Bottle",
    "detail": "'50% C2H4 with N3' follows '50% C2H4 with N2' (line 2) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0438",
+   "id": "F0422",
    "investigation_id": "PSI-23",
    "raw": "50% C2H4 with N3",
    "rows": [
@@ -8105,7 +7817,7 @@
    "column": "Atmosphere*",
    "detail": "'~21% O2 with N4' follows '~21% O2 with N3' (line 3) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0439",
+   "id": "F0423",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N4",
    "rows": [
@@ -8123,7 +7835,7 @@
    "column": "Fuel Bottle",
    "detail": "'45% CH4 with N3' follows '45% CH4 with N2' (line 4) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0440",
+   "id": "F0424",
    "investigation_id": "PSI-23",
    "raw": "45% CH4 with N3",
    "rows": [
@@ -8141,7 +7853,7 @@
    "column": "Atmosphere*",
    "detail": "'~21% O2 with N3' follows '~21% O2 with N2' (line 6) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0441",
+   "id": "F0425",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N3",
    "rows": [
@@ -8159,7 +7871,7 @@
    "column": "Atmosphere*",
    "detail": "'~21% O2 with N4' follows '~21% O2 with N3' (line 7) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0442",
+   "id": "F0426",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N4",
    "rows": [
@@ -8177,7 +7889,7 @@
    "column": "Atmosphere*",
    "detail": "'~21% O2 with N5' follows '~21% O2 with N4' (line 8) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0443",
+   "id": "F0427",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N5",
    "rows": [
@@ -8195,7 +7907,7 @@
    "column": "Atmosphere*",
    "detail": "'~21% O2 with N6' follows '~21% O2 with N5' (line 9) with its final number increased by 1, the pattern of a spreadsheet fill-down.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0444",
+   "id": "F0428",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N6",
    "rows": [
@@ -8213,7 +7925,7 @@
    "column": "Test Type",
    "detail": "Test Type says nitrogen-diluted, but Atmosphere ('~21% O2 with He') and Fuel Bottle ('25% H2, 20% CH4, with He') on this row both say helium.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0445",
+   "id": "F0429",
    "investigation_id": "PSI-23",
    "raw": "First round of tests with nitrogen-diluted fuel and oxygen",
    "rows": [
@@ -8231,7 +7943,7 @@
    "column": "Year",
    "detail": "14 rows (lines 6 to 19) are dated after the investigation end date given on the PSI page (ACME-s-Flame.md line 16: 02-05-2015 to 11-24-2019).",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0446",
+   "id": "F0430",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [
@@ -8275,7 +7987,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0447",
+   "id": "F0431",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [],
@@ -8289,7 +8001,7 @@
    "column": "flow_cm_s",
    "detail": "The table has no flow column.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0448",
+   "id": "F0432",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [],
@@ -8303,7 +8015,7 @@
    "column": "fuel_conc_pct",
    "detail": "The fuel percentage appears only inside the Fuel Bottle label (for example '50% C2H4 with N2'); it is not read out of text.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0449",
+   "id": "F0433",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [],
@@ -8317,7 +8029,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0450",
+   "id": "F0434",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [],
@@ -8331,7 +8043,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0451",
+   "id": "F0435",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [],
@@ -8345,7 +8057,7 @@
    "column": "pressure_kpa",
    "detail": "No pressure column. The table note on line 3 says \"*Atmosphere is ~1 atm but pressure increases and O2% drops with vitiation.\" An approximate statement is not used as a value.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0452",
+   "id": "F0436",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [],
@@ -8359,7 +8071,7 @@
    "column": "pressure_psi",
    "detail": "No pressure column. The table note on line 3 says \"*Atmosphere is ~1 atm but pressure increases and O2% drops with vitiation.\" An approximate statement is not used as a value.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0453",
+   "id": "F0437",
    "investigation_id": "PSI-23",
    "raw": null,
    "rows": [],
@@ -8373,7 +8085,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N2' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0454",
+   "id": "F0438",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N2",
    "rows": [
@@ -8391,7 +8103,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N3' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0455",
+   "id": "F0439",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N3",
    "rows": [
@@ -8409,7 +8121,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N4' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0456",
+   "id": "F0440",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N4",
    "rows": [
@@ -8427,7 +8139,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% O2 with N2' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0457",
+   "id": "F0441",
    "investigation_id": "PSI-23",
    "raw": "~30% O2 with N2",
    "rows": [
@@ -8445,7 +8157,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N2' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0458",
+   "id": "F0442",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N2",
    "rows": [
@@ -8463,7 +8175,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N3' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0459",
+   "id": "F0443",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N3",
    "rows": [
@@ -8481,7 +8193,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N4' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0460",
+   "id": "F0444",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N4",
    "rows": [
@@ -8499,7 +8211,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N5' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0461",
+   "id": "F0445",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N5",
    "rows": [
@@ -8517,7 +8229,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with N6' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0462",
+   "id": "F0446",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with N6",
    "rows": [
@@ -8535,7 +8247,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0463",
+   "id": "F0447",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with He",
    "rows": [
@@ -8553,7 +8265,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~21% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0464",
+   "id": "F0448",
    "investigation_id": "PSI-23",
    "raw": "~21% O2 with He",
    "rows": [
@@ -8571,7 +8283,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0465",
+   "id": "F0449",
    "investigation_id": "PSI-23",
    "raw": "~30% O2 with He",
    "rows": [
@@ -8589,7 +8301,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% and ~21% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0466",
+   "id": "F0450",
    "investigation_id": "PSI-23",
    "raw": "~30% and ~21% O2 with He",
    "rows": [
@@ -8607,7 +8319,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% and ~21% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0467",
+   "id": "F0451",
    "investigation_id": "PSI-23",
    "raw": "~30% and ~21% O2 with He",
    "rows": [
@@ -8625,7 +8337,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0468",
+   "id": "F0452",
    "investigation_id": "PSI-23",
    "raw": "~30% O2 with He",
    "rows": [
@@ -8643,7 +8355,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% and ~21% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0469",
+   "id": "F0453",
    "investigation_id": "PSI-23",
    "raw": "~30% and ~21% O2 with He",
    "rows": [
@@ -8661,7 +8373,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% and ~21% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0470",
+   "id": "F0454",
    "investigation_id": "PSI-23",
    "raw": "~30% and ~21% O2 with He",
    "rows": [
@@ -8679,7 +8391,7 @@
    "column": "Atmosphere*",
    "detail": "Atmosphere* cell '~30% and ~21% O2 with He' is not a single percentage (it is a list, a range or free text); no number is read out of it.",
    "file": "data/raw/psi/ACME-s-Flame/experiment_table/PSI-23_Experimental table_ACME s-Flame.csv",
-   "id": "F0471",
+   "id": "F0455",
    "investigation_id": "PSI-23",
    "raw": "~30% and ~21% O2 with He",
    "rows": [
@@ -8697,7 +8409,7 @@
    "column": "GMT",
    "detail": "GMT day 213 does not match the date 7/22/2014 (day 203 of the year).",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0472",
+   "id": "F0456",
    "investigation_id": "PSI-25",
    "raw": "213",
    "rows": [
@@ -8715,7 +8427,7 @@
    "column": "Date",
    "detail": "Year 2018 differs from the neighbouring rows of the same PI (2014).",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0473",
+   "id": "F0457",
    "investigation_id": "PSI-25",
    "raw": "6/24/2018",
    "rows": [
@@ -8733,7 +8445,7 @@
    "column": "Date",
    "detail": "Year 2018 differs from the neighbouring rows of the same PI (2014).",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0474",
+   "id": "F0458",
    "investigation_id": "PSI-25",
    "raw": "6/24/2018",
    "rows": [
@@ -8751,7 +8463,7 @@
    "column": "Calibrated final O2 % by vol",
    "detail": "Final O2 1.6 % against initial O2 22.2 % on the same row: a change of more than 5 percentage points, far beyond every other test. The values on this row may be shifted between columns, so its initial O2 and initial CO2 (kept as written) may also be affected.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0475",
+   "id": "F0459",
    "investigation_id": "PSI-25",
    "raw": "1.6",
    "rows": [
@@ -8769,7 +8481,7 @@
    "column": "Initial CO2 % by vol",
    "detail": "Initial CO2 0 % while every other numeric initial CO2 in the table reads 0.19 to 1.85 %; the final O2, final CO2 and final CO cells on this row read 'none', 'none', 'none'.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0476",
+   "id": "F0460",
    "investigation_id": "PSI-25",
    "raw": "0",
    "rows": [
@@ -8787,7 +8499,7 @@
    "column": "Calibrated final O2 % by vol",
    "detail": "Final O2 0.6 % against initial O2 20.8 % on the same row: a change of more than 5 percentage points, far beyond every other test. The values on this row may be shifted between columns, so its initial O2 and initial CO2 (kept as written) may also be affected.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0477",
+   "id": "F0461",
    "investigation_id": "PSI-25",
    "raw": "0.6",
    "rows": [
@@ -8805,7 +8517,7 @@
    "column": "Calibrated final O2 % by vol",
    "detail": "Final O2 39.1 % against initial O2 20 % on the same row: a change of more than 5 percentage points, far beyond every other test. The values on this row may be shifted between columns, so its initial O2 and initial CO2 (kept as written) may also be affected.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0478",
+   "id": "F0462",
    "investigation_id": "PSI-25",
    "raw": "39.1",
    "rows": [
@@ -8823,7 +8535,7 @@
    "column": "Calibrated final O2 % by vol",
    "detail": "Final O2 0.9 % against initial O2 20.7 % on the same row: a change of more than 5 percentage points, far beyond every other test. The values on this row may be shifted between columns, so its initial O2 and initial CO2 (kept as written) may also be affected.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0479",
+   "id": "F0463",
    "investigation_id": "PSI-25",
    "raw": "0.9",
    "rows": [
@@ -8841,7 +8553,7 @@
    "column": "Calibrated final O2 % by vol",
    "detail": "Final O2 40.4 % against initial O2 20.7 % on the same row: a change of more than 5 percentage points, far beyond every other test. The values on this row may be shifted between columns, so its initial O2 and initial CO2 (kept as written) may also be affected.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0480",
+   "id": "F0464",
    "investigation_id": "PSI-25",
    "raw": "40.4",
    "rows": [
@@ -8859,7 +8571,7 @@
    "column": "Fuel Sample Material",
    "detail": "'2ide' is written 'wide' elsewhere in the table.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0481",
+   "id": "F0465",
    "investigation_id": "PSI-25",
    "raw": "2ide",
    "rows": [
@@ -8877,7 +8589,7 @@
    "column": "Fuel Sample Material",
    "detail": "'blac rod' is written 'black rod' elsewhere in the table.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0482",
+   "id": "F0466",
    "investigation_id": "PSI-25",
    "raw": "blac rod",
    "rows": [
@@ -8895,7 +8607,7 @@
    "column": "flow_cm_s",
    "detail": "Fan display, Air display and Flow restrictor are instrument display settings, not velocities in cm/s; the table has no flow velocity column.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0483",
+   "id": "F0467",
    "investigation_id": "PSI-25",
    "raw": null,
    "rows": [],
@@ -8909,7 +8621,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0484",
+   "id": "F0468",
    "investigation_id": "PSI-25",
    "raw": null,
    "rows": [],
@@ -8923,7 +8635,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0485",
+   "id": "F0469",
    "investigation_id": "PSI-25",
    "raw": null,
    "rows": [],
@@ -8937,7 +8649,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0486",
+   "id": "F0470",
    "investigation_id": "PSI-25",
    "raw": null,
    "rows": [],
@@ -8951,7 +8663,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0487",
+   "id": "F0471",
    "investigation_id": "PSI-25",
    "raw": null,
    "rows": [],
@@ -8965,7 +8677,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0488",
+   "id": "F0472",
    "investigation_id": "PSI-25",
    "raw": null,
    "rows": [],
@@ -8979,7 +8691,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0489",
+   "id": "F0473",
    "investigation_id": "PSI-25",
    "raw": null,
    "rows": [],
@@ -8993,7 +8705,7 @@
    "column": "Total Frames Shot",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0490",
+   "id": "F0474",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9011,7 +8723,7 @@
    "column": "Calibrated final O2 % by vol",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0491",
+   "id": "F0475",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9029,7 +8741,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0492",
+   "id": "F0476",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9047,7 +8759,7 @@
    "column": "Final CO2 % by vol",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0493",
+   "id": "F0477",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9065,7 +8777,7 @@
    "column": "Calibrated final O2 % by vol",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0494",
+   "id": "F0478",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9083,7 +8795,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0495",
+   "id": "F0479",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9101,7 +8813,7 @@
    "column": "Final CO2 % by vol",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0496",
+   "id": "F0480",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9119,7 +8831,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found '>500'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0497",
+   "id": "F0481",
    "investigation_id": "PSI-25",
    "raw": ">500",
    "rows": [
@@ -9137,7 +8849,7 @@
    "column": "Total Frames Shot",
    "detail": "expected a number, found '300+   +102'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0498",
+   "id": "F0482",
    "investigation_id": "PSI-25",
    "raw": "300+   +102",
    "rows": [
@@ -9155,7 +8867,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found 'OR'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0499",
+   "id": "F0483",
    "investigation_id": "PSI-25",
    "raw": "OR",
    "rows": [
@@ -9173,7 +8885,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found 'OR'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0500",
+   "id": "F0484",
    "investigation_id": "PSI-25",
    "raw": "OR",
    "rows": [
@@ -9191,7 +8903,7 @@
    "column": "Initial CO (ppm)",
    "detail": "expected a number, found 'OR'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0501",
+   "id": "F0485",
    "investigation_id": "PSI-25",
    "raw": "OR",
    "rows": [
@@ -9209,7 +8921,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found 'over'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0502",
+   "id": "F0486",
    "investigation_id": "PSI-25",
    "raw": "over",
    "rows": [
@@ -9227,7 +8939,7 @@
    "column": "Total Frames Shot",
    "detail": "expected a number, found '10 postburn only'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0503",
+   "id": "F0487",
    "investigation_id": "PSI-25",
    "raw": "10 postburn only",
    "rows": [
@@ -9245,7 +8957,7 @@
    "column": "Total Frames Shot",
    "detail": "expected a number, found 'video'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0504",
+   "id": "F0488",
    "investigation_id": "PSI-25",
    "raw": "video",
    "rows": [
@@ -9263,7 +8975,7 @@
    "column": "Total Frames Shot",
    "detail": "expected a number, found 'video'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0505",
+   "id": "F0489",
    "investigation_id": "PSI-25",
    "raw": "video",
    "rows": [
@@ -9281,7 +8993,7 @@
    "column": "Total Frames Shot",
    "detail": "expected a number, found 'video'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0506",
+   "id": "F0490",
    "investigation_id": "PSI-25",
    "raw": "video",
    "rows": [
@@ -9299,7 +9011,7 @@
    "column": "Final CO2 % by vol",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0507",
+   "id": "F0491",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9317,7 +9029,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0508",
+   "id": "F0492",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9335,7 +9047,7 @@
    "column": "Final CO2 % by vol",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0509",
+   "id": "F0493",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9353,7 +9065,7 @@
    "column": "Initial CO (ppm)",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0510",
+   "id": "F0494",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9371,7 +9083,7 @@
    "column": "Initial CO2 % by vol",
    "detail": "expected a percentage, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0511",
+   "id": "F0495",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9389,7 +9101,7 @@
    "column": "Final CO (ppm)",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0512",
+   "id": "F0496",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9407,7 +9119,7 @@
    "column": "Final CO2 % by vol",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0513",
+   "id": "F0497",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9425,7 +9137,7 @@
    "column": "Initial CO (ppm)",
    "detail": "expected a number, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0514",
+   "id": "F0498",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9443,7 +9155,7 @@
    "column": "Initial CO2 % by vol",
    "detail": "expected a percentage, found 'none'",
    "file": "data/raw/psi/BASS-II/experiment_table/PSI-25_Experimental table_BASS-II.csv",
-   "id": "F0515",
+   "id": "F0499",
    "investigation_id": "PSI-25",
    "raw": "none",
    "rows": [
@@ -9461,7 +9173,7 @@
    "column": "Date",
    "detail": "Date '6/29/`12' is not written as month/day/four-digit year.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0516",
+   "id": "F0500",
    "investigation_id": "PSI-26",
    "raw": "6/29/`12",
    "rows": [
@@ -9479,7 +9191,7 @@
    "column": "GMT",
    "detail": "GMT day 113 does not match the date 4/26/2013 (day 116 of the year).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0517",
+   "id": "F0501",
    "investigation_id": "PSI-26",
    "raw": "113",
    "rows": [
@@ -9497,7 +9209,7 @@
    "column": "Date",
    "detail": "Year 2103 differs from the neighbouring test rows (2013).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0518",
+   "id": "F0502",
    "investigation_id": "PSI-26",
    "raw": "5/15/2103",
    "rows": [
@@ -9515,7 +9227,7 @@
    "column": "GMT",
    "detail": "GMT day 137 does not match the date 6/1/2013 (day 152 of the year).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0519",
+   "id": "F0503",
    "investigation_id": "PSI-26",
    "raw": "137",
    "rows": [
@@ -9533,7 +9245,7 @@
    "column": "GMT",
    "detail": "GMT day 150 does not match the date 6/1/2013 (day 152 of the year).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0520",
+   "id": "F0504",
    "investigation_id": "PSI-26",
    "raw": "150",
    "rows": [
@@ -9551,7 +9263,7 @@
    "column": "GMT",
    "detail": "GMT day 150 does not match the date 6/1/2013 (day 152 of the year).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0521",
+   "id": "F0505",
    "investigation_id": "PSI-26",
    "raw": "150",
    "rows": [
@@ -9569,7 +9281,7 @@
    "column": "GMT",
    "detail": "GMT day 150 does not match the date 6/1/2013 (day 152 of the year).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0522",
+   "id": "F0506",
    "investigation_id": "PSI-26",
    "raw": "150",
    "rows": [
@@ -9587,7 +9299,7 @@
    "column": "GMT",
    "detail": "GMT day 150 does not match the date 6/1/2013 (day 152 of the year).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0523",
+   "id": "F0507",
    "investigation_id": "PSI-26",
    "raw": "150",
    "rows": [
@@ -9605,7 +9317,7 @@
    "column": "GMT",
    "detail": "GMT day 150 does not match the date 6/1/2013 (day 152 of the year).",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0524",
+   "id": "F0508",
    "investigation_id": "PSI-26",
    "raw": "150",
    "rows": [
@@ -9623,7 +9335,7 @@
    "column": "Fuel Sample Material",
    "detail": "'parrafin' is written 'paraffin' elsewhere in the table.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0525",
+   "id": "F0509",
    "investigation_id": "PSI-26",
    "raw": "parrafin",
    "rows": [
@@ -9643,7 +9355,7 @@
    "column": "Fuel Sample Material",
    "detail": "'oppsed' is written 'opposed' elsewhere in the table.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0526",
+   "id": "F0510",
    "investigation_id": "PSI-26",
    "raw": "oppsed",
    "rows": [
@@ -9661,7 +9373,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0527",
+   "id": "F0511",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9675,7 +9387,7 @@
    "column": "flow_cm_s",
    "detail": "The table has no flow column; the PSI page gives only the fan range (up to 40 cm/s), not a flow per test.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0528",
+   "id": "F0512",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9689,7 +9401,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0529",
+   "id": "F0513",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9703,7 +9415,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0530",
+   "id": "F0514",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9717,7 +9429,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0531",
+   "id": "F0515",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9731,7 +9443,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0532",
+   "id": "F0516",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9745,7 +9457,7 @@
    "column": "o2_pct",
    "detail": "The table has no oxygen column.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0533",
+   "id": "F0517",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9759,7 +9471,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0534",
+   "id": "F0518",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9773,7 +9485,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0535",
+   "id": "F0519",
    "investigation_id": "PSI-26",
    "raw": null,
    "rows": [],
@@ -9787,7 +9499,7 @@
    "column": "As Run Test #",
    "detail": "As Run Test # 24 appears on lines 25, 26, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0536",
+   "id": "F0520",
    "investigation_id": "PSI-26",
    "raw": "24",
    "rows": [
@@ -9807,7 +9519,7 @@
    "column": "Test #",
    "detail": "Test # 114 appears on lines 61, 85, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0537",
+   "id": "F0521",
    "investigation_id": "PSI-26",
    "raw": "114",
    "rows": [
@@ -9827,7 +9539,7 @@
    "column": "Test #",
    "detail": "Test # 118 appears on lines 66, 105, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0538",
+   "id": "F0522",
    "investigation_id": "PSI-26",
    "raw": "118",
    "rows": [
@@ -9847,7 +9559,7 @@
    "column": "Test #",
    "detail": "Test # 75 appears on lines 82, 121, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0539",
+   "id": "F0523",
    "investigation_id": "PSI-26",
    "raw": "75",
    "rows": [
@@ -9867,7 +9579,7 @@
    "column": "As Run Test #",
    "detail": "As Run Test # 85 appears on lines 88, 89, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0540",
+   "id": "F0524",
    "investigation_id": "PSI-26",
    "raw": "85",
    "rows": [
@@ -9887,7 +9599,7 @@
    "column": "As Run Test #",
    "detail": "As Run Test # 89 appears on lines 93, 96, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0541",
+   "id": "F0525",
    "investigation_id": "PSI-26",
    "raw": "89",
    "rows": [
@@ -9907,7 +9619,7 @@
    "column": "As Run Test #",
    "detail": "As Run Test # 90 appears on lines 94, 97, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0542",
+   "id": "F0526",
    "investigation_id": "PSI-26",
    "raw": "90",
    "rows": [
@@ -9927,7 +9639,7 @@
    "column": "As Run Test #",
    "detail": "As Run Test # 91 appears on lines 95, 98, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0543",
+   "id": "F0527",
    "investigation_id": "PSI-26",
    "raw": "91",
    "rows": [
@@ -9947,7 +9659,7 @@
    "column": "Test #",
    "detail": "Test # 53 appears on lines 114, 122, which differ in other values.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0544",
+   "id": "F0528",
    "investigation_id": "PSI-26",
    "raw": "53",
    "rows": [
@@ -9967,7 +9679,7 @@
    "column": null,
    "detail": "Hardware cleaning entry ('SOOT Cleaning'), with no test or sample number; no burn took place.",
    "file": "data/raw/psi/BASS/experiment_table/PSI-26_Experimental table_BASS.csv",
-   "id": "F0545",
+   "id": "F0529",
    "investigation_id": "PSI-26",
    "raw": "8/3/2012,216,,,,SOOT Cleaning",
    "rows": [
@@ -9983,7 +9695,7 @@
    "column": "Investigation dates",
    "detail": "CFI investigation dates are '10-01-2020 to 10-20-2021' (line 16), but all 87 Test Date cells of data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv (lines 2 to 88) carry the two-digit year 17, for example '9-Mar-17' on line 2.",
    "file": "data/raw/psi/CFI/CFI.md",
-   "id": "F0546",
+   "id": "F0530",
    "investigation_id": "PSI-39",
    "raw": "10-01-2020 to 10-20-2021",
    "rows": [
@@ -9999,7 +9711,7 @@
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0547",
+   "id": "F0531",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10017,7 +9729,7 @@
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0548",
+   "id": "F0532",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10035,7 +9747,7 @@
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0549",
+   "id": "F0533",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10053,7 +9765,7 @@
    "column": null,
    "detail": "Oxygen + Nitrogen + Helium mole fractions sum to 0.970.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0550",
+   "id": "F0534",
    "investigation_id": "PSI-39",
    "raw": "0.21,0.76,0",
    "rows": [
@@ -10071,7 +9783,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 38 (11:06:59 am est, CIR f180d02) is earlier than on line 37 (10:42:16 pm est, CIR f180d01), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0551",
+   "id": "F0535",
    "investigation_id": "PSI-39",
    "raw": "11:06:59 am est",
    "rows": [
@@ -10091,7 +9803,7 @@
    "column": "Test Date",
    "detail": "Test Date 29-Jul-17 is day 210 of the year, but CIR code f180d02 gives day 180.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0552",
+   "id": "F0536",
    "investigation_id": "PSI-39",
    "raw": "29-Jul-17",
    "rows": [
@@ -10109,7 +9821,7 @@
    "column": "Local Time",
    "detail": "Local Time is not a complete clock time.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0553",
+   "id": "F0537",
    "investigation_id": "PSI-39",
    "raw": "02:22:xx pm est",
    "rows": [
@@ -10127,7 +9839,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 56 (12:07:00 am est, CIR f200d05) is earlier than on line 55 (11:37:54 am est, CIR f200d04), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0554",
+   "id": "F0538",
    "investigation_id": "PSI-39",
    "raw": "12:07:00 am est",
    "rows": [
@@ -10147,7 +9859,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 63 (12:02:11 am est, CIR f208d04) is earlier than on line 62 (11:41:29 am est, CIR f208d03), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0555",
+   "id": "F0539",
    "investigation_id": "PSI-39",
    "raw": "12:02:11 am est",
    "rows": [
@@ -10167,7 +9879,7 @@
    "column": "Local Time",
    "detail": "Local Time on line 79 (12:24:13 am est, CIR f233d04) is earlier than on line 78 (11:31:44 am est, CIR f233d02), although the CIR sequence number is later; an am or pm marker may be wrong.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0556",
+   "id": "F0540",
    "investigation_id": "PSI-39",
    "raw": "12:24:13 am est",
    "rows": [
@@ -10187,7 +9899,7 @@
    "column": null,
    "detail": "Byte-identical to line 24.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0557",
+   "id": "F0541",
    "investigation_id": "PSI-39",
    "raw": "1285,22-Jun-17,11:05:52 am est,f173e01,1 atm ,0.17,0.83,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10203,7 +9915,7 @@
    "column": null,
    "detail": "Byte-identical to line 25.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0558",
+   "id": "F0542",
    "investigation_id": "PSI-39",
    "raw": "1286,22-Jun-17,11:23:26 am est,f173e02,1 atm,0.17,0.83,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10219,7 +9931,7 @@
    "column": null,
    "detail": "Byte-identical to line 26.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0559",
+   "id": "F0543",
    "investigation_id": "PSI-39",
    "raw": "1287,22-Jun-17,11:42:32 am est,f173e03,1 atm,0.17,0.83,0,No,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10235,7 +9947,7 @@
    "column": null,
    "detail": "Byte-identical to line 27.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0560",
+   "id": "F0544",
    "investigation_id": "PSI-39",
    "raw": "1288,22-Jun-17,12:36:48 pm est,f173e05,1 atm,0.17,0.83,0,No,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10251,7 +9963,7 @@
    "column": null,
    "detail": "Byte-identical to line 28.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0561",
+   "id": "F0545",
    "investigation_id": "PSI-39",
    "raw": "1289,22-Jun-17,12:47:53 pm est,f173e06,1 atm ,0.17,0.83,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10267,7 +9979,7 @@
    "column": null,
    "detail": "Byte-identical to line 29.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0562",
+   "id": "F0546",
    "investigation_id": "PSI-39",
    "raw": "1295,28-Jun-17,09:24:35 am est,f179e01,1 atm,0.21,0.79,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10283,7 +9995,7 @@
    "column": null,
    "detail": "Byte-identical to line 30.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0563",
+   "id": "F0547",
    "investigation_id": "PSI-39",
    "raw": "1296,28-Jun-17,9:43:08 am est,f179e02,1 atm,0.21,0.79,0,Yes,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10299,7 +10011,7 @@
    "column": null,
    "detail": "Byte-identical to line 31.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0564",
+   "id": "F0548",
    "investigation_id": "PSI-39",
    "raw": "1297,28-Jun-17,11:51:50 am est,f179e05,1 atm,0.21,0.79,0,No,[.75]/[.25] C12H26/iso-dodecane ",
    "rows": [
@@ -10315,7 +10027,7 @@
    "column": "Test Date",
    "detail": "Test Date values run from 9-Mar-17 to 21-Aug-17, but the PSI page gives investigation dates 10-01-2020 to 10-20-2021.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0565",
+   "id": "F0549",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10329,7 +10041,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0566",
+   "id": "F0550",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10343,7 +10055,7 @@
    "column": "flow_cm_s",
    "detail": "CFI droplets burned in a quiescent chamber; no flow column.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0567",
+   "id": "F0551",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10357,7 +10069,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0568",
+   "id": "F0552",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10371,7 +10083,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/CFI/experiment_table/PSI-39_Experimental table_CFI.csv",
-   "id": "F0569",
+   "id": "F0553",
    "investigation_id": "PSI-39",
    "raw": null,
    "rows": [],
@@ -10385,7 +10097,7 @@
    "column": "Sample Material",
    "detail": "The table names the aerosol standard 'Arizona Road Dust (ARD Fine)'; DAFT-DAFT-2.md Approach calls it 'Arizona Red Dust (ARD)'.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0570",
+   "id": "F0554",
    "investigation_id": "PSI-47",
    "raw": "Arizona Road Dust (ARD Fine)",
    "rows": [
@@ -10405,7 +10117,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0571",
+   "id": "F0555",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10419,7 +10131,7 @@
    "column": "flow_cm_s",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0572",
+   "id": "F0556",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10433,7 +10145,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0573",
+   "id": "F0557",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10447,7 +10159,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0574",
+   "id": "F0558",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10461,7 +10173,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0575",
+   "id": "F0559",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10475,7 +10187,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0576",
+   "id": "F0560",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10489,7 +10201,7 @@
    "column": "o2_pct",
    "detail": "The DAFT table has no oxygen column; nothing was burned.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0577",
+   "id": "F0561",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10503,7 +10215,7 @@
    "column": "pressure_kpa",
    "detail": "The DAFT table has no pressure column.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0578",
+   "id": "F0562",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10517,7 +10229,7 @@
    "column": "pressure_psi",
    "detail": "The DAFT table has no pressure column.",
    "file": "data/raw/psi/DAFT-DAFT-2/experiment_table/PSI-47_Experimental table_DAFT.csv",
-   "id": "F0579",
+   "id": "F0563",
    "investigation_id": "PSI-47",
    "raw": null,
    "rows": [],
@@ -10531,7 +10243,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0580",
+   "id": "F0564",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -10545,7 +10257,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0581",
+   "id": "F0565",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -10559,7 +10271,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0582",
+   "id": "F0566",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -10573,7 +10285,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0583",
+   "id": "F0567",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -10587,7 +10299,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0584",
+   "id": "F0568",
    "investigation_id": "PSI-68",
    "raw": null,
    "rows": [],
@@ -10601,7 +10313,7 @@
    "column": "Ambient Pressure (atm)",
    "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0585",
+   "id": "F0569",
    "investigation_id": "PSI-68",
    "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
@@ -10618,404 +10330,404 @@
    "code": "non_numeric",
    "column": "Flow Velocity (cm/s)",
    "detail": "expected a number, found '0.1 - 5'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0570",
+   "investigation_id": "PSI-68",
+   "raw": "0.1 - 5",
+   "rows": [
+    2
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L2"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0571",
+   "investigation_id": "PSI-68",
+   "raw": "0.17; 0.21;0.25; 0.3",
+   "rows": [
+    2
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L2"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Ambient Pressure (atm)",
+   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0572",
+   "investigation_id": "PSI-68",
+   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
+   "rows": [
+    3
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L3"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Flow Velocity (cm/s)",
+   "detail": "expected a number, found '0.1 - 5'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0573",
+   "investigation_id": "PSI-68",
+   "raw": "0.1 - 5",
+   "rows": [
+    3
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L3"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0574",
+   "investigation_id": "PSI-68",
+   "raw": "0.17; 0.21;0.25; 0.3",
+   "rows": [
+    3
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L3"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Ambient Pressure (atm)",
+   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0575",
+   "investigation_id": "PSI-68",
+   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
+   "rows": [
+    4
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L4"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Flow Velocity (cm/s)",
+   "detail": "expected a number, found '0.1 - 5'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0576",
+   "investigation_id": "PSI-68",
+   "raw": "0.1 - 5",
+   "rows": [
+    4
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L4"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0577",
+   "investigation_id": "PSI-68",
+   "raw": "0.17; 0.21;0.25; 0.3",
+   "rows": [
+    4
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L4"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Ambient Pressure (atm)",
+   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0578",
+   "investigation_id": "PSI-68",
+   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
+   "rows": [
+    5
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L5"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Flow Velocity (cm/s)",
+   "detail": "expected a number, found '0.1 - 5'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0579",
+   "investigation_id": "PSI-68",
+   "raw": "0.1 - 5",
+   "rows": [
+    5
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L5"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0580",
+   "investigation_id": "PSI-68",
+   "raw": "0.17; 0.21;0.25; 0.3",
+   "rows": [
+    5
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L5"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Ambient Pressure (atm)",
+   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0581",
+   "investigation_id": "PSI-68",
+   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
+   "rows": [
+    6
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L6"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Flow Velocity (cm/s)",
+   "detail": "expected a number, found '0.1 - 5'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0582",
+   "investigation_id": "PSI-68",
+   "raw": "0.1 - 5",
+   "rows": [
+    6
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L6"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0583",
+   "investigation_id": "PSI-68",
+   "raw": "0.17; 0.21;0.25; 0.3",
+   "rows": [
+    6
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L6"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Ambient Pressure (atm)",
+   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0584",
+   "investigation_id": "PSI-68",
+   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
+   "rows": [
+    7
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L7"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Flow Velocity (cm/s)",
+   "detail": "expected a number, found '0.1 - 5'",
+   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
+   "id": "F0585",
+   "investigation_id": "PSI-68",
+   "raw": "0.1 - 5",
+   "rows": [
+    7
+   ],
+   "severity": "warning",
+   "test_ids": [
+    "PSI-68-main-L7"
+   ],
+   "title": "Text in a numeric field"
+  },
+  {
+   "action": "Raw kept; value set to null.",
+   "code": "non_numeric",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
    "id": "F0586",
    "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
+   "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
-    2
+    7
    ],
    "severity": "warning",
    "test_ids": [
-    "PSI-68-main-L2"
+    "PSI-68-main-L7"
    ],
    "title": "Text in a numeric field"
   },
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
+   "column": "Ambient Pressure (atm)",
+   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
    "id": "F0587",
    "investigation_id": "PSI-68",
-   "raw": "0.17; 0.21;0.25; 0.3",
+   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
-    2
+    8
    ],
    "severity": "warning",
    "test_ids": [
-    "PSI-68-main-L2"
+    "PSI-68-main-L8"
    ],
    "title": "Text in a numeric field"
   },
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Ambient Pressure (atm)",
-   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
+   "column": "Flow Velocity (cm/s)",
+   "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
    "id": "F0588",
    "investigation_id": "PSI-68",
-   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
+   "raw": "0.1 - 5",
    "rows": [
-    3
+    8
    ],
    "severity": "warning",
    "test_ids": [
-    "PSI-68-main-L3"
+    "PSI-68-main-L8"
    ],
    "title": "Text in a numeric field"
   },
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Flow Velocity (cm/s)",
-   "detail": "expected a number, found '0.1 - 5'",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
    "id": "F0589",
    "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
+   "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
-    3
+    8
    ],
    "severity": "warning",
    "test_ids": [
-    "PSI-68-main-L3"
+    "PSI-68-main-L8"
    ],
    "title": "Text in a numeric field"
   },
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
+   "column": "Ambient Pressure (atm)",
+   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
    "id": "F0590",
    "investigation_id": "PSI-68",
-   "raw": "0.17; 0.21;0.25; 0.3",
+   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
    "rows": [
-    3
+    9
    ],
    "severity": "warning",
    "test_ids": [
-    "PSI-68-main-L3"
+    "PSI-68-main-L9"
    ],
    "title": "Text in a numeric field"
   },
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Ambient Pressure (atm)",
-   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
+   "column": "Flow Velocity (cm/s)",
+   "detail": "expected a number, found '0.1 - 5'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
    "id": "F0591",
    "investigation_id": "PSI-68",
-   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
+   "raw": "0.1 - 5",
    "rows": [
-    4
+    9
    ],
    "severity": "warning",
    "test_ids": [
-    "PSI-68-main-L4"
+    "PSI-68-main-L9"
    ],
    "title": "Text in a numeric field"
   },
   {
    "action": "Raw kept; value set to null.",
    "code": "non_numeric",
-   "column": "Flow Velocity (cm/s)",
-   "detail": "expected a number, found '0.1 - 5'",
+   "column": "Oxygen Mole Fraction",
+   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
    "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
    "id": "F0592",
-   "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
-   "rows": [
-    4
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L4"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0593",
-   "investigation_id": "PSI-68",
-   "raw": "0.17; 0.21;0.25; 0.3",
-   "rows": [
-    4
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L4"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Ambient Pressure (atm)",
-   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0594",
-   "investigation_id": "PSI-68",
-   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
-   "rows": [
-    5
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L5"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Flow Velocity (cm/s)",
-   "detail": "expected a number, found '0.1 - 5'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0595",
-   "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
-   "rows": [
-    5
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L5"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0596",
-   "investigation_id": "PSI-68",
-   "raw": "0.17; 0.21;0.25; 0.3",
-   "rows": [
-    5
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L5"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Ambient Pressure (atm)",
-   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0597",
-   "investigation_id": "PSI-68",
-   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
-   "rows": [
-    6
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L6"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Flow Velocity (cm/s)",
-   "detail": "expected a number, found '0.1 - 5'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0598",
-   "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
-   "rows": [
-    6
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L6"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0599",
-   "investigation_id": "PSI-68",
-   "raw": "0.17; 0.21;0.25; 0.3",
-   "rows": [
-    6
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L6"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Ambient Pressure (atm)",
-   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0600",
-   "investigation_id": "PSI-68",
-   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
-   "rows": [
-    7
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L7"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Flow Velocity (cm/s)",
-   "detail": "expected a number, found '0.1 - 5'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0601",
-   "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
-   "rows": [
-    7
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L7"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0602",
-   "investigation_id": "PSI-68",
-   "raw": "0.17; 0.21;0.25; 0.3",
-   "rows": [
-    7
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L7"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Ambient Pressure (atm)",
-   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0603",
-   "investigation_id": "PSI-68",
-   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
-   "rows": [
-    8
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L8"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Flow Velocity (cm/s)",
-   "detail": "expected a number, found '0.1 - 5'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0604",
-   "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
-   "rows": [
-    8
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L8"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0605",
-   "investigation_id": "PSI-68",
-   "raw": "0.17; 0.21;0.25; 0.3",
-   "rows": [
-    8
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L8"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Ambient Pressure (atm)",
-   "detail": "expected a number, found '0.5; 1.0; 1.5; 2.0; or 3.0 '",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0606",
-   "investigation_id": "PSI-68",
-   "raw": "0.5; 1.0; 1.5; 2.0; or 3.0 ",
-   "rows": [
-    9
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L9"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Flow Velocity (cm/s)",
-   "detail": "expected a number, found '0.1 - 5'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0607",
-   "investigation_id": "PSI-68",
-   "raw": "0.1 - 5",
-   "rows": [
-    9
-   ],
-   "severity": "warning",
-   "test_ids": [
-    "PSI-68-main-L9"
-   ],
-   "title": "Text in a numeric field"
-  },
-  {
-   "action": "Raw kept; value set to null.",
-   "code": "non_numeric",
-   "column": "Oxygen Mole Fraction",
-   "detail": "expected a number, found '0.17; 0.21;0.25; 0.3'",
-   "file": "data/raw/psi/FLEX-2/experiment_table/PSI-68_Experimental table_Flex2.csv",
-   "id": "F0608",
    "investigation_id": "PSI-68",
    "raw": "0.17; 0.21;0.25; 0.3",
    "rows": [
@@ -11033,7 +10745,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0609",
+   "id": "F0593",
    "investigation_id": "PSI-69",
    "raw": "0.2,0.79,0,0",
    "rows": [
@@ -11051,7 +10763,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0610",
+   "id": "F0594",
    "investigation_id": "PSI-69",
    "raw": "0.2,0.79,0,0",
    "rows": [
@@ -11069,7 +10781,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0611",
+   "id": "F0595",
    "investigation_id": "PSI-69",
    "raw": "0.18,0.81,0,0",
    "rows": [
@@ -11087,7 +10799,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0612",
+   "id": "F0596",
    "investigation_id": "PSI-69",
    "raw": "0.18,0.81,0,0",
    "rows": [
@@ -11105,7 +10817,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0613",
+   "id": "F0597",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -11123,7 +10835,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0614",
+   "id": "F0598",
    "investigation_id": "PSI-69",
    "raw": "0.14,0.84,0,0",
    "rows": [
@@ -11141,7 +10853,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0615",
+   "id": "F0599",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -11159,7 +10871,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0616",
+   "id": "F0600",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -11177,7 +10889,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0617",
+   "id": "F0601",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -11195,7 +10907,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0618",
+   "id": "F0602",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -11213,7 +10925,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0619",
+   "id": "F0603",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.84,0,0",
    "rows": [
@@ -11231,7 +10943,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0620",
+   "id": "F0604",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -11249,7 +10961,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0621",
+   "id": "F0605",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -11267,7 +10979,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0622",
+   "id": "F0606",
    "investigation_id": "PSI-69",
    "raw": "0.14,0.85,0,0",
    "rows": [
@@ -11285,7 +10997,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0623",
+   "id": "F0607",
    "investigation_id": "PSI-69",
    "raw": "0.14,0.85,0,0",
    "rows": [
@@ -11303,7 +11015,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0624",
+   "id": "F0608",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -11321,7 +11033,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0625",
+   "id": "F0609",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -11339,7 +11051,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.980.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0626",
+   "id": "F0610",
    "investigation_id": "PSI-69",
    "raw": "0.13,0.85,0,0",
    "rows": [
@@ -11357,7 +11069,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0627",
+   "id": "F0611",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -11375,7 +11087,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0628",
+   "id": "F0612",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -11393,7 +11105,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0629",
+   "id": "F0613",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -11411,7 +11123,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0630",
+   "id": "F0614",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -11429,7 +11141,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0631",
+   "id": "F0615",
    "investigation_id": "PSI-69",
    "raw": "0.12,0.87,0,0",
    "rows": [
@@ -11447,7 +11159,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0632",
+   "id": "F0616",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -11465,7 +11177,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0633",
+   "id": "F0617",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -11483,7 +11195,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0634",
+   "id": "F0618",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -11501,7 +11213,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0635",
+   "id": "F0619",
    "investigation_id": "PSI-69",
    "raw": "0.23,0.56,0.2,0",
    "rows": [
@@ -11519,7 +11231,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 0.990.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0636",
+   "id": "F0620",
    "investigation_id": "PSI-69",
    "raw": "0.2,0.44,0.35,0",
    "rows": [
@@ -11537,7 +11249,7 @@
    "column": null,
    "detail": "O2 + N2 + CO2 + He mole fractions sum to 1.010.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0637",
+   "id": "F0621",
    "investigation_id": "PSI-69",
    "raw": "0.15,0.54,0.32,0",
    "rows": [
@@ -11555,7 +11267,7 @@
    "column": null,
    "detail": "File is not valid UTF-8; decoded as Windows-1252.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0638",
+   "id": "F0622",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -11569,7 +11281,7 @@
    "column": "flow_cm_s",
    "detail": "FLEX burned droplets in a quiescent chamber; no flow column.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0639",
+   "id": "F0623",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -11583,7 +11295,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0640",
+   "id": "F0624",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -11597,7 +11309,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0641",
+   "id": "F0625",
    "investigation_id": "PSI-69",
    "raw": null,
    "rows": [],
@@ -11611,7 +11323,7 @@
    "column": "FLEX Identifier",
    "detail": "FLEX Identifier 193F001 also appears on line 71 with different values.",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0642",
+   "id": "F0626",
    "investigation_id": "PSI-69",
    "raw": "193F001",
    "rows": [
@@ -11631,7 +11343,7 @@
    "column": "Ambient pressure; mmHg",
    "detail": "pressure_kpa = 0 kPa is outside the physical range (0.0, 600.0).",
    "file": "data/raw/psi/FLEX/experiment_table/PSI-69_Experimental table_FLEX.csv",
-   "id": "F0643",
+   "id": "F0627",
    "investigation_id": "PSI-69",
    "raw": "0",
    "rows": [
@@ -11649,7 +11361,7 @@
    "column": "Proposal title",
    "detail": "SAFFIRE-I's proposal title 'Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection' (line 11) is about smoke, the subject of SAME (PSI-102): SAME's publications.csv lines 7, 8 have titles beginning 'Smoke: Characterization of Smoke Particulate for Spacecraft Fire Detection'. SAFFIRE-I's own Objectives (lines 24 to 26) concern fire growth and flammability limits and do not mention smoke. SAME's proposal title is blank, so a copy cannot be proven from these files.",
    "file": "data/raw/psi/SAFFIRE-I/SAFFIRE-I.md",
-   "id": "F0644",
+   "id": "F0628",
    "investigation_id": "PSI-98",
    "raw": "Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection",
    "rows": [
@@ -11665,7 +11377,7 @@
    "column": "Flight platform",
    "detail": "SAFFIRE-I flight platform is 'International Space Station (ISS)' (line 12), but the Hardware row reads 'Saffire 1 enclosure in Cygnus' (line 15) and the Approach (line 30) says the experiment was performed on the Cygnus resupply vehicle after it deberthed from the ISS. SAFFIRE-II gives 'Cygnus Spacecraft' (data/raw/psi/SAFFIRE-II/SAFFIRE-II.md line 12).",
    "file": "data/raw/psi/SAFFIRE-I/SAFFIRE-I.md",
-   "id": "F0645",
+   "id": "F0629",
    "investigation_id": "PSI-98",
    "raw": "International Space Station (ISS)",
    "rows": [
@@ -11683,7 +11395,7 @@
    "column": "Investigation dates",
    "detail": "SAFFIRE-I investigation dates '03-02-2001 to 02-28-2008' (line 16) are identical to those of SAME (PSI-102), data/raw/psi/SAME/SAME.md line 16; the PSI search records give the same dates for both. SAFFIRE-I's Approach (line 30) places the experiment on the Cygnus vehicle, so the dates appear copied from SAME.",
    "file": "data/raw/psi/SAFFIRE-I/SAFFIRE-I.md",
-   "id": "F0646",
+   "id": "F0630",
    "investigation_id": "PSI-98",
    "raw": "03-02-2001 to 02-28-2008",
    "rows": [
@@ -11699,7 +11411,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0647",
+   "id": "F0631",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -11713,7 +11425,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0648",
+   "id": "F0632",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -11727,7 +11439,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0649",
+   "id": "F0633",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -11741,7 +11453,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0650",
+   "id": "F0634",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -11755,7 +11467,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0651",
+   "id": "F0635",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -11769,7 +11481,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0652",
+   "id": "F0636",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -11783,7 +11495,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0653",
+   "id": "F0637",
    "investigation_id": "PSI-98",
    "raw": null,
    "rows": [],
@@ -11797,7 +11509,7 @@
    "column": "Percent O2",
    "detail": "expected a percentage, found '21.5 - 21.7'",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0654",
+   "id": "F0638",
    "investigation_id": "PSI-98",
    "raw": "21.5 - 21.7",
    "rows": [
@@ -11815,7 +11527,7 @@
    "column": "Percent O2",
    "detail": "expected a percentage, found '~ 21.5'",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0655",
+   "id": "F0639",
    "investigation_id": "PSI-98",
    "raw": "~ 21.5",
    "rows": [
@@ -11833,7 +11545,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0656",
+   "id": "F0640",
    "investigation_id": "PSI-98",
    "raw": "F1C1/F1C2,Pre-test flow visulation data for sample 1,,,,,,,,,,,",
    "rows": [
@@ -11849,7 +11561,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0657",
+   "id": "F0641",
    "investigation_id": "PSI-98",
    "raw": "F2C1/F2C2,Pre-test flow visulation data for sample 2,,,,,,,,,,,",
    "rows": [
@@ -11865,7 +11577,7 @@
    "column": "Sample Length (cm)",
    "detail": "Sample Length 40.6 cm is shorter than Sample Width 94 cm. SAFFIRE-I.md Approach (quoted): 'The sample was approximately 0.94 meters long and 0.4 meters wide'; the SAFFIRE-III table (lines 2 and 3) gives Length 94 cm and Width 40.6 cm.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0658",
+   "id": "F0642",
    "investigation_id": "PSI-98",
    "raw": "40.6,94",
    "rows": [
@@ -11883,7 +11595,7 @@
    "column": "Sample Length (cm)",
    "detail": "Sample Length 40.6 cm is shorter than Sample Width 94 cm. SAFFIRE-I.md Approach (quoted): 'The sample was approximately 0.94 meters long and 0.4 meters wide'; the SAFFIRE-III table (lines 2 and 3) gives Length 94 cm and Width 40.6 cm.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0659",
+   "id": "F0643",
    "investigation_id": "PSI-98",
    "raw": "40.6,94",
    "rows": [
@@ -11901,7 +11613,7 @@
    "column": "Sample Thickness (cm)",
    "detail": "SIBAL thickness 0.37 cm here and '.33 cm' in SAFFIRE-III (lines 2 and 3), but SAFFIRE-II gives '037 mm' for SIBAL (line 6); the tables do not settle which unit is right.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0660",
+   "id": "F0644",
    "investigation_id": "PSI-98",
    "raw": "0.37",
    "rows": [
@@ -11919,7 +11631,7 @@
    "column": "Sample Thickness (cm)",
    "detail": "SIBAL thickness 0.37 cm here and '.33 cm' in SAFFIRE-III (lines 2 and 3), but SAFFIRE-II gives '037 mm' for SIBAL (line 6); the tables do not settle which unit is right.",
    "file": "data/raw/psi/SAFFIRE-I/experiment_table/PSI-98_Experimental table_SAFFIRE-1.csv",
-   "id": "F0661",
+   "id": "F0645",
    "investigation_id": "PSI-98",
    "raw": "0.37",
    "rows": [
@@ -11937,7 +11649,7 @@
    "column": "?-g Burn Length",
    "detail": "The micro sign was lost from this header and is a literal '?'; it means micro-g (low gravity).",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0662",
+   "id": "F0646",
    "investigation_id": "PSI-99",
    "raw": "?-g Burn Length",
    "rows": [],
@@ -11951,7 +11663,7 @@
    "column": "?-g Spread Length",
    "detail": "The micro sign was lost from this header and is a literal '?'; it means micro-g (low gravity).",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0663",
+   "id": "F0647",
    "investigation_id": "PSI-99",
    "raw": "?-g Spread Length",
    "rows": [],
@@ -11965,7 +11677,7 @@
    "column": "Samle Thickness",
    "detail": "Header reads 'Samle Thickness', a typo for 'Sample Thickness'.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0664",
+   "id": "F0648",
    "investigation_id": "PSI-99",
    "raw": "Samle Thickness ",
    "rows": [],
@@ -11979,7 +11691,7 @@
    "column": "Camera 1",
    "detail": "Camera 1 file name is blank; other rows give a name or 'n/a'.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0665",
+   "id": "F0649",
    "investigation_id": "PSI-99",
    "raw": "",
    "rows": [
@@ -11997,7 +11709,7 @@
    "column": "Camera 2",
    "detail": "Camera 2 file name 'S4C1' does not follow the pattern of the other rows (expected form 'S4C2').",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0666",
+   "id": "F0650",
    "investigation_id": "PSI-99",
    "raw": "S4C1",
    "rows": [
@@ -12015,7 +11727,7 @@
    "column": "Camera 2",
    "detail": "Camera 2 file name 'S56C2' does not follow the pattern of the other rows (expected form 'S6C2').",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0667",
+   "id": "F0651",
    "investigation_id": "PSI-99",
    "raw": "S56C2",
    "rows": [
@@ -12033,7 +11745,7 @@
    "column": "co2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0668",
+   "id": "F0652",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -12047,7 +11759,7 @@
    "column": "fuel_conc_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0669",
+   "id": "F0653",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -12061,7 +11773,7 @@
    "column": "he_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0670",
+   "id": "F0654",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -12075,7 +11787,7 @@
    "column": "n2_pct",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0671",
+   "id": "F0655",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -12089,7 +11801,7 @@
    "column": "n_flames",
    "detail": "The table has no column for this condition.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0672",
+   "id": "F0656",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -12103,7 +11815,7 @@
    "column": "pressure_kpa",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0673",
+   "id": "F0657",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -12117,7 +11829,7 @@
    "column": "pressure_psi",
    "detail": "The table has no pressure column; the PSI table does not record chamber pressure for these burns.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0674",
+   "id": "F0658",
    "investigation_id": "PSI-99",
    "raw": null,
    "rows": [],
@@ -12131,7 +11843,7 @@
    "column": "Material",
    "detail": "Material cell is blank on this test row",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0675",
+   "id": "F0659",
    "investigation_id": "PSI-99",
    "raw": "",
    "rows": [
@@ -12149,7 +11861,7 @@
    "column": "Material",
    "detail": "Material cell is blank on this test row",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0676",
+   "id": "F0660",
    "investigation_id": "PSI-99",
    "raw": "",
    "rows": [
@@ -12167,7 +11879,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 21.5'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0677",
+   "id": "F0661",
    "investigation_id": "PSI-99",
    "raw": "~ 21.5",
    "rows": [
@@ -12185,7 +11897,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0678",
+   "id": "F0662",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -12203,7 +11915,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0679",
+   "id": "F0663",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -12221,7 +11933,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0680",
+   "id": "F0664",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -12239,7 +11951,7 @@
    "column": "Samle Thickness",
    "detail": "Thickness '037 mm' has a leading zero and no decimal point, so the intended thickness cannot be read from the cell.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0681",
+   "id": "F0665",
    "investigation_id": "PSI-99",
    "raw": "037 mm",
    "rows": [
@@ -12257,7 +11969,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0682",
+   "id": "F0666",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -12275,7 +11987,7 @@
    "column": "Samle Thickness",
    "detail": "Thickness '037 mm' has a leading zero and no decimal point, so the intended thickness cannot be read from the cell.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0683",
+   "id": "F0667",
    "investigation_id": "PSI-99",
    "raw": "037 mm",
    "rows": [
@@ -12293,7 +12005,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0684",
+   "id": "F0668",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -12311,7 +12023,7 @@
    "column": "Samle Thickness",
    "detail": "Thickness '037 mm' has a leading zero and no decimal point, so the intended thickness cannot be read from the cell.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0685",
+   "id": "F0669",
    "investigation_id": "PSI-99",
    "raw": "037 mm",
    "rows": [
@@ -12329,7 +12041,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '~ 22.1'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0686",
+   "id": "F0670",
    "investigation_id": "PSI-99",
    "raw": "~ 22.1",
    "rows": [
@@ -12347,7 +12059,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '22.1 to 22.0'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0687",
+   "id": "F0671",
    "investigation_id": "PSI-99",
    "raw": "22.1 to 22.0",
    "rows": [
@@ -12365,7 +12077,7 @@
    "column": "Percent O2 (Note 1)",
    "detail": "expected a percentage, found '22.0 to 21.9'",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0688",
+   "id": "F0672",
    "investigation_id": "PSI-99",
    "raw": "22.0 to 21.9",
    "rows": [
@@ -12383,7 +12095,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0689",
+   "id": "F0673",
    "investigation_id": "PSI-99",
    "raw": "F1C1/F1C2,Pre-test flow visulation data for sample 2-1,,,,,,,,,,,,,,,",
    "rows": [
@@ -12399,7 +12111,7 @@
    "column": null,
    "detail": "Pre-test flow-visualisation entry (camera files only, no burn data); recorded before the burn of the sample it names.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0690",
+   "id": "F0674",
    "investigation_id": "PSI-99",
    "raw": "F2C1/F2C2,Pre-test flow visulation data for sample 2-2,,,,,,,,,,,,,,,",
    "rows": [
@@ -12415,7 +12127,7 @@
    "column": null,
    "detail": "Table footnote (Note 1), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0691",
+   "id": "F0675",
    "investigation_id": "PSI-99",
    "raw": "Note 1 Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS.,,,,,,,,,,,,,,,,",
    "rows": [
@@ -12431,7 +12143,7 @@
    "column": null,
    "detail": "Table footnote (Note 2), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0692",
+   "id": "F0676",
    "investigation_id": "PSI-99",
    "raw": "Note 2 The PMMA portion was completely consumed but the Nomex was not ignited.,,,,,,,,,,,,,,,,",
    "rows": [
@@ -12447,7 +12159,7 @@
    "column": null,
    "detail": "Table footnote (Note 3), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0693",
+   "id": "F0677",
    "investigation_id": "PSI-99",
    "raw": "Note 3 This is the length of fuel with significant visible damage.,,,,,,,,,,,,,,,,",
    "rows": [
@@ -12463,7 +12175,7 @@
    "column": null,
    "detail": "Table footnote (Note 4), not a test.",
    "file": "data/raw/psi/SAFFIRE-II/experiment_table/PSI-99_Experimental table_SAFFIRE-2.csv",
-   "id": "F0694",
+   "id": "F0678",
    "investigation_id": "PSI-99",
    "raw": "Note 4 The flames remain anchored at the base of the sample which has a very slow regression rate (0.01 to 0.04 mm/s),,,,,,,,,,,,,,,,",
    "rows": [
@@ -12728,7 +12440,7 @@
  "p": "summary",
  "provenance_coverage": {
   "examples": [],
-  "numbers_checked": 11576,
+  "numbers_checked": 11698,
   "percent": 100.0,
   "without_provenance": 0
  },
@@ -14367,7 +14079,7 @@
   "flags": {
    "p": "summary",
    "u": "flags",
-   "v": 694
+   "v": 678
   },
   "flags_by_severity": {
    "error": {
@@ -14383,7 +14095,7 @@
    "warning": {
     "p": "summary",
     "u": "flags",
-    "v": 263
+    "v": 247
    }
   },
   "investigations_total": {

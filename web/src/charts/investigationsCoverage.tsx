@@ -86,7 +86,7 @@ function CoverageMatrix({ items, openId, onOpen }: Props) {
   const narrow = width < 520;
   const labelW = narrow ? 96 : 150;
   const groupGap = 10;
-  const avail = width - labelW - 8 - groupGap;
+  const avail = width - labelW - 8 - groupGap - 40;
   const cellW = Math.max(24, Math.min(58, Math.floor(avail / COVERAGE_KEYS.length)));
   const rowH = narrow ? 20 : 19;
   const rotate = cellW < 52;
@@ -99,7 +99,7 @@ function CoverageMatrix({ items, openId, onOpen }: Props) {
   const condEnd = colX(CONDITION_KEYS[CONDITION_KEYS.length - 1]) + cellW;
   const descStart = colX(DESCRIPTOR_KEYS[0]);
   const descEnd = colX(DESCRIPTOR_KEYS[DESCRIPTOR_KEYS.length - 1]) + cellW;
-  const svgW = Math.min(width, descEnd + 8);
+  const svgW = Math.min(width, descEnd + (rotate ? 44 : 8));
 
   return (
     <div ref={wrap} className="w-full">

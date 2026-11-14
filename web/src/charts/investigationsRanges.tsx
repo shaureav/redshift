@@ -34,8 +34,16 @@ interface CellProps {
   unitLabel: string;
 }
 
-export function RangeCell({ range, kpa, domain, cls, hasTable, label, unitLabel }: CellProps) {
-  const [ref, width] = useElementWidth<HTMLDivElement>(200);
+export function RangeCell(props: CellProps) {
+  const [ref, width] = useElementWidth<HTMLDivElement>(200, 120);
+  return (
+    <div ref={ref} className="w-full">
+      <RangeCellBody {...props} width={width} />
+    </div>
+  );
+}
+
+function RangeCellBody({ range, kpa, domain, cls, hasTable, label, unitLabel, width }: CellProps & { width: number }) {
   if (!hasTable || !range) {
     return (
       <div className="rounded border border-dashed border-line px-2 py-2 text-xs italic text-ink-3">No experiment table</div>
@@ -49,7 +57,7 @@ export function RangeCell({ range, kpa, domain, cls, hasTable, label, unitLabel 
     );
   }
   const h = 34;
-  const pad = 6;
+  const pad = 12;
   const x = d3.scaleLinear().domain(domain).range([pad, width - pad]);
   const x0 = x(range.min.v);
   const x1 = x(range.max.v);
@@ -57,7 +65,7 @@ export function RangeCell({ range, kpa, domain, cls, hasTable, label, unitLabel 
   const ticks = x.ticks(width < 200 ? 2 : 4);
   const fmt = x.tickFormat(width < 200 ? 2 : 4);
   return (
-    <div ref={ref} className="w-full">
+    <div>
       <svg width={width} height={h} role="img" aria-label={`${label} range in ${unitLabel}, drawn on a scale shared by all columns; the recorded minimum and maximum are written below`}>
         <line x1={pad} x2={width - pad} y1={11} y2={11} stroke="var(--line)" strokeWidth={1} />
         {ticks.map((t) => (

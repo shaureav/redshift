@@ -39,6 +39,8 @@ class Evidence:
     # measured to the closest point of the range; o2_pct and pressure_kpa then hold the range midpoint for
     # plotting only.
     o2_range: tuple[float, float] | None = None
+    # A session that lists several O2 levels (ACME BRE). Used only for 'O2 matches, pressure unknown'.
+    o2_list: tuple[float, ...] | None = None
     pressure_range_kpa: tuple[float, float] | None = None
 
 
@@ -87,6 +89,8 @@ def classify(
 ) -> tuple[State, float | None]:
     if ev.o2_pct is not None and ev.o2_basis is not None and ev.o2_basis not in counted_bases:
         return "basis_differs", None
+    if ev.o2_pct is None and ev.o2_list and ev.pressure_kpa is None:
+        return "unknown_pressure", None
     if ev.o2_pct is None and ev.pressure_kpa is None:
         return "unknown_both", None
     if ev.pressure_kpa is None:
@@ -100,6 +104,8 @@ def classify(
 
 def o2_only_match(ev: Evidence, o2_pct: float, steps: Steps) -> bool:
     """True when the test's O2 alone is within the threshold (used for 'O2 matches, pressure unknown')."""
+    if ev.o2_pct is None and ev.o2_list:
+        return any(abs(v - o2_pct) / steps.o2 <= steps.threshold for v in ev.o2_list)
     if ev.o2_pct is None:
         return False
     o2 = min(max(o2_pct, ev.o2_range[0]), ev.o2_range[1]) if ev.o2_range else ev.o2_pct

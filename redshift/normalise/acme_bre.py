@@ -8,10 +8,11 @@ Column mapping (written out by hand so it can be audited):
   table has no test number and each row is identified by its date.
 - "Fuel Bottle" -> fuel, verbatim (for example "100% C2H4"). The fuel percentage inside this label is not
   read as a number, so fuel_conc_pct is null.
-- "Oxygen Conc (percent)" -> o2_pct, read as a single percentage (an optional trailing '%' is removed).
-  Most cells list several concentrations used during the session, separated by semicolons (for example
-  "21; 26.5; 40"). A list is not one value and is not split, so these cells are flagged non_numeric and
-  o2_pct is null; the raw cell is kept. Two cells read "3400%" (line 6) and "2100%" (line 9). Read as
+- "Oxygen Conc (percent)" -> most cells list several concentrations used during the session, separated by
+  semicolons (for example "21; 26.5; 40"). These are read with the allowed transform split_number_list into
+  o2_list_pct, in the order written; o2_pct stays null because no single value applies to the row. A cell
+  with one value is read into o2_pct (an optional trailing '%' is removed).
+  Two cells read "3400%" (line 6) and "2100%" (line 9). Read as
   written they are 3400 and 2100 percent, which is outside the physical range, so they are flagged
   out_of_range and o2_pct is null. They are not reinterpreted as 34 or 21.
 - o2_basis is "ambient" on every row with an oxygen cell: the table Notes (line 2) give the oxygen
@@ -46,6 +47,10 @@ C_DATE = "Date"
 C_BURNER = "Burner Size (mm)"
 C_FUEL = "Fuel Bottle"
 C_O2 = "Oxygen Conc (percent)"
+O2_LIST_NOTE = (
+    "The cell lists several oxygen concentrations used during the session (see o2_list_pct); no single value "
+    "applies to the row."
+)
 C_FLAMES = "Flames Ignited"
 C_NOTES = "Notes"
 
@@ -78,7 +83,12 @@ def adapt(ctx: Ctx) -> None:
         if d is not None:
             prev = (d, row.line)
 
-        o2 = ctx.num(row, C_O2, "o2_pct", S.single_percent("Oxygen Conc (percent)"))
+        if ";" in ctx.raw(row, C_O2):
+            o2_list = ctx.num_list(row, C_O2, "o2_list_pct")
+            o2 = ctx.missing("o2_pct", O2_LIST_NOTE, flag=False)
+        else:
+            o2_list = None
+            o2 = ctx.num(row, C_O2, "o2_pct", S.single_percent("Oxygen Conc (percent)"))
         date = S.date_text(ctx, row, C_YEAR, C_MONTH, C_DATE)
         label = ctx.derived_text(
             row,
@@ -92,6 +102,7 @@ def adapt(ctx: Ctx) -> None:
             "test_date": date,
             "fuel": ctx.text(row, C_FUEL),
             "o2_pct": o2,
+            **({"o2_list_pct": o2_list} if o2_list is not None else {}),
             "pressure_kpa": ctx.missing("pressure_kpa", PRESSURE_NOTE),
             "pressure_psi": ctx.missing("pressure_psi", PRESSURE_NOTE),
             "n_flames": ctx.num(row, C_FLAMES, "n_flames"),

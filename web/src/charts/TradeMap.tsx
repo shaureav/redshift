@@ -22,6 +22,7 @@ export interface MapPoint {
 export interface Strip {
   fuel_class: string;
   source_type: string;
+  unit?: string;
   items: { o2_pct: number; n: number; investigations: string[]; test_ids: string[]; p: string }[];
 }
 export interface TradeMapData {
@@ -367,7 +368,11 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                       stroke="var(--surface-2)"
                       onMouseEnter={(e) => show(e, (
                         <div>
-                          <div className="font-semibold">{it.n} {FUEL_LABEL[s.fuel_class].toLowerCase()} {it.n === 1 ? "test" : "tests"} at {fmtNumber(it.o2_pct, 1)}% O2</div>
+                          <div className="font-semibold">
+                            {s.unit === "sessions"
+                              ? `${it.n} BRE ${it.n === 1 ? "session lists" : "sessions list"} ${fmtNumber(it.o2_pct, 1)}% O2`
+                              : `${it.n} ${FUEL_LABEL[s.fuel_class].toLowerCase()} ${it.n === 1 ? "test" : "tests"} at ${fmtNumber(it.o2_pct, 1)}% O2`}
+                          </div>
                           <div>Pressure not recorded in the PSI table</div>
                           <div className="text-ink-3">{it.investigations.join(", ")}</div>
                         </div>

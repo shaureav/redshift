@@ -35,6 +35,10 @@ NUMERIC_FIELDS: dict[str, tuple[str, tuple[float, float] | None]] = {
     "fuel_conc_pct": ("%", (0.0, 100.0)),
     "n_flames": ("count", (0.0, 10000.0)),
 }
+# List fields: a cell that records several values (ACME BRE lists the O2 levels used in a session).
+LIST_FIELDS: dict[str, tuple[str, tuple[float, float]]] = {
+    "o2_list_pct": ("%", (0.0, 100.0)),
+}
 TEXT_FIELDS: tuple[str, ...] = (
     "test_label",
     "test_date",
@@ -235,7 +239,9 @@ class Ctx:
             prov = prov.model_copy(update={"id": pid})
         return self.registry.add(prov)
 
-    def missing(self, field_name: str, reason: str = "The table has no column for this condition.") -> dict[str, Any]:
+    def missing(
+        self, field_name: str, reason: str = "The table has no column for this condition.", *, flag: bool = True
+    ) -> dict[str, Any]:
         """A field the table does not record. Null, with provenance saying why."""
         pid = f"missing:{self.inv}:{self.table.table_key}:{field_name}"
         if pid not in self.registry:
@@ -249,7 +255,8 @@ class Ctx:
                     doi=self.doi,
                 )
             )
-            self.flag("missing_column", None, field_name, None, reason, "Value is null ('not recorded').", rows=[])
+            if flag:
+                self.flag("missing_column", None, field_name, None, reason, "Value is null ('not recorded').", rows=[])
         unit = NUMERIC_FIELDS[field_name][0] if field_name in NUMERIC_FIELDS else None
         return value(None, unit, pid)
 
@@ -292,6 +299,29 @@ class Ctx:
             )
             return value(None, unit, pid)
         return value(v, unit, pid)
+
+    def num_list(self, row: RawRow, col: str, field_name: str) -> dict[str, Any]:
+        """Read a cell listing several numbers (split_number_list). Any out-of-range element nulls the cell."""
+        raw = self.raw(row, col)
+        unit, (lo, hi) = LIST_FIELDS[field_name]
+        try:
+            vals, applied = T.number_list(raw)
+        except T.NotClean as exc:
+            pid = self._prov(row, col, raw, [])
+            self.flag(exc.code, row, col, raw, exc.detail, "Raw kept; value set to null.")
+            return value(None, unit, pid)
+        pid = self._prov(row, col, raw, applied)
+        if vals is not None and not all(lo <= v <= hi for v in vals):
+            self.flag(
+                "out_of_range",
+                row,
+                col,
+                raw,
+                f"{field_name} has a value outside {lo} to {hi} {unit}.",
+                "Raw kept; value set to null.",
+            )
+            return {"v": None, "u": unit, "p": pid}
+        return {"v": vals, "u": unit, "p": pid}
 
     def pressure(self, row: RawRow, col: str, unit: str) -> tuple[dict[str, Any], dict[str, Any]]:
         """Read a pressure in ``unit``; return (pressure_kpa, pressure_psi) value dicts."""
@@ -354,10 +384,10 @@ class Ctx:
         test_kind: str | None = None,
     ) -> TestRecord:
         for k in fields:
-            if k not in NUMERIC_FIELDS and k not in TEXT_FIELDS:
+            if k not in NUMERIC_FIELDS and k not in TEXT_FIELDS and k not in LIST_FIELDS:
                 raise KeyError(f"unknown canonical field {k}")
         full: dict[str, dict[str, Any]] = {}
-        for k in (*NUMERIC_FIELDS, *TEXT_FIELDS):
+        for k in (*NUMERIC_FIELDS, *TEXT_FIELDS, *LIST_FIELDS):
             if k in fields:
                 full[k] = fields[k]
             elif k == "pressure_psi" and "pressure_kpa" not in fields:

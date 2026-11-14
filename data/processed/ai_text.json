@@ -1,0 +1,1084 @@
+{
+ "p": "summary",
+ "qa": [
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "qa-8.2",
+   "not_covered": "Not covered: PSI tables hold no solid-material burn at this pressure, no flame spread rates as rows, and no partial-gravity data.",
+   "paragraphs": [
+    {
+     "cites": [
+      "PSI-69",
+      "PSI-159"
+     ],
+     "segments": [
+      {
+       "t": "In the PSI experiment tables, "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:total",
+        "u": "tests",
+        "v": 37
+       }
+      },
+      {
+       "t": " tests sit within the nearness region of "
+      },
+      {
+       "val": {
+        "p": "cand:c8_2_34:psi",
+        "u": "psi",
+        "v": 8.2
+       }
+      },
+      {
+       "t": " ("
+      },
+      {
+       "val": {
+        "p": "cand:c8_2_34:kpa",
+        "u": "kPa",
+        "v": 56.53700980398055
+       }
+      },
+      {
+       "t": ") and "
+      },
+      {
+       "val": {
+        "p": "cand:c8_2_34:o2",
+        "u": "%",
+        "v": 34.0
+       }
+      },
+      {
+       "t": " oxygen: "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:droplet:psi_table",
+        "u": "tests",
+        "v": 17
+       }
+      },
+      {
+       "t": " FLEX droplet tests and "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:gas:psi_table",
+        "u": "tests",
+        "v": 20
+       }
+      },
+      {
+       "t": " ACME CFI-G gas flames. There are "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:solid:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests."
+      }
+     ]
+    },
+    {
+     "cites": [
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "ACME BRE, which emulates burning solids, lists this oxygen level in "
+      },
+      {
+       "val": {
+        "p": "o2match:c8_2_34:emulator",
+        "u": "tests",
+        "v": 16
+       }
+      },
+      {
+       "t": " sessions, but its summary table does not record chamber pressure."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "pending": true,
+     "segments": [
+      {
+       "t": "A published Saffire VI paper describes solid burns close to this atmosphere; its figures appear here once a team member has verified them against the source."
+      }
+     ]
+    }
+   ],
+   "question": "What fire tests exist near 8.2 psi and 34% oxygen?",
+   "target": null
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "qa-solid",
+   "not_covered": "Not covered: whether these papers' samples behave like habitat materials, and any burn in partial gravity.",
+   "paragraphs": [
+    {
+     "cites": [
+      "PSI-25",
+      "PSI-26",
+      "PSI-98",
+      "PSI-99",
+      "PSI-100"
+     ],
+     "segments": [
+      {
+       "t": "Not in the PSI experiment tables. They hold "
+      },
+      {
+       "val": {
+        "p": "gap:psi:0",
+        "u": "tests",
+        "v": 263
+       }
+      },
+      {
+       "t": " solid-fuel burn rows; "
+      },
+      {
+       "val": {
+        "p": "gap:psi:1",
+        "u": "tests",
+        "v": 129
+       }
+      },
+      {
+       "t": " record oxygen, "
+      },
+      {
+       "val": {
+        "p": "gap:psi:2",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " record pressure, and "
+      },
+      {
+       "val": {
+        "p": "gap:psi:3",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " sit near a habitat candidate."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "pending": true,
+     "segments": [
+      {
+       "t": "Published Saffire V and VI papers describe such burns; their figures appear here once a team member has verified them against the source."
+      }
+     ]
+    }
+   ],
+   "question": "Has a solid material ever been burned near a candidate Moon-base atmosphere?",
+   "target": null
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "qa-bre",
+   "not_covered": "Not covered: the BRE chamber pressures, which may be in the BRE raw data or in the journal paper (published in Combustion and Flame) that is not openly available on NTRS.",
+   "paragraphs": [
+    {
+     "cites": [
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "ACME BRE was set up to examine NASA-considered atmospheres, and its summary table lists the oxygen levels used in each session, but it has no pressure column. Its own note says the chamber pressures were varied but are not identified in the summary table. Without a pressure, a session can only be drawn as a band along the oxygen axis."
+      }
+     ]
+    }
+   ],
+   "question": "Why can't the ACME BRE data be placed on the trade map?",
+   "target": null
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "qa-flex",
+   "not_covered": "Not covered: what the FLEX label \"Disruption\" means precisely (the PSI page does not define it), and suppression of solid materials.",
+   "paragraphs": [
+    {
+     "cites": [
+      "PSI-69"
+     ],
+     "segments": [
+      {
+       "t": "In the FLEX tests at reduced pressure (the pressure band is stated with the suppression chart), the table records "
+      },
+      {
+       "val": {
+        "p": "flex:co2:3:ext",
+        "u": "tests",
+        "v": 22
+       }
+      },
+      {
+       "t": " tests with the outcome label \"Extinction\" out of "
+      },
+      {
+       "val": {
+        "p": "flex:co2:3:total",
+        "u": "tests",
+        "v": 22
+       }
+      },
+      {
+       "t": " in the highest carbon dioxide group, but "
+      },
+      {
+       "val": {
+        "p": "flex:co2:0:ext",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " of "
+      },
+      {
+       "val": {
+        "p": "flex:co2:0:total",
+        "u": "tests",
+        "v": 6
+       }
+      },
+      {
+       "t": " at the lowest carbon dioxide level tested. Carbon dioxide at those high levels is far beyond what a crew can breathe."
+      }
+     ]
+    }
+   ],
+   "question": "What did FLEX show about carbon dioxide suppression near 10.4 psi?",
+   "target": null
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "qa-choose",
+   "not_covered": "Not covered: physiology, operations, cost and materials qualification, which all bear on the choice.",
+   "paragraphs": [
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "Redshift does not answer that question. It shows the trade-offs side by side: prebreathe time, flame temperature and how much fire evidence exists near each candidate. The choice belongs to NASA's engineers, who weigh factors that are outside this data."
+      }
+     ]
+    }
+   ],
+   "question": "Which atmosphere should NASA choose for the Moon base?",
+   "target": null
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "qa-partial",
+   "not_covered": "Not covered: any burn at lunar gravity.",
+   "paragraphs": [
+    {
+     "cites": [
+      "PSI-22"
+     ],
+     "segments": [
+      {
+       "t": "PSI does not cover this. Its combustion investigations are microgravity or ground tests; the challenge statement notes that no partial-gravity combustion data is in PSI yet. ACME E-FIELD Flames mimicked partial gravity with an electric field, but that is not a lunar test."
+      }
+     ]
+    }
+   ],
+   "question": "Is there partial-gravity fire data for the Moon?",
+   "target": null
+  }
+ ],
+ "summaries": [
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "sum-c14_7_21",
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables.",
+   "paragraphs": [
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "At "
+      },
+      {
+       "val": {
+        "p": "cand:c14_7_21:psi",
+        "u": "psi",
+        "v": 14.7
+       }
+      },
+      {
+       "t": " ("
+      },
+      {
+       "val": {
+        "p": "cand:c14_7_21:kpa",
+        "u": "kPa",
+        "v": 101.3529322095749
+       }
+      },
+      {
+       "t": ") and "
+      },
+      {
+       "val": {
+        "p": "cand:c14_7_21:o2",
+        "u": "%",
+        "v": 21.0
+       }
+      },
+      {
+       "t": " oxygen, the PSI experiment tables hold "
+      },
+      {
+       "val": {
+        "p": "near:c14_7_21:total",
+        "u": "tests",
+        "v": 295
+       }
+      },
+      {
+       "t": " tests within the nearness region: "
+      },
+      {
+       "val": {
+        "p": "near:c14_7_21:gas:psi_table",
+        "u": "tests",
+        "v": 106
+       }
+      },
+      {
+       "t": " gas flames, "
+      },
+      {
+       "val": {
+        "p": "near:c14_7_21:droplet:psi_table",
+        "u": "tests",
+        "v": 189
+       }
+      },
+      {
+       "t": " droplet tests, "
+      },
+      {
+       "val": {
+        "p": "near:c14_7_21:solid:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "near:c14_7_21:emulator:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " BRE emulator tests. This is the atmosphere of the ISS and of Earth at sea level."
+      }
+     ]
+    },
+    {
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "A further "
+      },
+      {
+       "val": {
+        "p": "o2match:c14_7_21:solid",
+        "u": "tests",
+        "v": 129
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "o2match:c14_7_21:emulator",
+        "u": "tests",
+        "v": 15
+       }
+      },
+      {
+       "t": " BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "The adiabatic flame temperature of stoichiometric methane here is "
+      },
+      {
+       "val": {
+        "p": "ft:c14_7_21",
+        "u": "K",
+        "v": 2224.2
+       }
+      },
+      {
+       "t": ". It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads."
+      }
+     ]
+    }
+   ],
+   "question": null,
+   "target": "c14_7_21"
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "sum-c10_2_26_5",
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables.",
+   "paragraphs": [
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "At "
+      },
+      {
+       "val": {
+        "p": "cand:c10_2_26_5:psi",
+        "u": "psi",
+        "v": 10.2
+       }
+      },
+      {
+       "t": " ("
+      },
+      {
+       "val": {
+        "p": "cand:c10_2_26_5:kpa",
+        "u": "kPa",
+        "v": 70.32652439031727
+       }
+      },
+      {
+       "t": ") and "
+      },
+      {
+       "val": {
+        "p": "cand:c10_2_26_5:o2",
+        "u": "%",
+        "v": 26.5
+       }
+      },
+      {
+       "t": " oxygen, the PSI experiment tables hold "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_26_5:total",
+        "u": "tests",
+        "v": 72
+       }
+      },
+      {
+       "t": " tests within the nearness region: "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_26_5:gas:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " gas flames, "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_26_5:droplet:psi_table",
+        "u": "tests",
+        "v": 72
+       }
+      },
+      {
+       "t": " droplet tests, "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_26_5:solid:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_26_5:emulator:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " BRE emulator tests. The ACME BRE flight objectives name it as a NASA-considered atmosphere."
+      }
+     ]
+    },
+    {
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "A further "
+      },
+      {
+       "val": {
+        "p": "o2match:c10_2_26_5:solid",
+        "u": "tests",
+        "v": 51
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "o2match:c10_2_26_5:emulator",
+        "u": "tests",
+        "v": 16
+       }
+      },
+      {
+       "t": " BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "The adiabatic flame temperature of stoichiometric methane here is "
+      },
+      {
+       "val": {
+        "p": "ft:c10_2_26_5",
+        "u": "K",
+        "v": 2415.4
+       }
+      },
+      {
+       "t": ". It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads."
+      }
+     ]
+    }
+   ],
+   "question": null,
+   "target": "c10_2_26_5"
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "sum-c10_2_30",
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables.",
+   "paragraphs": [
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "At "
+      },
+      {
+       "val": {
+        "p": "cand:c10_2_30:psi",
+        "u": "psi",
+        "v": 10.2
+       }
+      },
+      {
+       "t": " ("
+      },
+      {
+       "val": {
+        "p": "cand:c10_2_30:kpa",
+        "u": "kPa",
+        "v": 70.32652439031727
+       }
+      },
+      {
+       "t": ") and "
+      },
+      {
+       "val": {
+        "p": "cand:c10_2_30:o2",
+        "u": "%",
+        "v": 30.0
+       }
+      },
+      {
+       "t": " oxygen, the PSI experiment tables hold "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_30:total",
+        "u": "tests",
+        "v": 52
+       }
+      },
+      {
+       "t": " tests within the nearness region: "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_30:gas:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " gas flames, "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_30:droplet:psi_table",
+        "u": "tests",
+        "v": 52
+       }
+      },
+      {
+       "t": " droplet tests, "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_30:solid:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "near:c10_2_30:emulator:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " BRE emulator tests. This point is a bound from the challenge statement (at least this much oxygen, at most this pressure), not a named NASA candidate."
+      }
+     ]
+    },
+    {
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "A further "
+      },
+      {
+       "val": {
+        "p": "o2match:c10_2_30:solid",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "o2match:c10_2_30:emulator",
+        "u": "tests",
+        "v": 16
+       }
+      },
+      {
+       "t": " BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "The adiabatic flame temperature of stoichiometric methane here is "
+      },
+      {
+       "val": {
+        "p": "ft:c10_2_30",
+        "u": "K",
+        "v": 2504.6
+       }
+      },
+      {
+       "t": ". It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads."
+      }
+     ]
+    }
+   ],
+   "question": null,
+   "target": "c10_2_30"
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "sum-c8_2_34",
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables.",
+   "paragraphs": [
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "At "
+      },
+      {
+       "val": {
+        "p": "cand:c8_2_34:psi",
+        "u": "psi",
+        "v": 8.2
+       }
+      },
+      {
+       "t": " ("
+      },
+      {
+       "val": {
+        "p": "cand:c8_2_34:kpa",
+        "u": "kPa",
+        "v": 56.53700980398055
+       }
+      },
+      {
+       "t": ") and "
+      },
+      {
+       "val": {
+        "p": "cand:c8_2_34:o2",
+        "u": "%",
+        "v": 34.0
+       }
+      },
+      {
+       "t": " oxygen, the PSI experiment tables hold "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:total",
+        "u": "tests",
+        "v": 37
+       }
+      },
+      {
+       "t": " tests within the nearness region: "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:gas:psi_table",
+        "u": "tests",
+        "v": 20
+       }
+      },
+      {
+       "t": " gas flames, "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:droplet:psi_table",
+        "u": "tests",
+        "v": 17
+       }
+      },
+      {
+       "t": " droplet tests, "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:solid:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "near:c8_2_34:emulator:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " BRE emulator tests. The ACME BRE flight objectives name it as a NASA-considered atmosphere."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "pending": true,
+     "segments": [
+      {
+       "t": "A published Saffire VI paper describes solid burns close to this atmosphere; its figures appear here once a team member has verified them against the source."
+      }
+     ]
+    },
+    {
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "A further "
+      },
+      {
+       "val": {
+        "p": "o2match:c8_2_34:solid",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "o2match:c8_2_34:emulator",
+        "u": "tests",
+        "v": 16
+       }
+      },
+      {
+       "t": " BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "The adiabatic flame temperature of stoichiometric methane here is "
+      },
+      {
+       "val": {
+        "p": "ft:c8_2_34",
+        "u": "K",
+        "v": 2570.4
+       }
+      },
+      {
+       "t": ". It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads."
+      }
+     ]
+    }
+   ],
+   "question": null,
+   "target": "c8_2_34"
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
+   "id": "sum-c4_3_100",
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables.",
+   "paragraphs": [
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "At "
+      },
+      {
+       "val": {
+        "p": "cand:c4_3_100:psi",
+        "u": "psi",
+        "v": 4.3
+       }
+      },
+      {
+       "t": " ("
+      },
+      {
+       "val": {
+        "p": "cand:c4_3_100:kpa",
+        "u": "kPa",
+        "v": 29.647456360623952
+       }
+      },
+      {
+       "t": ") and "
+      },
+      {
+       "val": {
+        "p": "cand:c4_3_100:o2",
+        "u": "%",
+        "v": 100.0
+       }
+      },
+      {
+       "t": " oxygen, the PSI experiment tables hold "
+      },
+      {
+       "val": {
+        "p": "near:c4_3_100:total",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " tests within the nearness region: "
+      },
+      {
+       "val": {
+        "p": "near:c4_3_100:gas:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " gas flames, "
+      },
+      {
+       "val": {
+        "p": "near:c4_3_100:droplet:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " droplet tests, "
+      },
+      {
+       "val": {
+        "p": "near:c4_3_100:solid:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "near:c4_3_100:emulator:psi_table",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " BRE emulator tests. This is the spacesuit atmosphere, shown for reference; it is not a habitat candidate."
+      }
+     ]
+    },
+    {
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "A further "
+      },
+      {
+       "val": {
+        "p": "o2match:c4_3_100:solid",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " solid-material tests and "
+      },
+      {
+       "val": {
+        "p": "o2match:c4_3_100:emulator",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "segments": [
+      {
+       "t": "The adiabatic flame temperature of stoichiometric methane here is "
+      },
+      {
+       "val": {
+        "p": "ft:c4_3_100",
+        "u": "K",
+        "v": 2903.5
+       }
+      },
+      {
+       "t": ". It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads."
+      }
+     ]
+    }
+   ],
+   "question": null,
+   "target": "c4_3_100"
+  }
+ ]
+}

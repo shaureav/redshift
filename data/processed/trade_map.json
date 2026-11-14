@@ -10455,7 +10455,106 @@
      ]
     }
    ],
-   "source_type": "psi_table"
+   "source_type": "psi_table",
+   "unit": "tests"
+  },
+  {
+   "fuel_class": "emulator",
+   "items": [
+    {
+     "investigations": [
+      "ACME BRE"
+     ],
+     "n": 4,
+     "o2_pct": 21.0,
+     "p": "map:strip:emulator:psi_table:21.0",
+     "test_ids": [
+      "PSI-20-main-L10",
+      "PSI-20-main-L18",
+      "PSI-20-main-L2",
+      "PSI-20-main-L4"
+     ]
+    },
+    {
+     "investigations": [
+      "ACME BRE"
+     ],
+     "n": 6,
+     "o2_pct": 25.0,
+     "p": "map:strip:emulator:psi_table:25.0",
+     "test_ids": [
+      "PSI-20-main-L11",
+      "PSI-20-main-L13",
+      "PSI-20-main-L14",
+      "PSI-20-main-L15",
+      "PSI-20-main-L17",
+      "PSI-20-main-L19"
+     ]
+    },
+    {
+     "investigations": [
+      "ACME BRE"
+     ],
+     "n": 9,
+     "o2_pct": 26.5,
+     "p": "map:strip:emulator:psi_table:26.5",
+     "test_ids": [
+      "PSI-20-main-L10",
+      "PSI-20-main-L12",
+      "PSI-20-main-L18",
+      "PSI-20-main-L2",
+      "PSI-20-main-L3",
+      "PSI-20-main-L4",
+      "PSI-20-main-L5",
+      "PSI-20-main-L7",
+      "PSI-20-main-L8"
+     ]
+    },
+    {
+     "investigations": [
+      "ACME BRE"
+     ],
+     "n": 12,
+     "o2_pct": 34.0,
+     "p": "map:strip:emulator:psi_table:34.0",
+     "test_ids": [
+      "PSI-20-main-L10",
+      "PSI-20-main-L11",
+      "PSI-20-main-L12",
+      "PSI-20-main-L13",
+      "PSI-20-main-L16",
+      "PSI-20-main-L17",
+      "PSI-20-main-L18",
+      "PSI-20-main-L19",
+      "PSI-20-main-L3",
+      "PSI-20-main-L4",
+      "PSI-20-main-L7",
+      "PSI-20-main-L8"
+     ]
+    },
+    {
+     "investigations": [
+      "ACME BRE"
+     ],
+     "n": 10,
+     "o2_pct": 40.0,
+     "p": "map:strip:emulator:psi_table:40.0",
+     "test_ids": [
+      "PSI-20-main-L11",
+      "PSI-20-main-L13",
+      "PSI-20-main-L14",
+      "PSI-20-main-L15",
+      "PSI-20-main-L16",
+      "PSI-20-main-L17",
+      "PSI-20-main-L19",
+      "PSI-20-main-L2",
+      "PSI-20-main-L4",
+      "PSI-20-main-L5"
+     ]
+    }
+   ],
+   "source_type": "psi_table",
+   "unit": "sessions"
   },
   {
    "fuel_class": "gas",
@@ -10491,7 +10590,8 @@
      ]
     }
    ],
-   "source_type": "psi_table"
+   "source_type": "psi_table",
+   "unit": "tests"
   },
   {
    "fuel_class": "solid",
@@ -11126,7 +11226,8 @@
      ]
     }
    ],
-   "source_type": "psi_table"
+   "source_type": "psi_table",
+   "unit": "tests"
   }
  ]
 }

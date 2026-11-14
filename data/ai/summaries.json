@@ -1,0 +1,125 @@
+{
+ "_note": "AI-assisted text (drafted by Claude in the build session). Numbers enter only through slots. Checked by redshift/ai/text.py; a named team member must check each item with scripts/check_ai_text.py.",
+ "items": [
+  {
+   "id": "sum-c14_7_21",
+   "target": "c14_7_21",
+   "segments": [
+    {
+     "text": "At {{candidates.json#candidates[id=c14_7_21].pressure_psi}} ({{candidates.json#candidates[id=c14_7_21].pressure_kpa}}) and {{candidates.json#candidates[id=c14_7_21].o2_pct}} oxygen, the PSI experiment tables hold {{candidate_evidence.json#evidence[candidate_id=c14_7_21].near_total}} tests within the nearness region: {{candidate_evidence.json#evidence[candidate_id=c14_7_21].near.gas.psi_table}} gas flames, {{candidate_evidence.json#evidence[candidate_id=c14_7_21].near.droplet.psi_table}} droplet tests, {{candidate_evidence.json#evidence[candidate_id=c14_7_21].near.solid.psi_table}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c14_7_21].near.emulator.psi_table}} BRE emulator tests. This is the atmosphere of the ISS and of Earth at sea level.",
+     "cites": []
+    },
+    {
+     "text": "A further {{candidate_evidence.json#evidence[candidate_id=c14_7_21].o2_match_pressure_unknown.solid}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c14_7_21].o2_match_pressure_unknown.emulator}} BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane.",
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ]
+    },
+    {
+     "text": "The adiabatic flame temperature of stoichiometric methane here is {{candidate_evidence.json#evidence[candidate_id=c14_7_21].flame_temperature}}. It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads.",
+     "cites": []
+    }
+   ],
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables."
+  },
+  {
+   "id": "sum-c10_2_26_5",
+   "target": "c10_2_26_5",
+   "segments": [
+    {
+     "text": "At {{candidates.json#candidates[id=c10_2_26_5].pressure_psi}} ({{candidates.json#candidates[id=c10_2_26_5].pressure_kpa}}) and {{candidates.json#candidates[id=c10_2_26_5].o2_pct}} oxygen, the PSI experiment tables hold {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].near_total}} tests within the nearness region: {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].near.gas.psi_table}} gas flames, {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].near.droplet.psi_table}} droplet tests, {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].near.solid.psi_table}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].near.emulator.psi_table}} BRE emulator tests. The ACME BRE flight objectives name it as a NASA-considered atmosphere.",
+     "cites": []
+    },
+    {
+     "text": "A further {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].o2_match_pressure_unknown.solid}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].o2_match_pressure_unknown.emulator}} BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane.",
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ]
+    },
+    {
+     "text": "The adiabatic flame temperature of stoichiometric methane here is {{candidate_evidence.json#evidence[candidate_id=c10_2_26_5].flame_temperature}}. It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads.",
+     "cites": []
+    }
+   ],
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables."
+  },
+  {
+   "id": "sum-c10_2_30",
+   "target": "c10_2_30",
+   "segments": [
+    {
+     "text": "At {{candidates.json#candidates[id=c10_2_30].pressure_psi}} ({{candidates.json#candidates[id=c10_2_30].pressure_kpa}}) and {{candidates.json#candidates[id=c10_2_30].o2_pct}} oxygen, the PSI experiment tables hold {{candidate_evidence.json#evidence[candidate_id=c10_2_30].near_total}} tests within the nearness region: {{candidate_evidence.json#evidence[candidate_id=c10_2_30].near.gas.psi_table}} gas flames, {{candidate_evidence.json#evidence[candidate_id=c10_2_30].near.droplet.psi_table}} droplet tests, {{candidate_evidence.json#evidence[candidate_id=c10_2_30].near.solid.psi_table}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c10_2_30].near.emulator.psi_table}} BRE emulator tests. This point is a bound from the challenge statement (at least this much oxygen, at most this pressure), not a named NASA candidate.",
+     "cites": []
+    },
+    {
+     "text": "A further {{candidate_evidence.json#evidence[candidate_id=c10_2_30].o2_match_pressure_unknown.solid}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c10_2_30].o2_match_pressure_unknown.emulator}} BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane.",
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ]
+    },
+    {
+     "text": "The adiabatic flame temperature of stoichiometric methane here is {{candidate_evidence.json#evidence[candidate_id=c10_2_30].flame_temperature}}. It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads.",
+     "cites": []
+    }
+   ],
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables."
+  },
+  {
+   "id": "sum-c8_2_34",
+   "target": "c8_2_34",
+   "segments": [
+    {
+     "text": "At {{candidates.json#candidates[id=c8_2_34].pressure_psi}} ({{candidates.json#candidates[id=c8_2_34].pressure_kpa}}) and {{candidates.json#candidates[id=c8_2_34].o2_pct}} oxygen, the PSI experiment tables hold {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near_total}} tests within the nearness region: {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near.gas.psi_table}} gas flames, {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near.droplet.psi_table}} droplet tests, {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near.solid.psi_table}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near.emulator.psi_table}} BRE emulator tests. The ACME BRE flight objectives name it as a NASA-considered atmosphere.",
+     "cites": []
+    },
+    {
+     "text": "NASA has burned fabric and plastic close to this atmosphere: Saffire VI burned SIBAL cloth and PMMA inside a Cygnus vehicle at {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-2 ambient pressure]}} to {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-4 ambient pressure]}}, with oxygen between {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-4 oxygen concentration]}} and {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-2 oxygen concentration]}}. Those results are published in a paper, not as rows in the PSI tables.",
+     "cites": [
+      "FND-S6-COND-P-O2"
+     ],
+     "requires_verified": [
+      "FND-S6-COND-P-O2"
+     ],
+     "pending_text": "A published Saffire VI paper describes solid burns close to this atmosphere; its figures appear here once a team member has verified them against the source."
+    },
+    {
+     "text": "A further {{candidate_evidence.json#evidence[candidate_id=c8_2_34].o2_match_pressure_unknown.solid}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c8_2_34].o2_match_pressure_unknown.emulator}} BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane.",
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ]
+    },
+    {
+     "text": "The adiabatic flame temperature of stoichiometric methane here is {{candidate_evidence.json#evidence[candidate_id=c8_2_34].flame_temperature}}. It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads.",
+     "cites": []
+    }
+   ],
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables."
+  },
+  {
+   "id": "sum-c4_3_100",
+   "target": "c4_3_100",
+   "segments": [
+    {
+     "text": "At {{candidates.json#candidates[id=c4_3_100].pressure_psi}} ({{candidates.json#candidates[id=c4_3_100].pressure_kpa}}) and {{candidates.json#candidates[id=c4_3_100].o2_pct}} oxygen, the PSI experiment tables hold {{candidate_evidence.json#evidence[candidate_id=c4_3_100].near_total}} tests within the nearness region: {{candidate_evidence.json#evidence[candidate_id=c4_3_100].near.gas.psi_table}} gas flames, {{candidate_evidence.json#evidence[candidate_id=c4_3_100].near.droplet.psi_table}} droplet tests, {{candidate_evidence.json#evidence[candidate_id=c4_3_100].near.solid.psi_table}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c4_3_100].near.emulator.psi_table}} BRE emulator tests. This is the spacesuit atmosphere, shown for reference; it is not a habitat candidate.",
+     "cites": []
+    },
+    {
+     "text": "A further {{candidate_evidence.json#evidence[candidate_id=c4_3_100].o2_match_pressure_unknown.solid}} solid-material tests and {{candidate_evidence.json#evidence[candidate_id=c4_3_100].o2_match_pressure_unknown.emulator}} BRE sessions record a matching oxygen level but no pressure, so they cannot be placed on the plane.",
+     "cites": [
+      "PSI-25",
+      "PSI-20"
+     ]
+    },
+    {
+     "text": "The adiabatic flame temperature of stoichiometric methane here is {{candidate_evidence.json#evidence[candidate_id=c4_3_100].flame_temperature}}. It explains how hot a flame can get; it does not predict whether a material ignites or how fast a flame spreads.",
+     "cites": []
+    }
+   ],
+   "not_covered": "Not covered here: partial gravity (PSI holds no partial-gravity combustion data), flame spread rates as downloadable rows, and any test at this exact pressure for fabrics or plastics in the PSI tables."
+  }
+ ]
+}

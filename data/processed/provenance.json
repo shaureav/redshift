@@ -88325,7 +88325,10 @@
   "raw": "21; 26.5; 34",
   "row": 10,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L10:C6": {
@@ -88425,7 +88428,10 @@
   "raw": "25; 34; 40",
   "row": 11,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L11:C6": {
@@ -88525,7 +88531,10 @@
   "raw": "26.5; 34",
   "row": 12,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L12:C6": {
@@ -88625,7 +88634,10 @@
   "raw": "25; 34; 40",
   "row": 13,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L13:C6": {
@@ -88725,7 +88737,10 @@
   "raw": "25; 40",
   "row": 14,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L14:C6": {
@@ -88825,7 +88840,10 @@
   "raw": "25; 40",
   "row": 15,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L15:C6": {
@@ -88925,7 +88943,10 @@
   "raw": "34; 40",
   "row": 16,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L16:C6": {
@@ -89025,7 +89046,10 @@
   "raw": "25; 34; 40",
   "row": 17,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L17:C6": {
@@ -89125,7 +89149,10 @@
   "raw": "21; 26.5; 34",
   "row": 18,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L18:C6": {
@@ -89225,7 +89252,10 @@
   "raw": "25; 34; 40",
   "row": 19,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L19:C6": {
@@ -89325,7 +89355,10 @@
   "raw": "21; 26.5; 40",
   "row": 2,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L2:C6": {
@@ -89423,7 +89456,10 @@
   "raw": "26.5; 34",
   "row": 3,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L3:C6": {
@@ -89521,7 +89557,10 @@
   "raw": "21; 26.5; 34; 40",
   "row": 4,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L4:C6": {
@@ -89621,7 +89660,10 @@
   "raw": "26.5; 40",
   "row": 5,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L5:C6": {
@@ -89824,7 +89866,10 @@
   "raw": "26.5; 34",
   "row": 7,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L7:C6": {
@@ -89924,7 +89969,10 @@
   "raw": "26.5; 34",
   "row": 8,
   "source_type": "psi_table",
-  "transforms": [],
+  "transforms": [
+   "split_number_list",
+   "parse_number"
+  ],
   "verified": true
  },
  "cell:PSI-20:main:L8:C6": {
@@ -209995,6 +210043,97 @@
   "transforms": [],
   "verified": true
  },
+ "map:strip:emulator:psi_table:21.0": {
+  "id": "map:strip:emulator:psi_table:21.0",
+  "inputs": [
+   "PSI-20-main-L10",
+   "PSI-20-main-L18",
+   "PSI-20-main-L2",
+   "PSI-20-main-L4"
+  ],
+  "method": "O2 recorded, pressure not recorded",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:strip:emulator:psi_table:25.0": {
+  "id": "map:strip:emulator:psi_table:25.0",
+  "inputs": [
+   "PSI-20-main-L11",
+   "PSI-20-main-L13",
+   "PSI-20-main-L14",
+   "PSI-20-main-L15",
+   "PSI-20-main-L17",
+   "PSI-20-main-L19"
+  ],
+  "method": "O2 recorded, pressure not recorded",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:strip:emulator:psi_table:26.5": {
+  "id": "map:strip:emulator:psi_table:26.5",
+  "inputs": [
+   "PSI-20-main-L10",
+   "PSI-20-main-L12",
+   "PSI-20-main-L18",
+   "PSI-20-main-L2",
+   "PSI-20-main-L3",
+   "PSI-20-main-L4",
+   "PSI-20-main-L5",
+   "PSI-20-main-L7",
+   "PSI-20-main-L8"
+  ],
+  "method": "O2 recorded, pressure not recorded",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:strip:emulator:psi_table:34.0": {
+  "id": "map:strip:emulator:psi_table:34.0",
+  "inputs": [
+   "PSI-20-main-L10",
+   "PSI-20-main-L11",
+   "PSI-20-main-L12",
+   "PSI-20-main-L13",
+   "PSI-20-main-L16",
+   "PSI-20-main-L17",
+   "PSI-20-main-L18",
+   "PSI-20-main-L19",
+   "PSI-20-main-L3",
+   "PSI-20-main-L4",
+   "PSI-20-main-L7",
+   "PSI-20-main-L8"
+  ],
+  "method": "O2 recorded, pressure not recorded",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:strip:emulator:psi_table:40.0": {
+  "id": "map:strip:emulator:psi_table:40.0",
+  "inputs": [
+   "PSI-20-main-L11",
+   "PSI-20-main-L13",
+   "PSI-20-main-L14",
+   "PSI-20-main-L15",
+   "PSI-20-main-L16",
+   "PSI-20-main-L17",
+   "PSI-20-main-L19",
+   "PSI-20-main-L2",
+   "PSI-20-main-L4",
+   "PSI-20-main-L5"
+  ],
+  "method": "O2 recorded, pressure not recorded",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
  "map:strip:gas:psi_table:40.0": {
   "id": "map:strip:gas:psi_table:40.0",
   "inputs": [
@@ -211340,6 +211479,16 @@
   "id": "missing:PSI-20:main:n2_pct",
   "investigation_id": "PSI-20",
   "note": "The table has no column for this condition.",
+  "source_type": "psi_table",
+  "transforms": [],
+  "verified": true
+ },
+ "missing:PSI-20:main:o2_pct": {
+  "doi": "10.60555/vb93-3y72",
+  "file": "data/raw/psi/ACME-BRE/experiment_table/PSI-20_Experimental table_ACME BRE.csv",
+  "id": "missing:PSI-20:main:o2_pct",
+  "investigation_id": "PSI-20",
+  "note": "The cell lists several oxygen concentrations used during the session (see o2_list_pct); no single value applies to the row.",
   "source_type": "psi_table",
   "transforms": [],
   "verified": true
@@ -213643,7 +213792,24 @@
  },
  "o2match:c10_2_26_5:emulator": {
   "id": "o2match:c10_2_26_5:emulator",
-  "inputs": [],
+  "inputs": [
+   "PSI-20-main-L10",
+   "PSI-20-main-L11",
+   "PSI-20-main-L12",
+   "PSI-20-main-L13",
+   "PSI-20-main-L14",
+   "PSI-20-main-L15",
+   "PSI-20-main-L16",
+   "PSI-20-main-L17",
+   "PSI-20-main-L18",
+   "PSI-20-main-L19",
+   "PSI-20-main-L2",
+   "PSI-20-main-L3",
+   "PSI-20-main-L4",
+   "PSI-20-main-L5",
+   "PSI-20-main-L7",
+   "PSI-20-main-L8"
+  ],
   "method": "O2 within threshold, pressure not recorded",
   "method_version": "1",
   "params": {
@@ -213747,7 +213913,24 @@
  },
  "o2match:c10_2_30:emulator": {
   "id": "o2match:c10_2_30:emulator",
-  "inputs": [],
+  "inputs": [
+   "PSI-20-main-L10",
+   "PSI-20-main-L11",
+   "PSI-20-main-L12",
+   "PSI-20-main-L13",
+   "PSI-20-main-L14",
+   "PSI-20-main-L15",
+   "PSI-20-main-L16",
+   "PSI-20-main-L17",
+   "PSI-20-main-L18",
+   "PSI-20-main-L19",
+   "PSI-20-main-L2",
+   "PSI-20-main-L3",
+   "PSI-20-main-L4",
+   "PSI-20-main-L5",
+   "PSI-20-main-L7",
+   "PSI-20-main-L8"
+  ],
   "method": "O2 within threshold, pressure not recorded",
   "method_version": "1",
   "params": {
@@ -213801,7 +213984,23 @@
  },
  "o2match:c14_7_21:emulator": {
   "id": "o2match:c14_7_21:emulator",
-  "inputs": [],
+  "inputs": [
+   "PSI-20-main-L10",
+   "PSI-20-main-L11",
+   "PSI-20-main-L12",
+   "PSI-20-main-L13",
+   "PSI-20-main-L14",
+   "PSI-20-main-L15",
+   "PSI-20-main-L17",
+   "PSI-20-main-L18",
+   "PSI-20-main-L19",
+   "PSI-20-main-L2",
+   "PSI-20-main-L3",
+   "PSI-20-main-L4",
+   "PSI-20-main-L5",
+   "PSI-20-main-L7",
+   "PSI-20-main-L8"
+  ],
   "method": "O2 within threshold, pressure not recorded",
   "method_version": "1",
   "params": {
@@ -214035,7 +214234,24 @@
  },
  "o2match:c8_2_34:emulator": {
   "id": "o2match:c8_2_34:emulator",
-  "inputs": [],
+  "inputs": [
+   "PSI-20-main-L10",
+   "PSI-20-main-L11",
+   "PSI-20-main-L12",
+   "PSI-20-main-L13",
+   "PSI-20-main-L14",
+   "PSI-20-main-L15",
+   "PSI-20-main-L16",
+   "PSI-20-main-L17",
+   "PSI-20-main-L18",
+   "PSI-20-main-L19",
+   "PSI-20-main-L2",
+   "PSI-20-main-L3",
+   "PSI-20-main-L4",
+   "PSI-20-main-L5",
+   "PSI-20-main-L7",
+   "PSI-20-main-L8"
+  ],
   "method": "O2 within threshold, pressure not recorded",
   "method_version": "1",
   "params": {

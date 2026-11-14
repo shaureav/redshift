@@ -1,0 +1,114 @@
+{
+ "_note": "Cached answers (AI-assisted). Same rules as summaries.",
+ "items": [
+  {
+   "id": "qa-8.2",
+   "question": "What fire tests exist near 8.2 psi and 34% oxygen?",
+   "segments": [
+    {
+     "text": "In the PSI experiment tables, {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near_total}} tests sit within the nearness region of {{candidates.json#candidates[id=c8_2_34].pressure_psi}} ({{candidates.json#candidates[id=c8_2_34].pressure_kpa}}) and {{candidates.json#candidates[id=c8_2_34].o2_pct}} oxygen: {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near.droplet.psi_table}} FLEX droplet tests and {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near.gas.psi_table}} ACME CFI-G gas flames. There are {{candidate_evidence.json#evidence[candidate_id=c8_2_34].near.solid.psi_table}} solid-material tests.",
+     "cites": [
+      "PSI-69",
+      "PSI-159"
+     ]
+    },
+    {
+     "text": "ACME BRE, which emulates burning solids, lists this oxygen level in {{candidate_evidence.json#evidence[candidate_id=c8_2_34].o2_match_pressure_unknown.emulator}} sessions, but its summary table does not record chamber pressure.",
+     "cites": [
+      "PSI-20"
+     ]
+    },
+    {
+     "text": "NASA has burned fabric and plastic close to this atmosphere: Saffire VI burned SIBAL cloth and PMMA inside a Cygnus vehicle at {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-2 ambient pressure]}} to {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-4 ambient pressure]}}, with oxygen between {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-4 oxygen concentration]}} and {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-2 oxygen concentration]}}. Those results are published in a paper, not as rows in the PSI tables.",
+     "cites": [
+      "FND-S6-COND-P-O2"
+     ],
+     "requires_verified": [
+      "FND-S6-COND-P-O2"
+     ],
+     "pending_text": "A published Saffire VI paper describes solid burns close to this atmosphere; its figures appear here once a team member has verified them against the source."
+    }
+   ],
+   "not_covered": "Not covered: PSI tables hold no solid-material burn at this pressure, no flame spread rates as rows, and no partial-gravity data."
+  },
+  {
+   "id": "qa-solid",
+   "question": "Has a solid material ever been burned near a candidate Moon-base atmosphere?",
+   "segments": [
+    {
+     "text": "Not in the PSI experiment tables. They hold {{access_gap.json#psi_steps[label=Solid-fuel burn rows in PSI experiment tables].count}} solid-fuel burn rows; {{access_gap.json#psi_steps[label=... with oxygen recorded].count}} record oxygen, {{access_gap.json#psi_steps[label=... with pressure recorded].count}} record pressure, and {{access_gap.json#psi_steps[label=... near a habitat candidate (downloadable as rows)].count}} sit near a habitat candidate.",
+     "cites": [
+      "PSI-25",
+      "PSI-26",
+      "PSI-98",
+      "PSI-99",
+      "PSI-100"
+     ]
+    },
+    {
+     "text": "NASA has done such burns: the Saffire V experiment burned cotton and PMMA at {{key_findings.json#findings[id=FND-S5-COND-P-O2].values[name=V-2 ambient pressure]}} and {{key_findings.json#findings[id=FND-S5-COND-P-O2].values[name=V-2 oxygen concentration]}} oxygen, and Saffire VI went lower, to {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-2 ambient pressure]}}. These results live in conference papers, not in downloadable PSI rows.",
+     "cites": [
+      "FND-S5-COND-P-O2",
+      "FND-S6-COND-P-O2"
+     ],
+     "requires_verified": [
+      "FND-S5-COND-P-O2",
+      "FND-S6-COND-P-O2"
+     ],
+     "pending_text": "Published Saffire V and VI papers describe such burns; their figures appear here once a team member has verified them against the source."
+    }
+   ],
+   "not_covered": "Not covered: whether these papers' samples behave like habitat materials, and any burn in partial gravity."
+  },
+  {
+   "id": "qa-bre",
+   "question": "Why can't the ACME BRE data be placed on the trade map?",
+   "segments": [
+    {
+     "text": "ACME BRE was set up to examine NASA-considered atmospheres, and its summary table lists the oxygen levels used in each session, but it has no pressure column. Its own note says the chamber pressures were varied but are not identified in the summary table. Without a pressure, a session can only be drawn as a band along the oxygen axis.",
+     "cites": [
+      "PSI-20"
+     ]
+    }
+   ],
+   "not_covered": "Not covered: the BRE chamber pressures, which may be in the BRE raw data or in the journal paper (published in Combustion and Flame) that is not openly available on NTRS."
+  },
+  {
+   "id": "qa-flex",
+   "question": "What did FLEX show about carbon dioxide suppression near 10.4 psi?",
+   "segments": [
+    {
+     "text": "In the FLEX tests at reduced pressure (the pressure band is stated with the suppression chart), the table records {{flex_suppression.json#groups[label=15 to 20% O2 + 35 to 50% CO2].extinguished}} tests with the outcome label \"Extinction\" out of {{flex_suppression.json#groups[label=15 to 20% O2 + 35 to 50% CO2].total}} in the highest carbon dioxide group, but {{flex_suppression.json#groups[label=25% O2 + 15% CO2].extinguished}} of {{flex_suppression.json#groups[label=25% O2 + 15% CO2].total}} at the lowest carbon dioxide level tested. Carbon dioxide at those high levels is far beyond what a crew can breathe.",
+     "cites": [
+      "PSI-69"
+     ]
+    }
+   ],
+   "not_covered": "Not covered: what the FLEX label \"Disruption\" means precisely (the PSI page does not define it), and suppression of solid materials."
+  },
+  {
+   "id": "qa-choose",
+   "question": "Which atmosphere should NASA choose for the Moon base?",
+   "segments": [
+    {
+     "text": "Redshift does not answer that question. It shows the trade-offs side by side: prebreathe time, flame temperature and how much fire evidence exists near each candidate. The choice belongs to NASA's engineers, who weigh factors that are outside this data.",
+     "cites": []
+    }
+   ],
+   "not_covered": "Not covered: physiology, operations, cost and materials qualification, which all bear on the choice."
+  },
+  {
+   "id": "qa-partial",
+   "question": "Is there partial-gravity fire data for the Moon?",
+   "segments": [
+    {
+     "text": "PSI does not cover this. Its combustion investigations are microgravity or ground tests; the challenge statement notes that no partial-gravity combustion data is in PSI yet. ACME E-FIELD Flames mimicked partial gravity with an electric field, but that is not a lunar test.",
+     "cites": [
+      "PSI-22"
+     ]
+    }
+   ],
+   "not_covered": "Not covered: any burn at lunar gravity."
+  }
+ ]
+}

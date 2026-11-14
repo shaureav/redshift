@@ -30484,8 +30484,17 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L2:C5",
+     "u": "%",
+     "v": [
+      21.0,
+      26.5,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -30508,9 +30517,7 @@
      "v": "Session 2019 Feb 8"
     }
    },
-   "flags": [
-    "F0345"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -30584,8 +30591,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L3:C5",
+     "u": "%",
+     "v": [
+      26.5,
+      34.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -30608,9 +30623,7 @@
      "v": "Session 2019 Feb 20"
     }
    },
-   "flags": [
-    "F0346"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -30684,8 +30697,18 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L4:C5",
+     "u": "%",
+     "v": [
+      21.0,
+      26.5,
+      34.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -30708,9 +30731,7 @@
      "v": "Session 2019 Feb 25"
     }
    },
-   "flags": [
-    "F0347"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -30784,8 +30805,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L5:C5",
+     "u": "%",
+     "v": [
+      26.5,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -30808,9 +30837,7 @@
      "v": "Session 2019 March 4"
     }
    },
-   "flags": [
-    "F0348"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -30909,7 +30936,7 @@
     }
    },
    "flags": [
-    "F0361"
+    "F0345"
    ],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
@@ -30984,8 +31011,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L7:C5",
+     "u": "%",
+     "v": [
+      26.5,
+      34.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31008,9 +31043,7 @@
      "v": "Session 2019 March 11"
     }
    },
-   "flags": [
-    "F0349"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -31084,8 +31117,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L8:C5",
+     "u": "%",
+     "v": [
+      26.5,
+      34.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31109,8 +31150,7 @@
     }
    },
    "flags": [
-    "F0337",
-    "F0350"
+    "F0337"
    ],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
@@ -31211,7 +31251,7 @@
    },
    "flags": [
     "F0337",
-    "F0362"
+    "F0346"
    ],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
@@ -31286,8 +31326,17 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L10:C5",
+     "u": "%",
+     "v": [
+      21.0,
+      26.5,
+      34.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31311,8 +31360,7 @@
     }
    },
    "flags": [
-    "F0337",
-    "F0351"
+    "F0337"
    ],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
@@ -31387,8 +31435,17 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L11:C5",
+     "u": "%",
+     "v": [
+      25.0,
+      34.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31411,9 +31468,7 @@
      "v": "Session 2020 Sept 3"
     }
    },
-   "flags": [
-    "F0352"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -31487,8 +31542,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L12:C5",
+     "u": "%",
+     "v": [
+      26.5,
+      34.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31511,9 +31574,7 @@
      "v": "Session 2020 Oct 17"
     }
    },
-   "flags": [
-    "F0353"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -31587,8 +31648,17 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L13:C5",
+     "u": "%",
+     "v": [
+      25.0,
+      34.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31612,8 +31682,7 @@
     }
    },
    "flags": [
-    "F0336",
-    "F0354"
+    "F0336"
    ],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
@@ -31688,8 +31757,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L14:C5",
+     "u": "%",
+     "v": [
+      25.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31713,8 +31790,7 @@
     }
    },
    "flags": [
-    "F0336",
-    "F0355"
+    "F0336"
    ],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
@@ -31789,8 +31865,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L15:C5",
+     "u": "%",
+     "v": [
+      25.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31813,9 +31897,7 @@
      "v": "Session 2020 Dec 11"
     }
    },
-   "flags": [
-    "F0356"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -31889,8 +31971,16 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L16:C5",
+     "u": "%",
+     "v": [
+      34.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -31913,9 +32003,7 @@
      "v": "Session 2020 Dec 17"
     }
    },
-   "flags": [
-    "F0357"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -31989,8 +32077,17 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L17:C5",
+     "u": "%",
+     "v": [
+      25.0,
+      34.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -32013,9 +32110,7 @@
      "v": "Session 2020 Dec 23"
     }
    },
-   "flags": [
-    "F0358"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -32089,8 +32184,17 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L18:C5",
+     "u": "%",
+     "v": [
+      21.0,
+      26.5,
+      34.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -32113,9 +32217,7 @@
      "v": "Session 2021 Jan 20"
     }
    },
-   "flags": [
-    "F0359"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -32189,8 +32291,17 @@
      "p": "const:PSI-20:main:o2_basis",
      "v": "ambient"
     },
-    "o2_pct": {
+    "o2_list_pct": {
      "p": "cell:PSI-20:main:L19:C5",
+     "u": "%",
+     "v": [
+      25.0,
+      34.0,
+      40.0
+     ]
+    },
+    "o2_pct": {
+     "p": "missing:PSI-20:main:o2_pct",
      "u": "%",
      "v": null
     },
@@ -32213,9 +32324,7 @@
      "v": "Session 2021 Jan 28"
     }
    },
-   "flags": [
-    "F0360"
-   ],
+   "flags": [],
    "fuel_class": "emulator",
    "investigation": "ACME BRE",
    "investigation_id": "PSI-20",
@@ -32310,7 +32419,7 @@
     }
    },
    "flags": [
-    "F0396"
+    "F0380"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -32406,8 +32515,8 @@
     }
    },
    "flags": [
-    "F0363",
-    "F0397"
+    "F0347",
+    "F0381"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -32503,7 +32612,7 @@
     }
    },
    "flags": [
-    "F0364"
+    "F0348"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -32599,8 +32708,8 @@
     }
    },
    "flags": [
-    "F0365",
-    "F0398"
+    "F0349",
+    "F0382"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -32696,8 +32805,8 @@
     }
    },
    "flags": [
-    "F0366",
-    "F0399"
+    "F0350",
+    "F0383"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -32793,8 +32902,8 @@
     }
    },
    "flags": [
-    "F0367",
-    "F0400"
+    "F0351",
+    "F0384"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -32890,8 +32999,8 @@
     }
    },
    "flags": [
-    "F0368",
-    "F0401"
+    "F0352",
+    "F0385"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -32987,8 +33096,8 @@
     }
    },
    "flags": [
-    "F0369",
-    "F0402"
+    "F0353",
+    "F0386"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33084,8 +33193,8 @@
     }
    },
    "flags": [
-    "F0370",
-    "F0403"
+    "F0354",
+    "F0387"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33181,8 +33290,8 @@
     }
    },
    "flags": [
-    "F0371",
-    "F0404"
+    "F0355",
+    "F0388"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33278,8 +33387,8 @@
     }
    },
    "flags": [
-    "F0372",
-    "F0405"
+    "F0356",
+    "F0389"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33375,7 +33484,7 @@
     }
    },
    "flags": [
-    "F0406"
+    "F0390"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33471,8 +33580,8 @@
     }
    },
    "flags": [
-    "F0373",
-    "F0407"
+    "F0357",
+    "F0391"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33568,8 +33677,8 @@
     }
    },
    "flags": [
-    "F0374",
-    "F0408"
+    "F0358",
+    "F0392"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33665,7 +33774,7 @@
     }
    },
    "flags": [
-    "F0409"
+    "F0393"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33761,7 +33870,7 @@
     }
    },
    "flags": [
-    "F0375"
+    "F0359"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33857,8 +33966,8 @@
     }
    },
    "flags": [
-    "F0376",
-    "F0410"
+    "F0360",
+    "F0394"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -33954,8 +34063,8 @@
     }
    },
    "flags": [
-    "F0377",
-    "F0411"
+    "F0361",
+    "F0395"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34051,8 +34160,8 @@
     }
    },
    "flags": [
-    "F0378",
-    "F0412"
+    "F0362",
+    "F0396"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34148,8 +34257,8 @@
     }
    },
    "flags": [
-    "F0379",
-    "F0413"
+    "F0363",
+    "F0397"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34245,7 +34354,7 @@
     }
    },
    "flags": [
-    "F0380"
+    "F0364"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34341,7 +34450,7 @@
     }
    },
    "flags": [
-    "F0381"
+    "F0365"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34531,7 +34640,7 @@
     }
    },
    "flags": [
-    "F0382"
+    "F0366"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34627,8 +34736,8 @@
     }
    },
    "flags": [
-    "F0383",
-    "F0414"
+    "F0367",
+    "F0398"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34724,8 +34833,8 @@
     }
    },
    "flags": [
-    "F0384",
-    "F0415"
+    "F0368",
+    "F0399"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34821,8 +34930,8 @@
     }
    },
    "flags": [
-    "F0385",
-    "F0416"
+    "F0369",
+    "F0400"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -34918,8 +35027,8 @@
     }
    },
    "flags": [
-    "F0386",
-    "F0417"
+    "F0370",
+    "F0401"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -35015,7 +35124,7 @@
     }
    },
    "flags": [
-    "F0418"
+    "F0402"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -35111,8 +35220,8 @@
     }
    },
    "flags": [
-    "F0387",
-    "F0419"
+    "F0371",
+    "F0403"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -35208,7 +35317,7 @@
     }
    },
    "flags": [
-    "F0420"
+    "F0404"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -35304,8 +35413,8 @@
     }
    },
    "flags": [
-    "F0388",
-    "F0421"
+    "F0372",
+    "F0405"
    ],
    "fuel_class": "gas",
    "investigation": "ACME CLD Flame",
@@ -37705,7 +37814,7 @@
     }
    },
    "flags": [
-    "F0454"
+    "F0438"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -37802,9 +37911,9 @@
     }
    },
    "flags": [
-    "F0437",
-    "F0438",
-    "F0455"
+    "F0421",
+    "F0422",
+    "F0439"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -37901,8 +38010,8 @@
     }
    },
    "flags": [
-    "F0439",
-    "F0456"
+    "F0423",
+    "F0440"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -37999,8 +38108,8 @@
     }
    },
    "flags": [
-    "F0440",
-    "F0457"
+    "F0424",
+    "F0441"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38097,8 +38206,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0458"
+    "F0430",
+    "F0442"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38195,9 +38304,9 @@
     }
    },
    "flags": [
-    "F0441",
-    "F0446",
-    "F0459"
+    "F0425",
+    "F0430",
+    "F0443"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38294,9 +38403,9 @@
     }
    },
    "flags": [
-    "F0442",
-    "F0446",
-    "F0460"
+    "F0426",
+    "F0430",
+    "F0444"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38393,9 +38502,9 @@
     }
    },
    "flags": [
-    "F0443",
-    "F0446",
-    "F0461"
+    "F0427",
+    "F0430",
+    "F0445"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38492,9 +38601,9 @@
     }
    },
    "flags": [
-    "F0444",
-    "F0446",
-    "F0462"
+    "F0428",
+    "F0430",
+    "F0446"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38591,9 +38700,9 @@
     }
    },
    "flags": [
-    "F0445",
-    "F0446",
-    "F0463"
+    "F0429",
+    "F0430",
+    "F0447"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38690,8 +38799,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0464"
+    "F0430",
+    "F0448"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38788,8 +38897,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0465"
+    "F0430",
+    "F0449"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38886,8 +38995,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0466"
+    "F0430",
+    "F0450"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -38984,8 +39093,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0467"
+    "F0430",
+    "F0451"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -39082,8 +39191,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0468"
+    "F0430",
+    "F0452"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -39180,8 +39289,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0469"
+    "F0430",
+    "F0453"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -39278,8 +39387,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0470"
+    "F0430",
+    "F0454"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -39376,8 +39485,8 @@
     }
    },
    "flags": [
-    "F0446",
-    "F0471"
+    "F0430",
+    "F0455"
    ],
    "fuel_class": "gas",
    "investigation": "ACME s-Flame",
@@ -39577,8 +39686,8 @@
     }
    },
    "flags": [
-    "F0475",
-    "F0490"
+    "F0459",
+    "F0474"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -40816,10 +40925,10 @@
     }
    },
    "flags": [
+    "F0460",
+    "F0475",
     "F0476",
-    "F0491",
-    "F0492",
-    "F0493"
+    "F0477"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -41954,9 +42063,9 @@
     }
    },
    "flags": [
-    "F0494",
-    "F0495",
-    "F0496"
+    "F0478",
+    "F0479",
+    "F0480"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -42576,8 +42685,8 @@
     }
    },
    "flags": [
-    "F0497",
-    "F0498"
+    "F0481",
+    "F0482"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -44021,7 +44130,7 @@
     }
    },
    "flags": [
-    "F0481"
+    "F0465"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -44641,7 +44750,7 @@
     }
    },
    "flags": [
-    "F0499"
+    "F0483"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -45467,7 +45576,7 @@
     }
    },
    "flags": [
-    "F0472"
+    "F0456"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -45675,8 +45784,8 @@
     }
    },
    "flags": [
-    "F0500",
-    "F0501"
+    "F0484",
+    "F0485"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -45884,7 +45993,7 @@
     }
    },
    "flags": [
-    "F0502"
+    "F0486"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -46298,7 +46407,7 @@
     }
    },
    "flags": [
-    "F0503"
+    "F0487"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -46712,7 +46821,7 @@
     }
    },
    "flags": [
-    "F0504"
+    "F0488"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -46817,7 +46926,7 @@
     }
    },
    "flags": [
-    "F0505"
+    "F0489"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -46922,7 +47031,7 @@
     }
    },
    "flags": [
-    "F0506"
+    "F0490"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -47336,7 +47445,7 @@
     }
    },
    "flags": [
-    "F0507"
+    "F0491"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -48368,7 +48477,7 @@
     }
    },
    "flags": [
-    "F0482"
+    "F0466"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -49297,9 +49406,9 @@
     }
    },
    "flags": [
-    "F0477",
-    "F0508",
-    "F0509"
+    "F0461",
+    "F0492",
+    "F0493"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -49404,9 +49513,9 @@
     }
    },
    "flags": [
-    "F0478",
-    "F0510",
-    "F0511"
+    "F0462",
+    "F0494",
+    "F0495"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -50541,7 +50650,7 @@
     }
    },
    "flags": [
-    "F0473"
+    "F0457"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -51470,7 +51579,7 @@
     }
    },
    "flags": [
-    "F0474"
+    "F0458"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -52502,9 +52611,9 @@
     }
    },
    "flags": [
-    "F0479",
-    "F0512",
-    "F0513"
+    "F0463",
+    "F0496",
+    "F0497"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -52609,9 +52718,9 @@
     }
    },
    "flags": [
-    "F0480",
-    "F0514",
-    "F0515"
+    "F0464",
+    "F0498",
+    "F0499"
    ],
    "fuel_class": "solid",
    "investigation": "BASS-II",
@@ -54743,7 +54852,7 @@
     }
    },
    "flags": [
-    "F0536"
+    "F0520"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -54829,7 +54938,7 @@
     }
    },
    "flags": [
-    "F0536"
+    "F0520"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -56343,7 +56452,7 @@
     }
    },
    "flags": [
-    "F0516"
+    "F0500"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -57773,7 +57882,7 @@
     }
    },
    "flags": [
-    "F0537"
+    "F0521"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -58195,7 +58304,7 @@
     }
    },
    "flags": [
-    "F0538"
+    "F0522"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -59457,8 +59566,8 @@
     }
    },
    "flags": [
-    "F0525",
-    "F0539"
+    "F0509",
+    "F0523"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -59712,7 +59821,7 @@
     }
    },
    "flags": [
-    "F0537"
+    "F0521"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -59966,7 +60075,7 @@
     }
    },
    "flags": [
-    "F0540"
+    "F0524"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60052,7 +60161,7 @@
     }
    },
    "flags": [
-    "F0540"
+    "F0524"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60390,7 +60499,7 @@
     }
    },
    "flags": [
-    "F0541"
+    "F0525"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60476,7 +60585,7 @@
     }
    },
    "flags": [
-    "F0542"
+    "F0526"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60562,7 +60671,7 @@
     }
    },
    "flags": [
-    "F0543"
+    "F0527"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60648,7 +60757,7 @@
     }
    },
    "flags": [
-    "F0541"
+    "F0525"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60734,7 +60843,7 @@
     }
    },
    "flags": [
-    "F0542"
+    "F0526"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60820,7 +60929,7 @@
     }
    },
    "flags": [
-    "F0543"
+    "F0527"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -60990,7 +61099,7 @@
     }
    },
    "flags": [
-    "F0517"
+    "F0501"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -61328,7 +61437,7 @@
     }
    },
    "flags": [
-    "F0526"
+    "F0510"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -61414,7 +61523,7 @@
     }
    },
    "flags": [
-    "F0538"
+    "F0522"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -61584,7 +61693,7 @@
     }
    },
    "flags": [
-    "F0525"
+    "F0509"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -61922,7 +62031,7 @@
     }
    },
    "flags": [
-    "F0518"
+    "F0502"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -62176,7 +62285,7 @@
     }
    },
    "flags": [
-    "F0544"
+    "F0528"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -62514,7 +62623,7 @@
     }
    },
    "flags": [
-    "F0519"
+    "F0503"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -62600,7 +62709,7 @@
     }
    },
    "flags": [
-    "F0520"
+    "F0504"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -62686,7 +62795,7 @@
     }
    },
    "flags": [
-    "F0521"
+    "F0505"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -62772,8 +62881,8 @@
     }
    },
    "flags": [
-    "F0522",
-    "F0539"
+    "F0506",
+    "F0523"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -62859,8 +62968,8 @@
     }
    },
    "flags": [
-    "F0523",
-    "F0544"
+    "F0507",
+    "F0528"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -62946,7 +63055,7 @@
     }
    },
    "flags": [
-    "F0524"
+    "F0508"
    ],
    "fuel_class": "solid",
    "investigation": "BASS",
@@ -64144,7 +64253,7 @@
     }
    },
    "flags": [
-    "F0547"
+    "F0531"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -64246,7 +64355,7 @@
     }
    },
    "flags": [
-    "F0548"
+    "F0532"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -64348,7 +64457,7 @@
     }
    },
    "flags": [
-    "F0549"
+    "F0533"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -64450,7 +64559,7 @@
     }
    },
    "flags": [
-    "F0550"
+    "F0534"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -66552,7 +66661,7 @@
     }
    },
    "flags": [
-    "F0551"
+    "F0535"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -66654,8 +66763,8 @@
     }
    },
    "flags": [
-    "F0551",
-    "F0552"
+    "F0535",
+    "F0536"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -68057,7 +68166,7 @@
     }
    },
    "flags": [
-    "F0553"
+    "F0537"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -68359,7 +68468,7 @@
     }
    },
    "flags": [
-    "F0554"
+    "F0538"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -68461,7 +68570,7 @@
     }
    },
    "flags": [
-    "F0554"
+    "F0538"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -69063,7 +69172,7 @@
     }
    },
    "flags": [
-    "F0555"
+    "F0539"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -69165,7 +69274,7 @@
     }
    },
    "flags": [
-    "F0555"
+    "F0539"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -70667,7 +70776,7 @@
     }
    },
    "flags": [
-    "F0556"
+    "F0540"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -70769,7 +70878,7 @@
     }
    },
    "flags": [
-    "F0556"
+    "F0540"
    ],
    "fuel_class": "droplet",
    "investigation": "CFI",
@@ -70963,7 +71072,7 @@
     }
    },
    "flags": [
-    "F0570"
+    "F0554"
    ],
    "fuel_class": "none",
    "investigation": "DAFT / DAFT-2",
@@ -71052,7 +71161,7 @@
     }
    },
    "flags": [
-    "F0570"
+    "F0554"
    ],
    "fuel_class": "none",
    "investigation": "DAFT / DAFT-2",
@@ -71141,9 +71250,9 @@
     }
    },
    "flags": [
-    "F0585",
-    "F0586",
-    "F0587"
+    "F0569",
+    "F0570",
+    "F0571"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -71234,9 +71343,9 @@
     }
    },
    "flags": [
-    "F0588",
-    "F0589",
-    "F0590"
+    "F0572",
+    "F0573",
+    "F0574"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -71327,9 +71436,9 @@
     }
    },
    "flags": [
-    "F0591",
-    "F0592",
-    "F0593"
+    "F0575",
+    "F0576",
+    "F0577"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -71420,9 +71529,9 @@
     }
    },
    "flags": [
-    "F0594",
-    "F0595",
-    "F0596"
+    "F0578",
+    "F0579",
+    "F0580"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -71513,9 +71622,9 @@
     }
    },
    "flags": [
-    "F0597",
-    "F0598",
-    "F0599"
+    "F0581",
+    "F0582",
+    "F0583"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -71606,9 +71715,9 @@
     }
    },
    "flags": [
-    "F0600",
-    "F0601",
-    "F0602"
+    "F0584",
+    "F0585",
+    "F0586"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -71699,9 +71808,9 @@
     }
    },
    "flags": [
-    "F0603",
-    "F0604",
-    "F0605"
+    "F0587",
+    "F0588",
+    "F0589"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -71792,9 +71901,9 @@
     }
    },
    "flags": [
-    "F0606",
-    "F0607",
-    "F0608"
+    "F0590",
+    "F0591",
+    "F0592"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX-2",
@@ -77892,7 +78001,7 @@
     }
    },
    "flags": [
-    "F0609"
+    "F0593"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -78003,7 +78112,7 @@
     }
    },
    "flags": [
-    "F0610"
+    "F0594"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -78659,7 +78768,7 @@
     }
    },
    "flags": [
-    "F0611"
+    "F0595"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -78770,7 +78879,7 @@
     }
    },
    "flags": [
-    "F0612"
+    "F0596"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79208,7 +79317,7 @@
     }
    },
    "flags": [
-    "F0613"
+    "F0597"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79319,7 +79428,7 @@
     }
    },
    "flags": [
-    "F0614"
+    "F0598"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79430,8 +79539,8 @@
     }
    },
    "flags": [
-    "F0615",
-    "F0642"
+    "F0599",
+    "F0626"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79542,7 +79651,7 @@
     }
    },
    "flags": [
-    "F0616"
+    "F0600"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79653,7 +79762,7 @@
     }
    },
    "flags": [
-    "F0617"
+    "F0601"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79764,8 +79873,8 @@
     }
    },
    "flags": [
-    "F0618",
-    "F0642"
+    "F0602",
+    "F0626"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79876,7 +79985,7 @@
     }
    },
    "flags": [
-    "F0619"
+    "F0603"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -79987,7 +80096,7 @@
     }
    },
    "flags": [
-    "F0620"
+    "F0604"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80098,7 +80207,7 @@
     }
    },
    "flags": [
-    "F0621"
+    "F0605"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80209,7 +80318,7 @@
     }
    },
    "flags": [
-    "F0622"
+    "F0606"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80320,7 +80429,7 @@
     }
    },
    "flags": [
-    "F0623"
+    "F0607"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80431,7 +80540,7 @@
     }
    },
    "flags": [
-    "F0624"
+    "F0608"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80542,7 +80651,7 @@
     }
    },
    "flags": [
-    "F0625"
+    "F0609"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80653,7 +80762,7 @@
     }
    },
    "flags": [
-    "F0626"
+    "F0610"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80873,7 +80982,7 @@
     }
    },
    "flags": [
-    "F0627"
+    "F0611"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -80984,7 +81093,7 @@
     }
    },
    "flags": [
-    "F0628"
+    "F0612"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -81095,7 +81204,7 @@
     }
    },
    "flags": [
-    "F0629"
+    "F0613"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -81206,7 +81315,7 @@
     }
    },
    "flags": [
-    "F0630"
+    "F0614"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -81317,7 +81426,7 @@
     }
    },
    "flags": [
-    "F0631"
+    "F0615"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -82409,7 +82518,7 @@
     }
    },
    "flags": [
-    "F0632"
+    "F0616"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -83174,7 +83283,7 @@
     }
    },
    "flags": [
-    "F0633"
+    "F0617"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -83285,7 +83394,7 @@
     }
    },
    "flags": [
-    "F0634"
+    "F0618"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -83505,7 +83614,7 @@
     }
    },
    "flags": [
-    "F0635"
+    "F0619"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -84270,7 +84379,7 @@
     }
    },
    "flags": [
-    "F0643"
+    "F0627"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -84708,7 +84817,7 @@
     }
    },
    "flags": [
-    "F0636"
+    "F0620"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -89397,7 +89506,7 @@
     }
    },
    "flags": [
-    "F0637"
+    "F0621"
    ],
    "fuel_class": "droplet",
    "investigation": "FLEX",
@@ -101813,9 +101922,9 @@
     }
    },
    "flags": [
-    "F0654",
-    "F0658",
-    "F0660"
+    "F0638",
+    "F0642",
+    "F0644"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-I",
@@ -101912,9 +102021,9 @@
     }
    },
    "flags": [
-    "F0655",
-    "F0659",
-    "F0661"
+    "F0639",
+    "F0643",
+    "F0645"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-I",
@@ -102011,7 +102120,7 @@
     }
    },
    "flags": [
-    "F0677"
+    "F0661"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102112,7 +102221,7 @@
     }
    },
    "flags": [
-    "F0678"
+    "F0662"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102213,8 +102322,8 @@
     }
    },
    "flags": [
-    "F0665",
-    "F0679"
+    "F0649",
+    "F0663"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102315,9 +102424,9 @@
     }
    },
    "flags": [
-    "F0666",
-    "F0680",
-    "F0681"
+    "F0650",
+    "F0664",
+    "F0665"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102418,8 +102527,8 @@
     }
    },
    "flags": [
-    "F0682",
-    "F0683"
+    "F0666",
+    "F0667"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102520,10 +102629,10 @@
     }
    },
    "flags": [
-    "F0667",
-    "F0675",
-    "F0684",
-    "F0685"
+    "F0651",
+    "F0659",
+    "F0668",
+    "F0669"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102624,7 +102733,7 @@
     }
    },
    "flags": [
-    "F0686"
+    "F0670"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102725,7 +102834,7 @@
     }
    },
    "flags": [
-    "F0687"
+    "F0671"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",
@@ -102826,8 +102935,8 @@
     }
    },
    "flags": [
-    "F0676",
-    "F0688"
+    "F0660",
+    "F0672"
    ],
    "fuel_class": "solid",
    "investigation": "SAFFIRE-II",

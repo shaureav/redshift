@@ -55,7 +55,6 @@ def test_reconciliation(out):
 def test_flag_counts(out):
     _, _, flags, _ = out
     assert Counter(f.code for f in flags.items) == {
-        "non_numeric": 16,
         "out_of_range": 2,
         "date_inconsistent": 1,
         "label_inconsistent": 1,
@@ -89,13 +88,15 @@ def test_no_o2_value_is_invented(out):
     assert all(rec.fields["o2_pct"]["v"] is None for rec in recs.values())
 
 
-def test_o2_lists_are_non_numeric(out):
-    _, _, flags, recs = out
-    nn = _flags(flags, "non_numeric")
-    assert sorted(f.rows[0] for f in nn) == [ln for ln in range(2, 20) if ln not in (6, 9)]
-    line2 = next(f for f in nn if f.rows == [2])
-    assert line2.raw == "21; 26.5; 40" and line2.column == M.C_O2
+def test_o2_lists_read_with_split_number_list(out):
+    _, reg, flags, recs = out
+    assert not _flags(flags, "non_numeric")
+    assert recs[2].fields["o2_list_pct"]["v"] == [21.0, 26.5, 40.0]
+    assert "split_number_list" in reg.get(recs[2].fields["o2_list_pct"]["p"]).transforms
+    assert recs[2].fields["o2_pct"]["v"] is None
     assert recs[4].raw[M.C_O2] == "21; 26.5; 34; 40"
+    assert recs[4].fields["o2_list_pct"]["v"] == [21.0, 26.5, 34.0, 40.0]
+    assert "o2_list_pct" not in recs[6].fields and recs[6].fields["o2_pct"]["v"] is None  # "3400%"
 
 
 def test_o2_basis_ambient_on_every_row(out):

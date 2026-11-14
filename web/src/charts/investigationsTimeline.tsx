@@ -197,7 +197,7 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                 ) : (
                   <g>
                     <rect x={x0} y={cy - 4} width={34} height={8} rx={2} fill="url(#hatch-timeline)" stroke="var(--hatch)" strokeWidth={1} />
-                    <text x={x0 + 40} y={cy} dy="0.32em" fontSize={10} fill="var(--ink-3)" fontStyle="italic">end not recorded</text>
+                    {x0 + 130 < iw && <text x={x0 + 40} y={cy} dy="0.32em" fontSize={10} fill="var(--ink-3)" fontStyle="italic">end not recorded</text>}
                   </g>
                 )}
                 <path

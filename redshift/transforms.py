@@ -17,6 +17,8 @@ ALLOWED: dict[str, str] = {
     "parse_number": "Read a plain decimal number (digits, one optional point, optional sign or exponent).",
     "strip_stated_unit": "Read '<number> <unit>' when the unit written in the cell is exactly the unit expected "
     "for the column (for example '0.75 atm' in a pressure column read as atm).",
+    "split_number_list": "Read a cell listing plain numbers separated by ';' (for example '21; 26.5; 40') as "
+    "that list, in the order written. Every element must be a plain number.",
     "strip_percent_sign": "Remove a single trailing '%' from a number already in percent.",
     "fraction_to_pct": "Multiply a mole fraction by 100 to give percent.",
     "mmhg_to_kpa": "Multiply by 101.325/760 (exact definition of the conventional mmHg).",
@@ -105,3 +107,14 @@ def pressure_kpa(raw: str | None, unit: str) -> tuple[float | None, list[str]]:
     if unit == "kPa":
         return v, applied
     return units.to_kpa(v, unit), [*applied, _PRESSURE_TRANSFORM[unit]]
+
+
+def number_list(raw: str | None, sep: str = ";") -> tuple[list[float] | None, list[str]]:
+    """Parse '21; 26.5; 40' into [21.0, 26.5, 40.0]. Any element that is not a plain number fails the cell."""
+    s, applied = text(raw)
+    if s is None:
+        return None, applied
+    parts = [x.strip() for x in s.split(sep)]
+    if not all(_NUMBER.match(x) for x in parts):
+        raise NotClean("non_numeric", f"expected numbers separated by {sep!r}, found {raw!r}")
+    return [float(x) for x in parts], [*applied, "split_number_list", "parse_number"]
