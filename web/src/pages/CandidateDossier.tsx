@@ -145,8 +145,8 @@ export default function CandidateDossier() {
           </div>
           <div className="no-print flex flex-wrap gap-2">
             <ExportButton onClick={() => window.print()}>Print or save as PDF</ExportButton>
-            <ExportButton onClick={downloadCsv} label="Download nearest tests as CSV, with dataset version and DOIs">Download nearest tests CSV</ExportButton>
-            <ExportButton onClick={downloadBib} label="Download BibTeX for the investigations in the nearest list">BibTeX</ExportButton>
+            <ExportButton onClick={downloadCsv} disabled={e.nearest.length === 0} title={e.nearest.length === 0 ? "No nearest tests are listed for this atmosphere" : undefined} label="Download nearest tests as CSV, with dataset version and DOIs">Download nearest tests CSV</ExportButton>
+            <ExportButton onClick={downloadBib} disabled={nearestInvs.length === 0} title={nearestInvs.length === 0 ? "No investigations in the nearest list" : undefined} label="Download BibTeX for the investigations in the nearest list">BibTeX</ExportButton>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-3">
@@ -156,16 +156,16 @@ export default function CandidateDossier() {
         <SourceQuote prov={sourceProv} loading={prov.isLoading} />
       </header>
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,400px)]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,400px)]">
         <div className="flex min-w-0 flex-col gap-5">
           <Section
             id="evidence"
             title="Evidence near this atmosphere"
             lead={
               <>
-                A test counts as near when it lies within <Value val={{ v: ev.data.params.threshold, u: "steps", p: ev.data.p }} /> of this atmosphere, where one step is{" "}
+                A test counts as near when it lies within <Value val={{ v: ev.data.params.threshold, u: "steps", p: ev.data.p }} digits={1} /> of this atmosphere, where one step is{" "}
                 <Value val={{ v: ev.data.params.o2_step_pct_points, u: "O2 points", p: ev.data.p }} /> or a pressure ratio of{" "}
-                <Value val={{ v: ev.data.params.pressure_step_log, p: ev.data.p }} />. {ev.data.params.judgement}
+                <Value val={{ v: ev.data.params.pressure_step_log, p: ev.data.p }} digits={2} />. {ev.data.params.judgement}
               </>
             }
           >
@@ -264,8 +264,8 @@ function NearestTable({ c, ev, testById, invByName }: { c: Candidate; ev: Candid
       }
     >
       {ev.nearest.length === 0 ? (
-        <div className="hatch-bg rounded-lg border border-line p-0.5">
-          <p className="rounded-md bg-surface-2/95 p-3 text-sm text-ink-2">No tests recorded near {c.name}: the build lists no nearest tests for this atmosphere.</p>
+        <div className="hatch-bg rounded-lg border border-line p-1.5">
+          <p className="rounded-md bg-surface-2 p-3 text-sm text-ink-2">No tests recorded near {c.name}: the build lists no nearest tests for this atmosphere.</p>
         </div>
       ) : (
         <div className="-mx-1 overflow-x-auto px-1">
@@ -365,8 +365,8 @@ function PrebreatheSection({ c, pb }: { c: Candidate; pb?: PrebreatheFile }) {
           </blockquote>
         </div>
       ) : pending ? (
-        <div className="hatch-bg rounded-lg border border-line p-0.5">
-          <p className="rounded-md bg-surface-2/95 p-3 text-sm text-ink-2">
+        <div className="hatch-bg rounded-lg border border-line p-1.5">
+          <p className="rounded-md bg-surface-2 p-3 text-sm text-ink-2">
             <span className="font-medium text-ink">Not shown yet:</span> {pending.status}. Finding <span className="mono">{pending.finding_id}</span>.
           </p>
         </div>

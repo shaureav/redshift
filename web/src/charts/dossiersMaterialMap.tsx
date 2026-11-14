@@ -168,7 +168,7 @@ function StripView({ tests, candidates, label }: { tests: TestRow[]; candidates:
   const height = m.top + ih + m.bottom;
   const o2s = [...tests.map((t) => t.fields.o2_pct.v as number), ...cands.map((c) => c.o2_pct.v)];
   const [o0, o1] = d3.extent(o2s) as [number, number];
-  const x = d3.scaleLinear().domain([Math.max(0, o0 - 3), Math.min(102, o1 + 3)]).nice().range([0, iw]);
+  const x = d3.scaleLinear().domain([Math.max(0, Math.floor((o0 - 2) / 5) * 5), Math.min(102, o1 + 2)]).range([0, iw]);
   const ticks = x.ticks(narrow ? 5 : 10);
   const base = ih - 6;
   return (

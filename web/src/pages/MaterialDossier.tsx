@@ -127,12 +127,12 @@ export default function MaterialDossier() {
         </p>
       </header>
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,380px)]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,380px)]">
         <div className="flex min-w-0 flex-col gap-5">
           {mode === "none" ? (
             <Section id="map" title="Where it was tested">
-              <div className="hatch-bg rounded-lg border border-line p-0.5">
-                <p className="rounded-md bg-surface-2/95 p-3 text-sm text-ink-2">
+              <div className="hatch-bg rounded-lg border border-line p-1.5">
+                <p className="rounded-md bg-surface-2 p-3 text-sm text-ink-2">
                   Neither O2 nor pressure is recorded for any test of this material, so it cannot be placed on the oxygen and pressure plane or judged near any
                   candidate atmosphere. The tests are listed below.
                 </p>
@@ -141,11 +141,6 @@ export default function MaterialDossier() {
           ) : (
             <div>
               <MaterialMap tests={rows} candidates={cands.data.candidates} label={name} />
-              {mode === "strip" && (
-                <p className="mt-2 text-xs text-ink-2">
-                  Pressure is not recorded for any test of this material, so only the O2 strip can be drawn.
-                </p>
-              )}
             </div>
           )}
 

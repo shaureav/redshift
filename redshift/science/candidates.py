@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from redshift.provenance import Prov, Registry, value
+from redshift.provenance import Prov, Registry, SourceType, value
 from redshift.quotes import find_line
 from redshift.units import psi_to_kpa
 
@@ -34,7 +34,7 @@ class Candidate:
     role: str  # "habitat" or "suit" or "scenario"
     source_file: str
     quote: str
-    source_type: str
+    source_type: SourceType
     investigation_id: str | None
     doi: str | None
     context: str

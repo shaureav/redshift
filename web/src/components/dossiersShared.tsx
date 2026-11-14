@@ -190,7 +190,6 @@ export function StatusBadge({ status }: { status: DossierStatus }) {
         <FuelMarker fuel={status === "here" ? "solid" : "gas"} size={10} outlined={status !== "here"} />
       )}
       {STATUS_TEXT[status]}
-      <span className="sr-only">. {STATUS_HELP[status]}</span>
     </span>
   );
 }
@@ -218,7 +217,7 @@ export function CountCell({ val, compact = false }: { val: Val<number>; compact?
   if (val.v === 0) {
     return (
       <span className={`hatch-bg inline-flex items-center rounded border border-line px-1.5 py-0.5 ${compact ? "text-[11px]" : "text-xs"} text-ink-2`}>
-        <span className="rounded-sm bg-surface-2/90 px-1">no tests recorded</span>
+        <span className="rounded-sm bg-surface-2 px-1">no tests recorded</span>
       </span>
     );
   }
@@ -289,8 +288,8 @@ export function FindingCard({ f }: { f: KeyFinding }) {
 /** Shown wherever verified findings would appear while none are verified. */
 export function AwaitingVerification({ kf, pendingIds = [] }: { kf: KeyFindingsFile; pendingIds?: string[] }) {
   return (
-    <div className="hatch-bg rounded-lg border border-line p-0.5">
-      <div className="rounded-md bg-surface-2/95 p-3 text-sm text-ink-2">
+    <div className="hatch-bg rounded-lg border border-line p-1.5">
+      <div className="rounded-md bg-surface-2 p-3 text-sm text-ink-2">
         <p>
           <span className="font-medium text-ink">Awaiting human verification.</span> Paper findings appear here only after a named team member has checked
           the quote against the PDF. Findings drafted so far: <Value val={{ v: kf.status.drafted, u: "findings", p: kf.p }} />; verified so far: none.
@@ -310,9 +309,9 @@ export function AwaitingVerification({ kf, pendingIds = [] }: { kf: KeyFindingsF
   );
 }
 
-export function ExportButton({ onClick, children, label }: { onClick: () => void; children: ReactNode; label?: string }) {
+export function ExportButton({ onClick, children, label, disabled, title }: { onClick: () => void; children: ReactNode; label?: string; disabled?: boolean; title?: string }) {
   return (
-    <button type="button" onClick={onClick} aria-label={label} className="rounded border border-line bg-surface-2 px-2.5 py-1 text-xs hover:bg-surface-3">
+    <button type="button" onClick={onClick} aria-label={label} disabled={disabled} title={title} className="rounded border border-line bg-surface-2 px-2.5 py-1 text-xs hover:bg-surface-3 disabled:cursor-not-allowed disabled:text-ink-3 disabled:hover:bg-surface-2">
       {children}
     </button>
   );

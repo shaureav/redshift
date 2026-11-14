@@ -46,7 +46,7 @@ def build(
                 near = [(d, e) for d, e in ev["near"] if e.fuel_class == mat]
                 n = len(near)
                 cid = f"cell:{o2:g}:{p_psi:g}:{mat}"
-                base = dict(source_type="derived", method_version=METHOD_VERSION)
+                base: dict[str, Any] = {"source_type": "derived", "method_version": METHOD_VERSION}
                 n_id = registry.add(
                     Prov(
                         id=f"planner:{cid}:n",

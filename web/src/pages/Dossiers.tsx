@@ -132,7 +132,7 @@ export default function Dossiers() {
         {!mats ? (
           <Loading what="test records" />
         ) : groups.length === 0 ? (
-          <p className="hatch-bg rounded-lg border border-line p-0.5"><span className="block rounded-md bg-surface-2/95 p-3 text-sm text-ink-2">No material label matches these filters.</span></p>
+          <p className="hatch-bg rounded-lg border border-line p-1.5"><span className="block rounded-md bg-surface-2 p-3 text-sm text-ink-2">No material label matches these filters.</span></p>
         ) : (
           <div className="flex flex-col gap-6">
             {groups.map(([key, entries]) => (
@@ -185,7 +185,7 @@ function CandidateCard({ c, ev, pb, kf }: { c: Candidate; ev: CandidateEvidence;
           <h3 className="text-base font-semibold">
             <Link to={`/dossiers/candidate/${c.id}`} className="underline decoration-line underline-offset-4 hover:decoration-ink">{c.name}</Link>
           </h3>
-          <p className="text-xs text-ink-3">{c.short === ROLE_LABEL[c.role] || c.short === "Spacesuit" ? ROLE_LABEL[c.role] : `${ROLE_LABEL[c.role]}: ${c.short}`}</p>
+          <p className="text-xs text-ink-3">{c.short === ROLE_LABEL[c.role] ? ROLE_LABEL[c.role] : `${ROLE_LABEL[c.role]}: ${c.short}`}</p>
         </div>
         <StatusBadge status={dossierStatus(ev)} />
       </div>
