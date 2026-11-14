@@ -236,7 +236,7 @@ describe("the instrument panel", () => {
     expect(panel.querySelector("h2.text-title")?.textContent).toContain("40%");
     const missing = panel.querySelector('[aria-labelledby="sec-gap"]')?.textContent ?? "";
     expect(missing).toContain("Tests of any fuel class near this point");
-    expect(missing).toContain("At this oxygen, but no pressure recorded");
+    expect(missing).toContain("Near this oxygen (within the step size), but no pressure recorded");
     expect(missing).toContain("BRE sessions (chamber pressure)");
     expect(panel.querySelectorAll('[role="slider"]')).toHaveLength(2);
     expect(panel.querySelectorAll('[role="slider"] .hatch-bg').length).toBeGreaterThan(0);
