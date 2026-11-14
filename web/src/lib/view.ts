@@ -1,6 +1,6 @@
 // View state for the plane, held in the URL so a link reproduces the exact view: probe position, step
 // multiplier, layers, solids only, zoom, brushed area, open panel view and asked question.
-import { useCallback, useMemo } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export type Layer = "ev" | "strip" | "blind" | "ft" | "cand" | "pb" | "halo";
@@ -87,9 +87,15 @@ export function writeView(v: Partial<View>, base: URLSearchParams): URLSearchPar
 export function useView(): [View, (patch: Partial<View>, opts?: { push?: boolean }) => void] {
   const [sp, setSp] = useSearchParams();
   const view = useMemo(() => parseView(sp), [sp]);
+  // react-router hands back a new setter whenever the search string changes. Keep one stable function that
+  // calls the latest setter, so callbacks built on it do not change identity every time the view moves.
+  const latest = useRef(setSp);
+  useLayoutEffect(() => {
+    latest.current = setSp;
+  }, [setSp]);
   const update = useCallback(
-    (patch: Partial<View>, opts?: { push?: boolean }) => setSp((cur) => writeView(patch, cur), { replace: !opts?.push }),
-    [setSp],
+    (patch: Partial<View>, opts?: { push?: boolean }) => latest.current((cur) => writeView(patch, cur), { replace: !opts?.push }),
+    [],
   );
   return [view, update];
 }

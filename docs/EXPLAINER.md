@@ -86,6 +86,10 @@ The home page is one big map of oxygen against cabin pressure with a panel besid
 
 The question box first looks for an answer that our team has already checked. On a server with a model key it can also answer new questions, but the model is not allowed to type a single number: it can only point at numbers we hand it, and a program rejects the answer if it types one anyway, cites something we did not give it, or recommends an atmosphere.
 
+## The error screen (`web/src/components/ErrorBoundary.tsx`)
+
+If any page of the website hits an error while it is drawing, the reader sees a short error screen instead of a blank page: what failed, why Redshift stops rather than show a half-drawn page or a number it cannot trace, and a button to reload. The view is kept in the address bar, so a reload returns to the same place.
+
 ## The website's Value popover (`web/src/components/Value.tsx`)
 
 On the website, every number is drawn by one shared piece of code, and every number is a button. Click it and a small box shows where it came from: the file and line, or the paper and page, the original text, and whether a person has verified it. If a value was never recorded, it says "not recorded" instead of showing a made-up number.

@@ -31,6 +31,7 @@ Line references to raw files are physical line numbers (header is line 1), from 
 | Q17 | Live "Ask the evidence" needs a hosted API with ANTHROPIC_API_KEY set, and the site built with VITE_API_BASE pointing at it. Do we host the API for judging, or keep the static site on cached answers only? | Team | Decision and, if hosting, a host |
 | Q18 | The new cached answer "If NASA has already burned fabric in near-Moon-base air, why can't a researcher download it?" (qa-download) is checked by code but awaits a team member's check (scripts/check_ai_text.py). | Team | Sign-off |
 | Q19 | Should the nearness step slider offer more than the three documented stops (for example 0.5x and 2x)? That adds multipliers to redshift/params.json and changes the dataset version. | Team | Decision (D17 keeps three) |
+| Q20 | The light-theme fuel glyphs get a 1 px darker ring so each reaches 3:1 against white (plan decision D3, D22). The rings still need a colour-blindness re-check with a simulator (protanopia, deuteranopia, tritanopia) before submission. Who runs it? | Team | A named checker and the simulator screenshots in docs/redesign/ |
 
 ## Closed
 

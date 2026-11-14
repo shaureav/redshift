@@ -41,7 +41,14 @@ function remember() {
 export function Tour({ onStep }: { onStep?: (i: number) => void }) {
   const [step, setStep] = useState<number | null>(null);
   const [rect, setRect] = useState<DOMRect | null>(null);
+  const [cardH, setCardH] = useState(280); // measured once the card is drawn, so it never runs off screen
   const card = useRef<HTMLDivElement>(null);
+  // The latest onStep, read when a step starts. A parent may pass a new function on every render; the step
+  // action must still run once per step, not once per render (it can change the view, which re-renders).
+  const onStepRef = useRef(onStep);
+  useLayoutEffect(() => {
+    onStepRef.current = onStep;
+  });
 
   useEffect(() => {
     if (!seen()) setStep(0);
@@ -56,21 +63,28 @@ export function Tour({ onStep }: { onStep?: (i: number) => void }) {
     if (!el) return setRect(null);
     el.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     setRect(el.getBoundingClientRect());
+    if (card.current?.offsetHeight) setCardH(card.current.offsetHeight);
+  }, [step]);
+
+  // Each step's action runs exactly once per step change. Step 3 moves the probe and turns on solids only;
+  // keyed on anything but the step, that view change re-ran the action forever (React error 185).
+  useLayoutEffect(() => {
+    if (step === null) return;
+    onStepRef.current?.(step);
+    card.current?.focus();
   }, [step]);
 
   useLayoutEffect(() => {
     if (step === null) return;
-    onStep?.(step);
     const t = setTimeout(measure, 60);
     window.addEventListener("resize", measure);
     window.addEventListener("scroll", measure, true);
-    card.current?.focus();
     return () => {
       clearTimeout(t);
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", measure, true);
     };
-  }, [step, measure, onStep]);
+  }, [step, measure]);
 
   const finish = () => {
     remember();
@@ -91,13 +105,15 @@ export function Tour({ onStep }: { onStep?: (i: number) => void }) {
   const vh = window.innerHeight;
   const cardW = Math.min(360, vw - 32);
   let left = 16;
-  let top = vh - 260;
+  let top = vh - cardH - 16;
   if (rect) {
     const roomRight = vw - rect.right;
-    if (roomRight > cardW + 32) { left = rect.right + 16; top = Math.max(16, Math.min(rect.top, vh - 280)); }
-    else if (rect.left > cardW + 32) { left = rect.left - cardW - 16; top = Math.max(16, Math.min(rect.top, vh - 280)); }
-    else { left = Math.max(16, Math.min(rect.left, vw - cardW - 16)); top = rect.bottom + 16 < vh - 240 ? rect.bottom + 16 : Math.max(16, rect.top - 256); }
+    if (roomRight > cardW + 32) { left = rect.right + 16; top = rect.top; }
+    else if (rect.left > cardW + 32) { left = rect.left - cardW - 16; top = rect.top; }
+    else { left = Math.max(16, Math.min(rect.left, vw - cardW - 16)); top = rect.bottom + 16 + cardH < vh - 16 ? rect.bottom + 16 : rect.top - cardH - 16; }
   }
+  // Keep the whole card, buttons included, inside the viewport.
+  top = Math.max(16, Math.min(top, vh - cardH - 16));
 
   return (
     <div className="fixed inset-0 z-[70]" role="presentation">

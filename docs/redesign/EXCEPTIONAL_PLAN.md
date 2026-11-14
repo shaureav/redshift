@@ -1,6 +1,6 @@
 # Redshift: plan for an exceptional interface
 
-Status: **draft for team approval. No code is written against this plan until the team approves it.**
+Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23).
 Follows `docs/redesign/PLAN.md` (the plane-first redesign, done) and `docs/REDESIGN_AUDIT.md`.
 
 > **The one job.** "If we pick this cabin atmosphere, what do we actually know about fire there, and what's missing?"
@@ -261,7 +261,7 @@ Rule kept from D18: no number ever animates through values that are not data.
 
 - **Python:** existing 215 tests plus `timeline.json` tests (phase 8).
 - **Web unit:** grid row and column readers, coastline coverage, shortcuts, mission checks.
-- **Interaction (jsdom):** tour and intro stepping, palette navigation, sheet focus trap. Requires adding `@testing-library/react` as a dev dependency (decision D6).
+- **Interaction (jsdom):** tour and intro stepping, palette navigation, sheet focus trap. Written with `react-dom/client` and React's `act`, no new dependency (decision D6 as taken by the team; pattern in `web/src/components/interaction.test.tsx`).
 - **Snapshots:** every changed screen, each update diffed and explained in its commit message.
 - **Manual matrix:** 390, 768, 1440, 1920 px x dark, light x reduced motion on and off.
 

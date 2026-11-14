@@ -1,5 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Layout } from "./components/Layout";
 import { Loading } from "./components/Common";
 
@@ -25,30 +26,39 @@ function MapRedirect() {
   return <Navigate to={`/${search}`} replace />;
 }
 
+// Every route draws inside the error boundary: a screen that throws shows the error screen, never a blank
+// page. Keyed on the path, so Back or a link to another page clears the error.
+function RouteBoundary({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation();
+  return <ErrorBoundary resetKey={pathname}>{children}</ErrorBoundary>;
+}
+
 export function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<Loading what="page" />}>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="map" element={<MapRedirect />} />
-            <Route path="compare" element={<AtmosphereCompare />} />
-            <Route path="brief" element={<Brief />} />
-            <Route path="dossiers" element={<Dossiers />} />
-            <Route path="dossiers/candidate/:id" element={<CandidateDossier />} />
-            <Route path="dossiers/material/:name" element={<MaterialDossier />} />
-            <Route path="planner" element={<Planner />} />
-            <Route path="investigations" element={<Investigations />} />
-            <Route path="investigations/compare" element={<Compare />} />
-            <Route path="evidence" element={<Evidence />} />
-            <Route path="quality" element={<Quality />} />
-            <Route path="methods" element={<Methods />} />
-            <Route path="about" element={<About />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <RouteBoundary>
+        <Suspense fallback={<Loading what="page" />}>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="map" element={<MapRedirect />} />
+              <Route path="compare" element={<AtmosphereCompare />} />
+              <Route path="brief" element={<Brief />} />
+              <Route path="dossiers" element={<Dossiers />} />
+              <Route path="dossiers/candidate/:id" element={<CandidateDossier />} />
+              <Route path="dossiers/material/:name" element={<MaterialDossier />} />
+              <Route path="planner" element={<Planner />} />
+              <Route path="investigations" element={<Investigations />} />
+              <Route path="investigations/compare" element={<Compare />} />
+              <Route path="evidence" element={<Evidence />} />
+              <Route path="quality" element={<Quality />} />
+              <Route path="methods" element={<Methods />} />
+              <Route path="about" element={<About />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </RouteBoundary>
     </BrowserRouter>
   );
 }

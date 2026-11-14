@@ -39,6 +39,15 @@ export default function Home() {
   const [brushMode, setBrushMode] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  // The tour's step 3 shows the access gap: 8.2 psi, 34% O2, solids only. A stable callback (setView is
+  // stable), and the tour runs it once per step, so the view change cannot re-trigger it.
+  const onTourStep = useCallback(
+    (step: number) => {
+      if (step === 2) setView({ o2: 34, psi: 8.2, solids: true });
+    },
+    [setView],
+  );
+
   const pinned = { o2: view.o2, psi: view.psi };
   const shown = drag ?? preview ?? pinned;
 
@@ -215,7 +224,7 @@ export default function Home() {
       </aside>
 
       {view.panel === "gap" && <GapDialog onClose={() => setView({ panel: "evidence" })} />}
-      <Tour onStep={(s) => { if (s === 2) setView({ o2: 34, psi: 8.2, solids: true }); }} />
+      <Tour onStep={onTourStep} />
     </div>
   );
 }
