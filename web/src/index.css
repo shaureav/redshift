@@ -297,12 +297,16 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 .bar { transition: width var(--t-base) var(--ease-out); }
 /* Swap content by opacity alone; the one transition kept under reduced motion. */
 .crossfade { transition: opacity var(--t-fade) linear; }
+/* A count that changed while pinned: the new value fades in where the old one stood. It never counts through
+   values that are not data (D18), and under reduced motion it stays a short opacity crossfade. */
+.swap-in { animation: fade var(--t-base) var(--ease-out) both; }
 
 @media (prefers-reduced-motion: reduce) {
   :root { --t-fast: 0ms; --t-base: 0ms; --t-move: 0ms; --t-scene: 0ms; }
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
   /* Opacity crossfades stay, short and linear: they show that something changed without moving anything. */
   .crossfade, .layer, .glyph { transition: opacity var(--t-fade) linear !important; }
+  .swap-in { animation: fade var(--t-fade) linear both !important; }
 }
 
 /* Print (a dossier, the brief, the saved PDF): the light theme's colours on white paper, whichever theme is on

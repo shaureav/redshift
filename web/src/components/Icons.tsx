@@ -184,8 +184,28 @@ export function MoonIcon(p: IconProps) {
   );
 }
 
+/** A dossier: a folder with its tab. */
+export function DossierIcon(p: IconProps) {
+  return (
+    <Icon {...p}>
+      <path d="M1.75 4.25a1 1 0 0 1 1-1h3.5l1.5 1.75h5.5a1 1 0 0 1 1 1v6.75a1 1 0 0 1-1 1H2.75a1 1 0 0 1-1-1Z" />
+    </Icon>
+  );
+}
+
+/** A list of tests: three rows, each with its marker. */
+export function TestsIcon(p: IconProps) {
+  return (
+    <Icon {...p}>
+      <path d="M2.25 4h.01M2.25 8h.01M2.25 12h.01M5.25 4h8.5M5.25 8h8.5M5.25 12h8.5" />
+    </Icon>
+  );
+}
+
 /** The whole set by name, for the shortcut sheet and for the test that holds every icon to the spec. */
 export const ICONS = {
+  dossier: DossierIcon,
+  tests: TestsIcon,
   probe: ProbeIcon,
   pin: PinIcon,
   layers: LayersIcon,

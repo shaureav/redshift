@@ -157,6 +157,33 @@ export function readAt(g: Grid, o2: number, psi: number, multiplier = 1): Readin
   };
 }
 
+/** One line through the grid: the build's near-test totals at every node along one axis, each a Val with the
+ *  layer's provenance id, and the axis values those nodes sit at. */
+export interface Profile { axis: Val<number>[]; counts: Val<number>[] }
+
+/** The totals along oxygen at pressure index j: one row of the grid, for the panel's sparkline. Array reads only. */
+export function totalsAlongO2(g: Grid, j: number, multiplier = 1): Profile {
+  const L = layerFor(g, multiplier);
+  const jj = clampIdx(j, g.psi.length);
+  const ap = g.file.axes.p;
+  return {
+    axis: g.o2.map((v) => ({ v, u: "%", p: ap })),
+    counts: g.o2.map((_, i) => ({ v: L.total.counts[i * g.psi.length + jj], u: "tests", p: L.total.p })),
+  };
+}
+
+/** The totals along pressure at oxygen index i: one column of the grid, for the panel's sparkline. Array reads only. */
+export function totalsAlongPressure(g: Grid, i: number, multiplier = 1): Profile {
+  const L = layerFor(g, multiplier);
+  const ii = clampIdx(i, g.o2.length);
+  const ap = g.file.axes.p;
+  const base = ii * g.psi.length;
+  return {
+    axis: g.psi.map((v) => ({ v, u: "psi", p: ap })),
+    counts: g.psi.map((_, j) => ({ v: L.total.counts[base + j], u: "tests", p: L.total.p })),
+  };
+}
+
 // ---- The nearness rule, ported from redshift/science/nearness.py (parity-tested). ----
 
 export interface Steps { o2: number; logP: number; threshold: number }

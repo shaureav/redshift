@@ -42,7 +42,9 @@ export function Value({ val, digits, unit, className = "", emptyText = "not reco
       <button
         ref={btn}
         type="button"
-        className={`num rounded-sm underline decoration-dotted decoration-ink-3 underline-offset-[3px] transition-colors hover:decoration-solid hover:decoration-[color:var(--ink)] ${
+        // Quiet doors (plan, principle 3): the dotted underline appears only on hover and on keyboard focus, where
+        // the focus ring also shows; the accessible name says the number opens its source either way.
+        className={`num rounded-sm underline decoration-dotted decoration-transparent underline-offset-[3px] transition-colors hover:decoration-[color:var(--ink-2)] focus-visible:decoration-[color:var(--ink-2)] ${
           val.v === null ? "italic text-ink-3" : ""
         } ${isDerived(val.p) ? "italic" : ""}`}
         aria-expanded={open}

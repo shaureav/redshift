@@ -6,6 +6,7 @@ import { act, useState, type ReactNode } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { MemoryRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { decodeGrid, readAt, totalsAlongO2, type ProbeGridFile } from "../lib/probe";
 import { loadSnapshot } from "../lib/snapshot.fixture";
 import { useView } from "../lib/view";
 import Home from "../pages/Home";
@@ -307,5 +308,57 @@ describe("error boundary", () => {
     // A second visit to the broken route shows the screen again: the boundary is not stuck either way.
     act(() => navigateTo("/broken"));
     expect(page.querySelector('[role="alert"]')).not.toBeNull();
+  });
+});
+
+describe("instrument panel", () => {
+  const grid = () => decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json"));
+
+  it("expands and collapses the context strip from its button", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<Home />, "/?o2=34&p=8.2");
+    const more = button("More");
+    const region = document.getElementById(more.getAttribute("aria-controls") ?? "");
+    expect(more.getAttribute("aria-expanded")).toBe("false");
+    expect(region?.hidden).toBe(true);
+    click("More");
+    expect(button("Less").getAttribute("aria-expanded")).toBe("true");
+    expect(region?.hidden).toBe(false);
+    expect(region?.querySelector('[role="radiogroup"][aria-label="Nearness step size"]')).not.toBeNull();
+    click("Less");
+    expect(region?.hidden).toBe(true);
+  });
+
+  it("moves the sparkline cursor with the keyboard and reads each count from the grid row", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<Home />, "/?o2=34&p=8.2");
+    const g = grid();
+    const r = readAt(g, 34, 8.2, 1);
+    const row = totalsAlongO2(g, r.j, 1);
+    const line = document.querySelector<HTMLElement>('[role="slider"]')!;
+    const readout = () => line.previousElementSibling!.lastElementChild!;
+    expect(line.getAttribute("aria-valuenow")).toBe(String(r.i));
+    act(() => line.focus());
+    press("ArrowRight");
+    press("ArrowRight");
+    expect(line.getAttribute("aria-valuenow")).toBe(String(r.i + 2));
+    const at = readout().querySelectorAll("[data-prov]");
+    expect(at[0].getAttribute("data-prov")).toBe(row.axis[r.i + 2].p);
+    expect(at[0].textContent).toBe(`${row.axis[r.i + 2].v}%`);
+    expect(at[1].getAttribute("data-prov")).toBe("probe:1:total");
+    expect(at[1].textContent).toBe(`${row.counts[r.i + 2].v} tests`);
+    press("End");
+    expect(line.getAttribute("aria-valuenow")).toBe(String(g.o2.length - 1));
+    press("Home");
+    expect(line.getAttribute("aria-valuenow")).toBe("0");
+  });
+
+  it("copies the link from Share and says so in a toast", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<Home />, "/?o2=34&p=8.2");
+    const status = document.querySelector('nav[aria-label="Take this point further"]')!.parentElement!.querySelector('[role="status"]')!;
+    expect(status.textContent).toBe("");
+    click("Share");
+    expect(status.textContent).toBe("Link copied");
   });
 });

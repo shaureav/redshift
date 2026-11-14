@@ -2,7 +2,7 @@
 // every step multiplier. If the TypeScript copy of the nearness rule ever drifts from
 // redshift/science/nearness.py, this test fails.
 import { describe, expect, it } from "vitest";
-import { decodeGrid, FUELS, nearInputs, nodeOf, o2MatchInputs, readAt, SOURCES, type ProbeGridFile } from "./probe";
+import { decodeGrid, FUELS, nearInputs, nodeOf, o2MatchInputs, readAt, SOURCES, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "./probe";
 import { loadSnapshot as load } from "./snapshot.fixture";
 
 const grid = decodeGrid(load<ProbeGridFile>("probe_grid.json"));
@@ -75,5 +75,63 @@ describe("probe grid", () => {
     for (let k = 0; k < 1000; k++) readAt(grid, 15 + (k % 170) * 0.5, 3 + (k % 140) * 0.1, 1);
     const per = (performance.now() - t0) / 1000;
     expect(per).toBeLessThan(1);
+  });
+});
+
+// The panel's sparklines read one row and one column of the grid. These readers are checked against the raw
+// file decoded here independently (index = i_o2 * n_pressure + j_pressure), and against readAt at every node
+// of the line, so a sparkline bar is exactly the count the build wrote there.
+describe("row and column readers", () => {
+  const raw = load<ProbeGridFile>("probe_grid.json");
+  const nO2 = raw.axes.o2_pct.values.length;
+  const nP = raw.axes.pressure_psi.values.length;
+  const expand = (rle: number[]) => {
+    const out: number[] = [];
+    for (let k = 0; k < rle.length; k += 2) for (let r = 0; r < rle[k + 1]; r++) out.push(rle[k]);
+    return out;
+  };
+
+  it("has the shape the plan describes (171 oxygen nodes by 141 pressure nodes)", () => {
+    expect([nO2, nP]).toEqual([171, 141]);
+  });
+
+  it.each(raw.layers.map((l) => l.multiplier))("reads every row and column of the raw totals at %sx", (m) => {
+    const flat = expand(raw.layers.find((l) => l.multiplier === m)!.total.rle);
+    expect(flat).toHaveLength(nO2 * nP);
+    for (let j = 0; j < nP; j++) {
+      const row = totalsAlongO2(grid, j, m);
+      expect(row.counts.map((c) => c.v)).toEqual(flat.filter((_, k) => k % nP === j));
+      expect(row.axis.map((a) => a.v)).toEqual(raw.axes.o2_pct.values);
+    }
+    for (let i = 0; i < nO2; i++) {
+      const col = totalsAlongPressure(grid, i, m);
+      expect(col.counts.map((c) => c.v)).toEqual(flat.slice(i * nP, (i + 1) * nP));
+      expect(col.axis.map((a) => a.v)).toEqual(raw.axes.pressure_psi.values);
+    }
+  });
+
+  it("agrees with readAt at every node of the line through each candidate, with the series provenance", () => {
+    for (const c of cands) {
+      for (const m of grid.multipliers) {
+        const r = readAt(grid, c.o2_pct.v, c.pressure_psi.v, m);
+        const row = totalsAlongO2(grid, r.j, m);
+        const col = totalsAlongPressure(grid, r.i, m);
+        expect(row.counts[r.i]).toEqual(r.total);
+        expect(col.counts[r.j]).toEqual(r.total);
+        grid.o2.forEach((o2, i) => expect(row.counts[i].v, `${c.id} m=${m} o2=${o2}`).toBe(readAt(grid, o2, c.pressure_psi.v, m).total.v));
+        grid.psi.forEach((psi, j) => expect(col.counts[j].v, `${c.id} m=${m} psi=${psi}`).toBe(readAt(grid, c.o2_pct.v, psi, m).total.v));
+        const totalP = raw.layers.find((l) => l.multiplier === m)!.total.p;
+        expect(new Set([...row.counts, ...col.counts].map((v) => v.p))).toEqual(new Set([totalP]));
+        expect(new Set([...row.axis, ...col.axis].map((v) => v.p))).toEqual(new Set([raw.axes.p]));
+        expect(row.axis[r.i]).toEqual(r.o2);
+        expect(col.axis[r.j]).toEqual(r.psi);
+      }
+    }
+  });
+
+  it("clamps an index past either edge to the edge line", () => {
+    expect(totalsAlongO2(grid, -5, 1)).toEqual(totalsAlongO2(grid, 0, 1));
+    expect(totalsAlongO2(grid, nP + 9, 1)).toEqual(totalsAlongO2(grid, nP - 1, 1));
+    expect(totalsAlongPressure(grid, nO2 + 1, 1)).toEqual(totalsAlongPressure(grid, nO2 - 1, 1));
   });
 });

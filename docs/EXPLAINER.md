@@ -80,7 +80,7 @@ When you drag the probe across the plane, the numbers in the panel are not worke
 
 ## The plane and the evidence panel (`web/src/pages/Home.tsx`, `web/src/charts/Plane.tsx`, `web/src/components/EvidencePanel.tsx`)
 
-The home page is one big map of oxygen against cabin pressure with a panel beside it. Wherever you put the probe, the panel answers one question: what do we know about fire here, and what is missing? Empty rows are hatched because no tests means unknown, never safe, and the "Solids only" switch shows that no solid-material burn in NASA's tables can be placed anywhere on the map.
+The home page is one big map of oxygen against cabin pressure with a panel beside it. Wherever you put the probe, the panel answers one question: what do we know about fire here, and what is missing? Empty rows are hatched because no tests means unknown, never safe, and the "Solids only" switch shows that no solid-material burn in NASA's tables can be placed anywhere on the map. The panel reads like an instrument: four tiles with the counts near the point, a "What's missing" list straight underneath, and two small profiles of the counts along each axis through the probe, every number a door to its source.
 
 ## Ask the evidence (`web/src/components/AskBox.tsx`, `redshift/ai/ask.py`)
 

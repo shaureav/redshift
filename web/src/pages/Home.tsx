@@ -13,7 +13,7 @@ import { Tour } from "../components/Tour";
 import { Value } from "../components/Value";
 import { useData } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
-import { decodeGrid, inGrid, nearInputs, readAt, type ProbeGridFile } from "../lib/probe";
+import { decodeGrid, inGrid, nearInputs, readAt, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "../lib/probe";
 import type { Candidate, CandidateEvidence, Val } from "../lib/types";
 import { LAYERS, useView, ZOOMS, type Box, type ZoomKey } from "../lib/view";
 
@@ -80,6 +80,8 @@ export default function Home() {
       multipliers: grid.multipliers,
       preview: !!(drag || preview),
       outside: !inGrid(grid, shown.o2, shown.psi),
+      // One row and one column of the build's totals through the probe: array reads, no counting.
+      profiles: { o2: totalsAlongO2(grid, r.j, view.m), psi: totalsAlongPressure(grid, r.i, view.m) },
     };
   }, [grid, cands.data, candEv.data, flame.data, pb.data, gap.data, shown.o2, shown.psi, view.m, drag, preview]);
 
@@ -220,12 +222,11 @@ export default function Home() {
               brief: `/brief?${pointQs}`,
             },
             onShare: share,
-            shareLabel: copied ? "Link copied" : "Copy link",
+            toast: copied ? "Link copied" : null,
             onOpenGap: () => setView({ panel: "gap" }, { push: true }),
           }}
           ask={<AskBox context={{ o2: data.reading.o2.v, psi: data.reading.psi.v, m: view.m }} initial={view.ask} onAsked={(q) => setView({ ask: q })} />}
         />
-        <p className="border-t border-line px-5 py-4 text-xs text-ink-3">Redshift informs a decision; it does not rank or recommend an atmosphere. Empty means unknown, never safe.</p>
       </aside>
 
       {view.panel === "gap" && <GapDialog onClose={() => setView({ panel: "evidence" })} />}

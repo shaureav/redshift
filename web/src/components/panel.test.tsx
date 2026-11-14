@@ -16,6 +16,7 @@ import AtmosphereCompare from "../pages/AtmosphereCompare";
 import Brief, { briefBibtex, briefCsv } from "../pages/Brief";
 import Home from "../pages/Home";
 import { chartSvgMarkup } from "./Common";
+import { Readout } from "./panelReadout";
 
 const FILES = [
   "probe_grid.json", "trade_map.json", "candidates.json", "candidate_evidence.json", "flame_temperature_grid.json",
@@ -176,5 +177,85 @@ describe("focus rings", () => {
     expect(clippedRings('<div class="overflow-x-auto px-4 pb-1"><span><button>Layers</button></span></div>')).toHaveLength(1);
     expect(clippedRings('<div class="overflow-x-auto px-4 pb-1 pt-1"><span><button>Layers</button></span></div>')).toEqual([]);
     expect(clippedRings('<div class="overflow-hidden"><button class="outline-none">Card</button></div>')).toEqual([]);
+  });
+});
+
+/** Text in the panel that shows a digit outside a Value (an element with data-prov). Exempt, each for a stated
+ *  reason: "O2" is a formula, not a number; .mono marks ids (test and finding ids), never quantities; and
+ *  data-setting marks the step size stops, labels of a setting the reader picks (each count at a stop is a
+ *  Value with that multiplier in its provenance); data-prompt marks Ask's suggested questions, which are prompts
+ *  the reader can send, not readouts (an answer's numbers are slots filled from sourced values, D8). */
+function bareNumbers(root: Element): string[] {
+  const bad: string[] = [];
+  const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+    const text = (n.textContent ?? "").replace(/\bO2\b/g, "");
+    if (!/\d/.test(text)) continue;
+    if (n.parentElement?.closest("[data-prov], .mono, [data-setting], [data-prompt]")) continue;
+    bad.push(text.trim());
+  }
+  return bad;
+}
+
+function panelOf(path: string): Element {
+  const host = document.createElement("div");
+  host.innerHTML = render(path, <Home />);
+  const panel = host.querySelector('[data-testid="evidence-panel"]');
+  if (!panel) throw new Error("no evidence panel rendered");
+  return panel;
+}
+
+describe("the instrument panel", () => {
+  const points: [string, string][] = [
+    ["on a candidate, 8.2 psi and 34% O2", "/?o2=34&p=8.2"],
+    ["between candidates, 9 psi and 31% O2", "/?o2=31&p=9"],
+    ["at sea, 4 psi and 40% O2", "/?o2=40&p=4"],
+  ];
+
+  it.each(points)("renders every number through Value %s", (_, path) => {
+    const panel = panelOf(path);
+    expect(panel.querySelectorAll("[data-prov]").length).toBeGreaterThan(20);
+    expect(bareNumbers(panel)).toEqual([]);
+  });
+
+  it("flags a bare number, and passes the same number inside a Value", () => {
+    const host = document.createElement("div");
+    host.innerHTML = '<p>37 tests</p><p><span data-prov="probe:1:total"><button>37</button></span> tests near O2</p><span class="mono">BASS-L12</span>';
+    expect(bareNumbers(host)).toEqual(["37 tests"]);
+  });
+
+  it.each(points)("matches its snapshot %s", (_, path) => {
+    expect(tidy(panelOf(path).outerHTML)).toMatchSnapshot();
+  });
+
+  it("shows the readout, hatched empty tiles, what is missing and both profiles at a point with no tests", () => {
+    const panel = panelOf("/?o2=40&p=4");
+    const tiles = [...panel.querySelectorAll('[aria-label="Tests near this point by fuel class"] > li')];
+    expect(tiles).toHaveLength(4);
+    expect(tiles.every((t) => t.getAttribute("data-empty") === "true" && t.textContent?.includes("no tests recorded"))).toBe(true);
+    expect(panel.querySelector("h2.text-title")?.textContent).toContain("40%");
+    const missing = panel.querySelector('[aria-labelledby="sec-gap"]')?.textContent ?? "";
+    expect(missing).toContain("Tests of any fuel class near this point");
+    expect(missing).toContain("At this oxygen, but no pressure recorded");
+    expect(missing).toContain("BRE sessions (chamber pressure)");
+    expect(panel.querySelectorAll('[role="slider"]')).toHaveLength(2);
+    expect(panel.querySelectorAll('[role="slider"] .hatch-bg').length).toBeGreaterThan(0);
+  });
+
+  it("shows paper counts only when they are not zero", () => {
+    // No verified paper places a test anywhere on the grid yet, so no tile names papers...
+    expect(panelOf("/?o2=34&p=8.2").textContent).not.toContain("from verified papers");
+    // ...and a reading with a paper count (made up here, to test the branch) shows it, through a Value.
+    const g = decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json"));
+    const r = readAt(g, 34, 8.2, 1);
+    const withPaper = { ...r, near: { ...r.near, gas: { ...r.near.gas, published_paper: { v: 2, u: "tests", p: "probe:1:gas:published_paper" } } } };
+    const html = render("/", <Readout r={withPaper} candidate={null} preview={false} outside={false} />);
+    expect(html).toMatch(/plus <span[^>]*data-prov="probe:1:gas:published_paper"[^>]*><button[^>]*>2<\/button><\/span> from verified papers/);
+  });
+
+  it("pins five actions to the bottom of the panel", () => {
+    const bar = panelOf("/?o2=34&p=8.2").querySelector('nav[aria-label="Take this point further"]');
+    expect([...(bar?.querySelectorAll("li") ?? [])].map((li) => li.textContent)).toEqual(["Dossier", "Tests", "Compare", "Brief", "Share"]);
+    expect(bar?.parentElement?.className).toContain("sticky bottom-0");
   });
 });

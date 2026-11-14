@@ -87,9 +87,9 @@ export function AskBox({ context, initial, onAsked }: { context: { o2: number; p
         <input id="ask-input" className="field" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Has a solid ever burned near 8.2 psi?" autoComplete="off" />
         <button type="submit" className="btn">Ask</button>
       </form>
-      <div className="mt-3 flex flex-wrap gap-2" aria-label="Questions with checked answers">
+      <div className="mt-3 flex flex-wrap gap-2" aria-label="Questions with checked answers" data-prompt="">
         {items.map((it) => (
-          <button key={it.id} type="button" className="chip h-auto py-1 text-left text-xs" aria-pressed={asked === it.question} onClick={() => ask(it.question ?? "")}>
+          <button key={it.id} type="button" className="chip h-auto whitespace-normal py-1 text-left text-xs" aria-pressed={asked === it.question} onClick={() => ask(it.question ?? "")}>
             {it.question}
           </button>
         ))}
