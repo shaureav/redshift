@@ -1,7 +1,7 @@
 // Refuse to build the site if the data snapshot is missing or the Python build did not pass.
 import { existsSync, readFileSync } from "node:fs";
 const dir = new URL("../public/data/", import.meta.url);
-const required = ["dataset_version.json", "tests.json", "candidates.json", "candidate_evidence.json", "quality_report.json", "provenance.json", "investigations.json", "access_gap.json"];
+const required = ["dataset_version.json", "tests.json", "candidates.json", "candidate_evidence.json", "quality_report.json", "provenance.json", "investigations.json", "access_gap.json", "probe_grid.json", "trade_map.json"];
 for (const f of required) {
   if (!existsSync(new URL(f, dir))) {
     console.error(`Missing data/${f}. Run: uv run python -m redshift.build`);

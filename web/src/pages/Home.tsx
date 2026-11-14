@@ -131,19 +131,20 @@ export default function Home() {
               <>Microgravity fire tests by oxygen and cabin pressure.</>
             )}
           </h1>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+            {/* On a phone the controls scroll sideways in one row, so the plane stays above the fold. */}
             <button type="button" role="switch" aria-checked={view.solids} onClick={() => setView({ solids: !view.solids })} className={`chip ${view.solids ? "border-[color:var(--solid)] text-ink" : ""}`} id="tour-solids">
               <span className="switch" aria-checked={view.solids} aria-hidden="true" /> Solids only
             </button>
             <span className="mx-1 hidden h-6 w-px bg-[color:var(--line)] sm:block" aria-hidden="true" />
-            <span className="flex flex-wrap gap-1" role="group" aria-label="Snap to a candidate atmosphere">
+            <span className="flex flex-none gap-1 sm:flex-wrap" role="group" aria-label="Snap to a candidate atmosphere">
               {cands.data.candidates.map((c) => (
                 <button key={c.id} type="button" className="chip h-8 px-3 text-xs" aria-pressed={candId === c.id} onClick={() => onProbe(c.o2_pct.v, c.pressure_psi.v, "commit")}>
                   {c.name.replace(" O2", "")}
                 </button>
               ))}
             </span>
-            <span className="ml-auto flex flex-wrap items-center gap-2">
+            <span className="ml-auto flex flex-none items-center gap-2">
               <LayerMenu layers={view.layers} onToggle={(l) => { const s = new Set(view.layers); if (s.has(l)) s.delete(l); else s.add(l); setView({ layers: s }); }} />
               <span className="seg" role="group" aria-label="Zoom">
                 {(Object.keys(ZOOMS) as ZoomKey[]).map((k) => (

@@ -90,7 +90,7 @@ export default function Brief() {
       <header className="border-b border-line pb-6">
         <span className="eyebrow">Redshift brief · dataset {ver}</span>
         <h1 className="mt-2 text-xl font-semibold leading-tight">
-          Fire evidence near <V v={r.o2} digits={1} /> oxygen and <V v={r.psi} digits={1} /> (<Value val={r.kpa} digits={1} />)
+          Fire evidence near <V v={r.o2} /> oxygen and <V v={r.psi} /> (<Value val={r.kpa} digits={1} />)
         </h1>
         {c && <p className="mt-2 text-sm text-ink-2">{c.name}: {c.short}. {c.context}</p>}
         <p className="mt-3 text-sm text-ink-2">Redshift informs a decision; it does not rank or recommend an atmosphere. Nearness step size {r.multiplier}x. Counts come from the Redshift build; each number is footnoted to its source.</p>

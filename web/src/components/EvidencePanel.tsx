@@ -70,7 +70,7 @@ export interface PanelData {
 function Section({ title, children, id }: { title: ReactNode; children: ReactNode; id?: string }) {
   return (
     <section className="border-t border-line px-5 py-4" aria-labelledby={id}>
-      <h3 id={id} className="eyebrow mb-3">{title}</h3>
+      <h2 id={id} className="eyebrow mb-3">{title}</h2>
       {children}
     </section>
   );

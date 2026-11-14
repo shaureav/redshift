@@ -197,7 +197,7 @@ def check(answer: dict[str, Any], ctx: Context) -> list[str]:
         b = BANNED.search(bare)
         if b:
             problems.append(f"banned wording {b.group(0)!r}")
-        if "—" in t:
+        if chr(0x2014) in t:  # the house style forbids the em dash; written as a code point so this file has none
             problems.append("em dash")
     for p in paras:
         cites = p.get("cites") or []

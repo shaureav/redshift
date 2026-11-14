@@ -28,6 +28,9 @@ Line references to raw files are physical line numbers (header is line 1), from 
 | Q14 | Original harvest count of 22 tables and 2,009 rows. The 19 investigations, 21 tables and 2,001 rows are reproduced exactly from the zip. 24 versus 19 is explained (5 ground investigations: PSI-60, 62, 115, 117, 142). The extra 1 table and 8 rows fit the FLEX-2 table (8 rows) being counted twice, but this is unconfirmed without the original harvest's file list. | Team (whoever did the first harvest) | File list of the original harvest |
 | Q15 | ACME Flame Design (PSI-10) shows no licence on PSI. Its raw file is in the repository (as harvested) and flagged no_licence. If the repository is public, consider removing it and fetching it at build time. | Team | Decision |
 | Q16 | The draft's "explains, does not predict" evidence (273 FLEX tests; 86% vs 88% methanol, 70% vs 68% heptane) is not yet reproduced. Note heptane is 70% vs 68%, i.e. slightly better than O2 alone. | Pipeline | Reproduced in Stage 3 or wording softened |
+| Q17 | Live "Ask the evidence" needs a hosted API with ANTHROPIC_API_KEY set, and the site built with VITE_API_BASE pointing at it. Do we host the API for judging, or keep the static site on cached answers only? | Team | Decision and, if hosting, a host |
+| Q18 | The new cached answer "If NASA has already burned fabric in near-Moon-base air, why can't a researcher download it?" (qa-download) is checked by code but awaits a team member's check (scripts/check_ai_text.py). | Team | Sign-off |
+| Q19 | Should the nearness step slider offer more than the three documented stops (for example 0.5x and 2x)? That adds multipliers to redshift/params.json and changes the dataset version. | Team | Decision (D17 keeps three) |
 
 ## Closed
 

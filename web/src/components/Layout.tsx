@@ -86,11 +86,11 @@ export function Layout() {
         <div className="flex h-full items-center gap-2 px-4 lg:px-6">
           <Link to="/" className="mr-2 flex items-center gap-2" aria-label="Redshift, the plane">
             <img src="/favicon.svg" alt="" className="h-6 w-6" />
-            <span className="text-base font-semibold tracking-tight">Redshift</span>
+            <span className="hidden text-base font-semibold tracking-tight sm:inline">Redshift</span>
             <span className="hidden text-xs text-ink-3 xl:inline">The Atmosphere Trade Studio</span>
           </Link>
           <NavLink to="/" end className={({ isActive }) => `btn btn-quiet ${isActive ? "text-ink" : ""}`}>Plane</NavLink>
-          <NavLink to="/compare" className={({ isActive }) => `btn btn-quiet hidden sm:inline-flex ${isActive ? "text-ink" : ""}`}>Compare</NavLink>
+          <NavLink to="/compare" className={({ isActive }) => `btn btn-quiet ${isActive ? "text-ink" : ""}`}>Compare</NavLink>
           <ReferenceMenu />
           <span className="ml-auto flex items-center gap-2">
             <button type="button" className="btn btn-quiet" onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))} aria-label="Search and jump (Command K)">

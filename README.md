@@ -1,5 +1,9 @@
 # Redshift: The Atmosphere Trade Studio
 
+> **If we pick this cabin atmosphere, what do we actually know about fire there, and what's missing?**
+>
+> Redshift answers that one question. Every screen serves it or was cut (see `docs/REDESIGN_AUDIT.md`).
+
 A NASA Space Apps Challenge 2026 entry for **Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data**.
 
 NASA has not yet chosen the cabin atmosphere for lunar surface habitats and pressurised rovers. Lower pressure with more oxygen shortens the oxygen prebreathe before a spacewalk, but it changes how materials burn. Redshift puts every microgravity fire test it can trace onto one map of oxygen against cabin pressure, pins the candidate atmospheres on it, and shows what is known about fire near each one and what is missing.
@@ -19,19 +23,18 @@ The question we put to NASA: *If NASA has already burned fabric in near-Moon-bas
 
 ## What is in the app
 
-Four tabs, plus three pages reachable from every screen.
+One main flow, then reference pages.
 
-| Tab or page | What it answers |
-| --- | --- |
-| **Trade Map** | Oxygen percent against cabin pressure (psi, with kPa alongside). Every candidate atmosphere pinned. Layers for test evidence (split by fuel class and by source type), tests with pressure not recorded, blind spots (hatched), flame temperature lines and prebreathe points. A "Solids only" toggle and zoom presets (all tests, habitat range, suit corner). |
-| **Dossiers** | One page per candidate atmosphere and per material: what tests exist nearby, what is missing, and why. |
-| **Test Planner** | Ranks gaps in the evidence (combinations of oxygen, pressure and material class) by how much a new test would add. It ranks experiments to run, never atmospheres. |
-| **Investigations** | A card for every PSI combustion investigation, a timeline, a coverage matrix, and a compare view of 2 to 4 investigations. |
-| **Evidence Explorer** | Every test in one filterable table, with the source of every value. |
-| **Data Quality** | The public quality report: every flag, the reconciliation of rows, the golden checks. |
-| **Methods** | How every number is computed, in plain English and with equations. |
+1. **Pick an atmosphere.** The home page is the oxygen against pressure plane, full screen (psi, with kPa alongside). Drag the probe anywhere, click to pin it, move it with the arrow keys (Alt for ten steps), or snap to a named candidate with Shift and an arrow or the candidate chips. Layers fade in and out; "Solids only" hatches the plane and makes the access gap the headline.
+2. **See the evidence instantly.** A docked panel reads the build's counts for the probe's grid node: tests nearby by fuel class (zeros hatched) and source, tests whose oxygen matches but whose pressure is not recorded, the nearness step size (three documented stops), flame temperature (nearest computed point, never interpolated), prebreathe (published and verified figures only) and the access gap.
+3. **Go deeper.** Open the candidate's dossier, the matching tests in the Evidence Explorer, or a side-by-side compare of two to four atmospheres (`/compare`). Drag a selection on the plane to filter the Evidence Explorer to that area.
+4. **Take it with you.** A cited one-page brief (`/brief`) prints to PDF and downloads the nearby tests as CSV and the sources as BibTeX. Every view state is in the URL, so a copied link reproduces it.
 
-Every number on screen is a button. Clicking it opens a popover with its source: source type, investigation, file, line, column, the raw text, any transforms applied, DOI or NTRS link, and verification status.
+**Ask the evidence** answers from checked cached answers on the static site, and live from the API when a model key is configured there (below). **Command palette**: Cmd+K or Ctrl+K jumps to any atmosphere or typed point ("8.2 psi 34%"), material, investigation or test id. A three-step tour runs on the first visit.
+
+**Reference** (one menu): Evidence Explorer, Investigations (cards, timeline, coverage matrix, compare of 2 to 4 investigations), Dossiers, Test Planner (ranks experiments to run, never atmospheres), Data Quality, Methods, About.
+
+Every number on screen is a button. Clicking it opens its provenance card: the value's path from source to screen (file, line, column and raw text; or paper, page and quote; or method, parameters and inputs), the transforms applied, the DOI or NTRS link and its verification status.
 
 ## Data integrity, in brief
 
@@ -66,13 +69,23 @@ npm run dev
 
 `npm run build` refuses to build the site if the data snapshot is missing, if provenance coverage is below 100%, or if any golden check has an unexplained difference (`web/scripts/check-data.mjs`).
 
+**Live "Ask the evidence" (optional).** The static site shows checked cached answers only. For live answers, run the API with the optional extra and a model key on that host, and point the site at it:
+
+```bash
+uv sync --extra ai
+ANTHROPIC_API_KEY=... uv run uvicorn redshift.api.app:app
+```
+
+Then build the site with `VITE_API_BASE=http://localhost:8000`. The key lives only in the API host's environment, never in the repository or the browser. The API retrieves only from the built dataset, the model may not write numbers (it writes slots that the API fills with cited values), and a deterministic check rejects any answer with a bare number, an unknown citation, banned wording or no "not covered" statement (`redshift/ai/ask.py`).
+
 ## How to rebuild every figure from the raw files
 
 One command rebuilds everything: `uv run python -m redshift.build`. It verifies the raw hashes, runs one adapter per investigation, computes the science, checks the goldens and the provenance lint, then writes `data/processed/` and an identical static snapshot in `web/public/data/`. The website reads only that snapshot, so every chart is a direct view of these files.
 
 | Figure | Built from |
 | --- | --- |
-| Trade Map | `trade_map.json`, `candidates.json`, `candidate_evidence.json`, `flame_temperature_grid.json`, `prebreathe.json`, `planner_grid.json` |
+| The plane (home page) | `trade_map.json`, `candidates.json`, `flame_temperature_grid.json`, `prebreathe.json`, `planner_grid.json` |
+| Evidence panel, compare, brief, `/probe` | `probe_grid.json` (nearness counts at every node of a 0.5 O2 point by 0.1 psi grid, for each documented step multiplier), `candidate_evidence.json`, `access_gap.json` |
 | Access Gap chart | `access_gap.json` |
 | Evidence strips per candidate | `candidate_evidence.json` |
 | Sensitivity table | `sensitivity.json` |

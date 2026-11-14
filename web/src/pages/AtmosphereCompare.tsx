@@ -42,7 +42,7 @@ export function CompareColumns({ grid, points, m, candidates, candEv, flame, pb,
               <span className="eyebrow">{c ? c.short : "Point on the plane"}</span>
               {onRemove && points.length > 2 && <button type="button" className="btn btn-sm btn-quiet" onClick={() => onRemove(i)} aria-label="Remove this column">Remove</button>}
             </div>
-            <p className="mt-2 text-lg font-semibold"><Value val={r.o2} digits={1} /> · <Value val={r.psi} digits={1} /></p>
+            <p className="mt-2 text-lg font-semibold"><Value val={r.o2} /> · <Value val={r.psi} /></p>
             <p className="text-sm text-ink-2"><Value val={r.kpa} digits={1} /></p>
             <p className="mt-3 min-h-[48px] text-sm leading-snug"><PointHeadline r={r} /></p>
           </header>
