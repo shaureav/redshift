@@ -256,9 +256,9 @@ export default function Compare() {
                           <li key={p.line} className="text-xs leading-snug">
                             <span className="text-ink">{p.title?.v ?? "untitled"}</span>
                             {p.doi?.v ? (
-                              <a className="mono block truncate text-[11px] text-ink-2 underline underline-offset-2" href={doiUrl(p.doi.v)} target="_blank" rel="noreferrer">{p.doi.v}</a>
+                              <a className="mono block truncate text-xs text-ink-2 underline underline-offset-2" href={doiUrl(p.doi.v)} target="_blank" rel="noreferrer">{p.doi.v}</a>
                             ) : (
-                              <span className="block text-[11px] italic text-ink-3">no DOI listed</span>
+                              <span className="block text-xs italic text-ink-3">no DOI listed</span>
                             )}
                           </li>
                         ))}

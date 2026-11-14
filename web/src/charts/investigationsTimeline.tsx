@@ -80,6 +80,7 @@ export function InvestigationsTimelinePanel({ items, openId, onOpen }: Props) {
     <ChartFrame
       id="investigation-timeline"
       title="Investigation timeline"
+      headline={items.some((r) => !r.has_table) ? <>Not every combustion investigation left an experiment table to download.</> : <>When each combustion investigation ran.</>}
       caption="Each bar runs from the start to the end date given on the investigation's PSI page, coloured and shaped by fuel class; filled bars have a PSI experiment table, outlined bars do not. Dates are the investigation period, not the flight dates of individual tests. Missing dates are drawn hatched and never estimated."
       sources="NASA Physical Sciences Informatics (PSI) investigation pages."
       table={table}
@@ -199,7 +200,7 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                 ) : (
                   <g>
                     <rect x={x0} y={cy - 4} width={34} height={8} rx={2} fill="url(#hatch-timeline)" stroke="var(--hatch)" strokeWidth={1} />
-                    {x0 + 130 < iw && <text x={x0 + 40} y={cy} dy="0.32em" fontSize={10} fill="var(--ink-3)" fontStyle="italic">end not recorded</text>}
+                    {x0 + 130 < iw && <text x={x0 + 40} y={cy} dy="0.32em" fontSize={12} fill="var(--ink-3)" fontStyle="italic">end not recorded</text>}
                   </g>
                 )}
                 <path
@@ -218,15 +219,15 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
             {ticks.map((t) => (
               <g key={+t} transform={`translate(${x(t)},0)`}>
                 <line y2={5} stroke="var(--ink-3)" />
-                <text y={17} textAnchor="middle" fontSize={11} fill="var(--ink-2)" className="num">{d3.utcFormat("%Y")(t)}</text>
+                <text y={17} textAnchor="middle" fontSize={12} fill="var(--ink-2)" className="num">{d3.utcFormat("%Y")(t)}</text>
               </g>
             ))}
           </g>
 
           {undated.length > 0 && (
             <g transform={`translate(0,${datedH + axisH})`}>
-              <text x={-10} y={10} textAnchor="end" fontSize={11} fontWeight={600} fill="var(--ink)">Dates not</text>
-              <text x={-10} y={24} textAnchor="end" fontSize={11} fontWeight={600} fill="var(--ink)">recorded</text>
+              <text x={-10} y={10} textAnchor="end" fontSize={12} fontWeight={600} fill="var(--ink)">Dates not</text>
+              <text x={-10} y={24} textAnchor="end" fontSize={12} fontWeight={600} fill="var(--ink)">recorded</text>
               <rect x={0} y={0} width={iw} height={laneH - 8} rx={4} fill="url(#hatch-timeline)" opacity={0.45} />
               {undated.map(({ r }, i) => {
                 const c = invClass(r);

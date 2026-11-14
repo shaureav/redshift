@@ -241,7 +241,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                   if (!pts.length) return null;
                   const [lx, ly] = pts[Math.floor(pts.length * 0.35)];
                   return (
-                    <text x={lx} y={ly} dy={-3} fontSize={10} fill="var(--ink-3)" fontStyle="italic" textAnchor="middle" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3}>
+                    <text x={lx} y={ly} dy={-3} fontSize={12} fill="var(--ink-3)" fontStyle="italic" textAnchor="middle" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3}>
                       {fmtNumber(c.value.v, 0)} K
                     </text>
                   );
@@ -289,7 +289,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
             {layers.has("pb") && (prebreathe ?? []).map((pb) => (
               <g key={pb.finding_id} transform={`translate(${x(pb.o2_pct.v)},${y(pb.pressure_psi.v)})`}>
                 <rect x={-5} y={-5} width={10} height={10} transform="rotate(45)" fill="var(--prebreathe)" />
-                <text x={9} y={-8} fontSize={11} fill="var(--ink)">{pb.duration_text}</text>
+                <text x={9} y={-8} fontSize={12} fill="var(--ink)">{pb.duration_text}</text>
               </g>
             ))}
 
@@ -321,7 +321,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                     {c.name}
                   </text>
                   {!narrow && (
-                    <text x={11} y={c.role === "scenario" ? 34 : 6} fontSize={10.5} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
+                    <text x={11} y={c.role === "scenario" ? 34 : 6} fontSize={12} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
                       {solidsOnly
                         ? `${(ev?.near.solid.psi_table.v ?? 0) + (ev?.near.solid.published_paper.v ?? 0)} solid tests near`
                         : `${ev?.near_total.v ?? 0} tests near`}
@@ -337,7 +337,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
             {o2Ticks.map((t) => (
               <g key={t} transform={`translate(${x(t)},0)`}>
                 <line y2={5} stroke="var(--ink-3)" />
-                <text y={18} textAnchor="middle" fontSize={11} fill="var(--ink-2)" className="num">{t}</text>
+                <text y={18} textAnchor="middle" fontSize={12} fill="var(--ink-2)" className="num">{t}</text>
               </g>
             ))}
             <text x={iw / 2} y={36} textAnchor="middle" fontSize={12} fill="var(--ink)">Oxygen (% by volume)</text>
@@ -345,14 +345,14 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
           {psiTicks.map((p) => (
             <g key={p} transform={`translate(0,${y(p)})`}>
               <line x2={-5} stroke="var(--ink-3)" />
-              <text x={-8} dy="0.32em" textAnchor="end" fontSize={11} fill="var(--ink-2)" className="num">{p}</text>
+              <text x={-8} dy="0.32em" textAnchor="end" fontSize={12} fill="var(--ink-2)" className="num">{p}</text>
             </g>
           ))}
           <text transform={`translate(${-(narrow ? 32 : 44)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={12} fill="var(--ink)">Pressure (psi, log scale)</text>
           {kpaTicks.map((k) => (
             <g key={k} transform={`translate(${iw},${y(k / KPA_PER_PSI)})`}>
               <line x2={5} stroke="var(--ink-3)" />
-              <text x={8} dy="0.32em" fontSize={11} fill="var(--ink-3)" className="num">{k}</text>
+              <text x={8} dy="0.32em" fontSize={12} fill="var(--ink-3)" className="num">{k}</text>
             </g>
           ))}
           <text transform={`translate(${iw + (narrow ? 34 : 48)},${ih / 2}) rotate(90)`} textAnchor="middle" fontSize={12} fill="var(--ink-2)">kPa</text>
@@ -360,7 +360,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
           {/* pressure-not-recorded strips */}
           {layers.has("strip") && (
             <g transform={`translate(0,${ih + 48})`}>
-              <text x={0} y={0} fontSize={11} fontWeight={600} fill="var(--ink)">O2 recorded, pressure not recorded (cannot be placed on the plane)</text>
+              <text x={0} y={0} fontSize={12} fontWeight={600} fill="var(--ink)">O2 recorded, pressure not recorded (cannot be placed on the plane)</text>
               {stripClasses.map((s, i) => (
                 <g key={`${s.fuel_class}${s.source_type}`} transform={`translate(0,${10 + i * stripRowH})`}>
                   <rect width={iw} height={stripRowH - 4} fill="url(#hatch-map)" opacity={0.35} />
@@ -386,7 +386,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                       style={{ cursor: "pointer" }}
                     />
                   ))}
-                  <text x={iw + 6} y={(stripRowH - 4) / 2} dy="0.32em" fontSize={10} fill="var(--ink-2)">{s.fuel_class === "emulator" ? "BRE" : FUEL_LABEL[s.fuel_class].split(" ")[0]}</text>
+                  <text x={iw + 6} y={(stripRowH - 4) / 2} dy="0.32em" fontSize={12} fill="var(--ink-2)">{s.fuel_class === "emulator" ? "BRE" : FUEL_LABEL[s.fuel_class].split(" ")[0]}</text>
                 </g>
               ))}
             </g>
@@ -394,7 +394,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
         </g>
       </svg>
       {offscreen > 0 && layers.has("ev") && (
-        <p className="absolute right-3 top-3 rounded bg-surface-2/90 px-2 py-1 text-[11px] text-ink-3">
+        <p className="absolute right-3 top-3 rounded bg-surface-2/90 px-2 py-1 text-xs text-ink-3">
           Some tests lie outside this view; choose "All tests" to see them
         </p>
       )}

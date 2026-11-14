@@ -117,7 +117,7 @@ export function FlexSuppression() {
     const y0 = y;
     const k = row.key;
 
-    marks.push(<text key={`${k}t`} x={0} y={y0 + 12} dominantBaseline="central" fontSize={13} fill="var(--ink-2)">{row.title}</text>);
+    marks.push(<text key={`${k}t`} x={0} y={y0 + 12} dominantBaseline="central" fontSize={14} fill="var(--ink-2)">{row.title}</text>);
     labels.push({ key: `${k}h`, x: 0, y: y0 + 33, size: wide ? 19 : 17, weight: 600, text: row.headlineText, node: row.headline });
     if (row.sub) labels.push({ key: `${k}s`, x: 0, y: y0 + 54, size: 12, tone: "ink-2", text: row.sub.text, node: row.sub.node });
 
@@ -299,6 +299,14 @@ export function FlexSuppression() {
 
   return (
     <ChartFrame
+      headline={(() => {
+        // Groups are ordered by increasing CO2 (redshift/params.json). Say so only if the shares really rise.
+        const shares = data.groups.map((g) => (g.total.v > 0 ? g.extinguished.v / g.total.v : NaN));
+        const rising = shares.every((s, i) => Number.isFinite(s) && (i === 0 || s >= shares[i - 1]));
+        return rising
+          ? <>The more CO2 was added, the larger the share of FLEX droplet tests labelled &ldquo;{EXTINGUISHED}&rdquo;.</>
+          : <>How many FLEX droplet tests were labelled &ldquo;{EXTINGUISHED}&rdquo; in each CO2 group.</>;
+      })()}
       id="flex-suppression"
       title={`FLEX: droplet tests with CO2 added, and how many were labelled "${EXTINGUISHED}"`}
       caption={`Each marker is one FLEX droplet test from the PSI table, styled by its outcome label, quoted exactly as the table writes it (for example "Disruption" is the table's own word, not a paraphrase). Fractions are tests labelled "${EXTINGUISHED}" out of all tests in the group. Groups and the pressure band were fixed before any count was run.`}

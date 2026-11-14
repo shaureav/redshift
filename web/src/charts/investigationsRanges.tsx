@@ -75,7 +75,7 @@ function RangeCellBody({ range, kpa, domain, cls, hasTable, hasColumn, label, un
         {ticks.map((t) => (
           <g key={t} transform={`translate(${x(t)},0)`}>
             <line y1={17} y2={20} stroke="var(--ink-3)" />
-            <text y={30} textAnchor="middle" fontSize={9.5} fill="var(--ink-3)" className="num">{fmt(t)}</text>
+            <text y={30} textAnchor="middle" fontSize={12} fill="var(--ink-3)" className="num">{fmt(t)}</text>
           </g>
         ))}
         {x1 - x0 >= 3 ? (

@@ -195,7 +195,7 @@ function CandidateCard({ c, ev, pb, kf }: { c: Candidate; ev: CandidateEvidence;
       </p>
       <table className="w-full text-sm">
         <caption className="sr-only">Tests near {c.name} by fuel class and source type</caption>
-        <thead className="text-left text-[11px] text-ink-3">
+        <thead className="text-left text-xs text-ink-3">
           <tr>
             <th className="pb-1 font-medium">Near this atmosphere</th>
             <th className="pb-1 font-medium">PSI table</th>

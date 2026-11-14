@@ -108,7 +108,7 @@ export default function MaterialDossier() {
         <BackLink />
         <p className="text-xs font-medium uppercase tracking-wide text-ink-3">Material dossier</p>
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">
+          <h1 className="text-xl font-semibold">
             <MaterialLabel label={name} />
           </h1>
           <div className="no-print flex flex-wrap gap-2">
@@ -185,7 +185,7 @@ export default function MaterialDossier() {
                       <td className="py-1.5 pr-3">
                         <Link className="mono text-xs underline" to={evidenceHref([t.test_id])}>{t.test_id}</Link>
                         {t.flags.length > 0 && (
-                          <span className="ml-1 text-[11px] text-ink-3" title={t.flags.join(", ")}>
+                          <span className="ml-1 text-xs text-ink-3" title={t.flags.join(", ")}>
                             flagged<span className="sr-only">: {t.flags.join(", ")}</span>
                           </span>
                         )}
@@ -195,7 +195,7 @@ export default function MaterialDossier() {
                       <td className="py-1.5 pr-3"><Value val={t.fields.test_date} /></td>
                       <td className="py-1.5 pr-3">
                         <Value val={t.fields.o2_pct} />
-                        {t.fields.o2_basis?.v && <span className="block text-[11px] text-ink-3">{String(t.fields.o2_basis.v)}</span>}
+                        {t.fields.o2_basis?.v && <span className="block text-xs text-ink-3">{String(t.fields.o2_basis.v)}</span>}
                       </td>
                       <td className="py-1.5 pr-3"><Pressure psi={t.fields.pressure_psi} kpa={t.fields.pressure_kpa} /></td>
                       <td className="py-1.5 pr-3"><Value val={t.fields.flow_cm_s} /></td>

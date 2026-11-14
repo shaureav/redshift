@@ -69,6 +69,7 @@ export function MaterialMap({ tests, candidates, label }: { tests: TestRow[]; ca
   return (
     <ChartFrame
       id="material-map"
+      headline={mode === "plane" ? <>Where {label} was tested, against the candidate atmospheres.</> : <>No test of {label} records pressure, so none can be placed on the plane.</>}
       title={mode === "plane" ? "Where it was tested: oxygen against pressure" : "Where it was tested: oxygen only"}
       caption={
         mode === "plane"
@@ -116,7 +117,7 @@ function Plane({ tests, candidates, label }: { tests: TestRow[]; candidates: Can
               <circle r={6} fill="var(--surface-2)" stroke="var(--candidate)" strokeWidth={2} />
               <circle r={2} fill="var(--candidate)" />
               {!narrow && (
-                <text x={9} y={-7} fontSize={11} fontWeight={600} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
+                <text x={9} y={-7} fontSize={12} fontWeight={600} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
                   {isAboutPressure(c) ? `${c.name} (pressure about)` : c.name}
                 </text>
               )}
@@ -127,7 +128,7 @@ function Plane({ tests, candidates, label }: { tests: TestRow[]; candidates: Can
             {x.ticks(narrow ? 4 : 8).map((t) => (
               <g key={t} transform={`translate(${x(t)},0)`}>
                 <line y2={5} stroke="var(--ink-3)" />
-                <text y={18} textAnchor="middle" fontSize={11} fill="var(--ink-2)" className="num">{t}</text>
+                <text y={18} textAnchor="middle" fontSize={12} fill="var(--ink-2)" className="num">{t}</text>
               </g>
             ))}
             <text x={iw / 2} y={36} textAnchor="middle" fontSize={12} fill="var(--ink)">Oxygen (% by volume)</text>
@@ -135,14 +136,14 @@ function Plane({ tests, candidates, label }: { tests: TestRow[]; candidates: Can
           {psiTicks.map((p) => (
             <g key={p} transform={`translate(0,${y(p)})`}>
               <line x2={-5} stroke="var(--ink-3)" />
-              <text x={-8} dy="0.32em" textAnchor="end" fontSize={11} fill="var(--ink-2)" className="num">{p}</text>
+              <text x={-8} dy="0.32em" textAnchor="end" fontSize={12} fill="var(--ink-2)" className="num">{p}</text>
             </g>
           ))}
           <text transform={`translate(${-(narrow ? 32 : 40)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={12} fill="var(--ink)">psi (log)</text>
           {kpaTicks.map((k) => (
             <g key={k} transform={`translate(${iw},${y(k / KPA_PER_PSI)})`}>
               <line x2={5} stroke="var(--ink-3)" />
-              <text x={8} dy="0.32em" fontSize={11} fill="var(--ink-3)" className="num">{k}</text>
+              <text x={8} dy="0.32em" fontSize={12} fill="var(--ink-3)" className="num">{k}</text>
             </g>
           ))}
           <text transform={`translate(${iw + (narrow ? 32 : 44)},${ih / 2}) rotate(90)`} textAnchor="middle" fontSize={12} fill="var(--ink-2)">kPa</text>
@@ -205,7 +206,7 @@ function StripView({ tests, candidates, label }: { tests: TestRow[]; candidates:
           {ticks.map((t) => (
             <g key={t} transform={`translate(${x(t)},${ih})`}>
               <line y2={5} stroke="var(--ink-3)" />
-              <text y={18} textAnchor="middle" fontSize={11} fill="var(--ink-2)" className="num">{t}</text>
+              <text y={18} textAnchor="middle" fontSize={12} fill="var(--ink-2)" className="num">{t}</text>
             </g>
           ))}
           <text x={iw / 2} y={ih + 34} textAnchor="middle" fontSize={12} fill="var(--ink)">Oxygen (% by volume); pressure not recorded</text>

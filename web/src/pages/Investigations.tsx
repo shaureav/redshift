@@ -329,7 +329,7 @@ function InvCard({ r, isOpen, selected, canSelect, onToggleSelect, meta }: CardP
           </dl>
         )}
         {s && s.o2_pct.min && (
-          <p className="mt-1 text-[11px] leading-snug text-ink-3">
+          <p className="mt-1 text-xs leading-snug text-ink-3">
             Lowest to highest value in the table. The O2 range covers whichever basis the table records (chamber initial, ambient or, for inverse flames, the oxidiser stream) and can mix them; Evidence gives the basis of each test.
           </p>
         )}

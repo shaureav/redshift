@@ -40,7 +40,7 @@ function Tile({ label, children, note }: { label: ReactNode; children: ReactNode
     <div className="rounded-lg border border-line bg-surface-2 px-3 py-2.5">
       <dt className="text-xs text-ink-2">{label}</dt>
       <dd className="mt-0.5 text-xl font-semibold">{children}</dd>
-      {note && <dd className="mt-0.5 text-[11px] text-ink-3">{note}</dd>}
+      {note && <dd className="mt-0.5 text-xs text-ink-3">{note}</dd>}
     </div>
   );
 }
@@ -52,7 +52,7 @@ function GoldenCell({ value, p, g }: { value: GoldenValue; p: string; g: GoldenR
     return (
       <span className="hatch-bg inline-flex flex-col items-end rounded border border-line px-1.5 py-0.5">
         <span className="rounded bg-surface-2 px-1"><Value val={tag(value, p)} /></span>
-        <span className="rounded bg-surface-2 px-1 text-[11px] text-ink-2">no tests recorded</span>
+        <span className="rounded bg-surface-2 px-1 text-xs text-ink-2">no tests recorded</span>
       </span>
     );
   }
@@ -88,7 +88,7 @@ function GoldenCondition({ g, candidates }: { g: GoldenResult; candidates: Candi
   if (!c) return null;
   const about = /4\.3 psi/.test(g.description) || c.pressure_psi.v === 4.3;
   return (
-    <span className="mt-0.5 block text-[11px] text-ink-2">
+    <span className="mt-0.5 block text-xs text-ink-2">
       Condition: {about && "about "}<Pressure psi={c.pressure_psi} kpa={c.pressure_kpa} />, <Value val={c.o2_pct} /> O2 ({c.short})
     </span>
   );
@@ -118,10 +118,10 @@ function GoldenTable({ results, p, candidates }: { results: GoldenResult[]; p: s
             <tr key={g.id} className="border-t border-line align-top">
               <th scope="row" className="px-3 py-2 text-left font-normal">
                 <span className="block">{g.description}</span>
-                <span className="mono block text-[11px] text-ink-3">{g.id}</span>
-                <span className="block text-[11px] text-ink-3">Source: {g.source}</span>
+                <span className="mono block text-xs text-ink-3">{g.id}</span>
+                <span className="block text-xs text-ink-3">Source: {g.source}</span>
                 <GoldenCondition g={g} candidates={candidates} />
-                {goldenNotes(g).map((n) => <span key={n} className="mt-0.5 block text-[11px] italic text-ink-2">{n}</span>)}
+                {goldenNotes(g).map((n) => <span key={n} className="mt-0.5 block text-xs italic text-ink-2">{n}</span>)}
               </th>
               <td className="px-3 py-2 text-right"><GoldenCell value={g.expected} p={p} g={g} /></td>
               <td className="px-3 py-2 text-right"><GoldenCell value={g.actual} p={p} g={g} /></td>
@@ -206,9 +206,9 @@ function ReconciliationTable({ rows, p, invNames, highlightInv }: { rows: Reconc
                   <Link className="underline" to={`/evidence?inv=${encodeURIComponent(r.investigation_id)}`} title="Open these tests in the Evidence Explorer">
                     {invNames.get(r.investigation_id) ?? r.investigation_id}
                   </Link>{" "}
-                  <span className="mono text-[11px] text-ink-3">{r.investigation_id} / {r.table_key}</span>
+                  <span className="mono text-xs text-ink-3">{r.investigation_id} / {r.table_key}</span>
                 </span>
-                <span className="mono block min-w-[15rem] max-w-[22rem] break-words text-[11px] text-ink-3" title={r.table_file}>{fileBase(r.table_file)}</span>
+                <span className="mono block min-w-[15rem] max-w-[22rem] break-words text-xs text-ink-3" title={r.table_file}>{fileBase(r.table_file)}</span>
               </th>
               <td className="px-3 py-2 text-right">{num(r.physical_lines, "lines")}</td>
               <td className="px-3 py-2 text-right">{num(r.header_lines, "lines")}</td>

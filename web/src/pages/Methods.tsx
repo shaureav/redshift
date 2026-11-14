@@ -127,7 +127,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
 function Plain({ children }: { children: ReactNode }) {
   return (
     <div className="rounded-lg bg-surface-3 px-4 py-3">
-      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-ink-3">In plain English</p>
+      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-3">In plain English</p>
       <div className="text-ink">{children}</div>
     </div>
   );
@@ -136,7 +136,7 @@ function Plain({ children }: { children: ReactNode }) {
 function Tech({ children }: { children: ReactNode }) {
   return (
     <div>
-      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-ink-3">Technical detail</p>
+      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-3">Technical detail</p>
       <div className="space-y-2">{children}</div>
     </div>
   );
@@ -321,7 +321,7 @@ export default function Methods() {
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[13rem_minmax(0,1fr)]">
         <nav aria-label="On this page" className="lg:sticky lg:top-20 lg:self-start">
-          <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-ink-3">On this page</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-3">On this page</p>
           <ol className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm sm:grid-cols-3 lg:grid-cols-1">
             {SECTIONS.map(([id, label]) => (
               <li key={id}>
@@ -371,7 +371,7 @@ export default function Methods() {
                         <td className="mono py-1.5 pr-3">{f.investigation_id ?? ""}</td>
                         <td className="py-1.5 pr-3">{f.licence}</td>
                         <td className="whitespace-nowrap py-1.5 pr-3">{f.retrieved}</td>
-                        <td className="mono break-all py-1.5 text-[11px] text-ink-2">{f.sha256}</td>
+                        <td className="mono break-all py-1.5 text-xs text-ink-2">{f.sha256}</td>
                       </tr>
                     ))}
                   </tbody>

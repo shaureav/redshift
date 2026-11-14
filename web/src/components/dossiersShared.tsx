@@ -216,7 +216,7 @@ export function Section({ n, id, title, lead, children, aside }: { n?: number; i
 export function CountCell({ val, compact = false }: { val: Val<number>; compact?: boolean }) {
   if (val.v === 0) {
     return (
-      <span className={`hatch-bg inline-flex items-center rounded border border-line px-1.5 py-0.5 ${compact ? "text-[11px]" : "text-xs"} text-ink-2`}>
+      <span className={`hatch-bg inline-flex items-center rounded border border-line px-1.5 py-0.5 ${compact ? "text-xs" : "text-xs"} text-ink-2`}>
         <span className="rounded-sm bg-surface-2 px-1">no tests recorded</span>
       </span>
     );

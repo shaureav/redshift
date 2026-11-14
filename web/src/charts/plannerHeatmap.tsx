@@ -135,8 +135,8 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
               {/* panel title: marker shape and colour, label, weight in this preset */}
               <g transform={`translate(${m.left},14)`}>
                 <path d={markerPath(mat, 5)} transform="translate(5,0)" fill={FUEL_COLOR_VAR[mat]} stroke={FUEL_COLOR_VAR[mat]} />
-                <text x={16} dy="0.35em" fontSize={13} fontWeight={600} fill="var(--ink)">{FUEL_LABEL[mat]}</text>
-                <text x={iw} dy="0.35em" textAnchor="end" fontSize={11} fill="var(--ink-2)" className="num">
+                <text x={16} dy="0.35em" fontSize={14} fontWeight={600} fill="var(--ink)">{FUEL_LABEL[mat]}</text>
+                <text x={iw} dy="0.35em" textAnchor="end" fontSize={12} fill="var(--ink-2)" className="num">
                   weight {fmtNumber(weight, 1)}
                 </text>
               </g>
@@ -205,21 +205,21 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
                   const kpa = kpaByPsi.get(psi);
                   return (
                     <g key={psi} transform={`translate(-6,${j * ch + ch / 2})`}>
-                      <text textAnchor="end" dy={kpa ? "-0.15em" : "0.35em"} fontSize={11} fill="var(--ink-2)" className="num">{psi}</text>
+                      <text textAnchor="end" dy={kpa ? "-0.15em" : "0.35em"} fontSize={12} fill="var(--ink-2)" className="num">{psi}</text>
                       {kpa && typeof kpa.v === "number" && (
-                        <text textAnchor="end" dy="1.05em" fontSize={9.5} fill="var(--ink-3)" className="num">{fmtNumber(kpa.v, 1)} kPa</text>
+                        <text textAnchor="end" dy="1.05em" fontSize={12} fill="var(--ink-3)" className="num">{fmtNumber(kpa.v, 1)} kPa</text>
                       )}
                     </g>
                   );
                 })}
                 {(pi % cols === 0) && (
-                  <text transform={`translate(${-(m.left - 9)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={11} fill="var(--ink)">Pressure (psi)</text>
+                  <text transform={`translate(${-(m.left - 9)},${ih / 2}) rotate(-90)`} textAnchor="middle" fontSize={12} fill="var(--ink)">Pressure (psi)</text>
                 )}
                 {/* x axis: O2 levels */}
                 {o2s.map((o2, i) => (
-                  <text key={o2} x={i * cw + cw / 2} y={ih + 14} textAnchor="middle" fontSize={11} fill="var(--ink-2)" className="num">{o2}</text>
+                  <text key={o2} x={i * cw + cw / 2} y={ih + 14} textAnchor="middle" fontSize={12} fill="var(--ink-2)" className="num">{o2}</text>
                 ))}
-                <text x={iw / 2} y={ih + 32} textAnchor="middle" fontSize={11} fill="var(--ink)">O2 (% by volume; levels, not to scale)</text>
+                <text x={iw / 2} y={ih + 32} textAnchor="middle" fontSize={12} fill="var(--ink)">O2 (% by volume; levels, not to scale)</text>
               </g>
             </g>
           );

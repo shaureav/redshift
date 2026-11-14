@@ -185,6 +185,11 @@ export function AccessGap() {
     <ChartFrame
       id="access-gap"
       title="The access gap: solid-material burns, step by step"
+      headline={
+        data.psi_steps[2]?.count.v === 0
+          ? <>No solid burn in PSI&apos;s tables records pressure, so none can be placed near a habitat atmosphere.</>
+          : <>How many solid-material burns survive each step to a downloadable row.</>
+      }
       caption="Each bar counts solid-material burns that survive one more step, from a row in a PSI experiment table to a downloadable row near a habitat candidate. A hairline outline shows the step above. Hatched bars hold no records: unknown, not low risk. Paper counts stay at zero until a named team member verifies each finding against its source, so a zero there means not yet verified, not that no burns took place."
       sources="NASA PSI experiment tables (DOI per investigation); drafted paper findings (NTRS) and their verification status; step counts by the Redshift build."
       table={table}

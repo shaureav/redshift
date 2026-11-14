@@ -65,6 +65,11 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
     <ChartFrame
       id={`evidence-near-${c.id}`}
       title="Tests within the nearness region"
+      headline={
+        ev.near.solid.psi_table.v + ev.near.solid.published_paper.v === 0
+          ? <>No solid-material test sits near {c.name}.</>
+          : <>Solid-material tests do sit near {c.name}; see the solid row.</>
+      }
       caption={`Microgravity fire tests recorded within the nearness region of ${c.name}, split by fuel class and by source. Filled bars are PSI experiment table rows; outlined bars are results from human-verified papers. The scale is the same on every candidate dossier. Hatched rows have no tests recorded: unknown, not low risk.`}
       sources="NASA PSI experiment tables (DOI per investigation); human-verified papers (NTRS); nearness computed by the Redshift build."
       table={table}
@@ -76,10 +81,10 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
             {ticks.map((t) => (
               <g key={t} transform={`translate(${x(t)},0)`}>
                 <line y1={0} y2={ih} stroke="var(--line)" />
-                <text y={ih + 16} textAnchor="middle" fontSize={11} fill="var(--ink-3)" className="num">{fmtNumber(t, 0)}</text>
+                <text y={ih + 16} textAnchor="middle" fontSize={12} fill="var(--ink-3)" className="num">{fmtNumber(t, 0)}</text>
               </g>
             ))}
-            <text x={iw} y={ih + 28} textAnchor="end" fontSize={11} fill="var(--ink-3)">tests</text>
+            <text x={iw} y={ih + 28} textAnchor="end" fontSize={12} fill="var(--ink-3)">tests</text>
             {FUEL_CLASSES.map((f, i) => (
               <g key={f} transform={`translate(0,${i * rowH + 9})`}>
                 <g transform={`translate(${-labelW + 8},${barH + gap / 2})`}>
@@ -94,7 +99,7 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
                     return (
                       <g key={s.key} transform={`translate(0,${y0})`}>
                         <rect width={iw} height={barH} fill={`url(#hatch-ev-${c.id})`} opacity={0.5} rx={2} />
-                        <text x={6} y={barH / 2} dy="0.32em" fontSize={10.5} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3}>
+                        <text x={6} y={barH / 2} dy="0.32em" fontSize={12} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3}>
                           {s.key === "psi_table" ? "PSI table" : "Paper"}: no tests recorded
                         </text>
                         <title>{`${FUEL_LABEL[f]}, ${s.label}: no tests recorded`}</title>
@@ -110,7 +115,7 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
                         stroke={outline ? FUEL_COLOR_VAR[f] : "none"}
                         strokeWidth={outline ? 1.5 : 0}
                       />
-                      <text x={w + 6} y={barH / 2} dy="0.32em" fontSize={11} fill="var(--ink)" className="num">
+                      <text x={w + 6} y={barH / 2} dy="0.32em" fontSize={12} fill="var(--ink)" className="num">
                         {fmtNumber(val.v, 0)}
                         <tspan fill="var(--ink-3)">{s.key === "psi_table" ? "  PSI table" : "  paper"}</tspan>
                       </text>

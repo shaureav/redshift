@@ -98,7 +98,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
             (<Value val={c.pressure_kpa} digits={1} />)
           </span>
           {!narrow && <span className="ml-2 font-normal text-ink-3">{c.short}</span>}
-          {on && !narrow && <span className="ml-2 text-[11px] font-medium text-accent">highlighted on the map</span>}
+          {on && !narrow && <span className="ml-2 text-xs font-medium text-accent">highlighted on the map</span>}
         </>
       ),
     });
@@ -115,11 +115,11 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
     marks.push(
       <g key={`o2l${c.id}`}>
         {narrow ? (
-          <text x={pad} y={o2y + o2H / 2} dominantBaseline="central" fontSize={10.5} fill="var(--ink-3)">O2 only</text>
+          <text x={pad} y={o2y + o2H / 2} dominantBaseline="central" fontSize={12} fill="var(--ink-3)">O2 only</text>
         ) : (
           <>
-            <text x={pad} y={o2y + 8} dominantBaseline="central" fontSize={10.5} fill="var(--ink-3)">O2 matches,</text>
-            <text x={pad} y={o2y + 21} dominantBaseline="central" fontSize={10.5} fill="var(--ink-3)">pressure not recorded</text>
+            <text x={pad} y={o2y + 8} dominantBaseline="central" fontSize={12} fill="var(--ink-3)">O2 matches,</text>
+            <text x={pad} y={o2y + 21} dominantBaseline="central" fontSize={12} fill="var(--ink-3)">pressure not recorded</text>
           </>
         )}
         <line x1={labelW} x2={width} y1={o2y - 1} y2={o2y - 1} stroke="var(--line)" strokeOpacity={0.7} />
@@ -139,7 +139,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
           marks.push(
             <g key={k}>
               <rect x={cx} y={cy - 7} width={colW - 10} height={14} rx={3} fill="url(#hatch-strips)" opacity={0.75} />
-              <text x={cx + 6} y={cy} dominantBaseline="central" fontSize={10.5} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
+              <text x={cx + 6} y={cy} dominantBaseline="central" fontSize={12} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={4}>
                 {zeroText}
               </text>
               <title>
@@ -230,6 +230,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
     <ChartFrame
       id="evidence-strips"
       title="Tests near each candidate, by fuel class and source"
+      headline={<>Near every candidate, the solid-material row is where the evidence runs out.</>}
       caption="One strip per candidate atmosphere. Filled bars are PSI experiment table rows within the nearness threshold set in the build's sensitivity settings; outlined bars are results from human-verified papers. All strips share one scale. Hatched cells have no tests recorded: unknown, not low risk. A hatched paper cell reads ‘none verified’ while findings await human verification, which is not the same as no burns. The bottom row of each strip counts tests whose O2 matches but whose pressure is not recorded, so they cannot be placed on the plane."
       sources="NASA PSI experiment tables (DOI per investigation); human-verified papers (NTRS); nearness counts by the Redshift build."
       table={table}

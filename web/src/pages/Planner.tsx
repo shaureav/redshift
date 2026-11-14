@@ -219,7 +219,7 @@ function RankedList({ grid, preset, selected, onSelect, kpaByPsi, candAt }: {
                       onClick={() => onSelect(id)}
                       aria-pressed={on}
                       aria-label={`Show ${c.o2_pct}% O2, ${c.pressure_psi} psi, ${FUEL_LABEL[c.material]} on the heat map`}
-                      className="mt-1 rounded border border-line px-1.5 py-0.5 text-[11px] text-ink-2 hover:bg-surface-3"
+                      className="mt-1 rounded border border-line px-1.5 py-0.5 text-xs text-ink-2 hover:bg-surface-3"
                     >
                       {on ? "Shown on map" : "Show on map"}
                     </button>
@@ -258,7 +258,7 @@ function CellDetail({ cell, grid, kpaByPsi, cands, onClear }: { cell?: PlannerGr
         </h2>
         <button type="button" onClick={onClear} className="rounded border border-line px-2 py-1 text-xs hover:bg-surface-3">Clear</button>
       </div>
-      <p className="mono mt-1 text-[11px] text-ink-3">{cell.id}</p>
+      <p className="mono mt-1 text-xs text-ink-3">{cell.id}</p>
       {cands.length > 0 && (
         <p className="mt-2 text-sm">
           Candidate atmosphere in this cell:{" "}

@@ -161,7 +161,7 @@ export function CountCell({ val, compact = false }: { val: Val<number>; compact?
       <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
         <span className="hatch-bg inline-block h-3 w-4 rounded-sm border border-line" aria-hidden="true" />
         <span className={`text-ink-2 ${compact ? "text-xs" : ""}`}>no tests recorded</span>
-        <span className="text-[11px] text-ink-3">
+        <span className="text-xs text-ink-3">
           (<Value val={val} unit={false} />)
         </span>
       </span>
@@ -174,7 +174,7 @@ export function CountCell({ val, compact = false }: { val: Val<number>; compact?
 export function Eq({ children, label }: { children: ReactNode; label?: string }) {
   return (
     <div className="my-3 overflow-x-auto rounded-lg border border-line bg-surface-3 px-4 py-3" role="math" aria-label={label}>
-      <div className="num whitespace-nowrap text-[15px] leading-relaxed text-ink">{children}</div>
+      <div className="num whitespace-nowrap text-sm leading-relaxed text-ink">{children}</div>
     </div>
   );
 }

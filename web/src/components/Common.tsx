@@ -80,7 +80,7 @@ export function Badge({ children, tone = "neutral", title }: { children: ReactNo
         ? "border-accent text-accent"
         : "border-line text-ink-2";
   return (
-    <span title={title} className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${cls}`}>
+    <span title={title} className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${cls}`}>
       {children}
     </span>
   );
@@ -92,6 +92,8 @@ export function AiLabel() {
 
 interface ChartFrameProps {
   title: string;
+  /** The chart's takeaway in plain English, computed from the data with a neutral fallback. */
+  headline?: ReactNode;
   caption: string;
   sources: string;
   children: ReactNode;
@@ -100,8 +102,8 @@ interface ChartFrameProps {
   id?: string;
 }
 
-// Wraps every chart: title, caption, sources, a table alternative and SVG download.
-export function ChartFrame({ title, caption, sources, children, table, actions, id }: ChartFrameProps) {
+// Wraps every chart: takeaway headline, what the chart is, caption, sources, a table alternative and SVG download.
+export function ChartFrame({ title, headline, caption, sources, children, table, actions, id }: ChartFrameProps) {
   const [asTable, setAsTable] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const download = () => {
@@ -110,7 +112,7 @@ export function ChartFrame({ title, caption, sources, children, table, actions, 
     const clone = svg.cloneNode(true) as SVGSVGElement;
     const styles = getComputedStyle(document.documentElement);
     const vars = ["--surface", "--surface-2", "--ink", "--ink-2", "--ink-3", "--line", "--gas", "--droplet", "--solid", "--emulator", "--hatch", "--candidate", "--isotherm", "--prebreathe", "--accent"];
-    const style = `svg{${vars.map((v) => `${v}:${styles.getPropertyValue(v)}`).join(";")};font-family:Inter,sans-serif}`;
+    const style = `svg{${vars.map((v) => `${v}:${styles.getPropertyValue(v)}`).join(";")};font-family:'IBM Plex Sans',sans-serif}`;
     const s = document.createElementNS("http://www.w3.org/2000/svg", "style");
     s.textContent = style;
     clone.insertBefore(s, clone.firstChild);
@@ -126,42 +128,72 @@ export function ChartFrame({ title, caption, sources, children, table, actions, 
     URL.revokeObjectURL(a.href);
   };
   return (
-    <figure className="card p-4" ref={ref} aria-label={title}>
-      <div className="mb-2 flex flex-wrap items-start justify-between gap-2">
-        <h3 className="text-base font-semibold">{title}</h3>
-        <div className="no-print flex flex-wrap items-center gap-2 text-xs">
+    <figure className="card p-5" ref={ref} aria-label={title}>
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0 max-w-3xl">
+          <div className="eyebrow">{title}</div>
+          {headline && <h3 className="mt-1 text-lg font-semibold leading-snug">{headline}</h3>}
+        </div>
+        <div className="no-print flex flex-wrap items-center gap-2">
           {actions}
           {table && (
-            <button type="button" className="rounded border border-line px-2 py-1 hover:bg-surface-3" aria-pressed={asTable} onClick={() => setAsTable((t) => !t)}>
+            <button type="button" className="btn btn-sm btn-quiet" aria-pressed={asTable} onClick={() => setAsTable((t) => !t)}>
               {asTable ? "View as chart" : "View as table"}
             </button>
           )}
-          <button type="button" className="rounded border border-line px-2 py-1 hover:bg-surface-3" onClick={download}>
+          <button type="button" className="btn btn-sm btn-quiet" onClick={download}>
             Download SVG
           </button>
         </div>
       </div>
       <div>{asTable && table ? table : children}</div>
-      <figcaption className="mt-2 text-xs text-ink-2">
+      <figcaption className="mt-4 border-t border-line pt-3 text-xs text-ink-2">
         {caption} <span className="text-ink-3">Sources: {sources}</span>
       </figcaption>
     </figure>
   );
 }
 
+/** Loading: a calm skeleton that says what is coming, never a bare spinner. */
 export function Loading({ what = "data" }: { what?: string }) {
-  return <p className="p-6 text-sm text-ink-3">Loading {what}...</p>;
+  return (
+    <div className="space-y-3 py-8" aria-busy="true" role="status">
+      <div className="skeleton h-4 w-40" />
+      <div className="skeleton h-8 w-2/3" />
+      <div className="skeleton h-40 w-full" />
+      <p className="text-sm text-ink-3">Loading {what}…</p>
+    </div>
+  );
 }
 
+/** Error: says what failed and why nothing is guessed in its place. */
 export function ErrorNote({ error }: { error: unknown }) {
-  return <p className="p-6 text-sm">The data could not be loaded: {String(error)}</p>;
+  return (
+    <div className="my-8 max-w-xl rounded-lg border border-dashed border-line-strong p-5" role="alert">
+      <div className="eyebrow">Could not load</div>
+      <p className="mt-2 text-sm">The data snapshot did not arrive ({String(error)}). Redshift shows nothing it cannot source, so nothing is shown in its place.</p>
+      <button type="button" className="btn btn-sm mt-3" onClick={() => window.location.reload()}>Try again</button>
+    </div>
+  );
+}
+
+/** Empty: unknown, never safe. Hatched, like an empty region of the plane. */
+export function EmptyState({ title, children }: { title: string; children?: ReactNode }) {
+  return (
+    <div className="hatch-bg rounded-lg border border-dashed border-line-strong p-5">
+      <div className="inline-block rounded bg-[color:var(--surface-2)] px-2 py-1">
+        <div className="eyebrow">{title}</div>
+        {children && <div className="mt-1 text-sm text-ink-2">{children}</div>}
+      </div>
+    </div>
+  );
 }
 
 export function PageHeader({ title, lead, children }: { title: string; lead?: ReactNode; children?: ReactNode }) {
   return (
-    <header className="mb-5">
-      <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
-      {lead && <p className="mt-1 max-w-3xl text-sm text-ink-2">{lead}</p>}
+    <header className="mb-8">
+      <h1 className="text-xl font-semibold">{title}</h1>
+      {lead && <p className="mt-2 max-w-3xl text-sm text-ink-2">{lead}</p>}
       {children}
     </header>
   );

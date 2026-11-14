@@ -171,7 +171,7 @@ export function SeverityBadge({ severity }: { severity: string }) {
     return (
       <span
         title="Severity: error"
-        className="mono inline-flex items-center rounded-full border-2 border-[color:var(--solid)] px-2 py-0 text-[11px] font-semibold text-[color:var(--amber-ink)]"
+        className="mono inline-flex items-center rounded-full border-2 border-[color:var(--solid)] px-2 py-0 text-xs font-semibold text-[color:var(--amber-ink)]"
       >
         error
       </span>

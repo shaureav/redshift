@@ -69,7 +69,7 @@ function buildColumns(fieldKeys: string[], open: (id: string) => void): ColumnDe
       cell: ({ row }) => (
         <span className="flex flex-col leading-tight">
           <span>{row.original.investigation}</span>
-          <span className="mono text-[11px] text-ink-3">{row.original.investigation_id}</span>
+          <span className="mono text-xs text-ink-3">{row.original.investigation_id}</span>
         </span>
       ),
     },

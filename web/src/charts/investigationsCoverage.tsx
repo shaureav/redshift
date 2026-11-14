@@ -68,6 +68,13 @@ export function InvestigationsCoveragePanel({ items, openId, onOpen }: Props) {
     <ChartFrame
       id="investigation-coverage"
       title="What each table records"
+      headline={(() => {
+        const solidTables = items.filter((r) => invClass(r) === "solid" && r.has_table);
+        const noPressure = solidTables.length > 0 && solidTables.every((r) => coverageState(r, "pressure_kpa") !== "recorded");
+        return noPressure
+          ? <>No solid-fuel investigation&apos;s table has a pressure column.</>
+          : <>Which conditions each investigation&apos;s table records.</>;
+      })()}
       caption="Rows are investigations, columns are the conditions and test descriptors a PSI experiment table can carry. Filled: the table has a column for it; some or all of its cells can still be blank, and the table view gives the number of tests with a usable value. Hatched: not recorded in this table, so the value is unknown rather than zero. Dashed: no experiment table at all."
       sources="NASA PSI experiment tables, column mapping by the Redshift build (see Methods)."
       table={table}
@@ -109,16 +116,16 @@ function CoverageMatrix({ items, openId, onOpen }: Props) {
           <Hatch id="hatch-coverage" />
         </defs>
         {/* group headers */}
-        <text x={labelW} y={11} fontSize={10.5} fontWeight={600} fill="var(--ink-2)">Conditions</text>
+        <text x={labelW} y={11} fontSize={12} fontWeight={600} fill="var(--ink-2)">Conditions</text>
         <line x1={labelW} x2={condEnd - 4} y1={16} y2={16} stroke="var(--line)" />
-        <text x={descStart} y={11} fontSize={10.5} fontWeight={600} fill="var(--ink-2)">{narrow ? "Descriptors" : "Test descriptors"}</text>
+        <text x={descStart} y={11} fontSize={12} fontWeight={600} fill="var(--ink-2)">{narrow ? "Descriptors" : "Test descriptors"}</text>
         <line x1={descStart} x2={descEnd - 4} y1={16} y2={16} stroke="var(--line)" />
         {COVERAGE_KEYS.map((k) => {
           const cx = colX(k) + (cellW - 4) / 2;
           return rotate ? (
-            <text key={k} transform={`translate(${cx + 3},${headH - 6}) rotate(-45)`} fontSize={10.5} fill="var(--ink-2)">{COVERAGE_LABEL[k]}</text>
+            <text key={k} transform={`translate(${cx + 3},${headH - 6}) rotate(-45)`} fontSize={12} fill="var(--ink-2)">{COVERAGE_LABEL[k]}</text>
           ) : (
-            <text key={k} x={cx} y={headH - 8} textAnchor="middle" fontSize={11} fill="var(--ink-2)">{COVERAGE_LABEL[k]}</text>
+            <text key={k} x={cx} y={headH - 8} textAnchor="middle" fontSize={12} fill="var(--ink-2)">{COVERAGE_LABEL[k]}</text>
           );
         })}
 
@@ -152,7 +159,7 @@ function CoverageMatrix({ items, openId, onOpen }: Props) {
                 stroke={invColor(invClass(r))}
                 strokeWidth={r.has_table ? 1 : 1.5}
               />
-              <text x={17} y={y0 + rowH / 2} dy="0.32em" fontSize={11} fontWeight={on ? 600 : 400} fill={on ? "var(--ink)" : "var(--ink-2)"}>
+              <text x={17} y={y0 + rowH / 2} dy="0.32em" fontSize={12} fontWeight={on ? 600 : 400} fill={on ? "var(--ink)" : "var(--ink-2)"}>
                 {name.length > max ? `${name.slice(0, max - 1)}...` : name}
               </text>
               {COVERAGE_KEYS.map((k) => {

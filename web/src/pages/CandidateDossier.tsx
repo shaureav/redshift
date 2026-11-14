@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { DossierEvidenceBars } from "../charts/dossiersEvidenceBars";
+import { FlexSuppression } from "../charts/FlexSuppression";
 import { ErrorNote, Loading, SourceLegend } from "../components/Common";
 import { Pressure, ProvDetails, Value } from "../components/Value";
 import { missingLong } from "../components/dossiersMissing";
@@ -135,7 +136,7 @@ export default function CandidateDossier() {
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="text-xs font-medium uppercase tracking-wide text-ink-3">Candidate dossier: {ROLE_LABEL[c.role]}</p>
-            <h1 className="text-2xl font-semibold tracking-tight">{c.name}</h1>
+            <h1 className="text-xl font-semibold">{c.name}</h1>
             <p className="mt-1 text-base">
               {isAboutPressure(c) && <span className="text-ink-2">about </span>}
               <Pressure psi={c.pressure_psi} kpa={c.pressure_kpa} />
@@ -174,6 +175,9 @@ export default function CandidateDossier() {
             <DossierEvidenceBars c={c} ev={e} domainMax={domainMax} />
             <div className="mt-3"><SourceLegend /></div>
           </Section>
+
+          {/* FLEX ran its CO2 suppression tests near 10.4 psi, so the chart belongs with the 10.2 psi candidates. */}
+          {(c.id === "c10_2_26_5" || c.id === "c10_2_30") && <FlexSuppression />}
 
           <Section
             id="o2match"

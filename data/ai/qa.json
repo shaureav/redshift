@@ -32,6 +32,41 @@
    "not_covered": "Not covered: PSI tables hold no solid-material burn at this pressure, no flame spread rates as rows, and no partial-gravity data."
   },
   {
+   "id": "qa-download",
+   "question": "If NASA has already burned fabric in near-Moon-base air, why can't a researcher download it?",
+   "segments": [
+    {
+     "text": "Because the solid burns that matter are not rows in PSI's downloadable tables with a pressure recorded. Those tables hold {{access_gap.json#psi_steps[label=Solid-fuel burn rows in PSI experiment tables].count}} solid-fuel burn rows; {{access_gap.json#psi_steps[label=... with oxygen recorded].count}} record oxygen and {{access_gap.json#psi_steps[label=... with pressure recorded].count}} record pressure, so {{access_gap.json#psi_steps[label=... near a habitat candidate (downloadable as rows)].count}} can be placed near a habitat candidate.",
+     "cites": [
+      "PSI-25",
+      "PSI-26",
+      "PSI-98",
+      "PSI-99",
+      "PSI-100"
+     ]
+    },
+    {
+     "text": "ACME BRE, built around these atmospheres, lists {{candidates.json#candidates[id=c8_2_34].o2_pct}} oxygen in {{candidate_evidence.json#evidence[candidate_id=c8_2_34].o2_match_pressure_unknown.emulator}} sessions near that candidate's oxygen level, but its summary table does not record chamber pressure.",
+     "cites": [
+      "PSI-20"
+     ]
+    },
+    {
+     "text": "The Saffire V experiment burned cotton and PMMA at {{key_findings.json#findings[id=FND-S5-COND-P-O2].values[name=V-2 ambient pressure]}} and {{key_findings.json#findings[id=FND-S5-COND-P-O2].values[name=V-2 oxygen concentration]}} oxygen, and Saffire VI went lower, to {{key_findings.json#findings[id=FND-S6-COND-P-O2].values[name=VI-2 ambient pressure]}}. Those results are published in conference papers, not as rows in PSI's tables.",
+     "cites": [
+      "FND-S5-COND-P-O2",
+      "FND-S6-COND-P-O2"
+     ],
+     "requires_verified": [
+      "FND-S5-COND-P-O2",
+      "FND-S6-COND-P-O2"
+     ],
+     "pending_text": "Published Saffire V and VI papers describe solid burns close to these atmospheres; their figures appear here once a team member has verified them against the source."
+    }
+   ],
+   "not_covered": "Not covered: why the Saffire results were not added to PSI as table rows, whether their samples behave like habitat materials, and any burn in partial gravity."
+  },
+  {
    "id": "qa-solid",
    "question": "Has a solid material ever been burned near a candidate Moon-base atmosphere?",
    "segments": [

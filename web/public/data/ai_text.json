@@ -128,6 +128,111 @@
    "checked_at": null,
    "checked_by": null,
    "human_checked": false,
+   "id": "qa-download",
+   "not_covered": "Not covered: why the Saffire results were not added to PSI as table rows, whether their samples behave like habitat materials, and any burn in partial gravity.",
+   "paragraphs": [
+    {
+     "cites": [
+      "PSI-25",
+      "PSI-26",
+      "PSI-98",
+      "PSI-99",
+      "PSI-100"
+     ],
+     "segments": [
+      {
+       "t": "Because the solid burns that matter are not rows in PSI's downloadable tables with a pressure recorded. Those tables hold "
+      },
+      {
+       "val": {
+        "p": "gap:psi:0",
+        "u": "tests",
+        "v": 263
+       }
+      },
+      {
+       "t": " solid-fuel burn rows; "
+      },
+      {
+       "val": {
+        "p": "gap:psi:1",
+        "u": "tests",
+        "v": 129
+       }
+      },
+      {
+       "t": " record oxygen and "
+      },
+      {
+       "val": {
+        "p": "gap:psi:2",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " record pressure, so "
+      },
+      {
+       "val": {
+        "p": "gap:psi:3",
+        "u": "tests",
+        "v": 0
+       }
+      },
+      {
+       "t": " can be placed near a habitat candidate."
+      }
+     ]
+    },
+    {
+     "cites": [
+      "PSI-20"
+     ],
+     "segments": [
+      {
+       "t": "ACME BRE, built around these atmospheres, lists "
+      },
+      {
+       "val": {
+        "p": "cand:c8_2_34:o2",
+        "u": "%",
+        "v": 34.0
+       }
+      },
+      {
+       "t": " oxygen in "
+      },
+      {
+       "val": {
+        "p": "o2match:c8_2_34:emulator",
+        "u": "tests",
+        "v": 16
+       }
+      },
+      {
+       "t": " sessions near that candidate's oxygen level, but its summary table does not record chamber pressure."
+      }
+     ]
+    },
+    {
+     "cites": [],
+     "pending": true,
+     "segments": [
+      {
+       "t": "Published Saffire V and VI papers describe solid burns close to these atmospheres; their figures appear here once a team member has verified them against the source."
+      }
+     ]
+    }
+   ],
+   "question": "If NASA has already burned fabric in near-Moon-base air, why can't a researcher download it?",
+   "target": null
+  },
+  {
+   "ai_assisted": true,
+   "checked_at": null,
+   "checked_by": null,
+   "human_checked": false,
    "id": "qa-solid",
    "not_covered": "Not covered: whether these papers' samples behave like habitat materials, and any burn in partial gravity.",
    "paragraphs": [
