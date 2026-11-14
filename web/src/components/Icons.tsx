@@ -202,8 +202,28 @@ export function TestsIcon(p: IconProps) {
   );
 }
 
+/** Zoom: the four corners of a frame (which part of the plane is in view). */
+export function ZoomIcon(p: IconProps) {
+  return (
+    <Icon {...p}>
+      <path d="M2.25 5.75v-3.5h3.5M10.25 2.25h3.5v3.5M13.75 10.25v3.5h-3.5M5.75 13.75h-3.5v-3.5" />
+    </Icon>
+  );
+}
+
+/** Select an area: a marquee, drawn as a rectangle broken at its corners and edges. */
+export function SelectIcon(p: IconProps) {
+  return (
+    <Icon {...p}>
+      <path d="M2.25 4.25v-2h2M7 2.25h2M11.75 2.25h2v2M13.75 7v2M13.75 11.75v2h-2M9 13.75H7M4.25 13.75h-2v-2M2.25 9V7" />
+    </Icon>
+  );
+}
+
 /** The whole set by name, for the shortcut sheet and for the test that holds every icon to the spec. */
 export const ICONS = {
+  zoom: ZoomIcon,
+  select: SelectIcon,
   dossier: DossierIcon,
   tests: TestsIcon,
   probe: ProbeIcon,

@@ -353,6 +353,41 @@ describe("instrument panel", () => {
     expect(line.getAttribute("aria-valuenow")).toBe("0");
   });
 
+  it("runs the plane's controls from its floating toolbar, by click and by keyboard", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<Home />, "/?o2=34&p=8.2");
+    const tool = (name: string) => document.querySelector<HTMLButtonElement>(`[role="toolbar"] [aria-label="${name}"]`)!;
+    const press1 = (el: Element) => act(() => { el.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+    // Candidates: a menu of the five pins, each with its evidence word; picking one moves the probe there.
+    press1(tool("Candidates"));
+    expect(tool("Candidates").getAttribute("aria-expanded")).toBe("true");
+    const menu = document.querySelector('[aria-label="Go to a candidate atmosphere"]')!;
+    expect(menu.querySelectorAll("button")).toHaveLength(5);
+    expect(menu.parentElement?.textContent).toContain("not fire risk");
+    press1([...menu.querySelectorAll("button")].find((b) => b.textContent?.startsWith("10.2 psi / 26.5% O2"))!);
+    expect(new URLSearchParams(lastSearch).get("o2")).toBe("26.5");
+    expect(new URLSearchParams(lastSearch).get("p")).toBe("10.2");
+    expect(document.activeElement).toBe(tool("Candidates"));
+    // Zoom and Solids only write the view; Escape closes an open menu and hands focus back to its tool.
+    press1(tool("Zoom"));
+    press1([...document.querySelectorAll('[aria-label="Zoom"][role="group"] button')].find((b) => b.textContent === "Whole plane")!);
+    expect(new URLSearchParams(lastSearch).get("zoom")).toBe("plane");
+    press1(tool("Layers"));
+    expect(document.querySelector('[role="group"][aria-label="Layers"]')).not.toBeNull();
+    press("Escape");
+    expect(document.querySelector('[role="group"][aria-label="Layers"]')).toBeNull();
+    expect(document.activeElement).toBe(tool("Layers"));
+    press1(tool("Solids only"));
+    expect(new URLSearchParams(lastSearch).get("solids")).toBe("1");
+    // Arrow keys step between the tools.
+    act(() => tool("Solids only").focus());
+    press("ArrowRight");
+    expect(document.activeElement).toBe(tool("Candidates"));
+    press("ArrowLeft");
+    press("ArrowLeft");
+    expect(document.activeElement).toBe(tool("Select area"));
+  });
+
   it("copies the link from Share and says so in a toast", () => {
     localStorage.setItem("redshift-tour-v1", "done");
     mount(<Home />, "/?o2=34&p=8.2");

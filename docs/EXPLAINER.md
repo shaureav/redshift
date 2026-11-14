@@ -82,6 +82,10 @@ When you drag the probe across the plane, the numbers in the panel are not worke
 
 The home page is one big map of oxygen against cabin pressure with a panel beside it. Wherever you put the probe, the panel answers one question: what do we know about fire here, and what is missing? Empty rows are hatched because no tests means unknown, never safe, and the "Solids only" switch shows that no solid-material burn in NASA's tables can be placed anywhere on the map. The panel reads like an instrument: four tiles with the counts near the point, a "What's missing" list straight underneath, and two small profiles of the counts along each axis through the probe, every number a door to its source.
 
+## The coastline of knowledge (`web/src/lib/coast.ts`, `web/src/charts/planeToolbar.tsx`)
+
+The map is drawn like a coastline: land wherever the build counted at least one test near a point, hatched open sea wherever it counted none, and the coast as the line between. Turn on "Solids only" and the land sinks, because no solid-material test can be placed anywhere; the candidate pins then all read "at sea". The words on the pins (inland, on the coast, at sea) describe the recorded evidence around that point, never fire risk, and the plane's controls sit in one small toolbar in its corner.
+
 ## Ask the evidence (`web/src/components/AskBox.tsx`, `redshift/ai/ask.py`)
 
 The question box first looks for an answer that our team has already checked. On a server with a model key it can also answer new questions, but the model is not allowed to type a single number: it can only point at numbers we hand it, and a program rejects the answer if it types one anyway, cites something we did not give it, or recommends an atmosphere.

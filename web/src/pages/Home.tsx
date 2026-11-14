@@ -1,21 +1,24 @@
 // The plane, full screen, with the live evidence panel docked beside it. This page is the product:
 // pick an atmosphere (drag, click, arrow keys or a candidate chip), see the evidence instantly, go deeper,
 // take it with you. Every view state lives in the URL.
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AccessGap, type AccessGapData } from "../charts/AccessGap";
 import { Plane, type ProbeMode } from "../charts/Plane";
-import type { PlannerCell, TradeMapData } from "../charts/TradeMap";
+import { PlaneToolbar } from "../charts/planeToolbar";
+import type { TradeMapData } from "../charts/TradeMap";
 import { AskBox } from "../components/AskBox";
 import { FuelMarker } from "../components/Common";
 import { EvidencePanelView, flameAt, prebreatheFor, type FlameFile, type PanelData, type PrebreatheFile } from "../components/EvidencePanel";
+import { PinIcon } from "../components/Icons";
 import { Tour } from "../components/Tour";
 import { Value } from "../components/Value";
+import { coastFor, evidenceWord, type EvidenceWord } from "../lib/coast";
 import { useData } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
-import { decodeGrid, inGrid, nearInputs, readAt, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "../lib/probe";
+import { decodeGrid, inGrid, nearInputs, nodeOf, readAt, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "../lib/probe";
 import type { Candidate, CandidateEvidence, Val } from "../lib/types";
-import { LAYERS, useView, ZOOMS, type Box, type ZoomKey } from "../lib/view";
+import { useView, type Box } from "../lib/view";
 
 const KPA_PER_PSI = 6.894757293168361; // selection filter only; never printed
 
@@ -29,7 +32,6 @@ export default function Home() {
   const cands = useData<{ candidates: Candidate[] }>("candidates.json");
   const candEv = useData<CandEvFile>("candidate_evidence.json");
   const flame = useData<FlameFile>("flame_temperature_grid.json");
-  const planner = useData<{ cells: PlannerCell[] }>("planner_grid.json");
   const pb = useData<PrebreatheFile>("prebreathe.json");
   const gap = useData<AccessGapData>("access_gap.json");
 
@@ -38,6 +40,27 @@ export default function Home() {
   const [drag, setDrag] = useState<{ o2: number; psi: number } | null>(null);
   const [brushMode, setBrushMode] = useState(false);
   const [copied, setCopied] = useState(false);
+  // Whether Solids only has changed while this page was open: only then does the land sink on screen and the
+  // cited headline wait for it. A link that opens with Solids only on shows the end state at once.
+  const [solidsSeen, setSolidsSeen] = useState(view.solids);
+  const [scene, setScene] = useState(false);
+  if (solidsSeen !== view.solids) {
+    setSolidsSeen(view.solids);
+    setScene(true);
+  }
+
+  // Each candidate's evidence word, read from the grid at its node for the current step size and mode. A word
+  // about the recorded evidence there, never about risk (lib/coast.ts).
+  const words = useMemo(() => {
+    const out: Partial<Record<string, EvidenceWord>> = {};
+    if (!grid || !cands.data) return out;
+    const coast = coastFor(grid, view.m, view.solids ? "solids" : "all");
+    for (const c of cands.data.candidates) {
+      const n = nodeOf(grid, c.o2_pct.v, c.pressure_psi.v);
+      if (n) out[c.id] = evidenceWord(coast, n.i, n.j);
+    }
+    return out;
+  }, [grid, cands.data, view.m, view.solids]);
 
   // The tour's step 3 shows the access gap: 8.2 psi, 34% O2, solids only. A stable callback (setView is
   // stable), and the tour runs it once per step, so the view change cannot re-trigger it.
@@ -126,48 +149,26 @@ export default function Home() {
   return (
     <div className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:h-[calc(100vh-56px)] lg:grid-cols-[minmax(0,1fr)_400px] lg:grid-rows-1 lg:overflow-hidden">
       <section className="flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
-        <header className="flex flex-col gap-3 px-4 pb-2 pt-4 lg:px-6">
-          {/* The Heading role (plan, section 5): the panel's point readout keeps the larger Title role. */}
+        <header className="px-4 pb-2 pt-4 lg:px-6">
+          {/* The Heading role (plan, section 5): the panel's point readout keeps the larger Title role. The plane's
+              controls float in its toolbar, so only the headline sits above it. Under Solids only the cited
+              headline lands once the land has sunk (instantly under reduced motion). */}
           <h1 className="max-w-4xl text-heading" aria-live="polite">
-            {view.solids ? (
-              gapSteps && gapSteps[2]?.count.v === 0 ? (
-                <>No solid burn in PSI&apos;s tables records pressure.{" "}
-                  <span className="text-ink-2">Of <Value val={gapSteps[0].count} unit={false} /> solid-fuel burn rows, <Value val={gapSteps[1].count} unit={false} /> record oxygen and <Value val={gapSteps[2].count} unit={false} /> record pressure.</span></>
+            <span key={view.solids ? "solids" : "all"} className={scene ? (view.solids ? "lands-after-scene" : "swap-in") : undefined}>
+              {view.solids ? (
+                gapSteps && gapSteps[2]?.count.v === 0 ? (
+                  <>No solid burn in PSI&apos;s tables records pressure.{" "}
+                    <span className="text-ink-2">Of <Value val={gapSteps[0].count} unit={false} /> solid-fuel burn rows, <Value val={gapSteps[1].count} unit={false} /> record oxygen and <Value val={gapSteps[2].count} unit={false} /> record pressure.</span></>
+                ) : (
+                  <>Solid-material tests by oxygen and cabin pressure.</>
+                )
+              ) : habitatHeadline ? (
+                <>Near the candidate habitat atmospheres, PSI&apos;s tables hold gas and droplet tests, but no solid burns.</>
               ) : (
-                <>Solid-material tests by oxygen and cabin pressure.</>
-              )
-            ) : habitatHeadline ? (
-              <>Near the candidate habitat atmospheres, PSI&apos;s tables hold gas and droplet tests, but no solid burns.</>
-            ) : (
-              <>Microgravity fire tests by oxygen and cabin pressure.</>
-            )}
+                <>Microgravity fire tests by oxygen and cabin pressure.</>
+              )}
+            </span>
           </h1>
-          <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 pt-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pt-0">
-            {/* On a phone the controls scroll sideways in one row, so the plane stays above the fold. The row
-                clips what overflows it, so it pads at least 4 px on every side: room for a focus ring (2 px out, 2 px wide). */}
-            <button type="button" role="switch" aria-checked={view.solids} onClick={() => setView({ solids: !view.solids })} className={`chip flex-none whitespace-nowrap ${view.solids ? "border-[color:var(--solid-edge)] text-ink" : ""}`} id="tour-solids">
-              <span className="switch" aria-checked={view.solids} aria-hidden="true" /> Solids only
-            </button>
-            <span className="mx-1 hidden h-6 w-px bg-[color:var(--line)] sm:block" aria-hidden="true" />
-            <span className="flex flex-none gap-1 sm:flex-wrap" role="group" aria-label="Snap to a candidate atmosphere">
-              {cands.data.candidates.map((c) => (
-                <button key={c.id} type="button" className="chip h-8 whitespace-nowrap px-3 text-xs" aria-pressed={candId === c.id} onClick={() => onProbe(c.o2_pct.v, c.pressure_psi.v, "commit")}>
-                  {c.name.replace(" O2", "")}
-                </button>
-              ))}
-            </span>
-            <span className="ml-auto flex flex-none items-center gap-2">
-              <LayerMenu layers={view.layers} onToggle={(l) => { const s = new Set(view.layers); if (s.has(l)) s.delete(l); else s.add(l); setView({ layers: s }); }} />
-              <span className="seg" role="group" aria-label="Zoom">
-                {(Object.keys(ZOOMS) as ZoomKey[]).map((k) => (
-                  <button key={k} type="button" aria-pressed={view.zoom === k} onClick={() => setView({ zoom: k })}>{ZOOMS[k].label}</button>
-                ))}
-              </span>
-              <button type="button" className="btn" aria-pressed={brushMode} onClick={() => setBrushMode((b) => !b)} title="Select an area (B)">
-                {brushMode ? "Selecting…" : "Select area"}
-              </button>
-            </span>
-          </div>
         </header>
         <div className="relative h-[62vh] min-h-[420px] px-2 pb-2 lg:h-auto lg:flex-1 lg:px-4" id="tour-plane">
           <Plane
@@ -175,10 +176,27 @@ export default function Home() {
             candidates={cands.data.candidates}
             grid={grid}
             flame={flame.data}
-            planner={planner.data?.cells}
             prebreathe={pb.data?.points}
             view={view}
             probe={shown}
+            words={words}
+            scene={scene}
+            toolbar={
+              <PlaneToolbar
+                solids={view.solids}
+                onSolids={() => setView({ solids: !view.solids })}
+                candidates={cands.data.candidates}
+                words={words}
+                activeCandidate={candId ?? null}
+                onCandidate={(c) => onProbe(c.o2_pct.v, c.pressure_psi.v, "commit")}
+                layers={view.layers}
+                onLayer={(l) => { const s = new Set(view.layers); if (s.has(l)) s.delete(l); else s.add(l); setView({ layers: s }); }}
+                zoom={view.zoom}
+                onZoom={(zoom) => setView({ zoom })}
+                brushMode={brushMode}
+                onBrush={() => setBrushMode((b) => !b)}
+              />
+            }
             brushMode={brushMode}
             onProbe={onProbe}
             onHoverEnd={() => setPreview(null)}
@@ -235,71 +253,18 @@ export default function Home() {
   );
 }
 
-const MENU_W = 256;
-
-function LayerMenu({ layers, onToggle }: { layers: Set<string>; onToggle: (l: (typeof LAYERS)[number]["id"]) => void }) {
-  const [open, setOpen] = useState(false);
-  const [pos, setPos] = useState<{ top: number; left: number; width: number; maxHeight: number } | null>(null);
-  const ref = useRef<HTMLDivElement>(null);
-  const btn = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    if (!open) return;
-    const off = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
-    const esc = (e: KeyboardEvent) => {
-      if (e.key !== "Escape") return;
-      setOpen(false);
-      btn.current?.focus();
-    };
-    document.addEventListener("mousedown", off);
-    document.addEventListener("keydown", esc);
-    return () => { document.removeEventListener("mousedown", off); document.removeEventListener("keydown", esc); };
-  }, [open]);
-  // The menu is fixed to the viewport under its button, not placed inside the controls row: on a phone that
-  // row scrolls sideways, and a scrolling box clips anything absolutely placed inside it. It stays in the DOM
-  // right after its button, so Tab still moves from the button into the menu.
-  useLayoutEffect(() => {
-    if (!open) return;
-    const place = () => {
-      const r = btn.current?.getBoundingClientRect();
-      if (!r) return;
-      const vw = document.documentElement.clientWidth;
-      const vh = document.documentElement.clientHeight;
-      const width = Math.min(MENU_W, vw - 32);
-      const left = Math.max(16, Math.min(r.right - width, vw - width - 16));
-      const top = r.bottom + 8;
-      setPos({ top, left, width, maxHeight: Math.max(160, vh - top - 16) });
-    };
-    place();
-    window.addEventListener("resize", place);
-    window.addEventListener("scroll", place, true);
-    return () => { window.removeEventListener("resize", place); window.removeEventListener("scroll", place, true); };
-  }, [open]);
-  return (
-    <div ref={ref}>
-      <button ref={btn} type="button" className="btn" aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>Layers</button>
-      {open && pos && (
-        <div className="floating animate-rise fixed z-30 overflow-y-auto p-2" style={{ top: pos.top, left: pos.left, width: pos.width, maxHeight: pos.maxHeight }} role="group" aria-label="Layers">
-          {LAYERS.map((l) => (
-            <button key={l.id} type="button" role="switch" aria-checked={layers.has(l.id)} onClick={() => onToggle(l.id)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-[color:var(--surface-3)]">
-              {l.label}
-              <span className="switch" aria-checked={layers.has(l.id)} aria-hidden="true" />
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
+/** The plane's key, read as a map: land, sea and coast, the fuel classes, pins and isotherms. */
 function Legend() {
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6" id="tour-legend">
+      <span className="flex items-center gap-1.5"><span className="inline-block h-3 w-5 rounded-sm border border-[color:var(--coast)] bg-[color:var(--land)]" /> Land: tests near</span>
+      <span className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-5 rounded-sm border border-line bg-[color:var(--sea)]" /> Sea: no tests near, unknown, not safe</span>
       {(["gas", "droplet", "solid", "emulator"] as const).map((f) => (
         <span key={f} className="flex items-center gap-1.5"><FuelMarker fuel={f} /> {FUEL_LABEL[f]}</span>
       ))}
       <span className="flex items-center gap-1.5"><FuelMarker fuel="solid" outlined /> Verified paper</span>
-      <span className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-5 rounded-sm border border-line" /> No tests: unknown, not safe</span>
-      <span className="flex items-center gap-1.5"><svg width="20" height="8" aria-hidden="true"><line x1="0" y1="4" x2="20" y2="4" stroke="var(--isotherm)" strokeDasharray="4 4" /></svg> Flame temperature (explains, does not predict)</span>
+      <span className="flex items-center gap-1.5"><PinIcon className="text-ink" /> Candidate: inland, on the coast or at sea describes the evidence, not risk</span>
+      <span className="flex items-center gap-1.5"><svg width="20" height="8" aria-hidden="true"><line x1="0" y1="4" x2="20" y2="4" stroke="var(--isotherm)" /></svg> Flame temperature (explains, does not predict)</span>
     </div>
   );
 }
@@ -327,8 +292,7 @@ function PlaneSkeleton() {
     <div className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_400px]" aria-busy="true" aria-label="Loading the evidence">
       <div className="flex flex-col gap-4 p-6">
         <div className="skeleton h-7 w-2/3" />
-        <div className="flex gap-2">{[0, 1, 2, 3].map((i) => <div key={i} className="skeleton h-8 w-24 rounded-full" />)}</div>
-        <div className="relative flex-1 overflow-hidden rounded-lg border border-line bg-[color:var(--surface-2)]" style={{ minHeight: 420 }}>
+        <div className="relative flex-1 overflow-hidden rounded-lg border border-line bg-[color:var(--sea)]" style={{ minHeight: 420 }}>
           <svg className="absolute inset-0 h-full w-full" aria-hidden="true">
             {Array.from({ length: 9 }, (_, i) => <line key={`v${i}`} x1={`${(i + 1) * 10}%`} x2={`${(i + 1) * 10}%`} y1="0" y2="100%" stroke="var(--line)" />)}
             {Array.from({ length: 5 }, (_, i) => <line key={`h${i}`} y1={`${(i + 1) * 16}%`} y2={`${(i + 1) * 16}%`} x1="0" x2="100%" stroke="var(--line)" />)}

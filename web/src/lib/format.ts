@@ -4,7 +4,19 @@
 export function fmtNumber(v: number, digits?: number): string {
   const written = (String(v).split(".")[1] ?? "").length;
   const d = digits ?? (Number.isInteger(v) || Math.abs(v) >= 100 ? 0 : Math.min(written, Math.abs(v) >= 10 ? 1 : 2));
-  return v.toLocaleString("en-GB", { minimumFractionDigits: d, maximumFractionDigits: d });
+  return numberFormat(d).format(v);
+}
+
+// One formatter per number of decimals, made once: toLocaleString builds a new one on every call, which made
+// formatting the panel's numbers the largest cost of a probe drag. The output is the same.
+const formats = new Map<number, Intl.NumberFormat>();
+function numberFormat(d: number): Intl.NumberFormat {
+  let f = formats.get(d);
+  if (!f) {
+    f = new Intl.NumberFormat("en-GB", { minimumFractionDigits: d, maximumFractionDigits: d });
+    formats.set(d, f);
+  }
+  return f;
 }
 
 export const FUEL_LABEL: Record<string, string> = {

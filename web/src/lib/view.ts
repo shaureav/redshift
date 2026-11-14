@@ -8,7 +8,7 @@ export const LAYERS: { id: Layer; label: string }[] = [
   { id: "ev", label: "Tests" },
   { id: "halo", label: "Nearness region" },
   { id: "strip", label: "Pressure not recorded" },
-  { id: "blind", label: "No tests (hatched)" },
+  { id: "blind", label: "Sea hatching (no tests near)" }, // id kept from the planner hatch it replaced, so old links still work
   { id: "ft", label: "Flame temperature" },
   { id: "cand", label: "Candidates" },
   { id: "pb", label: "Prebreathe" },
@@ -17,7 +17,9 @@ export const DEFAULT_LAYERS: Layer[] = ["ev", "halo", "strip", "blind", "ft", "c
 
 export const ZOOMS = {
   habitat: { label: "Habitat range", o2: [15, 45] as [number, number], psi: [6, 17] as [number, number] },
-  plane: { label: "Whole plane", o2: [15, 100] as [number, number], psi: [3, 17] as [number, number] },
+  // The whole probe grid (3 to 17 psi) plus headroom to 20 psi, drawn as beyond the grid, so the plane's floating
+  // toolbar sits over that band and not over the 14.7 psi tests.
+  plane: { label: "Whole plane", o2: [15, 100] as [number, number], psi: [3, 20] as [number, number] },
   all: { label: "All tests", o2: [10, 102] as [number, number], psi: [2.5, 50] as [number, number] },
 };
 export type ZoomKey = keyof typeof ZOOMS;

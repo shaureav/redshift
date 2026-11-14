@@ -234,7 +234,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 
   /* A row in a listbox (the command palette): the arrow-key selection is the surface lift plus a 2 px accent
      bar on the left edge, so it never rests on a 1.1:1 background change alone. */
-  .option[aria-selected="true"] { background: var(--surface-3); color: var(--ink); box-shadow: inset 2px 0 0 var(--accent); }
+  .option[aria-selected="true"], .option[aria-pressed="true"] { background: var(--surface-3); color: var(--ink); box-shadow: inset 2px 0 0 var(--accent); }
 
   .kbd { font-family: "IBM Plex Mono", monospace; font-size: var(--text-label); line-height: var(--leading-label); padding: 0 4px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: var(--r-control); color: var(--ink-2); }
 
@@ -250,6 +250,16 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   .tool[aria-pressed="true"], .tool[aria-checked="true"], .tool[aria-expanded="true"] { background: var(--surface-3); color: var(--ink); box-shadow: inset 0 0 0 1px var(--accent); }
   .tool:disabled { color: var(--ink-3); background: transparent; cursor: not-allowed; }
   @media (pointer: coarse) { .tool { min-width: var(--tap); height: var(--tap); } }
+  /* A tool's tooltip: its name and any shortcut, under it on hover and on keyboard focus. Every tool carries an
+     aria-label, so this generated text never joins its accessible name. An open menu covers it. */
+  .tool[data-tip] { position: relative; }
+  .tool[data-tip]::after {
+    content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 8px); z-index: 40; padding: 4px 8px; white-space: nowrap; pointer-events: none;
+    background: var(--surface-3); color: var(--ink); border: 1px solid var(--line-strong); border-radius: var(--r-control);
+    font-size: var(--text-label); line-height: var(--leading-label); font-weight: 400; opacity: 0; transition: opacity var(--t-fast) var(--ease-out);
+  }
+  .tool[data-tip]:hover::after, .tool[data-tip]:focus-visible::after { opacity: 1; }
+  .tool[aria-expanded="true"]::after { display: none; }
 
   /* Readout tile: raised, a label and a number in the Heading role. A tile with no tests is hatched at 60%,
      never blank: empty means unknown, not safe. */
@@ -294,6 +304,13 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 .layer[data-on="false"] { opacity: 0; pointer-events: none; }
 .glyph { transition: opacity var(--t-move) var(--ease-out), transform var(--t-move) var(--ease-out); transform-box: fill-box; transform-origin: center; }
 .glyph[data-ghost="true"] { opacity: 0.07; }
+.glyph-group { transition: opacity var(--t-move) var(--ease-out); }
+.glyph-group[data-ghost="true"] { opacity: 0.07; }
+/* Solids only: the land sinks, erased from the coast inward by a stroke that widens over one scene (a mask in
+   charts/Plane.tsx); turning it off lets the land rise back the same way. Then the cited headline lands. Under
+   reduced motion both are instant (--t-scene is 0 and transitions and animations are off). */
+.land-sink { transition: stroke-width var(--t-scene) var(--ease-out); }
+.lands-after-scene { animation: fade var(--t-base) var(--ease-out) var(--t-scene) both; }
 .bar { transition: width var(--t-base) var(--ease-out); }
 /* Swap content by opacity alone; the one transition kept under reduced motion. */
 .crossfade { transition: opacity var(--t-fade) linear; }
@@ -305,7 +322,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   :root { --t-fast: 0ms; --t-base: 0ms; --t-move: 0ms; --t-scene: 0ms; }
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
   /* Opacity crossfades stay, short and linear: they show that something changed without moving anything. */
-  .crossfade, .layer, .glyph { transition: opacity var(--t-fade) linear !important; }
+  .crossfade, .layer, .glyph, .glyph-group { transition: opacity var(--t-fade) linear !important; }
   .swap-in { animation: fade var(--t-fade) linear both !important; }
 }
 

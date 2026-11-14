@@ -52,6 +52,37 @@ describe("screens", () => {
     expect(tidy(html)).toMatchSnapshot();
   });
 
+  it("draws the plane as a map, with its controls in one toolbar, normal and solids only", () => {
+    const at = (path: string) => {
+      const host = document.createElement("div");
+      host.innerHTML = render(path, <Home />);
+      return host;
+    };
+    const normal = at("/?o2=34&p=8.2");
+    // Only the headline sits above the plane; every control is in the plane's toolbar.
+    const header = normal.querySelector('section[aria-label="The oxygen and pressure plane"] > header')!;
+    expect(header.querySelectorAll("button").length).toBe(0);
+    const tools = [...normal.querySelectorAll('[role="toolbar"][aria-label="Plane tools"] .tool')].map((b) => b.getAttribute("aria-label"));
+    expect(tools).toEqual(["Solids only", "Candidates", "Layers", "Zoom", "Select area"]);
+    // Land, hatched sea and the coast; the mask that sinks the land is at rest.
+    const mask = normal.querySelectorAll("#plane-land-mask path");
+    expect(mask[0].getAttribute("d")?.startsWith("M")).toBe(true);
+    expect(mask[1].getAttribute("style")).toContain("stroke-width:0");
+    expect(normal.querySelector('path[fill="var(--land)"]')).not.toBeNull();
+    expect(normal.querySelector('rect[fill="url(#hatch-sea)"]')).not.toBeNull();
+    // Quiet layers: solid isotherms with labels along their path, and a halo without dashes.
+    expect(normal.querySelectorAll('path[stroke="var(--isotherm)"][stroke-dasharray]')).toHaveLength(0);
+    expect(normal.querySelectorAll("textPath").length).toBeGreaterThan(0);
+    expect(normal.querySelector("ellipse[stroke-dasharray]")).toBeNull();
+    const solids = at("/?o2=34&p=8.2&solids=1");
+    // Solids only: the mask's stroke is wide enough to erase all the land, and every pin is at sea.
+    const sink = solids.querySelectorAll("#plane-land-mask path")[1].getAttribute("style") ?? "";
+    expect(Number(sink.match(/stroke-width:(\d+(?:\.\d+)?)/)?.[1])).toBeGreaterThan(100);
+    const words = [...solids.querySelectorAll("svg[data-chart] text tspan")].map((t) => t.textContent).filter((t) => /inland|coast|sea/.test(t ?? ""));
+    expect(words.length).toBeGreaterThan(0);
+    expect(words.every((w) => w === "at sea")).toBe(true);
+  });
+
   it("the panel between candidates", () => {
     const html = render("/?o2=31&p=9", <Home />);
     expect(html).toContain("At the nearest computed point");
