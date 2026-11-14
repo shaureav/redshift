@@ -3,7 +3,7 @@
 import { useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export type Layer = "ev" | "strip" | "blind" | "ft" | "cand" | "pb" | "halo";
+export type Layer = "ev" | "strip" | "blind" | "ft" | "cand" | "pb" | "halo" | "trail";
 export const LAYERS: { id: Layer; label: string }[] = [
   { id: "ev", label: "Tests" },
   { id: "halo", label: "Nearness region" },
@@ -12,8 +12,10 @@ export const LAYERS: { id: Layer; label: string }[] = [
   { id: "ft", label: "Flame temperature" },
   { id: "cand", label: "Candidates" },
   { id: "pb", label: "Prebreathe" },
+  // The probe's last 40 positions, shaded by land or sea (Phase 4). Never drawn under reduced motion.
+  { id: "trail", label: "Probe trail" },
 ];
-export const DEFAULT_LAYERS: Layer[] = ["ev", "halo", "strip", "blind", "ft", "cand", "pb"];
+export const DEFAULT_LAYERS: Layer[] = ["ev", "halo", "strip", "blind", "ft", "cand", "pb", "trail"];
 
 export const ZOOMS = {
   habitat: { label: "Habitat range", o2: [15, 45] as [number, number], psi: [6, 17] as [number, number] },

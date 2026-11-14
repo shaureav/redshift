@@ -7,6 +7,7 @@ import type { ProbeGridFile } from "../lib/probe";
 import type { Candidate, Investigation } from "../lib/types";
 import { parsePoint } from "../lib/view";
 import { SearchIcon } from "./Icons";
+import { SHORTCUTS_EVENT } from "./ShortcutSheet";
 import { TOUR_EVENT } from "./Tour";
 
 export const PALETTE_EVENT = "redshift:palette";
@@ -97,6 +98,7 @@ export function CommandPalette() {
       { id: "a-gap", group: "Actions", label: "Open the access gap chart", run: go("/?view=gap") },
       { id: "a-theme", group: "Actions", label: "Switch light or dark theme", run: () => { setOpen(false); window.dispatchEvent(new Event(THEME_EVENT)); } },
       { id: "a-tour", group: "Actions", label: "Replay the tour", run: () => { setOpen(false); navigate("/"); setTimeout(() => window.dispatchEvent(new Event(TOUR_EVENT)), 50); } },
+      { id: "a-keys", group: "Actions", label: "Show keyboard shortcuts", run: () => { setOpen(false); navigate("/"); setTimeout(() => window.dispatchEvent(new Event(SHORTCUTS_EVENT)), 50); } },
     ];
     for (const a of acts) if (!q || matches(q, a.label)) out.push(a);
     return out.slice(0, 40);

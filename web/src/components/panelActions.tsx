@@ -1,6 +1,5 @@
 // The action bar, pinned to the bottom of the panel: Dossier, Tests, Compare, Brief and Share. Share copies the
-// view's link and says so in a toast. The toast's live region is always in the page, so a screen reader
-// announces it when the words arrive.
+// view's link; the page says so in a toast (components/Toaster.tsx, one live region for the whole app).
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { BriefIcon, CompareIcon, DossierIcon, ShareIcon, TestsIcon } from "./Icons";
@@ -15,12 +14,9 @@ function Action({ to, icon, label, onClick, disabled, title }: { to?: string; ic
   return <button type="button" className={ACTION} onClick={onClick} disabled={disabled} title={title}>{icon}{label}</button>;
 }
 
-export function ActionBar({ links, onShare, toast }: { links: ActionLinks; onShare?: () => void; toast?: string | null }) {
+export function ActionBar({ links, onShare }: { links: ActionLinks; onShare?: () => void }) {
   return (
     <div className="sticky bottom-0 z-10 mt-auto border-t border-line bg-[color:var(--surface)] px-3 py-2">
-      <div role="status" aria-live="polite" className="pointer-events-none absolute bottom-full right-3 mb-2">
-        {toast && <p className="floating animate-rise px-3 py-2 text-sm text-ink">{toast}</p>}
-      </div>
       <nav aria-label="Take this point further">
         <ul className="grid grid-cols-5 gap-1">
           <li>

@@ -127,6 +127,57 @@ export function landPath(c: Coast, g: Grid, x: (o2: number) => number, y: (psi: 
   return { d, erode };
 }
 
+/** The stretch of coast nearest a point on the plane (px, py), about `half` px of it either side of the nearest
+ *  point, as an SVG path on the same scales as landPath: the segment that brightens when the probe crosses the
+ *  coast (plan, Phase 4). Empty when there is no coast (sea or land everywhere). Geometry only. */
+export function coastNear(c: Coast, g: Grid, x: (o2: number) => number, y: (psi: number) => number, px: number, py: number, half = 48): string {
+  const o2Step = g.o2[1] - g.o2[0];
+  const pStep = g.psi[1] - g.psi[0];
+  const toScreen = ([gx, gy]: number[]): [number, number] => [x(g.o2[0] + (gx - 0.5) * o2Step), y(g.psi[0] + (gy - 0.5) * pStep)];
+  // The nearest point on any ring, by segment.
+  let best: { ring: [number, number][]; k: number; t: number; d: number } | null = null;
+  for (const poly of c.land.coordinates) {
+    for (const raw of poly) {
+      const ring = raw.slice(0, -1).map(toScreen);
+      for (let k = 0; k < ring.length; k++) {
+        const [ax, ay] = ring[k];
+        const [bx, by] = ring[(k + 1) % ring.length];
+        const len2 = (bx - ax) ** 2 + (by - ay) ** 2;
+        const t = len2 ? Math.max(0, Math.min(1, ((px - ax) * (bx - ax) + (py - ay) * (by - ay)) / len2)) : 0;
+        const d = Math.hypot(ax + t * (bx - ax) - px, ay + t * (by - ay) - py);
+        if (!best || d < best.d) best = { ring, k, t, d };
+      }
+    }
+  }
+  if (!best) return "";
+  const { ring, k, t } = best;
+  const n = ring.length;
+  const at = (i: number) => ring[((i % n) + n) % n];
+  const lerp = (a: [number, number], b: [number, number], u: number): [number, number] => [a[0] + u * (b[0] - a[0]), a[1] + u * (b[1] - a[1])];
+  const mid = lerp(at(k), at(k + 1), t);
+  // Walk the ring from the nearest point, `half` px each way (round a closed ring at most once).
+  const walk = (dir: 1 | -1): [number, number][] => {
+    const pts: [number, number][] = [];
+    let from = mid;
+    let left = half;
+    let i = dir === 1 ? k + 1 : k;
+    for (let steps = 0; steps < n && left > 0; steps++, i += dir) {
+      const to = at(i);
+      const seg = Math.hypot(to[0] - from[0], to[1] - from[1]);
+      if (seg >= left) {
+        pts.push(lerp(from, to, seg ? left / seg : 0));
+        break;
+      }
+      pts.push(to);
+      left -= seg;
+      from = to;
+    }
+    return pts;
+  };
+  const line = [...walk(-1).reverse(), mid, ...walk(1)];
+  return line.map(([sx, sy], i) => `${i ? "L" : "M"}${Math.round(sx * 10) / 10},${Math.round(sy * 10) / 10}`).join("");
+}
+
 /** The grid's own extent on the plane's scales: half a step beyond its outer nodes, where the land can reach.
  *  Outside it the build computed nothing, so no sea is drawn there either. */
 export function gridExtent(g: Grid, x: (o2: number) => number, y: (psi: number) => number) {

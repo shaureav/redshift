@@ -1,9 +1,10 @@
 // The plane's floating toolbar (plan, Phase 3), top left inside the plane: Solids only, the candidate
 // atmospheres, layers, zoom and area selection. It replaces the two rows of controls that sat above the chart,
 // so the data is the interface (principle 2). Every tool is a button with a name and a tooltip; arrow keys move
-// between tools, Tab moves through them too. Slots are marked for Sound (Phase 4) and Time (Phase 8).
+// between tools, Tab moves through them too. Sound (Phase 4) switches the Geiger clicks; a slot is marked for Time
+// (Phase 8).
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { LayersIcon, PinIcon, SelectIcon, ZoomIcon } from "../components/Icons";
+import { LayersIcon, PinIcon, SelectIcon, SoundIcon, ZoomIcon } from "../components/Icons";
 import { EVIDENCE_WORD_NOTE, type EvidenceWord } from "../lib/coast";
 import type { Candidate } from "../lib/types";
 import { LAYERS, ZOOMS, type Layer, type ZoomKey } from "../lib/view";
@@ -21,6 +22,11 @@ interface Props {
   onZoom: (z: ZoomKey) => void;
   brushMode: boolean;
   onBrush: () => void;
+  /** Geiger clicks on (lib/geiger.ts). The handler runs inside the click, the gesture audio needs. */
+  sound: boolean;
+  onSound: () => void;
+  /** The system asks for reduced motion, so the probe trail is off whatever its switch says. */
+  reducedMotion: boolean;
 }
 
 export function PlaneToolbar(p: Props) {
@@ -44,7 +50,7 @@ export function PlaneToolbar(p: Props) {
   };
   return (
     <div ref={bar} role="toolbar" aria-label="Plane tools" className="toolbar flex-wrap" onKeyDown={onKeyDown} onPointerOver={aimTip} onFocus={aimTip}>
-      <button type="button" role="switch" aria-checked={p.solids} aria-label="Solids only" data-tip="Keep only solid-material evidence" onClick={p.onSolids} className="tool" id="tour-solids">
+      <button type="button" role="switch" aria-checked={p.solids} aria-label="Solids only" data-tip="Keep only solid-material evidence (S)" onClick={p.onSolids} className="tool" id="tour-solids">
         <span className="switch" aria-hidden="true" /> Solids only
       </button>
       <span className="toolbar-sep" aria-hidden="true" />
@@ -52,7 +58,7 @@ export function PlaneToolbar(p: Props) {
         {(close) => (
           <>
             <div role="group" aria-label="Go to a candidate atmosphere">
-              {p.candidates.map((c) => (
+              {p.candidates.map((c, k) => (
                 <button
                   key={c.id}
                   type="button"
@@ -60,7 +66,10 @@ export function PlaneToolbar(p: Props) {
                   onClick={() => { p.onCandidate(c); close(); }}
                   className="option flex w-full items-baseline justify-between gap-3 rounded-md px-2 py-2 text-left text-sm hover:bg-[color:var(--surface-3)]"
                 >
-                  <span>{c.name}</span>
+                  <span className="flex items-baseline gap-2">
+                    {k < 5 && <span className="kbd" aria-hidden="true">{k + 1}</span>}
+                    {c.name}
+                  </span>
                   {p.words[c.id] && <span className="text-xs text-ink-3">{p.words[c.id]}</span>}
                 </button>
               ))}
@@ -72,12 +81,20 @@ export function PlaneToolbar(p: Props) {
       <ToolMenu label="Layers" icon={<LayersIcon />}>
         {() => (
           <div role="group" aria-label="Layers">
-            {LAYERS.map((l) => (
-              <button key={l.id} type="button" role="switch" aria-checked={p.layers.has(l.id)} onClick={() => p.onLayer(l.id)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-[color:var(--surface-3)]">
-                {l.label}
-                <span className="switch" aria-checked={p.layers.has(l.id)} aria-hidden="true" />
-              </button>
-            ))}
+            {LAYERS.map((l) => {
+              // The trail is motion, so reduced motion turns it off and its switch says why.
+              const held = l.id === "trail" && p.reducedMotion;
+              const on = !held && p.layers.has(l.id);
+              return (
+                <button key={l.id} type="button" role="switch" aria-checked={on} disabled={held} onClick={() => p.onLayer(l.id)} className="flex w-full items-center justify-between gap-3 rounded-md px-2 py-2 text-left text-sm hover:bg-[color:var(--surface-3)] disabled:cursor-not-allowed disabled:text-ink-3 disabled:hover:bg-transparent">
+                  <span>
+                    {l.label}
+                    {held && <span className="block text-xs">Off: your system asks for reduced motion</span>}
+                  </span>
+                  <span className="switch" aria-checked={on} aria-hidden="true" />
+                </button>
+              );
+            })}
           </div>
         )}
       </ToolMenu>
@@ -95,8 +112,22 @@ export function PlaneToolbar(p: Props) {
       <button type="button" className="tool" aria-pressed={p.brushMode} aria-label="Select area" data-tip="Select an area (B)" onClick={p.onBrush}>
         <SelectIcon />
       </button>
-      {/* Slot: Sound (Phase 4). Geiger mode goes here, after a toolbar-sep: opt-in, off by default, never
-          started without a user gesture, with its mute kept per device (plan decision D4). */}
+      {/* On a phone the toolbar wraps before Sound (until Phase 6 folds it into one button), so no separator
+          is left hanging at the end of the first row. */}
+      <span className="toolbar-sep max-sm:hidden" aria-hidden="true" />
+      {/* Geiger mode (plan decision D4): opt-in, off by default, never started without a user gesture, with the
+          choice kept per device. */}
+      <button
+        type="button"
+        role="switch"
+        aria-checked={p.sound}
+        aria-label="Geiger clicks"
+        data-tip={p.sound ? "Geiger clicks on: the rate follows the tests near the probe" : "Geiger clicks: hear the tests near the probe"}
+        onClick={p.onSound}
+        className="tool"
+      >
+        <SoundIcon />
+      </button>
       {/* Slot: Time (Phase 8, could). The year scrubber's button goes here. */}
     </div>
   );

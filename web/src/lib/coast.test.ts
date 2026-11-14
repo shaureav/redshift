@@ -2,7 +2,7 @@
 // whose series is above zero, at every step multiplier and in both modes, and a pin's word must follow its rule.
 import * as d3 from "d3";
 import { describe, expect, it } from "vitest";
-import { coastFor, evidenceWord, gridExtent, isLand, landPath, type Coast, type CoastMode } from "./coast";
+import { coastFor, coastNear, evidenceWord, gridExtent, isLand, landPath, type Coast, type CoastMode } from "./coast";
 import { decodeGrid, layerFor, nodeOf, type ProbeGridFile } from "./probe";
 import { loadSnapshot as load } from "./snapshot.fixture";
 
@@ -89,6 +89,37 @@ describe("the coastline of knowledge", () => {
     expect(ext.x).toBeCloseTo(x(14.75), 6);
     expect(ext.x + ext.w).toBeCloseTo(x(100.25), 6);
     expect(ext.y).toBeCloseTo(y(17.05), 6);
+  });
+});
+
+describe("the coast pulse (Phase 4)", () => {
+  const x = d3.scaleLinear().domain([15, 45]).range([0, 900]);
+  const y = d3.scaleLog().domain([6, 17]).range([600, 0]);
+
+  it("is a short stretch of the coast itself, next to the probe", () => {
+    const c = coastFor(grid, 1, "all");
+    const at = { px: x(34), py: y(8.2) };
+    const d = coastNear(c, grid, x, y, at.px, at.py, 48);
+    const pts = [...d.matchAll(/[ML](-?[\d.]+),(-?[\d.]+)/g)].map((m) => [Number(m[1]), Number(m[2])]);
+    expect(pts.length).toBeGreaterThan(1);
+    // About 96 px long in all (48 either side), unless a small island's coast is shorter.
+    const len = pts.slice(1).reduce((a, p, k) => a + Math.hypot(p[0] - pts[k][0], p[1] - pts[k][1]), 0);
+    expect(len).toBeLessThanOrEqual(96.5);
+    expect(len).toBeGreaterThan(8);
+    // Every point of it lies on the land's outline (landPath's vertices or between two of them).
+    const land = landPath(c, grid, x, y).d;
+    const rings = land.split("Z").filter(Boolean).map((r) => [...r.matchAll(/[ML](-?[\d.]+),(-?[\d.]+)/g)].map((m) => [Number(m[1]), Number(m[2])]));
+    const onOutline = ([px, py]: number[]) => rings.some((ring) => ring.some((a, k) => {
+      const b = ring[(k + 1) % ring.length];
+      const len2 = (b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2;
+      const t = len2 ? Math.max(0, Math.min(1, ((px - a[0]) * (b[0] - a[0]) + (py - a[1]) * (b[1] - a[1])) / len2)) : 0;
+      return Math.hypot(a[0] + t * (b[0] - a[0]) - px, a[1] + t * (b[1] - a[1]) - py) < 0.3;
+    }));
+    expect(pts.filter((p) => !onOutline(p))).toEqual([]);
+  });
+
+  it("is empty where there is no coast (no solid test can be placed, so Solids only has none)", () => {
+    expect(coastNear(coastFor(grid, 1, "solids"), grid, x, y, 100, 100)).toBe("");
   });
 });
 

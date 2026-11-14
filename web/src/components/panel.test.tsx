@@ -63,7 +63,7 @@ describe("screens", () => {
     const header = normal.querySelector('section[aria-label="The oxygen and pressure plane"] > header')!;
     expect(header.querySelectorAll("button").length).toBe(0);
     const tools = [...normal.querySelectorAll('[role="toolbar"][aria-label="Plane tools"] .tool')].map((b) => b.getAttribute("aria-label"));
-    expect(tools).toEqual(["Solids only", "Candidates", "Layers", "Zoom", "Select area"]);
+    expect(tools).toEqual(["Solids only", "Candidates", "Layers", "Zoom", "Select area", "Geiger clicks"]);
     // Land, hatched sea and the coast; the mask that sinks the land is at rest.
     const mask = normal.querySelectorAll("#plane-land-mask path");
     expect(mask[0].getAttribute("d")?.startsWith("M")).toBe(true);

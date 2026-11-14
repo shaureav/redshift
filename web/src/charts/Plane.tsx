@@ -14,9 +14,10 @@ import * as d3 from "d3";
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
-import { coastFor, EVIDENCE_WORD_NOTE, gridExtent, landPath, type EvidenceWord } from "../lib/coast";
+import { coastFor, coastNear, EVIDENCE_WORD_NOTE, gridExtent, isLand, landPath, type Coast, type EvidenceWord } from "../lib/coast";
 import { fmtNumber, FUEL_LABEL } from "../lib/format";
-import { snapIndex, type Grid } from "../lib/probe";
+import { useReducedMotion } from "../lib/motion";
+import { nodeOf, snapIndex, type Grid } from "../lib/probe";
 import type { Candidate } from "../lib/types";
 import { ZOOMS, type Box, type View } from "../lib/view";
 import type { FlameGrid, MapPoint, PrebreathePoint, Strip, TradeMapData } from "./TradeMap";
@@ -30,6 +31,22 @@ const GLYPH_PAD = 18;
 const binRadius = d3.scaleSqrt().domain([1, 40]).range([4, 12]).clamp(true);
 // A map pin: its tip on the atmosphere, its head 14 px above it.
 const PIN = "M0,0C-1.8,-4.6 -6,-8.4 -6,-14A6,6 0 1,1 6,-14C6,-8.4 1.8,-4.6 0,0Z";
+// The probe trail (plan, Phase 4): its last 40 positions. A move longer than TRAIL_JUMP_PX (a candidate chosen
+// from the menu, the pointer leaving the plane) starts a new trail rather than drawing a line across the plane;
+// after TRAIL_REST_MS without a move the trail fades away.
+const TRAIL_N = 40;
+const TRAIL_JUMP_PX = 96;
+const TRAIL_REST_MS = 1200;
+interface TrailPt { o2: number; psi: number; land: boolean }
+
+/** A short buzz on a phone as the probe crosses the coast. Not every browser has vibrate, and some refuse it. */
+function buzz() {
+  try {
+    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") navigator.vibrate(12);
+  } catch {
+    /* not allowed here: the coast pulse still shows the crossing */
+  }
+}
 
 export type ProbeMode = "hover" | "drag" | "commit";
 
@@ -125,6 +142,7 @@ export function Plane(props: Props) {
   const [pointerOn, setPointerOn] = useState(false);
   const [focused, setFocused] = useState(false);
   const raf = useRef<number | null>(null);
+  const touchDrag = useRef(false); // the drag under way is a finger's (haptics are for phones)
   // The toolbar floats over the plot's top left corner. On a narrow screen its 44 px touch tools would cover the
   // 14.7 psi tests on a short plot, so there it gets a band of its own above the plot (until Phase 6 folds it
   // into one menu button).
@@ -203,6 +221,7 @@ export function Plane(props: Props) {
       setBrush({ x0: d.px, y0: d.py, x1: d.px, y1: d.py });
       return;
     }
+    touchDrag.current = e.pointerType === "touch";
     setDragging(true);
     onProbe(d.o2, d.psi, "drag");
   };
@@ -318,6 +337,59 @@ export function Plane(props: Props) {
   const showTip = !!onCand && (pointerOn || focused) && view.layers.has("cand") && !dragging;
   const tipRight = pxp + 16 + 256 > iw;
 
+  // ---- feel (plan, Phase 4): snap ping, coast pulse, trail and haptics, all on the overlay ----
+  // Each is decided while rendering from the probe's previous state (no extra pass per move), and none shows a
+  // number: they are geometry on the same built land and sea the base layer draws.
+  const reduced = useReducedMotion();
+  const coast = useMemo(() => coastFor(grid, view.m, view.solids ? "solids" : "all"), [grid, view.m, view.solids]);
+  const node = nodeOf(grid, probe.o2, probe.psi);
+  const land = node ? isLand(coast, node.i, node.j) : null; // null beyond the grid, where nothing was computed
+
+  // A ring expands from a pin as the probe snaps onto it (by magnet, key, menu or shortcut).
+  const candId = onCand?.id ?? null;
+  const [pingFor, setPingFor] = useState(candId);
+  const [ping, setPing] = useState(0);
+  if (pingFor !== candId) {
+    setPingFor(candId);
+    if (candId) setPing((n) => n + 1);
+  }
+
+  // The stretch of coast nearest the probe brightens as the probe crosses it, either way. A new coast (Solids
+  // only, a new step size) is not a crossing: the probe did not move.
+  const [shore, setShore] = useState<{ coast: Coast; land: boolean | null }>({ coast, land });
+  const [pulse, setPulse] = useState<{ n: number; d: string } | null>(null);
+  if (shore.coast !== coast || shore.land !== land) {
+    const crossed = shore.coast === coast && shore.land !== null && land !== null;
+    setShore({ coast, land });
+    if (crossed) setPulse({ n: (pulse?.n ?? 0) + 1, d: coastNear(coast, grid, x, y, pxp, pyp) });
+  }
+  // On a phone, a short buzz as a finger drags the probe across the coast.
+  const buzzed = useRef(0);
+  useEffect(() => {
+    if (!pulse || pulse.n === buzzed.current) return;
+    buzzed.current = pulse.n;
+    if (dragging && touchDrag.current) buzz();
+  }, [pulse, dragging]);
+
+  // The trail: off with the layer and under reduced motion.
+  const trailOn = view.layers.has("trail") && !reduced;
+  const [trail, setTrail] = useState<TrailPt[]>([]);
+  const [trailRest, setTrailRest] = useState(false);
+  const lastPt = trail[trail.length - 1];
+  if (trailOn && (!lastPt || lastPt.o2 !== probe.o2 || lastPt.psi !== probe.psi)) {
+    const pt = { o2: probe.o2, psi: probe.psi, land: !!land };
+    const fresh = !lastPt || trailRest || Math.hypot(x(lastPt.o2) - pxp, y(lastPt.psi) - pyp) > TRAIL_JUMP_PX;
+    setTrail(fresh ? [pt] : [...trail.slice(1 - TRAIL_N), pt]);
+    if (trailRest) setTrailRest(false);
+  } else if (!trailOn && trail.length) {
+    setTrail([]);
+  }
+  useEffect(() => {
+    if (trail.length < 2) return;
+    const t = setTimeout(() => setTrailRest(true), TRAIL_REST_MS);
+    return () => clearTimeout(t);
+  }, [trail]);
+
   return (
     <div ref={wrap} className="relative h-full w-full select-none" onPointerLeave={() => setHoverBin(null)}>
       {toolbar && (
@@ -371,6 +443,28 @@ export function Plane(props: Props) {
             )}
             {brush && (
               <rect x={Math.min(brush.x0, brush.x1)} y={Math.min(brush.y0, brush.y1)} width={Math.abs(brush.x1 - brush.x0)} height={Math.abs(brush.y1 - brush.y0)} fill="var(--accent)" fillOpacity={0.08} stroke="var(--accent)" strokeDasharray="4 3" />
+            )}
+            {/* The trail, oldest segment faintest: wider and in the trail colour over land, thinner and quiet over
+                sea, so land and sea read apart without colour too. */}
+            {trailOn && trail.length > 1 && (
+              <g className="trail" data-rest={trailRest} pointerEvents="none" strokeLinecap="round" aria-hidden="true">
+                {trail.slice(1).map((pt, k) => (
+                  <line
+                    key={k}
+                    x1={x(trail[k].o2)}
+                    y1={y(trail[k].psi)}
+                    x2={x(pt.o2)}
+                    y2={y(pt.psi)}
+                    stroke={pt.land ? "var(--trail)" : "var(--trail-sea)"}
+                    strokeWidth={pt.land ? 2.5 : 1.5}
+                    strokeOpacity={Math.round((0.3 + (0.65 * (k + 1)) / (trail.length - 1)) * 100) / 100}
+                  />
+                ))}
+              </g>
+            )}
+            {pulse && <path key={pulse.n} d={pulse.d} className="coast-pulse" fill="none" stroke="var(--probe)" strokeWidth={2.5} strokeLinecap="round" pointerEvents="none" />}
+            {onCand && ping > 0 && (
+              <circle key={ping} cx={x(onCand.o2_pct.v)} cy={y(onCand.pressure_psi.v)} r={12} className="snap-ping" fill="none" stroke="var(--probe)" strokeWidth={2} pointerEvents="none" />
             )}
             <g style={{ transform: `translate(${pxp}px, ${pyp}px)`, transition: glide }} pointerEvents="none">
               <g className="layer" data-on={view.layers.has("halo")}>

@@ -83,7 +83,8 @@
   --sea: var(--surface-2);
   --sea-hatch: var(--hatch);
   --coast: color-mix(in srgb, var(--ink-2) 70%, transparent);
-  --trail: var(--accent);
+  --trail: var(--accent);         /* the probe trail over land: interaction history, not data */
+  --trail-sea: var(--ink-3);      /* the probe trail over sea: thinner, so land and sea differ without colour */
 
   --hatch: #5b6a84;
   --candidate: #e9eef6;
@@ -315,6 +316,16 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 .land-sink { transition: stroke-width var(--t-scene) var(--ease-out); }
 .lands-after-scene { animation: fade var(--t-base) var(--ease-out) var(--t-scene) both; }
 .bar { transition: width var(--t-base) var(--ease-out); }
+/* Feel (plan, Phase 4), on the plane's probe overlay. A ring expands from a pin as the probe snaps to it; the
+   stretch of coast nearest the probe brightens as it crosses; the trail fades out once the probe rests. Each rests
+   at opacity 0, so under reduced motion (animations off) the ping and the pulse never show, and the trail is not
+   drawn at all (charts/Plane.tsx). */
+.snap-ping { opacity: 0; transform-box: fill-box; transform-origin: center; animation: snap-ping var(--t-scene) var(--ease-out) both; }
+@keyframes snap-ping { from { opacity: 0.9; transform: scale(1); } to { opacity: 0; transform: scale(2.5); } }
+.coast-pulse { opacity: 0; animation: coast-pulse var(--t-scene) var(--ease-out) both; }
+@keyframes coast-pulse { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
+.trail { transition: opacity var(--t-move) var(--ease-out); }
+.trail[data-rest="true"] { opacity: 0; transition-duration: var(--t-scene); }
 /* Swap content by opacity alone; the one transition kept under reduced motion. */
 .crossfade { transition: opacity var(--t-fade) linear; }
 /* A count that changed while pinned: the new value fades in where the old one stood. It never counts through

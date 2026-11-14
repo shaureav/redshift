@@ -6,11 +6,13 @@ import { act, useState, type ReactNode } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { MemoryRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { SOUND_KEY } from "../lib/geiger";
 import { decodeGrid, readAt, totalsAlongO2, type ProbeGridFile } from "../lib/probe";
 import { loadSnapshot } from "../lib/snapshot.fixture";
 import { useView } from "../lib/view";
 import Home from "../pages/Home";
 import { ErrorBoundary, RouteBoundary } from "./ErrorBoundary";
+import { Toaster } from "./Toaster";
 import { Tour, TOUR_EVENT } from "./Tour";
 
 const FILES = [
@@ -364,7 +366,9 @@ describe("instrument panel", () => {
     const menu = document.querySelector('[aria-label="Go to a candidate atmosphere"]')!;
     expect(menu.querySelectorAll("button")).toHaveLength(5);
     expect(menu.parentElement?.textContent).toContain("not fire risk");
-    press1([...menu.querySelectorAll("button")].find((b) => b.textContent?.startsWith("10.2 psi / 26.5% O2"))!);
+    // Each row shows its shortcut key (1 to 5) before the name.
+    expect([...menu.querySelectorAll(".kbd")].map((k) => k.textContent)).toEqual(["1", "2", "3", "4", "5"]);
+    press1([...menu.querySelectorAll("button")].find((b) => b.textContent?.includes("10.2 psi / 26.5% O2"))!);
     expect(new URLSearchParams(lastSearch).get("o2")).toBe("26.5");
     expect(new URLSearchParams(lastSearch).get("p")).toBe("10.2");
     expect(document.activeElement).toBe(tool("Candidates"));
@@ -385,15 +389,138 @@ describe("instrument panel", () => {
     expect(document.activeElement).toBe(tool("Candidates"));
     press("ArrowLeft");
     press("ArrowLeft");
+    expect(document.activeElement).toBe(tool("Geiger clicks"));
+    press("ArrowLeft");
     expect(document.activeElement).toBe(tool("Select area"));
   });
 
-  it("copies the link from Share and says so in a toast", () => {
+  it("copies the link from Share and says so in a toast", async () => {
     localStorage.setItem("redshift-tour-v1", "done");
+    const writeText = vi.fn(() => Promise.resolve());
+    Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
+    try {
+      mount(<><Home /><Toaster /></>, "/?o2=34&p=8.2");
+      // One live region for the whole app, always in the page.
+      const status = document.querySelector('[role="status"].fixed')!;
+      expect(status.textContent).toBe("");
+      await act(async () => {
+        button("Share").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      });
+      expect(writeText).toHaveBeenCalledTimes(1);
+      expect(status.textContent).toBe("Link copied");
+    } finally {
+      delete (navigator as { clipboard?: unknown }).clipboard;
+    }
+  });
+});
+
+describe("feel (Phase 4)", () => {
+  const q = () => new URLSearchParams(lastSearch);
+
+  it("runs the plane's shortcuts from anywhere on the page: 1 to 5, S, G, ? and C", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<Home />, "/?o2=31&p=9");
+    expect(document.activeElement).toBe(document.body);
+    press("2");
+    expect([q().get("o2"), q().get("p")]).toEqual(["26.5", "10.2"]);
+    press("5");
+    expect([q().get("o2"), q().get("p")]).toEqual(["100", "4.3"]);
+    press("1");
+    expect([q().get("o2"), q().get("p")]).toEqual(["21", "14.7"]);
+    press("s");
+    expect(q().get("solids")).toBe("1");
+    press("S");
+    expect(q().get("solids")).toBeNull();
+    // ? opens the sheet, a modal dialog: the page behind it ignores shortcuts until it closes.
+    press("?");
+    const sheet = document.querySelector('[role="dialog"][aria-labelledby="shortcut-title"]');
+    expect(sheet?.textContent).toContain("Keyboard shortcuts");
+    expect(sheet?.textContent).toContain("10.2 psi / 26.5% O2");
+    expect(sheet?.contains(document.activeElement)).toBe(true);
+    press("s");
+    expect(q().get("solids")).toBeNull();
+    press("Escape");
+    expect(document.querySelector('[aria-labelledby="shortcut-title"]')).toBeNull();
+    // G opens the access gap; behind it, 3 does nothing.
+    press("g");
+    expect(q().get("view")).toBe("gap");
+    expect(document.querySelector('[role="dialog"][aria-label="The access gap"]')).not.toBeNull();
+    act(() => (document.activeElement as HTMLElement).blur());
+    press("3");
+    expect(q().get("o2")).toBe("21");
+    press("Escape");
+    // C opens Compare with this point and a candidate.
+    act(() => (document.activeElement as HTMLElement | null)?.blur());
+    press("c");
+    expect(q().get("pts")).toBe("21,14.7;34,8.2");
+    expect(updateDepthErrors()).toEqual([]);
+  });
+
+  it("draws the probe trail as the probe moves, and none under reduced motion, where Layers says why", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    const moveProbe = () => {
+      const plane = document.querySelector<SVGSVGElement>('svg[role="application"]')!;
+      act(() => plane.focus());
+      for (let k = 0; k < 4; k++) press("ArrowRight");
+      return plane;
+    };
+    mount(<Home />, "/?o2=31&p=9");
+    expect(moveProbe().querySelectorAll(".trail line").length).toBe(4);
+    act(() => root?.unmount());
+    host?.remove();
+    vi.stubGlobal("matchMedia", (q: string) => ({ matches: q.includes("reduce"), media: q, onchange: null, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, dispatchEvent: () => false }));
+    mount(<Home />, "/?o2=31&p=9");
+    expect(moveProbe().querySelectorAll(".trail line").length).toBe(0);
+    act(() => { document.querySelector('[role="toolbar"] [aria-label="Layers"]')!.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+    const trailSwitch = [...document.querySelectorAll<HTMLButtonElement>('[role="group"][aria-label="Layers"] button')].find((b) => b.textContent?.startsWith("Probe trail"))!;
+    expect(trailSwitch.disabled).toBe(true);
+    expect(trailSwitch.getAttribute("aria-checked")).toBe("false");
+    expect(trailSwitch.textContent).toContain("reduced motion");
+  });
+
+  it("never fires a shortcut while someone types in a field", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<Home />, "/?o2=31&p=9");
+    const field = document.getElementById("ask-input") as HTMLInputElement;
+    act(() => field.focus());
+    for (const k of ["1", "2", "s", "g", "c", "?"]) press(k);
+    expect([q().get("o2"), q().get("p"), q().get("solids"), q().get("view")]).toEqual(["31", "9", null, null]);
+    expect(document.querySelector('[aria-labelledby="shortcut-title"]')).toBeNull();
+  });
+
+  it("has sound off by default, and says so when this browser has no audio", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    mount(<><Home /><Toaster /></>, "/?o2=34&p=8.2");
+    const sound = document.querySelector<HTMLButtonElement>('[role="toolbar"] [aria-label="Geiger clicks"]')!;
+    expect(sound.getAttribute("role")).toBe("switch");
+    expect(sound.getAttribute("aria-checked")).toBe("false");
+    act(() => { sound.dispatchEvent(new MouseEvent("click", { bubbles: true })); }); // jsdom has no WebAudio
+    expect(sound.getAttribute("aria-checked")).toBe("false");
+    expect(localStorage.getItem(SOUND_KEY)).not.toBe("on");
+    expect(document.querySelector('[role="status"].fixed')?.textContent).toBe("Sound is not available in this browser");
+  });
+
+  it("left on from a last visit, makes no AudioContext until the first tap", () => {
+    localStorage.setItem("redshift-tour-v1", "done");
+    localStorage.setItem(SOUND_KEY, "on");
+    let made = 0;
+    class FakeCtx {
+      currentTime = 0;
+      sampleRate = 8000;
+      destination = {};
+      constructor() { made++; }
+      createGain() { return { gain: { value: 1 }, connect() {} }; }
+      createBuffer(_c: number, n: number) { const d = new Float32Array(n); return { getChannelData: () => d }; }
+      createBufferSource() { return { connect() {}, start() {} }; }
+      resume() { return Promise.resolve(); }
+      suspend() { return Promise.resolve(); }
+    }
+    vi.stubGlobal("AudioContext", FakeCtx);
     mount(<Home />, "/?o2=34&p=8.2");
-    const status = document.querySelector('nav[aria-label="Take this point further"]')!.parentElement!.querySelector('[role="status"]')!;
-    expect(status.textContent).toBe("");
-    click("Share");
-    expect(status.textContent).toBe("Link copied");
+    const sound = document.querySelector('[role="toolbar"] [aria-label="Geiger clicks"]')!;
+    expect(sound.getAttribute("aria-checked")).toBe("true");
+    expect(made).toBe(0);
+    act(() => { document.dispatchEvent(new Event("pointerup")); });
+    expect(made).toBe(1);
   });
 });

@@ -1,11 +1,12 @@
 // A cited one-page brief for one atmosphere: what is known about fire there, what is missing, and where
 // every number comes from. Print it to PDF; download the nearby tests as CSV and the sources as BibTeX.
 // Every number is a built value with a numbered footnote to its provenance record.
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import type { AccessGapData } from "../charts/AccessGap";
 import { downloadText } from "../components/evidenceCsv";
 import { flameAt, prebreatheFor, type FlameFile, type PrebreatheFile } from "../components/EvidencePanel";
+import { copyPageLink, toast } from "../components/Toaster";
 import { Value } from "../components/Value";
 import { useData, useProvenance } from "../lib/data";
 import { doiUrl, FUEL_LABEL, SOURCE_LABEL } from "../lib/format";
@@ -51,7 +52,6 @@ export default function Brief() {
   const version = useData<DatasetVersion>("dataset_version.json");
   const invs = useData<{ investigations: Investigation[] }>("investigations.json");
   const prov = useProvenance(true);
-  const [copied, setCopied] = useState(false);
 
   const grid = useMemo(() => (probe.data ? decodeGrid(probe.data) : null), [probe.data]);
   const built = useMemo(() => {
@@ -81,9 +81,9 @@ export default function Brief() {
     <article className="mx-auto max-w-[800px]">
       <div className="no-print mb-6 flex flex-wrap items-center gap-2">
         <button type="button" className="btn btn-primary" onClick={() => window.print()}>Print or save as PDF</button>
-        <button type="button" className="btn" onClick={() => downloadText(briefCsv(r, near, ver), `redshift-brief-${r.o2.v}pct-${r.psi.v}psi.csv`, "text/csv")}>Download CSV</button>
-        <button type="button" className="btn" disabled={!invs.data} onClick={() => invs.data && downloadText(briefBibtex(near, invs.data.investigations, version.data!.cite, ver), `redshift-brief-${r.o2.v}pct-${r.psi.v}psi.bib`, "application/x-bibtex")}>Download BibTeX</button>
-        <button type="button" className="btn" onClick={() => { try { void navigator.clipboard?.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 1500); } catch { /* address bar holds the link */ } }}>{copied ? "Link copied" : "Copy link"}</button>
+        <button type="button" className="btn" onClick={() => { downloadText(briefCsv(r, near, ver), `redshift-brief-${r.o2.v}pct-${r.psi.v}psi.csv`, "text/csv"); toast("Brief CSV ready"); }}>Download CSV</button>
+        <button type="button" className="btn" disabled={!invs.data} onClick={() => { if (!invs.data) return; downloadText(briefBibtex(near, invs.data.investigations, version.data!.cite, ver), `redshift-brief-${r.o2.v}pct-${r.psi.v}psi.bib`, "application/x-bibtex"); toast("Brief BibTeX ready"); }}>Download BibTeX</button>
+        <button type="button" className="btn" onClick={copyPageLink}>Copy link</button>
         <Link className="btn btn-quiet ml-auto" to={`/?o2=${r.o2.v}&p=${r.psi.v}${m !== 1 ? `&m=${m}` : ""}`}>Back to the plane</Link>
       </div>
 

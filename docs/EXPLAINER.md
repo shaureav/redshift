@@ -86,6 +86,10 @@ The home page is one big map of oxygen against cabin pressure with a panel besid
 
 The map is drawn like a coastline: land wherever the build counted at least one test near a point, hatched open sea wherever it counted none, and the coast as the line between. Turn on "Solids only" and the land sinks, because no solid-material test can be placed anywhere; the candidate pins then all read "at sea". The words on the pins (inland, on the coast, at sea) describe the recorded evidence around that point, never fire risk, and the plane's controls sit in one small toolbar in its corner.
 
+## Feel: trail, keys, toasts and sound (`web/src/lib/shortcuts.ts`, `web/src/lib/geiger.ts`, `web/src/components/Toaster.tsx`)
+
+As the probe moves it leaves a short fading trail, thick over land and thin over sea; crossing the coast makes the nearby stretch of coast flash (and a phone buzz), and snapping to a candidate sends a ring out from its pin. Keys 1 to 5 jump to the candidates, S shows solids only, G opens the access gap, C opens Compare and ? lists every key; none of them fire while you type. An optional Geiger mode, off until you switch it on, clicks faster where more tests sit near the probe and falls silent at sea, so the plane can be heard as well as seen.
+
 ## Ask the evidence (`web/src/components/AskBox.tsx`, `redshift/ai/ask.py`)
 
 The question box first looks for an answer that our team has already checked. On a server with a model key it can also answer new questions, but the model is not allowed to type a single number: it can only point at numbers we hand it, and a program rejects the answer if it types one anyway, cites something we did not give it, or recommends an atmosphere.

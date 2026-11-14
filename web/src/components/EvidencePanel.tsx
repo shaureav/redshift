@@ -121,9 +121,8 @@ export function FuelRows({ r }: { r: Reading }) {
 export interface PanelActions {
   onMultiplier?: (m: number) => void;
   links: ActionLinks;
+  /** Copy the view's link; the page says so in a toast (components/Toaster.tsx). */
   onShare?: () => void;
-  /** The toast the action bar shows, such as "Link copied"; null when none. */
-  toast?: string | null;
   onOpenGap?: () => void;
 }
 
@@ -173,7 +172,7 @@ export function EvidencePanelView({ data, actions, ask }: { data: PanelData; act
         </section>
       )}
       <p className="border-t border-line px-5 py-4 text-xs text-ink-3">Redshift informs a decision; it does not rank or recommend an atmosphere. Empty means unknown, never safe.</p>
-      <ActionBar links={actions.links} onShare={actions.onShare} toast={actions.toast} />
+      <ActionBar links={actions.links} onShare={actions.onShare} />
     </div>
   );
 }

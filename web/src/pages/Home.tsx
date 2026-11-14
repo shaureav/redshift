@@ -10,14 +10,19 @@ import type { TradeMapData } from "../charts/TradeMap";
 import { AskBox } from "../components/AskBox";
 import { FuelMarker } from "../components/Common";
 import { EvidencePanelView, flameAt, prebreatheFor, type FlameFile, type PanelData, type PrebreatheFile } from "../components/EvidencePanel";
-import { PinIcon } from "../components/Icons";
+import { KeyboardIcon, PinIcon } from "../components/Icons";
+import { ShortcutSheet, SHORTCUTS_EVENT } from "../components/ShortcutSheet";
+import { copyPageLink, toast } from "../components/Toaster";
 import { Tour } from "../components/Tour";
 import { Value } from "../components/Value";
 import { coastFor, evidenceWord, type EvidenceWord } from "../lib/coast";
 import { useData } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
+import { geiger } from "../lib/geiger";
+import { useReducedMotion } from "../lib/motion";
 import { decodeGrid, inGrid, nearInputs, nodeOf, readAt, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "../lib/probe";
 import type { Candidate, CandidateEvidence, Val } from "../lib/types";
+import { shortcutFor } from "../lib/shortcuts";
 import { useView, type Box } from "../lib/view";
 
 const KPA_PER_PSI = 6.894757293168361; // selection filter only; never printed
@@ -39,7 +44,10 @@ export default function Home() {
   const [preview, setPreview] = useState<{ o2: number; psi: number } | null>(null);
   const [drag, setDrag] = useState<{ o2: number; psi: number } | null>(null);
   const [brushMode, setBrushMode] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [sheet, setSheet] = useState(false);
+  // Geiger clicks: off unless chosen on this device (lib/geiger.ts reads the choice, guarded).
+  const [sound, setSound] = useState(() => geiger.enabled);
+  const reduced = useReducedMotion();
   // Whether Solids only has changed while this page was open: only then does the land sink on screen and the
   // cited headline wait for it. A link that opens with Solids only on shows the end state at once.
   const [solidsSeen, setSolidsSeen] = useState(view.solids);
@@ -117,15 +125,53 @@ export default function Home() {
     return { box: b, any };
   }, [view.box, grid]);
 
-  const share = () => {
-    try {
-      void navigator.clipboard?.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    } catch {
-      /* clipboard unavailable: the address bar holds the same link */
+  // Geiger mode: the click rate follows the near-test total at the probe (a built value; open sea is silent).
+  // Turned on only inside the Sound tool's click; when it was left on, it waits for the first tap or key press.
+  const total = data?.reading.total.v ?? 0;
+  useEffect(() => geiger.setTotal(sound ? total : 0), [sound, total]);
+  useEffect(() => {
+    if (sound) geiger.armOnGesture();
+  }, [sound]);
+  useEffect(() => () => geiger.pause(), []); // leaving the plane stops the clicks
+  const onSound = () => {
+    if (sound) {
+      geiger.disable();
+      setSound(false);
+      toast("Geiger clicks off");
+    } else if (geiger.enable()) {
+      setSound(true);
+      toast("Geiger clicks on: more tests near the probe, more clicks");
+    } else {
+      toast("Sound is not available in this browser");
     }
   };
+
+  // Keyboard shortcuts (lib/shortcuts.ts): never while typing, never behind a modal dialog.
+  const compareLink = data ? `/compare?pts=${data.reading.o2.v},${data.reading.psi.v}${data.candidate?.id === "c8_2_34" ? ";26.5,10.2" : ";34,8.2"}&m=${view.m}` : null;
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const s = shortcutFor(e, !!document.querySelector('[aria-modal="true"]'));
+      if (!s) return;
+      if (s.kind === "candidate") {
+        const c = cands.data?.candidates[s.index];
+        if (!c) return;
+        onProbe(c.o2_pct.v, c.pressure_psi.v, "commit");
+      } else if (s.kind === "solids") setView({ solids: !view.solids });
+      else if (s.kind === "gap") setView({ panel: "gap" }, { push: true });
+      else if (s.kind === "compare") {
+        if (!compareLink) return;
+        navigate(compareLink);
+      } else setSheet(true);
+      e.preventDefault();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [cands.data, view.solids, compareLink, onProbe, setView, navigate]);
+  useEffect(() => {
+    const open = () => setSheet(true);
+    window.addEventListener(SHORTCUTS_EVENT, open);
+    return () => window.removeEventListener(SHORTCUTS_EVENT, open);
+  }, []);
 
   const habitatHeadline = useMemo(() => {
     if (!cands.data || !candEv.data) return null;
@@ -195,6 +241,9 @@ export default function Home() {
                 onZoom={(zoom) => setView({ zoom })}
                 brushMode={brushMode}
                 onBrush={() => setBrushMode((b) => !b)}
+                sound={sound}
+                onSound={onSound}
+                reducedMotion={reduced}
               />
             }
             brushMode={brushMode}
@@ -205,7 +254,7 @@ export default function Home() {
             onToggleBrush={() => setBrushMode((b) => !b)}
           />
         </div>
-        <Legend />
+        <Legend onShortcuts={() => setSheet(true)} />
       </section>
 
       {/* relative: the panel is the containing block for anything absolutely placed inside it (such as a
@@ -236,11 +285,10 @@ export default function Home() {
             links: {
               dossier: candId ? `/dossiers/candidate/${candId}` : undefined,
               evidence: `/evidence?near=${data.reading.o2.v},${data.reading.psi.v},${view.m}`,
-              compare: `/compare?pts=${data.reading.o2.v},${data.reading.psi.v}${candId === "c8_2_34" ? ";26.5,10.2" : ";34,8.2"}&m=${view.m}`,
+              compare: compareLink ?? "/compare",
               brief: `/brief?${pointQs}`,
             },
-            onShare: share,
-            toast: copied ? "Link copied" : null,
+            onShare: copyPageLink,
             onOpenGap: () => setView({ panel: "gap" }, { push: true }),
           }}
           ask={<AskBox context={{ o2: data.reading.o2.v, psi: data.reading.psi.v, m: view.m }} initial={view.ask} onAsked={(q) => setView({ ask: q })} />}
@@ -248,13 +296,15 @@ export default function Home() {
       </aside>
 
       {view.panel === "gap" && <GapDialog onClose={() => setView({ panel: "evidence" })} />}
+      {sheet && <ShortcutSheet candidates={cands.data.candidates.map((c) => c.name)} onClose={() => setSheet(false)} />}
       <Tour onStep={onTourStep} />
     </div>
   );
 }
 
-/** The plane's key, read as a map: land, sea and coast, the fuel classes, pins and isotherms. */
-function Legend() {
+/** The plane's key, read as a map: land, sea and coast, the fuel classes, pins and isotherms; and, where there is
+ *  room for a keyboard, the door to the shortcut sheet. */
+function Legend({ onShortcuts }: { onShortcuts: () => void }) {
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6" id="tour-legend">
       <span className="flex items-center gap-1.5"><span className="inline-block h-3 w-5 rounded-sm border border-[color:var(--coast)] bg-[color:var(--land)]" /> Land: tests near</span>
@@ -265,6 +315,9 @@ function Legend() {
       <span className="flex items-center gap-1.5"><FuelMarker fuel="solid" outlined /> Verified paper</span>
       <span className="flex items-center gap-1.5"><PinIcon className="text-ink" /> Candidate: inland, on the coast or at sea describes the evidence, not risk</span>
       <span className="flex items-center gap-1.5"><svg width="20" height="8" aria-hidden="true"><line x1="0" y1="4" x2="20" y2="4" stroke="var(--isotherm)" /></svg> Flame temperature (explains, does not predict)</span>
+      <button type="button" className="btn btn-sm btn-quiet ml-auto max-lg:hidden" onClick={onShortcuts}>
+        <KeyboardIcon /> Shortcuts <span className="kbd" aria-hidden="true">?</span>
+      </button>
     </div>
   );
 }

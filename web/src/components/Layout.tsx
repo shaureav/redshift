@@ -6,6 +6,7 @@ import { useData } from "../lib/data";
 import type { DatasetVersion } from "../lib/types";
 import { CommandPalette, PALETTE_EVENT, THEME_EVENT } from "./CommandPalette";
 import { ChevronIcon, MoonIcon, SearchIcon, SunIcon } from "./Icons";
+import { Toaster } from "./Toaster";
 
 const REFERENCE: [string, string, string][] = [
   ["/evidence", "Evidence Explorer", "Every test row with its source"],
@@ -133,6 +134,7 @@ export function Layout() {
         </footer>
       )}
       <CommandPalette />
+      <Toaster />
     </div>
   );
 }
