@@ -1,13 +1,10 @@
 // Parity: the browser's listing of near tests must reproduce the build's grid counts at every node and
 // every step multiplier. If the TypeScript copy of the nearness rule ever drifts from
 // redshift/science/nearness.py, this test fails.
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { decodeGrid, FUELS, nearInputs, nodeOf, o2MatchInputs, readAt, SOURCES, type ProbeGridFile } from "./probe";
+import { loadSnapshot as load } from "./snapshot.fixture";
 
-// Vitest runs from web/, where the snapshot the site serves lives in public/data.
-const load = <T,>(name: string): T => JSON.parse(readFileSync(join(process.cwd(), "public", "data", name), "utf8")) as T;
 const grid = decodeGrid(load<ProbeGridFile>("probe_grid.json"));
 
 interface Cand { id: string; o2_pct: { v: number }; pressure_psi: { v: number } }

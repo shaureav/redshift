@@ -7,8 +7,13 @@
     <link rel="icon" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#0a1322" />
     <title>Redshift: The Atmosphere Trade Studio</title>
+    <script>
+      /* Apply the saved theme before first paint; dark navy is the default. */
+      try { var t = localStorage.getItem("redshift-theme"); if (t === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

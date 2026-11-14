@@ -15,6 +15,7 @@ import { Pressure, Value } from "../components/Value";
 import { dataUrl, useData } from "../lib/data";
 import { countMatching, applyFilters, parseFilters, writeFilters, type EvidenceFilters } from "../lib/filters";
 import { doiUrl, FUEL_LABEL, SOURCE_LABEL } from "../lib/format";
+import { decodeGrid, nearInputs, readAt, type ProbeGridFile } from "../lib/probe";
 import type { DatasetVersion, FlagEntry, TestRow, Val } from "../lib/types";
 
 const PAGE_SIZE = 50;
@@ -223,8 +224,33 @@ export default function Evidence() {
     return Object.fromEntries(allColumnIds.map((id) => [id, visible.has(id)]));
   }, [colsParam, allColumnIds]);
 
-  const filtered = useMemo(() => applyFilters(rows, filters), [rows, filters]);
-  const shownCount = useMemo(() => countMatching(rows, filters), [rows, filters]);
+  // Links from the plane: ?near=o2,psi,m lists the tests near that probe node (the same listing the panel
+  // uses, parity-tested against the build's grid); ?box=o2a,o2b,psia,psib lists tests placed in a brushed area.
+  const nearParam = sp.get("near");
+  const boxParam = sp.get("box");
+  const probeFile = useData<ProbeGridFile>("probe_grid.json");
+  const fromPlane = useMemo(() => {
+    if (!probeFile.data || (!nearParam && !boxParam)) return null;
+    const g = decodeGrid(probeFile.data);
+    if (nearParam) {
+      const [o2, psi, m] = nearParam.split(",").map(Number);
+      if (![o2, psi].every(Number.isFinite)) return null;
+      const r = readAt(g, o2, psi, Number.isFinite(m) ? m : 1);
+      return { label: `near ${r.o2.v}% O2 and ${r.psi.v} psi (${r.multiplier}x steps)`, ids: nearInputs(g, r.i, r.j, r.multiplier).map((t) => t.input.id) };
+    }
+    const b = (boxParam ?? "").split(",").map(Number);
+    if (b.length !== 4 || !b.every(Number.isFinite)) return null;
+    const kpaPerPsi = 6.894757293168361;
+    const ids = g.file.inputs
+      .filter((t) => t.o2?.v != null && t.kpa?.v != null && t.o2.v >= b[0] && t.o2.v <= b[1] && t.kpa.v / kpaPerPsi >= b[2] && t.kpa.v / kpaPerPsi <= b[3])
+      .map((t) => t.id);
+    return { label: `placed in the area ${b[0]} to ${b[1]}% O2, ${b[2]} to ${b[3]} psi`, ids };
+  }, [probeFile.data, nearParam, boxParam]);
+  // An empty selection must show no rows, not every row.
+  const effective = useMemo(() => (fromPlane ? { ...filters, ids: fromPlane.ids.length ? fromPlane.ids : ["__none__"] } : filters), [filters, fromPlane]);
+
+  const filtered = useMemo(() => applyFilters(rows, effective), [rows, effective]);
+  const shownCount = useMemo(() => countMatching(rows, effective), [rows, effective]);
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const pageIndex = Math.min(pageParam, pageCount) - 1;
 
@@ -313,6 +339,15 @@ export default function Evidence() {
         }
       />
 
+      {fromPlane && (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-line bg-[color:var(--surface-2)] px-4 py-3 text-sm">
+          <span>Showing tests {fromPlane.label}, from the plane.</span>
+          <span className="flex gap-2">
+            <Link className="btn btn-sm" to={nearParam ? `/?o2=${nearParam.split(",")[0]}&p=${nearParam.split(",")[1]}` : "/"}>Back to the plane</Link>
+            <button type="button" className="btn btn-sm btn-quiet" onClick={() => update((n) => { n.delete("near"); n.delete("box"); }, { resetPage: true })}>Clear</button>
+          </span>
+        </div>
+      )}
       <EvidenceFilterBar
         filters={filters}
         onChange={setFilters}
