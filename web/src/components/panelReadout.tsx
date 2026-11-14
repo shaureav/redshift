@@ -61,23 +61,34 @@ function Tile({ fuel, r, fade }: { fuel: Fuel; r: Reading; fade: boolean }) {
   );
 }
 
-export function Readout({ r, candidate, preview, outside }: { r: Reading; candidate: Candidate | null; preview: boolean; outside: boolean }) {
+/** The readout. compact (the phone's bottom sheet, below lg): the tiles come straight after the point, so the
+ *  sheet's peek is the point and its tiles (data-sheet-peek marks where the peek ends), and what the point is and
+ *  its one-sentence answer follow them; the handle above stands in for the top padding. On a tablet's wider sheet
+ *  the four tiles sit in one row. */
+export function Readout({ r, candidate, preview, outside, compact = false }: { r: Reading; candidate: Candidate | null; preview: boolean; outside: boolean; compact?: boolean }) {
+  const about = (
+    <>
+      {candidate && <p className={compact ? "mt-3 text-sm text-ink-2" : "text-sm text-ink-2"}>{candidate.short}</p>}
+      {outside && <p className="mt-1 text-sm text-[color:var(--amber-ink)]">Outside the probe grid; showing its nearest edge point.</p>}
+      <p className="mt-2 text-sm" aria-live="polite"><PointHeadline r={r} /></p>
+    </>
+  );
+  const tiles = (
+    <ul className="mt-3 grid grid-cols-2 gap-2 md:max-lg:grid-cols-4" aria-label="Tests near this point by fuel class" data-sheet-peek="">
+      {FUELS.map((f) => <Tile key={f} fuel={f} r={r} fade={!preview} />)}
+    </ul>
+  );
   return (
-    <header className="px-5 pb-4 pt-4">
+    <header className={compact ? "px-5 pb-4" : "px-5 pb-4 pt-4"}>
       <div className="flex items-center justify-between gap-2">
         <span className="eyebrow">{eyebrowFor(candidate, preview)}</span>
-        {preview && <span className="text-xs text-ink-3">Click to pin</span>}
+        {preview && <span className="text-xs text-ink-3">Tap or click to pin</span>}
       </div>
-      <h2 className="mt-1 text-title num">
+      <h2 className="mt-1 text-title num max-sm:text-heading">
         <Value val={r.o2} /> <span className="text-ink-3">O2</span> · <Value val={r.psi} />{" "}
         <span className="text-base font-normal text-ink-2">(<Value val={r.kpa} digits={1} />)</span>
       </h2>
-      {candidate && <p className="text-sm text-ink-2">{candidate.short}</p>}
-      {outside && <p className="mt-1 text-sm text-[color:var(--amber-ink)]">Outside the probe grid; showing its nearest edge point.</p>}
-      <p className="mt-2 text-sm" aria-live="polite"><PointHeadline r={r} /></p>
-      <ul className="mt-3 grid grid-cols-2 gap-2" aria-label="Tests near this point by fuel class">
-        {FUELS.map((f) => <Tile key={f} fuel={f} r={r} fade={!preview} />)}
-      </ul>
+      {compact ? <>{tiles}{about}</> : <>{about}{tiles}</>}
     </header>
   );
 }

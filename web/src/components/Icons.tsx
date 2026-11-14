@@ -220,8 +220,18 @@ export function SelectIcon(p: IconProps) {
   );
 }
 
+/** Menu: three lines, for the plane's tools folded into one button on a phone. */
+export function MenuIcon(p: IconProps) {
+  return (
+    <Icon {...p}>
+      <path d="M2.75 4h10.5M2.75 8h10.5M2.75 12h10.5" />
+    </Icon>
+  );
+}
+
 /** The whole set by name, for the shortcut sheet and for the test that holds every icon to the spec. */
 export const ICONS = {
+  menu: MenuIcon,
   zoom: ZoomIcon,
   select: SelectIcon,
   dossier: DossierIcon,

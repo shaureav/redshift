@@ -1,7 +1,8 @@
 // The plane, full screen, with the live evidence panel docked beside it. This page is the product:
 // pick an atmosphere (drag, click, arrow keys or a candidate chip), see the evidence instantly, go deeper,
-// take it with you. Every view state lives in the URL.
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+// take it with you. Every view state lives in the URL. Below lg (plan, Phase 6) the panel is a bottom sheet over
+// the plane (components/Sheet.tsx), and the plane and its headline fill the screen above the sheet's peek.
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AccessGap, type AccessGapData } from "../charts/AccessGap";
 import { Plane, type ProbeMode } from "../charts/Plane";
@@ -12,6 +13,7 @@ import { FuelMarker } from "../components/Common";
 import { EvidencePanelView, flameAt, prebreatheFor, type FlameFile, type PanelData, type PrebreatheFile } from "../components/EvidencePanel";
 import { KeyboardIcon, PinIcon } from "../components/Icons";
 import { EXPLORE_AT, Intro, INTRO_STAGES, introSeen } from "../components/Intro";
+import { EvidenceSheet } from "../components/Sheet";
 import { ShortcutSheet } from "../components/ShortcutSheet";
 import { copyPageLink, toast } from "../components/Toaster";
 import { Value } from "../components/Value";
@@ -19,6 +21,7 @@ import { coastFor, evidenceWord, isLand, type EvidenceWord } from "../lib/coast"
 import { useData } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
 import { geiger, soundTotal } from "../lib/geiger";
+import { PHONE_QUERY, SHEET_QUERY, useMedia } from "../lib/media";
 import { PLANE_REQUEST_EVENT, takePlaneRequest } from "../lib/planeRequest";
 import { useReducedMotion } from "../lib/motion";
 import { decodeGrid, inGrid, nearInputs, nodeOf, readAt, totalsAlongO2, totalsAlongPressure, type ProbeGridFile } from "../lib/probe";
@@ -46,6 +49,11 @@ export default function Home() {
   const [drag, setDrag] = useState<{ o2: number; psi: number } | null>(null);
   const [brushMode, setBrushMode] = useState(false);
   const [sheet, setSheet] = useState(false);
+  // Below lg the panel is a bottom sheet: its readout leads with the tiles, and the page keeps the plane clear of
+  // the sheet's peek (measured by the sheet). Below sm the plane's tools fold into one menu button.
+  const sheetMode = useMedia(SHEET_QUERY);
+  const phone = useMedia(PHONE_QUERY);
+  const [peek, setPeek] = useState<number | null>(null);
   // Geiger clicks: off unless chosen on this device (lib/geiger.ts reads the choice, guarded).
   const [sound, setSound] = useState(() => geiger.enabled);
   const reduced = useReducedMotion();
@@ -219,8 +227,15 @@ export default function Home() {
   const pointQs = `o2=${data.reading.o2.v}&p=${data.reading.psi.v}${view.m !== 1 ? `&m=${view.m}` : ""}`;
 
   return (
-    <div className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:h-[calc(100vh-56px)] lg:grid-cols-[minmax(0,1fr)_400px] lg:grid-rows-1 lg:overflow-hidden" data-intro={stage ?? undefined}>
-      <section className="flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
+    <div
+      className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:h-[calc(100vh-56px)] lg:grid-cols-[minmax(0,1fr)_400px] lg:grid-rows-1 lg:overflow-hidden"
+      data-intro={stage ?? undefined}
+      style={peek ? ({ "--sheet-peek": `${peek}px` } as CSSProperties) : undefined}
+    >
+      {/* Below lg the headline and the plane fill the screen above the sheet's peek (.plane-stage), and the page
+          leaves room for the peek under the legend (.sheet-pad); at lg the stage is not a box at all. */}
+      <section className="sheet-pad flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
+        <div className="plane-stage">
         <header className="intro-hide px-4 pb-2 pt-4 lg:px-6">
           {/* The Heading role (plan, section 5): the panel's point readout keeps the larger Title role. The plane's
               controls float in its toolbar, so only the headline sits above it. Under Solids only the cited
@@ -242,7 +257,7 @@ export default function Home() {
             </span>
           </h1>
         </header>
-        <div className="relative h-[62vh] min-h-[420px] px-2 pb-2 lg:h-auto lg:flex-1 lg:px-4">
+        <div className="relative min-h-0 flex-1 px-2 pb-2 lg:px-4">
           <Plane
             map={map.data}
             candidates={cands.data.candidates}
@@ -265,28 +280,39 @@ export default function Home() {
                 layers={view.layers}
                 onLayer={(l) => { const s = new Set(view.layers); if (s.has(l)) s.delete(l); else s.add(l); setView({ layers: s }); }}
                 zoom={view.zoom}
-                onZoom={(zoom) => setView({ zoom })}
+                onZoom={(zoom) => setView({ zoom, win: null })}
+                pinched={!!view.win}
                 brushMode={brushMode}
                 onBrush={() => setBrushMode((b) => !b)}
                 sound={sound}
                 onSound={onSound}
                 reducedMotion={reduced}
+                compact={phone}
               />
             }
             brushMode={brushMode}
             onProbe={onProbe}
-            onHoverEnd={() => setPreview(null)}
+            // The pointer left, a preview ended, or a drag gave way to a pinch: the probe shows the pinned point.
+            onHoverEnd={() => { setPreview(null); setDrag(null); }}
             onBrush={(box: Box | null) => { setView({ box }); setBrushMode(false); }}
             onOpenCandidate={(id) => navigate(`/dossiers/candidate/${id}`)}
             onToggleBrush={() => setBrushMode((b) => !b)}
+            onWindow={(win) => setView({ win })}
           />
+        </div>
         </div>
         <Legend onShortcuts={() => setSheet(true)} />
       </section>
 
-      {/* relative: the panel is the containing block for anything absolutely placed inside it (such as a
-          visually hidden label), so nothing escapes its scroller and stretches the page. */}
-      <aside className="intro-dim relative border-t border-line bg-[color:var(--surface)] lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-t-0" aria-label="Evidence near the probe">
+      {/* At lg the docked panel. lg:relative: it is the containing block for anything absolutely placed inside it
+          (such as a visually hidden label), so nothing escapes its scroller and stretches the page. Below lg the
+          bottom sheet (fixed, index.css). */}
+      <EvidenceSheet
+        label="Evidence near the probe"
+        resetKey={selection ? "area" : ""}
+        onPeek={setPeek}
+        className="intro-dim lg:relative lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-line lg:bg-[color:var(--surface)]"
+      >
         {selection && (
           <div className="animate-rise border-b border-line bg-[color:var(--surface-2)] px-5 py-4">
             <div className="flex items-center justify-between gap-2">
@@ -307,6 +333,7 @@ export default function Home() {
         )}
         <EvidencePanelView
           data={data}
+          compact={sheetMode}
           actions={{
             onMultiplier: (m) => setView({ m }),
             links: {
@@ -320,7 +347,7 @@ export default function Home() {
           }}
           ask={<AskBox context={{ o2: data.reading.o2.v, psi: data.reading.psi.v, m: view.m }} initial={view.ask} onAsked={(q) => setView({ ask: q })} />}
         />
-      </aside>
+      </EvidenceSheet>
 
       {view.panel === "gap" && <GapDialog onClose={() => setView({ panel: "evidence" })} />}
       {sheet && <ShortcutSheet candidates={cands.data.candidates.map((c) => c.name)} onClose={() => setSheet(false)} />}

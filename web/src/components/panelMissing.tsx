@@ -13,8 +13,9 @@ import { Value } from "./Value";
 /** A line of the callout. A group heading has no door of its own; the lines under it (sub) each have one. */
 interface Line { key: string; text: ReactNode; door?: ReactNode; sub?: boolean }
 
-const door = "text-sm font-semibold";
-const linkDoor = "text-xs text-ink-2 underline underline-offset-2 hover:text-ink";
+// On a touch screen (index.css, pointer: coarse) each door is a 44 px target and its row grows to hold it.
+const door = "tap-door text-sm font-semibold";
+const linkDoor = "tap text-xs text-ink-2 underline underline-offset-2 hover:text-ink";
 
 const O2M: { f: Fuel; text: string }[] = [
   { f: "solid", text: "Solid burns" },
@@ -49,7 +50,8 @@ function linesFor(r: Reading, candidate: Candidate | null, prebreathe: Prebreath
 export function MissingCallout({ r, candidate, prebreathe, gap, onOpenGap }: { r: Reading; candidate: Candidate | null; prebreathe: PrebreatheStatus; gap: AccessGapData | null; onOpenGap?: () => void }) {
   const lines = linesFor(r, candidate, prebreathe, gap);
   return (
-    <section className="px-5 pb-4" aria-labelledby="sec-gap">
+    // data-sheet-half: on a phone the bottom sheet's half snap point ends under this callout (components/Sheet.tsx).
+    <section className="px-5 pb-4" aria-labelledby="sec-gap" data-sheet-half="">
       <div className="raised relative py-2 pl-4 pr-3">
         {/* A hatched edge: what follows is unknown, not safe. */}
         <span className="hatch-bg absolute inset-y-0 left-0 w-2 rounded-l-lg border-r border-line" aria-hidden="true" />
@@ -66,7 +68,7 @@ export function MissingCallout({ r, candidate, prebreathe, gap, onOpenGap }: { r
               l.door === undefined ? (
                 <li key={l.key} className={`pb-0.5 pt-1 text-xs text-ink-3 ${k ? "border-t border-line" : ""}`}>{l.text}</li>
               ) : (
-                <li key={l.key} className={`flex items-baseline justify-between gap-3 py-1 text-sm ${l.sub ? "pl-3" : k ? "border-t border-line" : ""}`}>
+                <li key={l.key} className={`tap-row flex items-baseline justify-between gap-3 py-1 text-sm ${l.sub ? "pl-3" : k ? "border-t border-line" : ""}`}>
                   <span className="text-ink-2">{l.text}</span>
                   <span className={`flex-none ${door}`}>{l.door}</span>
                 </li>

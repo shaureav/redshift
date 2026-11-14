@@ -132,7 +132,7 @@ function NearestTests({ near }: { near: NearTest[] }) {
   return (
     <section className="border-t border-line px-5 py-3" aria-label="Nearest tests">
       <details className="group">
-        <summary className="flex cursor-pointer list-none items-center gap-2 text-sm text-ink-2 hover:text-ink [&::-webkit-details-marker]:hidden">
+        <summary className="tap-row flex cursor-pointer list-none items-center gap-2 text-sm text-ink-2 hover:text-ink [&::-webkit-details-marker]:hidden">
           <ChevronIcon className="flex-none transition-transform duration-base group-open:rotate-90" />
           Nearest tests
         </summary>
@@ -140,7 +140,7 @@ function NearestTests({ near }: { near: NearTest[] }) {
           {shown.map(({ input }) => (
             <li key={input.id} className="flex items-baseline justify-between gap-3 py-2">
               <span className="min-w-0">
-                <Link className="mono text-xs underline underline-offset-2" to={`/evidence?ids=${encodeURIComponent(input.id)}&test=${encodeURIComponent(input.id)}`}>{input.id}</Link>
+                <Link className="tap mono text-xs underline underline-offset-2" to={`/evidence?ids=${encodeURIComponent(input.id)}&test=${encodeURIComponent(input.id)}`}>{input.id}</Link>
                 {/* The investigation only: a test's free-text label can hold numbers with no provenance of their own
                     ("30% ethane"); the id opens the record, with every value sourced, in the Evidence Explorer. */}
                 <span className="ml-2 text-ink-2">{input.investigation}</span>
@@ -155,12 +155,13 @@ function NearestTests({ near }: { near: NearTest[] }) {
 }
 
 /** The instrument panel: readout and tiles, what is missing, the two profiles through the probe, the context
- *  strip, then the nearest tests and Ask, with the action bar pinned to the bottom. A pure view of PanelData. */
-export function EvidencePanelView({ data, actions, ask }: { data: PanelData; actions: PanelActions; ask?: ReactNode }) {
+ *  strip, then the nearest tests and Ask, with the action bar pinned to the bottom. A pure view of PanelData.
+ *  compact: it sits in the phone's bottom sheet (components/Sheet.tsx), whose peek is the readout's tiles. */
+export function EvidencePanelView({ data, actions, ask, compact = false }: { data: PanelData; actions: PanelActions; ask?: ReactNode; compact?: boolean }) {
   const { reading: r, candidate } = data;
   return (
     <div className="flex min-h-full flex-col" data-testid="evidence-panel">
-      <Readout r={r} candidate={candidate} preview={data.preview} outside={data.outside} />
+      <Readout r={r} candidate={candidate} preview={data.preview} outside={data.outside} compact={compact} />
       <MissingCallout r={r} candidate={candidate} prebreathe={data.prebreathe} gap={data.gap} onOpenGap={actions.onOpenGap} />
       {data.profiles && <Sparklines o2={data.profiles.o2} psi={data.profiles.psi} at={{ i: r.i, j: r.j }} o2Val={r.o2} psiVal={r.psi} multiplier={r.multiplier} />}
       <ContextStrip flame={data.flame} prebreathe={data.prebreathe} multiplier={r.multiplier} multipliers={data.multipliers} onMultiplier={actions.onMultiplier} steps={data.steps} />

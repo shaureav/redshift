@@ -613,3 +613,165 @@ describe("plane requests from the command palette, and sound under Solids only (
     }
   });
 });
+
+describe("phone (Phase 6)", () => {
+  const q = () => new URLSearchParams(lastSearch);
+  /** A phone's screen: every width query (the sheet's, below lg, and the toolbar's, below sm) matches. */
+  const asPhone = () => vi.stubGlobal("matchMedia", (query: string) => ({ matches: query.includes("max-width"), media: query, onchange: null, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, dispatchEvent: () => false }));
+  /** A pointer event as the browser sends it (jsdom has no PointerEvent): a mouse event with the pointer's id and kind. */
+  const pointer = (el: Element, type: string, { id = 1, x = 0, y = 0, kind = "touch", t }: { id?: number; x?: number; y?: number; kind?: string; t?: number }) => {
+    const ev = new MouseEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y, button: 0 });
+    Object.defineProperty(ev, "pointerId", { value: id });
+    Object.defineProperty(ev, "pointerType", { value: kind });
+    if (t !== undefined) Object.defineProperty(ev, "timeStamp", { value: t });
+    act(() => { el.dispatchEvent(ev); });
+  };
+  const sheet = () => document.querySelector<HTMLElement>("aside.sheet")!;
+  const handle = () => sheet().querySelector<HTMLButtonElement>(":scope > button")!;
+  const tap = (el: Element) => act(() => { el.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+
+  it("puts the panel in a bottom sheet that steps peek, half and full by tap and keys, and holds focus when full", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    asPhone();
+    mount(<Home />, "/?o2=34&p=8.2");
+    expect(sheet().getAttribute("data-snap")).toBe("peek");
+    expect(sheet().getAttribute("aria-label")).toBe("Evidence near the probe");
+    expect(handle().getAttribute("aria-label")).toBe("Evidence sheet, peek, showing the readout");
+    // The phone's readout leads with its tiles: the peek is the point and its counts.
+    const header = sheet().querySelector('[data-testid="evidence-panel"] > header')!;
+    expect(header.children[2].matches("[data-sheet-peek]")).toBe(true);
+    tap(handle());
+    expect(sheet().getAttribute("data-snap")).toBe("half");
+    expect(sheet().getAttribute("role")).toBeNull();
+    act(() => handle().focus());
+    press("ArrowUp");
+    expect(sheet().getAttribute("data-snap")).toBe("full");
+    expect(sheet().getAttribute("role")).toBe("dialog");
+    expect(sheet().getAttribute("aria-modal")).toBe("true");
+    // Full is modal: the plane's shortcuts wait, Tab wraps inside the sheet, Escape brings it back to half.
+    press("s");
+    expect(q().get("solids")).toBeNull();
+    press("Tab", { shiftKey: true });
+    expect(document.activeElement).toBe(button("Share"));
+    press("Tab");
+    expect(document.activeElement).toBe(handle());
+    press("Escape");
+    expect(sheet().getAttribute("data-snap")).toBe("half");
+    expect(document.activeElement).toBe(handle());
+    press("End");
+    expect(sheet().getAttribute("data-snap")).toBe("full");
+    press("Home");
+    expect(sheet().getAttribute("data-snap")).toBe("peek");
+    press("PageUp");
+    expect(sheet().getAttribute("data-snap")).toBe("half");
+    press("ArrowDown");
+    expect(sheet().getAttribute("data-snap")).toBe("peek");
+    // A tap steps on round: peek, half, full, peek.
+    for (const s of ["half", "full", "peek"]) {
+      tap(handle());
+      expect(sheet().getAttribute("data-snap")).toBe(s);
+    }
+  });
+
+  it("follows a finger or the pointer dragging the handle, and rests at the nearest snap point", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    asPhone();
+    mount(<Home />, "/?o2=34&p=8.2");
+    // Unmeasured (jsdom has no layout), the sheet peeks 280 px and halves at 440 px.
+    pointer(handle(), "pointerdown", { id: 7, y: 700, t: 1 });
+    pointer(handle(), "pointermove", { id: 7, y: 600, t: 500 });
+    expect(sheet().hasAttribute("data-dragging")).toBe(true);
+    expect(sheet().style.getPropertyValue("--sheet-drag")).toBe("380px");
+    pointer(handle(), "pointermove", { id: 7, y: 540, t: 1000 });
+    pointer(handle(), "pointerup", { id: 7, y: 540, t: 1100 });
+    tap(handle()); // the click that ends a drag is not a tap
+    expect(sheet().getAttribute("data-snap")).toBe("half");
+    expect(sheet().hasAttribute("data-dragging")).toBe(false);
+    expect(sheet().style.getPropertyValue("--sheet-drag")).toBe("");
+    // A mouse drags it down from full to peek.
+    act(() => handle().focus());
+    press("End");
+    pointer(handle(), "pointerdown", { id: 1, kind: "mouse", y: 100, t: 1 });
+    pointer(handle(), "pointermove", { id: 1, kind: "mouse", y: 500, t: 800 });
+    pointer(handle(), "pointermove", { id: 1, kind: "mouse", y: 560, t: 1600 });
+    pointer(handle(), "pointerup", { id: 1, kind: "mouse", y: 560, t: 1700 });
+    expect(sheet().getAttribute("data-snap")).toBe("peek");
+  });
+
+  it("folds the plane's tools into one menu button, whose rows hold every tool", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    asPhone();
+    mount(<Home />, "/?o2=34&p=8.2");
+    expect(document.querySelector('[role="toolbar"][aria-label="Plane tools"]')).toBeNull();
+    const menu = document.querySelector<HTMLButtonElement>('button[aria-label="Plane tools"]')!;
+    expect(menu.textContent?.trim()).toBe("Tools");
+    const open = () => {
+      tap(menu);
+      return document.querySelector('[role="group"][aria-label="Plane tools"]')!;
+    };
+    const rows = (g: Element) => [...g.querySelectorAll(":scope > button, :scope > div > button")].map((b) => b.textContent);
+    expect(rows(open())).toEqual(["Solids only", "Candidates", "Layers", "Zoom: Habitat range", "Select area", "Geiger clicks"]);
+    // Candidates opens in place; a pick moves the probe and closes the menu, focus back on its button.
+    tap(button("Candidates"));
+    expect(button("Candidates").getAttribute("aria-expanded")).toBe("true");
+    tap([...document.querySelectorAll('[aria-label="Go to a candidate atmosphere"] button')].find((b) => b.textContent?.includes("10.2 psi / 26.5% O2"))!);
+    expect([q().get("o2"), q().get("p")]).toEqual(["26.5", "10.2"]);
+    expect(document.querySelector('[role="group"][aria-label="Plane tools"]')).toBeNull();
+    expect(document.activeElement).toBe(menu);
+    tap(open().querySelector('[role="switch"]')!);
+    expect(q().get("solids")).toBe("1");
+    open();
+    tap(button("Zoom: Habitat range"));
+    tap(button("Whole plane"));
+    expect(q().get("zoom")).toBe("plane");
+    open();
+    press("Escape");
+    expect(document.querySelector('[role="group"][aria-label="Plane tools"]')).toBeNull();
+    expect(document.activeElement).toBe(menu);
+  });
+
+  it("pins with a tap, previews with a press and hold, and zooms with a pinch that the address bar keeps", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    mount(<Home />, "/?o2=31&p=9");
+    const surface = document.querySelector('svg[role="application"] rect[fill="transparent"]')!;
+    // jsdom has no layout: the plane is its 960 x 640 fallback, its plot 56 px in and 16 px down.
+    const at = (px: number, py: number) => ({ x: 56 + px, y: 16 + py });
+    const pin = [...document.querySelectorAll("svg[data-chart] g[transform] > text")].find((t) => t.textContent?.startsWith("10.2 psi / 26.5% O2"))!;
+    const [cx, cy] = pin.parentElement!.getAttribute("transform")!.match(/translate\(([\d.]+),([\d.]+)\)/)!.slice(1).map(Number);
+    // A tap 18 px from a pin snaps to it (a fingertip's magnet is wider than a pointer's 14 px).
+    pointer(surface, "pointerdown", { id: 1, ...at(cx + 18, cy) });
+    pointer(surface, "pointerup", { id: 1, ...at(cx + 18, cy) });
+    expect([q().get("o2"), q().get("p")]).toEqual(["26.5", "10.2"]);
+    const eyebrow = () => document.querySelector('[data-testid="evidence-panel"] .eyebrow')?.textContent;
+    expect(eyebrow()).toBe("Candidate atmosphere");
+    // Press and hold: a preview of the point under the finger, gone when it lifts; nothing is pinned.
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    try {
+      pointer(surface, "pointerdown", { id: 2, ...at(100, 100) });
+      expect(eyebrow()).toBe("Candidate atmosphere");
+      act(() => { vi.advanceTimersByTime(500); });
+      expect(eyebrow()).toBe("Preview");
+      pointer(surface, "pointerup", { id: 2, ...at(100, 100) });
+      expect(eyebrow()).toBe("Candidate atmosphere");
+      expect([q().get("o2"), q().get("p")]).toEqual(["26.5", "10.2"]);
+    } finally {
+      vi.useRealTimers();
+    }
+    // Two fingers spreading to twice their distance halve the window; the address bar keeps it, and the probe stays.
+    pointer(surface, "pointerdown", { id: 3, ...at(300, 200) });
+    pointer(surface, "pointerdown", { id: 4, ...at(400, 200) });
+    pointer(surface, "pointermove", { id: 4, ...at(500, 200) });
+    pointer(surface, "pointerup", { id: 4, ...at(500, 200) });
+    pointer(surface, "pointerup", { id: 3, ...at(300, 200) });
+    const win = q().get("win")!.split(",").map(Number);
+    expect(win[1] - win[0]).toBeCloseTo(15, 2);
+    expect([q().get("o2"), q().get("p")]).toEqual(["26.5", "10.2"]);
+    const zoom = document.querySelector<HTMLButtonElement>('[role="toolbar"] [aria-label="Zoom"]')!;
+    expect(zoom.getAttribute("data-tip")).toBe("Zoom: pinched");
+    // A preset puts the plane back on its range.
+    tap(zoom);
+    tap(button("Habitat range"));
+    expect(q().get("win")).toBeNull();
+    expect(updateDepthErrors()).toEqual([]);
+  });
+});

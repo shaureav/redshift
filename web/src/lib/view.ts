@@ -1,7 +1,9 @@
 // View state for the plane, held in the URL so a link reproduces the exact view: probe position, step
-// multiplier, layers, solids only, zoom, brushed area, open panel view and asked question.
+// multiplier, layers, solids only, zoom (a preset, or the window a pinch left), brushed area, open panel view and
+// asked question.
 import { useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import { clampDomain, type Domain } from "./gesture";
 
 export type Layer = "ev" | "strip" | "blind" | "ft" | "cand" | "pb" | "halo" | "trail";
 export const LAYERS: { id: Layer; label: string }[] = [
@@ -35,6 +37,8 @@ export interface View {
   layers: Set<Layer>;
   solids: boolean;
   zoom: ZoomKey;
+  /** The window a pinch or two-finger pan left (lib/gesture.ts); it overrides the zoom preset until one is picked. */
+  win: Domain | null;
   box: Box | null;
   panel: "evidence" | "gap";
   ask: string | null;
@@ -55,6 +59,11 @@ export function parseView(sp: URLSearchParams): View {
   const box = boxRaw && boxRaw.length === 4 && boxRaw.every(Number.isFinite)
     ? { o2: [Math.min(boxRaw[0], boxRaw[1]), Math.max(boxRaw[0], boxRaw[1])] as [number, number], psi: [Math.min(boxRaw[2], boxRaw[3]), Math.max(boxRaw[2], boxRaw[3])] as [number, number] }
     : null;
+  // o2 from, o2 to, psi from, psi to; kept inside the pinch's bounds, and ignored unless it is a real range.
+  const winRaw = sp.get("win")?.split(",").map(Number);
+  const win = winRaw && winRaw.length === 4 && winRaw.every(Number.isFinite) && winRaw[0] < winRaw[1] && winRaw[2] > 0 && winRaw[2] < winRaw[3]
+    ? clampDomain({ o2: [winRaw[0], winRaw[1]], psi: [winRaw[2], winRaw[3]] })
+    : null;
   return {
     o2: num(sp.get("o2"), DEFAULT_PROBE.o2),
     psi: num(sp.get("p"), DEFAULT_PROBE.psi),
@@ -62,6 +71,7 @@ export function parseView(sp: URLSearchParams): View {
     layers,
     solids: sp.get("solids") === "1",
     zoom: zoomRaw && zoomRaw in ZOOMS ? zoomRaw : "habitat",
+    win,
     box,
     panel: sp.get("view") === "gap" ? "gap" : "evidence",
     ask: sp.get("ask"),
@@ -82,6 +92,7 @@ export function writeView(v: Partial<View>, base: URLSearchParams): URLSearchPar
   }
   if (v.solids !== undefined) put("solids", v.solids ? "1" : null);
   if (v.zoom !== undefined) put("zoom", v.zoom === "habitat" ? null : v.zoom);
+  if (v.win !== undefined) put("win", v.win ? [v.win.o2[0], v.win.o2[1], v.win.psi[0], v.win.psi[1]].map(fmt).join(",") : null);
   if (v.box !== undefined) put("box", v.box ? [v.box.o2[0], v.box.o2[1], v.box.psi[0], v.box.psi[1]].map(fmt).join(",") : null);
   if (v.panel !== undefined) put("view", v.panel === "gap" ? "gap" : null);
   if (v.ask !== undefined) put("ask", v.ask);

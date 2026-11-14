@@ -157,14 +157,14 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   /* Raised: cards and panels on the page. */
   .card, .raised { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-surface); }
 
-  /* Floating: popovers, menus, toasts, the plane toolbar and the phone sheet. Solid first; translucent with a
-     backdrop blur where the browser can mix colours. */
-  .floating, .toolbar, .sheet {
+  /* Floating: popovers, menus, toasts and the plane toolbar. Solid first; translucent with a backdrop blur where
+     the browser can mix colours. The phone's evidence sheet floats too, on a solid surface (see .sheet below). */
+  .floating, .toolbar {
     background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-surface); box-shadow: var(--shadow);
     -webkit-backdrop-filter: blur(var(--blur)); backdrop-filter: blur(var(--blur));
   }
   @supports (background: color-mix(in srgb, white 50%, transparent)) {
-    .floating, .toolbar, .sheet { background: var(--floating); }
+    .floating, .toolbar { background: var(--floating); }
   }
 
   /* Translucent surfaces. Tailwind writes no CSS at all for an opacity modifier on a var() colour
@@ -276,8 +276,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   .tile-label { font-size: var(--text-label); line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; font-weight: 500; color: var(--ink-3); }
   .tile-value { font-size: var(--text-heading); line-height: var(--leading-heading); font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink); }
 
-  /* Bottom sheet on a phone: floating, top corners rounded, a drag handle. */
-  .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; max-height: 90vh; overflow-y: auto; border-bottom: 0; border-radius: var(--r-surface) var(--r-surface) 0 0; transition: transform var(--t-move) var(--ease-out); }
+  /* The bottom sheet's drag handle bar (the sheet itself is laid out below, after the story intro's rules). */
   .sheet-handle { display: block; width: 32px; height: 4px; margin: 8px auto; border-radius: var(--r-pill); background: var(--control-line); }
 
   /* Skeleton for loading states: a calm shimmer, off under reduced motion. */
@@ -342,6 +341,57 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 .pin-appear { animation: fade var(--t-scene) var(--ease-out) both; }
 .pin-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; animation: pin-pulse calc(3 * var(--t-scene)) var(--ease-out) var(--t-scene) 3 both; }
 @keyframes pin-pulse { 0% { opacity: 0.8; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(2.6); } }
+/* Phones and tablets (plan, Phase 6): below lg the evidence panel is a bottom sheet over the plane. It rests at
+   one of three snap points, peek (the readout tiles), half (what is missing too) and full (everything);
+   components/Sheet.tsx sets --sheet-visible to the height that shows, and --sheet-drag while a finger or the
+   pointer drags its handle. The plane and its headline fill the screen above the peek (--sheet-peek, set on the
+   page by pages/Home.tsx), and the page leaves room under the legend for it. Floating elevation on a solid
+   surface: a backdrop blur over a sheet that moves would cost a phone a repaint of the plane on every frame. At
+   lg and up the same element is the docked panel and none of this applies. Placed after the intro's rules so
+   its transition keeps the intro's dimming as well. */
+@media (max-width: 1023.98px) {
+  .sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    height: calc(100vh - var(--nav-h) - 8px); height: calc(100dvh - var(--nav-h) - 8px);
+    overflow: hidden; overscroll-behavior: contain;
+    background: var(--surface-2); border: 1px solid var(--line); border-bottom: 0;
+    border-radius: var(--r-surface) var(--r-surface) 0 0; box-shadow: var(--shadow);
+    transform: translateY(calc(100% - var(--sheet-drag, var(--sheet-visible, 280px))));
+    transition: transform var(--t-move) var(--ease-out), opacity var(--t-scene) var(--ease-out);
+  }
+  .sheet[data-snap="full"] { overflow-y: auto; }
+  .sheet[data-dragging] { transition: opacity var(--t-scene) var(--ease-out); }
+  /* The handle: a 32 px bar whose 44 px target reaches over the eyebrow under it (text, nothing to press). Full,
+     where content scrolls under it, the bar itself is 44 px tall. */
+  .sheet-grip { height: 32px; }
+  .sheet-grip::after { content: ""; position: absolute; inset: 0 0 -12px 0; }
+  .sheet[data-snap="full"] .sheet-grip { height: var(--tap); }
+  .sheet[data-snap="full"] .sheet-grip::after { content: none; }
+  .plane-stage {
+    display: flex; flex-direction: column; min-height: 400px;
+    height: calc(100vh - var(--nav-h) - var(--sheet-peek, 280px)); height: calc(100dvh - var(--nav-h) - var(--sheet-peek, 280px));
+  }
+  .sheet-pad { padding-bottom: var(--sheet-peek, 280px); }
+}
+@media (min-width: 1024px) {
+  .plane-stage { display: contents; }
+}
+/* An open menu in the plane's toolbar draws above the sheet, so its lower options are never under the peek. */
+.plane-tools:has([aria-expanded="true"]) { z-index: 45; }
+
+/* Touch (plan, Phase 6): on a coarse pointer every control is at least 44 px tall (--tap). Rows that hold a door
+   (a Value that opens its source) grow to 44 px, and a readout tile's number takes a 44 px tall target without
+   moving the tile's text. A number inside a sentence keeps its line: an inline target (WCAG 2.5.8). */
+@media (pointer: coarse) {
+  .btn, .btn-sm, .chip, .field, .field-sm { height: var(--tap); }
+  .seg > button, .seg-sm > button { height: calc(var(--tap) - 2px); }
+  .option, .menu-row { min-height: var(--tap); }
+  .tap { display: inline-flex; align-items: center; min-height: var(--tap); }
+  .tap-row { min-height: var(--tap); align-items: center; }
+  .tap-door [data-prov] > button { display: inline-flex; align-items: center; justify-content: flex-end; min-width: var(--tap); min-height: var(--tap); }
+  .tile-value [data-prov] > button::after { content: ""; position: absolute; inset: -8px -16px; }
+}
+
 /* Swap content by opacity alone; the one transition kept under reduced motion. */
 .crossfade { transition: opacity var(--t-fade) linear; }
 /* A count that changed while pinned: the new value fades in where the old one stood. It never counts through

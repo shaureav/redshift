@@ -61,8 +61,9 @@ describe("screens", () => {
       return host;
     };
     const normal = at("/?o2=34&p=8.2");
-    // Only the headline sits above the plane; every control is in the plane's toolbar.
-    const header = normal.querySelector('section[aria-label="The oxygen and pressure plane"] > header')!;
+    // Only the headline sits above the plane; every control is in the plane's toolbar. (The stage around them is
+    // a box only below lg, where it fills the screen above the evidence sheet's peek.)
+    const header = normal.querySelector('section[aria-label="The oxygen and pressure plane"] > .plane-stage > header')!;
     expect(header.querySelectorAll("button").length).toBe(0);
     const tools = [...normal.querySelectorAll('[role="toolbar"][aria-label="Plane tools"] .tool')].map((b) => b.getAttribute("aria-label"));
     expect(tools).toEqual(["Solids only", "Candidates", "Layers", "Zoom", "Select area", "Geiger clicks"]);
@@ -284,6 +285,22 @@ describe("the instrument panel", () => {
     const withPaper = { ...r, near: { ...r.near, gas: { ...r.near.gas, published_paper: { v: 2, u: "tests", p: "probe:1:gas:published_paper" } } } };
     const html = render("/", <Readout r={withPaper} candidate={null} preview={false} outside={false} />);
     expect(html).toMatch(/plus <span[^>]*data-prov="probe:1:gas:published_paper"[^>]*><button[^>]*>2<\/button><\/span> from verified papers/);
+  });
+
+  it("leads with the tiles in the phone's sheet, so its peek is the point and its counts", () => {
+    const g = decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json"));
+    const r = readAt(g, 34, 8.2, 1);
+    const cand = loadSnapshot<{ candidates: Candidate[] }>("candidates.json").candidates.find((c) => c.id === "c8_2_34")!;
+    const order = (compact: boolean) => {
+      const host = document.createElement("div");
+      host.innerHTML = render("/", <Readout r={r} candidate={cand} preview={false} outside={false} compact={compact} />);
+      const header = host.querySelector("header")!;
+      return [...header.children].map((el) => (el.matches("[data-sheet-peek]") ? "tiles" : el.tagName === "H2" ? "point" : el.textContent?.includes("near this point") ? "answer" : el.textContent === cand.short ? "short" : "eyebrow"));
+    };
+    expect(order(false)).toEqual(["eyebrow", "point", "short", "answer", "tiles"]);
+    expect(order(true)).toEqual(["eyebrow", "point", "tiles", "short", "answer"]);
+    // The sheet's half snap ends under the missing callout.
+    expect(panelOf("/?o2=34&p=8.2").querySelector("[data-sheet-half]")?.getAttribute("aria-labelledby")).toBe("sec-gap");
   });
 
   it("pins five actions to the bottom of the panel", () => {

@@ -10,20 +10,40 @@
 // overlay (nearness halo, probe, selection, pointer surface) is the only thing that repaints while the probe
 // moves, so a drag stays within a frame even with every glyph on the plane. The floating toolbar sits in the
 // plane's top left corner, above both.
+//
+// Touch (plan, Phase 6): tap to pin the probe, press and hold to preview a point, drag to move the probe, pinch or
+// drag with two fingers to zoom and pan. A pinch moves the window in view (lib/gesture.ts), redrawn from the same
+// build values; when the fingers lift the window is written to the address bar (view.win). The mouse keeps its
+// drag, hover and zoom presets.
 import * as d3 from "d3";
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
 import { coastFor, coastNear, EVIDENCE_WORD_NOTE, gridExtent, isLand, landPath, type Coast, type EvidenceWord } from "../lib/coast";
 import { fmtNumber, FUEL_LABEL } from "../lib/format";
+import { pinchDomain, type Domain, type Pt } from "../lib/gesture";
 import { useReducedMotion } from "../lib/motion";
 import { nodeOf, snapIndex, type Grid } from "../lib/probe";
 import type { Candidate } from "../lib/types";
-import { ZOOMS, type Box, type View } from "../lib/view";
+import { ZOOMS, type Box, type View, type ZoomKey } from "../lib/view";
 import type { FlameGrid, MapPoint, PrebreathePoint, Strip, TradeMapData } from "./TradeMap";
 
 const KPA_PER_PSI = 6.894757293168361; // axis labels only; every value shown in the panel carries its own kPa
 const MAGNET_PX = 14;
+// A fingertip covers more of the plane than a pointer, so a tap snaps to a candidate from further away.
+const TOUCH_MAGNET_PX = 24;
+// A finger that moves less than this has not started a drag; held this long without moving, it previews.
+const TOUCH_SLOP = 8;
+const LONG_PRESS = 450; // milliseconds
+/** The range of the plane in view: a zoom preset, or the window a pinch left. */
+interface Zoom { label: string; o2: [number, number]; psi: [number, number] }
+/** A zoom from its key: a preset's name, or a pinched window's four numbers. One object per key, so the base
+ *  layer's memo holds while the address bar changes for other reasons. */
+function zoomOf(key: string): Zoom {
+  if (key in ZOOMS) return ZOOMS[key as ZoomKey];
+  const [a, b, c, d] = key.split(",").map(Number);
+  return { label: "Pinched", o2: [a, b], psi: [c, d] };
+}
 // Glyphs are clipped to the plot plus this margin, not to the plot itself, so a test on the edge of the domain
 // (15% O2, say) draws whole: the largest marker, the emulator diamond at r = 12, reaches 15.6 px plus its stroke.
 const GLYPH_PAD = 18;
@@ -76,6 +96,8 @@ interface Props {
   onBrush: (box: Box | null) => void;
   onOpenCandidate: (id: string) => void;
   onToggleBrush: () => void;
+  /** A pinch or two-finger pan ended on this window (lib/gesture.ts). */
+  onWindow?: (d: Domain) => void;
 }
 
 function useSize<T extends HTMLElement>(fallback: { w: number; h: number }, min = 320) {
@@ -107,17 +129,16 @@ interface Frame {
   narrow: boolean;
   x: d3.ScaleLinear<number, number>;
   y: d3.ScaleLogarithmic<number, number>;
-  z: (typeof ZOOMS)[keyof typeof ZOOMS];
+  z: Zoom;
   strips: Strip[];
 }
 
-function useFrame(w: number, h: number, view: View, rawStrips: Strip[], top: number): Frame {
+function useFrame(w: number, h: number, view: View, rawStrips: Strip[], top: number, z: Zoom): Frame {
   const strips = useMemo(() => {
     const order = ["solid", "emulator", "gas", "droplet"];
     return [...rawStrips].sort((a, b) => order.indexOf(a.fuel_class) - order.indexOf(b.fuel_class));
   }, [rawStrips]);
   const narrow = w < 640;
-  const z = ZOOMS[view.zoom];
   const showStrip = view.layers.has("strip");
   const stripH = showStrip ? 32 + strips.reduce((a, s) => a + stripRowHeight(s, view.solids) + 4, 0) : 0;
   // Narrow margins still fit the rotated axis titles beside their tick labels and the strip lane labels.
@@ -139,7 +160,7 @@ interface Placed { p: MapPoint; px: number; py: number; r: number }
 type Rect = { x0: number; x1: number; y0: number; y1: number };
 
 export function Plane(props: Props) {
-  const { map, candidates, grid, flame, prebreathe, view, probe, words, scene, toolbar, brushMode, onProbe, onHoverEnd, onBrush, onOpenCandidate, onToggleBrush } = props;
+  const { map, candidates, grid, flame, prebreathe, view, probe, words, scene, toolbar, brushMode, onProbe, onHoverEnd, onBrush, onOpenCandidate, onToggleBrush, onWindow } = props;
   const stage = props.stage ?? null;
   const [wrap, { w, h }] = useSize<HTMLDivElement>({ w: 960, h: 640 });
   const [tbRef, tb] = useSize<HTMLDivElement>({ w: 300, h: 40 }, 0);
@@ -151,18 +172,24 @@ export function Plane(props: Props) {
   const [focused, setFocused] = useState(false);
   const raf = useRef<number | null>(null);
   const touchDrag = useRef(false); // the drag under way is a finger's (haptics are for phones)
-  // The toolbar floats over the plot's top left corner. On a narrow screen its 44 px touch tools would cover the
-  // 14.7 psi tests on a short plot, so there it gets a band of its own above the plot (until Phase 6 folds it
-  // into one menu button).
+  // The window in view: while two fingers pinch, the live one; then the one they left in the address bar; else
+  // the zoom preset.
+  const [live, setLive] = useState<Domain | null>(null);
+  const win = live ?? view.win;
+  const zoomKey = win ? [win.o2[0], win.o2[1], win.psi[0], win.psi[1]].join(",") : view.zoom;
+  const zoom = useMemo(() => zoomOf(zoomKey), [zoomKey]);
+  // The toolbar floats over the plot's top left corner. On a narrow screen even the one menu button it folds into
+  // (planeToolbar.tsx) would cover the 14.7 psi tests on a short plot, so there it gets a band of its own above
+  // the plot.
   const band = w < 640 && !!toolbar;
-  const f = useFrame(w, h, view, map.strips, band ? tb.h + 16 : 16);
+  const f = useFrame(w, h, view, map.strips, band ? tb.h + 12 : 16, zoom);
   const { m, iw, ih, x, y, z, narrow } = f;
 
   const onCand = candidates.find((c) => c.o2_pct.v === probe.o2 && c.pressure_psi.v === probe.psi);
 
   // The toolbar's corner of the plane, in plot coordinates: isotherm labels and pin labels keep clear of it.
   const tbLeft = narrow ? 8 : m.left + 8;
-  const tbTop = band ? 8 : m.top + 8;
+  const tbTop = band ? 6 : m.top + 8;
   const reserve = useMemo<Rect>(() => ({ x0: tbLeft - m.left - 4, y0: tbTop - m.top - 4, x1: tbLeft - m.left + tb.w + 4, y1: tbTop - m.top + tb.h + 4 }), [tbLeft, tbTop, m, tb]);
 
   const placed = useMemo<Placed[]>(
@@ -171,10 +198,11 @@ export function Plane(props: Props) {
       .map((p) => ({ p, px: x(p.o2_pct), py: y(p.pressure_psi), r: binRadius(p.n) })),
     [map.points, z, x, y],
   );
+  const pins = useMemo(() => placePins(candidates, words, f, reserve, placed), [candidates, words, f, reserve, placed]);
 
   // ---- pointer to data, snapped to a candidate (magnet) or to the probe grid ----
   const toData = useCallback(
-    (clientX: number, clientY: number, clampToPlot = true) => {
+    (clientX: number, clientY: number, clampToPlot = true, magnet = MAGNET_PX) => {
       const r = overlay.current?.getBoundingClientRect();
       if (!r) return null;
       let px = clientX - r.left - m.left;
@@ -183,7 +211,7 @@ export function Plane(props: Props) {
       px = Math.max(0, Math.min(iw, px));
       py = Math.max(0, Math.min(ih, py));
       for (const c of candidates) {
-        if (Math.hypot(x(c.o2_pct.v) - px, y(c.pressure_psi.v) - py) < MAGNET_PX) return { o2: c.o2_pct.v, psi: c.pressure_psi.v, px, py };
+        if (Math.hypot(x(c.o2_pct.v) - px, y(c.pressure_psi.v) - py) < magnet) return { o2: c.o2_pct.v, psi: c.pressure_psi.v, px, py };
       }
       return { o2: grid.o2[snapIndex(grid.o2, x.invert(px))], psi: grid.psi[snapIndex(grid.psi, y.invert(py))], px, py };
     },
@@ -216,14 +244,136 @@ export function Plane(props: Props) {
     });
   };
 
-  const onPointerDown = (e: React.PointerEvent<SVGRectElement>) => {
-    const d = toData(e.clientX, e.clientY);
-    if (!d) return;
+  const capture = (e: React.PointerEvent<SVGRectElement>) => {
     try {
       (e.target as Element).setPointerCapture(e.pointerId);
     } catch {
       /* no capture available (synthetic pointer): dragging still works while the pointer stays on the plane */
     }
+  };
+  const cancelFrame = () => {
+    if (raf.current !== null) cancelAnimationFrame(raf.current);
+    raf.current = null;
+  };
+
+  // ---- touch: a finger's first move decides. Past the slop it drags the probe; held still for LONG_PRESS it
+  // previews (the panel reads the point, as a hover does, and the probe goes back when the finger lifts); lifted
+  // before either, it pins the probe where it touched. A second finger turns whatever began into a pinch, and a
+  // finger left down after a pinch does nothing until it lifts. Each returns false for the one case the pointer
+  // code below handles for a finger too: a single finger selecting an area. ----
+  type TouchGesture =
+    | { kind: "pending"; x: number; y: number; d: { o2: number; psi: number }; timer: number }
+    | { kind: "drag" | "preview" | "after" }
+    | { kind: "pinch"; start: Domain; from: [Pt, Pt]; last: Domain | null };
+  const fingers = useRef(new Map<number, Pt>());
+  const touch = useRef<TouchGesture | null>(null);
+  useEffect(() => () => {
+    const t = touch.current;
+    if (t?.kind === "pending") clearTimeout(t.timer);
+  }, []);
+  const plotPt = (p: Pt): Pt => {
+    const r = overlay.current?.getBoundingClientRect();
+    return { x: p.x - (r?.left ?? 0) - m.left, y: p.y - (r?.top ?? 0) - m.top };
+  };
+  const twoFingers = (): [Pt, Pt] => {
+    const [a, b] = [...fingers.current.values()];
+    return [plotPt(a), plotPt(b)];
+  };
+  const touchDown = (e: React.PointerEvent<SVGRectElement>): boolean => {
+    fingers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const t = touch.current;
+    if (fingers.current.size === 2) {
+      if (t?.kind === "pending") clearTimeout(t.timer);
+      if (t?.kind === "drag" || t?.kind === "preview") {
+        cancelFrame();
+        setDragging(false);
+        onHoverEnd(); // the probe goes back to where it was pinned
+      }
+      setBrush(null);
+      setHoverBin(null);
+      capture(e);
+      touch.current = { kind: "pinch", start: { o2: z.o2, psi: z.psi }, from: twoFingers(), last: null };
+      return true;
+    }
+    if (fingers.current.size > 2 || t) return true;
+    if (brushMode) return false;
+    const d = toData(e.clientX, e.clientY, true, TOUCH_MAGNET_PX);
+    if (!d) return true;
+    capture(e);
+    setHoverBin(null);
+    const timer = window.setTimeout(() => {
+      touch.current = { kind: "preview" };
+      buzz();
+      onProbe(d.o2, d.psi, "hover");
+    }, LONG_PRESS);
+    touch.current = { kind: "pending", x: e.clientX, y: e.clientY, d: { o2: d.o2, psi: d.psi }, timer };
+    return true;
+  };
+  const touchMove = (e: React.PointerEvent<SVGRectElement>): boolean => {
+    if (!fingers.current.has(e.pointerId)) return false;
+    fingers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const t = touch.current;
+    if (!t) return false;
+    if (t.kind === "after") return true;
+    if (t.kind === "pinch") {
+      if (fingers.current.size < 2) return true;
+      const next = pinchDomain(t.start, iw, ih, t.from, twoFingers());
+      t.last = next;
+      schedule(() => setLive(next));
+      return true;
+    }
+    if (t.kind === "pending") {
+      if (Math.hypot(e.clientX - t.x, e.clientY - t.y) < TOUCH_SLOP) return true;
+      clearTimeout(t.timer);
+      touch.current = { kind: "drag" };
+      touchDrag.current = true;
+      setDragging(true);
+    }
+    const d = toData(e.clientX, e.clientY, true, TOUCH_MAGNET_PX);
+    if (!d) return true;
+    const mode: ProbeMode = touch.current?.kind === "preview" ? "hover" : "drag";
+    schedule(() => onProbe(d.o2, d.psi, mode));
+    return true;
+  };
+  const touchUp = (e: React.PointerEvent<SVGRectElement>, cancelled: boolean): boolean => {
+    if (!fingers.current.delete(e.pointerId)) return false;
+    const t = touch.current;
+    if (!t) return false;
+    if (t.kind === "pinch") {
+      if (fingers.current.size >= 2) return true;
+      cancelFrame();
+      touch.current = fingers.current.size ? { kind: "after" } : null;
+      setLive(null);
+      if (t.last && !cancelled) onWindow?.(t.last);
+      return true;
+    }
+    if (t.kind === "after") {
+      if (!fingers.current.size) touch.current = null;
+      return true;
+    }
+    touch.current = null;
+    cancelFrame();
+    if (t.kind === "pending") {
+      clearTimeout(t.timer);
+      if (!cancelled) onProbe(t.d.o2, t.d.psi, "commit"); // tap to pin
+      return true;
+    }
+    if (t.kind === "drag") {
+      setDragging(false);
+      const d = cancelled ? null : toData(e.clientX, e.clientY, true, TOUCH_MAGNET_PX);
+      if (d) onProbe(d.o2, d.psi, "commit");
+      else onHoverEnd();
+      return true;
+    }
+    onHoverEnd(); // the end of a preview: the probe goes back to the pinned point
+    return true;
+  };
+
+  const onPointerDown = (e: React.PointerEvent<SVGRectElement>) => {
+    if (e.pointerType === "touch" && touchDown(e)) return;
+    const d = toData(e.clientX, e.clientY);
+    if (!d) return;
+    capture(e);
     setHoverBin(null);
     if (brushMode) {
       setBrush({ x0: d.px, y0: d.py, x1: d.px, y1: d.py });
@@ -234,6 +384,7 @@ export function Plane(props: Props) {
     onProbe(d.o2, d.psi, "drag");
   };
   const onPointerMove = (e: React.PointerEvent<SVGRectElement>) => {
+    if (e.pointerType === "touch" && touchMove(e)) return;
     const d = toData(e.clientX, e.clientY, dragging || brush !== null);
     if (!d) return;
     if (brush) {
@@ -247,6 +398,7 @@ export function Plane(props: Props) {
     });
   };
   const onPointerUp = (e: React.PointerEvent<SVGRectElement>) => {
+    if (e.pointerType === "touch" && touchUp(e, false)) return;
     if (brush) {
       const b = brush;
       setBrush(null);
@@ -261,6 +413,15 @@ export function Plane(props: Props) {
       const d = toData(e.clientX, e.clientY);
       setDragging(false);
       if (d) onProbe(d.o2, d.psi, "commit");
+    }
+  };
+  // The system took the pointer (a scroll, a call): nothing is pinned, and a drag or preview lets go.
+  const onPointerCancel = (e: React.PointerEvent<SVGRectElement>) => {
+    if (e.pointerType === "touch" && touchUp(e, true)) return;
+    setBrush(null);
+    if (dragging) {
+      setDragging(false);
+      onHoverEnd();
     }
   };
   const badge = useRef<HTMLDivElement>(null);
@@ -339,7 +500,19 @@ export function Plane(props: Props) {
     void document.fonts?.ready.then(measureTag); // the web font may arrive after the first measure
   }, [measureTag]);
   const tagW = (tagTextW ?? tag.length * 7) + 16;
-  const tagLeft = pxp + 16 + tagW > iw;
+  // The tag sits above and right of the probe (left near the right edge, under it near the top), or at the first
+  // other corner that keeps it inside the plot and off every other pin and its label, which on a phone's short
+  // plot it would otherwise cover. The pin the probe is on hides its own label.
+  const pinLabels = view.layers.has("cand") ? pins.filter((p) => p.c.id !== onCand?.id).flatMap((p) => p.boxes) : [];
+  const tagCost = ([left, below]: [boolean, boolean]) => {
+    const x0 = left ? pxp - 16 - tagW : pxp + 16;
+    const y0 = below ? pyp + 16 : pyp - 32;
+    const box = { x0, x1: x0 + tagW, y0, y1: y0 + 24 };
+    return (box.x0 < 0 || box.x1 > iw || box.y0 < 0 || box.y1 > ih ? 2 : 0) + (hitsAny(box, pinLabels) ? 1 : 0);
+  };
+  const tagFirst: [boolean, boolean] = [pxp + 16 + tagW > iw, pyp < 40];
+  const tagCorners: [boolean, boolean][] = [tagFirst, [tagFirst[0], !tagFirst[1]], [!tagFirst[0], tagFirst[1]], [!tagFirst[0], !tagFirst[1]]];
+  const [tagLeft, tagBelow] = tagCorners.reduce((best, o) => (tagCost(o) < tagCost(best) ? o : best), tagFirst);
   const glide = dragging ? "none" : "transform var(--t-move) var(--ease-out)";
   const candWord = onCand ? words[onCand.id] : undefined;
   const showTip = !!onCand && (pointerOn || focused) && view.layers.has("cand") && !dragging && !stage;
@@ -401,7 +574,7 @@ export function Plane(props: Props) {
   return (
     <div ref={wrap} className="relative h-full w-full select-none" data-intro={stage ?? undefined} onPointerLeave={() => setHoverBin(null)}>
       {toolbar && (
-        <div ref={tbRef} className="intro-hide absolute z-10" style={{ left: tbLeft, top: tbTop, maxWidth: w - tbLeft - 8 }}>
+        <div ref={tbRef} className="plane-tools intro-hide absolute z-10" style={{ left: tbLeft, top: tbTop, maxWidth: w - tbLeft - 8 }}>
           {toolbar}
         </div>
       )}
@@ -410,8 +583,7 @@ export function Plane(props: Props) {
         frame={f}
         grid={grid}
         placed={placed}
-        candidates={candidates}
-        words={words}
+        pins={pins}
         flame={flame}
         prebreathe={prebreathe}
         layers={view.layers}
@@ -485,7 +657,7 @@ export function Plane(props: Props) {
                 <line y1={-pyp} y2={ih - pyp} x1={0} x2={0} stroke="var(--probe)" strokeOpacity={0.35} />
                 <circle r={12} fill="none" stroke="var(--probe)" strokeWidth={2} />
                 <circle r={3} fill="var(--probe)" />
-                <g transform={`translate(${tagLeft ? -16 - tagW : 16},${pyp < 40 ? 16 : -32})`}>
+                <g transform={`translate(${tagLeft ? -16 - tagW : 16},${tagBelow ? 16 : -32})`}>
                   <rect width={tagW} height={24} rx={4} fill="var(--surface)" stroke="var(--line-strong)" />
                   <text ref={tagText} x={8} y={16} fontSize={12} fill="var(--ink)" className="num">{tag}</text>
                 </g>
@@ -496,11 +668,15 @@ export function Plane(props: Props) {
             width={iw}
             height={ih}
             fill="transparent"
-            style={{ cursor: brushMode ? "crosshair" : dragging ? "grabbing" : "grab", touchAction: "none" }}
+            // touch-action none: the page neither scrolls nor zooms under a finger on the plane; the plane's own
+            // pinch zooms it. No callout or context menu under a press and hold, which previews instead.
+            style={{ cursor: brushMode ? "crosshair" : dragging ? "grabbing" : "grab", touchAction: "none", WebkitTouchCallout: "none" }}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
+            onPointerCancel={onPointerCancel}
             onPointerLeave={onPointerLeave}
+            onContextMenu={(e) => touch.current && e.preventDefault()}
           />
         </g>
       </svg>
@@ -624,50 +800,53 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, ris
   );
 });
 
+/** Pins and the boxes their labels take, placed once per layout (the base draws them; the probe's tag keeps off
+ *  their labels). */
+function placePins(candidates: Candidate[], words: Partial<Record<string, EvidenceWord>>, frame: Frame, reserve: Rect, placed: Placed[]): PinAt[] {
+  const { iw, ih, narrow, x, y } = frame;
+  const nameSize = narrow ? 12 : 14;
+  const at = candidates.map((c) => ({ c, cx: x(c.o2_pct.v), cy: y(c.pressure_psi.v) }));
+  const heads: Rect[] = at.map(({ cx, cy }) => ({ x0: cx - 8, x1: cx + 8, y0: cy - 22, y1: cy + 4 }));
+  const labels: Rect[] = [];
+  return at.map(({ c, cx, cy }, k) => {
+    const word = words[c.id];
+    const tw = 4 + Math.max(c.name.length * nameSize * 0.6, (word?.length ?? 0) * 12 * 0.6);
+    const box = (below: boolean, left: boolean): Rect => ({
+      x0: left ? cx - 10 - tw : cx + 8,
+      x1: left ? cx - 8 : cx + 10 + tw,
+      y0: below ? cy + 20 - nameSize : cy - 12 - nameSize,
+      y1: below ? cy + 38 : cy + 6,
+    });
+    // Beside the head on the right first (the scenario, which shares a pressure with a habitat candidate,
+    // tries under it first), then the other sides. A side inside the plot and clear of the toolbar, every other
+    // pin and every label already placed wins; among those, the one over the fewest glyphs, then the earlier.
+    const order: [boolean, boolean][] = c.role === "scenario" ? [[true, false], [false, false], [true, true], [false, true]] : [[false, false], [true, false], [false, true], [true, true]];
+    const hard = [reserve, ...heads.filter((_, i) => i !== k), ...labels];
+    const cost = ([b, l]: [boolean, boolean]) => {
+      const r = box(b, l);
+      const out = r.x0 < 0 || r.x1 > iw || r.y0 < 0 || r.y1 > ih;
+      const under = placed.filter((g) => g.px + g.r > r.x0 && g.px - g.r < r.x1 && g.py + g.r > r.y0 && g.py - g.r < r.y1).length;
+      return (out ? 1e6 : 0) + (hitsAny(r, hard) ? 1e4 : 0) + under;
+    };
+    const [below, left] = order.reduce((best, o) => (cost(o) < cost(best) ? o : best), order[0]);
+    labels.push(box(below, left));
+    return { c, cx, cy, word, below, left, boxes: [heads[k], box(below, left)] };
+  });
+}
+
 /** Everything else that does not move with the probe. Memoised: a drag never re-renders or repaints it. */
-const PlaneBase = memo(function PlaneBase({ frame, grid, placed, candidates, words, flame, prebreathe, layers, solids, scene, reserve, placedSolid, activeCandidate, pulse }: {
-  frame: Frame; grid: Grid; placed: Placed[]; candidates: Candidate[]; words: Partial<Record<string, EvidenceWord>>;
+const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, prebreathe, layers, solids, scene, reserve, placedSolid, activeCandidate, pulse }: {
+  frame: Frame; grid: Grid; placed: Placed[]; pins: PinAt[];
   flame?: FlameGrid; prebreathe?: PrebreathePoint[]; layers: Set<string>; solids: boolean; scene: boolean; reserve: Rect; placedSolid: boolean;
   activeCandidate: string | null;
   /** The story intro's first beat: the pins appear one after another and pulse (never under reduced motion). */
   pulse: boolean;
 }) {
   const { w, h, m, iw, ih, narrow, x, y, z, strips } = frame;
+  const nameSize = narrow ? 12 : 14;
 
   // Where the probe grid ends (land and sea are drawn by LandLayer, underneath): above it, a caption says so.
   const beyondGrid = useMemo(() => gridExtent(grid, x, y).y, [grid, x, y]);
-
-  // ---- pins and the boxes their labels take ----
-  const nameSize = narrow ? 12 : 14;
-  const pins = useMemo<PinAt[]>(() => {
-    const at = candidates.map((c) => ({ c, cx: x(c.o2_pct.v), cy: y(c.pressure_psi.v) }));
-    const heads: Rect[] = at.map(({ cx, cy }) => ({ x0: cx - 8, x1: cx + 8, y0: cy - 22, y1: cy + 4 }));
-    const labels: Rect[] = [];
-    return at.map(({ c, cx, cy }, k) => {
-      const word = words[c.id];
-      const tw = 4 + Math.max(c.name.length * nameSize * 0.6, (word?.length ?? 0) * 12 * 0.6);
-      const box = (below: boolean, left: boolean): Rect => ({
-        x0: left ? cx - 10 - tw : cx + 8,
-        x1: left ? cx - 8 : cx + 10 + tw,
-        y0: below ? cy + 20 - nameSize : cy - 12 - nameSize,
-        y1: below ? cy + 38 : cy + 6,
-      });
-      // Beside the head on the right first (the scenario, which shares a pressure with a habitat candidate,
-      // tries under it first), then the other sides. A side inside the plot and clear of the toolbar, every other
-      // pin and every label already placed wins; among those, the one over the fewest glyphs, then the earlier.
-      const order: [boolean, boolean][] = c.role === "scenario" ? [[true, false], [false, false], [true, true], [false, true]] : [[false, false], [true, false], [false, true], [true, true]];
-      const hard = [reserve, ...heads.filter((_, i) => i !== k), ...labels];
-      const cost = ([b, l]: [boolean, boolean]) => {
-        const r = box(b, l);
-        const out = r.x0 < 0 || r.x1 > iw || r.y0 < 0 || r.y1 > ih;
-        const under = placed.filter((g) => g.px + g.r > r.x0 && g.px - g.r < r.x1 && g.py + g.r > r.y0 && g.py - g.r < r.y1).length;
-        return (out ? 1e6 : 0) + (hitsAny(r, hard) ? 1e4 : 0) + under;
-      };
-      const [below, left] = order.reduce((best, o) => (cost(o) < cost(best) ? o : best), order[0]);
-      labels.push(box(below, left));
-      return { c, cx, cy, word, below, left, boxes: [heads[k], box(below, left)] };
-    });
-  }, [candidates, words, x, y, nameSize, reserve, iw, ih, placed]);
 
   // ---- isotherms: solid, quiet lines with their labels along the path, clear of every other label ----
   const isotherms = useMemo(() => {

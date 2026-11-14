@@ -90,6 +90,10 @@ The map is drawn like a coastline: land wherever the build counted at least one 
 
 On a first visit the plane tells its own story in three beats: the atmospheres NASA is weighing appear as pins on an empty map, the fire tests NASA's tables let us place rise as land, and then, with only solid materials kept, the land sinks and the card cites the counts that explain why (each count opens its source). Click, scroll or press the arrow keys to move on, skip at any time, and press Explore to take over the plane at 8.2 psi and 34% oxygen with solids only on. It shows once per device and the command palette can replay it.
 
+## Phones and tablets (`web/src/components/Sheet.tsx`, `web/src/lib/gesture.ts`)
+
+On a phone or tablet the evidence panel becomes a sheet at the bottom of the screen. Resting low it shows the point and its four counts, pulled halfway it also lists what is missing, and pulled up it shows everything; drag its handle, tap it, or use the arrow keys. On the plane a tap pins the probe, pressing and holding previews a point without pinning it, and two fingers pinch or slide to zoom and pan; the zoomed view is kept in the link. On a phone the plane's tools fold into one Tools button, and every control is big enough for a thumb.
+
 ## Feel: trail, keys, toasts and sound (`web/src/lib/shortcuts.ts`, `web/src/lib/geiger.ts`, `web/src/components/Toaster.tsx`)
 
 As the probe moves it leaves a short fading trail, thick over land and thin over sea; crossing the coast makes the nearby stretch of coast flash (and a phone buzz), and snapping to a candidate sends a ring out from its pin. Keys 1 to 5 jump to the candidates, S shows solids only, G opens the access gap, C opens Compare and ? lists every key; none of them fire while you type. An optional Geiger mode, off until you switch it on, clicks faster where more tests sit near the probe and falls silent at sea, so the plane can be heard as well as seen.
