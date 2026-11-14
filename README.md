@@ -4,7 +4,7 @@ A NASA Space Apps Challenge 2026 entry for **Flame in Freefall: SI-Powered Fire 
 
 NASA has not yet chosen the cabin atmosphere for lunar surface habitats and pressurised rovers. Lower pressure with more oxygen shortens the oxygen prebreathe before a spacewalk, but it changes how materials burn. Redshift puts every microgravity fire test it can trace onto one map of oxygen against cabin pressure, pins the candidate atmospheres on it, and shows what is known about fire near each one and what is missing.
 
-Redshift is a plane, not a score. It never ranks, scores or recommends an atmosphere. Where there are no tests it says "no tests recorded" and draws the area hatched.
+Redshift is a plane, not a score. It never ranks or scores an atmosphere, and it never tells anyone which one to choose. Where there are no tests it says "no tests recorded" and draws the area hatched.
 
 ## Why it matters: the access gap
 
