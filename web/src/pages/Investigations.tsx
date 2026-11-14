@@ -381,7 +381,7 @@ function InvCard({ r, isOpen, selected, canSelect, onToggleSelect, meta }: CardP
 function CompareBar({ ids, byId, onRemove, onClear }: { ids: string[]; byId: Map<string, InvRecord>; onRemove: (id: string) => void; onClear: () => void }) {
   const ready = ids.length >= MIN_COMPARE;
   return (
-    <div className="no-print fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface-2 shadow-lg" role="region" aria-label="Investigations picked for comparison">
+    <div className="no-print fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface-2 shadow-floating" role="region" aria-label="Investigations picked for comparison">
       <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-2 px-4 py-2.5">
         <span className="text-xs text-ink-3">Compare:</span>
         <ul className="flex flex-1 flex-wrap gap-1.5">

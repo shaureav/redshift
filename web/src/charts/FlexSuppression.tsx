@@ -4,7 +4,7 @@
 // Every count comes from flex_suppression.json; this file only draws and lays them out.
 import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
-import { ChartFrame, ErrorNote, FUEL_COLOR_VAR, Loading, markerPath } from "../components/Common";
+import { ChartFrame, ErrorNote, FUEL_COLOR_VAR, FUEL_EDGE_VAR, Loading, markerPath } from "../components/Common";
 import { Pressure, Value } from "../components/Value";
 import { useData } from "../lib/data";
 import type { Val } from "../lib/types";
@@ -48,7 +48,8 @@ function orderedLabels(rec: Record<string, Count>): string[] {
 function UnitMark({ label, r }: { label: string; r: number }) {
   const d = markerPath("droplet", r);
   const col = FUEL_COLOR_VAR.droplet;
-  if (label === EXTINGUISHED) return <path d={d} fill={col} />;
+  const edge = FUEL_EDGE_VAR.droplet;
+  if (label === EXTINGUISHED) return <path d={d} fill={col} stroke={edge} />;
   if (label === "Disruption") {
     // Only the tip filled, so it reads apart from both the filled "Extinction" and the open "Completion"
     // marker without relying on colour.
@@ -56,12 +57,12 @@ function UnitMark({ label, r }: { label: string; r: number }) {
     const half = `M0,${-h} L${0.5 * h},${-0.1 * h} L${-0.5 * h},${-0.1 * h} Z`;
     return (
       <g>
-        <path d={d} fill="var(--surface-2)" stroke={col} strokeWidth={1.6} />
+        <path d={d} fill="var(--surface-2)" stroke={edge} strokeWidth={1.6} />
         <path d={half} fill={col} />
       </g>
     );
   }
-  if (label === "Completion") return <path d={d} fill="var(--surface-2)" stroke={col} strokeWidth={1.6} />;
+  if (label === "Completion") return <path d={d} fill="var(--surface-2)" stroke={edge} strokeWidth={1.6} />;
   return <path d={d} fill="var(--hatch)" />;
 }
 

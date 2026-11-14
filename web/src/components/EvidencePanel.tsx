@@ -10,6 +10,7 @@ import { FUEL_LABEL, fmtNumber } from "../lib/format";
 import { FUELS, type NearTest, type ProbeInput, type Reading } from "../lib/probe";
 import type { Candidate, CandidateEvidence, Val } from "../lib/types";
 import { FuelMarker } from "./Common";
+import { ChevronIcon } from "./Icons";
 import { Value } from "./Value";
 
 export type FlameFile = FlameGrid & { p: string };
@@ -106,7 +107,7 @@ export function FuelRows({ r }: { r: Reading }) {
               {n === 0 ? (
                 <span className="hatch-bg absolute inset-y-0 left-0 right-0 rounded-sm border border-dashed border-line-strong opacity-70" aria-hidden="true" />
               ) : (
-                <span className="bar absolute inset-y-0 left-0 rounded-sm" style={{ width: `${Math.max(2, (n / max) * 100)}%`, background: `var(--${f})`, opacity: 0.85 }} aria-hidden="true" />
+                <span className={`bar fuel-bar fuel-${f} absolute inset-y-0 left-0 rounded-sm`} style={{ width: `${Math.max(2, (n / max) * 100)}%` }} aria-hidden="true" />
               )}
               {/* A solid chip, so the count and the paper label never sit on the bar's fill (AA in both themes). */}
               <span className={`relative ml-auto flex items-baseline gap-2 rounded-sm bg-surface-2 px-2 text-sm ${n === 0 ? "text-ink-2" : ""}`}>
@@ -138,7 +139,7 @@ function StepScrubber({ value, stops, onChange, steps }: { value: number; stops:
       >
         <span className="absolute left-3 right-3 top-1/2 h-px bg-[color:var(--line-strong)]" aria-hidden="true" />
         <span
-          className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[color:var(--accent)] bg-[color:var(--surface)] transition-[left] duration-200 ease-out"
+          className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[color:var(--accent)] bg-[color:var(--surface)] transition-[left] duration-base ease-out"
           style={{ left: `calc(12px + (100% - 24px) * ${stops.length > 1 ? idx / (stops.length - 1) : 0})` }}
           aria-hidden="true"
         />
@@ -183,7 +184,7 @@ function GapMini({ gap, r }: { gap: AccessGapData; r: Reading }) {
               {s.count.v === 0 ? (
                 <span className="hatch-bg absolute inset-0 rounded-sm border border-dashed border-line-strong opacity-70" aria-hidden="true" />
               ) : (
-                <span className="absolute inset-y-0 left-0 rounded-sm" style={{ width: `${(s.count.v / max) * 100}%`, background: "var(--solid)", opacity: 0.85 }} aria-hidden="true" />
+                <span className="fuel-bar fuel-solid absolute inset-y-0 left-0 rounded-sm" style={{ width: `${(s.count.v / max) * 100}%` }} aria-hidden="true" />
               )}
               <span className="relative flex h-6 items-center px-2 text-ink">{s.label.replace(/^\.\.\.\s*/, "… ")}</span>
             </span>
@@ -232,7 +233,7 @@ export function EvidencePanelView({ data, actions, ask }: { data: PanelData; act
         {nearShown.length > 0 && (
           <details className="group mt-4">
             <summary className="flex cursor-pointer list-none items-center gap-2 text-sm text-ink-2 hover:text-ink [&::-webkit-details-marker]:hidden">
-              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" className="flex-none transition-transform duration-200 group-open:rotate-90"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <ChevronIcon className="flex-none transition-transform duration-base group-open:rotate-90" />
               Nearest tests
             </summary>
             <ul className="mt-2 divide-y divide-[color:var(--line)] text-sm">

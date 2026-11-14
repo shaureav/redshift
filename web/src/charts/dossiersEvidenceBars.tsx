@@ -3,7 +3,7 @@
 // Counts come from candidate_evidence.json; this file only draws them.
 import * as d3 from "d3";
 import { useLayoutEffect, useRef, useState } from "react";
-import { ChartFrame, FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
+import { ChartFrame, FUEL_COLOR_VAR, FUEL_EDGE_VAR, Hatch, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
 import { CountCell, FUEL_CLASSES, FuelName } from "../components/dossiersShared";
 import { FUEL_LABEL, fmtNumber } from "../lib/format";
@@ -88,7 +88,7 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
             {FUEL_CLASSES.map((f, i) => (
               <g key={f} transform={`translate(0,${i * rowH + 9})`}>
                 <g transform={`translate(${-labelW + 8},${barH + gap / 2})`}>
-                  <path d={markerPath(f, 5)} fill={FUEL_COLOR_VAR[f]} transform="translate(5,0)" />
+                  <path d={markerPath(f, 5)} fill={FUEL_COLOR_VAR[f]} stroke={FUEL_EDGE_VAR[f]} transform="translate(5,0)" />
                   <text x={16} dy="0.32em" fontSize={12} fill="var(--ink)">{narrow && f === "emulator" ? "Emulator" : FUEL_LABEL[f]}</text>
                 </g>
                 {SOURCES.map((s, j) => {
@@ -112,8 +112,8 @@ export function DossierEvidenceBars({ c, ev, domainMax }: { c: Candidate; ev: Ca
                       <path
                         d={`M0,0 H${w - 3} Q${w},0 ${w},3 V${barH - 3} Q${w},${barH} ${w - 3},${barH} H0 Z`}
                         fill={outline ? "var(--surface-2)" : FUEL_COLOR_VAR[f]}
-                        stroke={outline ? FUEL_COLOR_VAR[f] : "none"}
-                        strokeWidth={outline ? 1.5 : 0}
+                        stroke={FUEL_EDGE_VAR[f]}
+                        strokeWidth={outline ? 1.5 : 1}
                       />
                       <text x={w + 6} y={barH / 2} dy="0.32em" fontSize={12} fill="var(--ink)" className="num">
                         {fmtNumber(val.v, 0)}

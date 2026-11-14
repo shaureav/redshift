@@ -11,8 +11,10 @@ import {
   type InvRecord,
   invClass,
   invColor,
+  invEdge,
   invMarkerPath,
   invName,
+  invRing,
   parsePsiDate,
   SVG_ROW_HIGHLIGHT,
   Tooltip,
@@ -163,6 +165,8 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
           {dated.map(({ r, start, end }, i) => {
             const c = invClass(r);
             const col = invColor(c);
+            const edge = invEdge(c);
+            const ring = invRing(c);
             const cy = i * rowH + rowH / 2;
             const x0 = x(start!);
             const x1 = end ? x(end) : null;
@@ -194,8 +198,8 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                     rx={2}
                     fill={r.has_table ? col : "var(--surface-2)"}
                     fillOpacity={r.has_table ? 0.8 : 1}
-                    stroke={col}
-                    strokeWidth={r.has_table ? 0 : 1.5}
+                    stroke={edge}
+                    strokeWidth={r.has_table ? 1 : 1.5}
                   />
                 ) : (
                   <g>
@@ -207,7 +211,7 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                   d={invMarkerPath(c, 5)}
                   transform={`translate(${x0},${cy})`}
                   fill={r.has_table ? col : "var(--surface-2)"}
-                  stroke={r.has_table ? "var(--surface-2)" : col}
+                  stroke={r.has_table ? ring : edge}
                   strokeWidth={r.has_table ? 2 : 1.75}
                 />
               </g>
@@ -232,6 +236,8 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
               {undated.map(({ r }, i) => {
                 const c = invClass(r);
                 const col = invColor(c);
+                const edge = invEdge(c);
+                const ring = invRing(c);
                 const slot = iw / undated.length;
                 const cx = slot * i + 14;
                 const cy = (laneH - 8) / 2;
@@ -255,7 +261,7 @@ function TimelineChart({ rows, openId, onOpen }: { rows: Row[]; openId?: string 
                       d={invMarkerPath(c, 5)}
                       transform={`translate(${cx},${cy})`}
                       fill={r.has_table ? col : "var(--surface-2)"}
-                      stroke={r.has_table ? "var(--surface-2)" : col}
+                      stroke={r.has_table ? ring : edge}
                       strokeWidth={r.has_table ? 2 : 1.75}
                     />
                     <text x={cx + 11} y={cy} dy="0.32em" fontSize={narrow ? 10 : 11} fontWeight={on ? 600 : 400} fill="var(--ink-2)">

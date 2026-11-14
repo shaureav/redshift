@@ -3,11 +3,32 @@
 import { useRef, useState, type ReactNode } from "react";
 import { FUEL_LABEL } from "../lib/format";
 
+/** The validated fill of each fuel class. */
 export const FUEL_COLOR_VAR: Record<string, string> = {
   gas: "var(--gas)",
   droplet: "var(--droplet)",
   solid: "var(--solid)",
   emulator: "var(--emulator)",
+  none: "var(--ink-3)",
+};
+
+/** The 1 px ring around a filled glyph that sits among others: the surface (a gap between neighbours) in the
+ *  dark theme, a darker shade of the class hue in the light theme, so every glyph reaches 3:1. */
+export const FUEL_RING_VAR: Record<string, string> = {
+  gas: "var(--gas-ring)",
+  droplet: "var(--droplet-ring)",
+  solid: "var(--solid-ring)",
+  emulator: "var(--emulator-ring)",
+  none: "var(--surface-2)",
+};
+
+/** The class hue drawn as a line: outlined (paper) glyphs, legend markers, the edge of a bar. The hue itself
+ *  in the dark theme, the darker ring shade in the light theme. */
+export const FUEL_EDGE_VAR: Record<string, string> = {
+  gas: "var(--gas-edge)",
+  droplet: "var(--droplet-edge)",
+  solid: "var(--solid-edge)",
+  emulator: "var(--emulator-edge)",
   none: "var(--ink-3)",
 };
 
@@ -34,7 +55,7 @@ export function FuelMarker({ fuel, size = 12, outlined = false }: { fuel: string
       <path
         d={markerPath(fuel, r)}
         fill={outlined ? "none" : FUEL_COLOR_VAR[fuel]}
-        stroke={FUEL_COLOR_VAR[fuel]}
+        stroke={FUEL_EDGE_VAR[fuel]}
         strokeWidth={outlined ? 2 : 1}
       />
     </svg>
@@ -64,10 +85,11 @@ export function SourceLegend() {
   );
 }
 
+/** The one hatch (plan, section 5): 45 degrees, 7 px pitch, 1 px line; .hatch-bg in index.css draws the same. */
 export function Hatch({ id = "hatch" }: { id?: string }) {
   return (
     <pattern id={id} width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <line x1="0" y1="0" x2="0" y2="7" stroke="var(--hatch)" strokeWidth="1.2" />
+      <line x1="0" y1="0" x2="0" y2="7" stroke="var(--hatch)" strokeWidth="1" />
     </pattern>
   );
 }
@@ -75,7 +97,7 @@ export function Hatch({ id = "hatch" }: { id?: string }) {
 export function Badge({ children, tone = "neutral", title }: { children: ReactNode; tone?: "neutral" | "amber" | "teal"; title?: string }) {
   const cls =
     tone === "amber"
-      ? "border-[color:var(--solid)] text-[color:var(--amber-ink)]"
+      ? "border-[color:var(--solid-edge)] text-amber-ink"
       : tone === "teal"
         ? "border-accent text-accent"
         : "border-line text-ink-2";

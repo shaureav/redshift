@@ -5,6 +5,7 @@
 import { useEffect, type ReactNode } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { Badge, ErrorNote, FuelMarker, Loading, PageHeader } from "../components/Common";
+import { ChevronIcon } from "../components/Icons";
 import { Pressure, Value } from "../components/Value";
 import { useData, useProvenance } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
@@ -105,7 +106,7 @@ function Collapsible({ id, summary, children, state }: { id: string; summary: Re
       onToggle={(e) => state.set(id, (e.currentTarget as HTMLDetailsElement).open)}
     >
       <summary className="cursor-pointer select-none list-none rounded-lg px-3 py-2 text-sm hover:bg-surface-3 [&::-webkit-details-marker]:hidden">
-        <span className="mr-2 inline-block text-ink-3 transition-transform group-open:rotate-90" aria-hidden="true">&#9656;</span>
+        <ChevronIcon className="mr-2 inline-block align-[-3px] text-ink-3 transition-transform group-open:rotate-90" />
         {summary}
       </summary>
       <div className="border-t border-line px-3 py-3">{children}</div>

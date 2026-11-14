@@ -2,7 +2,7 @@
 // Bar ends sit at the recorded minimum and maximum from the build; only the geometry is computed here.
 import * as d3 from "d3";
 import { Pressure, Value } from "../components/Value";
-import { type InvClass, invColor, invMarkerPath, type StatRange, useElementWidth } from "./investigationsShared";
+import { type InvClass, invColor, invEdge, invMarkerPath, invRing, type StatRange, useElementWidth } from "./investigationsShared";
 
 export type Domain = [number, number];
 
@@ -66,6 +66,7 @@ function RangeCellBody({ range, kpa, domain, cls, hasTable, hasColumn, label, un
   const x0 = x(range.min.v);
   const x1 = x(range.max.v);
   const col = invColor(cls);
+  const ring = invRing(cls);
   const ticks = x.ticks(width < 200 ? 2 : 4);
   const fmt = x.tickFormat(width < 200 ? 2 : 4);
   return (
@@ -79,10 +80,10 @@ function RangeCellBody({ range, kpa, domain, cls, hasTable, hasColumn, label, un
           </g>
         ))}
         {x1 - x0 >= 3 ? (
-          <rect x={x0} y={7} width={x1 - x0} height={8} rx={2} fill={col} fillOpacity={0.8} />
+          <rect x={x0} y={7} width={x1 - x0} height={8} rx={2} fill={col} fillOpacity={0.8} stroke={invEdge(cls)} />
         ) : null}
-        <path d={invMarkerPath(cls, 4.5)} transform={`translate(${x0},11)`} fill={col} stroke="var(--surface-2)" strokeWidth={2} />
-        {x1 - x0 >= 3 && <path d={invMarkerPath(cls, 4.5)} transform={`translate(${x1},11)`} fill={col} stroke="var(--surface-2)" strokeWidth={2} />}
+        <path d={invMarkerPath(cls, 4.5)} transform={`translate(${x0},11)`} fill={col} stroke={ring} strokeWidth={2} />
+        {x1 - x0 >= 3 && <path d={invMarkerPath(cls, 4.5)} transform={`translate(${x1},11)`} fill={col} stroke={ring} strokeWidth={2} />}
       </svg>
       <div className="mt-0.5 text-xs text-ink-2">
         {kpa ? (

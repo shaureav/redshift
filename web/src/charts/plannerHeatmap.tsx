@@ -5,7 +5,7 @@
 // Every value comes from planner_grid.json; this file only places and shades them.
 import * as d3 from "d3";
 import { useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
-import { FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
+import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, Hatch, markerPath } from "../components/Common";
 import { FUEL_LABEL, fmtNumber } from "../lib/format";
 import type { Candidate, Val } from "../lib/types";
 import { PRESET_LABEL, type PlannerFile, type PlannerGridCell, type PlannerMaterial, type PresetKey } from "./plannerShared";
@@ -134,7 +134,7 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
             <g key={mat} transform={`translate(${px},${py})`} role="group" aria-label={`${FUEL_LABEL[mat]} panel`}>
               {/* panel title: marker shape and colour, label, weight in this preset */}
               <g transform={`translate(${m.left},14)`}>
-                <path d={markerPath(mat, 5)} transform="translate(5,0)" fill={FUEL_COLOR_VAR[mat]} stroke={FUEL_COLOR_VAR[mat]} />
+                <path d={markerPath(mat, 5)} transform="translate(5,0)" fill={FUEL_COLOR_VAR[mat]} stroke={FUEL_EDGE_VAR[mat]} />
                 <text x={16} dy="0.35em" fontSize={14} fontWeight={600} fill="var(--ink)">{FUEL_LABEL[mat]}</text>
                 <text x={iw} dy="0.35em" textAnchor="end" fontSize={12} fill="var(--ink-2)" className="num">
                   weight {fmtNumber(weight, 1)}
@@ -228,7 +228,7 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
       <style>{`.planner-cell:focus-visible .planner-focus{opacity:1}`}</style>
       {tip && (
         <div
-          className="pointer-events-none absolute z-30 w-60 -translate-x-1/2 -translate-y-full rounded-md border border-line bg-surface-2 px-3 py-2 text-xs shadow-lg"
+          className="pointer-events-none absolute z-30 w-60 -translate-x-1/2 -translate-y-full floating px-3 py-2 text-xs"
           style={{ left: Math.min(Math.max(tip.x, 124), width - 124), top: tip.y - 8 }}
           aria-hidden="true"
         >

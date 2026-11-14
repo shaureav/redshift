@@ -8,7 +8,7 @@
 // while the probe moves, so a drag stays within a frame even with a thousand glyphs on the plane.
 import * as d3 from "d3";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
+import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { fmtNumber, FUEL_LABEL } from "../lib/format";
 import { snapIndex, type Grid } from "../lib/probe";
 import type { Candidate } from "../lib/types";
@@ -218,7 +218,7 @@ export function Plane(props: Props) {
   const tag = `${fmtNumber(probe.o2)}% O2 · ${fmtNumber(probe.psi)} psi`;
   const tagW = tag.length * 7 + 16;
   const tagLeft = pxp + 16 + tagW > iw;
-  const glide = dragging ? "none" : "transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1)";
+  const glide = dragging ? "none" : "transform var(--t-move) var(--ease-out)";
 
   return (
     <div ref={wrap} className="relative h-full w-full select-none">
@@ -366,7 +366,7 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
 
         <g clipPath="url(#plane-clip)">
           <g className="layer" data-on={layers.has("blind")}>
-            {blind.map((b) => <rect key={b.key} x={b.x} y={b.y} width={b.w} height={b.h} fill="url(#hatch-plane)" opacity={solids ? 0.7 : 0.4} style={{ transition: "opacity 400ms" }} />)}
+            {blind.map((b) => <rect key={b.key} x={b.x} y={b.y} width={b.w} height={b.h} fill="url(#hatch-plane)" opacity={solids ? 0.7 : 0.4} style={{ transition: "opacity var(--t-move) var(--ease-out)" }} />)}
           </g>
 
           <g className="layer" data-on={layers.has("ft")}>
@@ -405,7 +405,7 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
           {solids && !placedSolid && (
             narrow ? (
               <g className="animate-fade" transform={`translate(${iw / 2},${ih - 40})`}>
-                <rect x={-Math.min(140, iw / 2 - 8)} y={-24} width={Math.min(280, iw - 16)} height={48} rx={8} fill="var(--surface)" stroke="var(--solid)" strokeOpacity={0.6} />
+                <rect x={-Math.min(140, iw / 2 - 8)} y={-24} width={Math.min(280, iw - 16)} height={48} rx={8} fill="var(--surface)" stroke="var(--solid-edge)" strokeOpacity={0.6} />
                 <text textAnchor="middle" fontSize={14} fontWeight={600} fill="var(--ink)">
                   <tspan x={0} dy={-4}>No solid-material test can be</tspan>
                   <tspan x={0} dy={18}>placed on this plane</tspan>
@@ -413,7 +413,7 @@ const PlaneBase = memo(function PlaneBase({ frame, map, candidates, flame, plann
               </g>
             ) : (
               <g className="animate-fade" transform={`translate(${iw / 2},${ih - 40})`}>
-                <rect x={-250} y={-22} width={500} height={40} rx={8} fill="var(--surface)" stroke="var(--solid)" strokeOpacity={0.6} />
+                <rect x={-250} y={-22} width={500} height={40} rx={8} fill="var(--surface)" stroke="var(--solid-edge)" strokeOpacity={0.6} />
                 <text textAnchor="middle" dy={4} fontSize={20} fontWeight={600} fill="var(--ink)">No solid-material test can be placed on this plane</text>
               </g>
             )
@@ -464,10 +464,10 @@ const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top, nar
         yy += hh + 4;
         const ghost = solids && s.fuel_class !== "solid";
         return (
-          <g key={`${s.fuel_class}${s.source_type}`} transform={`translate(0,${at})`} style={{ opacity: ghost ? 0.25 : 1, transition: "opacity 360ms" }}>
+          <g key={`${s.fuel_class}${s.source_type}`} transform={`translate(0,${at})`} style={{ opacity: ghost ? 0.25 : 1, transition: "opacity var(--t-move) var(--ease-out)" }}>
             <rect width={iw} height={hh} fill="url(#hatch-plane)" opacity={solids && s.fuel_class === "solid" ? 0.6 : 0.3} rx={2} />
             {s.items.filter((it) => it.o2_pct >= z.o2[0] && it.o2_pct <= z.o2[1]).map((it) => (
-              <path key={it.p} d={markerPath(s.fuel_class, Math.min(hh / 2 - 1, 3 + Math.sqrt(it.n)))} transform={`translate(${x(it.o2_pct)},${hh / 2})`} fill={FUEL_COLOR_VAR[s.fuel_class]} stroke="var(--surface-2)">
+              <path key={it.p} d={markerPath(s.fuel_class, Math.min(hh / 2 - 1, 3 + Math.sqrt(it.n)))} transform={`translate(${x(it.o2_pct)},${hh / 2})`} fill={FUEL_COLOR_VAR[s.fuel_class]} stroke={FUEL_RING_VAR[s.fuel_class]}>
                 <title>{`${it.n} ${s.unit === "sessions" ? "BRE sessions list" : FUEL_LABEL[s.fuel_class].toLowerCase() + " tests at"} ${fmtNumber(it.o2_pct, 1)}% O2, pressure not recorded (${it.investigations.join(", ")})`}</title>
               </path>
             ))}
@@ -494,7 +494,7 @@ const GlyphLayer = memo(function GlyphLayer({ on, points, x, y, r, solids }: { o
             transform={`translate(${x(p.o2_pct)},${y(p.pressure_psi)})`}
             fill={outline ? "var(--surface-2)" : FUEL_COLOR_VAR[p.fuel_class]}
             fillOpacity={outline ? 1 : 0.85}
-            stroke={outline ? FUEL_COLOR_VAR[p.fuel_class] : "var(--surface-2)"}
+            stroke={outline ? FUEL_EDGE_VAR[p.fuel_class] : FUEL_RING_VAR[p.fuel_class]}
             strokeWidth={outline ? 2 : 1}
           />
         );

@@ -5,6 +5,7 @@ import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useData } from "../lib/data";
 import type { DatasetVersion } from "../lib/types";
 import { CommandPalette, PALETTE_EVENT, THEME_EVENT } from "./CommandPalette";
+import { ChevronIcon, MoonIcon, SearchIcon, SunIcon } from "./Icons";
 
 const REFERENCE: [string, string, string][] = [
   ["/evidence", "Evidence Explorer", "Every test row with its source"],
@@ -21,7 +22,9 @@ function useTheme(): ["dark" | "light", () => void] {
   useEffect(() => {
     if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
     else document.documentElement.removeAttribute("data-theme");
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "light" ? "#f6f7f9" : "#0a1322");
+    // The browser chrome takes the page surface, read from the token so no colour is written twice.
+    const surface = getComputedStyle(document.documentElement).getPropertyValue("--surface").trim();
+    if (surface) document.querySelector('meta[name="theme-color"]')?.setAttribute("content", surface);
     try {
       localStorage.setItem("redshift-theme", theme);
     } catch {
@@ -55,11 +58,11 @@ function ReferenceMenu() {
     <div className="relative" ref={ref}>
       <button type="button" className={`btn btn-quiet max-sm:px-2 ${activeRef ? "text-ink" : ""}`} aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>
         Reference
-        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" className={`transition-transform ${open ? "rotate-180" : ""}`}><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.5" /></svg>
+        <ChevronIcon dir="down" className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
         // On a phone the menu spans the screen under the nav, so it never runs past the right edge.
-        <ul className="animate-rise absolute left-0 top-full z-50 mt-2 w-72 rounded-lg border border-line-strong bg-surface-2 p-2 max-sm:fixed max-sm:inset-x-4 max-sm:top-14 max-sm:w-auto" style={{ boxShadow: "var(--shadow)" }}>
+        <ul className="floating animate-rise absolute left-0 top-full z-50 mt-2 w-72 p-2 max-sm:fixed max-sm:inset-x-4 max-sm:top-14 max-sm:w-auto">
           {/* Below 640 px Compare lives here rather than in the nav row, so the row fits a 360 px screen. */}
           <li className="sm:hidden">
             <NavLink to="/compare" className={({ isActive }) => `block rounded-md px-3 py-2 ${isActive ? "bg-[color:var(--surface-3)]" : "hover:bg-[color:var(--surface-3)]"}`}>
@@ -104,15 +107,15 @@ export function Layout() {
           <ReferenceMenu />
           <span className="ml-auto flex flex-none items-center gap-1 sm:gap-2">
             <button type="button" className="btn btn-quiet max-sm:px-2" onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))} aria-label="Search and jump (Command K)">
-              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" /><path d="M11 11l3 3" stroke="currentColor" strokeWidth="1.5" /></svg>
+              <SearchIcon />
               <span className="hidden md:inline">Search</span>
               <span className="kbd hidden md:inline">{isMac ? "⌘" : "Ctrl"} K</span>
             </button>
             <button type="button" className="btn btn-quiet max-sm:px-2" onClick={toggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}>
               {theme === "light" ? (
-                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 9.5A5.5 5.5 0 1 1 6.5 3a4.5 4.5 0 0 0 6.5 6.5z" fill="currentColor" /></svg>
+                <MoonIcon />
               ) : (
-                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="currentColor" /><g stroke="currentColor" strokeWidth="1.5">{[0, 45, 90, 135, 180, 225, 270, 315].map((a) => <line key={a} x1="8" y1="1.5" x2="8" y2="3" transform={`rotate(${a} 8 8)`} />)}</g></svg>
+                <SunIcon />
               )}
             </button>
           </span>

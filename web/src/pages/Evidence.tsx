@@ -463,7 +463,7 @@ export default function Evidence() {
 
       {openRow && <EvidenceDrawer row={openRow} flags={flagMap} onClose={() => openTest(null)} />}
       {openId && !openRow && rows.length > 0 && (
-        <div role="status" className="fixed bottom-4 right-4 z-50 rounded-md border border-line bg-surface-2 p-3 text-sm shadow-lg">
+        <div role="status" className="floating fixed bottom-4 right-4 z-50 p-3 text-sm">
           No test with id <span className="mono">{openId}</span> in this snapshot.{" "}
           <button type="button" className="underline" onClick={() => openTest(null)}>Dismiss</button>
         </div>

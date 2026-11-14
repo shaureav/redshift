@@ -93,3 +93,7 @@ If any page of the website hits an error while it is drawing, the reader sees a 
 ## The website's Value popover (`web/src/components/Value.tsx`)
 
 On the website, every number is drawn by one shared piece of code, and every number is a button. Click it and a small box shows where it came from: the file and line, or the paper and page, the original text, and whether a person has verified it. If a value was never recorded, it says "not recorded" instead of showing a made-up number.
+
+## Design tokens and the contrast check (`web/src/index.css`, `web/scripts/contrast.mjs`)
+
+Every colour, text size, animation time and shadow on the website is set once, in one stylesheet, and every screen uses those settings instead of its own. A small program reads that stylesheet and measures the contrast of every pairing that matters, in the dark and the light theme: text must be clearly readable (4.5 to 1), and every data marker and every control's edge must stand out from what is behind it (3 to 1). If a change ever breaks that, or brings red into the palette, the tests fail.

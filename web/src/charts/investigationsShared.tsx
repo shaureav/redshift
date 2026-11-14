@@ -2,7 +2,7 @@
 // Nothing here produces a displayed number: counts and ranges come from the snapshot as {v,u,p}.
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { FUEL_COLOR_VAR, markerPath } from "../components/Common";
+import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, markerPath } from "../components/Common";
 import { ProvDetails } from "../components/Value";
 import { useProvenance } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
@@ -134,6 +134,16 @@ export function invColor(c: InvClass): string {
   return c === "model" || c === "none" ? "var(--ink-3)" : FUEL_COLOR_VAR[c];
 }
 
+/** The class drawn as a line: outlines, legend markers, bar edges (see FUEL_EDGE_VAR). */
+export function invEdge(c: InvClass): string {
+  return c === "model" || c === "none" ? "var(--ink-3)" : FUEL_EDGE_VAR[c];
+}
+
+/** The 1 px ring around a filled mark among others (see FUEL_RING_VAR). */
+export function invRing(c: InvClass): string {
+  return c === "model" || c === "none" ? "var(--surface-2)" : FUEL_RING_VAR[c];
+}
+
 // Marker shape per class. The four fuel classes use the shared shapes; the two non-fuel classes get
 // their own so that shape alone still separates every class.
 export function invMarkerPath(c: InvClass, r: number): string {
@@ -152,7 +162,7 @@ export function InvMarker({ c, size = 12, outlined = false, title }: { c: InvCla
   const r = size / 2 - 1.5;
   return (
     <svg width={size} height={size} viewBox={`${-size / 2} ${-size / 2} ${size} ${size}`} aria-hidden={title ? undefined : true} role={title ? "img" : undefined} aria-label={title} className="inline-block shrink-0 align-[-2px]">
-      <path d={invMarkerPath(c, r)} fill={outlined ? "none" : invColor(c)} stroke={invColor(c)} strokeWidth={outlined ? 1.75 : 1} />
+      <path d={invMarkerPath(c, r)} fill={outlined ? "none" : invColor(c)} stroke={invEdge(c)} strokeWidth={outlined ? 1.75 : 1} />
     </svg>
   );
 }
@@ -245,10 +255,10 @@ export function MetaFlagBadges({ flags }: { flags: MetaFlag[] }) {
           <span
             title={f.details.join("\n\n")}
             className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium ${
-              f.severity === "info" ? "border-line text-ink-2" : "border-[color:var(--solid)] text-[color:var(--amber-ink)]"
+              f.severity === "info" ? "border-line text-ink-2" : "border-[color:var(--solid-edge)] text-amber-ink"
             }`}
           >
-            <span aria-hidden="true">&#9873;</span> {f.title}
+            <span aria-hidden="true">{"\u2691"}</span> {f.title}
           </span>
         </li>
       ))}
@@ -334,7 +344,7 @@ function SourcePopover({ id, provId, onClose }: { id: string; provId: string; on
   const { data, isLoading, error } = useProvenance(true);
   const prov = data?.[provId];
   return (
-    <div id={id} role="dialog" aria-label="Source of this text" className="absolute left-0 top-full z-50 mt-1 w-[22rem] max-w-[85vw] rounded-lg border border-line bg-surface-2 p-3 text-left text-ink shadow-xl">
+    <div id={id} role="dialog" aria-label="Source of this text" className="absolute left-0 top-full z-50 mt-1 w-[22rem] max-w-[85vw] floating p-3 text-left text-ink">
       <div className="mb-1 flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-ink-2">Where this text comes from</span>
         <button type="button" className="text-xs text-ink-3 hover:text-ink" onClick={onClose} aria-label="Close">Close</button>
@@ -386,7 +396,7 @@ export const SVG_ROW_HIGHLIGHT = "group-hover:fill-[color:var(--surface-3)] grou
 
 export function Tooltip({ x, y, children }: { x: number; y: number; children: ReactNode }) {
   return (
-    <div className="pointer-events-none absolute z-30 max-w-xs -translate-x-1/2 -translate-y-full rounded-md border border-line bg-surface-2 px-3 py-2 text-xs shadow-lg" style={{ left: x, top: y - 8 }}>
+    <div className="pointer-events-none absolute z-30 max-w-xs -translate-x-1/2 -translate-y-full floating px-3 py-2 text-xs" style={{ left: x, top: y - 8 }}>
       {children}
     </div>
   );

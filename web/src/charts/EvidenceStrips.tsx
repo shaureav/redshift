@@ -5,7 +5,7 @@
 import * as d3 from "d3";
 import type { ReactElement } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ChartFrame, ErrorNote, FUEL_COLOR_VAR, FuelMarker, Hatch, Loading, markerPath } from "../components/Common";
+import { ChartFrame, ErrorNote, FUEL_COLOR_VAR, FUEL_EDGE_VAR, FuelMarker, Hatch, Loading, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
 import { useData } from "../lib/data";
 import { FUEL_LABEL } from "../lib/format";
@@ -58,7 +58,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
     const cx = labelW + j * colW + 4;
     marks.push(
       <g key={`head${f}`} transform={`translate(${cx},12)`}>
-        <path d={markerPath(f, 5)} transform="translate(5,0)" fill={FUEL_COLOR_VAR[f]} />
+        <path d={markerPath(f, 5)} transform="translate(5,0)" fill={FUEL_COLOR_VAR[f]} stroke={FUEL_EDGE_VAR[f]} />
         <text x={15} dominantBaseline="central" fontSize={narrow ? 10.5 : 12} fontWeight={600} fill="var(--ink)">
           {narrow ? FUEL_TINY[f] : FUEL_SHORT[f]}
         </text>
@@ -159,8 +159,8 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
             d={barPath(bw, barH, 3)}
             transform={`translate(${cx},${cy - barH / 2})`}
             fill={paper ? "var(--surface-2)" : FUEL_COLOR_VAR[f]}
-            stroke={paper ? FUEL_COLOR_VAR[f] : "none"}
-            strokeWidth={paper ? 1.5 : 0}
+            stroke={FUEL_EDGE_VAR[f]}
+            strokeWidth={paper ? 1.5 : 1}
           >
             <title>{`${FUEL_LABEL[f]}, ${r.label}: ${valText(val, "tests")} near ${c.name}`}</title>
           </path>,

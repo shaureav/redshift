@@ -210,11 +210,11 @@ export function Tour({ onStep }: { onStep?: (i: number) => void }) {
       {rect ? (
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed rounded-lg transition-all duration-300 ease-out"
-          style={{ left: rect.left - pad, top: rect.top - pad, width: rect.width + pad * 2, height: rect.height + pad * 2, boxShadow: "0 0 0 9999px rgba(4, 9, 18, 0.72), 0 0 0 2px var(--accent)" }}
+          className="pointer-events-none fixed rounded-lg transition-all duration-move ease-out"
+          style={{ left: rect.left - pad, top: rect.top - pad, width: rect.width + pad * 2, height: rect.height + pad * 2, boxShadow: "0 0 0 9999px var(--veil), 0 0 0 2px var(--accent)" }}
         />
       ) : (
-        <div aria-hidden="true" className="fixed inset-0 bg-[rgba(4,9,18,0.72)]" />
+        <div aria-hidden="true" className="fixed inset-0 bg-[color:var(--veil)]" />
       )}
       <div
         ref={card}
@@ -222,8 +222,8 @@ export function Tour({ onStep }: { onStep?: (i: number) => void }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="tour-title"
-        className="animate-rise fixed rounded-lg border border-line-strong bg-surface-2 p-5 outline-none"
-        style={{ left, top, width: cardW, boxShadow: "var(--shadow)" }}
+        className="floating animate-rise fixed p-5 outline-none"
+        style={{ left, top, width: cardW }}
       >
         <div className="flex items-center justify-between">
           <span className="eyebrow">Step {step + 1} of {STEPS.length}</span>

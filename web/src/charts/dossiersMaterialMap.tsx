@@ -5,7 +5,7 @@
 import * as d3 from "d3";
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChartFrame, FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
+import { ChartFrame, FUEL_COLOR_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { Pressure, Value } from "../components/Value";
 import { isAboutPressure } from "../components/dossiersShared";
 import { fmtNumber } from "../lib/format";
@@ -108,7 +108,7 @@ function Plane({ tests, candidates, label }: { tests: TestRow[]; candidates: Can
           {psiTicks.map((p) => <line key={p} x1={0} x2={iw} y1={y(p)} y2={y(p)} stroke="var(--line)" />)}
           {x.ticks(narrow ? 4 : 8).map((t) => <line key={t} y1={0} y2={ih} x1={x(t)} x2={x(t)} stroke="var(--line)" />)}
           {pts.map((t) => (
-            <path key={t.test_id} d={markerPath("solid", 4.5)} transform={`translate(${x(t.fields.o2_pct.v)},${y(t.fields.pressure_psi.v)})`} fill={FUEL_COLOR_VAR.solid} stroke="var(--surface-2)" strokeWidth={2}>
+            <path key={t.test_id} d={markerPath("solid", 4.5)} transform={`translate(${x(t.fields.o2_pct.v)},${y(t.fields.pressure_psi.v)})`} fill={FUEL_COLOR_VAR.solid} stroke={FUEL_RING_VAR.solid} strokeWidth={2}>
               <title>{`${t.test_id}: ${fmtNumber(t.fields.o2_pct.v, 1)}% O2, ${fmtNumber(t.fields.pressure_psi.v, 2)} psi`}</title>
             </path>
           ))}
@@ -197,7 +197,7 @@ function StripView({ tests, candidates, label }: { tests: TestRow[]; candidates:
           })}
           {stacks.map(([o2, g]) =>
             g.map((t, k) => (
-              <path key={t.test_id} d={markerPath("solid", 4)} transform={`translate(${x(o2)},${base - k * step})`} fill={FUEL_COLOR_VAR.solid} stroke="var(--surface-2)" strokeWidth={2}>
+              <path key={t.test_id} d={markerPath("solid", 4)} transform={`translate(${x(o2)},${base - k * step})`} fill={FUEL_COLOR_VAR.solid} stroke={FUEL_RING_VAR.solid} strokeWidth={2}>
                 <title>{`${t.test_id}: ${fmtNumber(o2, 1)}% O2, pressure not recorded`}</title>
               </path>
             )),

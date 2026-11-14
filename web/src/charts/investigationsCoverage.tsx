@@ -14,6 +14,7 @@ import {
   coverageState,
   invClass,
   invColor,
+  invEdge,
   invMarkerPath,
   invName,
   statFor,
@@ -156,7 +157,7 @@ function CoverageMatrix({ items, openId, onOpen }: Props) {
                 d={invMarkerPath(invClass(r), 4)}
                 transform={`translate(7,${y0 + rowH / 2})`}
                 fill={r.has_table ? invColor(invClass(r)) : "var(--surface-2)"}
-                stroke={invColor(invClass(r))}
+                stroke={invEdge(invClass(r))}
                 strokeWidth={r.has_table ? 1 : 1.5}
               />
               <text x={17} y={y0 + rowH / 2} dy="0.32em" fontSize={12} fontWeight={on ? 600 : 400} fill={on ? "var(--ink)" : "var(--ink-2)"}>

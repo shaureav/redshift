@@ -9,6 +9,10 @@ EM = chr(0x2014)
 SCAN = [
     "redshift",
     "web/src",
+    "web/scripts",
+    "web/tailwind.config.js",
+    "web/vite.config.ts",
+    "web/index.html",
     "scripts",
     "tests",
     "README.md",
@@ -20,7 +24,7 @@ SCAN = [
     "docs/DECISIONS.md",
     "docs/OPEN_QUESTIONS.md",
 ]
-EXT = {".py", ".ts", ".tsx", ".md", ".css", ".json"}
+EXT = {".py", ".ts", ".tsx", ".md", ".css", ".json", ".mjs", ".js", ".html"}
 
 
 def main() -> int:

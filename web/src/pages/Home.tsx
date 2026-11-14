@@ -141,7 +141,7 @@ export default function Home() {
           </h1>
           <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
             {/* On a phone the controls scroll sideways in one row, so the plane stays above the fold. */}
-            <button type="button" role="switch" aria-checked={view.solids} onClick={() => setView({ solids: !view.solids })} className={`chip flex-none whitespace-nowrap ${view.solids ? "border-[color:var(--solid)] text-ink" : ""}`} id="tour-solids">
+            <button type="button" role="switch" aria-checked={view.solids} onClick={() => setView({ solids: !view.solids })} className={`chip flex-none whitespace-nowrap ${view.solids ? "border-[color:var(--solid-edge)] text-ink" : ""}`} id="tour-solids">
               <span className="switch" aria-checked={view.solids} aria-hidden="true" /> Solids only
             </button>
             <span className="mx-1 hidden h-6 w-px bg-[color:var(--line)] sm:block" aria-hidden="true" />
@@ -275,7 +275,7 @@ function LayerMenu({ layers, onToggle }: { layers: Set<string>; onToggle: (l: (t
     <div ref={ref}>
       <button ref={btn} type="button" className="btn" aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>Layers</button>
       {open && pos && (
-        <div className="animate-rise fixed z-30 overflow-y-auto rounded-lg border border-line-strong bg-surface-2 p-2" style={{ top: pos.top, left: pos.left, width: pos.width, maxHeight: pos.maxHeight, boxShadow: "var(--shadow)" }} role="group" aria-label="Layers">
+        <div className="floating animate-rise fixed z-30 overflow-y-auto p-2" style={{ top: pos.top, left: pos.left, width: pos.width, maxHeight: pos.maxHeight }} role="group" aria-label="Layers">
           {LAYERS.map((l) => (
             <button key={l.id} type="button" role="switch" aria-checked={layers.has(l.id)} onClick={() => onToggle(l.id)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-[color:var(--surface-3)]">
               {l.label}

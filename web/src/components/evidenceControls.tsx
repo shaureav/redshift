@@ -167,7 +167,7 @@ export function EvidenceColumnMenu({ columns, onChange, defaults }: { columns: C
       <summary className="cursor-pointer list-none rounded border border-line px-2.5 py-1.5 hover:bg-surface-3" aria-controls={panelId}>
         Columns
       </summary>
-      <div id={panelId} className="absolute right-0 z-30 mt-1 max-h-[60vh] w-64 max-w-[85vw] overflow-auto rounded-lg border border-line bg-surface-2 p-3 shadow-xl">
+      <div id={panelId} className="absolute right-0 z-30 mt-1 max-h-[60vh] w-64 max-w-[85vw] overflow-auto floating p-3">
         <fieldset>
           <legend className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-2">Visible columns</legend>
           <ul className="flex flex-col gap-1 text-sm">

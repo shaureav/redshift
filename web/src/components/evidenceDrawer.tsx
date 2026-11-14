@@ -81,7 +81,7 @@ export function EvidenceDrawer({ row, flags, onClose }: DrawerProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative flex h-full w-full max-w-[40rem] flex-col overflow-y-auto border-l border-line bg-surface-2 text-ink shadow-2xl"
+        className="relative flex h-full w-full max-w-[40rem] flex-col overflow-y-auto border-l border-line bg-surface-2 text-ink shadow-floating"
       >
         <header className="sticky top-0 z-10 border-b border-line bg-surface-2 px-5 py-4">
           <div className="flex items-start justify-between gap-3">

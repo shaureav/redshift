@@ -259,8 +259,8 @@ function ProvPopover({ id, anchor, provId, shown, onClose }: { id: string; ancho
       role="dialog"
       aria-label="Where this number comes from"
       tabIndex={-1}
-      className="animate-rise fixed z-[60] w-[384px] max-w-[calc(100vw-32px)] rounded-lg border border-line-strong bg-surface-2 p-4 text-left text-ink outline-none"
-      style={{ left: pos?.left ?? -9999, top: pos?.top ?? -9999, boxShadow: "var(--shadow)" }}
+      className="floating animate-rise fixed z-[60] w-[384px] max-w-[calc(100vw-32px)] p-4 text-left text-ink outline-none"
+      style={{ left: pos?.left ?? -9999, top: pos?.top ?? -9999 }}
     >
       {isLoading && (
         <div aria-busy="true" aria-label="Loading the source">

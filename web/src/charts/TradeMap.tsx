@@ -3,7 +3,7 @@
 import * as d3 from "d3";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FUEL_COLOR_VAR, Hatch, markerPath } from "../components/Common";
+import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { FUEL_LABEL, fmtNumber } from "../lib/format";
 import type { Candidate, CandidateEvidence, Val } from "../lib/types";
 
@@ -266,7 +266,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                   transform={`translate(${x(p.o2_pct)},${y(p.pressure_psi)})`}
                   fill={outline ? "var(--surface-2)" : FUEL_COLOR_VAR[p.fuel_class]}
                   fillOpacity={outline ? 1 : 0.85}
-                  stroke={outline ? FUEL_COLOR_VAR[p.fuel_class] : "var(--surface-2)"}
+                  stroke={outline ? FUEL_EDGE_VAR[p.fuel_class] : FUEL_RING_VAR[p.fuel_class]}
                   strokeWidth={outline ? 2 : 1.5}
                   className="transition-opacity"
                   onMouseEnter={(e) => show(e, (
@@ -370,7 +370,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
                       d={markerPath(s.fuel_class, Math.min(7, 3 + Math.sqrt(it.n)))}
                       transform={`translate(${x(it.o2_pct)},${(stripRowH - 4) / 2})`}
                       fill={FUEL_COLOR_VAR[s.fuel_class]}
-                      stroke="var(--surface-2)"
+                      stroke={FUEL_RING_VAR[s.fuel_class]}
                       onMouseEnter={(e) => show(e, (
                         <div>
                           <div className="font-semibold">
@@ -399,7 +399,7 @@ export function TradeMap({ map, candidates, evidence, grid, planner, prebreathe,
         </p>
       )}
       {tip && (
-        <div className="pointer-events-none absolute z-30 max-w-xs -translate-x-1/2 -translate-y-full rounded-md border border-line bg-surface-2 px-3 py-2 text-xs shadow-lg" style={{ left: tip.x, top: tip.y - 8 }}>
+        <div className="pointer-events-none absolute z-30 max-w-xs -translate-x-1/2 -translate-y-full floating px-3 py-2 text-xs" style={{ left: tip.x, top: tip.y - 8 }}>
           {tip.html}
         </div>
       )}

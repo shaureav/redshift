@@ -4,7 +4,7 @@
 // out. Paper steps at zero say why: their findings are drafted and awaiting human verification.
 import * as d3 from "d3";
 import type { ReactElement } from "react";
-import { ChartFrame, ErrorNote, FUEL_COLOR_VAR, Hatch, Loading, markerPath } from "../components/Common";
+import { ChartFrame, ErrorNote, FUEL_COLOR_VAR, FUEL_EDGE_VAR, Hatch, Loading, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
 import { useData } from "../lib/data";
 import type { Val } from "../lib/types";
@@ -53,7 +53,7 @@ export function AccessGap() {
   // Fuel-class key: every step counts solid-material burns.
   marks.push(
     <g key="key" transform="translate(0,10)">
-      <path d={markerPath("solid", 5)} transform="translate(6,0)" fill={FUEL_COLOR_VAR.solid} />
+      <path d={markerPath("solid", 5)} transform="translate(6,0)" fill={FUEL_COLOR_VAR.solid} stroke={FUEL_EDGE_VAR.solid} />
       <text x={18} dominantBaseline="central" fontSize={12} fill="var(--ink-2)">Every step counts solid-material burns</text>
     </g>,
   );
@@ -130,8 +130,8 @@ export function AccessGap() {
           d={barPath(x(v), barH)}
           transform={`translate(0,${y})`}
           fill={paper ? "var(--surface-2)" : FUEL_COLOR_VAR.solid}
-          stroke={paper ? FUEL_COLOR_VAR.solid : "none"}
-          strokeWidth={paper ? 2 : 0}
+          stroke={FUEL_EDGE_VAR.solid}
+          strokeWidth={paper ? 2 : 1}
         >
           <title>{`${step.label}: ${valText(step.count, step.count.u)}`}</title>
         </path>,

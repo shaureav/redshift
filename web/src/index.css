@@ -2,9 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design system, version 2 (docs/redesign/EXCEPTIONAL_PLAN.md, section 5). Every colour, type size, duration,
+   radius and shadow a component uses is a token in this file, read by tailwind.config.js; no component invents
+   its own value. tokens.test.ts fails on a raw hex or rgb() colour, a raw duration or a default Tailwind shadow
+   anywhere in src, and scripts/contrast.mjs checks every text pair (4.5:1) and every data-glyph and
+   control-boundary pair (3:1) in both themes, straight from the values below. */
+
+/* Tokens shared by both themes. */
+:root {
+  /* Type roles. IBM Plex Sans with tabular figures, Plex Mono for ids only, weights 400, 500 and 600 only. */
+  --text-display: 40px;  --leading-display: 48px;  /* story intro headlines, brief title */
+  --text-title: 28px;    --leading-title: 36px;    /* page titles, panel point readout */
+  --text-heading: 20px;  --leading-heading: 28px;  /* plane headline, card headlines, tile numbers */
+  --text-body: 16px;     --leading-body: 24px;     /* prose */
+  --text-body-sm: 14px;  --leading-body-sm: 20px;  /* panel text, controls */
+  --text-label: 12px;    --leading-label: 16px;    --tracking-label: 0.08em; /* eyebrows, axis titles, legends (caps) */
+
+  /* Motion. Things move to show what changed; counts never animate through values (crossfade only). */
+  --t-fast: 120ms;     /* hover, press */
+  --t-base: 200ms;     /* panel content swap, toggles */
+  --t-move: 320ms;     /* probe glide, layer fades */
+  --t-scene: 600ms;    /* story beats, land sinking */
+  --t-fade: 120ms;     /* opacity crossfades: the only motion left under reduced motion */
+  --t-shimmer: 1400ms; /* one loop of the loading skeleton */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1); /* everything that arrives */
+
+  /* Shape and size: two radii plus pills, on the 8 px grid. */
+  --r-control: 4px;
+  --r-surface: 8px;
+  --r-pill: 9999px;
+  --control-h: 32px;
+  --control-h-sm: 24px;
+  --field-h: 40px;
+  --tap: 44px; /* minimum touch target on a coarse pointer */
+
+  /* Elevation, three levels only: flat (the plane, no class), raised (.card, .raised, .tile: a 1 px line),
+     floating (.floating, .toolbar, .sheet: a line, --shadow and this backdrop blur). */
+  --blur: 8px;
+
+  /* Texture: one hatch, 45 degrees, 7 px pitch, 1 px line (Hatch in components/Common.tsx draws the same).
+     Sea hatching sits at 30% and an empty tile's at 60%. */
+  --hatch-pitch: 7px;
+  --sea-hatch-opacity: 0.3;
+  --tile-hatch-opacity: 0.6;
+}
+
 /* Colour tokens. Dark navy is the default; light is opt-in (data-theme="light"). No red anywhere.
-   Fuel-class hues were validated for colour-vision deficiency (all pairs, light and dark) and are always
-   paired with a marker shape. One accent (teal) marks interactive state only; data never uses it. */
+   Fuel-class fills were validated for colour-vision deficiency (all pairs, light and dark) and are always
+   paired with a marker shape. One accent (teal) marks interactive state only; data never uses it. Every token
+   in this block also applies to the light theme unless the light block sets it again. */
 :root,
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -15,21 +61,36 @@
   --ink: #e9eef6;
   --ink-2: #b6c0d1;
   --ink-3: #8e9bb2;
-  --line: #1d2b44;
-  --line-strong: #2c3e5e;
+  --line: #1d2b44;          /* dividers and raised surfaces: quiet on purpose */
+  --line-strong: #2c3e5e;   /* dashed placeholders and inner dividers */
+  --control-line: #64748f;  /* the boundary of a control: 3:1 against every surface */
   --accent: #3fb6a8;
   --accent-ink: #04201c;
+  --focus: var(--accent);
   --amber-ink: #e3a72f;
-  --gas: #3987e5;
-  --droplet: #199e70;
-  --solid: #c98500;
-  --emulator: #e87ba4;
+
+  /* Fuel classes. --x is the fill. --x-ring is the 1 px ring around a filled glyph: in the dark theme the
+     glyph's own surface (a gap between neighbours), because every fill reaches 3:1 on its own. --x-edge is the
+     hue drawn as a line (outlined paper glyphs, legend outlines, bar edges). */
+  --gas: #3987e5;       --gas-ring: var(--surface-2);       --gas-edge: var(--gas);
+  --droplet: #199e70;   --droplet-ring: var(--surface-2);   --droplet-edge: var(--droplet);
+  --solid: #c98500;     --solid-ring: var(--surface-2);     --solid-edge: var(--solid);
+  --emulator: #e87ba4;  --emulator-ring: var(--surface-2);  --emulator-edge: var(--emulator);
+
+  /* The plane as a map: land where tests sit near a point, open sea where none do, the coast between. */
+  --land: #12223a;
+  --sea: var(--surface-2);
+  --sea-hatch: var(--hatch);
+  --coast: color-mix(in srgb, var(--ink-2) 70%, transparent);
+  --trail: var(--accent);
+
   --hatch: #5b6a84;
   --candidate: #e9eef6;
   --isotherm: #6c7a93;
   --prebreathe: #9085e9;
-  --focus: #3fb6a8;
   --probe: #ffffff;
+  --veil: rgba(4, 9, 18, 0.72); /* the dimmed page behind a spotlight, the same in both themes */
+  --floating: color-mix(in srgb, var(--surface-2) 92%, transparent);
   --shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
 }
 
@@ -44,18 +105,25 @@
   --ink-3: #56627a;
   --line: #d9dee7;
   --line-strong: #b4bdcc;
-  --accent: #1f7a72;
+  --control-line: #76819a;
+  --accent: #1d756d;
   --accent-ink: #ffffff;
   --amber-ink: #8a5a00;
-  --gas: #2a78d6;
-  --droplet: #1baf7a;
-  --solid: #eda100;
-  --emulator: #e87ba4;
+
+  /* The same validated fills, each with a 1 px darker ring of its own hue so every glyph reaches 3:1 against
+     white and the light greys (plan decision D3, D26; the colour-blindness re-check is open as Q20). */
+  --gas: #2a78d6;       --gas-ring: #2466b6;       --gas-edge: var(--gas-ring);
+  --droplet: #1baf7a;   --droplet-ring: #158b61;   --droplet-edge: var(--droplet-ring);
+  --solid: #eda100;     --solid-ring: #a57000;     --solid-edge: var(--solid-ring);
+  --emulator: #e87ba4;  --emulator-ring: #b56080;  --emulator-edge: var(--emulator-ring);
+
+  --land: #ffffff;
+  --sea: #eef1f5;
+
   --hatch: #9aa4b5;
   --candidate: #0f1b2d;
   --isotherm: #8c96a8;
   --prebreathe: #6250d6;
-  --focus: #1f7a72;
   --probe: #0f1b2d;
   --shadow: 0 16px 48px rgba(15, 27, 45, 0.18);
 }
@@ -71,80 +139,144 @@ html, body {
 .num { font-family: "IBM Plex Sans", system-ui, sans-serif; font-variant-numeric: tabular-nums; }
 .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
 
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--r-control); }
 
 @layer components {
-  .card { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; }
+  /* Raised: cards and panels on the page. */
+  .card, .raised { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-surface); }
+
+  /* Floating: popovers, menus, toasts, the plane toolbar and the phone sheet. Solid first; translucent with a
+     backdrop blur where the browser can mix colours. */
+  .floating, .toolbar, .sheet {
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-surface); box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(var(--blur)); backdrop-filter: blur(var(--blur));
+  }
+  @supports (background: color-mix(in srgb, white 50%, transparent)) {
+    .floating, .toolbar, .sheet { background: var(--floating); }
+  }
 
   /* Translucent surfaces. Tailwind writes no CSS at all for an opacity modifier on a var() colour
      (bg-[color:var(--x)]/80), so translucency is mixed here, after a solid fallback. tokens.test.ts fails
      on any such modifier in src. */
   .scrim { background: var(--bg); background: color-mix(in srgb, var(--bg) 80%, transparent); }
   .glass { background: var(--surface); background: color-mix(in srgb, var(--surface) 95%, transparent); }
-  .eyebrow { font-size: 12px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  /* The Label type role. */
+  .eyebrow { font-size: var(--text-label); line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
   .rule { border-top: 1px solid var(--line); }
 
-  /* Controls: custom, never the browser default. */
+  /* Controls: custom, never the browser default. Every boundary is --control-line (3:1); pressed and checked
+     states use the accent, the only colour that marks interactive state. */
   .btn {
-    display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px;
-    border-radius: 4px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink);
-    font-size: 14px; line-height: 20px; font-weight: 500; white-space: nowrap;
-    transition: background-color 120ms, border-color 120ms, color 120ms;
+    display: inline-flex; align-items: center; gap: 8px; height: var(--control-h); padding: 0 12px;
+    border-radius: var(--r-control); border: 1px solid var(--control-line); background: transparent; color: var(--ink);
+    font-size: var(--text-body-sm); line-height: var(--leading-body-sm); font-weight: 500; white-space: nowrap;
+    transition: background-color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
   }
   .btn:hover { background: var(--surface-3); }
+  .btn[aria-pressed="true"] { background: var(--surface-3); border-color: var(--accent); color: var(--ink); }
+  .btn:disabled { color: var(--ink-3); cursor: not-allowed; }
+  .btn:disabled:hover { background: transparent; }
   .btn-quiet { border-color: transparent; color: var(--ink-2); }
   .btn-quiet:hover { color: var(--ink); }
   .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
   .btn-primary:hover { background: var(--accent); filter: brightness(1.08); }
-  .btn-sm { height: 24px; padding: 0 8px; font-size: 12px; line-height: 16px; }
+  .btn-sm { height: var(--control-h-sm); padding: 0 8px; font-size: var(--text-label); line-height: var(--leading-label); }
 
-  .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 4px; overflow: hidden; }
-  .seg > button { height: 32px; padding: 0 12px; font-size: 14px; color: var(--ink-2); white-space: nowrap; transition: background-color 120ms, color 120ms; }
+  .seg { display: inline-flex; border: 1px solid var(--control-line); border-radius: var(--r-control); overflow: hidden; }
+  .seg > button {
+    height: var(--control-h); padding: 0 12px; font-size: var(--text-body-sm); line-height: var(--leading-body-sm); color: var(--ink-2); white-space: nowrap;
+    transition: background-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+  }
   .seg > button + button { border-left: 1px solid var(--line-strong); }
   .seg > button[aria-pressed="true"], .seg > button[aria-checked="true"] { background: var(--surface-3); color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); }
   .seg > button:hover { color: var(--ink); }
 
   .chip {
-    display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 9999px;
-    border: 1px solid var(--line-strong); color: var(--ink-2); font-size: 14px; transition: all 160ms;
+    display: inline-flex; align-items: center; gap: 8px; height: var(--control-h); padding: 0 12px; border-radius: var(--r-pill);
+    border: 1px solid var(--control-line); color: var(--ink-2); font-size: var(--text-body-sm); line-height: var(--leading-body-sm);
+    transition: background-color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
   }
-  .chip[aria-pressed="true"] { color: var(--ink); background: var(--surface-3); border-color: var(--ink-3); }
+  .chip[aria-pressed="true"] { color: var(--ink); background: var(--surface-3); border-color: var(--accent); }
   .chip:hover { color: var(--ink); }
 
-  .switch { position: relative; width: 32px; height: 16px; border-radius: 9999px; background: var(--line-strong); transition: background-color 160ms; flex: none; }
-  .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 9999px; background: var(--ink); transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .switch { position: relative; width: 32px; height: 16px; border-radius: var(--r-pill); background: var(--control-line); transition: background-color var(--t-base) var(--ease-out); flex: none; }
+  .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: var(--r-pill); background: var(--ink); transition: transform var(--t-base) var(--ease-out); }
   [aria-checked="true"] > .switch, .switch[aria-checked="true"] { background: var(--accent); }
   [aria-checked="true"] > .switch::after, .switch[aria-checked="true"]::after { transform: translateX(16px); background: var(--accent-ink); }
 
   .field {
-    height: 40px; width: 100%; padding: 0 12px; border-radius: 4px; border: 1px solid var(--line-strong);
-    background: var(--surface); color: var(--ink); font-size: 14px;
+    height: var(--field-h); width: 100%; padding: 0 12px; border-radius: var(--r-control); border: 1px solid var(--control-line);
+    background: var(--surface); color: var(--ink); font-size: var(--text-body-sm);
   }
   .field::placeholder { color: var(--ink-3); }
 
-  .kbd { font-family: "IBM Plex Mono", monospace; font-size: 12px; line-height: 16px; padding: 0 4px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 4px; color: var(--ink-2); }
+  .kbd { font-family: "IBM Plex Mono", monospace; font-size: var(--text-label); line-height: var(--leading-label); padding: 0 4px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: var(--r-control); color: var(--ink-2); }
+
+  /* Toolbar floating over the plane: icon tools 32 px square (44 px on a touch screen), one pressed state. */
+  .toolbar { display: inline-flex; align-items: center; gap: 4px; padding: 4px; }
+  .toolbar-sep { width: 1px; align-self: stretch; margin: 4px; background: var(--line); }
+  .tool {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: var(--control-h); height: var(--control-h); padding: 0 8px;
+    border-radius: var(--r-control); color: var(--ink-2); font-size: var(--text-body-sm); line-height: var(--leading-body-sm); font-weight: 500; white-space: nowrap;
+    transition: background-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out), box-shadow var(--t-fast) var(--ease-out);
+  }
+  .tool:hover { background: var(--surface-3); color: var(--ink); }
+  .tool[aria-pressed="true"], .tool[aria-checked="true"], .tool[aria-expanded="true"] { background: var(--surface-3); color: var(--ink); box-shadow: inset 0 0 0 1px var(--accent); }
+  .tool:disabled { color: var(--ink-3); background: transparent; cursor: not-allowed; }
+  @media (pointer: coarse) { .tool { min-width: var(--tap); height: var(--tap); } }
+
+  /* Readout tile: raised, a label and a number in the Heading role. A tile with no tests is hatched at 60%,
+     never blank: empty means unknown, not safe. */
+  .tile { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 16px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-surface); }
+  .tile > * { position: relative; }
+  .tile[data-empty="true"]::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: var(--tile-hatch-opacity);
+    background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px var(--hatch-pitch));
+  }
+  .tile-label { font-size: var(--text-label); line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; font-weight: 500; color: var(--ink-3); }
+  .tile-value { font-size: var(--text-heading); line-height: var(--leading-heading); font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink); }
+
+  /* Bottom sheet on a phone: floating, top corners rounded, a drag handle. */
+  .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; max-height: 90vh; overflow-y: auto; border-bottom: 0; border-radius: var(--r-surface) var(--r-surface) 0 0; transition: transform var(--t-move) var(--ease-out); }
+  .sheet-handle { display: block; width: 32px; height: 4px; margin: 8px auto; border-radius: var(--r-pill); background: var(--control-line); }
 
   /* Skeleton for loading states: a calm shimmer, off under reduced motion. */
-  .skeleton { background: linear-gradient(90deg, var(--surface-3) 0%, var(--line) 50%, var(--surface-3) 100%); background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; border-radius: 4px; }
+  .skeleton { background: linear-gradient(90deg, var(--surface-3) 0%, var(--line) 50%, var(--surface-3) 100%); background-size: 200% 100%; animation: shimmer var(--t-shimmer) ease-in-out infinite; border-radius: var(--r-control); }
+}
+
+/* A bar filled in a fuel class: the validated fill, ringed with the class edge (3:1 in both themes). Outside
+   the component layer because the class names are built at run time (fuel-${f}). */
+.fuel-gas { --fuel: var(--gas); --fuel-edge: var(--gas-edge); }
+.fuel-droplet { --fuel: var(--droplet); --fuel-edge: var(--droplet-edge); }
+.fuel-solid { --fuel: var(--solid); --fuel-edge: var(--solid-edge); }
+.fuel-emulator { --fuel: var(--emulator); --fuel-edge: var(--emulator-edge); }
+.fuel-bar { background: var(--fuel); box-shadow: inset 0 0 0 1px var(--fuel-edge); }
+@supports (background: color-mix(in srgb, white 50%, transparent)) {
+  .fuel-bar { background: color-mix(in srgb, var(--fuel) 85%, transparent); }
 }
 
 @keyframes shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-.animate-rise { animation: rise 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.animate-fade { animation: fade 200ms ease-out both; }
+.animate-rise { animation: rise var(--t-base) var(--ease-out) both; }
+.animate-fade { animation: fade var(--t-base) var(--ease-out) both; }
 
-.hatch-bg { background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px 7px); }
+.hatch-bg { background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px var(--hatch-pitch)); }
 
 /* Layers on the plane fade and settle rather than pop. */
-.layer { transition: opacity 320ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.layer { transition: opacity var(--t-move) var(--ease-out); }
 .layer[data-on="false"] { opacity: 0; pointer-events: none; }
-.glyph { transition: opacity 360ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1); transform-box: fill-box; transform-origin: center; }
+.glyph { transition: opacity var(--t-move) var(--ease-out), transform var(--t-move) var(--ease-out); transform-box: fill-box; transform-origin: center; }
 .glyph[data-ghost="true"] { opacity: 0.07; }
-.bar { transition: width 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.bar { transition: width var(--t-base) var(--ease-out); }
+/* Swap content by opacity alone; the one transition kept under reduced motion. */
+.crossfade { transition: opacity var(--t-fade) linear; }
 
 @media (prefers-reduced-motion: reduce) {
+  :root { --t-fast: 0ms; --t-base: 0ms; --t-move: 0ms; --t-scene: 0ms; }
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  /* Opacity crossfades stay, short and linear: they show that something changed without moving anything. */
+  .crossfade, .layer, .glyph { transition: opacity var(--t-fade) linear !important; }
 }
 
 @media print {
