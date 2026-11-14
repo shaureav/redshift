@@ -251,15 +251,18 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   .tool:disabled { color: var(--ink-3); background: transparent; cursor: not-allowed; }
   @media (pointer: coarse) { .tool { min-width: var(--tap); height: var(--tap); } }
   /* A tool's tooltip: its name and any shortcut, under it on hover and on keyboard focus. Every tool carries an
-     aria-label, so this generated text never joins its accessible name. An open menu covers it. */
+     aria-label, so this generated text never joins its accessible name. An open menu covers it. Hidden, it takes
+     no box at all (a transparent one still widened the page on a phone); a tool in the right half of the screen
+     gets data-tip-end (planeToolbar.tsx), which right-aligns its tooltip so it stays on screen. */
   .tool[data-tip] { position: relative; }
   .tool[data-tip]::after {
     content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 8px); z-index: 40; padding: 4px 8px; white-space: nowrap; pointer-events: none;
     background: var(--surface-3); color: var(--ink); border: 1px solid var(--line-strong); border-radius: var(--r-control);
-    font-size: var(--text-label); line-height: var(--leading-label); font-weight: 400; opacity: 0; transition: opacity var(--t-fast) var(--ease-out);
+    font-size: var(--text-label); line-height: var(--leading-label); font-weight: 400; display: none;
   }
-  .tool[data-tip]:hover::after, .tool[data-tip]:focus-visible::after { opacity: 1; }
-  .tool[aria-expanded="true"]::after { display: none; }
+  .tool[data-tip-end]::after { left: auto; right: 0; }
+  .tool[data-tip]:hover::after, .tool[data-tip]:focus-visible::after { display: block; animation: fade var(--t-fast) var(--ease-out) both; }
+  .tool[data-tip][aria-expanded="true"]::after { display: none; }
 
   /* Readout tile: raised, a label and a number in the Heading role. A tile with no tests is hatched at 60%,
      never blank: empty means unknown, not safe. */

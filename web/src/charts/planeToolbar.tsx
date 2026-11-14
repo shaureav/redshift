@@ -2,7 +2,7 @@
 // atmospheres, layers, zoom and area selection. It replaces the two rows of controls that sat above the chart,
 // so the data is the interface (principle 2). Every tool is a button with a name and a tooltip; arrow keys move
 // between tools, Tab moves through them too. Slots are marked for Sound (Phase 4) and Time (Phase 8).
-import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { LayersIcon, PinIcon, SelectIcon, ZoomIcon } from "../components/Icons";
 import { EVIDENCE_WORD_NOTE, type EvidenceWord } from "../lib/coast";
 import type { Candidate } from "../lib/types";
@@ -34,8 +34,16 @@ export function PlaneToolbar(p: Props) {
     e.preventDefault();
     tools[(at + (e.key === "ArrowRight" ? 1 : tools.length - 1)) % tools.length].focus();
   };
+  // A tooltip opens towards the middle of the screen: a tool in the right half right-aligns it (index.css), so
+  // it never runs past the edge. Decided where the tool sits as the pointer or focus reaches it.
+  const aimTip = (e: { target: EventTarget }) => {
+    const t = e.target instanceof Element ? e.target.closest(".tool") : null;
+    if (!t) return;
+    const r = t.getBoundingClientRect();
+    t.toggleAttribute("data-tip-end", r.left + r.width / 2 > document.documentElement.clientWidth / 2);
+  };
   return (
-    <div ref={bar} role="toolbar" aria-label="Plane tools" className="toolbar flex-wrap" onKeyDown={onKeyDown}>
+    <div ref={bar} role="toolbar" aria-label="Plane tools" className="toolbar flex-wrap" onKeyDown={onKeyDown} onPointerOver={aimTip} onFocus={aimTip}>
       <button type="button" role="switch" aria-checked={p.solids} aria-label="Solids only" data-tip="Keep only solid-material evidence" onClick={p.onSolids} className="tool" id="tour-solids">
         <span className="switch" aria-hidden="true" /> Solids only
       </button>
@@ -95,13 +103,35 @@ export function PlaneToolbar(p: Props) {
 }
 
 const MENU_W = 256;
+const GUTTER = 16;
+
+/** Where a menu opened under a tool starts, relative to the tool's left edge: 0 when it fits, otherwise shifted
+ *  left just far enough that its right edge stays a gutter inside the viewport (never past the left gutter). */
+export function menuShift(toolLeft: number, viewportW: number, menuW = MENU_W): { left: number; width: number } {
+  const width = Math.min(menuW, viewportW - 2 * GUTTER);
+  const left = Math.min(0, viewportW - GUTTER - toolLeft - width);
+  return { left: Math.max(left, GUTTER - toolLeft), width };
+}
 
 /** A tool that opens a menu under it. The menu sits right after its button in the DOM, so Tab moves from the
  *  button into it; Escape or a click outside closes it and hands focus back to the button. */
 function ToolMenu({ label, tip, icon, children }: { label: string; tip?: string; icon: ReactNode; children: (close: () => void) => ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [at, setAt] = useState<{ left: number; width: number }>({ left: 0, width: MENU_W });
   const ref = useRef<HTMLDivElement>(null);
   const btn = useRef<HTMLButtonElement>(null);
+  // On a phone a tool right of centre would open its menu past the screen's right edge: measured as it opens
+  // (before paint) and again on a resize, the menu shifts left until it fits.
+  useLayoutEffect(() => {
+    if (!open) return;
+    const place = () => {
+      const r = btn.current?.getBoundingClientRect();
+      if (r) setAt(menuShift(r.left, document.documentElement.clientWidth));
+    };
+    place();
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
+  }, [open]);
   useEffect(() => {
     if (!open) return;
     const off = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
@@ -123,11 +153,11 @@ function ToolMenu({ label, tip, icon, children }: { label: string; tip?: string;
       <button ref={btn} type="button" className="tool" aria-label={label} data-tip={tip ?? label} aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>
         {icon}
       </button>
-      {/* Placed under its tool inside the plane, which never scrolls or clips: a fixed menu would be placed
-          against the toolbar instead of the viewport, because the toolbar's backdrop blur contains it. For the
-          same reason its own blur would see only the toolbar, so the menu takes a solid surface. */}
+      {/* Placed under its tool, shifted left when it would run past the viewport (menuShift): a fixed menu would
+          be placed against the toolbar instead of the viewport, because the toolbar's backdrop blur contains it.
+          For the same reason its own blur would see only the toolbar, so the menu takes a solid surface. */}
       {open && (
-        <div className="floating animate-rise absolute left-0 top-full z-30 mt-2 max-h-[60vh] overflow-y-auto p-2" style={{ width: MENU_W, maxWidth: "calc(100vw - 32px)", background: "var(--surface-2)" }}>
+        <div className="floating animate-rise absolute top-full z-30 mt-2 max-h-[60vh] overflow-y-auto p-2" style={{ left: at.left, width: at.width, background: "var(--surface-2)" }}>
           {children(close)}
         </div>
       )}
