@@ -690,7 +690,7 @@ export function Plane(props: Props) {
       )}
       {/* The layers a pinch moves by transform; while it does, the plane (data-pinching) clips them at its edge. */}
       <div ref={pinchLayer} className="absolute inset-0" style={{ transformOrigin: "0 0" }}>
-      <LandLayer frame={f} grid={grid} multiplier={view.m} solids={view.solids} risen={stage !== "pins"} scene={scene} hatch={view.layers.has("blind")} />
+      <LandLayer frame={f} grid={grid} multiplier={view.m} solids={view.solids} risen={stage !== "pins"} scene={scene} hatch={view.layers.has("blind")} robust={view.layers.has("robust") && !stage} />
       <PlaneBase
         frame={f}
         grid={grid}
@@ -888,14 +888,24 @@ function stretch(line: [number, number][], k: number, half: number): [number, nu
 
 /** Land, sea and coast: contours of the probe grid at "more than zero", cached per multiplier and mode. A layer
  *  of its own (its own SVG, composited apart), so the Solids only sink repaints only this, never the glyphs. */
-const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, risen, scene, hatch }: {
-  /** risen: false while the story intro's first beat shows the bare plot, before the land and sea come in. */
-  frame: Frame; grid: Grid; multiplier: number; solids: boolean; risen: boolean; scene: boolean; hatch: boolean;
+const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, risen, scene, hatch, robust }: {
+  /** risen: false while the story intro's first beat shows the bare plot, before the land and sea come in.
+   *  robust: draw the coast at the smallest and the widest step size over the land (D39). */
+  frame: Frame; grid: Grid; multiplier: number; solids: boolean; risen: boolean; scene: boolean; hatch: boolean; robust: boolean;
 }) {
   const { w, h, m, iw, ih, x, y, z } = frame;
   const land = useMemo(() => landPath(coastFor(grid, multiplier, "all"), grid, x, y), [grid, multiplier, x, y]);
   const solidLand = useMemo(() => landPath(coastFor(grid, multiplier, "solids"), grid, x, y), [grid, multiplier, x, y]);
   const extent = useMemo(() => gridExtent(grid, x, y), [grid, x, y]);
+  // Sensitivity of the coast to the nearness step (D39). A smaller step can only shrink the land, so land at the
+  // smallest step is land at every step (a solid line round it), and the band out to the widest step's coast (a
+  // dashed line) is land only there. Both are coasts the build's grid already holds; nothing new is counted.
+  const mode = solids ? "solids" : "all";
+  const steps = grid.multipliers;
+  const lo = Math.min(...steps);
+  const hi = Math.max(...steps);
+  const core = useMemo(() => (robust ? landPath(coastFor(grid, lo, mode), grid, x, y).d : ""), [robust, grid, lo, mode, x, y]);
+  const outer = useMemo(() => (robust ? landPath(coastFor(grid, hi, mode), grid, x, y).d : ""), [robust, grid, hi, mode, x, y]);
   // The land is sunk under Solids only and before the intro raises it. Only a change of that animates the land:
   // the transition is on from that change until it ends, so a resize meanwhile or afterwards redraws at once, and
   // a new zoom or step size draws a new coast at once (key).
@@ -949,6 +959,12 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, ris
             <path d={land.d} fill="var(--land)" />
             <path d={land.d} fill="none" stroke="var(--coast)" strokeWidth={1} />
           </g>
+          {robust && risen && (
+            <g data-robust="">
+              {outer && <path d={outer} fill="none" stroke="var(--coast)" strokeWidth={1.5} strokeDasharray="4 3" />}
+              {core && <path d={core} fill="none" stroke="var(--coast)" strokeWidth={2.5} />}
+            </g>
+          )}
         </g>
       </g>
     </svg>

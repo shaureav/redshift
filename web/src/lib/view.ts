@@ -5,7 +5,7 @@ import { useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { clampDomain, type Domain } from "./gesture";
 
-export type Layer = "ev" | "strip" | "blind" | "ft" | "cand" | "pb" | "halo" | "trail";
+export type Layer = "ev" | "strip" | "blind" | "ft" | "cand" | "pb" | "halo" | "trail" | "robust";
 export const LAYERS: { id: Layer; label: string }[] = [
   { id: "ev", label: "Tests" },
   { id: "halo", label: "Nearness region" },
@@ -16,6 +16,8 @@ export const LAYERS: { id: Layer; label: string }[] = [
   { id: "pb", label: "Prebreathe" },
   // The probe's last 40 positions, shaded by land or sea (Phase 4). Never drawn under reduced motion.
   { id: "trail", label: "Probe trail" },
+  // The coast at the smallest and the widest step size (D39): land at every step, and land only at the widest.
+  { id: "robust", label: "Coast at every step size" },
 ];
 export const DEFAULT_LAYERS: Layer[] = ["ev", "halo", "strip", "blind", "ft", "cand", "pb", "trail"];
 

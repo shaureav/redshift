@@ -359,7 +359,7 @@ export default function Home() {
           />
         </div>
         </div>
-        <Legend onShortcuts={openShortcuts} />
+        <Legend onShortcuts={openShortcuts} robust={view.layers.has("robust")} />
         <TrustStrip />
       </section>
 
@@ -403,7 +403,7 @@ export default function Home() {
 
 /** The plane's key, read as a map: land, sea and coast, the fuel classes, pins and isotherms; and, where there is
  *  room for a keyboard, the door to the shortcut sheet. */
-const Legend = memo(function Legend({ onShortcuts }: { onShortcuts: () => void }) {
+const Legend = memo(function Legend({ onShortcuts, robust }: { onShortcuts: () => void; robust: boolean }) {
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6">
       <span className="flex items-center gap-1.5"><span className="inline-block h-3 w-5 rounded-sm border border-[color:var(--coast)] bg-[color:var(--land)]" /> Land: tests near</span>
@@ -414,6 +414,12 @@ const Legend = memo(function Legend({ onShortcuts }: { onShortcuts: () => void }
       <span className="flex items-center gap-1.5"><FuelMarker fuel="solid" outlined /> Verified paper</span>
       <span className="flex items-center gap-1.5"><PinIcon className="text-ink" /> Candidate: inland, on the coast or at sea describes the evidence, not risk</span>
       <span className="flex items-center gap-1.5"><svg width="20" height="8" aria-hidden="true"><line x1="0" y1="4" x2="20" y2="4" stroke="var(--isotherm)" /></svg> Flame temperature (explains, does not predict)</span>
+      {robust && (
+        <span className="flex items-center gap-1.5">
+          <svg width="20" height="8" aria-hidden="true"><line x1="0" y1="4" x2="20" y2="4" stroke="var(--coast)" strokeWidth={2.5} /></svg> Land at every step size
+          <svg width="20" height="8" className="ml-2" aria-hidden="true"><line x1="0" y1="4" x2="20" y2="4" stroke="var(--coast)" strokeWidth={1.5} strokeDasharray="4 3" /></svg> Land only at the widest step
+        </span>
+      )}
       <button type="button" className="btn btn-sm btn-quiet ml-auto max-lg:hidden" onClick={onShortcuts}>
         <KeyboardIcon /> Shortcuts <span className="kbd" aria-hidden="true">?</span>
       </button>
