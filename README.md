@@ -76,14 +76,13 @@ npm run dev
 
 `npm run build` refuses to build the site if the data snapshot is missing, if provenance coverage is below 100%, or if any golden check has an unexplained difference (`web/scripts/check-data.mjs`).
 
-**Live "Ask the evidence" (optional).** The static site shows checked cached answers only. For live answers, run the API with the optional extra and a model key on that host, and point the site at it:
+**Live "Ask the evidence" (optional).** Without an API the site shows checked cached answers only, and says live answers are off. For live answers on your own machine, run the API on port 8000 with a model key in that shell's environment, then run the site (`npm run dev` or `npm run preview` in `web/`); both pass `/api` to port 8000 (`web/vite.config.ts`), as the Vercel function serves it on the public site:
 
 ```bash
-uv sync --extra ai
-ANTHROPIC_API_KEY=... uv run uvicorn redshift.api.app:app
+GEMINI_API_KEY=... uv run uvicorn redshift.api.app:app --port 8000
 ```
 
-Then build the site with `VITE_API_BASE=http://localhost:8000`. The key lives only in the API host's environment, never in the repository or the browser. The API retrieves only from the built dataset, the model may not write numbers (it writes slots that the API fills with cited values), and a deterministic check rejects any answer with a bare number, an unknown citation, banned wording or no "not covered" statement (`redshift/ai/ask.py`).
+(Or `ANTHROPIC_API_KEY=...` after `uv sync --extra ai`, for Claude.) The Ask box says "Live AI answers on (Gemini)" once it reaches the API (D49). The key lives only in the API host's environment, never in the repository or the browser. The API retrieves only from the built dataset, the model may not write numbers (it writes slots that the API fills with cited values), and a deterministic check rejects any answer with a bare number, an unknown citation, banned wording or no "not covered" statement (`redshift/ai/ask.py`).
 
 ## How to rebuild every figure from the raw files
 

@@ -1,7 +1,8 @@
 // The story intro (plan, Phase 5; decision D2: it replaces the tour). Five beats over the live plane (D47) tell the
 // access-gap story to someone who has never seen Redshift and show how to use the plane, then Explore hands the plane over at 8.2 psi / 34% O2
 // with Solids only on. Advanced by a click on the plane, a scroll, a swipe or the arrow keys; Skip (or Escape) at
-// any time; shown once per device and replayable from the command palette.
+// any time; shown once per device, and replayable from the Intro button in the nav, the command palette or a
+// link with ?intro (pages/Home.tsx).
 //
 // This is a pure view of the beat the plane page holds (pages/Home.tsx). It never writes the view in the address
 // bar while it plays: the plane draws each beat from a stage passed down (charts/Plane.tsx, IntroStage), and the
@@ -13,7 +14,8 @@ import type { AccessGapData } from "../charts/AccessGap";
 import type { IntroStage } from "../charts/Plane";
 import { Value } from "./Value";
 
-export const INTRO_KEY = "redshift-intro-v1";
+// v2: the five-beat intro (D47). A device that saw the three-beat one sees the new one once (D49).
+export const INTRO_KEY = "redshift-intro-v2";
 /** Where Explore hands over: the 8.2 psi / 34% O2 candidate, with Solids only on. */
 export const EXPLORE_AT = { o2: 34, psi: 8.2 } as const;
 /** The plane's stage for each beat, in order. */

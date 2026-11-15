@@ -17,9 +17,11 @@ answers are unavailable and the website shows its cached answers.
 
 from __future__ import annotations
 
+import functools
 import json
 import os
 import re
+import time
 import urllib.error
 import urllib.request
 from collections.abc import Callable
@@ -29,6 +31,60 @@ from redshift.ai.text import BANNED, BARE_NUMBER
 
 MODEL = "claude-opus-5-5"
 SLOT = re.compile(r"\{\{\s*(v\d+)\s*\}\}")
+
+# D49: what may follow a value. The page draws every value with its own unit, so the same unit written after it
+# is said twice ("55.2 kPa kPa") and is removed. A different unit right after it means the number was put to
+# another quantity (a count of tests "at 0 tests cm/s"), and the answer is rejected.
+UNIT_WORDS: dict[str, tuple[str, ...]] = {
+    "%": ("percent", "per cent", "pct", "%"),
+    "K": ("kelvin", "K"),
+    "kPa": ("kPa",),
+    "psi": ("psia", "psi"),
+    "tests": ("tests",),
+}
+MEASURE_UNIT = re.compile(
+    r"\s*(%|percent\b|per cent\b|kelvin\b|K\b|°C|kPa\b|psia?\b|cm/s|mm/s|m/s|seconds?\b|minutes?\b|min\b|mm\b|cm\b"
+    r"|kW\b|ppm\b|atm\b)",
+    re.I,
+)
+# A draft that fails the check is sent back once with its faults, if the first answer came quickly enough to stay
+# well inside the host's 60 s (web/vercel.json).
+RETRY_WITHIN_S = 20.0
+# Every model call for one question ends by then (the host stops the function at 60 s).
+ANSWER_WITHIN_S = 55.0
+
+
+def tidy_units(text: str, ctx: Context) -> str:
+    """Remove a unit written again right after a value that is drawn with it ("{{v3}} kPa" when v3 is in kPa)."""
+    out: list[str] = []
+    pos = 0
+    for m in SLOT.finditer(text):
+        out.append(text[pos : m.end()])
+        pos = m.end()
+        unit = (ctx.values.get(m.group(1)) or {}).get("u") or ""
+        for word in UNIT_WORDS.get(unit, ()):
+            tail = r"(?![\w/])" if word[-1].isalnum() else ""
+            same = re.match(r"\s*" + re.escape(word) + tail, text[pos:], re.I)
+            if same:
+                pos += same.end()
+                break
+    out.append(text[pos:])
+    return "".join(out)
+
+
+def unit_clashes(text: str, ctx: Context) -> list[str]:
+    """Values followed by a unit that is not their own: the number was put to another quantity."""
+    found = []
+    for m in SLOT.finditer(text):
+        v = ctx.values.get(m.group(1))
+        after = MEASURE_UNIT.match(text, m.end())
+        if v is None or after is None:
+            continue
+        said = after.group(1).lower()
+        own = [w.lower() for w in UNIT_WORDS.get(v.get("u") or "", ())]
+        if said not in own:
+            found.append(f"value {m.group(1)} ({v.get('label')}) is followed by the unit {after.group(1)!r}")
+    return found
 
 SYSTEM = "\n".join(
     [
@@ -209,6 +265,7 @@ def check(answer: dict[str, Any], ctx: Context) -> list[str]:
         if chr(0x2014) in t:  # the house style forbids the em dash; written as a code point so this file has none
             problems.append("em dash")
     for p in paras:
+        problems.extend(unit_clashes(p.get("text", ""), ctx))
         cites = p.get("cites") or []
         if not cites:
             problems.append("paragraph without a citation")
@@ -285,8 +342,9 @@ def _gemini_schema(node: Any) -> Any:
     return node
 
 
-def call_gemini(question: str, context_json: str) -> dict[str, Any] | None:
-    """One generateContent call with a JSON answer. Returns the parsed answer, or None if Gemini declined."""
+def call_gemini(question: str, context_json: str, deadline: float | None = None) -> dict[str, Any] | None:
+    """One generateContent call with a JSON answer. Returns the parsed answer, or None if Gemini declined.
+    With a deadline (time.monotonic()), no try runs past it, so a retried answer still ends inside the host's limit."""
     prompt = "Context (JSON):" + chr(10) + context_json + chr(10) * 2 + "Question: " + question
     body = {
         "systemInstruction": {"parts": [{"text": SYSTEM}]},
@@ -303,10 +361,16 @@ def call_gemini(question: str, context_json: str) -> dict[str, Any] | None:
             method="POST",
         )
         last = k + 1 == len(models)
+        # An overloaded model can take about 30 s just to answer 503, so the first try is cut short: the fallback
+        # then still fits inside the host's 60 s limit.
+        timeout = 40.0 if last else 12.0
+        if deadline is not None:
+            left = deadline - time.monotonic()
+            if left < 2:
+                raise TimeoutError("no time left for the model")
+            timeout = min(timeout, left)
         try:
-            # An overloaded model can take about 30 s just to answer 503, so the first try is cut short: the fallback
-            # then still fits inside the host's 60 s limit.
-            with urllib.request.urlopen(req, timeout=40 if last else 12) as res:
+            with urllib.request.urlopen(req, timeout=timeout) as res:
                 data = json.loads(res.read().decode("utf-8"))
             break
         except urllib.error.HTTPError as err:
@@ -335,6 +399,13 @@ def live_available() -> bool:
     return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))
 
 
+def live_model() -> str | None:
+    """The model family that answers live on this host, for the page to name (D49), or None. Never the key."""
+    if os.environ.get("GEMINI_API_KEY"):
+        return "Gemini"
+    return "Claude" if live_available() else None
+
+
 def answer(question: str, ctx: Context, call: ModelCall | None = None) -> dict[str, Any]:
     if call is None:
         if not live_available():
@@ -344,7 +415,11 @@ def answer(question: str, ctx: Context, call: ModelCall | None = None) -> dict[s
                 "not_covered": None,
                 "problems": ["no model credential on this server"],
             }
-        call = call_gemini if os.environ.get("GEMINI_API_KEY") else call_claude
+        if os.environ.get("GEMINI_API_KEY"):
+            call = functools.partial(call_gemini, deadline=time.monotonic() + ANSWER_WITHIN_S)
+        else:
+            call = call_claude
+    started = time.monotonic()
     try:
         draft = call(question, ctx.for_model())
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, KeyError, OSError) as err:
@@ -362,13 +437,39 @@ def answer(question: str, ctx: Context, call: ModelCall | None = None) -> dict[s
             "not_covered": None,
             "problems": ["the model declined to answer"],
         }
-    if not CHOICE_QUESTION.search(question):
-        # The model sometimes opens every answer with the choice sentence; it belongs only to a question about choosing.
-        for para in draft.get("paragraphs") or []:
-            if isinstance(para, dict) and isinstance(para.get("text"), str):
-                para["text"] = para["text"].replace(CHOICE_SENTENCE, "").strip()
-        draft["paragraphs"] = [p for p in draft.get("paragraphs") or [] if not isinstance(p, dict) or p.get("text")]
+    _tidy(draft, question, ctx)
     problems = check(draft, ctx)
+    if problems and time.monotonic() - started < RETRY_WITHIN_S:
+        # D49: one more draft, told exactly what failed. It passes the same check or nothing is shown.
+        again = (
+            question
+            + chr(10) * 2
+            + "(A first draft of this answer was rejected by the evidence check for: "
+            + "; ".join(problems[:6])
+            + ". Write the answer again without these faults.)"
+        )
+        try:
+            redo = call(again, ctx.for_model())
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, KeyError, OSError):
+            redo = None
+        if redo is not None:
+            _tidy(redo, question, ctx)
+            if not check(redo, ctx):
+                return render(redo, ctx)
     if problems:
         return {"status": "rejected", "paragraphs": [], "not_covered": None, "problems": problems[:10]}
     return render(draft, ctx)
+
+
+def _tidy(draft: dict[str, Any], question: str, ctx: Context) -> None:
+    """Code-only clean-ups before the check: no word of the model's is changed, only removed."""
+    keep_choice = bool(CHOICE_QUESTION.search(question))
+    for para in draft.get("paragraphs") or []:
+        if isinstance(para, dict) and isinstance(para.get("text"), str):
+            text = para["text"]
+            if not keep_choice:
+                # The model sometimes opens every answer with the choice sentence; it belongs only to a question
+                # about choosing.
+                text = text.replace(CHOICE_SENTENCE, "").strip()
+            para["text"] = tidy_units(text, ctx)
+    draft["paragraphs"] = [p for p in draft.get("paragraphs") or [] if not isinstance(p, dict) or p.get("text")]

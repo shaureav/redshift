@@ -1,8 +1,9 @@
 // App shell. One primary destination (the plane) plus Compare; everything else lives under Reference.
 // The plane is full bleed; every other page sits in a reading-width container with the footer.
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useData } from "../lib/data";
+import { requestPlane } from "../lib/planeRequest";
 import type { DatasetVersion } from "../lib/types";
 import { CommandPalette, PALETTE_EVENT, THEME_EVENT } from "./CommandPalette";
 import { ChevronIcon, MoonIcon, SearchIcon, SunIcon } from "./Icons";
@@ -43,7 +44,7 @@ function useTheme(): ["dark" | "light", () => void] {
   return [theme, toggle];
 }
 
-function ReferenceMenu() {
+function ReferenceMenu({ onIntro }: { onIntro: () => void }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const loc = useLocation();
@@ -73,6 +74,12 @@ function ReferenceMenu() {
               <span className="block text-xs text-ink-3">Two atmospheres side by side</span>
             </NavLink>
           </li>
+          <li className="sm:hidden">
+            <button type="button" className="block w-full rounded-md px-3 py-2 text-left hover:bg-[color:var(--surface-3)]" onClick={() => { setOpen(false); onIntro(); }}>
+              <span className="block text-sm text-ink">Intro</span>
+              <span className="block text-xs text-ink-3">The access gap in five beats</span>
+            </button>
+          </li>
           {REFERENCE.map(([to, label, hint]) => (
             <li key={to}>
               <NavLink to={to} className={({ isActive }) => `block rounded-md px-3 py-2 ${isActive ? "bg-[color:var(--surface-3)]" : "hover:bg-[color:var(--surface-3)]"}`}>
@@ -93,6 +100,12 @@ export function Layout() {
   const loc = useLocation();
   const plane = loc.pathname === "/";
   const [isMac] = useState(() => typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform));
+  const navigate = useNavigate();
+  // As the command palette does it (lib/planeRequest.ts): the request waits for the plane page if it is not open.
+  const replayIntro = () => {
+    if (!plane) navigate("/");
+    setTimeout(() => requestPlane("intro"), 0);
+  };
   return (
     <div className="flex min-h-screen flex-col">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-[90] focus:rounded focus:bg-surface-2 focus:p-2">Skip to content</a>
@@ -111,7 +124,10 @@ export function Layout() {
           </Link>
           <NavLink to="/" end className={({ isActive }) => `btn btn-quiet max-sm:px-2 ${isActive ? "text-ink" : ""}`}>Plane</NavLink>
           <NavLink to="/compare" className={({ isActive }) => `btn btn-quiet max-sm:hidden ${isActive ? "text-ink" : ""}`}>Compare</NavLink>
-          <ReferenceMenu />
+          {/* D49: the story intro, one click away for a first-time visitor who skipped it or comes back to it.
+              Below 640 px it lives in the Reference menu, so the row still fits a 360 px screen. */}
+          <button type="button" className="btn btn-quiet max-sm:hidden" onClick={replayIntro}>Intro</button>
+          <ReferenceMenu onIntro={replayIntro} />
           <span className="ml-auto flex flex-none items-center gap-1 sm:gap-2">
             <button type="button" className="btn btn-quiet justify-center max-sm:px-2" onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))} aria-label={`Search (${isMac ? "Command" : "Ctrl"} K)`}>
               <SearchIcon />

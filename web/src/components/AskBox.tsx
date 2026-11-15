@@ -2,9 +2,9 @@
 // 1. Cached answers (data/ai/qa.json): AI-drafted templates whose every number is a slot filled from the
 //    built data, rejected by the build if they contain a bare number, banned wording, an unknown citation
 //    or no "not covered" statement.
-// 2. A live answer, only when an API host is configured (VITE_API_BASE). The API retrieves from the
-//    dataset, asks the model, and rejects any answer with a number or citation that is not in what it
-//    retrieved (redshift/ai/ask.py). The static site has no key and says so.
+// 2. A live answer, when the Redshift API here has a model key. The API retrieves from the dataset, asks the
+//    model, and rejects any answer with a number or citation that is not in what it retrieved
+//    (redshift/ai/ask.py). Before anyone asks, the box says whether live answers are on (D49).
 // Any request to choose or recommend an atmosphere gets the checked refusal.
 import { useEffect, useMemo, useState } from "react";
 import { useData } from "../lib/data";
@@ -12,7 +12,11 @@ import type { Val } from "../lib/types";
 import { AiLabelFor, AiText, type AiData, type AiItem } from "./AiText";
 import { Value } from "./Value";
 
-const API = (import.meta.env.VITE_API_BASE as string | undefined)?.replace(/\/$/, "");
+// Where the API is (D49): VITE_API_BASE when the build sets it (set it empty to switch live answers off), else
+// /api, where the Vercel function (web/api/index.py) serves it on the public site and the dev and preview servers
+// pass it to a local API (vite.config.ts). Unit tests have no API.
+const RAW_API = import.meta.env.VITE_API_BASE as string | undefined;
+const API = (RAW_API ?? (import.meta.env.MODE === "test" ? "" : "/api")).replace(/\/$/, "") || null;
 
 const STOP = new Set("a an and any are at be been can could did do does for from has have how i if in is it its near of on or that the there this to was we were what when where which who why will with".split(" "));
 export function tokens(s: string): string[] {
@@ -39,6 +43,10 @@ export function matchCached(q: string, items: AiItem[]): { item: AiItem; score: 
   return best && best.score >= 0.34 ? best : null;
 }
 
+/** With live answers on, a typed question goes to the model unless a checked answer is for nearly the same
+ *  question (a chip, or the same words retyped). A looser match is shown only if the live answer fails. */
+const SAME_QUESTION = 0.75;
+
 interface LiveAnswer {
   status: "answered" | "rejected" | "unavailable";
   paragraphs: { segments: ({ t: string } | { val: Val })[]; cites: string[] }[];
@@ -46,16 +54,48 @@ interface LiveAnswer {
   problems?: string[];
 }
 
+type LiveStatus = { state: "checking" } | { state: "on"; model: string } | { state: "off"; why: "no-api" | "no-key" };
+
+// One check per page load, shared by every Ask box (the panel and the phone's sheet).
+let statusOnce: Promise<LiveStatus> | null = null;
+function liveStatus(): Promise<LiveStatus> {
+  if (!API) return Promise.resolve({ state: "off", why: "no-api" });
+  statusOnce ??= fetch(`${API}/ask/status`)
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+    .then((j: { live?: boolean; model?: string | null }): LiveStatus => (j.live ? { state: "on", model: j.model || "a language model" } : { state: "off", why: "no-key" }))
+    // No API at this address (a static copy answers with its page, or nothing): live answers are off here.
+    .catch((): LiveStatus => ({ state: "off", why: "no-api" }));
+  return statusOnce;
+}
+
+function useLiveStatus(): LiveStatus {
+  const [s, setS] = useState<LiveStatus>(API ? { state: "checking" } : { state: "off", why: "no-api" });
+  useEffect(() => {
+    let gone = false;
+    liveStatus().then((v) => !gone && setS(v));
+    return () => {
+      gone = true;
+    };
+  }, []);
+  return s;
+}
+
 export function AskBox({ context, initial, onAsked }: { context: { o2: number; psi: number; m: number }; initial?: string | null; onAsked?: (q: string | null) => void }) {
   const { data } = useData<AiData>("ai_text.json");
+  const status = useLiveStatus();
   const [q, setQ] = useState(initial ?? "");
   const [asked, setAsked] = useState<string | null>(initial ?? null);
   const [live, setLive] = useState<{ state: "idle" | "loading" | "done" | "error"; answer?: LiveAnswer }>({ state: "idle" });
   const items = useMemo(() => data?.qa ?? [], [data]);
   const match = useMemo(() => (asked ? matchCached(asked, items) : null), [asked, items]);
+  const liveOn = status.state === "on";
+  // Which answer a question gets: the checked one when it is for this question (or live answers are off and it
+  // is the closest), else a live one. The choice refusal is always the checked one.
+  const checked = match && (!liveOn || match.score >= SAME_QUESTION || match.item.id === "qa-choose") ? match : null;
+  const goLive = !!asked && !checked && liveOn;
 
   useEffect(() => {
-    if (!asked || match || !API) return;
+    if (!asked || !goLive || !API) return;
     let gone = false;
     setLive({ state: "loading" });
     fetch(`${API}/ask`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: asked, o2: context.o2, psi: context.psi, m: context.m }) })
@@ -65,7 +105,7 @@ export function AskBox({ context, initial, onAsked }: { context: { o2: number; p
     return () => {
       gone = true;
     };
-  }, [asked, match, context.o2, context.psi, context.m]);
+  }, [asked, goLive, context.o2, context.psi, context.m]);
 
   const ask = (text: string) => {
     const t = text.trim();
@@ -73,6 +113,8 @@ export function AskBox({ context, initial, onAsked }: { context: { o2: number; p
     setQ(t);
     onAsked?.(t || null);
   };
+  // A live answer that could not be given falls back to the closest checked answer, when there is one.
+  const liveFailed = goLive && (live.state === "error" || (live.state === "done" && live.answer?.status !== "answered"));
 
   return (
     <div>
@@ -84,9 +126,10 @@ export function AskBox({ context, initial, onAsked }: { context: { o2: number; p
         }}
       >
         <label htmlFor="ask-input" className="sr-only">Ask a question about the evidence</label>
-        <input id="ask-input" className="field" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Has a solid ever burned near 8.2 psi?" autoComplete="off" />
+        <input id="ask-input" className="field" value={q} onChange={(e) => setQ(e.target.value)} placeholder={liveOn ? "Ask anything about the evidence here" : "Has a solid ever burned near 8.2 psi?"} autoComplete="off" />
         <button type="submit" className="btn">Ask</button>
       </form>
+      <LiveLine status={status} />
       <div className="mt-3 flex flex-wrap gap-2" aria-label="Questions with checked answers" data-prompt="">
         {items.map((it) => (
           <button key={it.id} type="button" className="chip h-auto whitespace-normal py-1 text-left text-xs" aria-pressed={asked === it.question} onClick={() => ask(it.question ?? "")}>
@@ -95,28 +138,56 @@ export function AskBox({ context, initial, onAsked }: { context: { o2: number; p
         ))}
       </div>
 
-      <div aria-live="polite" className="mt-4">
-        {asked && match && (
-          <article className="animate-rise rounded-lg border border-line bg-[color:var(--surface)] p-4">
-            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-              <span className="text-xs text-ink-3">{match.score < 1 && match.item.question !== asked ? <>Closest checked answer: &ldquo;{match.item.question}&rdquo;</> : "Checked answer"}</span>
-              <AiLabelFor item={match.item} />
-            </div>
-            <AiText item={match.item} />
-          </article>
-        )}
-        {asked && !match && !API && (
+      <div aria-live="polite" className="mt-4 space-y-3">
+        {asked && checked && <Checked match={checked} asked={asked} />}
+        {asked && !checked && !goLive && status.state === "checking" && <Busy />}
+        {asked && !checked && status.state === "off" && (
           <p className="rounded-lg border border-dashed border-line-strong p-4 text-sm text-ink-2">
-            No checked answer covers this question yet, and live answers are switched off on this static site (they need the Redshift API with a model key). Try one of the questions above.
+            No checked answer covers this question yet, and live answers are off here
+            {status.why === "no-key" ? " (the Redshift API on this host has no model key)" : " (this copy of the site has no Redshift API behind it)"}. Try one of the questions above.
           </p>
         )}
-        {asked && !match && API && live.state === "loading" && (
-          <div className="space-y-2" aria-busy="true"><div className="skeleton h-4 w-full" /><div className="skeleton h-4 w-4/5" /><div className="skeleton h-4 w-3/5" /></div>
-        )}
-        {asked && !match && API && live.state === "error" && <p className="text-sm text-ink-2">The live answer service could not be reached. The checked answers above still work.</p>}
-        {asked && !match && API && live.state === "done" && live.answer && <LiveView a={live.answer} />}
+        {goLive && live.state === "loading" && <Busy label={`${status.state === "on" ? status.model : "The model"} is answering from the evidence here`} />}
+        {goLive && live.state === "error" && <p className="text-sm text-ink-2">The live answer service could not be reached. The checked answers above still work.</p>}
+        {goLive && live.state === "done" && live.answer && <LiveView a={live.answer} />}
+        {liveFailed && match && <Checked match={match} asked={asked ?? ""} />}
       </div>
     </div>
+  );
+}
+
+/** Whether new questions are answered live here, said before anyone asks (D49). */
+function LiveLine({ status }: { status: LiveStatus }) {
+  if (status.state === "checking") return <p className="mt-2 text-xs text-ink-3">Checking for live AI answers...</p>;
+  if (status.state === "on") {
+    return (
+      <p className="mt-2 flex items-start gap-2 text-xs text-ink-2">
+        <span className="mt-1 inline-block h-2 w-2 flex-none rounded-full bg-[color:var(--accent)]" aria-hidden="true" />
+        <span>Live AI answers on ({status.model}). Type any question: it is answered now from the evidence at this point and checked by code. The chips below are checked answers.</span>
+      </p>
+    );
+  }
+  return <p className="mt-2 text-xs text-ink-3">Live AI answers are off on this copy of the site. The questions below have checked answers.</p>;
+}
+
+function Busy({ label }: { label?: string }) {
+  return (
+    <div className="space-y-2" aria-busy="true">
+      {label && <p className="text-xs text-ink-3">{label}...</p>}
+      <div className="skeleton h-4 w-full" /><div className="skeleton h-4 w-4/5" /><div className="skeleton h-4 w-3/5" />
+    </div>
+  );
+}
+
+function Checked({ match, asked }: { match: { item: AiItem; score: number }; asked: string }) {
+  return (
+    <article className="animate-rise rounded-lg border border-line bg-[color:var(--surface)] p-4">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <span className="text-xs text-ink-3">{match.score < 1 && match.item.question !== asked ? <>Closest checked answer: &ldquo;{match.item.question}&rdquo;</> : "Checked answer"}</span>
+        <AiLabelFor item={match.item} />
+      </div>
+      <AiText item={match.item} />
+    </article>
   );
 }
 

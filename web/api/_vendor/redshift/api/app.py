@@ -424,13 +424,28 @@ class AskResponse(BaseModel):
 def ask(req: AskRequest) -> dict[str, Any]:
     """Ask the evidence. Retrieves only from the built dataset around the given point, asks the model to answer
     in slots (it may not write numbers), and rejects any answer with a bare number, an unknown slot or citation,
-    banned wording or no 'not covered' statement. Needs ANTHROPIC_API_KEY on this host; otherwise 'unavailable'."""
+    banned wording or no 'not covered' statement. Needs GEMINI_API_KEY (or ANTHROPIC_API_KEY) on this host;
+    otherwise 'unavailable'."""
     from redshift.ai import ask as A
 
     p = probe(o2=req.o2, p=req.psi, m=req.m)
     findings = load("key_findings.json")["findings"]
     ctx = A.build_context(p, load("access_gap.json"), findings, load("investigations.json")["investigations"])
     return A.answer(req.question, ctx)
+
+
+class AskStatus(BaseModel):
+    live: bool
+    model: str | None
+
+
+@app.get("/ask/status", response_model=AskStatus)
+def ask_status() -> dict[str, Any]:
+    """Whether this host answers new questions live, and with which model family (D49), so the page can say so
+    before anyone asks. It never returns or reveals a key."""
+    from redshift.ai import ask as A
+
+    return {"live": A.live_available(), "model": A.live_model()}
 
 
 @app.get("/sensitivity")

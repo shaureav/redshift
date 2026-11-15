@@ -88,3 +88,42 @@ def test_refusal_and_endpoint_without_credentials() -> None:
 def test_every_context_value_carries_provenance() -> None:
     ctx = _ctx()
     assert ctx.values and all(isinstance(v["p"], str) and v["p"] for v in ctx.values.values())
+
+
+def _unit_ctx() -> A.Context:
+    c = A.Context()
+    c.slot({"v": 55.2, "u": "kPa", "p": "t:1"}, "pressure of test T1, kPa")
+    c.slot({"v": 0, "u": "tests", "p": "g:1"}, "tests near the point")
+    c.ids.add("PSI-100")
+    return c
+
+
+def _draft(text: str) -> dict[str, Any]:
+    return {"paragraphs": [{"text": text, "cites": ["PSI-100"]}], "not_covered": "The tables do not record every flow."}
+
+
+def test_a_unit_said_twice_is_removed() -> None:
+    """D49: the page draws a value with its unit, so 'kPa' written after it again is dropped by code."""
+    out = A.answer("What pressure?", _unit_ctx(), call=lambda q, c: _draft("The test ran at {{v1}} kPa."))
+    assert out["status"] == "answered"
+    assert out["paragraphs"][0]["segments"][-1] == {"t": "."}
+
+
+def test_a_value_put_to_another_unit_is_sent_back_once() -> None:
+    """D49: a count of tests followed by 'cm/s' is a number put to another quantity; one redraft is asked for."""
+    drafts = [_draft("The sample sat in flow at {{v2}} cm/s."), _draft("Tests near this point: {{v2}}.")]
+    asked: list[str] = []
+
+    def fake(q: str, c: str) -> dict[str, Any]:
+        asked.append(q)
+        return drafts[len(asked) - 1]
+
+    out = A.answer("How fast was the flow?", _unit_ctx(), call=fake)
+    assert out["status"] == "answered" and len(asked) == 2
+    assert "followed by the unit 'cm/s'" in asked[1]
+
+
+def test_a_value_put_to_another_unit_twice_is_rejected() -> None:
+    out = A.answer("How fast was the flow?", _unit_ctx(), call=lambda q, c: _draft("Flow at {{v2}} cm/s."))
+    assert out["status"] == "rejected"
+    assert any("cm/s" in p for p in out["problems"])

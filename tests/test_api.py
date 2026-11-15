@@ -81,3 +81,14 @@ def test_probe_snapshot_8_2_psi_34_pct() -> None:
         path.write_text(text, encoding="utf-8", newline="\n")
         pytest.skip("snapshot written; review and commit it")
     assert body == json.loads(path.read_text(encoding="utf-8"))
+
+
+def test_ask_status_names_the_model_and_never_a_key(monkeypatch: pytest.MonkeyPatch) -> None:
+    """D49: the page asks whether live answers are on before anyone types; the reply never carries a key."""
+    for k in ("GEMINI_API_KEY", "ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"):
+        monkeypatch.delenv(k, raising=False)
+    assert client.get("/ask/status").json() == {"live": False, "model": None}
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key-not-real")
+    r = client.get("/ask/status")
+    assert r.json() == {"live": True, "model": "Gemini"}
+    assert "test-key-not-real" not in r.text

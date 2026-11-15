@@ -77,10 +77,21 @@ export default function Home() {
 
   // The story intro (components/Intro.tsx): its beat, or null once it has handed over. It opens by itself on a
   // device's first visit to the plane, unless the link carries a view (a shared link opens on that view, not on
-  // a story), and from the command palette. While it plays the plane draws each beat from a stage of its own:
-  // nothing is written to the address bar until Explore, inside its click.
+  // a story), and from the Intro button in the nav or the command palette. While it plays the plane draws each beat
+  // from a stage of its own: no view is written to the address bar until Explore, inside its click.
   const { search } = useLocation();
-  const [beat, setBeat] = useState<number | null>(() => (search === "" && !introSeen() ? 0 : null));
+  // ?intro plays it whatever this device has seen (D49: a link for the video, for judges, for a second look). The
+  // word leaves the address at once, so a reload or a link copied later opens the plane, not the story again.
+  const introAsked = new URLSearchParams(search).has("intro");
+  const [beat, setBeat] = useState<number | null>(() => (introAsked || (search === "" && !introSeen()) ? 0 : null));
+  useEffect(() => {
+    if (!introAsked) return;
+    const rest = new URLSearchParams(search);
+    rest.delete("intro");
+    setBeat(0);
+    const s = rest.toString();
+    navigate({ search: s ? `?${s}` : "" }, { replace: true });
+  }, [introAsked, search, navigate]);
   const stage = beat === null ? null : INTRO_STAGES[beat];
   const closeIntro = useCallback(
     (explore: boolean) => {
