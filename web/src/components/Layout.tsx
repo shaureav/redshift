@@ -102,7 +102,7 @@ export function Layout() {
           command palette (z-80) and toasts (z-85) sit above the nav. Each accessible name holds the words shown
           (WCAG 2.5.3, label in name): the logo link "Redshift The Atmosphere Trade Studio", the search button
           "Search" and its shortcut. On a touch screen every one of them is at least 44 by 44 px (index.css). */}
-      <nav className="glass sticky top-0 z-50 h-[var(--nav-h)] border-b border-line backdrop-blur" aria-label="Main">
+      <nav className="navy glass sticky top-0 z-50 h-[var(--nav-h)] border-b border-line backdrop-blur" aria-label="Main">
         <div className="flex h-full items-center gap-1 px-4 sm:gap-2 lg:px-6">
           <Link to="/" className="tap-box mr-1 flex flex-none items-center gap-2 sm:mr-2" aria-label="Redshift The Atmosphere Trade Studio, the plane">
             <img src="/favicon.svg" alt="" className="h-6 w-6 max-w-none flex-none" />
@@ -132,7 +132,7 @@ export function Layout() {
         <Outlet />
       </main>
       {!plane && (
-        <footer className="border-t border-line text-xs text-ink-3">
+        <footer className="navy navy-fill border-t border-line text-xs text-ink-3">
           <div className="mx-auto grid max-w-[1280px] gap-2 px-4 py-6 sm:grid-cols-2 lg:px-8">
             <span>Dataset <span className="mono text-ink-2">{version?.version ?? "loading"}</span>, PSI data retrieved {version?.retrieved ?? ""}. Data: NASA Physical Sciences Informatics; cite each investigation by DOI. Code: MIT.</span>
             <span>Redshift informs a decision; it does not recommend an atmosphere. Code, pipeline and draft text were written with an AI assistant (Claude) under the team&apos;s direction. <Link className="underline underline-offset-2" to="/about">Details</Link></span>

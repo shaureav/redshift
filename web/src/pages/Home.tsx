@@ -312,7 +312,7 @@ export default function Home() {
     >
       {/* Below lg the headline and the plane fill the screen above the sheet's peek (.plane-stage), and the page
           leaves room for the peek under the legend (.sheet-pad); at lg the stage is not a box at all. */}
-      <section className="sheet-pad flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
+      <section className="navy navy-fill sheet-pad flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
         <div className="plane-stage">
         <header className="intro-hide px-4 pb-2 pt-4 lg:px-6">
           {/* The Heading role (plan, section 5): the panel's point readout keeps the larger Title role. The plane's

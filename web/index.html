@@ -11,8 +11,8 @@
     <meta name="theme-color" content="#0a1322" />
     <title>Redshift: The Atmosphere Trade Studio</title>
     <script>
-      /* Apply the saved theme before first paint; dark navy is the default. */
-      try { var t = localStorage.getItem("redshift-theme"); if (t === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}
+      /* Apply the saved theme before first paint: cream pages with a navy map are the default (D41); dark navy throughout is the choice. */
+      try { var t = localStorage.getItem("redshift-theme"); if (t !== "dark") document.documentElement.setAttribute("data-theme", "light"); } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
     </script>
   </head>
   <body>

@@ -49,7 +49,8 @@
   --tile-hatch-opacity: 0.6;
 }
 
-/* Colour tokens. Dark navy is the default; light is opt-in (data-theme="light"). No red anywhere.
+/* Colour tokens. The default look is cream pages with a navy map (data-theme="light" plus .navy zones, D41); dark
+   navy throughout is the choice. No red anywhere.
    Fuel-class fills were validated for colour-vision deficiency (all pairs, light and dark) and are always
    paired with a marker shape. One accent (teal) marks interactive state only; data never uses it. Every token
    in this block also applies to the light theme unless the light block sets it again. */
@@ -66,8 +67,8 @@
   --line: #1d2b44;          /* dividers and raised surfaces: quiet on purpose */
   --line-strong: #2c3e5e;   /* dashed placeholders and inner dividers */
   --control-line: #64748f;  /* the boundary of a control: 3:1 against every surface */
-  --accent: #3fb6a8;
-  --accent-ink: #04201c;
+  --accent: #f2a065;   /* D41: apricot coral, the one accent; hue 25 degrees, outside the no-red range */
+  --accent-ink: #14213d;
   --focus: var(--accent);
   --amber-ink: #e3a72f;
 
@@ -91,45 +92,90 @@
   --candidate: #e9eef6;
   --isotherm: #6c7a93;
   --prebreathe: #9085e9;
-  --probe: #ffffff;
+  --probe: #f2a065;   /* D41: the probe, its ring and its tag edge carry the coral on the map */
   --veil: rgba(4, 9, 18, 0.72); /* the dimmed page behind a spotlight, the same in both themes */
   --floating: color-mix(in srgb, var(--surface-2) 92%, transparent);
   --shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
 }
 
 :root[data-theme="light"] {
+  /* D41: cream pages with navy ink; the navigation and the plane stay navy (.navy below). */
   color-scheme: light;
-  --bg: #e9edf2;
-  --surface: #f6f7f9;
-  --surface-2: #ffffff;
-  --surface-3: #eef1f5;
-  --ink: #0f1b2d;
-  --ink-2: #3f4b63;
-  --ink-3: #56627a;
-  --line: #d9dee7;
-  --line-strong: #b4bdcc;
-  --control-line: #76819a;
-  --accent: #1d756d;
+  --bg: #efe7d7;
+  --surface: #f7f1e5;
+  --surface-2: #fcf8f0;
+  --surface-3: #ede4d2;
+  --ink: #14213d;
+  --ink-2: #3c4760;
+  --ink-3: #575f73;
+  --line: #e0d5c1;
+  --line-strong: #c4b69c;
+  --control-line: #847a69;
+  --accent: #8f4a19;   /* apricot coral deepened to carry text on cream; hue 25 degrees */
   --accent-ink: #ffffff;
-  --amber-ink: #8a5a00;
+  --amber-ink: #7a5200;
 
   /* The same validated fills, each with a 1 px darker ring of its own hue so every glyph reaches 3:1 against
-     white and the light greys (plan decision D3, D26; the colour-blindness re-check is open as Q20). */
+     the cream surfaces (plan decision D3, D26; the colour-blindness re-check is open as Q20). */
   --gas: #2a78d6;       --gas-ring: #2466b6;       --gas-edge: var(--gas-ring);
   --droplet: #1baf7a;   --droplet-ring: #158b61;   --droplet-edge: var(--droplet-ring);
   --solid: #eda100;     --solid-ring: #a57000;     --solid-edge: var(--solid-ring);
   --emulator: #e87ba4;  --emulator-ring: #b56080;  --emulator-edge: var(--emulator-ring);
 
-  --land: #ffffff;
-  --sea: #e6eaf0;
+  --land: #fcf8f0;
+  --sea: #e8dfcd;
 
-  --hatch: #9aa4b5;
-  --candidate: #0f1b2d;
-  --isotherm: #8c96a8;
+  --hatch: #a2967f;
+  --candidate: #14213d;
+  --isotherm: #8b8473;
   --prebreathe: #6250d6;
-  --probe: #0f1b2d;
-  --shadow: 0 16px 48px rgba(15, 27, 45, 0.18);
+  --probe: #8f4a19;
+  --shadow: 0 16px 48px rgba(20, 33, 61, 0.14);
 }
+
+/* D41: navy zones on cream pages. The navigation bar and the plane keep the navy tokens (the dark block
+   above, repeated), so the map reads navy with its coral accent whatever the page around it. */
+:root[data-theme="light"] .navy {
+  color-scheme: dark;
+  --bg: #070e1a;
+  --surface: #0a1322;
+  --surface-2: #0f1b2e;
+  --surface-3: #16243b;
+  --ink: #e9eef6;
+  --ink-2: #b6c0d1;
+  --ink-3: #8e9bb2;
+  --line: #1d2b44;          /* dividers and raised surfaces: quiet on purpose */
+  --line-strong: #2c3e5e;   /* dashed placeholders and inner dividers */
+  --control-line: #64748f;  /* the boundary of a control: 3:1 against every surface */
+  --accent: #f2a065;   /* D41: apricot coral, the one accent; hue 25 degrees, outside the no-red range */
+  --accent-ink: #14213d;
+  --focus: var(--accent);
+  --amber-ink: #e3a72f;
+  /* Fuel classes. --x is the fill. --x-ring is the 1 px ring around a filled glyph: in the dark theme the
+     glyph's own surface (a gap between neighbours), because every fill reaches 3:1 on its own. --x-edge is the
+     hue drawn as a line (outlined paper glyphs, legend outlines, bar edges). */
+  --gas: #3987e5;       --gas-ring: var(--sea);             --gas-edge: var(--gas);
+  --droplet: #199e70;   --droplet-ring: var(--sea);         --droplet-edge: var(--droplet);
+  --solid: #c98500;     --solid-ring: var(--sea);           --solid-edge: var(--solid);
+  --emulator: #e87ba4;  --emulator-ring: var(--sea);        --emulator-edge: var(--emulator);
+  /* The plane as a map: land where tests sit near a point, open sea where none do, the coast between. */
+  --land: #1a3152;   /* D40: a clear lift above the sea, so land and sea part at a glance */
+  --sea: #070f1c;
+  --sea-hatch: var(--hatch);
+  --coast: color-mix(in srgb, var(--ink-2) 70%, transparent);
+  --trail: var(--accent);         /* the probe trail over land: interaction history, not data */
+  --trail-sea: var(--ink-3);      /* the probe trail over sea: thinner, so land and sea differ without colour */
+  --hatch: #5b6a84;
+  --candidate: #e9eef6;
+  --isotherm: #6c7a93;
+  --prebreathe: #9085e9;
+  --probe: #f2a065;   /* D41: the probe, its ring and its tag edge carry the coral on the map */
+  --veil: rgba(4, 9, 18, 0.72); /* the dimmed page behind a spotlight, the same in both themes */
+  --floating: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  --shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  color: var(--ink);
+}
+:root[data-theme="light"] .navy.navy-fill { background: var(--surface); }
 
 html, body {
   background: var(--surface);
@@ -443,7 +489,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
     --line: #d9dee7;
     --line-strong: #b4bdcc;
     --control-line: #76819a;
-    --accent: #1d756d;
+    --accent: #8f4a19;
     --accent-ink: #ffffff;
     --amber-ink: #8a5a00;
     --gas: #2a78d6;       --gas-ring: #2466b6;       --gas-edge: var(--gas-ring);
