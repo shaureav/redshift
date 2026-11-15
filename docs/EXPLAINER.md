@@ -117,3 +117,15 @@ On the website, every number is drawn by one shared piece of code, and every num
 ## Design tokens and the contrast check (`web/src/index.css`, `web/scripts/contrast.mjs`)
 
 Every colour, text size, animation time and shadow on the website is set once, in one stylesheet, and every screen uses those settings instead of its own. Line heights follow the same six text roles, and a printed page takes the light colours on white paper. A small program reads that stylesheet and measures the contrast of every pairing that matters, in the dark theme, the light theme and on paper: text must be clearly readable (4.5 to 1), and every data marker and every control's edge must stand out from what is behind it (3 to 1). If a change ever breaks that, or brings red into the palette, the tests fail. A second small program (`web/scripts/palette-hue.mjs`) reads every colour in the stylesheet and the Tailwind settings and fails if any is close to red (within 20 degrees of red on the colour wheel and clearly saturated).
+
+## Verify findings (`web/src/pages/Verify.tsx`, `redshift/papers/findings.py`, `verify_queue`)
+
+An AI read NASA's papers and drafted each finding with an exact quote; code checked every quote is on its page. This page is where a person finishes the job: it shows each draft with the quote marked on its page, and a named team member accepts or rejects it. The decisions are downloaded as the same log the command-line script writes, and only the build turns an accepted finding into evidence.
+
+## The data request (`web/src/pages/Request.tsx`)
+
+The access gap written as an ask NASA could act on: publish the pressure for each solid-fuel test, publish the Saffire results as a table, and mark unknowns as unknown. Every count comes from the build and opens its source. It asks for data, never for an atmosphere.
+
+## The trust strip and the coast at every step size (`web/src/pages/Home.tsx`, `web/src/charts/Plane.tsx`)
+
+Under the plane, one line says what it is built from (21 tables, 1,942 tests, every published number traced, anomalies flagged and none altered), each count opening its source. A layer you can switch on draws the coast at the smallest and widest nearness steps: land inside the solid line is land whichever step you choose, land only inside the dashed line depends on the choice.

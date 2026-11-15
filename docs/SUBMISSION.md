@@ -2,48 +2,27 @@
 
 **These are drafts for the team to rewrite in your own words.** Judges read the project page closely, and the rules require the work and the idea to be yours. Every number below is copied from the build of dataset version `2026-11-14+6121a570500e`; the file it comes from is named. Before you submit, re-read each number from the live app, because counts change when paper findings are verified.
 
-Do not record the video until the Saffire V and VI condition findings are verified (`docs/TEAM_TASKS.md`, step 1). Beat 3 asks a question that depends on them.
+Verify the Saffire V and VI condition findings before recording (`docs/TEAM_TASKS.md`, step 1, or the app's Verify page at `/verify`): the closing question rests on them.
 
 ---
 
 ## (a) 30-second demo video script
 
-Screen capture only. No faces, no voices required. English subtitles burned in (or as a caption track). Each subtitle card is at most two short lines.
+Screen capture only. No faces, no voices required. English subtitles: load `docs/redesign/video-subtitles.srt` as the caption track (or burn it in). Each card is at most two short lines and is timed to the clicks below, which follow the story intro of the redesigned plane (`docs/redesign/DEMO.md` has the full presenter path and recoveries).
 
-### Beat 1 (0 to 10 s): the decision NASA faces
-
-**Screen:** the Trade Map at full width, habitat range zoom. The three NASA habitat candidates (14.7 psi / 21%, 10.2 psi / 26.5%, 8.2 psi / 34%) are pinned. Slow pan or no motion.
-
-| Time | Subtitle |
-| --- | --- |
-| 0 to 3 s | NASA has not chosen the air<br>for its Moon base. |
-| 3 to 7 s | Here are three candidates:<br>oxygen against cabin pressure. |
-| 7 to 10 s | Lower pressure means a shorter prebreathe.<br>More oxygen means hotter flames. |
-
-### Beat 2 (10 to 20 s): click 8.2 psi / 34%
-
-**Screen:** click the 8.2 psi / 34% marker. The evidence panel opens: 37 tests nearby, 17 droplet and 20 gas (`candidate_evidence.json`). Then tick "Solids only". The glyphs vanish and the area around the marker is hatched.
-
-| Time | Subtitle |
-| --- | --- |
-| 10 to 14 s | 8.2 psi, 34% oxygen:<br>37 fire tests nearby. |
-| 14 to 17 s | All droplets and gases. |
-| 17 to 20 s | Solids only:<br>no solid tests recorded. |
-
-### Beat 3 (20 to 30 s): the access gap
-
-**Screen:** the Access Gap chart. The bars step down: 263 solid-fuel burn rows in PSI tables, 129 with oxygen recorded, 0 with pressure recorded (`access_gap.json`). Then the question on screen, then the link.
-
-| Time | Subtitle |
-| --- | --- |
-| 20 to 23 s | NASA's tables hold 263 solid burns.<br>None records pressure. |
-| 23 to 28 s | If NASA has already burned fabric in near-Moon-base air,<br>why can't a researcher download it? |
-| 28 to 30 s | Redshift: The Atmosphere Trade Studio<br>[your public link] |
+| Time | Click | On screen | Subtitle |
+| --- | --- | --- | --- |
+| 0 to 6 s | Open the public link in a fresh private window (the intro plays once per browser). | Beat 1: a bare plot with the candidate atmospheres as pins. | NASA has not chosen the air / for its Moon base. Each pin is an atmosphere on the table: / oxygen across, cabin pressure up. |
+| 6 to 12 s | Right arrow. | Beat 2: the land rises with the hatched sea; the tests fade in by fuel class. | These are the microgravity fire tests / NASA's own tables let us place. Land: tests sit near. / Hatched sea: unknown, not safe. |
+| 12 to 18 s | Right arrow. | Beat 3: the land sinks; "No solid-material test can be placed on this plane"; the card's counts (`access_gap.json`). | Now only solid materials. 263 solid-fuel burn rows. / None records pressure. |
+| 18 to 23 s | Click **Explore**. | The plane at 8.2 psi / 34% O2, Solids only on; the panel: "37 tests sit near this point. None is a solid material." (`candidate_evidence.json`). | At 8.2 psi and 34% oxygen, 37 tests nearby. / Not one is a solid material. |
+| 23 to 28 s | In the panel's What's missing, click **Ask NASA for the data** (the data request page), or scroll to Ask the evidence and click the question chip. | The data request: the gap's counts, the seven solid-fuel tables by DOI, the Saffire papers, three asks. | If NASA has already burned fabric in near-Moon-base air, / why can't a researcher download it? |
+| 28 to 30 s | Hold. | The page title and the link. | Redshift: The Atmosphere Trade Studio / [your public link] |
 
 Recording notes:
-- Record at 1920 x 1080, browser zoom 100%, light theme, signed out, no browser extensions visible.
-- Keep it to 30 seconds or less.
-- Check every number on screen matches the subtitles before exporting.
+- Record at 1920 x 1080 (or 1440 x 900), browser zoom 100%, dark theme, signed out, no extensions visible.
+- Keep it to 30 seconds or less. Put your public link in the last subtitle card before exporting.
+- Check every number on screen matches the subtitles before exporting. The 263, 129, 0 and 37 come from PSI's tables and do not change when paper findings are verified; re-read them from the live app anyway.
 
 ---
 

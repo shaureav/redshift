@@ -25,6 +25,8 @@ The numbers are the ones the screen shows from the current build (`web/public/da
 | 18 to 23 s | Click **Explore**. (If you stepped the beats with the arrow keys, Enter works too: focus stays on the button. A click on the plane takes focus off it, so after a click, click Explore.) | The plane is yours at 8.2 psi / 34% O2 with Solids only on; the probe sits on the pin and the panel reads "37 tests sit near this point. None is a solid material." Gas flame 20, droplet 17, solid material 0 (hatched, "no tests recorded"). | "At 8.2 psi and 34 percent oxygen, an atmosphere NASA has named, 37 tests sit nearby. Not one is a solid material." |
 | 23 to 30 s | Scroll the panel down to **Ask the evidence** and click the question chip "If NASA has already burned fabric in near-Moon-base air, why can't a researcher download it?" | The checked answer, with its citations, every number a button to its source, and its label "AI-assisted, awaiting human check". | "So we ask NASA: if you have already burned fabric in near-Moon-base air, why can't a researcher download it?" |
 
+**Subtitles and the close.** For the recorded video, `docs/redesign/video-subtitles.srt` carries the English captions timed to this path. In the last beat, instead of the Ask chip, you may click **Ask NASA for the data** at the foot of the panel's What's missing: the data request page closes the story with the concrete ask.
+
 ## If something does not go to plan
 
 | Problem | Recovery |
