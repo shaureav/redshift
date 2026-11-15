@@ -77,6 +77,14 @@ export function MissingCallout({ r, candidate, prebreathe, gap, onOpenGap }: { r
             )}
           </ul>
         )}
+        {/* What would close a gap: the tests worth running next (the planner ranks tests, never atmospheres), and
+            the data that already exists but cannot be downloaded (D39). */}
+        {lines.length > 0 && (
+          <p className="mt-1 flex flex-wrap gap-x-3 border-t border-line pt-1.5 text-xs">
+            <Link className="underline underline-offset-2" to="/planner">Tests that would fill gaps like these</Link>
+            <Link className="underline underline-offset-2" to="/request">Ask NASA for the data</Link>
+          </p>
+        )}
       </div>
     </section>
   );

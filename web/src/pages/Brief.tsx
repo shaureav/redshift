@@ -25,6 +25,20 @@ export function briefCsv(r: Reading, near: NearTest[], version: string): string 
   return [head, ...rows].map((row) => row.map(esc).join(",")).join("\n") + "\n";
 }
 
+/** One line that cites this point of the plane: the point, the step size, the dataset version and a link that
+ *  opens the same brief (D39). The investigations are cited separately, by DOI, in the BibTeX. */
+export function briefCitation(o2: number, psi: number, m: number, version: string, origin = window.location.origin): string {
+  const qs = `o2=${o2}&p=${psi}${m !== 1 ? `&m=${m}` : ""}`;
+  return `Project Redshift (2026). Microgravity fire evidence near ${o2}% O2 and ${psi} psi (nearness step ${m}x). Redshift microgravity fire evidence dataset, version ${version}, derived from NASA Physical Sciences Informatics. ${origin}/brief?${qs}`;
+}
+
+function copyCitation(text: string) {
+  navigator.clipboard?.writeText(text).then(
+    () => toast("Citation copied"),
+    () => toast("Could not copy: select the citation at the foot of the brief"),
+  );
+}
+
 export function briefBibtex(near: NearTest[], invs: Investigation[], cite: string, version: string): string {
   const out: string[] = [`@misc{redshift_dataset,\n  title = {Redshift microgravity fire evidence dataset},\n  note = {${cite}},\n  version = {${version}}\n}`];
   const ids = [...new Set(near.map((n) => n.input.investigation_id))].sort();
@@ -83,6 +97,7 @@ export default function Brief() {
         <button type="button" className="btn btn-primary" onClick={() => window.print()}>Print or save as PDF</button>
         <button type="button" className="btn" onClick={() => { downloadText(briefCsv(r, near, ver), `redshift-brief-${r.o2.v}pct-${r.psi.v}psi.csv`, "text/csv"); toast("Brief CSV ready"); }}>Download CSV</button>
         <button type="button" className="btn" disabled={!invs.data} onClick={() => { if (!invs.data) return; downloadText(briefBibtex(near, invs.data.investigations, version.data!.cite, ver), `redshift-brief-${r.o2.v}pct-${r.psi.v}psi.bib`, "application/x-bibtex"); toast("Brief BibTeX ready"); }}>Download BibTeX</button>
+        <button type="button" className="btn" onClick={() => copyCitation(briefCitation(r.o2.v, r.psi.v, m, ver))}>Copy citation</button>
         <button type="button" className="btn" onClick={copyPageLink}>Copy link</button>
         <Link className="btn btn-quiet ml-auto" to={`/?o2=${r.o2.v}&p=${r.psi.v}${m !== 1 ? `&m=${m}` : ""}`}>Back to the plane</Link>
       </div>
@@ -163,7 +178,8 @@ export default function Brief() {
         <ol className="space-y-2 text-xs">
           {notes.map((id, i) => <li key={id} className="grid grid-cols-[24px_1fr] gap-2"><span className="text-ink-3">{i + 1}</span><SourceLine id={id} prov={prov.data?.[id]} loading={prov.isLoading} /></li>)}
         </ol>
-        <p className="mt-4 text-xs text-ink-2">Cite the dataset as: {version.data.cite}</p>
+        <p className="mt-4 text-xs text-ink-2">Cite this point as: {briefCitation(r.o2.v, r.psi.v, m, ver)}</p>
+        <p className="mt-1 text-xs text-ink-2">Cite the dataset as: {version.data.cite}</p>
         <p className="mt-1 text-xs text-ink-2">PSI investigations cited by the tests above:{" "}
           {[...new Set(near.map((n) => n.input.doi).filter(Boolean))].slice(0, 12).map((d, i) => <span key={d}>{i > 0 && ", "}<a className="mono underline underline-offset-2" href={doiUrl(d)}>{d}</a></span>)}
         </p>
