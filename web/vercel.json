@@ -1,4 +1,29 @@
 {
-  "rewrites": [{ "source": "/((?!data/|assets/|favicon).*)", "destination": "/index.html" }],
-  "headers": [{ "source": "/data/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] }]
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "includeFiles": "{api/_vendor/**,public/data/**}"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index"
+    },
+    {
+      "source": "/((?!api/|data/|assets/|favicon|logo|apple-touch).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    }
+  ]
 }

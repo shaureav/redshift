@@ -1,0 +1,5 @@
+# The Python function at web/api/index.py (Vercel). Versions as tested on 15 November 2026 (D46).
+fastapi==0.163.1
+pydantic==2.14.3
+numpy==2.4.6
+anthropic==2.8.0

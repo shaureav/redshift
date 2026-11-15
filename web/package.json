@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --max-warnings 0",
     "contrast": "node scripts/contrast.mjs",
-    "test": "node scripts/contrast.mjs && node scripts/palette-hue.mjs && vitest run"
+    "vendor-api": "node scripts/vendor-api.mjs",
+    "test": "node scripts/contrast.mjs && node scripts/palette-hue.mjs && node scripts/vendor-api.mjs --check && vitest run"
   },
   "dependencies": {
     "@tanstack/react-query": "5.59.0",
