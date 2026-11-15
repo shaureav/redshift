@@ -51,7 +51,7 @@ export function ErrorScreen({ error, onReload }: { error: Error; onReload: () =>
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)] px-4 py-6 sm:px-8">
       <a href={base} className="flex items-center gap-2 self-start" aria-label="Redshift, the plane">
-        <img src={`${base}favicon.svg`} alt="" className="h-6 w-6 max-w-none flex-none" />
+        <img src={`${base}favicon.png`} alt="" width={28} height={28} className="h-7 w-7 max-w-none flex-none rounded-md" />
         <span className="text-base font-semibold tracking-tight">Redshift</span>
       </a>
       {/* main stays the page's main landmark; only the short title is the alert, so a screen reader says

@@ -72,6 +72,7 @@ export default function About() {
 
   return (
     <div className="max-w-5xl">
+      <img src="/logo.webp" alt="Project Redshift logo" width={144} height={144} className="mb-6 h-36 w-36 rounded-xl" />
       <PageHeader title="About Redshift" lead="Redshift: The Atmosphere Trade Studio is an entry to the NASA Space Apps Challenge 2026. It brings together the microgravity fire evidence near candidate habitat atmospheres so an engineer can see what is known, what is missing and what could be tested." />
 
       <div className="mb-5">

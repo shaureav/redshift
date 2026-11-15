@@ -105,7 +105,7 @@ export function Layout() {
       <nav className="navy glass sticky top-0 z-50 h-[var(--nav-h)] border-b border-line backdrop-blur" aria-label="Main">
         <div className="flex h-full items-center gap-1 px-4 sm:gap-2 lg:px-6">
           <Link to="/" className="tap-box mr-1 flex flex-none items-center gap-2 sm:mr-2" aria-label="Redshift The Atmosphere Trade Studio, the plane">
-            <img src="/favicon.svg" alt="" className="h-6 w-6 max-w-none flex-none" />
+            <img src="/logo-mark.png" alt="" width={55} height={28} className="h-7 w-auto max-w-none flex-none" />
             <span className="hidden text-base font-semibold tracking-tight sm:inline">Redshift</span>{" "}
             <span className="hidden text-xs text-ink-3 xl:inline">The Atmosphere Trade Studio</span>
           </Link>

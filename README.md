@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/logo.png" width="200" alt="Project Redshift logo" /></p>
+
 # Redshift: The Atmosphere Trade Studio
 
 > **If we pick this cabin atmosphere, what do we actually know about fire there, and what's missing?**
