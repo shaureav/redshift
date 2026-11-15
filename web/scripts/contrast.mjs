@@ -209,7 +209,7 @@ const LAYERED = [
   { label: "glass over ink", expr: "color-mix(in srgb, var(--surface) 95%, transparent)", under: v("ink") },
   { label: "scrim over surface-2", expr: "color-mix(in srgb, var(--bg) 80%, transparent)", under: v("surface-2") },
 ];
-const TEXT = ["ink", "ink-2", "ink-3", "accent", "amber-ink"];
+const TEXT = ["ink", "ink-2", "ink-3", "accent", "amber-ink", "rose-ink"];
 const FUELS = ["gas", "droplet", "solid", "emulator"];
 const PLANE_GLYPHS = ["candidate", "prebreathe", "probe", "trail", "accent"];
 

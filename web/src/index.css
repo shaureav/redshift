@@ -69,6 +69,12 @@
   --control-line: #64748f;  /* the boundary of a control: 3:1 against every surface */
   --accent: #f2a065;   /* D41: apricot coral, the one accent; hue 25 degrees, outside the no-red range */
   --accent-ink: #14213d;
+  /* D42: decorative apricot and rose (the gradient rule under the navigation, the panel's top edge) and the rose
+     of section labels. Rose sits at hue 330 degrees, clear of the no-red range, and is never used on the map,
+     where the BRE emulator's pink is data. */
+  --coral: #f2a065;
+  --rose: #f0a3c9;
+  --rose-ink: #f0a3c9;
   --focus: var(--accent);
   --amber-ink: #e3a72f;
 
@@ -114,6 +120,9 @@
   --accent: #8f4a19;   /* apricot coral deepened to carry text on cream; hue 25 degrees */
   --accent-ink: #ffffff;
   --amber-ink: #7a5200;
+  --coral: #f2a065;
+  --rose: #e58cb8;
+  --rose-ink: #9b3d78;
 
   /* The same validated fills, each with a 1 px darker ring of its own hue so every glyph reaches 3:1 against
      the cream surfaces (plan decision D3, D26; the colour-blindness re-check is open as Q20). */
@@ -173,6 +182,9 @@
   --veil: rgba(4, 9, 18, 0.72); /* the dimmed page behind a spotlight, the same in both themes */
   --floating: color-mix(in srgb, var(--surface-2) 92%, transparent);
   --shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --coral: #f2a065;
+  --rose: #f0a3c9;
+  --rose-ink: #f0a3c9;
   color: var(--ink);
 }
 :root[data-theme="light"] .navy.navy-fill { background: var(--surface); }
@@ -220,7 +232,10 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   .scrim { background: var(--bg); background: color-mix(in srgb, var(--bg) 80%, transparent); }
   .glass { background: var(--surface); background: color-mix(in srgb, var(--surface) 95%, transparent); }
   /* The Label type role. */
-  .eyebrow { font-size: var(--text-label); line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  .eyebrow { font-size: var(--text-label); line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--rose-ink); font-weight: 500; } /* D42: section labels in rose */
+  /* D42: the apricot-to-rose rule, under the navigation and along the evidence panel's top edge. Decoration only. */
+  .accent-bar { background: linear-gradient(90deg, var(--coral), var(--rose)); }
+  nav.navy::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, var(--coral), var(--rose)); }
   .rule { border-top: 1px solid var(--line); }
 
   /* Controls: custom, never the browser default. Every boundary is --control-line (3:1); pressed, open and
@@ -492,6 +507,9 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
     --accent: #8f4a19;
     --accent-ink: #ffffff;
     --amber-ink: #8a5a00;
+    --coral: #f2a065;
+    --rose: #e58cb8;
+    --rose-ink: #9b3d78;
     --gas: #2a78d6;       --gas-ring: #2466b6;       --gas-edge: var(--gas-ring);
     --droplet: #1baf7a;   --droplet-ring: #158b61;   --droplet-edge: var(--droplet-ring);
     --solid: #eda100;     --solid-ring: #a57000;     --solid-edge: var(--solid-ring);

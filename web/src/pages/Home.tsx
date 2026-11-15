@@ -312,7 +312,7 @@ export default function Home() {
     >
       {/* Below lg the headline and the plane fill the screen above the sheet's peek (.plane-stage), and the page
           leaves room for the peek under the legend (.sheet-pad); at lg the stage is not a box at all. */}
-      <section className="navy navy-fill sheet-pad flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
+      <section className="sheet-pad flex min-h-0 flex-col" aria-label="The oxygen and pressure plane">
         <div className="plane-stage">
         <header className="intro-hide px-4 pb-2 pt-4 lg:px-6">
           {/* The Heading role (plan, section 5): the panel's point readout keeps the larger Title role. The plane's
@@ -335,7 +335,8 @@ export default function Home() {
             </span>
           </h1>
         </header>
-        <div className="relative min-h-0 flex-1 px-2 pb-2 lg:px-4">
+        {/* D42: the plot and its legend are one navy card on the cream page. */}
+        <div className="navy navy-fill relative mx-2 min-h-0 flex-1 rounded-t-xl px-2 pb-2 lg:mx-4 lg:px-3">
           <Plane
             map={map.data}
             candidates={cands.data.candidates}
@@ -373,6 +374,7 @@ export default function Home() {
         inert={stage !== null}
         className="intro-dim lg:relative lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-line lg:bg-[color:var(--surface)]"
       >
+        <div className="accent-bar h-1 max-lg:hidden" aria-hidden="true" />
         {selection && (
           <div className="animate-rise border-b border-line bg-[color:var(--surface-2)] px-5 py-4">
             <div className="flex items-center justify-between gap-2">
@@ -405,7 +407,7 @@ export default function Home() {
  *  room for a keyboard, the door to the shortcut sheet. */
 const Legend = memo(function Legend({ onShortcuts, robust }: { onShortcuts: () => void; robust: boolean }) {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 px-4 pb-2 text-xs text-ink-2 lg:px-6">
+    <div className="navy navy-fill mx-2 mb-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-b-xl px-4 pb-3 pt-1 text-xs text-ink-2 lg:mx-4">
       <span className="flex items-center gap-1.5"><span className="inline-block h-3 w-5 rounded-sm border border-[color:var(--coast)] bg-[color:var(--land)]" /> Land: tests near</span>
       <span className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-5 rounded-sm border border-line bg-[color:var(--sea)]" /> Sea: no tests near, unknown, not safe</span>
       {(["gas", "droplet", "solid", "emulator"] as const).map((f) => (
