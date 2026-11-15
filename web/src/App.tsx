@@ -20,6 +20,7 @@ const Quality = lazy(() => import("./pages/Quality"));
 const Methods = lazy(() => import("./pages/Methods"));
 const About = lazy(() => import("./pages/About"));
 const Verify = lazy(() => import("./pages/Verify"));
+const Request = lazy(() => import("./pages/Request"));
 
 // Old links to /map keep working: the plane is now the home page, and its query string is kept.
 function MapRedirect() {
@@ -51,6 +52,7 @@ export function App() {
               <Route path="methods" element={<Methods />} />
               <Route path="about" element={<About />} />
               <Route path="verify" element={<Verify />} />
+              <Route path="request" element={<Request />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>

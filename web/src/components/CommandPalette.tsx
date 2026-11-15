@@ -24,6 +24,7 @@ const PAGES: [string, string][] = [
   ["/quality", "Data Quality"],
   ["/methods", "Methods"],
   ["/about", "About"],
+  ["/request", "Data request to NASA"],
   ["/verify", "Verify paper findings"],
 ];
 

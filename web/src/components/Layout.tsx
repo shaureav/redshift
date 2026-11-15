@@ -16,6 +16,7 @@ const REFERENCE: [string, string, string][] = [
   ["/quality", "Data Quality", "Flags, reconciliation, golden checks"],
   ["/methods", "Methods", "How every number is computed"],
   ["/about", "About", "Team, AI use, licences, citation"],
+  ["/request", "Data request", "The access gap as an ask to NASA"],
   ["/verify", "Verify findings", "Check AI-drafted paper findings"],
 ];
 

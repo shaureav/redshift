@@ -453,7 +453,7 @@ function GapDialog({ onClose }: { onClose: () => void }) {
     // Above the story intro and its click catcher (z-[58]), like the shortcut sheet; below a source card (z-[60]).
     <div className="animate-fade scrim fixed inset-0 z-[59] flex items-start justify-center overflow-y-auto p-4 backdrop-blur-sm sm:p-8" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label="The access gap" className="animate-rise w-full max-w-3xl outline-none">
-        <div className="mb-2 flex justify-end"><button type="button" className="btn" onClick={onClose}>Close</button></div>
+        <div className="mb-2 flex justify-end gap-2"><Link className="btn" to="/request">Turn this into a data request</Link><button type="button" className="btn" onClick={onClose}>Close</button></div>
         <AccessGap />
       </div>
     </div>
