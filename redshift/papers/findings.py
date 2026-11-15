@@ -173,3 +173,42 @@ def status(findings: list[CheckedFinding]) -> dict[str, Any]:
         ],
         "verified": [f.id for f in findings if f.verified],
     }
+
+
+def verify_queue(findings: list[CheckedFinding]) -> dict[str, Any]:
+    """The review queue for the site's Verify page: every draft with its checks, its latest verification
+    and the extracted text of its page, so a reviewer can read the quote in place before deciding.
+
+    This is a review tool, not part of the dataset: it is written beside the snapshot but kept out of the
+    dataset's version hash and the provenance lint, since its numbers are unverified drafts by design. A
+    decision made on the page is downloaded as verifications.json and only reaches the app through the
+    build, exactly as an answer to scripts/verify_findings.py does.
+    """
+    items = []
+    for cf in findings:
+        d = cf.draft
+        page = d.get("page")
+        text = None
+        if page is not None:
+            p = PAPERS / "text" / Path(str(d["source_file"])).stem / f"page-{int(page):03d}.txt"
+            if p.exists():
+                text = p.read_text(encoding="utf-8")
+        items.append(
+            {
+                "id": cf.id,
+                "investigation": d.get("investigation"),
+                "kind": d.get("kind"),
+                "finding": d["finding"],
+                "quote": d["quote"],
+                "page": page,
+                "source_file": d["source_file"],
+                "ntrs_id": d.get("ntrs_id"),
+                "doi": d.get("doi"),
+                "values": d.get("values", []),
+                "problems": cf.problems,
+                "verification": cf.verification,
+                "page_text": text,
+            }
+        )
+    log = _load("verifications.json")
+    return {"note": "Review queue for the Verify page. Not part of the dataset.", "findings": items, "log": log}

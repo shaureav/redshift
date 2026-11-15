@@ -24,6 +24,7 @@ const PAGES: [string, string][] = [
   ["/quality", "Data Quality"],
   ["/methods", "Methods"],
   ["/about", "About"],
+  ["/verify", "Verify paper findings"],
 ];
 
 function matches(q: string, text: string): boolean {

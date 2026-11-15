@@ -362,6 +362,12 @@ def write(result: dict[str, Any]) -> None:
     (PROCESSED / "flags.csv").write_text(_flags_csv(result["summary_flags"]), encoding="utf-8", newline="\n")
     (SNAPSHOT / "flags.csv").write_text(_flags_csv(result["summary_flags"]), encoding="utf-8", newline="\n")
     (SNAPSHOT / "tests.csv").write_text(buf.getvalue(), encoding="utf-8", newline="\n")
+    # The Verify page's review queue: unverified drafts by design, so outside the dataset's version hash and
+    # the provenance lint (redshift.papers.findings.verify_queue).
+    from redshift.papers.findings import load_checked, verify_queue
+
+    queue = verify_queue(load_checked())
+    (SNAPSHOT / "verify_queue.json").write_text(dumps(queue), encoding="utf-8", newline="\n")
 
 
 def _flags_csv(flags: list[dict[str, Any]]) -> str:
