@@ -1,6 +1,6 @@
 // Evidence strips: small multiples, one strip per candidate atmosphere, with the tests recorded near it
 // split by fuel class (columns) and by source type (rows). The scale is shared by every strip.
-// A zero is hatched and written "no tests". A secondary row counts tests whose O2 matches but whose
+// A zero is hatched and written "no tests". A secondary row counts tests near this oxygen whose
 // pressure is not recorded, so they cannot be placed. Counts come from candidate_evidence.json.
 import * as d3 from "d3";
 import type { ReactElement } from "react";
@@ -118,7 +118,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
           <text x={pad} y={o2y + o2H / 2} dominantBaseline="central" fontSize={12} fill="var(--ink-3)">O2 only</text>
         ) : (
           <>
-            <text x={pad} y={o2y + 8} dominantBaseline="central" fontSize={12} fill="var(--ink-3)">O2 matches,</text>
+            <text x={pad} y={o2y + 8} dominantBaseline="central" fontSize={12} fill="var(--ink-3)">Near this oxygen,</text>
             <text x={pad} y={o2y + 21} dominantBaseline="central" fontSize={12} fill="var(--ink-3)">pressure not recorded</text>
           </>
         )}
@@ -193,7 +193,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
             {FUELS.map((f) => (
               <th key={f} className="pr-3 font-medium">
                 <FuelMarker fuel={f} size={10} /> {FUEL_LABEL[f]}
-                <span className="block font-normal">PSI table / paper, verified / O2 match, pressure not recorded</span>
+                <span className="block font-normal">PSI table / paper, verified / near this oxygen, pressure not recorded</span>
               </th>
             ))}
           </tr>
@@ -231,7 +231,7 @@ export function EvidenceStrips({ highlight }: { highlight?: string }) {
       id="evidence-strips"
       title="Tests near each candidate, by fuel class and source"
       headline={<>Near every candidate, the solid-material row is where the evidence runs out.</>}
-      caption="One strip per candidate atmosphere. Filled bars are PSI experiment table rows within the nearness threshold set in the build's sensitivity settings; outlined bars are results from human-verified papers. All strips share one scale. Hatched cells have no tests recorded: unknown, not low risk. A hatched paper cell reads ‘none verified’ while findings await human verification, which is not the same as no burns. The bottom row of each strip counts tests whose O2 matches but whose pressure is not recorded, so they cannot be placed on the plane."
+      caption="One strip per candidate atmosphere. Filled bars are PSI experiment table rows within the nearness threshold set in the build's sensitivity settings; outlined bars are results from human-verified papers. All strips share one scale. Hatched cells have no tests recorded: unknown, not low risk. A hatched paper cell reads ‘none verified’ while findings await human verification, which is not the same as no burns. The bottom row of each strip counts tests near this oxygen (within the nearness window) whose pressure is not recorded, so they cannot be placed on the plane."
       sources="NASA PSI experiment tables (DOI per investigation); human-verified papers (NTRS); nearness counts by the Redshift build."
       table={table}
     >

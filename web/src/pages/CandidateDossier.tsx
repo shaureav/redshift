@@ -181,7 +181,7 @@ export default function CandidateDossier() {
 
           <Section
             id="o2match"
-            title="O2 matches, pressure not recorded"
+            title="Near this oxygen, pressure not recorded"
             lead="Tests whose O2 is within reach of this atmosphere but whose table records no pressure. They cannot be judged near or far, so they are counted here and not above."
           >
             <ul className="grid gap-2 sm:grid-cols-2">

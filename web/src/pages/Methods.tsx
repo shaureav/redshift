@@ -497,7 +497,7 @@ export default function Methods() {
                 <dd>{np.judgement}</dd>
               </dl>
               <p>
-                Tests whose oxygen is within the threshold but whose pressure was not recorded are counted separately as "O2 matches, pressure not recorded", using the oxygen term alone: |&Delta;O<sub>2</sub>| / <var>s</var><sub>O2</sub> &le; <var>&theta;</var>.
+                Tests whose oxygen is within the threshold but whose pressure was not recorded are counted separately as "Near this oxygen, pressure not recorded", using the oxygen term alone: |&Delta;O<sub>2</sub>| / <var>s</var><sub>O2</sub> &le; <var>&theta;</var>.
               </p>
             </Tech>
           </Section>

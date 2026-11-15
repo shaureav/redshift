@@ -104,7 +104,7 @@ export default function Brief() {
         </p>
         <table className="mt-4 w-full text-sm">
           <caption className="sr-only">Tests near this point by fuel class and source</caption>
-          <thead><tr className="text-left text-xs text-ink-3"><th className="py-1 font-medium">Fuel class</th><th className="font-medium">PSI tables</th><th className="font-medium">Verified papers</th><th className="font-medium">O2 matches, pressure not recorded</th></tr></thead>
+          <thead><tr className="text-left text-xs text-ink-3"><th className="py-1 font-medium">Fuel class</th><th className="font-medium">PSI tables</th><th className="font-medium">Verified papers</th><th className="font-medium">Near this oxygen, pressure not recorded</th></tr></thead>
           <tbody>
             {FUELS.map((f) => (
               <tr key={f} className="border-t border-line">
