@@ -177,7 +177,7 @@ function FindingCard({ d, mine, canDecide, onDecide, onUndo }: {
       <details className="mt-3" open={!mine && !d.verification}>
         <summary className="cursor-pointer text-sm text-ink-2">The page as extracted{at ? ", with the quote marked" : ""}</summary>
         {d.page_text ? (
-          <pre className="mt-2 max-h-72 overflow-auto whitespace-pre-wrap rounded border border-line bg-surface-2 p-3 text-xs leading-relaxed">
+          <pre className="mt-2 max-h-72 overflow-auto whitespace-pre-wrap rounded border border-line bg-surface-2 p-3 text-xs">
             {at ? <>{d.page_text.slice(0, at[0])}<mark className="rounded-sm bg-[color:var(--accent)] px-0.5 text-[color:var(--bg)]">{d.page_text.slice(at[0], at[1])}</mark>{d.page_text.slice(at[1])}</> : d.page_text}
           </pre>
         ) : (

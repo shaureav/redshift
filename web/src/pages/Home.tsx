@@ -3,7 +3,7 @@
 // take it with you. Every view state lives in the URL. Below lg (plan, Phase 6) the panel is a bottom sheet over
 // the plane (components/Sheet.tsx), and the plane and its headline fill the screen above the sheet's peek.
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AccessGap, type AccessGapData } from "../charts/AccessGap";
 import { Plane, type ProbeMode } from "../charts/Plane";
 import { PlaneToolbar } from "../charts/planeToolbar";
@@ -360,6 +360,7 @@ export default function Home() {
         </div>
         </div>
         <Legend onShortcuts={openShortcuts} />
+        <TrustStrip />
       </section>
 
       {/* At lg the docked panel. lg:relative: it is the containing block for anything absolutely placed inside it
@@ -417,6 +418,21 @@ const Legend = memo(function Legend({ onShortcuts }: { onShortcuts: () => void }
         <KeyboardIcon /> Shortcuts <span className="kbd" aria-hidden="true">?</span>
       </button>
     </div>
+  );
+});
+
+/** What the plane is built from, in the build's own figures (quality_report.json): each count is a Value that
+ *  opens its source, and the line leads to the Data Quality page, where every one is broken down (D39). */
+type QualitySummary = { p: string; summary: { tables: Val<number>; tests: Val<number>; flags: Val<number> }; provenance_coverage: { numbers_checked: number; percent: number } };
+const TrustStrip = memo(function TrustStrip() {
+  const q = useData<QualitySummary>("quality_report.json");
+  if (!q.data) return null;
+  const { summary: s, provenance_coverage: cov, p } = q.data;
+  return (
+    <p className="intro-hide px-4 pb-4 text-xs text-ink-3 lg:px-6">
+      Built from <Value val={s.tables} unit={false} /> NASA PSI experiment tables, hash-checked: <Value val={s.tests} unit={false} /> tests, every one of <Value val={{ v: cov.numbers_checked, u: "numbers", p }} unit={false} /> published numbers traced to its source, <Value val={s.flags} unit={false} /> anomalies flagged and none altered.{" "}
+      <Link className="underline underline-offset-2" to="/quality">How it was checked</Link>
+    </p>
   );
 });
 
