@@ -175,6 +175,9 @@ export default function Home() {
 
   // Keyboard shortcuts (lib/shortcuts.ts): never while typing, never behind a modal dialog.
   const compareLink = data ? `/compare?pts=${data.reading.o2.v},${data.reading.psi.v}${data.candidate?.id === "c8_2_34" ? ";26.5,10.2" : ";34,8.2"}&m=${view.m}` : null;
+  // P pins the grid node the panel reads (a hover or a press and hold included): the address bar then holds it.
+  const readO2 = data?.reading.o2.v ?? null;
+  const readPsi = data?.reading.psi.v ?? null;
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const s = shortcutFor(e, !!document.querySelector('[aria-modal="true"]'));
@@ -183,6 +186,10 @@ export default function Home() {
         const c = cands.data?.candidates[s.index];
         if (!c) return;
         onProbe(c.o2_pct.v, c.pressure_psi.v, "commit");
+      } else if (s.kind === "pin") {
+        if (readO2 === null || readPsi === null) return;
+        onProbe(readO2, readPsi, "commit");
+        toast("Pinned: the link in the address bar now opens this point");
       } else if (s.kind === "solids") setView({ solids: !view.solids });
       else if (s.kind === "gap") setView({ panel: "gap" }, { push: true });
       else if (s.kind === "compare") {
@@ -193,7 +200,7 @@ export default function Home() {
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [cands.data, view.solids, compareLink, onProbe, setView, navigate]);
+  }, [cands.data, view.solids, compareLink, readO2, readPsi, onProbe, setView, navigate]);
   // Requests from the command palette (lib/planeRequest.ts): one made from another page waits for this page to
   // mount; one made here arrives through the event. Neither touches the view in the address bar.
   useEffect(() => {
@@ -311,6 +318,7 @@ export default function Home() {
         label="Evidence near the probe"
         resetKey={selection ? "area" : ""}
         onPeek={setPeek}
+        inert={stage !== null}
         className="intro-dim lg:relative lg:min-h-0 lg:overflow-y-auto lg:border-l lg:border-line lg:bg-[color:var(--surface)]"
       >
         {selection && (

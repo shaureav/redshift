@@ -60,6 +60,24 @@ export function pinchDomain(start: Domain, iw: number, ih: number, from: [Pt, Pt
   return clampDomain({ o2: [lo, lo + span], psi: [Math.exp(llo), Math.exp(llo + lSpan)] });
 }
 
+/** How the plot drawn for `start` must move to show `next`, while a pinch is under way: a plot pixel (x, y) of
+ *  the start window goes to (kx * x + tx, ky * y + ty). Exact, not an approximation: oxygen is linear in x and the
+ *  log of pressure is linear in y, so each axis maps by a scale and a shift. The plane applies it as a transform
+ *  and draws the new window afresh when the fingers lift. */
+export function pinchTransform(start: Domain, next: Domain, iw: number, ih: number): { kx: number; tx: number; ky: number; ty: number } {
+  const span0 = start.o2[1] - start.o2[0];
+  const span1 = next.o2[1] - next.o2[0];
+  const kx = span0 / span1;
+  const tx = ((start.o2[0] - next.o2[0]) * iw) / span1;
+  const c0 = Math.log(start.psi[0]);
+  const c1 = Math.log(next.psi[0]);
+  const l0 = Math.log(start.psi[1]) - c0;
+  const l1 = Math.log(next.psi[1]) - c1;
+  const ky = l0 / l1;
+  const ty = ih * (1 - ky) - ((c0 - c1) * ih) / l1;
+  return { kx, tx, ky, ty };
+}
+
 /** The phone's evidence sheet rests at one of three points: peek shows the readout tiles, half shows what is
  *  missing too, full shows everything. */
 export type Snap = "peek" | "half" | "full";

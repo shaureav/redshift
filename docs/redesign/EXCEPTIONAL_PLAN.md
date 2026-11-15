@@ -1,6 +1,6 @@
 # Redshift: plan for an exceptional interface
 
-Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22).** Phase 0 is done (D23), with its review fixes (D24, D25). Phase 1 is done (D26), with its review fixes (D27). Phase 2 is done (D28). Phase 3 is done (D29). Phase 4 is done (D30), with P (pin) left for the notebook of Phase 9, and its review fixes (D31). Phase 5 is done (D32): the story intro has replaced the tour. Phase 6 is done (D33): below lg the panel is a bottom sheet with three snap points, the plane takes pinch, two-finger pan, tap and press and hold, every touch target is 44 px, and on a phone the toolbar is one menu button. Its review fixes are D34. Phase 12 is done (D35): checks, Lighthouse, drag timings and the screenshot matrix are in `docs/redesign/VERIFICATION.md`; usability sessions, the NVDA spot check, real-phone checks and the presenter's rehearsals are open (Q23 to Q26).
+Status: **approved by the team as "musts plus shoulds" (phases 0 to 6 and 12), with the section 12 decisions taken as recommended and no new npm dependencies (`docs/DECISIONS.md`, D22). Implemented; acceptance pending (Q23 to Q26).** Phases 0, 1, 2 and 4 are done (D23 to D28, D30, D31; P and its "Pinned" toast added in D36). Phases 3, 5, 6 and 12 are done in code, with their acceptance pending: the hallway test (Phase 3), a newcomer reading the intro alone (Phase 5), the keyboard and screen reader check of the sheet and real phones (Phase 6), and the usability sessions, the keyboard walkthrough, the NVDA spot check and the presenter's rehearsals (Phase 12), each set out in `docs/redesign/usability.md` with no owner named yet. Phase 3 is D29; Phase 5 is D32 (the story intro has replaced the tour); Phase 6 is D33 and D34; Phase 12 is D35 and the completeness review fixes D36. Checks, Lighthouse, load, drag and pinch timings, the screenshot matrix and the known minor issues are in `docs/redesign/VERIFICATION.md`. Also open: the colour-blindness re-check of the light-theme rings (Q20), the "unknown, not safe" carrier decision (Q22) and the isotherm label reading (Q27).
 Follows `docs/redesign/PLAN.md` (the plane-first redesign, done) and `docs/REDESIGN_AUDIT.md`.
 
 > **The one job.** "If we pick this cabin atmosphere, what do we actually know about fire there, and what's missing?"
@@ -9,12 +9,22 @@ Follows `docs/redesign/PLAN.md` (the plane-first redesign, done) and `docs/REDES
 
 ## 0. Where we are
 
+*As written, before the plan started (14 November 2026):*
+
 | Area | State |
 | --- | --- |
 | Working | Plane-first home page, dense probe grid with parity tests, live evidence panel, command palette, provenance card, compare, cited brief (PDF, CSV, BibTeX), `/probe`, grounded `/ask`, URL state for every view. 215 Python tests and 23 web tests pass. Lighthouse 100 for accessibility, best practice and SEO on desktop and mobile. Steady drag p95 12 ms on the production build. |
 | Broken | Tour step 3 loops (React error 185) and, with no error boundary, the page goes blank. |
 | Weak | Plane textures compete (hatching, dashed isotherms, dashed halo, crosshair). The 14.7 psi cluster smears. Two rows of controls sit above the chart. The panel is a long, flat scroll with dotted underlines on every number. No signature moment; the first screen is dense. Isotherm labels collide at phone width. In the light theme three fuel fills are under 3:1 against white. |
 | Uncommitted | Phone layout fixes and refreshed snapshots from the last session. |
+
+*Now (15 November 2026, after phases 0 to 6 and 12 and the completeness review fixes):*
+
+| Area | State |
+| --- | --- |
+| Working | Everything above, plus the coastline of knowledge, the instrument panel, the story intro (the tour is gone), feel (ping, pulse, trail, shortcuts with P, toasts, opt-in Geiger mode), the phone's bottom sheet and touch gestures, design system v2 and an app-wide error boundary. 215 Python tests and 164 web tests pass. Lighthouse 100 for accessibility, best practice and SEO on the bare address with the intro open and on a view link, desktop and mobile. The screenshot matrix (390, 768, 1440 and 1920 px, both themes, reduced motion) shows no overlaps and no sideways scroll. |
+| Broken | Nothing known. |
+| Open | The checks that need people (Q23 to Q26), the colour-blindness re-check (Q20), the "unknown, not safe" carrier (Q22), the isotherm label reading (Q27) and the known minor issues in `VERIFICATION.md`. |
 
 ---
 

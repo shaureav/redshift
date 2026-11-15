@@ -50,11 +50,14 @@ interface Props {
   resetKey: string;
   /** The visible height at peek, for the page to keep the plane clear of it (--sheet-peek). */
   onPeek: (px: number) => void;
+  /** While the story intro plays the panel is dimmed and unused: inert (no focus, no pointer) and hidden from
+   *  assistive technology, so its dimmed text is neither read nor checked as page text. */
+  inert?: boolean;
   className?: string;
   children: ReactNode;
 }
 
-export function EvidenceSheet({ label, resetKey, onPeek, className = "", children }: Props) {
+export function EvidenceSheet({ label, resetKey, onPeek, inert = false, className = "", children }: Props) {
   const below = useMedia(SHEET_QUERY);
   const [snap, setSnap] = useState<Snap>("peek");
   const [stops, setStops] = useState<Stops | null>(null);
@@ -103,6 +106,15 @@ export function EvidenceSheet({ label, resetKey, onPeek, className = "", childre
   useLayoutEffect(() => {
     if (below && stops) onPeek(stops.peek);
   }, [below, stops, onPeek]);
+
+  // React 18 has no inert prop, so the attribute is set here, before paint.
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.toggleAttribute("inert", inert);
+    if (inert) el.setAttribute("aria-hidden", "true");
+    else el.removeAttribute("aria-hidden");
+  }, [inert]);
 
   // Leaving full, the sheet shows its top again: peek and half always begin with the readout.
   useEffect(() => {

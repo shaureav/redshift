@@ -87,6 +87,12 @@ function runFromPalette(text: string) {
   });
 }
 const settle = () => act(async () => { await new Promise((r) => setTimeout(r, 0)); });
+/** Where the plane's plot starts inside its overlay, in px (charts/Plane.tsx translates the plot by its margins). */
+const plotOrigin = (): [number, number] => {
+  const t = document.querySelector('svg[role="application"] > g')!.getAttribute("transform")!;
+  const [, x, y] = t.match(/translate\(([\d.]+),([\d.]+)\)/)!;
+  return [Number(x), Number(y)];
+};
 
 let errors: ReturnType<typeof vi.spyOn>;
 
@@ -124,6 +130,10 @@ describe("story intro", () => {
     expect(dialog()).not.toBeNull();
     expect(dialog()?.getAttribute("aria-modal")).toBe("true");
     expect(document.activeElement?.textContent).toBe("Next");
+    // The dimmed panel behind it is inert and hidden from assistive technology until the hand-over.
+    const panel = () => document.querySelector("aside.sheet")!;
+    expect(panel().hasAttribute("inert")).toBe(true);
+    expect(panel().getAttribute("aria-hidden")).toBe("true");
     // Beat 1: open sea, the pins appear and pulse, and they carry their names alone (no land yet).
     expect(title()).toBe(BEAT_TITLES[0]);
     expect(stage()).toBe("pins");
@@ -152,6 +162,8 @@ describe("story intro", () => {
     click("Explore");
     expect(dialog()).toBeNull();
     expect(stage()).toBeNull();
+    expect(panel().hasAttribute("inert")).toBe(false);
+    expect(panel().hasAttribute("aria-hidden")).toBe(false);
     expect([q().get("o2"), q().get("p"), q().get("solids")]).toEqual(["34", "8.2", "1"]);
     expect(localStorage.getItem(INTRO_KEY)).toBe("done");
     // The keyboard is handed to the plane, so the arrow keys move the probe at once.
@@ -752,8 +764,10 @@ describe("phone (Phase 6)", () => {
     localStorage.setItem(INTRO_KEY, "done");
     mount(<Home />, "/?o2=31&p=9");
     const surface = document.querySelector('svg[role="application"] rect[fill="transparent"]')!;
-    // jsdom has no layout: the plane is its 960 x 640 fallback, its plot 56 px in and 16 px down.
-    const at = (px: number, py: number) => ({ x: 56 + px, y: 16 + py });
+    // jsdom has no layout: the plane is its 960 x 640 fallback; the plot's offset is read from the overlay (16 px
+    // down under a floating toolbar, lower when the toolbar takes its band).
+    const [ox, oy] = plotOrigin();
+    const at = (px: number, py: number) => ({ x: ox + px, y: oy + py });
     const pin = [...document.querySelectorAll("svg[data-chart] g[transform] > text")].find((t) => t.textContent?.startsWith("10.2 psi / 26.5% O2"))!;
     const [cx, cy] = pin.parentElement!.getAttribute("transform")!.match(/translate\(([\d.]+),([\d.]+)\)/)!.slice(1).map(Number);
     // A tap 18 px from a pin snaps to it (a fingertip's magnet is wider than a pointer's 14 px).
@@ -791,5 +805,88 @@ describe("phone (Phase 6)", () => {
     tap(button("Habitat range"));
     expect(q().get("win")).toBeNull();
     expect(updateDepthErrors()).toEqual([]);
+  });
+});
+
+describe("completeness review fixes", () => {
+  const q = () => new URLSearchParams(lastSearch);
+  const pointer = (el: Element, type: string, { id = 1, x = 0, y = 0, kind = "touch" }: { id?: number; x?: number; y?: number; kind?: string }) => {
+    const ev = new MouseEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y, button: 0 });
+    Object.defineProperty(ev, "pointerId", { value: id });
+    Object.defineProperty(ev, "pointerType", { value: kind });
+    act(() => { el.dispatchEvent(ev); });
+  };
+  const toastText = () => document.querySelector('[role="status"].fixed')?.textContent;
+
+  it("P pins the point the panel previews into the address bar and says so in a toast", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    mount(<><Home /><Toaster /></>, "/?o2=31&p=9");
+    const surface = document.querySelector('svg[role="application"] rect[fill="transparent"]')!;
+    const eyebrow = () => document.querySelector('[data-testid="evidence-panel"] .eyebrow')?.textContent;
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    try {
+      // Press and hold previews a point; P pins it.
+      const [ox, oy] = plotOrigin();
+      pointer(surface, "pointerdown", { id: 2, x: ox + 100, y: oy + 100 });
+      act(() => { vi.advanceTimersByTime(500); });
+      expect(eyebrow()).toBe("Preview");
+      press("p");
+      const pinned = [q().get("o2"), q().get("p")];
+      expect(pinned).not.toEqual(["31", "9"]);
+      expect(toastText()).toBe("Pinned: the link in the address bar now opens this point");
+      pointer(surface, "pointerup", { id: 2, x: ox + 100, y: oy + 100 });
+      expect([q().get("o2"), q().get("p")]).toEqual(pinned);
+      expect(eyebrow()).not.toBe("Preview");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("steps through the command palette's results with the arrow keys, runs one with Enter, and says when nothing matches", async () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    mount(<><CommandPalette /><Home /></>, "/?o2=31&p=9");
+    press("k", { ctrlKey: true });
+    const field = document.querySelector<HTMLInputElement>('[role="combobox"]')!;
+    const key = (k: string) => act(() => { field.dispatchEvent(new KeyboardEvent("keydown", { key: k, bubbles: true, cancelable: true })); });
+    const type = (text: string) => act(() => {
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(field, text);
+      field.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    const options = () => [...document.querySelectorAll<HTMLElement>('[role="option"]')];
+    const selected = () => options().filter((o) => o.getAttribute("aria-selected") === "true").map((o) => o.id);
+    expect(options().length).toBeGreaterThan(2);
+    const [first, second] = options().map((o) => o.id);
+    expect(field.getAttribute("aria-activedescendant")).toBe(first);
+    expect(selected()).toEqual([first]);
+    key("ArrowDown");
+    expect(field.getAttribute("aria-activedescendant")).toBe(second);
+    expect(selected()).toEqual([second]);
+    key("ArrowUp");
+    key("ArrowUp"); // stays on the first
+    expect(field.getAttribute("aria-activedescendant")).toBe(first);
+    // Nothing matches: the empty state gives an example, and no option is active.
+    type("zzzz qqqq xxxx");
+    expect(options()).toHaveLength(0);
+    expect(field.hasAttribute("aria-activedescendant")).toBe(false);
+    expect(document.querySelector('[role="listbox"]')?.textContent).toContain("Nothing matches. Try an oxygen and pressure such as");
+    // A query, then Enter runs the active row.
+    type("keyboard shortcuts");
+    key("Enter");
+    await settle();
+    expect(document.querySelector('[role="dialog"][aria-labelledby="shortcut-title"]')).not.toBeNull();
+  });
+
+  it("shows a glyph's count badge when the keyboard probe lands on it, and Tab reaches its Value", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    mount(<Home />, "/?o2=26.5&p=10.2");
+    const plane = document.querySelector<SVGSVGElement>('svg[role="application"]')!;
+    const badge = () => document.querySelector('section[aria-label="The oxygen and pressure plane"] div.floating [data-prov]');
+    act(() => plane.focus());
+    expect(badge()).toBeNull();
+    // Shift and up: the next candidate above, Earth's sea-level air, where droplet and gas tests sit.
+    press("ArrowUp", { shiftKey: true });
+    expect([q().get("o2"), q().get("p")]).toEqual(["21", "14.7"]);
+    expect(badge()).not.toBeNull();
+    expect(badge()?.querySelector("button")).not.toBeNull();
   });
 });

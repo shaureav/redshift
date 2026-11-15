@@ -1,7 +1,7 @@
 // The plane's pinch window and the phone sheet's snap points (lib/gesture.ts), and the window's round trip
 // through the address bar (lib/view.ts).
 import { describe, expect, it } from "vitest";
-import { clampDomain, DOMAIN_BOUNDS, MIN_O2_SPAN, MIN_PSI_RATIO, pinchDomain, snapFor, stepSnap, type Domain } from "./gesture";
+import { clampDomain, DOMAIN_BOUNDS, MIN_O2_SPAN, MIN_PSI_RATIO, pinchDomain, pinchTransform, snapFor, stepSnap, type Domain } from "./gesture";
 import { parseView, writeView, ZOOMS } from "./view";
 
 const habitat: Domain = { o2: ZOOMS.habitat.o2, psi: ZOOMS.habitat.psi };
@@ -14,6 +14,23 @@ const dataAt = (d: Domain, x: number, y: number) => ({
 });
 
 describe("pinch window", () => {
+  it("moves the drawn plot so every point lands where the new window draws it (the transform during a pinch)", () => {
+    const next = pinchDomain(habitat, IW, IH, [{ x: 100, y: 120 }, { x: 160, y: 80 }], [{ x: 40, y: 150 }, { x: 230, y: 30 }]);
+    const { kx, tx, ky, ty } = pinchTransform(habitat, next, IW, IH);
+    // Where a data point sits in a window's plot, the inverse of dataAt.
+    const pixelOf = (d: Domain, o2: number, psi: number) => ({
+      x: ((o2 - d.o2[0]) / (d.o2[1] - d.o2[0])) * IW,
+      y: IH * (1 - (Math.log(psi) - Math.log(d.psi[0])) / (Math.log(d.psi[1]) - Math.log(d.psi[0]))),
+    });
+    for (const [x, y] of [[0, 0], [IW, IH], [37, 151], [250, 12]]) {
+      const v = dataAt(habitat, x, y);
+      const p = pixelOf(next, v.o2, v.psi);
+      expect(kx * x + tx).toBeCloseTo(p.x, 6);
+      expect(ky * y + ty).toBeCloseTo(p.y, 6);
+    }
+    expect(pinchTransform(habitat, habitat, IW, IH)).toEqual({ kx: 1, tx: 0, ky: 1, ty: 0 });
+  });
+
   it("halves the window as the fingers spread to twice their distance, about their midpoint", () => {
     const d = pinchDomain(habitat, IW, IH, [{ x: 100, y: 100 }, { x: 200, y: 100 }], [{ x: 50, y: 100 }, { x: 250, y: 100 }]);
     expect(d.o2[1] - d.o2[0]).toBeCloseTo(15, 6);

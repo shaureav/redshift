@@ -389,14 +389,24 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 /* Touch (plan, Phase 6): on a coarse pointer every control is at least 44 px tall (--tap). Rows that hold a door
    (a Value that opens its source) grow to 44 px, and a readout tile's number takes a 44 px tall target without
    moving the tile's text. A number inside a sentence keeps its line: an inline target (WCAG 2.5.8). */
+/* A pinch on the plane moves its layers by a transform (charts/Plane.tsx); the plane clips them at its edge. */
+[data-pinching] { overflow: hidden; }
+
 @media (pointer: coarse) {
   .btn, .btn-sm, .chip, .field, .field-sm { height: var(--tap); }
+  /* Width too, for a button that is an icon or a short word (the nav's search and theme buttons centre theirs),
+     and the logo link (.tap-box): 44 by 44 at least. */
+  .btn, .btn-sm { min-width: var(--tap); }
+  .tap-box { min-width: var(--tap); min-height: var(--tap); justify-content: center; }
   .seg > button, .seg-sm > button { height: calc(var(--tap) - 2px); }
   .option, .menu-row { min-height: var(--tap); }
   .tap { display: inline-flex; align-items: center; min-height: var(--tap); }
   .tap-row { min-height: var(--tap); align-items: center; }
   .tap-door [data-prov] > button { display: inline-flex; align-items: center; justify-content: flex-end; min-width: var(--tap); min-height: var(--tap); }
-  .tile-value [data-prov] > button::after { content: ""; position: absolute; inset: -8px -16px; }
+  /* A tile's number: a target 44 px tall at least, centred on the number, 16 px wider each side; the text does not
+     move. The button is its containing block, so the target is measured from the number's own box. */
+  .tile-value [data-prov] > button { position: relative; }
+  .tile-value [data-prov] > button::after { content: ""; position: absolute; left: -16px; right: -16px; top: 50%; height: max(var(--tap), calc(100% + 16px)); transform: translateY(-50%); }
 }
 
 /* Swap content by opacity alone; the one transition kept under reduced motion. */

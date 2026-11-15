@@ -12,16 +12,17 @@
 // plane's top left corner, above both.
 //
 // Touch (plan, Phase 6): tap to pin the probe, press and hold to preview a point, drag to move the probe, pinch or
-// drag with two fingers to zoom and pan. A pinch moves the window in view (lib/gesture.ts), redrawn from the same
-// build values; when the fingers lift the window is written to the address bar (view.win). The mouse keeps its
-// drag, hover and zoom presets.
+// drag with two fingers to zoom and pan. While the fingers move, the drawn layers follow by a CSS transform
+// (lib/gesture.ts, pinchTransform), so nothing is laid out or re-rendered during the gesture; when they lift the
+// window is written to the address bar (view.win) and the plane is drawn afresh for it from the same build values.
+// The mouse keeps its drag, hover and zoom presets.
 import * as d3 from "d3";
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { FUEL_COLOR_VAR, FUEL_EDGE_VAR, FUEL_RING_VAR, Hatch, markerPath } from "../components/Common";
 import { Value } from "../components/Value";
 import { coastFor, coastNear, EVIDENCE_WORD_NOTE, gridExtent, isLand, landPath, type Coast, type EvidenceWord } from "../lib/coast";
 import { fmtNumber, FUEL_LABEL } from "../lib/format";
-import { pinchDomain, type Domain, type Pt } from "../lib/gesture";
+import { pinchDomain, pinchTransform, type Domain, type Pt } from "../lib/gesture";
 import { useReducedMotion } from "../lib/motion";
 import { nodeOf, snapIndex, type Grid } from "../lib/probe";
 import type { Candidate } from "../lib/types";
@@ -180,17 +181,33 @@ export function Plane(props: Props) {
   const [focused, setFocused] = useState(false);
   const raf = useRef<number | null>(null);
   const touchDrag = useRef(false); // the drag under way is a finger's (haptics are for phones)
-  // The window in view: while two fingers pinch, the live one; then the one they left in the address bar; else
-  // the zoom preset.
-  const [live, setLive] = useState<Domain | null>(null);
-  const win = live ?? view.win;
+  // The window in view: the one a pinch left in the address bar, else the zoom preset. While two fingers pinch,
+  // the layers are moved by a transform (paintPinch) and nothing is laid out again until they lift.
+  const win = view.win;
   const zoomKey = win ? [win.o2[0], win.o2[1], win.psi[0], win.psi[1]].join(",") : view.zoom;
   const zoom = useMemo(() => zoomOf(zoomKey), [zoomKey]);
-  // The toolbar floats over the plot's top left corner. On a narrow screen even the one menu button it folds into
-  // (planeToolbar.tsx) would cover the 14.7 psi tests on a short plot, so there it gets a band of its own above
-  // the plot.
-  const band = w < 640 && !!toolbar;
-  const f = useFrame(w, h, view, map.strips, band ? tb.h + 12 : 16, zoom);
+  // The toolbar floats over the plot's top left corner unless it would cover a pin's head or a glyph there (the
+  // 14.7 psi row on a tablet's short plot, under 44 px touch tools); then it takes a band of its own above the
+  // plot. On a narrow screen even the one menu button it folds into (planeToolbar.tsx) would, so it always does.
+  // Decided on the plot as it would be under a floating toolbar, from every pin and glyph whatever the layers
+  // show, so turning a layer on or off never moves the plot.
+  const floating = useFrame(w, h, view, map.strips, 16, zoom);
+  const hasToolbar = !!toolbar;
+  const band = useMemo(() => {
+    if (!hasToolbar) return false;
+    if (w < 640) return true;
+    const { x: fx, y: fy, z: fz } = floating;
+    const corner: Rect = { x0: 8, y0: 8, x1: 8 + tb.w, y1: 8 + tb.h }; // the toolbar's own box, in plot coordinates
+    const inView = (o2: number, psi: number) => o2 >= fz.o2[0] && o2 <= fz.o2[1] && psi >= fz.psi[0] && psi <= fz.psi[1];
+    const heads = candidates.filter((c) => inView(c.o2_pct.v, c.pressure_psi.v)).map((c) => ({ x0: fx(c.o2_pct.v) - 8, x1: fx(c.o2_pct.v) + 8, y0: fy(c.pressure_psi.v) - 22, y1: fy(c.pressure_psi.v) + 4 }));
+    const glyphs = map.points.filter((p) => inView(p.o2_pct, p.pressure_psi)).map((p) => {
+      const r = binRadius(p.n);
+      return { x0: fx(p.o2_pct) - r, x1: fx(p.o2_pct) + r, y0: fy(p.pressure_psi) - r, y1: fy(p.pressure_psi) + r };
+    });
+    return hitsAny(corner, heads) || hitsAny(corner, glyphs);
+  }, [hasToolbar, w, floating, tb.w, tb.h, candidates, map.points]);
+  const banded = useFrame(w, h, view, map.strips, tb.h + 12, zoom);
+  const f = band ? banded : floating;
   const { m, iw, ih, x, y, z, narrow } = f;
 
   const onCand = candidates.find((c) => c.o2_pct.v === probe.o2 && c.pressure_psi.v === probe.psi);
@@ -279,7 +296,7 @@ export function Plane(props: Props) {
   // finger left down after a pinch does nothing until it lifts. Each returns false for the one case the pointer
   // code below handles for a finger too: a single finger selecting an area. ----
   type TouchGesture =
-    | { kind: "pending"; x: number; y: number; d: { o2: number; psi: number }; timer: number }
+    | { kind: "pending"; x: number; y: number; d: { o2: number; psi: number; px: number; py: number }; timer: number }
     | { kind: "drag" | "preview" | "after" }
     | { kind: "pinch"; start: Domain; from: [Pt, Pt]; last: Domain | null };
   const fingers = useRef(new Map<number, Pt>());
@@ -296,6 +313,38 @@ export function Plane(props: Props) {
     const [a, b] = [...fingers.current.values()];
     return [plotPt(a), plotPt(b)];
   };
+  // ---- a pinch in progress: the base layers (one transform on their wrapper, in CSS pixels) and the overlay's
+  // drawing (one SVG transform, in plot coordinates) follow the fingers; the probe moves with its point but keeps
+  // its size; the pointer surface does not move, so the fingers keep being read against the same plot ----
+  const pinchLayer = useRef<HTMLDivElement>(null);
+  const pinchMarks = useRef<SVGGElement>(null);
+  const pinchProbe = useRef<SVGGElement>(null);
+  const pinchPending = useRef(false);
+  const paintPinch = (start: Domain, next: Domain) => {
+    const { kx, tx, ky, ty } = pinchTransform(start, next, iw, ih);
+    wrap.current?.setAttribute("data-pinching", ""); // the plane clips what the transform carries past its edge
+    const el = pinchLayer.current;
+    if (el) {
+      el.style.willChange = "transform"; // composited for the gesture only
+      el.style.transform = `matrix(${kx}, 0, 0, ${ky}, ${m.left * (1 - kx) + tx}, ${m.top * (1 - ky) + ty})`;
+    }
+    pinchMarks.current?.setAttribute("transform", `matrix(${kx} 0 0 ${ky} ${tx} ${ty})`);
+    pinchProbe.current?.setAttribute("transform", `translate(${(kx - 1) * pxp + tx} ${(ky - 1) * pyp + ty})`);
+  };
+  const endPinch = useCallback(() => {
+    pinchPending.current = false;
+    wrap.current?.removeAttribute("data-pinching");
+    if (pinchLayer.current) {
+      pinchLayer.current.style.transform = "";
+      pinchLayer.current.style.willChange = "";
+    }
+    pinchMarks.current?.removeAttribute("transform");
+    pinchProbe.current?.removeAttribute("transform");
+  }, [wrap]);
+  useLayoutEffect(() => {
+    if (pinchPending.current) endPinch();
+  }, [zoomKey, endPinch]);
+
   const touchDown = (e: React.PointerEvent<SVGRectElement>): boolean => {
     fingers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     const t = touch.current;
@@ -323,7 +372,7 @@ export function Plane(props: Props) {
       buzz();
       onProbe(d.o2, d.psi, "hover");
     }, LONG_PRESS);
-    touch.current = { kind: "pending", x: e.clientX, y: e.clientY, d: { o2: d.o2, psi: d.psi }, timer };
+    touch.current = { kind: "pending", x: e.clientX, y: e.clientY, d, timer };
     return true;
   };
   const touchMove = (e: React.PointerEvent<SVGRectElement>): boolean => {
@@ -336,7 +385,7 @@ export function Plane(props: Props) {
       if (fingers.current.size < 2) return true;
       const next = pinchDomain(t.start, iw, ih, t.from, twoFingers());
       t.last = next;
-      schedule(() => setLive(next));
+      schedule(() => paintPinch(t.start, next));
       return true;
     }
     if (t.kind === "pending") {
@@ -360,8 +409,13 @@ export function Plane(props: Props) {
       if (fingers.current.size >= 2) return true;
       cancelFrame();
       touch.current = fingers.current.size ? { kind: "after" } : null;
-      setLive(null);
-      if (t.last && !cancelled) onWindow?.(t.last);
+      if (t.last && !cancelled && onWindow) {
+        // The transform stays until the plane is drawn for the new window (the layout effect on zoomKey), so no
+        // frame shows the old window between the two.
+        pinchPending.current = true;
+        onWindow(t.last);
+        window.setTimeout(endPinch, 0); // the same window again: nothing new is drawn, so let go here
+      } else endPinch();
       return true;
     }
     if (t.kind === "after") {
@@ -372,7 +426,10 @@ export function Plane(props: Props) {
     cancelFrame();
     if (t.kind === "pending") {
       clearTimeout(t.timer);
-      if (!cancelled) onProbe(t.d.o2, t.d.psi, "commit"); // tap to pin
+      if (!cancelled) {
+        onProbe(t.d.o2, t.d.psi, "commit"); // tap to pin
+        setHoverBin(binAt(t.d.px, t.d.py, null)); // a tap on a glyph shows its count badge, as a hover does
+      }
       return true;
     }
     if (t.kind === "drag") {
@@ -446,11 +503,17 @@ export function Plane(props: Props) {
     if (raf.current !== null) cancelAnimationFrame(raf.current);
     raf.current = null;
     setPointerOn(false);
-    if (!(e.relatedTarget instanceof Node && badge.current?.contains(e.relatedTarget))) setHoverBin(null);
+    // A finger leaves the plane as it lifts: a badge a tap showed stays until the next touch.
+    if (e.pointerType !== "touch" && !(e.relatedTarget instanceof Node && badge.current?.contains(e.relatedTarget))) setHoverBin(null);
     if (!dragging && !brush) onHoverEnd();
   };
 
-  // ---- keyboard: arrows step one grid node; Alt steps ten; Shift jumps to the next candidate ----
+  // ---- keyboard: arrows step one grid node; Alt steps ten; Shift jumps to the next candidate. Where the probe
+  // lands on a glyph its count badge shows, as on hover, and Tab reaches the badge's Value next. ----
+  const keyTo = (o2: number, psi: number) => {
+    onProbe(o2, psi, "commit");
+    setHoverBin(binAt(x(o2), y(psi), null));
+  };
   const onKeyDown = (e: React.KeyboardEvent) => {
     const keys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
     if (e.key === "b" || e.key === "B") {
@@ -476,13 +539,13 @@ export function Plane(props: Props) {
         .map((c) => ({ c, px: x(c.o2_pct.v), py: y(c.pressure_psi.v) }))
         .filter(({ px, py }) => (dx ? Math.sign(px - here.px) === dx && Math.abs(px - here.px) > 1 : Math.sign(here.py - py) === dy && Math.abs(py - here.py) > 1))
         .sort((a, b) => Math.hypot(a.px - here.px, a.py - here.py) - Math.hypot(b.px - here.px, b.py - here.py));
-      if (ahead[0]) onProbe(ahead[0].c.o2_pct.v, ahead[0].c.pressure_psi.v, "commit");
+      if (ahead[0]) keyTo(ahead[0].c.o2_pct.v, ahead[0].c.pressure_psi.v);
       return;
     }
     const n = e.altKey ? 10 : 1;
     const i = Math.max(0, Math.min(grid.o2.length - 1, snapIndex(grid.o2, probe.o2) + dx * n));
     const j = Math.max(0, Math.min(grid.psi.length - 1, snapIndex(grid.psi, probe.psi) + dy * n));
-    onProbe(grid.o2[i], grid.psi[j], "commit");
+    keyTo(grid.o2[i], grid.psi[j]);
   };
 
   // ---- probe geometry (the only thing that changes while dragging) ----
@@ -590,12 +653,14 @@ export function Plane(props: Props) {
   }, [trail]);
 
   return (
-    <div ref={wrap} className="relative h-full w-full select-none" data-intro={stage ?? undefined} onPointerLeave={() => setHoverBin(null)}>
+    <div ref={wrap} className="relative h-full w-full select-none" data-intro={stage ?? undefined} onPointerLeave={(e) => e.pointerType !== "touch" && setHoverBin(null)}>
       {toolbar && (
         <div ref={tbRef} className="plane-tools intro-hide absolute z-10" style={{ left: tbLeft, top: tbTop, maxWidth: w - tbLeft - 8 }}>
           {toolbar}
         </div>
       )}
+      {/* The layers a pinch moves by transform; while it does, the plane (data-pinching) clips them at its edge. */}
+      <div ref={pinchLayer} className="absolute inset-0" style={{ transformOrigin: "0 0" }}>
       <LandLayer frame={f} grid={grid} multiplier={view.m} solids={view.solids} risen={stage !== "pins"} scene={scene} hatch={view.layers.has("blind")} />
       <PlaneBase
         frame={f}
@@ -612,6 +677,7 @@ export function Plane(props: Props) {
         activeCandidate={stage ? null : onCand?.id ?? null}
         pulse={stage === "pins" && !reduced}
       />
+      </div>
       <svg
         ref={overlay}
         width={w}
@@ -622,7 +688,11 @@ export function Plane(props: Props) {
         aria-label={`Oxygen against cabin pressure. Probe at ${tag}${onCand ? `, on ${onCand.name}${candWord ? `, ${candWord}. ${EVIDENCE_WORD_NOTE}` : "."}` : "."} Arrow keys move the probe one grid step, Alt with an arrow moves ten, Shift with an arrow jumps to the next candidate atmosphere, Enter opens its dossier, B selects an area.`}
         onKeyDown={onKeyDown}
         onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        onBlur={(e) => {
+          setFocused(false);
+          // A badge the keyboard showed goes with the focus, unless the focus went to it.
+          if (!pointerOn && !(e.relatedTarget instanceof Node && badge.current?.contains(e.relatedTarget))) setHoverBin(null);
+        }}
         className="absolute inset-0 block rounded-lg focus-visible:outline-offset-[-2px]"
         style={{ willChange: "transform" }}
       >
@@ -637,6 +707,7 @@ export function Plane(props: Props) {
         </defs>
         <g transform={`translate(${m.left},${m.top})`}>
           <g clipPath="url(#plane-clip-overlay)">
+            <g ref={pinchMarks}>
             {view.box && !brush && (
               <rect x={x(view.box.o2[0])} y={y(view.box.psi[1])} width={x(view.box.o2[1]) - x(view.box.o2[0])} height={y(view.box.psi[0]) - y(view.box.psi[1])} fill="var(--accent)" fillOpacity={0.06} stroke="var(--accent)" strokeDasharray="4 3" />
             )}
@@ -665,7 +736,9 @@ export function Plane(props: Props) {
             {onCand && ping > 0 && (
               <circle key={ping} cx={x(onCand.o2_pct.v)} cy={y(onCand.pressure_psi.v)} r={12} className="snap-ping" fill="none" stroke="var(--probe)" strokeWidth={2} pointerEvents="none" />
             )}
+            </g>
             {/* The probe waits while the story intro plays, then fades in where the intro hands over. */}
+            <g ref={pinchProbe}>
             <g className="intro-hide">
               <g style={{ transform: `translate(${pxp}px, ${pyp}px)`, transition: glide }} pointerEvents="none">
                 <g className="layer" data-on={view.layers.has("halo")}>
@@ -680,6 +753,7 @@ export function Plane(props: Props) {
                   <text ref={tagText} x={8} y={16} fontSize={12} fill="var(--ink)" className="num">{tag}</text>
                 </g>
               </g>
+            </g>
             </g>
           </g>
           <rect
@@ -1127,7 +1201,10 @@ const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top, nar
             <rect width={iw} height={hh} fill="url(#hatch-plane)" opacity={solids && s.fuel_class === "solid" ? 0.6 : 0.3} rx={2} />
             {s.items.filter((it) => it.o2_pct >= z.o2[0] && it.o2_pct <= z.o2[1]).map((it) => (
               <path key={it.p} d={markerPath(s.fuel_class, Math.min(hh / 2 - 1, 3 + Math.sqrt(it.n)))} transform={`translate(${x(it.o2_pct)},${hh / 2})`} fill={FUEL_COLOR_VAR[s.fuel_class]} stroke={FUEL_RING_VAR[s.fuel_class]}>
-                <title>{`${it.n} ${s.unit === "sessions" ? "BRE sessions list" : FUEL_LABEL[s.fuel_class].toLowerCase() + " tests at"} ${fmtNumber(it.o2_pct, 1)}% O2, pressure not recorded (${it.investigations.join(", ")})`}</title>
+                {/* No count here: a native tooltip cannot open a provenance card. The panel's "What's missing" gives,
+                    as Values, the tests near the probe's oxygen with no pressure recorded, and the Evidence Explorer
+                    lists each test. The oxygen is the item's position, read like an axis tick. */}
+                <title>{`${s.unit === "sessions" ? "BRE sessions list" : FUEL_LABEL[s.fuel_class] + " tests at"} ${fmtNumber(it.o2_pct, 1)}% O2, pressure not recorded (${it.investigations.join(", ")})`}</title>
               </path>
             ))}
             <text x={iw + 8} y={hh / 2} dy="0.32em" fontSize={12} fill="var(--ink-2)">{s.fuel_class === "emulator" ? "BRE" : FUEL_LABEL[s.fuel_class].split(" ")[0]}</text>

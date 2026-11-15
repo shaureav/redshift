@@ -38,6 +38,7 @@ Line references to raw files are physical line numbers (header is line 1), from 
 | Q24 | The keyboard walkthrough and the NVDA screen reader spot check (plan, Phase 12) were done only in part, by the jsdom interaction tests and Lighthouse; no person has walked every feature with the keyboard alone or listened to the plane, the panel, the sheet and the intro with NVDA on Windows. Who does it? | Team | A named tester's walkthrough notes |
 | Q25 | Phone checks ran in desktop Chrome's device emulation (390 x 844, touch) only. Pinch, press and hold, the sheet's flick and the coast buzz need a check on a real phone (iOS Safari and Android Chrome). | Team | A named tester on two real phones |
 | Q26 | The demo path was run twice by script on the production build (`docs/redesign/DEMO.md`); the plan asks for two timed rehearsals by the presenter. | Team | Two timed rehearsals by the presenter |
+| Q27 | Do isotherm labels on the plane ("2,600 K") count as axis annotations? D36 reads them so: they name the level of a contour line drawn from the build's flame grid, as tick labels name grid lines, and are not counts, so they are plain text rather than Values. If the team reads them as built values, each label becomes a Value that opens the flame grid's provenance. | Team | Ratify D36's reading, or make the labels Values |
 
 ## Closed
 

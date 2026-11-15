@@ -90,25 +90,36 @@ export function InvestigationsCoveragePanel({ items, openId, onOpen }: Props) {
   );
 }
 
+/** A generous width for a 12 px character, in px: header extents are estimated, so a header that might reach the
+ *  edge is moved in, never one that would not. */
+const CHAR_W = 12 * 0.62;
+/** The rotated headers' 12 px text rises this far across, past the end of its baseline (the ascent at 45 degrees). */
+const ASCENT_ACROSS = 8;
+
 function CoverageMatrix({ items, openId, onOpen }: Props) {
   const [wrap, width] = useElementWidth<HTMLDivElement>(520);
   const narrow = width < 520;
-  const labelW = narrow ? 96 : 150;
   const groupGap = 10;
-  const avail = width - labelW - 8 - groupGap - 40;
-  const cellW = Math.max(24, Math.min(58, Math.floor(avail / COVERAGE_KEYS.length)));
-  const rowH = narrow ? 20 : 19;
+  const baseLabelW = narrow ? 96 : 150;
+  const cellW = Math.max(24, Math.min(58, Math.floor((width - baseLabelW - 8 - groupGap - 40) / COVERAGE_KEYS.length)));
   const rotate = cellW < 52;
-  const headH = rotate ? 66 : 40;
-  const height = headH + items.length * rowH + 6;
-  const colX = (k: (typeof COVERAGE_KEYS)[number]) => {
+  const colAt = (labelW: number, k: (typeof COVERAGE_KEYS)[number]) => {
     const i = COVERAGE_KEYS.indexOf(k);
     return labelW + i * cellW + (i >= CONDITION_KEYS.length ? groupGap : 0);
   };
+  // Where the rotated headers end on the right: each runs up and right at 45 degrees from its column. On a narrow
+  // screen the last ones would run past the chart's edge, so the name column gives up the overflow (down to
+  // 72 px; names shorten to fit), and every header stays inside the chart.
+  const headTail = (labelW: number) => Math.max(...COVERAGE_KEYS.map((k) => colAt(labelW, k) + (cellW - 4) / 2 + 3 + COVERAGE_LABEL[k].length * CHAR_W * Math.SQRT1_2 + ASCENT_ACROSS));
+  const labelW = rotate ? Math.max(72, baseLabelW - Math.max(0, headTail(baseLabelW) - width)) : baseLabelW;
+  const rowH = narrow ? 20 : 19;
+  const headH = rotate ? 66 : 40;
+  const height = headH + items.length * rowH + 6;
+  const colX = (k: (typeof COVERAGE_KEYS)[number]) => colAt(labelW, k);
   const condEnd = colX(CONDITION_KEYS[CONDITION_KEYS.length - 1]) + cellW;
   const descStart = colX(DESCRIPTOR_KEYS[0]);
   const descEnd = colX(DESCRIPTOR_KEYS[DESCRIPTOR_KEYS.length - 1]) + cellW;
-  const svgW = Math.min(width, descEnd + (rotate ? 44 : 8));
+  const svgW = Math.min(width, Math.max(descEnd + 8, rotate ? headTail(labelW) : 0));
 
   return (
     <div ref={wrap} className="w-full">
@@ -134,7 +145,7 @@ function CoverageMatrix({ items, openId, onOpen }: Props) {
           const y0 = headH + i * rowH;
           const on = r.id === openId;
           const name = invName(r);
-          const max = narrow ? 11 : 20;
+          const max = Math.min(narrow ? 11 : 20, Math.floor((labelW - 17) / 7));
           const summary = COVERAGE_KEYS.map((k) => `${COVERAGE_LONG[k]} ${COVERAGE_STATE_TEXT[coverageState(r, k)]}`).join(", ");
           return (
             <g

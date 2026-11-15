@@ -24,15 +24,16 @@ describe("shortcutFor", () => {
     expect(shortcutFor(key("6"))).toBeNull();
   });
 
-  it("maps S, G, C (either case) and ?", () => {
+  it("maps S, G, C, P (either case) and ?", () => {
     for (const k of ["s", "S"]) expect(shortcutFor(key(k))).toEqual({ kind: "solids" });
     for (const k of ["g", "G"]) expect(shortcutFor(key(k))).toEqual({ kind: "gap" });
     for (const k of ["c", "C"]) expect(shortcutFor(key(k))).toEqual({ kind: "compare" });
+    for (const k of ["p", "P"]) expect(shortcutFor(key(k))).toEqual({ kind: "pin" });
     expect(shortcutFor(key("?"))).toEqual({ kind: "sheet" });
   });
 
-  it("leaves every other key alone, P included until the notebook exists", () => {
-    for (const k of ["p", "P", "b", "Enter", "Escape", "ArrowLeft", " ", "Tab", "/"]) expect(shortcutFor(key(k))).toBeNull();
+  it("leaves every other key alone", () => {
+    for (const k of ["b", "Enter", "Escape", "ArrowLeft", " ", "Tab", "/"]) expect(shortcutFor(key(k))).toBeNull();
   });
 
   it("never fires while typing in a field", () => {
@@ -47,7 +48,7 @@ describe("shortcutFor", () => {
       el("div", { contenteditable: "true" }),
     ];
     for (const t of typing) {
-      for (const k of ["1", "s", "g", "c", "?"]) expect(shortcutFor(key(k, t))).toBeNull();
+      for (const k of ["1", "s", "g", "c", "p", "?"]) expect(shortcutFor(key(k, t))).toBeNull();
     }
   });
 

@@ -1,0 +1,1941 @@
+{
+ "plane-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   170,
+   92,
+   216
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-reduced-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   170,
+   92,
+   216
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-solids-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   198,
+   92,
+   244
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "intro-beat3-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "planeItems": 32,
+  "targets": {
+   "Redshift The Atmosphere ": null,
+   "Plane": null,
+   "Reference": null,
+   "Search (Ctrl K)": null,
+   "Switch to light theme": null,
+   "tile 1": null,
+   "tile 2": null,
+   "tile 3": null,
+   "tile 4": null
+  }
+ },
+ "compare-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "brief-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "provenance-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   170,
+   92,
+   216
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-390-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   170,
+   92,
+   216
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-reduced-390-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   170,
+   92,
+   216
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-solids-390-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   198,
+   92,
+   244
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "intro-beat3-390-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "planeItems": 32,
+  "targets": {
+   "Redshift The Atmosphere ": null,
+   "Plane": null,
+   "Reference": null,
+   "Search (Ctrl K)": null,
+   "Switch to dark theme": null,
+   "tile 1": null,
+   "tile 2": null,
+   "tile 3": null,
+   "tile 4": null
+  }
+ },
+ "compare-390-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "brief-390-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "provenance-390-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   170,
+   92,
+   216
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-768-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 46,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-reduced-768-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 46,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-solids-768-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 45,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "intro-beat3-768-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "planeItems": 40,
+  "targets": {
+   "Redshift The Atmosphere ": null,
+   "Plane": null,
+   "Compare": null,
+   "Reference": null,
+   "Search (Ctrl K)": null,
+   "Switch to light theme": null,
+   "tile 1": null,
+   "tile 2": null,
+   "tile 3": null,
+   "tile 4": null
+  }
+ },
+ "compare-768-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "brief-768-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "provenance-768-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 46,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-768-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 46,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-reduced-768-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 46,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-solids-768-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 45,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "intro-beat3-768-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "planeItems": 40,
+  "targets": {
+   "Redshift The Atmosphere ": null,
+   "Plane": null,
+   "Compare": null,
+   "Reference": null,
+   "Search (Ctrl K)": null,
+   "Switch to dark theme": null,
+   "tile 1": null,
+   "tile 2": null,
+   "tile 3": null,
+   "tile 4": null
+  }
+ },
+ "compare-768-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "brief-768-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "provenance-768-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   72,
+   142,
+   474,
+   196
+  ],
+  "planeItems": 46,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    92,
+    44
+   ],
+   "Plane": [
+    63,
+    44
+   ],
+   "Compare": [
+    86,
+    44
+   ],
+   "Reference": [
+    116,
+    44
+   ],
+   "Search (Ctrl K)": [
+    156,
+    44
+   ],
+   "Switch to dark theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "plane-1440-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-reduced-1440-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-solids-1440-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   142,
+   422,
+   184
+  ],
+  "planeItems": 46
+ },
+ "intro-beat3-1440-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "planeItems": 40
+ },
+ "compare-1440-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "brief-1440-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "provenance-1440-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-1440-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-reduced-1440-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-solids-1440-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   142,
+   422,
+   184
+  ],
+  "planeItems": 46
+ },
+ "intro-beat3-1440-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "planeItems": 40
+ },
+ "compare-1440-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "brief-1440-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "provenance-1440-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-1920-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-reduced-1920-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-solids-1920-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 47
+ },
+ "intro-beat3-1920-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "planeItems": 40
+ },
+ "compare-1920-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "brief-1920-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "provenance-1920-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-1920-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-reduced-1920-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "plane-solids-1920-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 47
+ },
+ "intro-beat3-1920-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "planeItems": 40
+ },
+ "compare-1920-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "brief-1920-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "provenance-1920-light.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "pairs/landing-1440.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "pairs/landing-phone.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "toolbar": [
+   16,
+   170,
+   92,
+   216
+  ],
+  "planeItems": 33,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ],
+   "tile 1": [
+    56,
+    44
+   ],
+   "tile 2": [
+    56,
+    44
+   ],
+   "tile 3": [
+    44,
+    44
+   ],
+   "tile 4": [
+    44,
+    44
+   ]
+  }
+ },
+ "pairs/map-1440.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false,
+  "toolbar": [
+   80,
+   160,
+   422,
+   202
+  ],
+  "planeItems": 46
+ },
+ "pairs/evidence-1440.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "pairs/investigations-1440.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "pairs/planner-1440.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "pairs/quality-1440.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "pairs/dossier-c8_2_34-1440.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": false
+ },
+ "planner-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ]
+  }
+ },
+ "coverage-390-dark.png": {
+  "overlaps": [],
+  "underToolbar": {
+   "pins": 0,
+   "glyphs": 0
+  },
+  "outside": [],
+  "small": [],
+  "scroll": false,
+  "coarse": true,
+  "targets": {
+   "Redshift The Atmosphere ": [
+    44,
+    44
+   ],
+   "Plane": [
+    55,
+    44
+   ],
+   "Reference": [
+    108,
+    44
+   ],
+   "Search (Ctrl K)": [
+    44,
+    44
+   ],
+   "Switch to light theme": [
+    44,
+    44
+   ]
+  }
+ }
+}

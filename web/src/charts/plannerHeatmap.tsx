@@ -1,7 +1,9 @@
 // Planner heat map: small multiples, one panel per material class. Columns are the planner's O2 levels
 // and rows its pressure levels (levels, not to scale). Shading is the priority of the chosen preset on a
-// single-hue ramp (the accent token at varying opacity). Cells with no tests nearby are hatched and
-// labelled "no tests recorded". Candidate atmospheres are drawn as rings in their cells.
+// single-hue ramp (the accent token at varying opacity). Cells with no tests nearby are hatched, and labelled
+// "no tests recorded" where the cell has room for the words at 12 px; in a smaller cell the hatch carries it
+// alone, as the legend above the chart says. Every in-cell label is 12 px (the type scale's Label role); counts
+// always fit. Candidate atmospheres are drawn as rings in their cells.
 // Every value comes from planner_grid.json; this file only places and shades them.
 import * as d3 from "d3";
 import { useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
@@ -22,6 +24,8 @@ interface Props {
 type Tip = { x: number; y: number; cell: PlannerGridCell; cands: Candidate[] } | null;
 
 const MIN_OPACITY = 0.07;
+/** The narrowest cell that holds "recorded" at 12 px with 4 px each side. */
+const EMPTY_LABEL_MIN_W = 60;
 const MAX_OPACITY = 0.85;
 
 export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, kpaByPsi }: Props) {
@@ -68,7 +72,8 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
   const panelH = m.top + ih + m.bottom;
   const rows = Math.ceil(mats.length / cols);
   const height = rows * panelH + (rows - 1) * 16;
-  const labelSize = Math.min(9.5, cw / 4.6);
+  // "no tests" over "recorded" at 12 px, with room each side; below this the cell shows its hatch alone.
+  const emptyWords = cw >= EMPTY_LABEL_MIN_W;
 
   const show = (el: Element, cell: PlannerGridCell) => {
     const box = wrap.current?.getBoundingClientRect();
@@ -179,12 +184,13 @@ export function PlannerHeatmap({ grid, preset, candidates, selected, onSelect, k
                         {empty && <rect width={cw} height={ch} fill="url(#hatch-planner)" opacity={0.6} />}
                         <rect x={0.5} y={0.5} width={cw - 1} height={ch - 1} fill="none" stroke="var(--line)" />
                         {empty ? (
-                          <text x={cw / 2} y={ch / 2} textAnchor="middle" fontSize={labelSize} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3} strokeLinejoin="round">
+                          emptyWords && <text x={cw / 2} y={ch / 2} textAnchor="middle" fontSize={12} fill="var(--ink)" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3} strokeLinejoin="round">
                             <tspan x={cw / 2} dy="-0.25em">no tests</tspan>
                             <tspan x={cw / 2} dy="1.1em">recorded</tspan>
                           </text>
                         ) : (
-                          <text x={cw / 2} y={ch / 2} dy="0.35em" textAnchor="middle" fontSize={Math.min(12, cw / 3.4)} fontWeight={500} fill="var(--ink)" className="num" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3} strokeLinejoin="round">
+                          // A cell with a candidate ring in its corner sets its count a little lower, clear of the ring.
+                          <text x={cw / 2} y={ch / 2 + (cands.length ? 4 : 0)} dy="0.35em" textAnchor="middle" fontSize={12} fontWeight={500} fill="var(--ink)" className="num" paintOrder="stroke" stroke="var(--surface-2)" strokeWidth={3} strokeLinejoin="round">
                             {fmtNumber(c.n_near.v)}
                           </text>
                         )}

@@ -113,8 +113,6 @@ describe("design tokens", () => {
     const bad: string[] = [];
     for (const [file, text] of Object.entries(sources)) {
       text.split("\n").forEach((line, i) => {
-        // The planner heat map sizes its in-cell labels to fit the cell (cw / n): open for Phase 12.
-        if (file.endsWith("plannerHeatmap.tsx") && /cw \/ \d/.test(line)) return;
         for (const m of line.matchAll(/fontSize(?:=\{|="|:\s*)([^}",;]+)|\b\w+Size\s*=\s*([^;]+);/g)) {
           for (const n of (m[1] ?? m[2]).matchAll(/(?<![\w.])\d+(?:\.\d+)?(?![\w.])/g)) {
             if (!scale.has(Number(n[0]))) bad.push(`${file}:${i + 1}: ${line.trim().slice(0, 120)}`);
