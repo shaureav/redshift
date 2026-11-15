@@ -345,6 +345,10 @@ export default function Home() {
               )}
             </span>
           </h1>
+          {/* D50: say it once, where everyone looks first. */}
+          <p className="mt-1 text-xs text-ink-2">
+            Every <span className="underline decoration-dotted decoration-2 decoration-[color:var(--accent)] underline-offset-[4px]">underlined number</span> opens its source: click one to see the NASA file and row, or the paper, page and quote.
+          </p>
         </header>
         {/* D42: the plot and its legend are one navy card on the cream page. */}
         <div className="navy navy-fill relative mx-2 min-h-0 flex-1 rounded-t-xl px-2 pb-2 lg:mx-4 lg:px-3">

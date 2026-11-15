@@ -42,9 +42,9 @@ export function Value({ val, digits, unit, className = "", emptyText = "not reco
       <button
         ref={btn}
         type="button"
-        // Quiet doors (plan, principle 3): the dotted underline appears only on hover and on keyboard focus, where
-        // the focus ring also shows; the accessible name says the number opens its source either way.
-        className={`num rounded-sm underline decoration-dotted decoration-transparent underline-offset-[3px] transition-colors hover:decoration-[color:var(--ink-2)] focus-visible:decoration-[color:var(--ink-2)] ${
+        // D50: a visible door. First-time visitors could not tell a number opens its source, so the dotted accent
+        // underline always shows and turns solid, with a highlight, on hover and keyboard focus.
+        className={`num rounded-sm underline decoration-dotted decoration-2 decoration-[color:var(--accent)] underline-offset-[4px] transition-colors hover:bg-[color:var(--surface-3)] hover:decoration-solid focus-visible:decoration-solid ${
           val.v === null ? "italic text-ink-3" : ""
         } ${isDerived(val.p) ? "italic" : ""}`}
         aria-expanded={open}
