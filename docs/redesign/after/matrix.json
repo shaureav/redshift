@@ -1349,11 +1349,11 @@
   "coarse": false,
   "toolbar": [
    80,
-   142,
+   160,
    422,
-   184
+   202
   ],
-  "planeItems": 46
+  "planeItems": 47
  },
  "intro-beat3-1440-dark.png": {
   "overlaps": [],
@@ -1455,11 +1455,11 @@
   "coarse": false,
   "toolbar": [
    80,
-   142,
+   160,
    422,
-   184
+   202
   ],
-  "planeItems": 46
+  "planeItems": 47
  },
  "intro-beat3-1440-light.png": {
   "overlaps": [],

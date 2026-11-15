@@ -1,8 +1,10 @@
-# Verification: Phase 12 and the completeness review fixes
+# Verification: Phase 12, the completeness review fixes and the final audit fixes
 
 Every check run for Phase 12 of `EXCEPTIONAL_PLAN.md` and, after it, for the completeness critic's gaps (decision D36), on 15 November 2026, on branch `redesign/plane-first`, with its exact result. Dataset `2026-11-14+86f35c56f2e0`. The web checks ran on the final source; the browser checks ran on the production build served by `vite preview` at `http://localhost:4173` in Chrome (through its DevTools protocol) on Windows 11.
 
 **Status.** Every check below that a script can run passes. The checks that need people (the five-second test, the timed cold task, the hallway test, a newcomer reading the intro alone, the keyboard walkthrough by a person, the NVDA spot check, real phones and the presenter's rehearsals) have not been run and have no owner yet; `docs/redesign/usability.md` sets each out with an empty results table (`docs/OPEN_QUESTIONS.md`, Q23 to Q26). Until they are run, Phases 3, 5, 6 and 12 are done in code with their acceptance pending.
+
+The final audit fixes (D37) came after these sections were written; every check was run again for them, and their results are in the last section, "Final audit fixes". Where an earlier section's measure changed, it now gives the new one and says so.
 
 ## Commands and results
 
@@ -77,16 +79,18 @@ Measured with `elementFromPoint` (so a pseudo-element's larger target counts) by
 | Logo link | 24 x 24 | 44 x 44 |
 | Search | 34 x 44 | 44 x 44 |
 | Theme toggle | 34 x 44 | 44 x 44 |
-| Plane, Reference, Compare | | 55 x 44, 99 x 44, 86 x 44 |
+| Plane, Reference, Compare | | 55 x 44, 108 x 44, 86 x 44 (the matrix rerun for D37; this row said 99 x 44 for Reference, a figure the matrix never held) |
 | Readout tiles' numbers | about 56 x 42 | 44 x 44 (one-digit counts) to 56 x 44 |
 
 ## The toolbar at 768 px
 
-At 768 x 1024 with touch the floating toolbar covered the 14.7 psi / 21% O2 pin's head and 50 glyphs (critic). It now takes its band above the plot whenever its box would cover a pin's head or a glyph (D36): toolbar `[72, 142, 474, 196]`, 0 pin heads and 0 glyphs under it, in every 768 view of the matrix (`plane-768-*.png`). At 1440 and 1920 it still floats (`[80, 160, 422, 202]`, nothing under it).
+At 768 x 1024 with touch the floating toolbar covered the 14.7 psi / 21% O2 pin's head and 50 glyphs (critic). It now takes its band above the plot whenever its box would cover a pin's head or a glyph (D36): toolbar `[72, 142, 474, 196]`, 0 pin heads and 0 glyphs under it, in every 768 view of the matrix (`plane-768-*.png`).
+
+This section used to say that at 1440 and 1920 the toolbar still floats. That was false at 1440 x 900 under Solids only: the O2-only strip grew 4 px there, which shortened the plot just enough for the 14.7 psi / 21% pin's head to reach under the toolbar, so the toolbar took its band (`[80, 142, 422, 184]` in `plane-solids-1440-*` of the earlier matrix) and the plot moved about 38 px between the intro's beats 2 and 3, at Explore and on S. Since D37 the strip keeps its height under Solids only, so the plot and the band decision are the same with it on or off: at 1440 and 1920 the toolbar floats (`[80, 160, 422, 202]`, nothing under it) in every view of the rerun matrix, Solids only and the intro's third beat included, and in the browser the 14.7 psi row stays at the same height through all three beats and Explore (last section).
 
 ## The demo path
 
-Unchanged since Phase 12 and not re-run in this pass: run twice in a row by script on the production build at 1440 x 900 (the intro's three beats, the cited counts, Explore landing on `?o2=34&p=8.2&solids=1` with the plane focused, the panel's "37 tests sit near this point. None is a solid material.", the Ask chip's "AI-assisted, awaiting human check"). The presenter's timed rehearsals are open (`usability.md`, section 5; Q26).
+Run twice in a row by script on the production build at 1440 x 900 in Phase 12, and run again by script for D37 on the final build (the new beat 2 copy, the cited counts, Explore landing on `?o2=34&p=8.2&solids=1` with the plane focused, the panel's "37 tests sit near this point. None is a solid material.", the Ask chip's "AI-assisted, awaiting human check"; last section). The presenter's timed rehearsals are open (`usability.md`, section 5; Q26).
 
 ## Screenshot matrix
 
@@ -102,7 +106,7 @@ In `docs/redesign/after/` (this set replaces the earlier images), made by `web/s
 | Compare, 8.2 psi / 34% against 10.2 psi / 26.5% | `compare-{w}-{theme}.png` | full page |
 | The brief for 8.2 psi / 34% | `brief-{w}-{theme}.png` | full page |
 
-Result: 56 views (7 views x 4 widths x 2 themes), 1,797 plane items measured in 43 plane views: **0 overlaps, 0 pin heads or glyphs under the toolbar, no sideways scroll, no chart text outside its chart, none under 12 px**, in every view. The Phase 12 charts at 390 px: `planner-390-dark.png` (the heat map: every in-cell label 12 px; "no tests recorded" only where it fits, the hatch elsewhere) and `coverage-390-dark.png` (the coverage matrix: every rotated header inside the chart); both 0 outside, 0 under 12 px, no sideways scroll.
+Result of the rerun for D37: 56 views (7 views x 4 widths x 2 themes), 1,799 plane items measured in 43 plane views (1,797 before: under Solids only at 1440 the "2,300 K" isotherm label finds a clear spot now that the plot keeps its size and the toolbar floats, in both themes): **0 overlaps, 0 pin heads or glyphs under the toolbar, no sideways scroll, no chart text outside its chart, none under 12 px**, in every view. The Phase 12 charts at 390 px: `planner-390-dark.png` (the heat map: every in-cell label 12 px; "no tests recorded" only where it fits, the hatch elsewhere) and `coverage-390-dark.png` (the coverage matrix: every rotated header inside the chart); both 0 outside, 0 under 12 px, no sideways scroll.
 
 **Before and after pairs**: `after/pairs/` holds an after shot for each image in `docs/redesign/before/`, same name, 1440 x 900 dark (the phone one at 390 x 844): `landing-1440` and `map-1440` (both now the plane; `/map` redirects to it), `landing-phone`, `evidence-1440`, `investigations-1440`, `planner-1440`, `quality-1440`, `dossier-c8_2_34-1440`. The same measures on these: 0 overlaps, 0 outside, 0 under 12 px, no sideways scroll.
 
@@ -141,9 +145,61 @@ Left open, each with its reason:
 | A pin label can still sit over glyphs (for example "26.5% O2" over the 10.2 psi droplet row on a phone). | Glyphs are a soft cost in placement; the label's surface-coloured outline keeps it readable. |
 | On a narrow plot, if the probe's tag takes a corner other than above and right, a label can sit near it. | A full joint placement of tag and labels is not worth the risk now. |
 | During the intro a band above the plot stays empty (the space the hidden headline and toolbar keep; at 768 px the toolbar's band too). | Keeping it stops the plot jumping at Explore (no layout shift between beats, plan section 9). |
+| On a phone (390 x 844) the plot moves down 24 px at Explore, though not between beats: the hidden headline keeps the room of the headline for the view the intro opened on, and Explore turns Solids only on, whose headline is a line longer at that width. At 1440 and 1920 nothing moves. | Found in the D37 browser check; it predates D37 (the headline logic is unchanged). Reserving the longer headline during the intro would move the plot at Skip instead, so it is left for the team. |
+| The Test Planner heat map's in-cell counts and a dossier's evidence bar labels are plain chart text, not Values (their charts name their sources underneath). | Pre-existing and outside the main flow; a team decision (Q29). README and `DEMO.md` no longer claim every number is a button. |
 | Compare at 390 px: a zero-count row's "no tests recorded" wraps beside the hatch, and the two columns' rows do not line up when their headers differ in height. Compare shows "paper 0" beside every count, while the panel hides zero paper counts (D28). | Nothing overlaps or clips; belongs with a compare redesign. |
 | At half, the sheet can end part way through the missing callout on a short phone. | By design (D34): half keeps 40% of the screen for the plane. |
 | The coverage matrix at 390 px truncates investigation names more (its name column gives the rotated headers room). | Each row's full name is in its accessible name, its card and the table view. |
 | Small planner cells (under 60 px) show no "no tests recorded" words, only the hatch. | The legend beside the chart says what the hatch means, and each cell's accessible name and tooltip say it in words. |
 | The mouse drag's first runs after a page load have a p95 of 15 to 22 ms (steady state 11.4 ms). | Warm-up work (first layouts, JIT); no long task. |
 | Stepping the intro to its third beat gave one 50 ms long task and one 55 ms frame in the final-build run (none, and 22 ms at most, in the earlier run): the Solids only sink and the glyphs fading under it. | At the 50 ms line, once per intro, during a scene change; not investigated further in this pass. |
+
+## Final audit fixes (D37)
+
+The final read-only audit's findings, each checked against the code and fixed where real (decision D37), on 15 November 2026, on the final source. Python checks used a virtual environment outside the repository, because the repository's `.venv` path is too long for Cantera on this machine; the commands are otherwise the ones above.
+
+| Command | Result |
+| --- | --- |
+| `python -m redshift.build` | `dataset 2026-11-14+86f35c56f2e0`; `tests 1942, flags 678, provenance coverage 100.0% of 60420`; `goldens: match=24, explained_difference=2`; `wrote data/processed and web/public/data`. `git diff --stat --ignore-cr-at-eol -- data web/public/data` prints nothing: no data value changed. |
+| `python -m pytest -q` | `215 passed in 112.98s (0:01:52)` |
+| `uv run ruff check redshift tests scripts` | `All checks passed!` |
+| `uv run mypy` | `Success: no issues found in 10 source files` |
+| `python scripts/no_em_dash.py` | `no em dashes` |
+| `npx tsc --noEmit` (in `web/`) | exit 0, no output |
+| `npx eslint src --max-warnings 0` | exit 0, no output |
+| `npm test` | `All 480 enforced pairs pass in the dark, light and print themes; no red in the palette; print sets every light token.`; `palette hue check: 82 hex colours in 2 files, 0 red-adjacent (hue within 20 degrees of 0, saturation above 0.35)`; `Test Files 11 passed (11)`, `Tests 176 passed (176)` |
+| `npm run build` | `data snapshot OK (2026-11-14+86f35c56f2e0)`; `built in 4.17s`; Home chunk 96.37 kB (gzip 32.32 kB), app chunk 237.80 kB (gzip 77.11 kB) |
+| `node scripts/matrix.mjs` | Rerun on the final build: 66 entries, 56 matrix views, 1,799 plane items in 43 plane views, 0 overlaps, 0 pin heads or glyphs under the toolbar, 0 chart texts outside their chart, 0 under 12 px, no sideways scroll. The toolbar in `plane-solids-1440-dark` and `-light` was `[80, 142, 422, 184]` and is now `[80, 160, 422, 202]`, the same as every other 1440 view. Smallest touch targets: logo 44 x 44, Plane 55 x 44, Reference 108 x 44, Compare 86 x 44, Search 44 x 44, theme 44 x 44, the tiles' numbers 44 x 44 to 56 x 44. |
+
+**New tests** (12; vitest ran 164 tests before this pass and 176 now). In `interaction.test.tsx`: no sea in beat 1 and sea in beat 2; an Escape another dialog has already taken does not skip the intro; the shortcut sheet and the access gap draw above the intro's click catcher; Back to beat 1 keeps focus on Next; Skip of a replay returns focus to the panel control once the panel is no longer inert; the shortcut sheet and the palette give focus back to the plane; the phone's sheet drops to peek when the intro replays; every pin keeps a label on a phone's plot under Solids only (the plane's box as measured in Chrome at 390 x 844); a mouse pointerup cancels a pending move frame. In `panel.test.tsx`: the plot's size and the toolbar's place do not change with Solids only; the grid's dashed edge and caption in Whole plane and All tests, and none in the habitat range; the context strip says "loading" or "not available" before the flame grid arrives; no digit in the access gap chart's native tooltips. **Each new test was run with its fix reverted, and failed**: a script swapped each fix back, ran the test by name and restored the file, with exit 1 for all 14 reversions (the defaultPrevented check, the z-index, Back's focus, flushSync, the two SVG focus restores, the sheet's peek, the move frame, the beat 1 sea, the strip heights, the grid edge, the flame states, the gap tooltips and the second pin placement).
+
+**Snapshot update** (`npx vitest run -u`, the diff read tag by tag before accepting): the o2-match heading's copy in the panel and the three plane screens, compare's row heading, the beat 2 title and body, the intro's text block class (`lg:min-h-[328px]`), and a wrapper group around the sea in the three plane screens. Under Solids only the plot at the fallback size is 428 px tall, as it is without Solids only, instead of 424, so that screen's plot coordinates moved; every text node in it is unchanged apart from the heading's copy. No number changed.
+
+**Browser: the production preview in Chrome at 1440 x 900, dark** (a new isolated context with empty storage, so the intro opened):
+
+| Check | Result |
+| --- | --- |
+| The plot through the intro (A2) | At beats 1, 2 and 3 and after Explore: overlay `translate(56,16)`, the 14.7 psi tick's top at 215.4 px, toolbar `[80, 160, 422, 202]`, every time. S off and on again after Explore: the same. At 1920 x 1080: `translate(56,16)`, the 14.7 tick at 240.5 px and the toolbar at `[80, 160, 422, 202]` at every beat and after Explore. |
+| The card's buttons | Next's top at 481 px on all three beats (465, 481 and 465 before the text block took the new longest beat's height). |
+| Beat 1 (B2) | The sea's group has `data-on="false"` and opacity 0: the bare plot and the pins only. At beat 2 it has `data-on="true"` and opacity 1, with the land. |
+| Beat 2's copy (A1, B1) | "These are the fire tests PSI lets us place in this range." and "Each mark is one or more microgravity fire tests from NASA's PSI tables at one recorded oxygen and pressure, marked by fuel class." |
+| Ctrl+K, then Escape, over beat 1 (C1) | The palette closed, the intro stayed on beat 1, focus went back to Next, and `redshift-intro-v1` stayed unset. |
+| The shortcut sheet over the intro (C3) | Opened from the palette over beat 1, it draws above the card (screenshot); a real click on its close button closed it, with the intro still on beat 1 and focus back on Next. |
+| Back on beat 2 (C4) | A real click: beat 1, with focus on Next. |
+| `?` then Escape after Explore (C2) | The sheet closed with focus on the plane; the right arrow then moved the probe from 34 to 34.5% O2. |
+| Skip of a replay (C5) | Focus on the panel's More button, then Ctrl+K, "replay the intro" and Escape: the intro closed, the panel was no longer inert, and focus was back on that button (now "Less", since the click had expanded it). |
+| All tests zoom (B3) | The dashed edge runs round the grid at 14.75 and 100.25% O2 and at about 2.95 and 17.05 psi; the caption "Past the dashed line, beyond the probe grid: no coast computed" sits above it; the droplet marks at 12 to 13% O2 sit outside the line. |
+| The demo path, by script | The beat titles above; beat 3's card "Of 263 solid-fuel burn rows, 129 record oxygen, 0 record pressure and 0 sit near a habitat candidate as downloadable rows."; the pins read "inland" four times at beat 2 and "at sea" four times at beat 3; the plane's caption; Explore to `?o2=34&p=8.2&solids=1` with the plane focused, the panel's "37 tests sit near this point. None is a solid material." and the tiles gas 20, droplet 17, solid 0 and BRE 0 ("no tests recorded"); the Ask chip's answer labelled "AI-assisted, awaiting human check", with 41 Values in the panel. |
+| The panel's count fade (SWAP) | Shortcut 2 while pinned: two tiles' counts animate (`fade`, 200 ms, fill both), at opacity 0.00 at the start, 0.90 at 50 ms, 0.96 at 100 ms, 0.99 at 150 ms and 1.00 from 200 ms. Not a defect: a number looks blank only on a page that draws no frames (a background tab, a headless capture), and it fades in on the first frame drawn. |
+| Console | No error or warning. One DevTools issue, "A form field element should have an id or name attribute", from the command palette's field; it predates this pass. |
+
+**Browser: 390 x 844, touch, dark** (a second isolated context):
+
+| Check | Result |
+| --- | --- |
+| The intro | Beats 1 to 3 by the arrow key: overlay `translate(50,58)` and the 14.7 psi tick at 242 px at every beat; the card at the bottom (610 to 828, 590 to 828 and 618 to 828 px), clear of the plot and the strip; the sheet at peek and inert; no sideways scroll (`scrollWidth` 390). Explore by a tap: `?o2=34&p=8.2&solids=1`, the sheet's peek shows the point and its four tiles, and focus is on the plane. The plot moves down 24 px at Explore (a known issue, above). |
+| Replay over a full sheet (C6) | The handle tapped twice (full), then Search and "replay the intro": the intro opened with the sheet at peek and inert and the plane in view (screenshot). Escape closed the intro, with focus back on Search. |
+| Pin labels under Solids only | `14.7 psi / 21% O2`, `26.5% O2` and `30% O2` (the probe's own pin hides its label), as before D37. |
+| Console | No error or warning; the same DevTools issue as above. |
+
+**Findings that needed no code change**: A3, A5 and B6 to B10 were documentation, corrected in `README.md`, `DEMO.md`, `usability.md` and above. SWAP was checked and left as it is (above).

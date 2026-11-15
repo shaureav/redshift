@@ -7,7 +7,7 @@ Use the production build (`npm run build`, then `npm run preview`, `http://local
 ## 1. Five-second test (section 3)
 
 - **Who:** five people who have not seen Redshift (friends or family of the team).
-- **How:** show the bare address (the intro's first beat, then let it play to beat 3, about 20 s), then the plane after Explore for five seconds. Ask: "What did that page tell you?" Write their words down unprompted.
+- **How:** show the bare address and let the tester step through the intro's three beats themselves. It never moves on by itself: a click on the plane, a scroll or the right arrow steps it, so if they wait, say once "click or scroll to go on" and nothing more. Then give them the plane after Explore for five seconds. (Whether the facilitator should step it instead is open: `docs/OPEN_QUESTIONS.md`, Q28.) Ask: "What did that page tell you?" Write their words down unprompted.
 - **Pass:** four of five say, in their own words, that solid-fire evidence near Moon-base air is missing from the downloadable data.
 - **Also covers:** Phase 5's acceptance (the intro alone tells the access-gap story to a newcomer) and Phase 3's hallway test (is the land sinking under Solids only the moment they remember?). Ask the second question after the first answer: "What, if anything, stuck with you?"
 
@@ -39,19 +39,19 @@ A person walks every feature with the keyboard alone (no mouse, no touch), at 14
 | --- | --- | --- | --- |
 | Skip link | Tab once from the address bar; Enter jumps to the content | no | |
 | Story intro | Arrows and Page Up or Down step the beats; Tab stays in the card; Escape skips; Explore hands focus to the plane | yes (intro tests) | |
-| Plane probe | Arrows step one node, Alt and an arrow ten, Shift and an arrow the next candidate; Enter opens a candidate's dossier | yes (trail, badge tests) | |
-| Glyph count badge | Land the probe on a glyph (Shift and Up from 10.2 psi / 26.5% O2); Tab reaches its count, Enter opens its source | yes (badge test) | |
+| Plane probe | Arrows step one node, Alt and an arrow ten, Shift and an arrow the next candidate; Enter opens a candidate's dossier | partly (the trail test presses the right arrow, the badge test Shift and Up; Alt and an arrow, and Enter on a candidate, are not tested) | |
+| Glyph count badge | Land the probe on a glyph (Shift and Up from 10.2 psi / 26.5% O2); Tab reaches its count, Enter opens its source | partly (the badge test checks that the badge and its button show; it presses neither Tab nor Enter) | |
 | Area selection | B starts it; Escape clears it | no | |
 | Shortcuts | 1 to 5, S, G, C, P (with its toast), ? from anywhere on the plane page; none while typing | yes (shortcut tests) | |
 | Toolbar | Tab into it; every tool and menu (Candidates, Layers, Zoom, Sound) by Enter, Space, arrows and Escape | yes (toolbar test) | |
 | Panel readout | Tab through the tiles' numbers; Enter opens each provenance card; Escape closes it and returns focus | partly (Value tests) | |
 | What's missing | Each line's door opens its source | no | |
 | Sparklines | Arrows move the cursor; each count reads as a Value | yes (sparkline test) | |
-| Context strip | Its button expands and collapses; the step size scrubber by arrows | yes (context strip test) | |
+| Context strip | Its button expands and collapses; the step size scrubber by arrows | partly (the context strip test expands and collapses it and finds the scrubber; the scrubber's arrow keys are not tested) | |
 | Action bar | Dossier (and why it is unavailable off a candidate), Tests, Compare, Brief, Share (with its toast) | yes (Dossier, Share tests) | |
 | Ask | Type a question; Enter asks; the suggested questions by Tab and Enter | no | |
 | Command palette | Ctrl+K opens; arrows move the active row; Enter runs it; "Nothing matches" with its example; Escape returns focus | yes (palette test) | |
-| Bottom sheet (below lg) | Tab to the handle; Enter steps peek, half, full; arrows, Page Up or Down, Home and End; full traps Tab; Escape returns to half; Tab past the visible part opens full | yes (sheet test) | |
+| Bottom sheet (below lg) | Tab to the handle; Enter steps peek, half, full; arrows, Page Up or Down, Home and End; full traps Tab; Escape returns to half; Tab past the visible part opens full | partly (the sheet test steps it by tap, the arrows, Page Up, Home and End, and checks the Tab trap and Escape; Enter on the handle and Tab past the visible part are not tested) | |
 | Reference menu | Opens by Enter; every link reachable; Escape closes | no | |
 | Compare, brief | Every control and every number's provenance card; the brief's downloads | no | |
 | Theme toggle | Enter switches; focus stays on it | no | |
