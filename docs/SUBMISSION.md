@@ -115,3 +115,17 @@ Answer honestly, in your own words, and describe what actually happened. A truth
 - [ ] Public project link opens with no login, on a phone and a laptop, in a private window.
 - [ ] Repository is public (decide first about the ACME Flame Design file with no licence, `docs/OPEN_QUESTIONS.md` Q15).
 - [ ] Deadline confirmed in writing with the Local Lead (`docs/OPEN_QUESTIONS.md` Q4). Submit well before it.
+
+---
+
+## (g) Roadmap slide: where Redshift goes next
+
+Draft for a final or backup slide. These are plans, not features: say "next", never "we have".
+
+- **Bring your own data.** A lab drops its own test results onto the plane as a separate, clearly marked layer. It never mixes into the counts built from NASA's tables.
+- **Release watcher.** When NASA publishes new PSI data, the pipeline rebuilds and writes a "what changed in the evidence" note for each candidate atmosphere, so the map stays current without anyone re-checking it by hand.
+- **Beyond the Moon.** The same plane for Mars transit vehicles, Gateway and commercial stations: only the candidate pins change.
+- **An open API and a ten-line notebook.** Any researcher can pull the evidence near a point, with its provenance, and cite it by dataset version.
+- **The materials checklist.** A habitat engineer lists the cabin's materials and sees which have any test evidence near the chosen atmosphere, and which are unknown.
+- **The gap over time.** The plane filling in year by year as investigations flew, showing how long the solid-material gap has stood.
+
