@@ -70,7 +70,8 @@ export function Readout({ r, candidate, preview, outside, compact = false }: { r
     <>
       {candidate && <p className={compact ? "mt-3 text-sm text-ink-2" : "text-sm text-ink-2"}>{candidate.short}</p>}
       {outside && <p className="mt-1 text-sm text-[color:var(--amber-ink)]">Outside the probe grid; showing its nearest edge point.</p>}
-      <p className="mt-2 text-sm" aria-live="polite"><PointHeadline r={r} /></p>
+      {/* The panel's lead: the one sentence a reader should take away, the largest text in the panel (D40). */}
+      <p className="mt-3 text-body font-semibold text-ink lg:text-heading" aria-live="polite"><PointHeadline r={r} /></p>
     </>
   );
   const tiles = (

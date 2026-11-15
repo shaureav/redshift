@@ -45,7 +45,7 @@
   /* Texture: one hatch, 45 degrees, 7 px pitch, 1 px line (Hatch in components/Common.tsx draws the same).
      Sea hatching sits at 30% and an empty tile's at 60%. */
   --hatch-pitch: 7px;
-  --sea-hatch-opacity: 0.3;
+  --sea-hatch-opacity: 0.45; /* D40: the sea must read as unknown at a glance */
   --tile-hatch-opacity: 0.6;
 }
 
@@ -74,14 +74,14 @@
   /* Fuel classes. --x is the fill. --x-ring is the 1 px ring around a filled glyph: in the dark theme the
      glyph's own surface (a gap between neighbours), because every fill reaches 3:1 on its own. --x-edge is the
      hue drawn as a line (outlined paper glyphs, legend outlines, bar edges). */
-  --gas: #3987e5;       --gas-ring: var(--surface-2);       --gas-edge: var(--gas);
-  --droplet: #199e70;   --droplet-ring: var(--surface-2);   --droplet-edge: var(--droplet);
-  --solid: #c98500;     --solid-ring: var(--surface-2);     --solid-edge: var(--solid);
-  --emulator: #e87ba4;  --emulator-ring: var(--surface-2);  --emulator-edge: var(--emulator);
+  --gas: #3987e5;       --gas-ring: var(--sea);             --gas-edge: var(--gas);
+  --droplet: #199e70;   --droplet-ring: var(--sea);         --droplet-edge: var(--droplet);
+  --solid: #c98500;     --solid-ring: var(--sea);           --solid-edge: var(--solid);
+  --emulator: #e87ba4;  --emulator-ring: var(--sea);        --emulator-edge: var(--emulator);
 
   /* The plane as a map: land where tests sit near a point, open sea where none do, the coast between. */
-  --land: #12223a;
-  --sea: var(--surface-2);
+  --land: #1a3152;   /* D40: a clear lift above the sea, so land and sea part at a glance */
+  --sea: #070f1c;
   --sea-hatch: var(--hatch);
   --coast: color-mix(in srgb, var(--ink-2) 70%, transparent);
   --trail: var(--accent);         /* the probe trail over land: interaction history, not data */
@@ -121,7 +121,7 @@
   --emulator: #e87ba4;  --emulator-ring: #b56080;  --emulator-edge: var(--emulator-ring);
 
   --land: #ffffff;
-  --sea: #eef1f5;
+  --sea: #e6eaf0;
 
   --hatch: #9aa4b5;
   --candidate: #0f1b2d;
@@ -268,7 +268,8 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 
   /* Readout tile: raised, a label and a number in the Heading role. A tile with no tests is hatched at 60%,
      never blank: empty means unknown, not safe. */
-  .tile { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 16px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-surface); }
+  /* D40: quiet tiles, no line of their own: the panel's lead sentence, not a grid of boxes, carries the eye. */
+  .tile { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 16px; background: var(--surface-2); border: 1px solid transparent; border-radius: var(--r-surface); }
   .tile > * { position: relative; }
   .tile[data-empty="true"]::before {
     content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: var(--tile-hatch-opacity);
@@ -450,7 +451,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
     --solid: #eda100;     --solid-ring: #a57000;     --solid-edge: var(--solid-ring);
     --emulator: #e87ba4;  --emulator-ring: #b56080;  --emulator-edge: var(--emulator-ring);
     --land: #ffffff;
-    --sea: #eef1f5;
+    --sea: #e6eaf0;
     --hatch: #9aa4b5;
     --candidate: #0f1b2d;
     --isotherm: #8c96a8;

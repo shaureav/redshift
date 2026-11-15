@@ -328,7 +328,7 @@ export default function Home() {
                   <>Solid-material tests by oxygen and cabin pressure.</>
                 )
               ) : habitatHeadline ? (
-                <>Near the candidate habitat atmospheres, PSI&apos;s tables hold gas and droplet tests, but no solid burns.</>
+                <>Near the habitat candidates, PSI&apos;s tables hold gas and droplet tests but no solid burns.</>
               ) : (
                 <>Microgravity fire tests by oxygen and cabin pressure.</>
               )}
@@ -405,14 +405,14 @@ export default function Home() {
  *  room for a keyboard, the door to the shortcut sheet. */
 const Legend = memo(function Legend({ onShortcuts, robust }: { onShortcuts: () => void; robust: boolean }) {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 px-4 pb-2 text-xs text-ink-2 lg:px-6">
       <span className="flex items-center gap-1.5"><span className="inline-block h-3 w-5 rounded-sm border border-[color:var(--coast)] bg-[color:var(--land)]" /> Land: tests near</span>
       <span className="flex items-center gap-1.5"><span className="hatch-bg inline-block h-3 w-5 rounded-sm border border-line bg-[color:var(--sea)]" /> Sea: no tests near, unknown, not safe</span>
       {(["gas", "droplet", "solid", "emulator"] as const).map((f) => (
         <span key={f} className="flex items-center gap-1.5"><FuelMarker fuel={f} /> {FUEL_LABEL[f]}</span>
       ))}
       <span className="flex items-center gap-1.5"><FuelMarker fuel="solid" outlined /> Verified paper</span>
-      <span className="flex items-center gap-1.5"><PinIcon className="text-ink" /> Candidate: inland, on the coast or at sea describes the evidence, not risk</span>
+      <span className="flex items-center gap-1.5"><PinIcon className="text-ink" /> Candidate (inland, coast, at sea: the evidence, not risk)</span>
       <span className="flex items-center gap-1.5"><svg width="20" height="8" aria-hidden="true"><line x1="0" y1="4" x2="20" y2="4" stroke="var(--isotherm)" /></svg> Flame temperature (explains, does not predict)</span>
       {robust && (
         <span className="flex items-center gap-1.5">

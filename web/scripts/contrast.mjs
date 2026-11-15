@@ -240,7 +240,7 @@ function pairs() {
   const surface2 = PAGE[2];
   const sea = PLANE[1];
   const hatches = [
-    { opacity: 0.3, bg: sea, what: "sea hatching at 30% (Phase 3; legend only, no text in place)" },
+    { opacity: 0.45, bg: sea, what: "sea hatching at 45% (D40; legend only, no text in place; the coast line carries the edge)" },
     { opacity: 0.3, bg: surface2, what: "no-pressure strip hatching at 30% (lane labelled)" },
     { opacity: 0.4, bg: surface2, what: "blind-area hatching at 40% on the plane (legend only, no text in place)" },
     { opacity: 0.7, bg: surface2, what: "blind-area hatching at 70% under Solids only (legend only, no text in place)" },

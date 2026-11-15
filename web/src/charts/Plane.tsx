@@ -51,7 +51,8 @@ function zoomOf(key: string): Zoom {
 // (15% O2, say) draws whole: the largest marker, the emulator diamond at r = 12, reaches 15.6 px plus its stroke.
 const GLYPH_PAD = 18;
 // Each trade-map bin (tests at identical recorded O2 and pressure) is drawn once, its area growing with its count.
-const binRadius = d3.scaleSqrt().domain([1, 40]).range([4, 12]).clamp(true);
+// D40: a little smaller than before, so a row of packed bins (14.7 psi) stays a row of marks, not a bar.
+const binRadius = d3.scaleSqrt().domain([1, 40]).range([3.5, 10]).clamp(true);
 // A map pin: its tip on the atmosphere, its head 14 px above it.
 const PIN = "M0,0C-1.8,-4.6 -6,-8.4 -6,-14A6,6 0 1,1 6,-14C6,-8.4 1.8,-4.6 0,0Z";
 // The probe trail (plan, Phase 4): its last 40 positions. A move longer than TRAIL_JUMP_PX (a candidate chosen
@@ -727,12 +728,6 @@ export function Plane(props: Props) {
       >
         <defs>
           <clipPath id="plane-clip-overlay"><rect width={iw} height={ih} /></clipPath>
-          {/* A soft fill, a little stronger towards its edge, with no line: the region reads without a dash. */}
-          <radialGradient id="plane-halo">
-            <stop offset="0%" stopColor="var(--probe)" stopOpacity={0.02} />
-            <stop offset="80%" stopColor="var(--probe)" stopOpacity={0.04} />
-            <stop offset="100%" stopColor="var(--probe)" stopOpacity={0.09} />
-          </radialGradient>
         </defs>
         <g transform={`translate(${m.left},${m.top})`}>
           <g clipPath="url(#plane-clip-overlay)">
@@ -771,7 +766,9 @@ export function Plane(props: Props) {
             <g className="intro-hide">
               <g style={{ transform: `translate(${pxp}px, ${pyp}px)`, transition: glide }} pointerEvents="none">
                 <g className="layer" data-on={view.layers.has("halo")}>
-                  <ellipse rx={halo.rx} ry={halo.ry} fill="url(#plane-halo)" />
+                  {/* The nearness region: a crisp thin solid ring over a faint fill (dashes on the plane mean a grid or step edge), so it reads as an instrument's reach and
+                      not a smudge over the map beneath it (D40). */}
+                  <ellipse rx={halo.rx} ry={halo.ry} fill="var(--probe)" fillOpacity={0.035} stroke="var(--probe)" strokeOpacity={0.45} strokeWidth={1} />
                 </g>
                 <line x1={-pxp} x2={iw - pxp} y1={0} y2={0} stroke="var(--probe)" strokeOpacity={0.35} />
                 <line y1={-pyp} y2={ih - pyp} x1={0} x2={0} stroke="var(--probe)" strokeOpacity={0.35} />
@@ -1268,7 +1265,8 @@ const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top, nar
         yy += hh + 4;
         const ghost = solids && s.fuel_class !== "solid";
         return (
-          <g key={`${s.fuel_class}${s.source_type}`} transform={`translate(0,${at})`} style={{ opacity: ghost ? 0.25 : 1, transition: "opacity var(--t-move) var(--ease-out)" }}>
+          <g key={`${s.fuel_class}${s.source_type}`} transform={`translate(0,${at})`}>
+            <g style={{ opacity: ghost ? 0.25 : 1, transition: "opacity var(--t-move) var(--ease-out)" }}>
             <rect width={iw} height={hh} fill="url(#hatch-plane)" opacity={solids && s.fuel_class === "solid" ? 0.6 : 0.3} rx={2} />
             {s.items.filter((it) => it.o2_pct >= z.o2[0] && it.o2_pct <= z.o2[1]).map((it) => (
               <path key={it.p} d={markerPath(s.fuel_class, Math.min(hh / 2 - 1, 3 + Math.sqrt(it.n)))} transform={`translate(${x(it.o2_pct)},${hh / 2})`} fill={FUEL_COLOR_VAR[s.fuel_class]} stroke={FUEL_RING_VAR[s.fuel_class]}>
@@ -1278,7 +1276,9 @@ const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top, nar
                 <title>{`${s.unit === "sessions" ? "BRE sessions list" : FUEL_LABEL[s.fuel_class] + " tests at"} ${fmtNumber(it.o2_pct, 1)}% O2, pressure not recorded (${it.investigations.join(", ")})`}</title>
               </path>
             ))}
-            <text x={iw + 8} y={hh / 2} dy="0.32em" fontSize={12} fill="var(--ink-2)">{s.fuel_class === "emulator" ? "BRE" : FUEL_LABEL[s.fuel_class].split(" ")[0]}</text>
+            </g>
+            {/* The lane's name stays readable under Solids only, when its marks are ghosted (D40). */}
+            <text x={iw + 8} y={hh / 2} dy="0.32em" fontSize={12} fill="var(--ink-2)" style={{ opacity: ghost ? 0.7 : 1, transition: "opacity var(--t-move) var(--ease-out)" }}>{s.fuel_class === "emulator" ? "BRE" : FUEL_LABEL[s.fuel_class].split(" ")[0]}</text>
           </g>
         );
       })}
