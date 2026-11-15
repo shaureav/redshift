@@ -6,7 +6,7 @@
 //    model, and rejects any answer with a number or citation that is not in what it retrieved
 //    (redshift/ai/ask.py). Before anyone asks, the box says whether live answers are on (D49).
 // Any request to choose or recommend an atmosphere gets the checked refusal.
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useData } from "../lib/data";
 import type { Val } from "../lib/types";
 import { AiLabelFor, AiText, type AiData, type AiItem } from "./AiText";
@@ -46,6 +46,7 @@ export function matchCached(q: string, items: AiItem[]): { item: AiItem; score: 
 /** With live answers on, a typed question goes to the model unless a checked answer is for nearly the same
  *  question (a chip, or the same words retyped). A looser match is shown only if the live answer fails. */
 const SAME_QUESTION = 0.75;
+const COUNT_UNITS = new Set(["tests", "findings"]);
 
 interface LiveAnswer {
   status: "answered" | "rejected" | "unavailable";
@@ -94,22 +95,32 @@ export function AskBox({ context, initial, onAsked }: { context: { o2: number; p
   const checked = match && (!liveOn || match.score >= SAME_QUESTION || match.item.id === "qa-choose") ? match : null;
   const goLive = !!asked && !checked && liveOn;
 
+  // A live question is asked once, for the point the panel showed when it was asked: the panel follows the pointer
+  // as it hovers the plane, and an answer that restarted with every move would never arrive (D49). Asking again
+  // (the same words at a new point) asks again.
+  const at = useRef(context);
+  at.current = context;
+  const [seq, setSeq] = useState(0);
   useEffect(() => {
     if (!asked || !goLive || !API) return;
     let gone = false;
+    const c = at.current;
+    const stop = new AbortController();
     setLive({ state: "loading" });
-    fetch(`${API}/ask`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: asked, o2: context.o2, psi: context.psi, m: context.m }) })
+    fetch(`${API}/ask`, { method: "POST", signal: stop.signal, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: asked, o2: c.o2, psi: c.psi, m: c.m }) })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((a: LiveAnswer) => !gone && setLive({ state: "done", answer: a }))
       .catch(() => !gone && setLive({ state: "error" }));
     return () => {
       gone = true;
+      stop.abort();
     };
-  }, [asked, goLive, context.o2, context.psi, context.m]);
+  }, [asked, goLive, seq]);
 
   const ask = (text: string) => {
     const t = text.trim();
     setAsked(t || null);
+    setSeq((n) => n + 1);
     setQ(t);
     onAsked?.(t || null);
   };
@@ -205,7 +216,9 @@ function LiveView({ a }: { a: LiveAnswer }) {
       <div className="mb-2 flex justify-end"><span className="rounded-full border border-[color:var(--amber-ink)] px-2 text-xs text-[color:var(--amber-ink)]">AI-generated now, checked by code, not by a person</span></div>
       {a.paragraphs.map((p, i) => (
         <p key={i}>
-          {p.segments.map((s, k) => ("t" in s ? <span key={k}>{s.t}</span> : <Value key={k} val={s.val} />))}
+          {/* A count is drawn bare, so the model's own noun follows it ("263 solid burn rows"); a pressure, an oxygen
+              share or a temperature keeps its unit (redshift/ai/ask.py, D49). */}
+          {p.segments.map((s, k) => ("t" in s ? <span key={k}>{s.t}</span> : <Value key={k} val={s.val} unit={COUNT_UNITS.has(s.val.u ?? "") ? false : undefined} />))}
           {p.cites.length > 0 && <span className="ml-1 mono text-xs text-ink-3">[{p.cites.join(", ")}]</span>}
         </p>
       ))}

@@ -127,3 +127,10 @@ def test_a_value_put_to_another_unit_twice_is_rejected() -> None:
     out = A.answer("How fast was the flow?", _unit_ctx(), call=lambda q, c: _draft("Flow at {{v2}} cm/s."))
     assert out["status"] == "rejected"
     assert any("cm/s" in p for p in out["problems"])
+
+
+def test_the_programme_name_psi_is_not_a_pressure_unit() -> None:
+    """D49 review: 'PSI' (NASA's Physical Sciences Informatics) after a count is not the unit psi."""
+    c = _unit_ctx()
+    assert A.unit_clashes("There are {{v2}} PSI table rows and {{v2}} PSI-69 rows.", c) == []
+    assert A.unit_clashes("Flow at {{v2}} psi.", c) != []

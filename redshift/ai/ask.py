@@ -40,11 +40,13 @@ UNIT_WORDS: dict[str, tuple[str, ...]] = {
     "K": ("kelvin", "K"),
     "kPa": ("kPa",),
     "psi": ("psia", "psi"),
-    "tests": ("tests",),
 }
+# A count (unit "tests" or "findings") is drawn as a bare number on the page (components/AskBox.tsx), so the noun the
+# model writes after it is its own and stays. "psi" is matched in lower case only: "PSI" is NASA's Physical Sciences
+# Informatics (PSI-69, "PSI tables"), not a pressure.
 MEASURE_UNIT = re.compile(
-    r"\s*(%|percent\b|per cent\b|kelvin\b|K\b|°C|kPa\b|psia?\b|cm/s|mm/s|m/s|seconds?\b|minutes?\b|min\b|mm\b|cm\b"
-    r"|kW\b|ppm\b|atm\b)",
+    r"\s*(%|percent\b|per cent\b|kelvin\b|K\b|°C|kPa\b|(?-i:psia?)(?![\w-])|cm/s|mm/s|m/s|seconds?\b|minutes?\b"
+    r"|min\b|mm\b|cm\b|kW\b|ppm\b|atm\b)",
     re.I,
 )
 # A draft that fails the check is sent back once with its faults, if the first answer came quickly enough to stay
@@ -64,7 +66,7 @@ def tidy_units(text: str, ctx: Context) -> str:
         unit = (ctx.values.get(m.group(1)) or {}).get("u") or ""
         for word in UNIT_WORDS.get(unit, ()):
             tail = r"(?![\w/])" if word[-1].isalnum() else ""
-            same = re.match(r"\s*" + re.escape(word) + tail, text[pos:], re.I)
+            same = re.match(r"\s*" + re.escape(word) + tail, text[pos:], 0 if word.startswith("psi") else re.I)
             if same:
                 pos += same.end()
                 break
@@ -94,7 +96,9 @@ SYSTEM = "\n".join(
         "",
         "Rules, all of which a program checks before your answer is shown:",
         "- Never write a digit as a number. Every number you mention must be written as a slot from context.values,",
-        '  for example "{{v3}} tests". Identifiers such as PSI-69, O2, CO2 or FLEX-2 are fine as written.',
+        '  for example "{{v3}} solid burn rows". Identifiers such as PSI-69, O2, CO2 or FLEX-2 are fine as written.',
+        "- The page shows a pressure, an oxygen share or a temperature slot with its unit (kPa, psi, %, K), so never",
+        "  write that unit after the slot. A count slot is shown as a bare number, so say what it counts.",
         "- Each paragraph must cite at least one id that appears in the context: a test id, an investigation id",
         "  (PSI-n), a DOI or a finding id. Put citations in the cites array, not in the text.",
         "- Do not rank or score an atmosphere, and do not advise which to pick. Only when the question asks which",
@@ -439,7 +443,8 @@ def answer(question: str, ctx: Context, call: ModelCall | None = None) -> dict[s
         }
     _tidy(draft, question, ctx)
     problems = check(draft, ctx)
-    if problems and time.monotonic() - started < RETRY_WITHIN_S:
+    # The Claude call has no deadline of its own, so only a bounded call (Gemini, or a test's stub) is retried.
+    if problems and call is not call_claude and time.monotonic() - started < RETRY_WITHIN_S:
         # D49: one more draft, told exactly what failed. It passes the same check or nothing is shown.
         again = (
             question
