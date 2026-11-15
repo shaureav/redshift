@@ -126,7 +126,7 @@ The version changes whenever the published content changes (for example after pa
 - **The FLEX-2 table is a test matrix, not a list of tests.** Each of its 8 rows names a fuel and the lists of conditions used with it, so no single condition can be read from a row.
 - **Flame temperature explains; it does not predict.** It is the adiabatic flame temperature of stoichiometric methane only, computed with Cantera. It shows how hot a flame can get in each atmosphere, not whether a material ignites or spreads. The 4.3 psi / 100% O2 value is approximate.
 - **The nearness rule is a judgement.** Which tests count as "near" a candidate depends on step sizes chosen by the team. The sensitivity table shows how counts change at 0.75x, 1x and 1.5x the steps (`data/processed/sensitivity.json`).
-- **Paper findings appear only after human verification.** At this build, 63 findings are drafted and 0 are verified (`data/processed/quality_report.json`), so no paper-derived test is yet on the map.
+- **Paper findings appear only after human verification.** All 63 drafted findings were verified by a named team member (Swastik Katiyar, 15 November 2026; two were reworded to match their source first, D44), so the 8 Saffire IV to VI solid burns appear on the map as outlined marks, counted apart from the PSI tables. None of them is downloadable as a PSI table row.
 - **Prebreathe figures are NASA's unvalidated estimates.** The source slide (NTRS 20220011152, p. 6) labels them "Unvalidated estimates (i.e., not yet available for flight use)".
 - **Inverse flames are not counted.** In inverse-flame tests the oxygen is in the burner stream, not in the atmosphere, so they are reported separately and never counted as near a cabin atmosphere.
 

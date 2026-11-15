@@ -902,9 +902,28 @@
    "n_near": {
     "p": "planner:cell:26.5:6:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 2
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:26.5:6:solid:n",
+      "u": "steps",
+      "v": 1.372
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:6:solid:n",
+      "u": "steps",
+      "v": 1.4575
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-3"
+    }
+   ],
    "o2_pct": 26.5,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -915,15 +934,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:6:solid:priority:balanced",
-     "v": 0.392397
+     "v": 0.280283
     },
     "equal": {
      "p": "planner:cell:26.5:6:solid:priority:equal",
-     "v": 0.392397
+     "v": 0.280283
     },
     "solids_only": {
      "p": "planner:cell:26.5:6:solid:priority:solids_only",
-     "v": 0.392397
+     "v": 0.280283
     }
    },
    "relevance": {
@@ -1063,9 +1082,37 @@
    "n_near": {
     "p": "planner:cell:30:6:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 3
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:30:6:solid:n",
+      "u": "steps",
+      "v": 1.2189
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:6:solid:n",
+      "u": "steps",
+      "v": 1.2451
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-3"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:6:solid:n",
+      "u": "steps",
+      "v": 1.3147
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-4"
+    }
+   ],
    "o2_pct": 30.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -1076,15 +1123,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:30:6:solid:priority:balanced",
-     "v": 0.561185
+     "v": 0.350741
     },
     "equal": {
      "p": "planner:cell:30:6:solid:priority:equal",
-     "v": 0.561185
+     "v": 0.350741
     },
     "solids_only": {
      "p": "planner:cell:30:6:solid:priority:solids_only",
-     "v": 0.561185
+     "v": 0.350741
     }
    },
    "relevance": {
@@ -1196,9 +1243,28 @@
    "n_near": {
     "p": "planner:cell:34:6:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 2
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:34:6:solid:n",
+      "u": "steps",
+      "v": 1.3438
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:34:6:solid:n",
+      "u": "steps",
+      "v": 1.4472
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-3"
+    }
+   ],
    "o2_pct": 34.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -1209,15 +1275,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:34:6:solid:priority:balanced",
-     "v": 0.646953
+     "v": 0.462109
     },
     "equal": {
      "p": "planner:cell:34:6:solid:priority:equal",
-     "v": 0.646953
+     "v": 0.462109
     },
     "solids_only": {
      "p": "planner:cell:34:6:solid:priority:solids_only",
-     "v": 0.646953
+     "v": 0.462109
     }
    },
    "relevance": {
@@ -1672,9 +1738,37 @@
    "n_near": {
     "p": "planner:cell:21:8.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 3
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:21:8.2:solid:n",
+      "u": "steps",
+      "v": 1.3621
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-3"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:8.2:solid:n",
+      "u": "steps",
+      "v": 1.444
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:8.2:solid:n",
+      "u": "steps",
+      "v": 1.4627
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-4"
+    }
+   ],
    "o2_pct": 21.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -1685,15 +1779,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:8.2:solid:priority:balanced",
-     "v": 0.617869
+     "v": 0.386168
     },
     "equal": {
      "p": "planner:cell:21:8.2:solid:priority:equal",
-     "v": 0.617869
+     "v": 0.386168
     },
     "solids_only": {
      "p": "planner:cell:21:8.2:solid:priority:solids_only",
-     "v": 0.617869
+     "v": 0.386168
     }
    },
    "relevance": {
@@ -1833,9 +1927,37 @@
    "n_near": {
     "p": "planner:cell:26.5:8.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 6
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:26.5:8.2:solid:n",
+      "u": "steps",
+      "v": 0.4723
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:8.2:solid:n",
+      "u": "steps",
+      "v": 0.7759
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-3"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:8.2:solid:n",
+      "u": "steps",
+      "v": 0.9214
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-2"
+    }
+   ],
    "o2_pct": 26.5,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -1846,15 +1968,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:8.2:solid:priority:balanced",
-     "v": 0.808488
+     "v": 0.367495
     },
     "equal": {
      "p": "planner:cell:26.5:8.2:solid:priority:equal",
-     "v": 0.808488
+     "v": 0.367495
     },
     "solids_only": {
      "p": "planner:cell:26.5:8.2:solid:priority:solids_only",
-     "v": 0.808488
+     "v": 0.367495
     }
    },
    "relevance": {
@@ -1994,9 +2116,37 @@
    "n_near": {
     "p": "planner:cell:30:8.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 6
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:30:8.2:solid:n",
+      "u": "steps",
+      "v": 0.1674
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-3"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:8.2:solid:n",
+      "u": "steps",
+      "v": 0.2629
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:8.2:solid:n",
+      "u": "steps",
+      "v": 0.2811
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-2"
+    }
+   ],
    "o2_pct": 30.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -2007,15 +2157,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:30:8.2:solid:priority:balanced",
-     "v": 0.867428
+     "v": 0.394286
     },
     "equal": {
      "p": "planner:cell:30:8.2:solid:priority:equal",
-     "v": 0.867428
+     "v": 0.394286
     },
     "solids_only": {
      "p": "planner:cell:30:8.2:solid:priority:solids_only",
-     "v": 0.867428
+     "v": 0.394286
     }
    },
    "relevance": {
@@ -2155,9 +2305,37 @@
    "n_near": {
     "p": "planner:cell:34:8.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 3
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:34:8.2:solid:n",
+      "u": "steps",
+      "v": 0.6317
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:34:8.2:solid:n",
+      "u": "steps",
+      "v": 0.7563
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-3"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:34:8.2:solid:n",
+      "u": "steps",
+      "v": 1.0455
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-4"
+    }
+   ],
    "o2_pct": 34.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -2168,15 +2346,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:34:8.2:solid:priority:balanced",
-     "v": 1.0
+     "v": 0.625
     },
     "equal": {
      "p": "planner:cell:34:8.2:solid:priority:equal",
-     "v": 1.0
+     "v": 0.625
     },
     "solids_only": {
      "p": "planner:cell:34:8.2:solid:priority:solids_only",
-     "v": 1.0
+     "v": 0.625
     }
    },
    "relevance": {
@@ -2659,9 +2837,37 @@
    "n_near": {
     "p": "planner:cell:21:10.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 3
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:21:10.2:solid:n",
+      "u": "steps",
+      "v": 0.8822
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-3"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:10.2:solid:n",
+      "u": "steps",
+      "v": 0.9508
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:10.2:solid:n",
+      "u": "steps",
+      "v": 1.0403
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-2"
+    }
+   ],
    "o2_pct": 21.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -2672,15 +2878,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:10.2:solid:priority:balanced",
-     "v": 0.764228
+     "v": 0.477643
     },
     "equal": {
      "p": "planner:cell:21:10.2:solid:priority:equal",
-     "v": 0.764228
+     "v": 0.477643
     },
     "solids_only": {
      "p": "planner:cell:21:10.2:solid:priority:solids_only",
-     "v": 0.764228
+     "v": 0.477643
     }
    },
    "relevance": {
@@ -2820,9 +3026,37 @@
    "n_near": {
     "p": "planner:cell:26.5:10.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 6
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:26.5:10.2:solid:n",
+      "u": "steps",
+      "v": 0.0645
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:10.2:solid:n",
+      "u": "steps",
+      "v": 0.2143
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:10.2:solid:n",
+      "u": "steps",
+      "v": 0.2285
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-3"
+    }
+   ],
    "o2_pct": 26.5,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -2833,15 +3067,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:10.2:solid:priority:balanced",
-     "v": 1.0
+     "v": 0.454545
     },
     "equal": {
      "p": "planner:cell:26.5:10.2:solid:priority:equal",
-     "v": 1.0
+     "v": 0.454545
     },
     "solids_only": {
      "p": "planner:cell:26.5:10.2:solid:priority:solids_only",
-     "v": 1.0
+     "v": 0.454545
     }
    },
    "relevance": {
@@ -2953,9 +3187,37 @@
    "n_near": {
     "p": "planner:cell:30:10.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 6
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:30:10.2:solid:n",
+      "u": "steps",
+      "v": 0.7604
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:10.2:solid:n",
+      "u": "steps",
+      "v": 0.8717
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:10.2:solid:n",
+      "u": "steps",
+      "v": 0.9221
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-3"
+    }
+   ],
    "o2_pct": 30.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -2966,15 +3228,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:30:10.2:solid:priority:balanced",
-     "v": 1.0
+     "v": 0.454545
     },
     "equal": {
      "p": "planner:cell:30:10.2:solid:priority:equal",
-     "v": 1.0
+     "v": 0.454545
     },
     "solids_only": {
      "p": "planner:cell:30:10.2:solid:priority:solids_only",
-     "v": 1.0
+     "v": 0.454545
     }
    },
    "relevance": {
@@ -3086,9 +3348,28 @@
    "n_near": {
     "p": "planner:cell:34:10.2:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 2
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:34:10.2:solid:n",
+      "u": "steps",
+      "v": 1.3198
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:34:10.2:solid:n",
+      "u": "steps",
+      "v": 1.3544
+     },
+     "investigation": "Saffire VI",
+     "test_id": "paper:Saffire-VI-3"
+    }
+   ],
    "o2_pct": 34.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -3099,15 +3380,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:34:10.2:solid:priority:balanced",
-     "v": 0.867428
+     "v": 0.619592
     },
     "equal": {
      "p": "planner:cell:34:10.2:solid:priority:equal",
-     "v": 0.867428
+     "v": 0.619592
     },
     "solids_only": {
      "p": "planner:cell:34:10.2:solid:priority:solids_only",
-     "v": 0.867428
+     "v": 0.619592
     }
    },
    "relevance": {
@@ -3618,9 +3899,37 @@
    "n_near": {
     "p": "planner:cell:21:12:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 5
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:21:12:solid:n",
+      "u": "steps",
+      "v": 0.8725
+     },
+     "investigation": "Saffire IV",
+     "test_id": "paper:Saffire-IV-1"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:12:solid:n",
+      "u": "steps",
+      "v": 0.8725
+     },
+     "investigation": "Saffire IV",
+     "test_id": "paper:Saffire-IV-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:12:solid:n",
+      "u": "steps",
+      "v": 1.104
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-3"
+    }
+   ],
    "o2_pct": 21.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -3631,15 +3940,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:12:solid:priority:balanced",
-     "v": 0.832098
+     "v": 0.416049
     },
     "equal": {
      "p": "planner:cell:21:12:solid:priority:equal",
-     "v": 0.832098
+     "v": 0.416049
     },
     "solids_only": {
      "p": "planner:cell:21:12:solid:priority:solids_only",
-     "v": 0.832098
+     "v": 0.416049
     }
    },
    "relevance": {
@@ -3779,9 +4088,37 @@
    "n_near": {
     "p": "planner:cell:26.5:12:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 5
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:26.5:12:solid:n",
+      "u": "steps",
+      "v": 0.6072
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:12:solid:n",
+      "u": "steps",
+      "v": 0.7021
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-3"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:12:solid:n",
+      "u": "steps",
+      "v": 0.7071
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-2"
+    }
+   ],
    "o2_pct": 26.5,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -3792,15 +4129,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:12:solid:priority:balanced",
-     "v": 0.888806
+     "v": 0.444403
     },
     "equal": {
      "p": "planner:cell:26.5:12:solid:priority:equal",
-     "v": 0.888806
+     "v": 0.444403
     },
     "solids_only": {
      "p": "planner:cell:26.5:12:solid:priority:solids_only",
-     "v": 0.888806
+     "v": 0.444403
     }
    },
    "relevance": {
@@ -3940,9 +4277,37 @@
    "n_near": {
     "p": "planner:cell:30:12:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 3
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:30:12:solid:n",
+      "u": "steps",
+      "v": 1.0364
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-2"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:12:solid:n",
+      "u": "steps",
+      "v": 1.0405
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-4"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:30:12:solid:n",
+      "u": "steps",
+      "v": 1.1362
+     },
+     "investigation": "Saffire V",
+     "test_id": "paper:Saffire-V-3"
+    }
+   ],
    "o2_pct": 30.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -3953,15 +4318,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:30:12:solid:priority:balanced",
-     "v": 0.888806
+     "v": 0.555504
     },
     "equal": {
      "p": "planner:cell:30:12:solid:priority:equal",
-     "v": 0.888806
+     "v": 0.555504
     },
     "solids_only": {
      "p": "planner:cell:30:12:solid:priority:solids_only",
-     "v": 0.888806
+     "v": 0.555504
     }
    },
    "relevance": {
@@ -4633,9 +4998,28 @@
    "n_near": {
     "p": "planner:cell:21:14.7:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 2
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:21:14.7:solid:n",
+      "u": "steps",
+      "v": 0.2089
+     },
+     "investigation": "Saffire IV",
+     "test_id": "paper:Saffire-IV-1"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:21:14.7:solid:n",
+      "u": "steps",
+      "v": 0.2089
+     },
+     "investigation": "Saffire IV",
+     "test_id": "paper:Saffire-IV-2"
+    }
+   ],
    "o2_pct": 21.0,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -4646,15 +5030,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:21:14.7:solid:priority:balanced",
-     "v": 1.0
+     "v": 0.714286
     },
     "equal": {
      "p": "planner:cell:21:14.7:solid:priority:equal",
-     "v": 1.0
+     "v": 0.714286
     },
     "solids_only": {
      "p": "planner:cell:21:14.7:solid:priority:solids_only",
-     "v": 1.0
+     "v": 0.714286
     }
    },
    "relevance": {
@@ -4794,9 +5178,28 @@
    "n_near": {
     "p": "planner:cell:26.5:14.7:solid:n",
     "u": "tests",
-    "v": 0
+    "v": 2
    },
-   "nearest": [],
+   "nearest": [
+    {
+     "distance": {
+      "p": "planner:cell:26.5:14.7:solid:n",
+      "u": "steps",
+      "v": 0.902
+     },
+     "investigation": "Saffire IV",
+     "test_id": "paper:Saffire-IV-1"
+    },
+    {
+     "distance": {
+      "p": "planner:cell:26.5:14.7:solid:n",
+      "u": "steps",
+      "v": 0.902
+     },
+     "investigation": "Saffire IV",
+     "test_id": "paper:Saffire-IV-2"
+    }
+   ],
    "o2_pct": 26.5,
    "pressure_kpa": {
     "p": "planner:levels",
@@ -4807,15 +5210,15 @@
    "priority": {
     "balanced": {
      "p": "planner:cell:26.5:14.7:solid:priority:balanced",
-     "v": 0.764228
+     "v": 0.545877
     },
     "equal": {
      "p": "planner:cell:26.5:14.7:solid:priority:equal",
-     "v": 0.764228
+     "v": 0.545877
     },
     "solids_only": {
      "p": "planner:cell:26.5:14.7:solid:priority:solids_only",
-     "v": 0.764228
+     "v": 0.545877
     }
    },
    "relevance": {
@@ -5662,35 +6065,35 @@
  },
  "rankings": {
   "balanced": [
+   "cell:34:12:solid",
+   "cell:40:8.2:solid",
    "cell:21:14.7:solid",
+   "cell:34:8.2:solid",
+   "cell:34:10.2:solid",
+   "cell:40:10.2:solid",
+   "cell:30:12:solid",
+   "cell:30:14.7:solid",
+   "cell:26.5:14.7:solid",
+   "cell:34:14.7:solid",
+   "cell:21:10.2:solid",
+   "cell:40:6:solid",
+   "cell:34:6:solid",
    "cell:26.5:10.2:solid",
    "cell:30:10.2:solid",
-   "cell:34:8.2:solid",
    "cell:26.5:12:solid",
-   "cell:30:12:solid",
-   "cell:30:8.2:solid",
-   "cell:34:10.2:solid",
-   "cell:21:12:solid",
-   "cell:26.5:8.2:solid",
-   "cell:34:12:solid",
-   "cell:21:10.2:solid",
-   "cell:26.5:14.7:solid",
-   "cell:40:8.2:solid",
-   "cell:34:6:solid",
-   "cell:21:8.2:solid",
-   "cell:40:10.2:solid",
-   "cell:30:6:solid",
-   "cell:30:14.7:solid",
-   "cell:34:14.7:solid",
-   "cell:40:6:solid",
    "cell:40:8.2:droplet",
+   "cell:21:12:solid",
    "cell:26.5:10.2:gas",
    "cell:30:10.2:gas",
-   "cell:26.5:6:solid",
+   "cell:30:8.2:solid",
    "cell:34:6:droplet",
+   "cell:21:8.2:solid",
    "cell:40:12:solid",
+   "cell:26.5:8.2:solid",
+   "cell:30:6:solid",
    "cell:30:6:droplet",
    "cell:40:6:droplet",
+   "cell:26.5:6:solid",
    "cell:40:14.7:solid",
    "cell:21:6:solid",
    "cell:34:4.3:solid",
@@ -5790,38 +6193,38 @@
    "cell:100:8.2:solid"
   ],
   "equal": [
-   "cell:21:14.7:solid",
    "cell:26.5:10.2:gas",
-   "cell:26.5:10.2:solid",
    "cell:30:10.2:gas",
-   "cell:30:10.2:solid",
-   "cell:34:8.2:solid",
-   "cell:26.5:12:solid",
-   "cell:30:12:solid",
-   "cell:30:8.2:solid",
-   "cell:34:10.2:solid",
-   "cell:21:12:solid",
-   "cell:26.5:8.2:solid",
    "cell:34:12:solid",
-   "cell:21:10.2:solid",
-   "cell:26.5:14.7:solid",
    "cell:40:8.2:droplet",
    "cell:40:8.2:solid",
+   "cell:21:14.7:solid",
    "cell:34:6:droplet",
-   "cell:34:6:solid",
-   "cell:21:8.2:solid",
+   "cell:34:8.2:solid",
+   "cell:34:10.2:solid",
    "cell:40:10.2:solid",
    "cell:30:6:droplet",
-   "cell:30:6:solid",
+   "cell:30:12:solid",
    "cell:30:14.7:solid",
+   "cell:26.5:14.7:solid",
    "cell:34:14.7:solid",
+   "cell:21:10.2:solid",
    "cell:40:6:droplet",
    "cell:40:6:solid",
-   "cell:26.5:6:solid",
+   "cell:34:6:solid",
+   "cell:26.5:10.2:solid",
+   "cell:30:10.2:solid",
+   "cell:26.5:12:solid",
+   "cell:21:12:solid",
+   "cell:30:8.2:solid",
+   "cell:21:8.2:solid",
    "cell:21:10.2:gas",
    "cell:40:12:solid",
+   "cell:26.5:8.2:solid",
+   "cell:30:6:solid",
    "cell:26.5:8.2:gas",
    "cell:21:8.2:gas",
+   "cell:26.5:6:solid",
    "cell:30:8.2:gas",
    "cell:26.5:6:droplet",
    "cell:34:10.2:gas",
@@ -5918,29 +6321,29 @@
    "cell:100:8.2:solid"
   ],
   "solids_only": [
+   "cell:34:12:solid",
+   "cell:40:8.2:solid",
    "cell:21:14.7:solid",
+   "cell:34:8.2:solid",
+   "cell:34:10.2:solid",
+   "cell:40:10.2:solid",
+   "cell:30:12:solid",
+   "cell:30:14.7:solid",
+   "cell:26.5:14.7:solid",
+   "cell:34:14.7:solid",
+   "cell:21:10.2:solid",
+   "cell:40:6:solid",
+   "cell:34:6:solid",
    "cell:26.5:10.2:solid",
    "cell:30:10.2:solid",
-   "cell:34:8.2:solid",
    "cell:26.5:12:solid",
-   "cell:30:12:solid",
-   "cell:30:8.2:solid",
-   "cell:34:10.2:solid",
    "cell:21:12:solid",
-   "cell:26.5:8.2:solid",
-   "cell:34:12:solid",
-   "cell:21:10.2:solid",
-   "cell:26.5:14.7:solid",
-   "cell:40:8.2:solid",
-   "cell:34:6:solid",
+   "cell:30:8.2:solid",
    "cell:21:8.2:solid",
-   "cell:40:10.2:solid",
-   "cell:30:6:solid",
-   "cell:30:14.7:solid",
-   "cell:34:14.7:solid",
-   "cell:40:6:solid",
-   "cell:26.5:6:solid",
    "cell:40:12:solid",
+   "cell:26.5:8.2:solid",
+   "cell:30:6:solid",
+   "cell:26.5:6:solid",
    "cell:40:14.7:solid",
    "cell:21:6:solid",
    "cell:34:4.3:solid",

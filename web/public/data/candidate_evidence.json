@@ -54,14 +54,14 @@
      "published_paper": {
       "p": "near:c14_7_21:solid:published_paper",
       "u": "tests",
-      "v": 0
+      "v": 2
      }
     }
    },
    "near_total": {
     "p": "near:c14_7_21:total",
     "u": "tests",
-    "v": 295
+    "v": 297
    },
    "nearest": [
     {
@@ -439,16 +439,49 @@
      "published_paper": {
       "p": "near:c10_2_26_5:solid:published_paper",
       "u": "tests",
-      "v": 0
+      "v": 6
      }
     }
    },
    "near_total": {
     "p": "near:c10_2_26_5:total",
     "u": "tests",
-    "v": 72
+    "v": 78
    },
    "nearest": [
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:paper:Saffire-V-2",
+      "u": "steps",
+      "v": 0.0645
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire V",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-V-2"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:paper:Saffire-V-4",
+      "u": "steps",
+      "v": 0.2143
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire V",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-V-4"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_26_5:paper:Saffire-V-3",
+      "u": "steps",
+      "v": 0.2285
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire V",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-V-3"
+    },
     {
      "distance": {
       "p": "dist:c10_2_26_5:PSI-69-main-L93",
@@ -690,39 +723,6 @@
      "investigation": "FLEX",
      "source_type": "psi_table",
      "test_id": "PSI-69-main-L98"
-    },
-    {
-     "distance": {
-      "p": "dist:c10_2_26_5:PSI-69-main-L42",
-      "u": "steps",
-      "v": 0.7024
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L42"
-    },
-    {
-     "distance": {
-      "p": "dist:c10_2_26_5:PSI-69-main-L180",
-      "u": "steps",
-      "v": 0.7024
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L180"
-    },
-    {
-     "distance": {
-      "p": "dist:c10_2_26_5:PSI-69-main-L184",
-      "u": "steps",
-      "v": 0.7024
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L184"
     }
    ],
    "o2_match_pressure_unknown": {
@@ -824,14 +824,14 @@
      "published_paper": {
       "p": "near:c10_2_30:solid:published_paper",
       "u": "tests",
-      "v": 0
+      "v": 6
      }
     }
    },
    "near_total": {
     "p": "near:c10_2_30:total",
     "u": "tests",
-    "v": 52
+    "v": 58
    },
    "nearest": [
     {
@@ -921,6 +921,17 @@
      "investigation": "FLEX",
      "source_type": "psi_table",
      "test_id": "PSI-69-main-L28"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:paper:Saffire-V-2",
+      "u": "steps",
+      "v": 0.7604
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire V",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-V-2"
     },
     {
      "distance": {
@@ -1023,6 +1034,28 @@
     },
     {
      "distance": {
+      "p": "dist:c10_2_30:paper:Saffire-V-4",
+      "u": "steps",
+      "v": 0.8717
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire V",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-V-4"
+    },
+    {
+     "distance": {
+      "p": "dist:c10_2_30:paper:Saffire-V-3",
+      "u": "steps",
+      "v": 0.9221
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire V",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-V-3"
+    },
+    {
+     "distance": {
       "p": "dist:c10_2_30:PSI-69-main-L93",
       "u": "steps",
       "v": 1.0027
@@ -1075,39 +1108,6 @@
      "investigation": "FLEX",
      "source_type": "psi_table",
      "test_id": "PSI-69-main-L92"
-    },
-    {
-     "distance": {
-      "p": "dist:c10_2_30:PSI-69-main-L91",
-      "u": "steps",
-      "v": 1.0048
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L91"
-    },
-    {
-     "distance": {
-      "p": "dist:c10_2_30:PSI-69-main-L175",
-      "u": "steps",
-      "v": 1.2005
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L175"
-    },
-    {
-     "distance": {
-      "p": "dist:c10_2_30:PSI-69-main-L176",
-      "u": "steps",
-      "v": 1.2006
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L176"
     }
    ],
    "o2_match_pressure_unknown": {
@@ -1209,14 +1209,14 @@
      "published_paper": {
       "p": "near:c8_2_34:solid:published_paper",
       "u": "tests",
-      "v": 0
+      "v": 3
      }
     }
    },
    "near_total": {
     "p": "near:c8_2_34:total",
     "u": "tests",
-    "v": 37
+    "v": 40
    },
    "nearest": [
     {
@@ -1320,6 +1320,17 @@
     },
     {
      "distance": {
+      "p": "dist:c8_2_34:paper:Saffire-VI-2",
+      "u": "steps",
+      "v": 0.6317
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire VI",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-VI-2"
+    },
+    {
+     "distance": {
       "p": "dist:c8_2_34:PSI-159-normal-L128",
       "u": "steps",
       "v": 0.6853
@@ -1328,6 +1339,17 @@
      "investigation": "ACME CFI-G",
      "source_type": "psi_table",
      "test_id": "PSI-159-normal-L128"
+    },
+    {
+     "distance": {
+      "p": "dist:c8_2_34:paper:Saffire-VI-3",
+      "u": "steps",
+      "v": 0.7563
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire VI",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-VI-3"
     },
     {
      "distance": {
@@ -1441,6 +1463,17 @@
     },
     {
      "distance": {
+      "p": "dist:c8_2_34:paper:Saffire-VI-4",
+      "u": "steps",
+      "v": 1.0455
+     },
+     "fuel_class": "solid",
+     "investigation": "Saffire VI",
+     "source_type": "published_paper",
+     "test_id": "paper:Saffire-VI-4"
+    },
+    {
+     "distance": {
       "p": "dist:c8_2_34:PSI-69-main-L20",
       "u": "steps",
       "v": 1.0756
@@ -1460,39 +1493,6 @@
      "investigation": "FLEX",
      "source_type": "psi_table",
      "test_id": "PSI-69-main-L21"
-    },
-    {
-     "distance": {
-      "p": "dist:c8_2_34:PSI-69-main-L23",
-      "u": "steps",
-      "v": 1.0873
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L23"
-    },
-    {
-     "distance": {
-      "p": "dist:c8_2_34:PSI-69-main-L22",
-      "u": "steps",
-      "v": 1.0881
-     },
-     "fuel_class": "droplet",
-     "investigation": "FLEX",
-     "source_type": "psi_table",
-     "test_id": "PSI-69-main-L22"
-    },
-    {
-     "distance": {
-      "p": "dist:c8_2_34:PSI-159-normal-L153",
-      "u": "steps",
-      "v": 1.0892
-     },
-     "fuel_class": "gas",
-     "investigation": "ACME CFI-G",
-     "source_type": "psi_table",
-     "test_id": "PSI-159-normal-L153"
     }
    ],
    "o2_match_pressure_unknown": {

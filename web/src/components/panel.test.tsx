@@ -44,15 +44,21 @@ const tidy = (html: string) => html.replace(/:r[0-9a-z]+:/g, ":id:");
 describe("screens", () => {
   it("the plane at 8.2 psi and 34% O2", () => {
     const html = render("/?o2=34&p=8.2", <Home />);
-    expect(html).toContain("37"); // tests near this candidate, from the build
-    expect(html).toContain("None is a solid material.");
+    // D44: the panel's lead follows the build's counts for this candidate, verified paper burns included.
+    const ev = loadSnapshot<{ evidence: { candidate_id: string; near_total: { v: number }; near: { solid: { psi_table: { v: number }; published_paper: { v: number } } } }[] }>("candidate_evidence.json").evidence.find((e) => e.candidate_id === "c8_2_34")!;
+    expect(html).toContain(String(ev.near_total.v));
+    if (ev.near.solid.psi_table.v + ev.near.solid.published_paper.v === 0) expect(html).toContain("None is a solid material.");
+    else expect(html).toContain("from verified papers");
     expect(tidy(html)).toMatchSnapshot();
   });
 
   it("the plane with solids only", () => {
     const html = render("/?o2=34&p=8.2&solids=1", <Home />);
     expect(html).toContain("No solid burn in PSI&#x27;s tables records pressure.");
-    expect(html).toContain("No solid-material test can be placed on this plane");
+    // D44: the caption shows only while no solid test (table row or verified paper burn) is placed on the plane.
+    const solidPlaced = loadSnapshot<{ points: { fuel_class: string }[] }>("trade_map.json").points.some((q) => q.fuel_class === "solid");
+    if (solidPlaced) expect(html).not.toContain("No solid-material test can be placed on this plane");
+    else expect(html).toContain("No solid-material test can be placed on this plane");
     expect(tidy(html)).toMatchSnapshot();
   });
 
@@ -80,12 +86,14 @@ describe("screens", () => {
     expect(normal.querySelectorAll("textPath").length).toBeGreaterThan(0);
     expect(normal.querySelector("ellipse[stroke-dasharray]")).toBeNull();
     const solids = at("/?o2=34&p=8.2&solids=1");
-    // Solids only: the mask's stroke is wide enough to erase all the land, and every pin is at sea.
+    // Solids only: the mask's stroke is wide enough to erase all the land; every pin is at sea unless a solid test
+    // is placed (D44: verified paper burns make solid land near the candidates).
     const sink = solids.querySelectorAll("#plane-land-mask path")[1].getAttribute("style") ?? "";
     expect(Number(sink.match(/stroke-width:(\d+(?:\.\d+)?)/)?.[1])).toBeGreaterThan(100);
     const words = [...solids.querySelectorAll("svg[data-chart] text tspan")].map((t) => t.textContent).filter((t) => /inland|coast|sea/.test(t ?? ""));
     expect(words.length).toBeGreaterThan(0);
-    expect(words.every((w) => w === "at sea")).toBe(true);
+    const solidPlaced = loadSnapshot<{ points: { fuel_class: string }[] }>("trade_map.json").points.some((q) => q.fuel_class === "solid");
+    expect(words.every((w) => w === "at sea")).toBe(!solidPlaced);
   });
 
   it("the panel between candidates", () => {
@@ -279,11 +287,16 @@ describe("the instrument panel", () => {
   });
 
   it("shows paper counts only when they are not zero", () => {
-    // No verified paper places a test anywhere on the grid yet, so no tile names papers...
-    expect(panelOf("/?o2=34&p=8.2").textContent).not.toContain("from verified papers");
-    // ...and a reading with a paper count (made up here, to test the branch) shows it, through a Value.
+    // D44: a tile names papers exactly where the build counts verified paper tests near the point...
     const g = decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json"));
     const r = readAt(g, 34, 8.2, 1);
+    const papers = (["gas", "droplet", "solid", "emulator"] as const).some((f) => r.near[f].published_paper.v > 0);
+    const text = panelOf("/?o2=34&p=8.2").textContent;
+    if (papers) expect(text).toContain("from verified papers");
+    else expect(text).not.toContain("from verified papers");
+    // ...never where it counts none (open sea at 40% O2 and 4 psi)...
+    expect(panelOf("/?o2=40&p=4").textContent).not.toContain("from verified papers");
+    // ...and a reading with a paper count (made up here, to test the branch) shows it, through a Value.
     const withPaper = { ...r, near: { ...r.near, gas: { ...r.near.gas, published_paper: { v: 2, u: "tests", p: "probe:1:gas:published_paper" } } } };
     const html = render("/", <Readout r={withPaper} candidate={null} preview={false} outside={false} />);
     expect(html).toMatch(/plus <span[^>]*data-prov="probe:1:gas:published_paper"[^>]*><button[^>]*>2<\/button><\/span> from verified papers/);
@@ -326,10 +339,12 @@ describe("the story intro", () => {
     expect(tidy(host.innerHTML)).toMatchSnapshot();
   });
 
-  it("cites the four access-gap steps in the last beat, and only there", () => {
+  it("cites the access-gap steps in the last beat, and only there", () => {
     expect(beat(0).querySelectorAll("[data-prov]")).toHaveLength(0);
     expect(beat(1).querySelectorAll("[data-prov]")).toHaveLength(0);
-    expect([...beat(2).querySelectorAll("[data-prov]")].map((e) => e.getAttribute("data-prov"))).toEqual(gap.psi_steps.map((s) => s.count.p));
+    // The four PSI steps, then (D44) the two paper steps once verified paper burns are counted.
+    const steps = [...gap.psi_steps, ...(gap.paper_steps[0].count.v ? gap.paper_steps : [])];
+    expect([...beat(2).querySelectorAll("[data-prov]")].map((e) => e.getAttribute("data-prov"))).toEqual(steps.map((s) => s.count.p));
   });
 
   it("says the counts are loading rather than show a number it does not have", () => {

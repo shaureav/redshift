@@ -22,7 +22,7 @@
        "val": {
         "p": "near:c8_2_34:total",
         "u": "tests",
-        "v": 37
+        "v": 40
        }
       },
       {
@@ -111,11 +111,52 @@
      ]
     },
     {
-     "cites": [],
-     "pending": true,
+     "cites": [
+      "FND-S6-COND-P-O2"
+     ],
      "segments": [
       {
-       "t": "A published Saffire VI paper describes solid burns close to this atmosphere; its figures appear here once a team member has verified them against the source."
+       "t": "NASA has burned fabric and plastic close to this atmosphere: Saffire VI burned SIBAL cloth and PMMA inside a Cygnus vehicle at "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "kPa",
+        "v": 54.1
+       }
+      },
+      {
+       "t": " to "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "kPa",
+        "v": 55.2
+       }
+      },
+      {
+       "t": ", with oxygen between "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "mol %",
+        "v": 28.8
+       }
+      },
+      {
+       "t": " and "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "mol %",
+        "v": 31.0
+       }
+      },
+      {
+       "t": ". Those results are published in a paper, not as rows in the PSI tables."
       }
      ]
     }
@@ -216,11 +257,43 @@
      ]
     },
     {
-     "cites": [],
-     "pending": true,
+     "cites": [
+      "FND-S5-COND-P-O2",
+      "FND-S6-COND-P-O2"
+     ],
      "segments": [
       {
-       "t": "Published Saffire V and VI papers describe solid burns close to these atmospheres; their figures appear here once a team member has verified them against the source."
+       "t": "The Saffire V experiment burned cotton and PMMA at "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S5-COND-P-O2",
+        "u": "kPa",
+        "v": 70.7
+       }
+      },
+      {
+       "t": " and "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S5-COND-P-O2",
+        "u": "mol %",
+        "v": 26.2
+       }
+      },
+      {
+       "t": " oxygen, and Saffire VI went lower, to "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "kPa",
+        "v": 54.1
+       }
+      },
+      {
+       "t": ". Those results are published in conference papers, not as rows in PSI's tables."
       }
      ]
     }
@@ -291,11 +364,43 @@
      ]
     },
     {
-     "cites": [],
-     "pending": true,
+     "cites": [
+      "FND-S5-COND-P-O2",
+      "FND-S6-COND-P-O2"
+     ],
      "segments": [
       {
-       "t": "Published Saffire V and VI papers describe such burns; their figures appear here once a team member has verified them against the source."
+       "t": "NASA has done such burns: the Saffire V experiment burned cotton and PMMA at "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S5-COND-P-O2",
+        "u": "kPa",
+        "v": 70.7
+       }
+      },
+      {
+       "t": " and "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S5-COND-P-O2",
+        "u": "mol %",
+        "v": 26.2
+       }
+      },
+      {
+       "t": " oxygen, and Saffire VI went lower, to "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "kPa",
+        "v": 54.1
+       }
+      },
+      {
+       "t": ". These results live in conference papers, not in downloadable PSI rows."
       }
      ]
     }
@@ -479,7 +584,7 @@
        "val": {
         "p": "near:c14_7_21:total",
         "u": "tests",
-        "v": 295
+        "v": 297
        }
       },
       {
@@ -628,7 +733,7 @@
        "val": {
         "p": "near:c10_2_26_5:total",
         "u": "tests",
-        "v": 72
+        "v": 78
        }
       },
       {
@@ -777,7 +882,7 @@
        "val": {
         "p": "near:c10_2_30:total",
         "u": "tests",
-        "v": 52
+        "v": 58
        }
       },
       {
@@ -926,7 +1031,7 @@
        "val": {
         "p": "near:c8_2_34:total",
         "u": "tests",
-        "v": 37
+        "v": 40
        }
       },
       {
@@ -975,11 +1080,52 @@
      ]
     },
     {
-     "cites": [],
-     "pending": true,
+     "cites": [
+      "FND-S6-COND-P-O2"
+     ],
      "segments": [
       {
-       "t": "A published Saffire VI paper describes solid burns close to this atmosphere; its figures appear here once a team member has verified them against the source."
+       "t": "NASA has burned fabric and plastic close to this atmosphere: Saffire VI burned SIBAL cloth and PMMA inside a Cygnus vehicle at "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "kPa",
+        "v": 54.1
+       }
+      },
+      {
+       "t": " to "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "kPa",
+        "v": 55.2
+       }
+      },
+      {
+       "t": ", with oxygen between "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "mol %",
+        "v": 28.8
+       }
+      },
+      {
+       "t": " and "
+      },
+      {
+       "val": {
+        "p": "paper:FND-S6-COND-P-O2",
+        "u": "mol %",
+        "v": 31.0
+       }
+      },
+      {
+       "t": ". Those results are published in a paper, not as rows in the PSI tables."
       }
      ]
     },

@@ -52,14 +52,14 @@
    "published_paper": {
     "p": "near:c14_7_21:solid:published_paper",
     "u": "tests",
-    "v": 0
+    "v": 2
    }
   }
  },
  "near_total": {
   "p": "near:c14_7_21:total",
   "u": "tests",
-  "v": 295
+  "v": 297
  },
  "nearest": [
   {

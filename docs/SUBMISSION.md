@@ -14,15 +14,15 @@ Screen capture only. No faces, no voices required. English subtitles: load `docs
 | --- | --- | --- | --- |
 | 0 to 6 s | Open the public link in a fresh private window (the intro plays once per browser). | Beat 1: a bare plot with the candidate atmospheres as pins. | NASA has not chosen the air / for its Moon base. Each pin is an atmosphere on the table: / oxygen across, cabin pressure up. |
 | 6 to 12 s | Right arrow. | Beat 2: the land rises with the hatched sea; the tests fade in by fuel class. | These are the microgravity fire tests / NASA's own tables let us place. Land: tests sit near. / Hatched sea: unknown, not safe. |
-| 12 to 18 s | Right arrow. | Beat 3: the land sinks; "No solid-material test can be placed on this plane"; the card's counts (`access_gap.json`). | Now only solid materials. 263 solid-fuel burn rows. / None records pressure. |
-| 18 to 23 s | Click **Explore**. | The plane at 8.2 psi / 34% O2, Solids only on; the panel: "37 tests sit near this point. None is a solid material." (`candidate_evidence.json`). | At 8.2 psi and 34% oxygen, 37 tests nearby. / Not one is a solid material. |
+| 12 to 18 s | Right arrow. | Beat 3: the land sinks to the solid land left by NASA's papers alone (outlined marks); the card's counts, and "The solid land left comes only from NASA's papers: 8 burns near a candidate, 0 downloadable as rows" (`access_gap.json`). | Now only solid materials. 263 solid-fuel burn rows. / None records pressure. |
+| 18 to 23 s | Click **Explore**. | The plane at 8.2 psi / 34% O2, Solids only on; the panel: "40 tests sit near this point. Solid material: 0 from PSI tables, 3 from verified papers." (`candidate_evidence.json`). | At 8.2 psi and 34% oxygen, 40 tests nearby. / Solid burns: 0 in NASA's tables, 3 only in papers. |
 | 23 to 28 s | In the panel's What's missing, click **Ask NASA for the data** (the data request page), or scroll to Ask the evidence and click the question chip. | The data request: the gap's counts, the seven solid-fuel tables by DOI, the Saffire papers, three asks. | If NASA has already burned fabric in near-Moon-base air, / why can't a researcher download it? |
 | 28 to 30 s | Hold. | The page title and the link. | Redshift: The Atmosphere Trade Studio / [your public link] |
 
 Recording notes:
 - Record at 1920 x 1080 (or 1440 x 900), browser zoom 100%, dark theme, signed out, no extensions visible.
 - Keep it to 30 seconds or less. Put your public link in the last subtitle card before exporting.
-- Check every number on screen matches the subtitles before exporting. The 263, 129, 0 and 37 come from PSI's tables and do not change when paper findings are verified; re-read them from the live app anyway.
+- Check every number on screen matches the subtitles before exporting. The 263, 129 and 0 come from PSI's tables; the 40 and the 3 include the paper burns Swastik Katiyar verified on 15 November (D44). Re-read every number from the live app before exporting.
 
 ---
 

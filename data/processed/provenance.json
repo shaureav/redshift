@@ -174414,34 +174414,6 @@
   "transforms": [],
   "verified": true
  },
- "dist:c10_2_26_5:PSI-69-main-L180": {
-  "id": "dist:c10_2_26_5:PSI-69-main-L180",
-  "inputs": [
-   "PSI-69-main-L180"
-  ],
-  "method": "nearness distance",
-  "method_version": "1",
-  "params": {
-   "candidate": "c10_2_26_5"
-  },
-  "source_type": "derived",
-  "transforms": [],
-  "verified": true
- },
- "dist:c10_2_26_5:PSI-69-main-L184": {
-  "id": "dist:c10_2_26_5:PSI-69-main-L184",
-  "inputs": [
-   "PSI-69-main-L184"
-  ],
-  "method": "nearness distance",
-  "method_version": "1",
-  "params": {
-   "candidate": "c10_2_26_5"
-  },
-  "source_type": "derived",
-  "transforms": [],
-  "verified": true
- },
  "dist:c10_2_26_5:PSI-69-main-L250": {
   "id": "dist:c10_2_26_5:PSI-69-main-L250",
   "inputs": [
@@ -174516,20 +174488,6 @@
   "id": "dist:c10_2_26_5:PSI-69-main-L255",
   "inputs": [
    "PSI-69-main-L255"
-  ],
-  "method": "nearness distance",
-  "method_version": "1",
-  "params": {
-   "candidate": "c10_2_26_5"
-  },
-  "source_type": "derived",
-  "transforms": [],
-  "verified": true
- },
- "dist:c10_2_26_5:PSI-69-main-L42": {
-  "id": "dist:c10_2_26_5:PSI-69-main-L42",
-  "inputs": [
-   "PSI-69-main-L42"
   ],
   "method": "nearness distance",
   "method_version": "1",
@@ -174680,29 +174638,43 @@
   "transforms": [],
   "verified": true
  },
- "dist:c10_2_30:PSI-69-main-L175": {
-  "id": "dist:c10_2_30:PSI-69-main-L175",
+ "dist:c10_2_26_5:paper:Saffire-V-2": {
+  "id": "dist:c10_2_26_5:paper:Saffire-V-2",
   "inputs": [
-   "PSI-69-main-L175"
+   "paper:Saffire-V-2"
   ],
   "method": "nearness distance",
   "method_version": "1",
   "params": {
-   "candidate": "c10_2_30"
+   "candidate": "c10_2_26_5"
   },
   "source_type": "derived",
   "transforms": [],
   "verified": true
  },
- "dist:c10_2_30:PSI-69-main-L176": {
-  "id": "dist:c10_2_30:PSI-69-main-L176",
+ "dist:c10_2_26_5:paper:Saffire-V-3": {
+  "id": "dist:c10_2_26_5:paper:Saffire-V-3",
   "inputs": [
-   "PSI-69-main-L176"
+   "paper:Saffire-V-3"
   ],
   "method": "nearness distance",
   "method_version": "1",
   "params": {
-   "candidate": "c10_2_30"
+   "candidate": "c10_2_26_5"
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "dist:c10_2_26_5:paper:Saffire-V-4": {
+  "id": "dist:c10_2_26_5:paper:Saffire-V-4",
+  "inputs": [
+   "paper:Saffire-V-4"
+  ],
+  "method": "nearness distance",
+  "method_version": "1",
+  "params": {
+   "candidate": "c10_2_26_5"
   },
   "source_type": "derived",
   "transforms": [],
@@ -174974,20 +174946,6 @@
   "transforms": [],
   "verified": true
  },
- "dist:c10_2_30:PSI-69-main-L91": {
-  "id": "dist:c10_2_30:PSI-69-main-L91",
-  "inputs": [
-   "PSI-69-main-L91"
-  ],
-  "method": "nearness distance",
-  "method_version": "1",
-  "params": {
-   "candidate": "c10_2_30"
-  },
-  "source_type": "derived",
-  "transforms": [],
-  "verified": true
- },
  "dist:c10_2_30:PSI-69-main-L92": {
   "id": "dist:c10_2_30:PSI-69-main-L92",
   "inputs": [
@@ -175020,6 +174978,48 @@
   "id": "dist:c10_2_30:PSI-69-main-L94",
   "inputs": [
    "PSI-69-main-L94"
+  ],
+  "method": "nearness distance",
+  "method_version": "1",
+  "params": {
+   "candidate": "c10_2_30"
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "dist:c10_2_30:paper:Saffire-V-2": {
+  "id": "dist:c10_2_30:paper:Saffire-V-2",
+  "inputs": [
+   "paper:Saffire-V-2"
+  ],
+  "method": "nearness distance",
+  "method_version": "1",
+  "params": {
+   "candidate": "c10_2_30"
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "dist:c10_2_30:paper:Saffire-V-3": {
+  "id": "dist:c10_2_30:paper:Saffire-V-3",
+  "inputs": [
+   "paper:Saffire-V-3"
+  ],
+  "method": "nearness distance",
+  "method_version": "1",
+  "params": {
+   "candidate": "c10_2_30"
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "dist:c10_2_30:paper:Saffire-V-4": {
+  "id": "dist:c10_2_30:paper:Saffire-V-4",
+  "inputs": [
+   "paper:Saffire-V-4"
   ],
   "method": "nearness distance",
   "method_version": "1",
@@ -175450,20 +175450,6 @@
   "transforms": [],
   "verified": true
  },
- "dist:c8_2_34:PSI-159-normal-L153": {
-  "id": "dist:c8_2_34:PSI-159-normal-L153",
-  "inputs": [
-   "PSI-159-normal-L153"
-  ],
-  "method": "nearness distance",
-  "method_version": "1",
-  "params": {
-   "candidate": "c8_2_34"
-  },
-  "source_type": "derived",
-  "transforms": [],
-  "verified": true
- },
  "dist:c8_2_34:PSI-159-normal-L154": {
   "id": "dist:c8_2_34:PSI-159-normal-L154",
   "inputs": [
@@ -175660,34 +175646,6 @@
   "transforms": [],
   "verified": true
  },
- "dist:c8_2_34:PSI-69-main-L22": {
-  "id": "dist:c8_2_34:PSI-69-main-L22",
-  "inputs": [
-   "PSI-69-main-L22"
-  ],
-  "method": "nearness distance",
-  "method_version": "1",
-  "params": {
-   "candidate": "c8_2_34"
-  },
-  "source_type": "derived",
-  "transforms": [],
-  "verified": true
- },
- "dist:c8_2_34:PSI-69-main-L23": {
-  "id": "dist:c8_2_34:PSI-69-main-L23",
-  "inputs": [
-   "PSI-69-main-L23"
-  ],
-  "method": "nearness distance",
-  "method_version": "1",
-  "params": {
-   "candidate": "c8_2_34"
-  },
-  "source_type": "derived",
-  "transforms": [],
-  "verified": true
- },
  "dist:c8_2_34:PSI-69-main-L38": {
   "id": "dist:c8_2_34:PSI-69-main-L38",
   "inputs": [
@@ -175720,6 +175678,48 @@
   "id": "dist:c8_2_34:PSI-69-main-L40",
   "inputs": [
    "PSI-69-main-L40"
+  ],
+  "method": "nearness distance",
+  "method_version": "1",
+  "params": {
+   "candidate": "c8_2_34"
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "dist:c8_2_34:paper:Saffire-VI-2": {
+  "id": "dist:c8_2_34:paper:Saffire-VI-2",
+  "inputs": [
+   "paper:Saffire-VI-2"
+  ],
+  "method": "nearness distance",
+  "method_version": "1",
+  "params": {
+   "candidate": "c8_2_34"
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "dist:c8_2_34:paper:Saffire-VI-3": {
+  "id": "dist:c8_2_34:paper:Saffire-VI-3",
+  "inputs": [
+   "paper:Saffire-VI-3"
+  ],
+  "method": "nearness distance",
+  "method_version": "1",
+  "params": {
+   "candidate": "c8_2_34"
+  },
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "dist:c8_2_34:paper:Saffire-VI-4": {
+  "id": "dist:c8_2_34:paper:Saffire-VI-4",
+  "inputs": [
+   "paper:Saffire-VI-4"
   ],
   "method": "nearness distance",
   "method_version": "1",
@@ -176759,7 +176759,16 @@
  },
  "gap:paper:0": {
   "id": "gap:paper:0",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "access gap step count",
   "method_version": "1",
   "params": {
@@ -176783,71 +176792,7 @@
  },
  "gap:pending": {
   "id": "gap:pending",
-  "inputs": [
-   "FND-BRE-COND-DROP-P",
-   "FND-BRE-COND-DROP-SETUP",
-   "FND-BRE-COND-FUELS",
-   "FND-BRE-COND-ISS-ATMOS",
-   "FND-BRE-COND-VOLUME",
-   "FND-BRE-RES-FUEL",
-   "FND-BRE-RES-O2-LIMIT",
-   "FND-BRE-RES-SIZE",
-   "FND-EA-CAND-HABITAT",
-   "FND-EA-CAND-NITROX",
-   "FND-EA-CAND-RECOMMENDED",
-   "FND-EA-CAND-REVISED",
-   "FND-EA-CAND-SEALEVEL",
-   "FND-EA-CAND-STUDY",
-   "FND-EA-CAND-TABLE",
-   "FND-EA-COND-O2",
-   "FND-EA-COND-PRESSURE",
-   "FND-EA-PB-10.2",
-   "FND-EA-PB-14.7",
-   "FND-EA-PB-8.2",
-   "FND-EA-PB-ACTUAL",
-   "FND-EA-PB-CAVEAT",
-   "FND-EA-PB-PROTOCOL",
-   "FND-EA-PB-SEALEVEL",
-   "FND-EA-PB-SHUTTLE-10.2",
-   "FND-EA-RES-DCS",
-   "FND-FLEX-COND-DIAMETERS",
-   "FND-FLEX-COND-METHANOL-RANGE",
-   "FND-FLEX-COND-PRESSURES",
-   "FND-FLEX-DEF-DISRUPTION",
-   "FND-FLEX-DEF-DISRUPTIVE-BURNING",
-   "FND-FLEX-RES-CONTAMINANT",
-   "FND-FLEX-RES-DISRUPTIVE",
-   "FND-FLEX-RES-LOI",
-   "FND-FLEX-RES-TESTEND",
-   "FND-S4-COND-MAT-FLOW",
-   "FND-S4-COND-P-O2",
-   "FND-S4-RES-IV2-NOFLOW",
-   "FND-S45-COND-MATERIALS",
-   "FND-S45-COND-SIZES",
-   "FND-S45-RES-FLAMESIZE",
-   "FND-S45-RES-HRR",
-   "FND-S5-COND-MAT-FLOW",
-   "FND-S5-COND-P-O2",
-   "FND-S5-COND-REDUCEDFLOW",
-   "FND-S5-RES-EXTINCT",
-   "FND-S5-RES-V2-REIGNITE",
-   "FND-S5-RES-V3-LENGTH",
-   "FND-S6-COND-FLOWCHANGE",
-   "FND-S6-COND-MAT-FLOW",
-   "FND-S6-COND-P-O2",
-   "FND-S6-COND-SIBAL",
-   "FND-S6-COND-SIZES",
-   "FND-S6-DET-CO-EXCEED",
-   "FND-S6-DET-CO-SMAC",
-   "FND-S6-DET-CO2-LIMIT",
-   "FND-S6-DET-CONCL",
-   "FND-S6-DET-SMOKE-981",
-   "FND-S6-DET-SMOKE-CONCL",
-   "FND-S6-RES-SCALE",
-   "FND-S6-RES-T2-PMMA",
-   "FND-S6-RES-T2-SIBAL",
-   "FND-S6-RES-TEMP-VS-GAS"
-  ],
+  "inputs": [],
   "method": "count of findings awaiting human verification",
   "method_version": "1",
   "source_type": "derived",
@@ -210005,6 +209950,84 @@
   "transforms": [],
   "verified": true
  },
+ "map:bin:solid:published_paper:22.0:100.0": {
+  "id": "map:bin:solid:published_paper:22.0:100.0",
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
+  "method": "trade map bin (identical recorded O2 and pressure)",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:bin:solid:published_paper:25.4:71.3": {
+  "id": "map:bin:solid:published_paper:25.4:71.3",
+  "inputs": [
+   "paper:Saffire-V-3"
+  ],
+  "method": "trade map bin (identical recorded O2 and pressure)",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:bin:solid:published_paper:25.7:72.6": {
+  "id": "map:bin:solid:published_paper:25.7:72.6",
+  "inputs": [
+   "paper:Saffire-V-4"
+  ],
+  "method": "trade map bin (identical recorded O2 and pressure)",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:bin:solid:published_paper:26.2:70.7": {
+  "id": "map:bin:solid:published_paper:26.2:70.7",
+  "inputs": [
+   "paper:Saffire-V-2"
+  ],
+  "method": "trade map bin (identical recorded O2 and pressure)",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:bin:solid:published_paper:28.8:55.2": {
+  "id": "map:bin:solid:published_paper:28.8:55.2",
+  "inputs": [
+   "paper:Saffire-VI-4"
+  ],
+  "method": "trade map bin (identical recorded O2 and pressure)",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:bin:solid:published_paper:30.3:54.6": {
+  "id": "map:bin:solid:published_paper:30.3:54.6",
+  "inputs": [
+   "paper:Saffire-VI-3"
+  ],
+  "method": "trade map bin (identical recorded O2 and pressure)",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "map:bin:solid:published_paper:31.0:54.1": {
+  "id": "map:bin:solid:published_paper:31.0:54.1",
+  "inputs": [
+   "paper:Saffire-VI-2"
+  ],
+  "method": "trade map bin (identical recorded O2 and pressure)",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
  "map:other_basis": {
   "id": "map:other_basis",
   "inputs": [
@@ -212652,7 +212675,14 @@
  },
  "near:c10_2_26_5:solid:published_paper": {
   "id": "near:c10_2_26_5:solid:published_paper",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -212738,7 +212768,13 @@
    "PSI-69-main-L96",
    "PSI-69-main-L97",
    "PSI-69-main-L98",
-   "PSI-69-main-L99"
+   "PSI-69-main-L99",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
   ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
@@ -212902,7 +212938,14 @@
  },
  "near:c10_2_30:solid:published_paper": {
   "id": "near:c10_2_30:solid:published_paper",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -212968,7 +213011,13 @@
    "PSI-69-main-L96",
    "PSI-69-main-L97",
    "PSI-69-main-L98",
-   "PSI-69-main-L99"
+   "PSI-69-main-L99",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
   ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
@@ -213376,7 +213425,10 @@
  },
  "near:c14_7_21:solid:published_paper": {
   "id": "near:c14_7_21:solid:published_paper",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -213685,7 +213737,9 @@
    "PSI-69-main-L78",
    "PSI-69-main-L79",
    "PSI-69-main-L8",
-   "PSI-69-main-L9"
+   "PSI-69-main-L9",
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
   ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
@@ -213959,7 +214013,11 @@
  },
  "near:c8_2_34:solid:published_paper": {
   "id": "near:c8_2_34:solid:published_paper",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -214010,7 +214068,10 @@
    "PSI-69-main-L41",
    "PSI-69-main-L42",
    "PSI-69-main-L43",
-   "PSI-69-main-L44"
+   "PSI-69-main-L44",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
   ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
@@ -214554,6 +214615,821 @@
   "source_type": "derived",
   "transforms": [],
   "verified": true
+ },
+ "paper:FND-BRE-COND-DROP-P": {
+  "file": "data/papers/NTRS-20170009141.pdf",
+  "id": "paper:FND-BRE-COND-DROP-P",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20170009141",
+  "page": 5,
+  "quote": "The pressure of the ambient air is varied in the current study from 0.5 – 1.0 atm whereas the oxygen mole fraction in air ranges from 0.21 – 0.30.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-BRE-COND-DROP-SETUP": {
+  "file": "data/papers/NTRS-20170009141.pdf",
+  "id": "paper:FND-BRE-COND-DROP-SETUP",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20170009141",
+  "page": 1,
+  "quote": "The current study details several tests at the NASA Glenn 5-s drop facility to test the BRE technique in microgravity conditions. The tests are conducted for two burner diameters, 25 mm and 50 mm respectively, with methane and ethylene as the fuels.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-BRE-COND-FUELS": {
+  "file": "data/papers/NTRS-20210021781.pdf",
+  "id": "paper:FND-BRE-COND-FUELS",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210021781",
+  "page": 7,
+  "quote": "In the ISS tests, pure or nitrogen- diluted ethylene and methane were used to simulate the burning of materials such as plastics",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-BRE-COND-ISS-ATMOS": {
+  "file": "data/papers/NTRS-20210021781.pdf",
+  "id": "paper:FND-BRE-COND-ISS-ATMOS",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210021781",
+  "page": 7,
+  "quote": "Testing included atmospheres with elevated oxygen concentrations and reduced pressures being considered for future crew vehicles.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-BRE-COND-VOLUME": {
+  "file": "data/papers/NTRS-20210021781.pdf",
+  "id": "paper:FND-BRE-COND-VOLUME",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210021781",
+  "page": 5,
+  "quote": "All ACME experiments are constant volume (rather than constant pressure) studies, where the chamber’s free volume is approximately 83 liters depending on the installed hardware.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-BRE-RES-FUEL": {
+  "file": "data/papers/NTRS-20210021781.pdf",
+  "id": "paper:FND-BRE-RES-FUEL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210021781",
+  "page": 7,
+  "quote": "While ethylene flames at elevated oxygen concentrations can burn for minutes, methane flames were seen to self-extinguish within a minute.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-BRE-RES-O2-LIMIT": {
+  "file": "data/papers/NTRS-20210021781.pdf",
+  "id": "paper:FND-BRE-RES-O2-LIMIT",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210021781",
+  "page": 7,
+  "quote": "While the flames can burn for minutes in elevated oxygen concentrations, like those being considered for future spacecraft, they were found to self-extinguish in concentrations below ~25% (by volume).",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-BRE-RES-SIZE": {
+  "file": "data/papers/NTRS-20210021781.pdf",
+  "id": "paper:FND-BRE-RES-SIZE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210021781",
+  "page": 7,
+  "quote": "While smaller flames can burn for minutes at elevated oxygen concentrations, larger flames were generally seen to self-extinguish within 1.5 minutes.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-CAND-HABITAT": {
+  "file": "data/papers/NTRS-20220013669.pdf",
+  "id": "paper:FND-EA-CAND-HABITAT",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220013669",
+  "page": 2,
+  "quote": "It has the capability to operate at atmospheric pressures of 8.2 psi with 34% oxygen concentration and 10.2 psi with 26.5% oxygen.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-CAND-NITROX": {
+  "file": "data/papers/NTRS-20220009536.pdf",
+  "id": "paper:FND-EA-CAND-NITROX",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220009536",
+  "page": 1,
+  "quote": "NASA’s future missions to the moon and Mars are expected to use nitrox gas mixtures of up to 34% O2, 66% N2, which will reduce flammability risk compared with Apollo, but will necessitate Oxygen prebreathe prior to EVA",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-CAND-RECOMMENDED": {
+  "file": "data/papers/NTRS-20220009536.pdf",
+  "id": "paper:FND-EA-CAND-RECOMMENDED",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220009536",
+  "page": 1,
+  "quote": "An “exploration atmosphere” of 56.5 kPa (8.2 psia), 34% O2, 66% N2 has been recommended by NASA as a compromise that balances prebreathe duration, hypoxia, and flammability risk, assuming a 29.6 kPa (4.3 psi) spacesuit.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-CAND-REVISED": {
+  "file": "data/papers/NTRS-20240003211.abstract.txt",
+  "id": "paper:FND-EA-CAND-REVISED",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240003211",
+  "quote": "Current plans for M2M habitats on the Lunar surface require EVA, thus EA recommendation became 8 psia and 32% O<sub>2</sub> but was revised to 8.2 psia and 34% O<sub>2</sub> to decrease hypoxia exposure.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-CAND-SEALEVEL": {
+  "file": "data/papers/NTRS-20240003211.abstract.txt",
+  "id": "paper:FND-EA-CAND-SEALEVEL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240003211",
+  "quote": "rather than the sea level atmosphere of 14.7 psia, 21% oxygen (O<sub>2</sub>) found on the International Space Station, Shuttle, and most other Russian and Chinese space vehicles and stations.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-CAND-STUDY": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-CAND-STUDY",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 2,
+  "quote": "Initial prebreathe validation studies have crew living at 8.2 psi, 34% O 2 , 66% N 2 (aka “Exploration Atmosphere”)",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-CAND-TABLE": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-CAND-TABLE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 6,
+  "quote": "14.7 psi, 21% O2 4:00 (resting) 6:30-7:00 2 10.2 psi, 26.5% O2 0:40 3:00-3:30 3 8.2 psi, 34% O2 0:00-0:15 0:00-0:30 4,5 5.0 psi, 100% O2 (Apollo, Gemini) 0:00 0:00",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-COND-O2": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-COND-O2",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 16,
+  "quote": "Average Chamber O2: 33.96% (target 34% +/ - 1%)",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-COND-PRESSURE": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-COND-PRESSURE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 14,
+  "quote": "Average Habitat pressure: 8.15psi (target 8.2psia +/ - 0.1)",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-10.2": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-PB-10.2",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 6,
+  "quote": "10.2 psi, 26.5% O2 0:40 3:00-3:30",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-14.7": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-PB-14.7",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 6,
+  "quote": "14.7 psi, 21% O2 4:00 (resting) 6:30-7:00",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-8.2": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-PB-8.2",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 6,
+  "quote": "8.2 psi, 34% O2 0:00-0:15 0:00-0:30",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-ACTUAL": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-PB-ACTUAL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 17,
+  "quote": "Prebreathe Times: EVA1: 20min 14 sec EVA2: 20min 21 sec EVA3: 20min 01 sec EVA4: 20min 04 sec EVA5: 20min 10 sec",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-CAVEAT": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-PB-CAVEAT",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 6,
+  "quote": "Unvalidated estimates (i.e., not yet available for flight use) *Assumes 6hr EVA @ 4.3 psia and approximately equal DCS risk level",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-PROTOCOL": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-PB-PROTOCOL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 10,
+  "quote": "Equilibrate to Exploration Atmosphere: 8.2psi/34% O 2 for 48 hrs – Minimum prebreathe duration: 20 min ≥ 6.2psi – Simulated EVA: 4.3psi/85% O 2",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-SEALEVEL": {
+  "file": "data/papers/NTRS-20240003211.abstract.txt",
+  "id": "paper:FND-EA-PB-SEALEVEL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240003211",
+  "quote": "Consequently this led to long pre-EVA denitrogenation protocols involving up to 4 hours of O<sub>2</sub> prebreathe because the EVA suit still operated at a low pressure of 4.3 psid.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-PB-SHUTTLE-10.2": {
+  "file": "data/papers/NTRS-20240003211.abstract.txt",
+  "id": "paper:FND-EA-PB-SHUTTLE-10.2",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240003211",
+  "quote": "To increase operational efficiency, the Shuttle was retroactively certified to operate using 10.2 psia, 26.5% O<sub>2</sub>, reducing O<sub>2</sub> prebreathe time to 40-75 min.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-EA-RES-DCS": {
+  "file": "data/papers/NTRS-20220011152.pdf",
+  "id": "paper:FND-EA-RES-DCS",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20220011152",
+  "page": 18,
+  "quote": "Summary: 2 DCS cases out of 25 total simulated EVAs during the 11- day study (8% DCS)",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-COND-DIAMETERS": {
+  "file": "data/papers/NTRS-20150023456.pdf",
+  "id": "paper:FND-FLEX-COND-DIAMETERS",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20150023456",
+  "page": 23,
+  "quote": "for methanol and n-heptane droplets with initial diameters between 2 and 5 mm.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-COND-METHANOL-RANGE": {
+  "file": "data/papers/NTRS-20210022617.pdf",
+  "id": "paper:FND-FLEX-COND-METHANOL-RANGE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210022617",
+  "page": 4,
+  "quote": "13% < O2 < 30% 5% < CO2 < 75% 5% < He < 45% 1 < D0 < 4.5 mm",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-COND-PRESSURES": {
+  "file": "data/papers/NTRS-20150023456.pdf",
+  "id": "paper:FND-FLEX-COND-PRESSURES",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20150023456",
+  "page": 23,
+  "quote": "Burning was done in oxidizing atmospheres at ambient temperature and at various pressures between 0.70 and 3.05 atm, over ranges of dilution of oxygen with nitrogen, oxygen with carbon dioxide , and mixtures thereof .",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-DEF-DISRUPTION": {
+  "file": "data/papers/NTRS-20150023456.pdf",
+  "id": "paper:FND-FLEX-DEF-DISRUPTION",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20150023456",
+  "page": 25,
+  "quote": "Visible flame extinction diam eter—droplet diameter at the time the visible flame extinguishe d, where “-” indicates flame extinction did not occur either because the droplet burned to completion or because a droplet disruption ended the test.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-DEF-DISRUPTIVE-BURNING": {
+  "file": "data/papers/NTRS-20150023456.pdf",
+  "id": "paper:FND-FLEX-DEF-DISRUPTIVE-BURNING",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20150023456",
+  "page": 274,
+  "quote": "It was not really disruptive burning, in which the droplet becomes dislodged from the fiber, but the motion clearly influenced the burning history.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-RES-CONTAMINANT": {
+  "file": "data/papers/NTRS-20150023456.pdf",
+  "id": "paper:FND-FLEX-RES-CONTAMINANT",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20150023456",
+  "page": 23,
+  "quote": "(4) Disruptive extinction of methanol is probably due to the presence of the contaminant. (5) Disruptive extinction of heptane may be due to the presence of the contaminant.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-RES-DISRUPTIVE": {
+  "file": "data/papers/NTRS-20150023456.pdf",
+  "id": "paper:FND-FLEX-RES-DISRUPTIVE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20150023456",
+  "page": 17,
+  "quote": "As testing progressed, however, the science team noticed a propensity for the droplets to burn disruptively and not exhibit flame extinction (at a finite-sized droplet diameter).",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-RES-LOI": {
+  "file": "data/papers/NTRS-20210022617.pdf",
+  "id": "paper:FND-FLEX-RES-LOI",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210022617",
+  "page": 4,
+  "quote": "The limiting oxygen index (LOI) ~ 12-13% oxygen at atmospheric pressure.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-FLEX-RES-TESTEND": {
+  "file": "data/papers/NTRS-20150023456.pdf",
+  "id": "paper:FND-FLEX-RES-TESTEND",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20150023456",
+  "page": 26,
+  "quote": "Burn time, s Test end Test Identifier Date Greenwich mean time O2 N2 CO2 He FLEX–001 20CAL08 3/5/09 17:22:03 Methanol 757.7 0.21 0.79 0 0 1.69 0.89 0.52 4.3 Disruption",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S4-COND-MAT-FLOW": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S4-COND-MAT-FLOW",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 3,
+  "quote": "Flight/Sample IV-1 IV-2 V-2 V-3 V-4 Material/configuration SIBAL Cloth 2-sided PMMA Cotton Jersey 1 sided PMMA Structured PMMA Length (cm) 50 18 50 18 20 Air Flow Rate (cm/s) 20 20 20 20 20 Flow Direction Concurrent Concurrent Concurrent Concurrent Opposed",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S4-COND-P-O2": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S4-COND-P-O2",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 3,
+  "quote": "Ambient Pressure (kPa) 100.0 100.0 70.7 71.3 72.6 Oxygen Concentration (mol %) 22.0 22.0 26.2 25.4 25.7",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S4-RES-IV2-NOFLOW": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S4-RES-IV2-NOFLOW",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 5,
+  "quote": "These jets of fuel emerging from the surface provided sufficient mixing to keep the flame alive over the 15 second interval of no flow.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S45-COND-MATERIALS": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S45-COND-MATERIALS",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 4,
+  "quote": "cotton jersey material with an area density of 18.1 mg/cm2; or cast polymethyl methacrylate (PMMA) (either one- sided 5 mm thick or two- sided (10 mm thick) .",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S45-COND-SIZES": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S45-COND-SIZES",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 1,
+  "quote": "The samples were all 40 cm wide and with various lengths ranging from 18 cm for the PMMA samples to 50 cm for the fabrics.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S45-RES-FLAMESIZE": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S45-RES-FLAMESIZE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 8,
+  "quote": "Steady state size (cm) 4 4 5 5 8.5 10.0 Maximum size (cm) 6.2 4 5 8.2 11.0 14.0",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S45-RES-HRR": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S45-RES-HRR",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 2,
+  "quote": "However, despite having heat release rates up to 10 kW, the average vehicle conditions did not rise to unacceptable levels.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S5-COND-MAT-FLOW": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S5-COND-MAT-FLOW",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 3,
+  "quote": "Flight/Sample IV-1 IV-2 V-2 V-3 V-4 Material/configuration SIBAL Cloth 2-sided PMMA Cotton Jersey 1 sided PMMA Structured PMMA Length (cm) 50 18 50 18 20 Air Flow Rate (cm/s) 20 20 20 20 20 Flow Direction Concurrent Concurrent Concurrent Concurrent Opposed",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S5-COND-P-O2": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S5-COND-P-O2",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 3,
+  "quote": "Ambient Pressure (kPa) 100.0 100.0 70.7 71.3 72.6 Oxygen Concentration (mol %) 22.0 22.0 26.2 25.4 25.7",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S5-COND-REDUCEDFLOW": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S5-COND-REDUCEDFLOW",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 5,
+  "quote": "the air flow for Saffire V samples 3 and 4 was reduced from the starting condition of 20 cm/s to 5 cm/s and held at 5 cm/s for 300 seconds .",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S5-RES-EXTINCT": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S5-RES-EXTINCT",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 5,
+  "quote": "Consequently, when the fan was turned off in Saffire V -3 and V-4, the sample extinguished immediately (Figures 5 and 6).",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S5-RES-V2-REIGNITE": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S5-RES-V2-REIGNITE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 4,
+  "quote": "The sample burned steadily for the initial 300 seconds while the fan was on. At approximately 280 seconds, the fan was turned off and remained off for 70 seconds. Despite this long interval, the flame grew back when the flow was turned on again and continued to burn for another 150 seconds until the material was consumed.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S5-RES-V3-LENGTH": {
+  "file": "data/papers/NTRS-20210011521.pdf",
+  "id": "paper:FND-S5-RES-V3-LENGTH",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20210011521",
+  "page": 9,
+  "quote": "In Saffire V-3, the one-sided PMMA sample flame (in 25.4% oxygen) grew to 11 cm after 450 seconds.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-COND-FLOWCHANGE": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-COND-FLOWCHANGE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 5,
+  "quote": "The flow was changed from 20 cm/s to 5 cm/s at 1120 s and terminated at 1420 s.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-COND-MAT-FLOW": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-COND-MAT-FLOW",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 3,
+  "quote": "Material SIBAL Cloth Cotton Jersey SIBAL Cloth Two-Sided PMMA One-Sided PMMA Length (cm) 50 50 50 18 18 Air Flow Rate (cm/s) 20 20 20 20 20 Flow Direction Concurrent Concurrent Concurrent Concurrent Concurrent",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-COND-P-O2": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-COND-P-O2",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 3,
+  "quote": "Ambient Pressure (kPa) 100.0 70.7 54.1 54.6 55.2 Oxygen Concentration (mol %) 22.0 26.2 31.0 30.3 28.8",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-COND-SIBAL": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-COND-SIBAL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 4,
+  "quote": "“SIBAL” fabric (75% cotton and 25% fiberglass)1 with a total area density of 18.05 mg/cm2; or flat, cast, polymethyl methacrylate (PMMA) (either one-sided 5 mm thick or two-sided (10 mm thick).",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-COND-SIZES": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-COND-SIZES",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 2,
+  "quote": "concurrent spread over large samples (all 41 cm wide) including a thin sheet of flammable fuel (cotton/fiberglass 50 cm long); 2-sided spread over 1 cm thick polymethyl methacrylate (PMMA) (18 cm lo ng); 1-sided spread over 0.5 cm thick (18 cm long); and Nomex fabric (7 cm long).",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-DET-CO-EXCEED": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-DET-CO-EXCEED",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 5,
+  "quote": "For carbon monoxide the levels were well above the 24-hour SMAC and quite close to the 1-hour level.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-DET-CO-SMAC": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-DET-CO-SMAC",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 5,
+  "quote": "For carbon monoxide, the 1-hour SMAC is 425 ppm, and the 24-hour SMAC is 100 ppm7.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-DET-CO2-LIMIT": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-DET-CO2-LIMIT",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 5,
+  "quote": "For carbon dioxide, which is prevalent in manned spacecraft, the limits are establishe d differently in NASA-STD-3001 8 which limits the 1-hour average CO 2 partial pressure to no more than 3 mm Hg. As can be seen in Table 2, the allowable CO 2 level was exceeded by both of the PMMA tests on Saffire VI.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-DET-CONCL": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-DET-CONCL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 6,
+  "quote": "However, the ambient concentrations of carbon monoxide and carbon dioxide rose significantly with the PMMA tests exceeding the 1-hour carbon dioxide limit and the 24-hour carbon monoxide limit.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-DET-SMOKE-981": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-DET-SMOKE-981",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 5,
+  "quote": "Selecting 1 mg/m 3 as a relatively tight alarm threshold, the FFD detector reached that threshold at 981 seconds. By this point, much of the hazardous gas release had occurred.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-DET-SMOKE-CONCL": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-DET-SMOKE-CONCL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 6,
+  "quote": "The smoke from the fire event was readily detected by an ionization detector and a light scattering system but a typical alarm threshold was only achieved at 981 seconds.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-RES-SCALE": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-RES-SCALE",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 2,
+  "quote": "These tests spanned 1.5 to 3.2 kW with free air volumes of 17 to 19 cubic met ers.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-RES-T2-PMMA": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-RES-T2-PMMA",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 6,
+  "quote": "VI-3 2-sided PMMA 780 3080 1280 77 21 8539 3.51 308 VI-4 1-sided PMMA 1200 1507 830 57 21 8117 3.37 320",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-RES-T2-SIBAL": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-RES-T2-SIBAL",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 6,
+  "quote": "VI-2 SIBAL 112 3217 580 3,650 409 48 20 2800 1.15 120",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
+ },
+ "paper:FND-S6-RES-TEMP-VS-GAS": {
+  "file": "data/papers/NTRS-20240002981.pdf",
+  "id": "paper:FND-S6-RES-TEMP-VS-GAS",
+  "note": "AI-drafted from the paper; quote checked automatically; verified by a named team member.",
+  "ntrs": "20240002981",
+  "page": 2,
+  "quote": "Overall, the temperature and pressure rise in the spacecraft were found to be less significant than the increase in carbon dioxide and carbon monoxide.",
+  "source_type": "published_paper",
+  "transforms": [],
+  "verified": true,
+  "verified_at": "2026-11-15T10:17:20Z",
+  "verified_by": "Swastik Katiyar"
  },
  "params:nearness": {
   "id": "params:nearness",
@@ -216386,7 +217262,11 @@
  },
  "planner:cell:21:10.2:solid:n": {
   "id": "planner:cell:21:10.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-V-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -216990,7 +217870,13 @@
  },
  "planner:cell:21:12:solid:n": {
   "id": "planner:cell:21:12:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-V-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -217542,7 +218428,10 @@
  },
  "planner:cell:21:14.7:solid:n": {
   "id": "planner:cell:21:14.7:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -218413,7 +219302,11 @@
  },
  "planner:cell:21:8.2:solid:n": {
   "id": "planner:cell:21:8.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -218741,7 +219634,14 @@
  },
  "planner:cell:26.5:10.2:solid:n": {
   "id": "planner:cell:26.5:10.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-4",
+   "paper:Saffire-V-3",
+   "paper:Saffire-VI-4",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -219198,7 +220098,13 @@
  },
  "planner:cell:26.5:12:solid:n": {
   "id": "planner:cell:26.5:12:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-4",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-2",
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -219664,7 +220570,10 @@
  },
  "planner:cell:26.5:14.7:solid:n": {
   "id": "planner:cell:26.5:14.7:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -220184,7 +221093,10 @@
  },
  "planner:cell:26.5:6:solid:n": {
   "id": "planner:cell:26.5:6:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-4",
+   "paper:Saffire-VI-3"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -220500,7 +221412,14 @@
  },
  "planner:cell:26.5:8.2:solid:n": {
   "id": "planner:cell:26.5:8.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-4",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -220808,7 +221727,14 @@
  },
  "planner:cell:30:10.2:solid:n": {
   "id": "planner:cell:30:10.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-4",
+   "paper:Saffire-V-3",
+   "paper:Saffire-VI-4",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-2"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -221120,7 +222046,11 @@
  },
  "planner:cell:30:12:solid:n": {
   "id": "planner:cell:30:12:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-4",
+   "paper:Saffire-V-3"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -221959,7 +222889,11 @@
  },
  "planner:cell:30:6:solid:n": {
   "id": "planner:cell:30:6:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -222250,7 +223184,14 @@
  },
  "planner:cell:30:8.2:solid:n": {
   "id": "planner:cell:30:8.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -222538,7 +223479,10 @@
  },
  "planner:cell:34:10.2:solid:n": {
   "id": "planner:cell:34:10.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -223910,7 +224854,10 @@
  },
  "planner:cell:34:6:solid:n": {
   "id": "planner:cell:34:6:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -224204,7 +225151,11 @@
  },
  "planner:cell:34:8.2:solid:n": {
   "id": "planner:cell:34:8.2:solid:n",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (1x steps)",
   "method_version": "1",
   "params": {
@@ -228929,6 +229880,94 @@
   "transforms": [],
   "verified": true
  },
+ "probe:input:paper:Saffire-IV-1": {
+  "id": "probe:input:paper:Saffire-IV-1",
+  "inputs": [
+   "paper:Saffire-IV-1"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "probe:input:paper:Saffire-IV-2": {
+  "id": "probe:input:paper:Saffire-IV-2",
+  "inputs": [
+   "paper:Saffire-IV-2"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "probe:input:paper:Saffire-V-2": {
+  "id": "probe:input:paper:Saffire-V-2",
+  "inputs": [
+   "paper:Saffire-V-2"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "probe:input:paper:Saffire-V-3": {
+  "id": "probe:input:paper:Saffire-V-3",
+  "inputs": [
+   "paper:Saffire-V-3"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "probe:input:paper:Saffire-V-4": {
+  "id": "probe:input:paper:Saffire-V-4",
+  "inputs": [
+   "paper:Saffire-V-4"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "probe:input:paper:Saffire-VI-2": {
+  "id": "probe:input:paper:Saffire-VI-2",
+  "inputs": [
+   "paper:Saffire-VI-2"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "probe:input:paper:Saffire-VI-3": {
+  "id": "probe:input:paper:Saffire-VI-3",
+  "inputs": [
+   "paper:Saffire-VI-3"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
+ "probe:input:paper:Saffire-VI-4": {
+  "id": "probe:input:paper:Saffire-VI-4",
+  "inputs": [
+   "paper:Saffire-VI-4"
+  ],
+  "method": "verified paper values used as a nearness input",
+  "method_version": "1",
+  "source_type": "derived",
+  "transforms": [],
+  "verified": true
+ },
  "probe:state:basis_differs": {
   "id": "probe:state:basis_differs",
   "inputs": [
@@ -230176,7 +231215,11 @@
  },
  "sens:c10_2_26_5:0.75:solid": {
   "id": "sens:c10_2_26_5:0.75:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -230309,7 +231352,11 @@
  },
  "sens:c10_2_26_5:1-flow0:solid": {
   "id": "sens:c10_2_26_5:1-flow0:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -230692,7 +231739,16 @@
  },
  "sens:c10_2_26_5:1.5:solid": {
   "id": "sens:c10_2_26_5:1.5:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -230825,7 +231881,14 @@
  },
  "sens:c10_2_26_5:1:solid": {
   "id": "sens:c10_2_26_5:1:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -230909,7 +231972,12 @@
  },
  "sens:c10_2_30:0.75:solid": {
   "id": "sens:c10_2_30:0.75:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -231022,7 +232090,11 @@
  },
  "sens:c10_2_30:1-flow0:solid": {
   "id": "sens:c10_2_30:1-flow0:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -231249,7 +232321,16 @@
  },
  "sens:c10_2_30:1.5:solid": {
   "id": "sens:c10_2_30:1.5:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -231362,7 +232443,14 @@
  },
  "sens:c10_2_30:1:solid": {
   "id": "sens:c10_2_30:1:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -231688,7 +232776,10 @@
  },
  "sens:c14_7_21:0.75:solid": {
   "id": "sens:c14_7_21:0.75:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -232045,7 +233136,10 @@
  },
  "sens:c14_7_21:1-flow0:solid": {
   "id": "sens:c14_7_21:1-flow0:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -232518,7 +233612,13 @@
  },
  "sens:c14_7_21:1.5:solid": {
   "id": "sens:c14_7_21:1.5:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2",
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -232875,7 +233975,10 @@
  },
  "sens:c14_7_21:1:solid": {
   "id": "sens:c14_7_21:1:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-IV-1",
+   "paper:Saffire-IV-2"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -233205,7 +234308,11 @@
  },
  "sens:c8_2_34:0.75:solid": {
   "id": "sens:c8_2_34:0.75:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -233412,7 +234519,14 @@
  },
  "sens:c8_2_34:1.5:solid": {
   "id": "sens:c8_2_34:1.5:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-V-2",
+   "paper:Saffire-V-3",
+   "paper:Saffire-V-4",
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {
@@ -233511,7 +234625,11 @@
  },
  "sens:c8_2_34:1:solid": {
   "id": "sens:c8_2_34:1:solid",
-  "inputs": [],
+  "inputs": [
+   "paper:Saffire-VI-2",
+   "paper:Saffire-VI-3",
+   "paper:Saffire-VI-4"
+  ],
   "method": "nearness count (sensitivity)",
   "method_version": "1",
   "params": {

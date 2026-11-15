@@ -118,8 +118,14 @@ describe("the coast pulse (Phase 4)", () => {
     expect(pts.filter((p) => !onOutline(p))).toEqual([]);
   });
 
-  it("is empty where there is no coast (no solid test can be placed, so Solids only has none)", () => {
-    expect(coastNear(coastFor(grid, 1, "solids"), grid, x, y, 100, 100)).toBe("");
+  // D44: whether Solids only has a coast depends on the data (verified paper burns are placed), so the rule is
+  // tested, not a count: no solid land, no pulse; solid land, a pulse along its coast.
+  it("is empty exactly where there is no coast (Solids only has land only near placed solid tests)", () => {
+    const solids = coastFor(grid, 1, "solids");
+    const anyLand = grid.o2.some((_, i) => grid.psi.some((_, j) => isLand(solids, i, j)));
+    const pulse = coastNear(solids, grid, x, y, 100, 100);
+    if (anyLand) expect(pulse).not.toBe("");
+    else expect(pulse).toBe("");
   });
 });
 
@@ -143,11 +149,17 @@ describe("pin words", () => {
     }
   });
 
-  it("is at sea for every candidate under Solids only, where no solid test is placed", () => {
+  // D44: under Solids only a candidate is at sea exactly when the build counts no solid test near it (from the
+  // PSI tables or from verified papers); once paper burns are verified, candidates near them are not at sea.
+  it("is at sea under Solids only exactly where the build counts no solid test near the candidate", () => {
     const c = coastFor(grid, 1, "solids");
-    for (const cand of cands) {
+    const ev = load<{ evidence: { candidate_id: string; near: { solid: { psi_table: { v: number }; published_paper: { v: number } } } }[] }>("candidate_evidence.json").evidence;
+    for (const cand of cands as { id: string; o2_pct: { v: number }; pressure_psi: { v: number } }[]) {
       const n = nodeOf(grid, cand.o2_pct.v, cand.pressure_psi.v)!;
-      expect(evidenceWord(c, n.i, n.j)).toBe("at sea");
+      const e = ev.find((x) => x.candidate_id === cand.id)!;
+      const solidNear = e.near.solid.psi_table.v + e.near.solid.published_paper.v;
+      if (solidNear === 0) expect(evidenceWord(c, n.i, n.j), cand.id).toBe("at sea");
+      else expect(evidenceWord(c, n.i, n.j), cand.id).not.toBe("at sea");
     }
   });
 

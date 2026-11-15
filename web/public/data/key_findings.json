@@ -1,8 +1,2447 @@
 {
- "findings": [],
+ "findings": [
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-COND-DROP-P",
+    "v": "In the ground drop-tower BRE study (not ISS) ambient pressure was varied from 0.5 to 1.0 atm and oxygen mole fraction from 0.21 to 0.30."
+   },
+   "id": "FND-BRE-COND-DROP-P",
+   "investigation": "ACME BRE",
+   "kind": "condition",
+   "ntrs_id": "20170009141",
+   "p": "paper:FND-BRE-COND-DROP-P",
+   "page": 5,
+   "quote": "The pressure of the ambient air is varied in the current study from 0.5 – 1.0 atm whereas the oxygen mole fraction in air ranges from 0.21 – 0.30.",
+   "values": [
+    {
+     "as_written": "0.5",
+     "name": "Ambient pressure lower bound",
+     "p": "paper:FND-BRE-COND-DROP-P",
+     "u": "atm",
+     "v": 0.5
+    },
+    {
+     "as_written": "1.0 atm",
+     "name": "Ambient pressure upper bound",
+     "p": "paper:FND-BRE-COND-DROP-P",
+     "u": "atm",
+     "v": 1.0
+    },
+    {
+     "as_written": "0.21",
+     "name": "Oxygen mole fraction lower bound",
+     "p": "paper:FND-BRE-COND-DROP-P",
+     "u": "mole fraction",
+     "v": 0.21
+    },
+    {
+     "as_written": "0.30",
+     "name": "Oxygen mole fraction upper bound",
+     "p": "paper:FND-BRE-COND-DROP-P",
+     "u": "mole fraction",
+     "v": 0.3
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-COND-DROP-SETUP",
+    "v": "The ground BRE tests used the NASA Glenn 5 s drop facility with 25 mm and 50 mm burners fuelled by methane and ethylene."
+   },
+   "id": "FND-BRE-COND-DROP-SETUP",
+   "investigation": "ACME BRE",
+   "kind": "condition",
+   "ntrs_id": "20170009141",
+   "p": "paper:FND-BRE-COND-DROP-SETUP",
+   "page": 1,
+   "quote": "The current study details several tests at the NASA Glenn 5-s drop facility to test the BRE technique in microgravity conditions. The tests are conducted for two burner diameters, 25 mm and 50 mm respectively, with methane and ethylene as the fuels.",
+   "values": [
+    {
+     "as_written": "5-s",
+     "name": "Drop duration",
+     "p": "paper:FND-BRE-COND-DROP-SETUP",
+     "u": "s",
+     "v": 5
+    },
+    {
+     "as_written": "25 mm",
+     "name": "Burner diameter",
+     "p": "paper:FND-BRE-COND-DROP-SETUP",
+     "u": "mm",
+     "v": 25
+    },
+    {
+     "as_written": "50 mm",
+     "name": "Burner diameter",
+     "p": "paper:FND-BRE-COND-DROP-SETUP",
+     "u": "mm",
+     "v": 50
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-COND-FUELS",
+    "v": "The ISS BRE tests used pure or nitrogen-diluted ethylene and methane to emulate materials such as plastics."
+   },
+   "id": "FND-BRE-COND-FUELS",
+   "investigation": "ACME BRE",
+   "kind": "condition",
+   "ntrs_id": "20210021781",
+   "p": "paper:FND-BRE-COND-FUELS",
+   "page": 7,
+   "quote": "In the ISS tests, pure or nitrogen- diluted ethylene and methane were used to simulate the burning of materials such as plastics",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-COND-ISS-ATMOS",
+    "v": "BRE testing on the ISS included elevated oxygen concentrations and reduced pressures; this paper gives no numerical chamber pressures for BRE."
+   },
+   "id": "FND-BRE-COND-ISS-ATMOS",
+   "investigation": "ACME BRE",
+   "kind": "condition",
+   "ntrs_id": "20210021781",
+   "p": "paper:FND-BRE-COND-ISS-ATMOS",
+   "page": 7,
+   "quote": "Testing included atmospheres with elevated oxygen concentrations and reduced pressures being considered for future crew vehicles.",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-COND-VOLUME",
+    "v": "All ACME experiments ran at constant volume in a chamber with a free volume of about 83 litres."
+   },
+   "id": "FND-BRE-COND-VOLUME",
+   "investigation": "ACME BRE",
+   "kind": "condition",
+   "ntrs_id": "20210021781",
+   "p": "paper:FND-BRE-COND-VOLUME",
+   "page": 5,
+   "quote": "All ACME experiments are constant volume (rather than constant pressure) studies, where the chamber’s free volume is approximately 83 liters depending on the installed hardware.",
+   "values": [
+    {
+     "as_written": "83 liters",
+     "name": "Chamber free volume",
+     "p": "paper:FND-BRE-COND-VOLUME",
+     "u": "L",
+     "v": 83
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-RES-FUEL",
+    "v": "Methane BRE flames self-extinguished within a minute, whereas ethylene flames at elevated oxygen could burn for minutes."
+   },
+   "id": "FND-BRE-RES-FUEL",
+   "investigation": "ACME BRE",
+   "kind": "result",
+   "ntrs_id": "20210021781",
+   "p": "paper:FND-BRE-RES-FUEL",
+   "page": 7,
+   "quote": "While ethylene flames at elevated oxygen concentrations can burn for minutes, methane flames were seen to self-extinguish within a minute.",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-RES-O2-LIMIT",
+    "v": "BRE flames on the ISS were found to self-extinguish in oxygen concentrations below about 25% by volume."
+   },
+   "id": "FND-BRE-RES-O2-LIMIT",
+   "investigation": "ACME BRE",
+   "kind": "result",
+   "ntrs_id": "20210021781",
+   "p": "paper:FND-BRE-RES-O2-LIMIT",
+   "page": 7,
+   "quote": "While the flames can burn for minutes in elevated oxygen concentrations, like those being considered for future spacecraft, they were found to self-extinguish in concentrations below ~25% (by volume).",
+   "values": [
+    {
+     "as_written": "~25%",
+     "name": "Oxygen concentration below which flames self-extinguished",
+     "p": "paper:FND-BRE-RES-O2-LIMIT",
+     "u": "% by volume",
+     "v": 25
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-BRE-RES-SIZE",
+    "v": "Larger BRE flames generally self-extinguished within 1.5 minutes."
+   },
+   "id": "FND-BRE-RES-SIZE",
+   "investigation": "ACME BRE",
+   "kind": "result",
+   "ntrs_id": "20210021781",
+   "p": "paper:FND-BRE-RES-SIZE",
+   "page": 7,
+   "quote": "While smaller flames can burn for minutes at elevated oxygen concentrations, larger flames were generally seen to self-extinguish within 1.5 minutes.",
+   "values": [
+    {
+     "as_written": "1.5 minutes",
+     "name": "Time to self-extinction for larger flames",
+     "p": "paper:FND-BRE-RES-SIZE",
+     "u": "min",
+     "v": 1.5
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-CAND-HABITAT",
+    "v": "The NASA reference lunar Surface Habitat can operate at 8.2 psi with 34% oxygen and at 10.2 psi with 26.5% oxygen."
+   },
+   "id": "FND-EA-CAND-HABITAT",
+   "investigation": "Exploration atmospheres",
+   "kind": "candidate_atmosphere",
+   "ntrs_id": "20220013669",
+   "p": "paper:FND-EA-CAND-HABITAT",
+   "page": 2,
+   "quote": "It has the capability to operate at atmospheric pressures of 8.2 psi with 34% oxygen concentration and 10.2 psi with 26.5% oxygen.",
+   "values": [
+    {
+     "as_written": "8.2 psi",
+     "name": "Mode 1 pressure",
+     "p": "paper:FND-EA-CAND-HABITAT",
+     "u": "psi",
+     "v": 8.2
+    },
+    {
+     "as_written": "34% oxygen",
+     "name": "Mode 1 oxygen",
+     "p": "paper:FND-EA-CAND-HABITAT",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "10.2 psi",
+     "name": "Mode 2 pressure",
+     "p": "paper:FND-EA-CAND-HABITAT",
+     "u": "psi",
+     "v": 10.2
+    },
+    {
+     "as_written": "26.5% oxygen",
+     "name": "Mode 2 oxygen",
+     "p": "paper:FND-EA-CAND-HABITAT",
+     "u": "%",
+     "v": 26.5
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-CAND-NITROX",
+    "v": "Future Moon and Mars missions are expected to use nitrox mixtures of up to 34% O2 and 66% N2, which need oxygen prebreathe before EVA."
+   },
+   "id": "FND-EA-CAND-NITROX",
+   "investigation": "Exploration atmospheres",
+   "kind": "candidate_atmosphere",
+   "ntrs_id": "20220009536",
+   "p": "paper:FND-EA-CAND-NITROX",
+   "page": 1,
+   "quote": "NASA’s future missions to the moon and Mars are expected to use nitrox gas mixtures of up to 34% O2, 66% N2, which will reduce flammability risk compared with Apollo, but will necessitate Oxygen prebreathe prior to EVA",
+   "values": [
+    {
+     "as_written": "34% O2",
+     "name": "Maximum oxygen fraction",
+     "p": "paper:FND-EA-CAND-NITROX",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "66% N2",
+     "name": "Nitrogen fraction",
+     "p": "paper:FND-EA-CAND-NITROX",
+     "u": "%",
+     "v": 66
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-CAND-RECOMMENDED",
+    "v": "The abstract states that NASA recommended an exploration atmosphere of 56.5 kPa (8.2 psia), 34% O2 and 66% N2 as a compromise between prebreathe duration, hypoxia and flammability, assuming a 29.6 kPa (4.3 psi) suit."
+   },
+   "id": "FND-EA-CAND-RECOMMENDED",
+   "investigation": "Exploration atmospheres",
+   "kind": "candidate_atmosphere",
+   "ntrs_id": "20220009536",
+   "p": "paper:FND-EA-CAND-RECOMMENDED",
+   "page": 1,
+   "quote": "An “exploration atmosphere” of 56.5 kPa (8.2 psia), 34% O2, 66% N2 has been recommended by NASA as a compromise that balances prebreathe duration, hypoxia, and flammability risk, assuming a 29.6 kPa (4.3 psi) spacesuit.",
+   "values": [
+    {
+     "as_written": "56.5 kPa",
+     "name": "Habitat pressure",
+     "p": "paper:FND-EA-CAND-RECOMMENDED",
+     "u": "kPa",
+     "v": 56.5
+    },
+    {
+     "as_written": "8.2 psia",
+     "name": "Habitat pressure",
+     "p": "paper:FND-EA-CAND-RECOMMENDED",
+     "u": "psia",
+     "v": 8.2
+    },
+    {
+     "as_written": "34% O2",
+     "name": "Oxygen",
+     "p": "paper:FND-EA-CAND-RECOMMENDED",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "66% N2",
+     "name": "Nitrogen",
+     "p": "paper:FND-EA-CAND-RECOMMENDED",
+     "u": "%",
+     "v": 66
+    },
+    {
+     "as_written": "29.6 kPa",
+     "name": "Suit pressure",
+     "p": "paper:FND-EA-CAND-RECOMMENDED",
+     "u": "kPa",
+     "v": 29.6
+    },
+    {
+     "as_written": "4.3 psi",
+     "name": "Suit pressure",
+     "p": "paper:FND-EA-CAND-RECOMMENDED",
+     "u": "psi",
+     "v": 4.3
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-CAND-REVISED",
+    "v": "The M2M abstract states that the exploration atmosphere recommendation of 8 psia with 32% O2 was revised to 8.2 psia with 34% O2 to reduce hypoxia exposure; it does not name who made the recommendation."
+   },
+   "id": "FND-EA-CAND-REVISED",
+   "investigation": "Exploration atmospheres",
+   "kind": "candidate_atmosphere",
+   "ntrs_id": "20240003211",
+   "p": "paper:FND-EA-CAND-REVISED",
+   "page": null,
+   "quote": "Current plans for M2M habitats on the Lunar surface require EVA, thus EA recommendation became 8 psia and 32% O<sub>2</sub> but was revised to 8.2 psia and 34% O<sub>2</sub> to decrease hypoxia exposure.",
+   "values": [
+    {
+     "as_written": "8 psia",
+     "name": "Earlier recommended pressure",
+     "p": "paper:FND-EA-CAND-REVISED",
+     "u": "psia",
+     "v": 8
+    },
+    {
+     "as_written": "32%",
+     "name": "Earlier recommended oxygen",
+     "p": "paper:FND-EA-CAND-REVISED",
+     "u": "%",
+     "v": 32
+    },
+    {
+     "as_written": "8.2 psia",
+     "name": "Revised pressure",
+     "p": "paper:FND-EA-CAND-REVISED",
+     "u": "psia",
+     "v": 8.2
+    },
+    {
+     "as_written": "34%",
+     "name": "Revised oxygen",
+     "p": "paper:FND-EA-CAND-REVISED",
+     "u": "%",
+     "v": 34
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-CAND-SEALEVEL",
+    "v": "The M2M abstract describes 14.7 psia with 21% oxygen as the sea level atmosphere used on the ISS, Shuttle and most other Russian and Chinese vehicles."
+   },
+   "id": "FND-EA-CAND-SEALEVEL",
+   "investigation": "Exploration atmospheres",
+   "kind": "candidate_atmosphere",
+   "ntrs_id": "20240003211",
+   "p": "paper:FND-EA-CAND-SEALEVEL",
+   "page": null,
+   "quote": "rather than the sea level atmosphere of 14.7 psia, 21% oxygen (O<sub>2</sub>) found on the International Space Station, Shuttle, and most other Russian and Chinese space vehicles and stations.",
+   "values": [
+    {
+     "as_written": "14.7 psia",
+     "name": "Pressure",
+     "p": "paper:FND-EA-CAND-SEALEVEL",
+     "u": "psia",
+     "v": 14.7
+    },
+    {
+     "as_written": "21% oxygen",
+     "name": "Oxygen",
+     "p": "paper:FND-EA-CAND-SEALEVEL",
+     "u": "%",
+     "v": 21
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-CAND-STUDY",
+    "v": "The initial prebreathe validation studies had crew living at 8.2 psi, 34% O2 and 66% N2, called the Exploration Atmosphere."
+   },
+   "id": "FND-EA-CAND-STUDY",
+   "investigation": "Exploration atmospheres",
+   "kind": "candidate_atmosphere",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-CAND-STUDY",
+   "page": 2,
+   "quote": "Initial prebreathe validation studies have crew living at 8.2 psi, 34% O 2 , 66% N 2 (aka “Exploration Atmosphere”)",
+   "values": [
+    {
+     "as_written": "8.2 psi",
+     "name": "Pressure",
+     "p": "paper:FND-EA-CAND-STUDY",
+     "u": "psi",
+     "v": 8.2
+    },
+    {
+     "as_written": "34% O 2",
+     "name": "Oxygen",
+     "p": "paper:FND-EA-CAND-STUDY",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "66% N 2",
+     "name": "Nitrogen",
+     "p": "paper:FND-EA-CAND-STUDY",
+     "u": "%",
+     "v": 66
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-CAND-TABLE",
+    "v": "The prebreathe rationale slide lists four saturation atmospheres: 14.7 psi with 21% O2, 10.2 psi with 26.5% O2, 8.2 psi with 34% O2, and 5.0 psi with 100% O2 (Apollo, Gemini)."
+   },
+   "id": "FND-EA-CAND-TABLE",
+   "investigation": "Exploration atmospheres",
+   "kind": "candidate_atmosphere",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-CAND-TABLE",
+   "page": 6,
+   "quote": "14.7 psi, 21% O2 4:00 (resting) 6:30-7:00 2 10.2 psi, 26.5% O2 0:40 3:00-3:30 3 8.2 psi, 34% O2 0:00-0:15 0:00-0:30 4,5 5.0 psi, 100% O2 (Apollo, Gemini) 0:00 0:00",
+   "values": [
+    {
+     "as_written": "14.7 psi",
+     "name": "Atmosphere A pressure",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "psi",
+     "v": 14.7
+    },
+    {
+     "as_written": "21% O2",
+     "name": "Atmosphere A oxygen",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "%",
+     "v": 21
+    },
+    {
+     "as_written": "10.2 psi",
+     "name": "Atmosphere B pressure",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "psi",
+     "v": 10.2
+    },
+    {
+     "as_written": "26.5% O2",
+     "name": "Atmosphere B oxygen",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "%",
+     "v": 26.5
+    },
+    {
+     "as_written": "8.2 psi",
+     "name": "Atmosphere C pressure",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "psi",
+     "v": 8.2
+    },
+    {
+     "as_written": "34% O2",
+     "name": "Atmosphere C oxygen",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "5.0 psi",
+     "name": "Atmosphere D (Apollo, Gemini) pressure",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "psi",
+     "v": 5.0
+    },
+    {
+     "as_written": "100% O2",
+     "name": "Atmosphere D oxygen",
+     "p": "paper:FND-EA-CAND-TABLE",
+     "u": "%",
+     "v": 100
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-COND-O2",
+    "v": "Average chamber oxygen in the 11-day study was 33.96% against a 34% target with a 1% tolerance."
+   },
+   "id": "FND-EA-COND-O2",
+   "investigation": "Exploration atmospheres",
+   "kind": "condition",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-COND-O2",
+   "page": 16,
+   "quote": "Average Chamber O2: 33.96% (target 34% +/ - 1%)",
+   "values": [
+    {
+     "as_written": "33.96%",
+     "name": "Average chamber oxygen",
+     "p": "paper:FND-EA-COND-O2",
+     "u": "%",
+     "v": 33.96
+    },
+    {
+     "as_written": "34%",
+     "name": "Target oxygen",
+     "p": "paper:FND-EA-COND-O2",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "1%",
+     "name": "Target tolerance",
+     "p": "paper:FND-EA-COND-O2",
+     "u": "%",
+     "v": 1
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-COND-PRESSURE",
+    "v": "Average habitat pressure in the 11-day chamber study was 8.15 psi against a target of 8.2 psia plus or minus 0.1."
+   },
+   "id": "FND-EA-COND-PRESSURE",
+   "investigation": "Exploration atmospheres",
+   "kind": "condition",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-COND-PRESSURE",
+   "page": 14,
+   "quote": "Average Habitat pressure: 8.15psi (target 8.2psia +/ - 0.1)",
+   "values": [
+    {
+     "as_written": "8.15psi",
+     "name": "Average habitat pressure",
+     "p": "paper:FND-EA-COND-PRESSURE",
+     "u": "psi",
+     "v": 8.15
+    },
+    {
+     "as_written": "8.2psia",
+     "name": "Target pressure",
+     "p": "paper:FND-EA-COND-PRESSURE",
+     "u": "psia",
+     "v": 8.2
+    },
+    {
+     "as_written": "0.1",
+     "name": "Target tolerance",
+     "p": "paper:FND-EA-COND-PRESSURE",
+     "u": "psi",
+     "v": 0.1
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-10.2",
+    "v": "For 10.2 psi with 26.5% O2 the slide gives a microgravity prebreathe of 0:40 and a planetary prebreathe of 3:00 to 3:30 (h:mm); the 3:30 upper bound is not encoded as a value because it is not a literal number."
+   },
+   "id": "FND-EA-PB-10.2",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-PB-10.2",
+   "page": 6,
+   "quote": "10.2 psi, 26.5% O2 0:40 3:00-3:30",
+   "values": [
+    {
+     "as_written": "10.2 psi",
+     "name": "Saturation pressure",
+     "p": "paper:FND-EA-PB-10.2",
+     "u": "psi",
+     "v": 10.2
+    },
+    {
+     "as_written": "26.5% O2",
+     "name": "Oxygen",
+     "p": "paper:FND-EA-PB-10.2",
+     "u": "%",
+     "v": 26.5
+    },
+    {
+     "as_written": "0:40",
+     "name": "Microgravity prebreathe",
+     "p": "paper:FND-EA-PB-10.2",
+     "u": "min",
+     "v": 40
+    },
+    {
+     "as_written": "3:00",
+     "name": "Planetary prebreathe lower bound",
+     "p": "paper:FND-EA-PB-10.2",
+     "u": "h",
+     "v": 3
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-14.7",
+    "v": "For 14.7 psi with 21% O2 the slide gives a microgravity prebreathe of 4:00 (resting) and a planetary prebreathe of 6:30 to 7:00 (h:mm); the 6:30 lower bound is not encoded as a value because it is not a literal number."
+   },
+   "id": "FND-EA-PB-14.7",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-PB-14.7",
+   "page": 6,
+   "quote": "14.7 psi, 21% O2 4:00 (resting) 6:30-7:00",
+   "values": [
+    {
+     "as_written": "14.7 psi",
+     "name": "Saturation pressure",
+     "p": "paper:FND-EA-PB-14.7",
+     "u": "psi",
+     "v": 14.7
+    },
+    {
+     "as_written": "21% O2",
+     "name": "Oxygen",
+     "p": "paper:FND-EA-PB-14.7",
+     "u": "%",
+     "v": 21
+    },
+    {
+     "as_written": "4:00",
+     "name": "Microgravity prebreathe",
+     "p": "paper:FND-EA-PB-14.7",
+     "u": "h",
+     "v": 4
+    },
+    {
+     "as_written": "7:00",
+     "name": "Planetary prebreathe upper bound",
+     "p": "paper:FND-EA-PB-14.7",
+     "u": "h",
+     "v": 7
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-8.2",
+    "v": "For 8.2 psi with 34% O2 the slide gives a microgravity prebreathe of 0:00 to 0:15 and a planetary prebreathe of 0:00 to 0:30 (h:mm)."
+   },
+   "id": "FND-EA-PB-8.2",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-PB-8.2",
+   "page": 6,
+   "quote": "8.2 psi, 34% O2 0:00-0:15 0:00-0:30",
+   "values": [
+    {
+     "as_written": "8.2 psi",
+     "name": "Saturation pressure",
+     "p": "paper:FND-EA-PB-8.2",
+     "u": "psi",
+     "v": 8.2
+    },
+    {
+     "as_written": "34% O2",
+     "name": "Oxygen",
+     "p": "paper:FND-EA-PB-8.2",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "0:00",
+     "name": "Microgravity prebreathe lower bound",
+     "p": "paper:FND-EA-PB-8.2",
+     "u": "min",
+     "v": 0
+    },
+    {
+     "as_written": "0:15",
+     "name": "Microgravity prebreathe upper bound",
+     "p": "paper:FND-EA-PB-8.2",
+     "u": "min",
+     "v": 15
+    },
+    {
+     "as_written": "0:00",
+     "name": "Planetary prebreathe lower bound",
+     "p": "paper:FND-EA-PB-8.2",
+     "u": "min",
+     "v": 0
+    },
+    {
+     "as_written": "0:30",
+     "name": "Planetary prebreathe upper bound",
+     "p": "paper:FND-EA-PB-8.2",
+     "u": "min",
+     "v": 30
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-ACTUAL",
+    "v": "Recorded prebreathe times in the 11-day study were between 20 min 01 s and 20 min 21 s across EVA1 to EVA5."
+   },
+   "id": "FND-EA-PB-ACTUAL",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-PB-ACTUAL",
+   "page": 17,
+   "quote": "Prebreathe Times: EVA1: 20min 14 sec EVA2: 20min 21 sec EVA3: 20min 01 sec EVA4: 20min 04 sec EVA5: 20min 10 sec",
+   "values": [
+    {
+     "as_written": "EVA1: 20min",
+     "name": "EVA1 prebreathe, minutes part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "min",
+     "v": 20
+    },
+    {
+     "as_written": "14 sec",
+     "name": "EVA1 prebreathe, seconds part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "s",
+     "v": 14
+    },
+    {
+     "as_written": "EVA2: 20min",
+     "name": "EVA2 prebreathe, minutes part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "min",
+     "v": 20
+    },
+    {
+     "as_written": "21 sec",
+     "name": "EVA2 prebreathe, seconds part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "s",
+     "v": 21
+    },
+    {
+     "as_written": "EVA3: 20min",
+     "name": "EVA3 prebreathe, minutes part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "min",
+     "v": 20
+    },
+    {
+     "as_written": "01 sec",
+     "name": "EVA3 prebreathe, seconds part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "s",
+     "v": 1
+    },
+    {
+     "as_written": "EVA4: 20min",
+     "name": "EVA4 prebreathe, minutes part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "min",
+     "v": 20
+    },
+    {
+     "as_written": "04 sec",
+     "name": "EVA4 prebreathe, seconds part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "s",
+     "v": 4
+    },
+    {
+     "as_written": "EVA5: 20min",
+     "name": "EVA5 prebreathe, minutes part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "min",
+     "v": 20
+    },
+    {
+     "as_written": "10 sec",
+     "name": "EVA5 prebreathe, seconds part",
+     "p": "paper:FND-EA-PB-ACTUAL",
+     "u": "s",
+     "v": 10
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-CAVEAT",
+    "v": "The same slide marks unvalidated estimates not yet available for flight use and assumes a 6 h EVA at 4.3 psia with roughly equal DCS risk; the text does not show which table cells the unvalidated label covers."
+   },
+   "id": "FND-EA-PB-CAVEAT",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-PB-CAVEAT",
+   "page": 6,
+   "quote": "Unvalidated estimates (i.e., not yet available for flight use) *Assumes 6hr EVA @ 4.3 psia and approximately equal DCS risk level",
+   "values": [
+    {
+     "as_written": "6hr",
+     "name": "Assumed EVA duration",
+     "p": "paper:FND-EA-PB-CAVEAT",
+     "u": "h",
+     "v": 6
+    },
+    {
+     "as_written": "4.3 psia",
+     "name": "Assumed suit pressure",
+     "p": "paper:FND-EA-PB-CAVEAT",
+     "u": "psia",
+     "v": 4.3
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-PROTOCOL",
+    "v": "The validation protocol equilibrates subjects at 8.2 psi and 34% O2 for 48 h, uses a minimum prebreathe of 20 min at or above 6.2 psi, and simulates EVA at 4.3 psi with 85% O2."
+   },
+   "id": "FND-EA-PB-PROTOCOL",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-PB-PROTOCOL",
+   "page": 10,
+   "quote": "Equilibrate to Exploration Atmosphere: 8.2psi/34% O 2 for 48 hrs – Minimum prebreathe duration: 20 min ≥ 6.2psi – Simulated EVA: 4.3psi/85% O 2",
+   "values": [
+    {
+     "as_written": "8.2psi",
+     "name": "Equilibration pressure",
+     "p": "paper:FND-EA-PB-PROTOCOL",
+     "u": "psi",
+     "v": 8.2
+    },
+    {
+     "as_written": "34%",
+     "name": "Equilibration oxygen",
+     "p": "paper:FND-EA-PB-PROTOCOL",
+     "u": "%",
+     "v": 34
+    },
+    {
+     "as_written": "48 hrs",
+     "name": "Equilibration time",
+     "p": "paper:FND-EA-PB-PROTOCOL",
+     "u": "h",
+     "v": 48
+    },
+    {
+     "as_written": "20 min",
+     "name": "Minimum prebreathe duration",
+     "p": "paper:FND-EA-PB-PROTOCOL",
+     "u": "min",
+     "v": 20
+    },
+    {
+     "as_written": "6.2psi",
+     "name": "Prebreathe pressure floor",
+     "p": "paper:FND-EA-PB-PROTOCOL",
+     "u": "psi",
+     "v": 6.2
+    },
+    {
+     "as_written": "4.3psi",
+     "name": "Simulated EVA pressure",
+     "p": "paper:FND-EA-PB-PROTOCOL",
+     "u": "psi",
+     "v": 4.3
+    },
+    {
+     "as_written": "85%",
+     "name": "Simulated EVA oxygen",
+     "p": "paper:FND-EA-PB-PROTOCOL",
+     "u": "%",
+     "v": 85
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-SEALEVEL",
+    "v": "The M2M abstract states that sea level cabins led to pre-EVA protocols with up to 4 hours of oxygen prebreathe because the suit operated at 4.3 psid."
+   },
+   "id": "FND-EA-PB-SEALEVEL",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20240003211",
+   "p": "paper:FND-EA-PB-SEALEVEL",
+   "page": null,
+   "quote": "Consequently this led to long pre-EVA denitrogenation protocols involving up to 4 hours of O<sub>2</sub> prebreathe because the EVA suit still operated at a low pressure of 4.3 psid.",
+   "values": [
+    {
+     "as_written": "4 hours",
+     "name": "Maximum prebreathe",
+     "p": "paper:FND-EA-PB-SEALEVEL",
+     "u": "h",
+     "v": 4
+    },
+    {
+     "as_written": "4.3 psid",
+     "name": "Suit pressure",
+     "p": "paper:FND-EA-PB-SEALEVEL",
+     "u": "psid",
+     "v": 4.3
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-PB-SHUTTLE-10.2",
+    "v": "The M2M abstract states that the Shuttle was certified for 10.2 psia with 26.5% O2, cutting oxygen prebreathe to 40 to 75 min."
+   },
+   "id": "FND-EA-PB-SHUTTLE-10.2",
+   "investigation": "Exploration atmospheres",
+   "kind": "prebreathe",
+   "ntrs_id": "20240003211",
+   "p": "paper:FND-EA-PB-SHUTTLE-10.2",
+   "page": null,
+   "quote": "To increase operational efficiency, the Shuttle was retroactively certified to operate using 10.2 psia, 26.5% O<sub>2</sub>, reducing O<sub>2</sub> prebreathe time to 40-75 min.",
+   "values": [
+    {
+     "as_written": "10.2 psia",
+     "name": "Cabin pressure",
+     "p": "paper:FND-EA-PB-SHUTTLE-10.2",
+     "u": "psia",
+     "v": 10.2
+    },
+    {
+     "as_written": "26.5%",
+     "name": "Oxygen",
+     "p": "paper:FND-EA-PB-SHUTTLE-10.2",
+     "u": "%",
+     "v": 26.5
+    },
+    {
+     "as_written": "40-75 min",
+     "name": "Prebreathe lower bound",
+     "p": "paper:FND-EA-PB-SHUTTLE-10.2",
+     "u": "min",
+     "v": 40
+    },
+    {
+     "as_written": "40-75 min",
+     "name": "Prebreathe upper bound",
+     "p": "paper:FND-EA-PB-SHUTTLE-10.2",
+     "u": "min",
+     "v": 75
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-EA-RES-DCS",
+    "v": "The preliminary summary reports 2 DCS cases in 25 simulated EVAs during the 11-day study, stated as 8%."
+   },
+   "id": "FND-EA-RES-DCS",
+   "investigation": "Exploration atmospheres",
+   "kind": "result",
+   "ntrs_id": "20220011152",
+   "p": "paper:FND-EA-RES-DCS",
+   "page": 18,
+   "quote": "Summary: 2 DCS cases out of 25 total simulated EVAs during the 11- day study (8% DCS)",
+   "values": [
+    {
+     "as_written": "2 DCS cases",
+     "name": "DCS cases",
+     "p": "paper:FND-EA-RES-DCS",
+     "u": "count",
+     "v": 2
+    },
+    {
+     "as_written": "25 total",
+     "name": "Simulated EVAs",
+     "p": "paper:FND-EA-RES-DCS",
+     "u": "count",
+     "v": 25
+    },
+    {
+     "as_written": "11- day",
+     "name": "Study length",
+     "p": "paper:FND-EA-RES-DCS",
+     "u": "day",
+     "v": 11
+    },
+    {
+     "as_written": "8% DCS",
+     "name": "DCS incidence",
+     "p": "paper:FND-EA-RES-DCS",
+     "u": "%",
+     "v": 8
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-COND-DIAMETERS",
+    "v": "The reported FLEX tests used methanol and n-heptane droplets with initial diameters between 2 and 5 mm."
+   },
+   "id": "FND-FLEX-COND-DIAMETERS",
+   "investigation": "FLEX",
+   "kind": "condition",
+   "ntrs_id": "20150023456",
+   "p": "paper:FND-FLEX-COND-DIAMETERS",
+   "page": 23,
+   "quote": "for methanol and n-heptane droplets with initial diameters between 2 and 5 mm.",
+   "values": [
+    {
+     "as_written": "2",
+     "name": "Initial diameter lower bound",
+     "p": "paper:FND-FLEX-COND-DIAMETERS",
+     "u": "mm",
+     "v": 2
+    },
+    {
+     "as_written": "5 mm",
+     "name": "Initial diameter upper bound",
+     "p": "paper:FND-FLEX-COND-DIAMETERS",
+     "u": "mm",
+     "v": 5
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+    "v": "The FLEX methanol droplet tests covered oxygen from 13% to 30%, CO2 from 5% to 75%, helium from 5% to 45% and initial diameters from 1 to 4.5 mm."
+   },
+   "id": "FND-FLEX-COND-METHANOL-RANGE",
+   "investigation": "FLEX",
+   "kind": "condition",
+   "ntrs_id": "20210022617",
+   "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+   "page": 4,
+   "quote": "13% < O2 < 30% 5% < CO2 < 75% 5% < He < 45% 1 < D0 < 4.5 mm",
+   "values": [
+    {
+     "as_written": "13%",
+     "name": "O2 lower bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "%",
+     "v": 13
+    },
+    {
+     "as_written": "30%",
+     "name": "O2 upper bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "%",
+     "v": 30
+    },
+    {
+     "as_written": "5% < CO2",
+     "name": "CO2 lower bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "%",
+     "v": 5
+    },
+    {
+     "as_written": "75%",
+     "name": "CO2 upper bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "%",
+     "v": 75
+    },
+    {
+     "as_written": "5% < He",
+     "name": "He lower bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "%",
+     "v": 5
+    },
+    {
+     "as_written": "45%",
+     "name": "He upper bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "%",
+     "v": 45
+    },
+    {
+     "as_written": "1 < D0",
+     "name": "Initial diameter lower bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "mm",
+     "v": 1
+    },
+    {
+     "as_written": "4.5 mm",
+     "name": "Initial diameter upper bound",
+     "p": "paper:FND-FLEX-COND-METHANOL-RANGE",
+     "u": "mm",
+     "v": 4.5
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-COND-PRESSURES",
+    "v": "FLEX droplets burned at ambient temperature at pressures between 0.70 and 3.05 atm with oxygen diluted by nitrogen, carbon dioxide or both."
+   },
+   "id": "FND-FLEX-COND-PRESSURES",
+   "investigation": "FLEX",
+   "kind": "condition",
+   "ntrs_id": "20150023456",
+   "p": "paper:FND-FLEX-COND-PRESSURES",
+   "page": 23,
+   "quote": "Burning was done in oxidizing atmospheres at ambient temperature and at various pressures between 0.70 and 3.05 atm, over ranges of dilution of oxygen with nitrogen, oxygen with carbon dioxide , and mixtures thereof .",
+   "values": [
+    {
+     "as_written": "0.70",
+     "name": "Pressure lower bound",
+     "p": "paper:FND-FLEX-COND-PRESSURES",
+     "u": "atm",
+     "v": 0.7
+    },
+    {
+     "as_written": "3.05 atm",
+     "name": "Pressure upper bound",
+     "p": "paper:FND-FLEX-COND-PRESSURES",
+     "u": "atm",
+     "v": 3.05
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-DEF-DISRUPTION",
+    "v": "In the FLEX results table a dash in the extinction diameter column means no flame extinction occurred, either because the droplet burned to completion or because a droplet disruption ended the test."
+   },
+   "id": "FND-FLEX-DEF-DISRUPTION",
+   "investigation": "FLEX",
+   "kind": "definition",
+   "ntrs_id": "20150023456",
+   "p": "paper:FND-FLEX-DEF-DISRUPTION",
+   "page": 25,
+   "quote": "Visible flame extinction diam eter—droplet diameter at the time the visible flame extinguishe d, where “-” indicates flame extinction did not occur either because the droplet burned to completion or because a droplet disruption ended the test.",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-DEF-DISRUPTIVE-BURNING",
+    "v": "For a fibre-supported test the report describes disruptive burning as burning in which the droplet becomes dislodged from the fibre."
+   },
+   "id": "FND-FLEX-DEF-DISRUPTIVE-BURNING",
+   "investigation": "FLEX",
+   "kind": "definition",
+   "ntrs_id": "20150023456",
+   "p": "paper:FND-FLEX-DEF-DISRUPTIVE-BURNING",
+   "page": 274,
+   "quote": "It was not really disruptive burning, in which the droplet becomes dislodged from the fiber, but the motion clearly influenced the burning history.",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-RES-CONTAMINANT",
+    "v": "The report attributes disruptive extinction of methanol probably, and of heptane possibly, to a needle coating contaminant."
+   },
+   "id": "FND-FLEX-RES-CONTAMINANT",
+   "investigation": "FLEX",
+   "kind": "result",
+   "ntrs_id": "20150023456",
+   "p": "paper:FND-FLEX-RES-CONTAMINANT",
+   "page": 23,
+   "quote": "(4) Disruptive extinction of methanol is probably due to the presence of the contaminant. (5) Disruptive extinction of heptane may be due to the presence of the contaminant.",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-RES-DISRUPTIVE",
+    "v": "As FLEX testing progressed the team noticed droplets tending to burn disruptively rather than show flame extinction at a finite droplet diameter."
+   },
+   "id": "FND-FLEX-RES-DISRUPTIVE",
+   "investigation": "FLEX",
+   "kind": "result",
+   "ntrs_id": "20150023456",
+   "p": "paper:FND-FLEX-RES-DISRUPTIVE",
+   "page": 17,
+   "quote": "As testing progressed, however, the science team noticed a propensity for the droplets to burn disruptively and not exhibit flame extinction (at a finite-sized droplet diameter).",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-RES-LOI",
+    "v": "For methanol droplets the limiting oxygen index was about 12 to 13% oxygen at atmospheric pressure."
+   },
+   "id": "FND-FLEX-RES-LOI",
+   "investigation": "FLEX",
+   "kind": "result",
+   "ntrs_id": "20210022617",
+   "p": "paper:FND-FLEX-RES-LOI",
+   "page": 4,
+   "quote": "The limiting oxygen index (LOI) ~ 12-13% oxygen at atmospheric pressure.",
+   "values": [
+    {
+     "as_written": "12-13%",
+     "name": "LOI lower bound",
+     "p": "paper:FND-FLEX-RES-LOI",
+     "u": "%",
+     "v": 12
+    },
+    {
+     "as_written": "12-13%",
+     "name": "LOI upper bound",
+     "p": "paper:FND-FLEX-RES-LOI",
+     "u": "%",
+     "v": 13
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-FLEX-RES-TESTEND",
+    "v": "Table IX has a Test end column, and test FLEX-001 (methanol, 757.7 mmHg, 0.21 O2) is recorded with the verbatim outcome label Disruption."
+   },
+   "id": "FND-FLEX-RES-TESTEND",
+   "investigation": "FLEX",
+   "kind": "result",
+   "ntrs_id": "20150023456",
+   "p": "paper:FND-FLEX-RES-TESTEND",
+   "page": 26,
+   "quote": "Burn time, s Test end Test Identifier Date Greenwich mean time O2 N2 CO2 He FLEX–001 20CAL08 3/5/09 17:22:03 Methanol 757.7 0.21 0.79 0 0 1.69 0.89 0.52 4.3 Disruption",
+   "values": [
+    {
+     "as_written": "757.7",
+     "name": "FLEX-001 ambient pressure",
+     "p": "paper:FND-FLEX-RES-TESTEND",
+     "u": "mmHg",
+     "v": 757.7
+    },
+    {
+     "as_written": "0.21",
+     "name": "FLEX-001 O2 mole fraction",
+     "p": "paper:FND-FLEX-RES-TESTEND",
+     "u": "mole fraction",
+     "v": 0.21
+    },
+    {
+     "as_written": "0.79",
+     "name": "FLEX-001 N2 mole fraction",
+     "p": "paper:FND-FLEX-RES-TESTEND",
+     "u": "mole fraction",
+     "v": 0.79
+    },
+    {
+     "as_written": "1.69",
+     "name": "FLEX-001 initial droplet diameter",
+     "p": "paper:FND-FLEX-RES-TESTEND",
+     "u": "mm",
+     "v": 1.69
+    },
+    {
+     "as_written": "4.3",
+     "name": "FLEX-001 burn time",
+     "p": "paper:FND-FLEX-RES-TESTEND",
+     "u": "s",
+     "v": 4.3
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S4-COND-MAT-FLOW",
+    "v": "Table 1 lists Saffire IV samples as SIBAL cloth (IV-1, 50 cm) and two-sided PMMA (IV-2, 18 cm), both in concurrent flow at 20 cm/s."
+   },
+   "id": "FND-S4-COND-MAT-FLOW",
+   "investigation": "Saffire IV",
+   "kind": "condition",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S4-COND-MAT-FLOW",
+   "page": 3,
+   "quote": "Flight/Sample IV-1 IV-2 V-2 V-3 V-4 Material/configuration SIBAL Cloth 2-sided PMMA Cotton Jersey 1 sided PMMA Structured PMMA Length (cm) 50 18 50 18 20 Air Flow Rate (cm/s) 20 20 20 20 20 Flow Direction Concurrent Concurrent Concurrent Concurrent Opposed",
+   "values": [
+    {
+     "as_written": "50",
+     "name": "IV-1 sample length",
+     "p": "paper:FND-S4-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 50
+    },
+    {
+     "as_written": "18",
+     "name": "IV-2 sample length",
+     "p": "paper:FND-S4-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 18
+    },
+    {
+     "as_written": "20",
+     "name": "Air flow rate (all columns)",
+     "p": "paper:FND-S4-COND-MAT-FLOW",
+     "u": "cm/s",
+     "v": 20
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S4-COND-P-O2",
+    "v": "Table 1 gives Saffire IV samples IV-1 and IV-2 an ambient pressure of 100.0 kPa and 22.0 mol % oxygen (table columns run IV-1, IV-2, V-2, V-3, V-4)."
+   },
+   "id": "FND-S4-COND-P-O2",
+   "investigation": "Saffire IV",
+   "kind": "condition",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S4-COND-P-O2",
+   "page": 3,
+   "quote": "Ambient Pressure (kPa) 100.0 100.0 70.7 71.3 72.6 Oxygen Concentration (mol %) 22.0 22.0 26.2 25.4 25.7",
+   "values": [
+    {
+     "as_written": "100.0",
+     "name": "IV-1 ambient pressure",
+     "p": "paper:FND-S4-COND-P-O2",
+     "u": "kPa",
+     "v": 100.0
+    },
+    {
+     "as_written": "100.0",
+     "name": "IV-2 ambient pressure",
+     "p": "paper:FND-S4-COND-P-O2",
+     "u": "kPa",
+     "v": 100.0
+    },
+    {
+     "as_written": "22.0",
+     "name": "IV-1 oxygen concentration",
+     "p": "paper:FND-S4-COND-P-O2",
+     "u": "mol %",
+     "v": 22.0
+    },
+    {
+     "as_written": "22.0",
+     "name": "IV-2 oxygen concentration",
+     "p": "paper:FND-S4-COND-P-O2",
+     "u": "mol %",
+     "v": 22.0
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S4-RES-IV2-NOFLOW",
+    "v": "In Saffire IV-2 (two-sided PMMA) fuel jets from the bubbling surface kept the flame alive through a 15 s interval of no flow."
+   },
+   "id": "FND-S4-RES-IV2-NOFLOW",
+   "investigation": "Saffire IV",
+   "kind": "result",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S4-RES-IV2-NOFLOW",
+   "page": 5,
+   "quote": "These jets of fuel emerging from the surface provided sufficient mixing to keep the flame alive over the 15 second interval of no flow.",
+   "values": [
+    {
+     "as_written": "15 second",
+     "name": "No-flow interval",
+     "p": "paper:FND-S4-RES-IV2-NOFLOW",
+     "u": "s",
+     "v": 15
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S45-COND-MATERIALS",
+    "v": "Cotton jersey had an area density of 18.1 mg/cm2 and the cast PMMA was one-sided 5 mm or two-sided 10 mm thick."
+   },
+   "id": "FND-S45-COND-MATERIALS",
+   "investigation": "Saffire IV and V",
+   "kind": "condition",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S45-COND-MATERIALS",
+   "page": 4,
+   "quote": "cotton jersey material with an area density of 18.1 mg/cm2; or cast polymethyl methacrylate (PMMA) (either one- sided 5 mm thick or two- sided (10 mm thick) .",
+   "values": [
+    {
+     "as_written": "18.1 mg/cm2",
+     "name": "Cotton jersey area density",
+     "p": "paper:FND-S45-COND-MATERIALS",
+     "u": "mg/cm2",
+     "v": 18.1
+    },
+    {
+     "as_written": "5 mm",
+     "name": "One-sided PMMA thickness",
+     "p": "paper:FND-S45-COND-MATERIALS",
+     "u": "mm",
+     "v": 5
+    },
+    {
+     "as_written": "10 mm",
+     "name": "Two-sided PMMA thickness",
+     "p": "paper:FND-S45-COND-MATERIALS",
+     "u": "mm",
+     "v": 10
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S45-COND-SIZES",
+    "v": "The Saffire IV and V samples were all 40 cm wide, with lengths from 18 cm (PMMA) to 50 cm (fabrics)."
+   },
+   "id": "FND-S45-COND-SIZES",
+   "investigation": "Saffire IV and V",
+   "kind": "condition",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S45-COND-SIZES",
+   "page": 1,
+   "quote": "The samples were all 40 cm wide and with various lengths ranging from 18 cm for the PMMA samples to 50 cm for the fabrics.",
+   "values": [
+    {
+     "as_written": "40 cm wide",
+     "name": "Sample width",
+     "p": "paper:FND-S45-COND-SIZES",
+     "u": "cm",
+     "v": 40
+    },
+    {
+     "as_written": "18 cm",
+     "name": "PMMA sample length",
+     "p": "paper:FND-S45-COND-SIZES",
+     "u": "cm",
+     "v": 18
+    },
+    {
+     "as_written": "50 cm",
+     "name": "Fabric sample length",
+     "p": "paper:FND-S45-COND-SIZES",
+     "u": "cm",
+     "v": 50
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S45-RES-FLAMESIZE",
+    "v": "Table 2 gives steady and maximum flame sizes of 8.5 and 11.0 cm for IV-1 (SIBAL) and 10.0 and 14.0 cm for V-2 (cotton jersey) (columns run I-1, II-5, II-6, III-1, IV-1, V-2)."
+   },
+   "id": "FND-S45-RES-FLAMESIZE",
+   "investigation": "Saffire IV and V",
+   "kind": "result",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S45-RES-FLAMESIZE",
+   "page": 8,
+   "quote": "Steady state size (cm) 4 4 5 5 8.5 10.0 Maximum size (cm) 6.2 4 5 8.2 11.0 14.0",
+   "values": [
+    {
+     "as_written": "8.5",
+     "name": "IV-1 steady state flame size",
+     "p": "paper:FND-S45-RES-FLAMESIZE",
+     "u": "cm",
+     "v": 8.5
+    },
+    {
+     "as_written": "10.0",
+     "name": "V-2 steady state flame size",
+     "p": "paper:FND-S45-RES-FLAMESIZE",
+     "u": "cm",
+     "v": 10.0
+    },
+    {
+     "as_written": "11.0",
+     "name": "IV-1 maximum flame size",
+     "p": "paper:FND-S45-RES-FLAMESIZE",
+     "u": "cm",
+     "v": 11.0
+    },
+    {
+     "as_written": "14.0",
+     "name": "V-2 maximum flame size",
+     "p": "paper:FND-S45-RES-FLAMESIZE",
+     "u": "cm",
+     "v": 14.0
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S45-RES-HRR",
+    "v": "The authors report that, despite heat release rates up to 10 kW, the average vehicle conditions did not rise to unacceptable levels."
+   },
+   "id": "FND-S45-RES-HRR",
+   "investigation": "Saffire IV and V",
+   "kind": "result",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S45-RES-HRR",
+   "page": 2,
+   "quote": "However, despite having heat release rates up to 10 kW, the average vehicle conditions did not rise to unacceptable levels.",
+   "values": [
+    {
+     "as_written": "10 kW",
+     "name": "Maximum heat release rate",
+     "p": "paper:FND-S45-RES-HRR",
+     "u": "kW",
+     "v": 10
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S5-COND-MAT-FLOW",
+    "v": "Table 1 lists Saffire V samples as cotton jersey (V-2, 50 cm), one-sided PMMA (V-3, 18 cm) and structured PMMA (V-4, 20 cm), at 20 cm/s, concurrent for V-2 and V-3 and opposed for V-4."
+   },
+   "id": "FND-S5-COND-MAT-FLOW",
+   "investigation": "Saffire V",
+   "kind": "condition",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S5-COND-MAT-FLOW",
+   "page": 3,
+   "quote": "Flight/Sample IV-1 IV-2 V-2 V-3 V-4 Material/configuration SIBAL Cloth 2-sided PMMA Cotton Jersey 1 sided PMMA Structured PMMA Length (cm) 50 18 50 18 20 Air Flow Rate (cm/s) 20 20 20 20 20 Flow Direction Concurrent Concurrent Concurrent Concurrent Opposed",
+   "values": [
+    {
+     "as_written": "50",
+     "name": "V-2 sample length",
+     "p": "paper:FND-S5-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 50
+    },
+    {
+     "as_written": "18",
+     "name": "V-3 sample length",
+     "p": "paper:FND-S5-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 18
+    },
+    {
+     "as_written": "20",
+     "name": "V-4 sample length",
+     "p": "paper:FND-S5-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 20
+    },
+    {
+     "as_written": "20",
+     "name": "Air flow rate (all columns)",
+     "p": "paper:FND-S5-COND-MAT-FLOW",
+     "u": "cm/s",
+     "v": 20
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S5-COND-P-O2",
+    "v": "Table 1 gives Saffire V samples V-2, V-3 and V-4 ambient pressures of 70.7, 71.3 and 72.6 kPa with oxygen at 26.2, 25.4 and 25.7 mol % (table columns run IV-1, IV-2, V-2, V-3, V-4)."
+   },
+   "id": "FND-S5-COND-P-O2",
+   "investigation": "Saffire V",
+   "kind": "condition",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S5-COND-P-O2",
+   "page": 3,
+   "quote": "Ambient Pressure (kPa) 100.0 100.0 70.7 71.3 72.6 Oxygen Concentration (mol %) 22.0 22.0 26.2 25.4 25.7",
+   "values": [
+    {
+     "as_written": "70.7",
+     "name": "V-2 ambient pressure",
+     "p": "paper:FND-S5-COND-P-O2",
+     "u": "kPa",
+     "v": 70.7
+    },
+    {
+     "as_written": "71.3",
+     "name": "V-3 ambient pressure",
+     "p": "paper:FND-S5-COND-P-O2",
+     "u": "kPa",
+     "v": 71.3
+    },
+    {
+     "as_written": "72.6",
+     "name": "V-4 ambient pressure",
+     "p": "paper:FND-S5-COND-P-O2",
+     "u": "kPa",
+     "v": 72.6
+    },
+    {
+     "as_written": "26.2",
+     "name": "V-2 oxygen concentration",
+     "p": "paper:FND-S5-COND-P-O2",
+     "u": "mol %",
+     "v": 26.2
+    },
+    {
+     "as_written": "25.4",
+     "name": "V-3 oxygen concentration",
+     "p": "paper:FND-S5-COND-P-O2",
+     "u": "mol %",
+     "v": 25.4
+    },
+    {
+     "as_written": "25.7",
+     "name": "V-4 oxygen concentration",
+     "p": "paper:FND-S5-COND-P-O2",
+     "u": "mol %",
+     "v": 25.7
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S5-COND-REDUCEDFLOW",
+    "v": "For Saffire V samples 3 and 4 the air flow was reduced from 20 cm/s to 5 cm/s and held there for 300 s before the fan was turned off."
+   },
+   "id": "FND-S5-COND-REDUCEDFLOW",
+   "investigation": "Saffire V",
+   "kind": "condition",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S5-COND-REDUCEDFLOW",
+   "page": 5,
+   "quote": "the air flow for Saffire V samples 3 and 4 was reduced from the starting condition of 20 cm/s to 5 cm/s and held at 5 cm/s for 300 seconds .",
+   "values": [
+    {
+     "as_written": "20 cm/s",
+     "name": "Starting flow speed",
+     "p": "paper:FND-S5-COND-REDUCEDFLOW",
+     "u": "cm/s",
+     "v": 20
+    },
+    {
+     "as_written": "5 cm/s",
+     "name": "Reduced flow speed",
+     "p": "paper:FND-S5-COND-REDUCEDFLOW",
+     "u": "cm/s",
+     "v": 5
+    },
+    {
+     "as_written": "300 seconds",
+     "name": "Hold time at reduced flow",
+     "p": "paper:FND-S5-COND-REDUCEDFLOW",
+     "u": "s",
+     "v": 300
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S5-RES-EXTINCT",
+    "v": "When the fan was turned off after the reduced-flow hold, Saffire V-3 and V-4 extinguished immediately."
+   },
+   "id": "FND-S5-RES-EXTINCT",
+   "investigation": "Saffire V",
+   "kind": "result",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S5-RES-EXTINCT",
+   "page": 5,
+   "quote": "Consequently, when the fan was turned off in Saffire V -3 and V-4, the sample extinguished immediately (Figures 5 and 6).",
+   "values": []
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S5-RES-V2-REIGNITE",
+    "v": "In Saffire V-2 (cotton) the fan was off for 70 s, yet the flame grew back when flow resumed and burned another 150 s until the material was consumed."
+   },
+   "id": "FND-S5-RES-V2-REIGNITE",
+   "investigation": "Saffire V",
+   "kind": "result",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S5-RES-V2-REIGNITE",
+   "page": 4,
+   "quote": "The sample burned steadily for the initial 300 seconds while the fan was on. At approximately 280 seconds, the fan was turned off and remained off for 70 seconds. Despite this long interval, the flame grew back when the flow was turned on again and continued to burn for another 150 seconds until the material was consumed.",
+   "values": [
+    {
+     "as_written": "300 seconds",
+     "name": "Initial steady burn with fan on",
+     "p": "paper:FND-S5-RES-V2-REIGNITE",
+     "u": "s",
+     "v": 300
+    },
+    {
+     "as_written": "280 seconds",
+     "name": "Time fan turned off",
+     "p": "paper:FND-S5-RES-V2-REIGNITE",
+     "u": "s",
+     "v": 280
+    },
+    {
+     "as_written": "70 seconds",
+     "name": "Fan-off interval",
+     "p": "paper:FND-S5-RES-V2-REIGNITE",
+     "u": "s",
+     "v": 70
+    },
+    {
+     "as_written": "150 seconds",
+     "name": "Further burn after flow restored",
+     "p": "paper:FND-S5-RES-V2-REIGNITE",
+     "u": "s",
+     "v": 150
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S5-RES-V3-LENGTH",
+    "v": "The Saffire V-3 one-sided PMMA flame, in 25.4% oxygen, grew to 11 cm after 450 s."
+   },
+   "id": "FND-S5-RES-V3-LENGTH",
+   "investigation": "Saffire V",
+   "kind": "result",
+   "ntrs_id": "20210011521",
+   "p": "paper:FND-S5-RES-V3-LENGTH",
+   "page": 9,
+   "quote": "In Saffire V-3, the one-sided PMMA sample flame (in 25.4% oxygen) grew to 11 cm after 450 seconds.",
+   "values": [
+    {
+     "as_written": "25.4%",
+     "name": "V-3 oxygen concentration",
+     "p": "paper:FND-S5-RES-V3-LENGTH",
+     "u": "%",
+     "v": 25.4
+    },
+    {
+     "as_written": "11 cm",
+     "name": "V-3 flame length",
+     "p": "paper:FND-S5-RES-V3-LENGTH",
+     "u": "cm",
+     "v": 11
+    },
+    {
+     "as_written": "450 seconds",
+     "name": "Time to reach length",
+     "p": "paper:FND-S5-RES-V3-LENGTH",
+     "u": "s",
+     "v": 450
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-COND-FLOWCHANGE",
+    "v": "In Saffire VI-3 (two-sided PMMA) the flow was changed from 20 cm/s to 5 cm/s at 1120 s and terminated at 1420 s."
+   },
+   "id": "FND-S6-COND-FLOWCHANGE",
+   "investigation": "Saffire VI",
+   "kind": "condition",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-COND-FLOWCHANGE",
+   "page": 5,
+   "quote": "The flow was changed from 20 cm/s to 5 cm/s at 1120 s and terminated at 1420 s.",
+   "values": [
+    {
+     "as_written": "20 cm/s",
+     "name": "Initial flow speed",
+     "p": "paper:FND-S6-COND-FLOWCHANGE",
+     "u": "cm/s",
+     "v": 20
+    },
+    {
+     "as_written": "5 cm/s",
+     "name": "Reduced flow speed",
+     "p": "paper:FND-S6-COND-FLOWCHANGE",
+     "u": "cm/s",
+     "v": 5
+    },
+    {
+     "as_written": "1120 s",
+     "name": "Time of flow reduction",
+     "p": "paper:FND-S6-COND-FLOWCHANGE",
+     "u": "s",
+     "v": 1120
+    },
+    {
+     "as_written": "1420 s",
+     "name": "Time flow terminated",
+     "p": "paper:FND-S6-COND-FLOWCHANGE",
+     "u": "s",
+     "v": 1420
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-COND-MAT-FLOW",
+    "v": "Table 1 lists Saffire VI samples as SIBAL cloth (VI-2, 50 cm long), two-sided PMMA (VI-3, 18 cm) and one-sided PMMA (VI-4, 18 cm), all in concurrent flow at 20 cm/s."
+   },
+   "id": "FND-S6-COND-MAT-FLOW",
+   "investigation": "Saffire VI",
+   "kind": "condition",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-COND-MAT-FLOW",
+   "page": 3,
+   "quote": "Material SIBAL Cloth Cotton Jersey SIBAL Cloth Two-Sided PMMA One-Sided PMMA Length (cm) 50 50 50 18 18 Air Flow Rate (cm/s) 20 20 20 20 20 Flow Direction Concurrent Concurrent Concurrent Concurrent Concurrent",
+   "values": [
+    {
+     "as_written": "50",
+     "name": "VI-2 sample length",
+     "p": "paper:FND-S6-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 50
+    },
+    {
+     "as_written": "18",
+     "name": "VI-3 sample length",
+     "p": "paper:FND-S6-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 18
+    },
+    {
+     "as_written": "18",
+     "name": "VI-4 sample length",
+     "p": "paper:FND-S6-COND-MAT-FLOW",
+     "u": "cm",
+     "v": 18
+    },
+    {
+     "as_written": "20",
+     "name": "Air flow rate (all columns)",
+     "p": "paper:FND-S6-COND-MAT-FLOW",
+     "u": "cm/s",
+     "v": 20
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-COND-P-O2",
+    "v": "Table 1 gives Saffire VI ambient pressures of 54.1, 54.6 and 55.2 kPa with oxygen at 31.0, 30.3 and 28.8 mol % for samples VI-2, VI-3 and VI-4 (table columns run IV-1, V-2, VI-2, VI-3, VI-4)."
+   },
+   "id": "FND-S6-COND-P-O2",
+   "investigation": "Saffire VI",
+   "kind": "condition",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-COND-P-O2",
+   "page": 3,
+   "quote": "Ambient Pressure (kPa) 100.0 70.7 54.1 54.6 55.2 Oxygen Concentration (mol %) 22.0 26.2 31.0 30.3 28.8",
+   "values": [
+    {
+     "as_written": "54.1",
+     "name": "VI-2 ambient pressure",
+     "p": "paper:FND-S6-COND-P-O2",
+     "u": "kPa",
+     "v": 54.1
+    },
+    {
+     "as_written": "54.6",
+     "name": "VI-3 ambient pressure",
+     "p": "paper:FND-S6-COND-P-O2",
+     "u": "kPa",
+     "v": 54.6
+    },
+    {
+     "as_written": "55.2",
+     "name": "VI-4 ambient pressure",
+     "p": "paper:FND-S6-COND-P-O2",
+     "u": "kPa",
+     "v": 55.2
+    },
+    {
+     "as_written": "31.0",
+     "name": "VI-2 oxygen concentration",
+     "p": "paper:FND-S6-COND-P-O2",
+     "u": "mol %",
+     "v": 31.0
+    },
+    {
+     "as_written": "30.3",
+     "name": "VI-3 oxygen concentration",
+     "p": "paper:FND-S6-COND-P-O2",
+     "u": "mol %",
+     "v": 30.3
+    },
+    {
+     "as_written": "28.8",
+     "name": "VI-4 oxygen concentration",
+     "p": "paper:FND-S6-COND-P-O2",
+     "u": "mol %",
+     "v": 28.8
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-COND-SIBAL",
+    "v": "SIBAL fabric in Saffire VI was 75% cotton and 25% fiberglass with an area density of 18.05 mg/cm2, and the PMMA was either one-sided 5 mm or two-sided 10 mm thick."
+   },
+   "id": "FND-S6-COND-SIBAL",
+   "investigation": "Saffire VI",
+   "kind": "condition",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-COND-SIBAL",
+   "page": 4,
+   "quote": "“SIBAL” fabric (75% cotton and 25% fiberglass)1 with a total area density of 18.05 mg/cm2; or flat, cast, polymethyl methacrylate (PMMA) (either one-sided 5 mm thick or two-sided (10 mm thick).",
+   "values": [
+    {
+     "as_written": "75%",
+     "name": "SIBAL cotton fraction",
+     "p": "paper:FND-S6-COND-SIBAL",
+     "u": "%",
+     "v": 75
+    },
+    {
+     "as_written": "25%",
+     "name": "SIBAL fiberglass fraction",
+     "p": "paper:FND-S6-COND-SIBAL",
+     "u": "%",
+     "v": 25
+    },
+    {
+     "as_written": "18.05 mg/cm2",
+     "name": "SIBAL area density",
+     "p": "paper:FND-S6-COND-SIBAL",
+     "u": "mg/cm2",
+     "v": 18.05
+    },
+    {
+     "as_written": "5 mm",
+     "name": "One-sided PMMA thickness",
+     "p": "paper:FND-S6-COND-SIBAL",
+     "u": "mm",
+     "v": 5
+    },
+    {
+     "as_written": "10 mm",
+     "name": "Two-sided PMMA thickness",
+     "p": "paper:FND-S6-COND-SIBAL",
+     "u": "mm",
+     "v": 10
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-COND-SIZES",
+    "v": "The Saffire VI samples were all 41 cm wide: a 50 cm cotton/fiberglass sheet, 18 cm long PMMA slabs of 1 cm (two-sided) and 0.5 cm (one-sided) thickness, and a 7 cm Nomex sample."
+   },
+   "id": "FND-S6-COND-SIZES",
+   "investigation": "Saffire VI",
+   "kind": "condition",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-COND-SIZES",
+   "page": 2,
+   "quote": "concurrent spread over large samples (all 41 cm wide) including a thin sheet of flammable fuel (cotton/fiberglass 50 cm long); 2-sided spread over 1 cm thick polymethyl methacrylate (PMMA) (18 cm lo ng); 1-sided spread over 0.5 cm thick (18 cm long); and Nomex fabric (7 cm long).",
+   "values": [
+    {
+     "as_written": "41 cm wide",
+     "name": "Sample width",
+     "p": "paper:FND-S6-COND-SIZES",
+     "u": "cm",
+     "v": 41
+    },
+    {
+     "as_written": "50 cm long",
+     "name": "Cotton/fiberglass sample length",
+     "p": "paper:FND-S6-COND-SIZES",
+     "u": "cm",
+     "v": 50
+    },
+    {
+     "as_written": "1 cm thick",
+     "name": "Two-sided PMMA thickness",
+     "p": "paper:FND-S6-COND-SIZES",
+     "u": "cm",
+     "v": 1
+    },
+    {
+     "as_written": "0.5 cm thick",
+     "name": "One-sided PMMA thickness",
+     "p": "paper:FND-S6-COND-SIZES",
+     "u": "cm",
+     "v": 0.5
+    },
+    {
+     "as_written": "18 cm long",
+     "name": "PMMA sample length",
+     "p": "paper:FND-S6-COND-SIZES",
+     "u": "cm",
+     "v": 18
+    },
+    {
+     "as_written": "7 cm long",
+     "name": "Nomex sample length",
+     "p": "paper:FND-S6-COND-SIZES",
+     "u": "cm",
+     "v": 7
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-DET-CO-EXCEED",
+    "v": "Carbon monoxide levels in Saffire VI were well above the 24-hour SMAC and close to the 1-hour SMAC."
+   },
+   "id": "FND-S6-DET-CO-EXCEED",
+   "investigation": "Saffire VI",
+   "kind": "detection",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-DET-CO-EXCEED",
+   "page": 5,
+   "quote": "For carbon monoxide the levels were well above the 24-hour SMAC and quite close to the 1-hour level.",
+   "values": [
+    {
+     "as_written": "24-hour",
+     "name": "SMAC exposure period exceeded",
+     "p": "paper:FND-S6-DET-CO-EXCEED",
+     "u": "h",
+     "v": 24
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-DET-CO-SMAC",
+    "v": "The paper cites carbon monoxide SMAC values of 425 ppm for 1 hour and 100 ppm for 24 hours."
+   },
+   "id": "FND-S6-DET-CO-SMAC",
+   "investigation": "Saffire VI",
+   "kind": "detection",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-DET-CO-SMAC",
+   "page": 5,
+   "quote": "For carbon monoxide, the 1-hour SMAC is 425 ppm, and the 24-hour SMAC is 100 ppm7.",
+   "values": [
+    {
+     "as_written": "425 ppm",
+     "name": "CO 1-hour SMAC",
+     "p": "paper:FND-S6-DET-CO-SMAC",
+     "u": "ppm",
+     "v": 425
+    },
+    {
+     "as_written": "100 ppm",
+     "name": "CO 24-hour SMAC",
+     "p": "paper:FND-S6-DET-CO-SMAC",
+     "u": "ppm",
+     "v": 100
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-DET-CO2-LIMIT",
+    "v": "NASA-STD-3001 limits the 1-hour average CO2 partial pressure to 3 mm Hg, and both Saffire VI PMMA tests exceeded that level."
+   },
+   "id": "FND-S6-DET-CO2-LIMIT",
+   "investigation": "Saffire VI",
+   "kind": "detection",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-DET-CO2-LIMIT",
+   "page": 5,
+   "quote": "For carbon dioxide, which is prevalent in manned spacecraft, the limits are establishe d differently in NASA-STD-3001 8 which limits the 1-hour average CO 2 partial pressure to no more than 3 mm Hg. As can be seen in Table 2, the allowable CO 2 level was exceeded by both of the PMMA tests on Saffire VI.",
+   "values": [
+    {
+     "as_written": "1-hour",
+     "name": "CO2 averaging period",
+     "p": "paper:FND-S6-DET-CO2-LIMIT",
+     "u": "h",
+     "v": 1
+    },
+    {
+     "as_written": "3 mm Hg",
+     "name": "CO2 partial pressure limit",
+     "p": "paper:FND-S6-DET-CO2-LIMIT",
+     "u": "mmHg",
+     "v": 3
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-DET-CONCL",
+    "v": "The conclusion states that the PMMA tests exceeded the 1-hour carbon dioxide limit and the 24-hour carbon monoxide limit."
+   },
+   "id": "FND-S6-DET-CONCL",
+   "investigation": "Saffire VI",
+   "kind": "detection",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-DET-CONCL",
+   "page": 6,
+   "quote": "However, the ambient concentrations of carbon monoxide and carbon dioxide rose significantly with the PMMA tests exceeding the 1-hour carbon dioxide limit and the 24-hour carbon monoxide limit.",
+   "values": [
+    {
+     "as_written": "1-hour",
+     "name": "CO2 limit period",
+     "p": "paper:FND-S6-DET-CONCL",
+     "u": "h",
+     "v": 1
+    },
+    {
+     "as_written": "24-hour",
+     "name": "CO limit period",
+     "p": "paper:FND-S6-DET-CONCL",
+     "u": "h",
+     "v": 24
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-DET-SMOKE-981",
+    "v": "With 1 mg/m3 chosen as the alarm threshold, the far field smoke detector reached it at 981 s in Saffire VI-3, by which point much of the gas release had already occurred."
+   },
+   "id": "FND-S6-DET-SMOKE-981",
+   "investigation": "Saffire VI",
+   "kind": "detection",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-DET-SMOKE-981",
+   "page": 5,
+   "quote": "Selecting 1 mg/m 3 as a relatively tight alarm threshold, the FFD detector reached that threshold at 981 seconds. By this point, much of the hazardous gas release had occurred.",
+   "values": [
+    {
+     "as_written": "1 mg/m 3",
+     "name": "Smoke alarm threshold",
+     "p": "paper:FND-S6-DET-SMOKE-981",
+     "u": "mg/m3",
+     "v": 1
+    },
+    {
+     "as_written": "981 seconds",
+     "name": "Time threshold reached",
+     "p": "paper:FND-S6-DET-SMOKE-981",
+     "u": "s",
+     "v": 981
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-DET-SMOKE-CONCL",
+    "v": "The conclusion states that smoke was detected by an ionisation detector and a light scattering system, but a typical alarm threshold was reached only at 981 s."
+   },
+   "id": "FND-S6-DET-SMOKE-CONCL",
+   "investigation": "Saffire VI",
+   "kind": "detection",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-DET-SMOKE-CONCL",
+   "page": 6,
+   "quote": "The smoke from the fire event was readily detected by an ionization detector and a light scattering system but a typical alarm threshold was only achieved at 981 seconds.",
+   "values": [
+    {
+     "as_written": "981 seconds",
+     "name": "Time typical alarm threshold reached",
+     "p": "paper:FND-S6-DET-SMOKE-CONCL",
+     "u": "s",
+     "v": 981
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-RES-SCALE",
+    "v": "The paper's series of large-scale spacecraft fire tests spanned 1.5 to 3.2 kW with free air volumes of 17 to 19 cubic metres."
+   },
+   "id": "FND-S6-RES-SCALE",
+   "investigation": "Saffire VI",
+   "kind": "result",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-RES-SCALE",
+   "page": 2,
+   "quote": "These tests spanned 1.5 to 3.2 kW with free air volumes of 17 to 19 cubic met ers.",
+   "values": [
+    {
+     "as_written": "1.5",
+     "name": "Fire size lower bound",
+     "p": "paper:FND-S6-RES-SCALE",
+     "u": "kW",
+     "v": 1.5
+    },
+    {
+     "as_written": "3.2 kW",
+     "name": "Fire size upper bound",
+     "p": "paper:FND-S6-RES-SCALE",
+     "u": "kW",
+     "v": 3.2
+    },
+    {
+     "as_written": "17",
+     "name": "Free air volume lower bound",
+     "p": "paper:FND-S6-RES-SCALE",
+     "u": "m3",
+     "v": 17
+    },
+    {
+     "as_written": "19 cubic met ers",
+     "name": "Free air volume upper bound",
+     "p": "paper:FND-S6-RES-SCALE",
+     "u": "m3",
+     "v": 19
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-RES-T2-PMMA",
+    "v": "Table 2 rows for VI-3 and VI-4 (PMMA) read: burn 780 and 1200 s, peak heat release 3080 and 1507 W, total 1280 and 830 kJ, FFD CO2 rise 8539 and 8117 ppm (3.51 and 3.37 mmHg), CO rise 308 and 320 ppm."
+   },
+   "id": "FND-S6-RES-T2-PMMA",
+   "investigation": "Saffire VI",
+   "kind": "result",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-RES-T2-PMMA",
+   "page": 6,
+   "quote": "VI-3 2-sided PMMA 780 3080 1280 77 21 8539 3.51 308 VI-4 1-sided PMMA 1200 1507 830 57 21 8117 3.37 320",
+   "values": [
+    {
+     "as_written": "780",
+     "name": "VI-3 burn duration",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "s",
+     "v": 780
+    },
+    {
+     "as_written": "3080",
+     "name": "VI-3 peak heat release (O2 calorimetry)",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "W",
+     "v": 3080
+    },
+    {
+     "as_written": "1280",
+     "name": "VI-3 total heat release (O2 calorimetry)",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "kJ",
+     "v": 1280
+    },
+    {
+     "as_written": "77",
+     "name": "VI-3 max temp at SFU outlet",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "degC",
+     "v": 77
+    },
+    {
+     "as_written": "8539",
+     "name": "VI-3 FFD inlet CO2 increase",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "ppm",
+     "v": 8539
+    },
+    {
+     "as_written": "3.51",
+     "name": "VI-3 CO2 partial pressure increase",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "mmHg",
+     "v": 3.51
+    },
+    {
+     "as_written": "308",
+     "name": "VI-3 FFD inlet CO increase",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "ppm",
+     "v": 308
+    },
+    {
+     "as_written": "1200",
+     "name": "VI-4 burn duration",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "s",
+     "v": 1200
+    },
+    {
+     "as_written": "1507",
+     "name": "VI-4 peak heat release (O2 calorimetry)",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "W",
+     "v": 1507
+    },
+    {
+     "as_written": "830",
+     "name": "VI-4 total heat release (O2 calorimetry)",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "kJ",
+     "v": 830
+    },
+    {
+     "as_written": "57",
+     "name": "VI-4 max temp at SFU outlet",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "degC",
+     "v": 57
+    },
+    {
+     "as_written": "8117",
+     "name": "VI-4 FFD inlet CO2 increase",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "ppm",
+     "v": 8117
+    },
+    {
+     "as_written": "3.37",
+     "name": "VI-4 CO2 partial pressure increase",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "mmHg",
+     "v": 3.37
+    },
+    {
+     "as_written": "320",
+     "name": "VI-4 FFD inlet CO increase",
+     "p": "paper:FND-S6-RES-T2-PMMA",
+     "u": "ppm",
+     "v": 320
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-RES-T2-SIBAL",
+    "v": "Table 2 row for VI-2 (SIBAL) reads: burn 112 s, peak heat release 3217 W, FFD CO2 rise 2800 ppm (1.15 mmHg) and CO rise 120 ppm."
+   },
+   "id": "FND-S6-RES-T2-SIBAL",
+   "investigation": "Saffire VI",
+   "kind": "result",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-RES-T2-SIBAL",
+   "page": 6,
+   "quote": "VI-2 SIBAL 112 3217 580 3,650 409 48 20 2800 1.15 120",
+   "values": [
+    {
+     "as_written": "112",
+     "name": "VI-2 burn duration",
+     "p": "paper:FND-S6-RES-T2-SIBAL",
+     "u": "s",
+     "v": 112
+    },
+    {
+     "as_written": "3217",
+     "name": "VI-2 peak heat release (O2 calorimetry)",
+     "p": "paper:FND-S6-RES-T2-SIBAL",
+     "u": "W",
+     "v": 3217
+    },
+    {
+     "as_written": "580",
+     "name": "VI-2 total heat release (O2 calorimetry)",
+     "p": "paper:FND-S6-RES-T2-SIBAL",
+     "u": "kJ",
+     "v": 580
+    },
+    {
+     "as_written": "2800",
+     "name": "VI-2 FFD inlet CO2 increase",
+     "p": "paper:FND-S6-RES-T2-SIBAL",
+     "u": "ppm",
+     "v": 2800
+    },
+    {
+     "as_written": "1.15",
+     "name": "VI-2 CO2 partial pressure increase",
+     "p": "paper:FND-S6-RES-T2-SIBAL",
+     "u": "mmHg",
+     "v": 1.15
+    },
+    {
+     "as_written": "120",
+     "name": "VI-2 FFD inlet CO increase",
+     "p": "paper:FND-S6-RES-T2-SIBAL",
+     "u": "ppm",
+     "v": 120
+    }
+   ]
+  },
+  {
+   "doi": null,
+   "finding": {
+    "p": "paper:FND-S6-RES-TEMP-VS-GAS",
+    "v": "Temperature and pressure rise in the spacecraft were less significant than the increase in carbon dioxide and carbon monoxide."
+   },
+   "id": "FND-S6-RES-TEMP-VS-GAS",
+   "investigation": "Saffire VI",
+   "kind": "result",
+   "ntrs_id": "20240002981",
+   "p": "paper:FND-S6-RES-TEMP-VS-GAS",
+   "page": 2,
+   "quote": "Overall, the temperature and pressure rise in the spacecraft were found to be less significant than the increase in carbon dioxide and carbon monoxide.",
+   "values": []
+  }
+ ],
  "p": "summary",
  "status": {
-  "awaiting_verification": [
+  "awaiting_verification": [],
+  "drafted": 63,
+  "failed_checks": [],
+  "rejected_by_reviewer": [],
+  "verified": [
    "FND-BRE-COND-DROP-P",
    "FND-BRE-COND-DROP-SETUP",
    "FND-BRE-COND-FUELS",
@@ -66,10 +2505,6 @@
    "FND-S6-RES-T2-PMMA",
    "FND-S6-RES-T2-SIBAL",
    "FND-S6-RES-TEMP-VS-GAS"
-  ],
-  "drafted": 63,
-  "failed_checks": [],
-  "rejected_by_reviewer": [],
-  "verified": []
+  ]
  }
 }

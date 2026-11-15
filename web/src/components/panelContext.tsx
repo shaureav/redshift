@@ -83,7 +83,15 @@ function FlameDetail({ flame, file }: { flame: FlameReading | null; file: FlameF
 }
 
 function PrebreatheDetail({ prebreathe }: { prebreathe: PrebreatheStatus }) {
-  if (prebreathe.kind === "published") return <p className="text-sm">{prebreathe.point.duration_text} <span className="text-ink-2">{prebreathe.caveat}</span></p>;
+  // D44: both are verified paper statements, so each is a Value that opens its quote and page: the times (the
+  // slide's row for this atmosphere) and NASA's own caveat on them (FND-EA-PB-CAVEAT, the same slide).
+  if (prebreathe.kind === "published")
+    return (
+      <p className="text-sm">
+        <Value val={{ v: prebreathe.point.duration_text ?? null, p: `paper:${prebreathe.point.finding_id}` }} unit={false} />{" "}
+        <span className="text-ink-2"><Value val={{ v: prebreathe.caveat, p: "paper:FND-EA-PB-CAVEAT" }} unit={false} /></span>
+      </p>
+    );
   if (prebreathe.kind === "pending") {
     return (
       <p className="text-sm text-ink-2">

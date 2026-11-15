@@ -10,6 +10,7 @@ import { geiger, SOUND_KEY } from "../lib/geiger";
 import { requestPlane } from "../lib/planeRequest";
 import { decodeGrid, readAt, totalsAlongO2, type ProbeGridFile } from "../lib/probe";
 import { loadSnapshot } from "../lib/snapshot.fixture";
+import { coastFor, isLand } from "../lib/coast";
 import { useView } from "../lib/view";
 import Home from "../pages/Home";
 import { CommandPalette } from "./CommandPalette";
@@ -150,11 +151,14 @@ describe("story intro", () => {
     expect(sea()).toBe("true");
     expect(page.querySelectorAll(".pin-pulse")).toHaveLength(0);
     expect(page.querySelectorAll(".glyph-class").length).toBeGreaterThan(1);
-    // Beat 3: the land sinks; the plane says no solid test can be placed.
+    // Beat 3: the land sinks to the solid land alone; where no solid test can be placed, the plane says so (D44:
+    // once paper burns are verified, solid land stands near them and the caption gives way).
     press("ArrowDown");
     expect(title()).toBe(BEAT_TITLES[2]);
     expect(stage()).toBe("solids");
-    expect(page.textContent).toContain("No solid-material test can be placed on this plane");
+    const solidPlaced = loadSnapshot<{ points: { fuel_class: string }[] }>("trade_map.json").points.some((p) => p.fuel_class === "solid");
+    if (solidPlaced) expect(page.textContent).not.toContain("No solid-material test can be placed on this plane");
+    else expect(page.textContent).toContain("No solid-material test can be placed on this plane");
     // The last beat stays the last; back and forward again.
     press("ArrowRight");
     expect(title()).toBe(BEAT_TITLES[2]);
@@ -181,7 +185,9 @@ describe("story intro", () => {
     mount(<Home />, "/");
     press("ArrowRight");
     press("ArrowRight");
-    const steps = loadSnapshot<{ psi_steps: { count: { p: string; v: number } }[] }>("access_gap.json").psi_steps;
+    // The four PSI steps, then (D44) the two paper steps once verified paper burns are counted.
+    const gapFile = loadSnapshot<{ psi_steps: { count: { p: string; v: number } }[]; paper_steps: { count: { p: string; v: number } }[] }>("access_gap.json");
+    const steps = [...gapFile.psi_steps, ...(gapFile.paper_steps[0].count.v ? gapFile.paper_steps : [])];
     const cited = [...dialog()!.querySelectorAll("[data-prov]")].map((e) => [e.getAttribute("data-prov"), e.textContent]);
     expect(cited).toEqual(steps.map((s) => [s.count.p, String(s.count.v)]));
     // No other digit anywhere in the card.
@@ -684,17 +690,21 @@ describe("plane requests from the command palette, and sound under Solids only (
     expect(lastSearch).toBe("?o2=21&p=14.7&solids=1");
   });
 
-  it("keeps the Geiger clicks silent at a habitat candidate under Solids only, and follows the total without it", () => {
+  // D44: at sea under Solids only the clicks are silent. Verified paper burns now make solid land near the habitat
+  // candidates, so the test stands at 40% O2 and 14.7 psi: among the gas tests, far from every placed solid test.
+  it("keeps the Geiger clicks silent at sea under Solids only, and follows the total without it", () => {
     localStorage.setItem(INTRO_KEY, "done");
     localStorage.setItem(SOUND_KEY, "on");
     const set = vi.spyOn(geiger, "setTotal");
     try {
-      mount(<Home />, "/?o2=21&p=14.7&solids=1");
+      mount(<Home />, "/?o2=40&p=14.7&solids=1");
       const last = () => set.mock.calls[set.mock.calls.length - 1]?.[0];
-      expect(document.querySelector('svg[role="application"]')?.getAttribute("aria-label")).toContain("at sea");
+      const g = decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json"));
+      const r0 = readAt(g, 40, 14.7, 1);
+      expect(isLand(coastFor(g, 1, "solids"), r0.i, r0.j)).toBe(false);
       expect(last()).toBe(0);
       press("s"); // Solids only off: the land the clicks follow is back
-      const total = readAt(decodeGrid(loadSnapshot<ProbeGridFile>("probe_grid.json")), 21, 14.7, 1).total.v;
+      const total = r0.total.v;
       expect(total).toBeGreaterThan(0);
       expect(last()).toBe(total);
       press("s");

@@ -59,7 +59,7 @@
    "published_paper": {
     "p": "probe:1:solid:published_paper",
     "u": "tests",
-    "v": 0
+    "v": 3
    }
   }
  },
@@ -236,6 +236,25 @@
    "test_id": "PSI-159-normal-L36"
   },
   {
+   "doi": null,
+   "fuel_class": "solid",
+   "investigation": "Saffire VI",
+   "investigation_id": "Saffire VI",
+   "label": "SIBAL cloth (cotton/fibreglass), 50 cm",
+   "o2": {
+    "p": "probe:input:paper:Saffire-VI-2",
+    "u": "%",
+    "v": 31.0
+   },
+   "pressure_kpa": {
+    "p": "probe:input:paper:Saffire-VI-2",
+    "u": "kPa",
+    "v": 54.1
+   },
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-VI-2"
+  },
+  {
    "doi": "10.60555/cyt1-kh64",
    "fuel_class": "gas",
    "investigation": "ACME CFI-G",
@@ -253,6 +272,25 @@
    },
    "source_type": "psi_table",
    "test_id": "PSI-159-normal-L128"
+  },
+  {
+   "doi": null,
+   "fuel_class": "solid",
+   "investigation": "Saffire VI",
+   "investigation_id": "Saffire VI",
+   "label": "Two-sided PMMA, 18 cm",
+   "o2": {
+    "p": "probe:input:paper:Saffire-VI-3",
+    "u": "%",
+    "v": 30.3
+   },
+   "pressure_kpa": {
+    "p": "probe:input:paper:Saffire-VI-3",
+    "u": "kPa",
+    "v": 54.6
+   },
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-VI-3"
   },
   {
    "doi": "10.60555/cyt1-kh64",
@@ -443,6 +481,25 @@
    },
    "source_type": "psi_table",
    "test_id": "PSI-69-main-L40"
+  },
+  {
+   "doi": null,
+   "fuel_class": "solid",
+   "investigation": "Saffire VI",
+   "investigation_id": "Saffire VI",
+   "label": "One-sided PMMA, 18 cm",
+   "o2": {
+    "p": "probe:input:paper:Saffire-VI-4",
+    "u": "%",
+    "v": 28.8
+   },
+   "pressure_kpa": {
+    "p": "probe:input:paper:Saffire-VI-4",
+    "u": "kPa",
+    "v": 55.2
+   },
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-VI-4"
   },
   {
    "doi": "10.60555/mbq8-0451",
@@ -771,7 +828,7 @@
  "near_total": {
   "p": "probe:1:total",
   "u": "tests",
-  "v": 37
+  "v": 40
  },
  "node": {
   "o2_pct": {
@@ -813,8 +870,27 @@
   }
  },
  "prebreathe": {
-  "finding_id": "FND-EA-PB-8.2",
-  "status": "awaiting_verification"
+  "caveat": "NASA labels these 'Unvalidated estimates (i.e., not yet available for flight use)' and assumes a 6 h EVA at 4.3 psia (NTRS 20220011152, p. 6).",
+  "point": {
+   "atmosphere": "8.2 psi / 34% O2",
+   "duration_text": "0:00 to 0:15 (microgravity); 0:00 to 0:30 (planetary)",
+   "finding_id": "FND-EA-PB-8.2",
+   "ntrs_id": "20220011152",
+   "o2_pct": {
+    "p": "paper:FND-EA-PB-8.2",
+    "u": "%",
+    "v": 34
+   },
+   "p": "paper:FND-EA-PB-8.2",
+   "page": 6,
+   "pressure_psi": {
+    "p": "paper:FND-EA-PB-8.2",
+    "u": "psi",
+    "v": 8.2
+   },
+   "quote": "8.2 psi, 34% O2 0:00-0:15 0:00-0:30"
+  },
+  "status": "published"
  },
  "requested": {
   "o2_pct": 34.0,

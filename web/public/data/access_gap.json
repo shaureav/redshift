@@ -3,14 +3,14 @@
  "paper_findings_awaiting_verification": {
   "p": "gap:pending",
   "u": "findings",
-  "v": 63
+  "v": 0
  },
  "paper_steps": [
   {
    "count": {
     "p": "gap:paper:0",
     "u": "tests",
-    "v": 0
+    "v": 8
    },
    "label": "Solid burns near a habitat candidate, described in papers (human-verified)"
   },

@@ -1,0 +1,443 @@
+[
+  {
+    "finding_id": "FND-BRE-COND-DROP-P",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-BRE-COND-DROP-SETUP",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-BRE-COND-FUELS",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-BRE-COND-ISS-ATMOS",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-BRE-COND-VOLUME",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-BRE-RES-FUEL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-BRE-RES-O2-LIMIT",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-BRE-RES-SIZE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-CAND-HABITAT",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-CAND-NITROX",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-CAND-RECOMMENDED",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-CAND-REVISED",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-CAND-SEALEVEL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-CAND-STUDY",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-CAND-TABLE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-COND-O2",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-COND-PRESSURE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-10.2",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-14.7",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-8.2",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-ACTUAL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-CAVEAT",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-PROTOCOL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-SEALEVEL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-PB-SHUTTLE-10.2",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-EA-RES-DCS",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-COND-DIAMETERS",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-COND-METHANOL-RANGE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-COND-PRESSURES",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-DEF-DISRUPTION",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-DEF-DISRUPTIVE-BURNING",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-RES-CONTAMINANT",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-RES-DISRUPTIVE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-RES-LOI",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-FLEX-RES-TESTEND",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S4-COND-MAT-FLOW",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S4-COND-P-O2",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S4-RES-IV2-NOFLOW",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S45-COND-MATERIALS",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S45-COND-SIZES",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S45-RES-FLAMESIZE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S45-RES-HRR",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S5-COND-MAT-FLOW",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S5-COND-P-O2",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S5-COND-REDUCEDFLOW",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S5-RES-EXTINCT",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S5-RES-V2-REIGNITE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S5-RES-V3-LENGTH",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-COND-FLOWCHANGE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-COND-MAT-FLOW",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-COND-P-O2",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-COND-SIBAL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-COND-SIZES",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-DET-CO-EXCEED",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-DET-CO-SMAC",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-DET-CO2-LIMIT",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-DET-CONCL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-DET-SMOKE-981",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-DET-SMOKE-CONCL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-RES-SCALE",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-RES-T2-PMMA",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-RES-T2-SIBAL",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  },
+  {
+    "finding_id": "FND-S6-RES-TEMP-VS-GAS",
+    "decision": "accept",
+    "verified_by": "Swastik Katiyar",
+    "verified_at": "2026-11-15T10:17:20Z",
+    "note": "Swastik Katiyar stated on 15 November 2026 that they checked every quote against its page and accept every finding; entered from that statement by the AI assistant (Claude). FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match the source before entry."
+  }
+]

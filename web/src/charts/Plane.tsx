@@ -1078,7 +1078,7 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
     for (const pb of prebreathe ?? []) {
       const px = x(pb.o2_pct.v);
       const py = y(pb.pressure_psi.v);
-      taken.push({ x0: px - 8, x1: px + 12 + (pb.duration_text?.length ?? 0) * 12 * 0.6, y0: py - 22, y1: py + 8 });
+      taken.push({ x0: px - 8, x1: px + 8, y0: py - 8, y1: py + 8 }); // the marker only (D44)
     }
     if (capY !== null) taken.push(captionBox(frame, capY));
     return gen(flame.temperature_K.flat()).map((c, idx) => {
@@ -1175,8 +1175,9 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
           <g className="layer" data-on={layers.has("pb")}>
             {(prebreathe ?? []).map((pb) => (
               <g key={pb.finding_id} transform={`translate(${x(pb.o2_pct.v)},${y(pb.pressure_psi.v)})`}>
+                {/* The marker only (D44): the prebreathe time is a verified paper number, so it is read in the panel,
+                    as a Value that opens its quote and page, not printed here as plain text over the pins' labels. */}
                 <rect x={-5} y={-5} width={10} height={10} transform="rotate(45)" fill="none" stroke="var(--prebreathe)" strokeWidth={2} />
-                <text x={10} y={-8} fontSize={12} fill="var(--ink-2)" paintOrder="stroke" stroke="var(--land)" strokeWidth={4}>{pb.duration_text}</text>
               </g>
             ))}
           </g>

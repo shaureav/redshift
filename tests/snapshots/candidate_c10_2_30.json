@@ -52,14 +52,14 @@
    "published_paper": {
     "p": "near:c10_2_30:solid:published_paper",
     "u": "tests",
-    "v": 0
+    "v": 6
    }
   }
  },
  "near_total": {
   "p": "near:c10_2_30:total",
   "u": "tests",
-  "v": 52
+  "v": 58
  },
  "nearest": [
   {
@@ -149,6 +149,17 @@
    "investigation": "FLEX",
    "source_type": "psi_table",
    "test_id": "PSI-69-main-L28"
+  },
+  {
+   "distance": {
+    "p": "dist:c10_2_30:paper:Saffire-V-2",
+    "u": "steps",
+    "v": 0.7604
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire V",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-V-2"
   },
   {
    "distance": {
@@ -251,6 +262,28 @@
   },
   {
    "distance": {
+    "p": "dist:c10_2_30:paper:Saffire-V-4",
+    "u": "steps",
+    "v": 0.8717
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire V",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-V-4"
+  },
+  {
+   "distance": {
+    "p": "dist:c10_2_30:paper:Saffire-V-3",
+    "u": "steps",
+    "v": 0.9221
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire V",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-V-3"
+  },
+  {
+   "distance": {
     "p": "dist:c10_2_30:PSI-69-main-L93",
     "u": "steps",
     "v": 1.0027
@@ -303,39 +336,6 @@
    "investigation": "FLEX",
    "source_type": "psi_table",
    "test_id": "PSI-69-main-L92"
-  },
-  {
-   "distance": {
-    "p": "dist:c10_2_30:PSI-69-main-L91",
-    "u": "steps",
-    "v": 1.0048
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L91"
-  },
-  {
-   "distance": {
-    "p": "dist:c10_2_30:PSI-69-main-L175",
-    "u": "steps",
-    "v": 1.2005
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L175"
-  },
-  {
-   "distance": {
-    "p": "dist:c10_2_30:PSI-69-main-L176",
-    "u": "steps",
-    "v": 1.2006
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L176"
   }
  ],
  "o2_match_pressure_unknown": {

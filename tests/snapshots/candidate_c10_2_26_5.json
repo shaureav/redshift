@@ -52,16 +52,49 @@
    "published_paper": {
     "p": "near:c10_2_26_5:solid:published_paper",
     "u": "tests",
-    "v": 0
+    "v": 6
    }
   }
  },
  "near_total": {
   "p": "near:c10_2_26_5:total",
   "u": "tests",
-  "v": 72
+  "v": 78
  },
  "nearest": [
+  {
+   "distance": {
+    "p": "dist:c10_2_26_5:paper:Saffire-V-2",
+    "u": "steps",
+    "v": 0.0645
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire V",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-V-2"
+  },
+  {
+   "distance": {
+    "p": "dist:c10_2_26_5:paper:Saffire-V-4",
+    "u": "steps",
+    "v": 0.2143
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire V",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-V-4"
+  },
+  {
+   "distance": {
+    "p": "dist:c10_2_26_5:paper:Saffire-V-3",
+    "u": "steps",
+    "v": 0.2285
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire V",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-V-3"
+  },
   {
    "distance": {
     "p": "dist:c10_2_26_5:PSI-69-main-L93",
@@ -303,39 +336,6 @@
    "investigation": "FLEX",
    "source_type": "psi_table",
    "test_id": "PSI-69-main-L98"
-  },
-  {
-   "distance": {
-    "p": "dist:c10_2_26_5:PSI-69-main-L42",
-    "u": "steps",
-    "v": 0.7024
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L42"
-  },
-  {
-   "distance": {
-    "p": "dist:c10_2_26_5:PSI-69-main-L180",
-    "u": "steps",
-    "v": 0.7024
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L180"
-  },
-  {
-   "distance": {
-    "p": "dist:c10_2_26_5:PSI-69-main-L184",
-    "u": "steps",
-    "v": 0.7024
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L184"
   }
  ],
  "o2_match_pressure_unknown": {

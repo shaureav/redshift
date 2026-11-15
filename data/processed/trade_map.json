@@ -10437,6 +10437,133 @@
    "test_ids": [
     "PSI-159-normal-L140"
    ]
+  },
+  {
+   "fuel_class": "solid",
+   "investigations": [
+    "Saffire IV"
+   ],
+   "n": 2,
+   "o2_pct": 22.0,
+   "outcomes": {
+    "None": 2
+   },
+   "p": "map:bin:solid:published_paper:22.0:100.0",
+   "pressure_kpa": 100.0,
+   "pressure_psi": 14.5038,
+   "source_type": "published_paper",
+   "test_ids": [
+    "paper:Saffire-IV-1",
+    "paper:Saffire-IV-2"
+   ]
+  },
+  {
+   "fuel_class": "solid",
+   "investigations": [
+    "Saffire V"
+   ],
+   "n": 1,
+   "o2_pct": 25.4,
+   "outcomes": {
+    "None": 1
+   },
+   "p": "map:bin:solid:published_paper:25.4:71.3",
+   "pressure_kpa": 71.3,
+   "pressure_psi": 10.3412,
+   "source_type": "published_paper",
+   "test_ids": [
+    "paper:Saffire-V-3"
+   ]
+  },
+  {
+   "fuel_class": "solid",
+   "investigations": [
+    "Saffire V"
+   ],
+   "n": 1,
+   "o2_pct": 25.7,
+   "outcomes": {
+    "None": 1
+   },
+   "p": "map:bin:solid:published_paper:25.7:72.6",
+   "pressure_kpa": 72.6,
+   "pressure_psi": 10.5297,
+   "source_type": "published_paper",
+   "test_ids": [
+    "paper:Saffire-V-4"
+   ]
+  },
+  {
+   "fuel_class": "solid",
+   "investigations": [
+    "Saffire V"
+   ],
+   "n": 1,
+   "o2_pct": 26.2,
+   "outcomes": {
+    "None": 1
+   },
+   "p": "map:bin:solid:published_paper:26.2:70.7",
+   "pressure_kpa": 70.7,
+   "pressure_psi": 10.2542,
+   "source_type": "published_paper",
+   "test_ids": [
+    "paper:Saffire-V-2"
+   ]
+  },
+  {
+   "fuel_class": "solid",
+   "investigations": [
+    "Saffire VI"
+   ],
+   "n": 1,
+   "o2_pct": 28.8,
+   "outcomes": {
+    "None": 1
+   },
+   "p": "map:bin:solid:published_paper:28.8:55.2",
+   "pressure_kpa": 55.2,
+   "pressure_psi": 8.0061,
+   "source_type": "published_paper",
+   "test_ids": [
+    "paper:Saffire-VI-4"
+   ]
+  },
+  {
+   "fuel_class": "solid",
+   "investigations": [
+    "Saffire VI"
+   ],
+   "n": 1,
+   "o2_pct": 30.3,
+   "outcomes": {
+    "None": 1
+   },
+   "p": "map:bin:solid:published_paper:30.3:54.6",
+   "pressure_kpa": 54.6,
+   "pressure_psi": 7.9191,
+   "source_type": "published_paper",
+   "test_ids": [
+    "paper:Saffire-VI-3"
+   ]
+  },
+  {
+   "fuel_class": "solid",
+   "investigations": [
+    "Saffire VI"
+   ],
+   "n": 1,
+   "o2_pct": 31.0,
+   "outcomes": {
+    "None": 1
+   },
+   "p": "map:bin:solid:published_paper:31.0:54.1",
+   "pressure_kpa": 54.1,
+   "pressure_psi": 7.8465,
+   "source_type": "published_paper",
+   "test_ids": [
+    "paper:Saffire-VI-2"
+   ]
   }
  ],
  "strips": [

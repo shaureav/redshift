@@ -29,8 +29,8 @@ None records pressure.
 
 7
 00:00:18,000 --> 00:00:23,000
-At 8.2 psi and 34% oxygen, 37 tests nearby.
-Not one is a solid material.
+At 8.2 psi and 34% oxygen, 40 tests nearby.
+Solid burns: 0 in NASA's tables, 3 only in papers.
 
 8
 00:00:23,000 --> 00:00:28,000

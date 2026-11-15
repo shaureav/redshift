@@ -1,22 +1,64 @@
 {
  "caveat": "NASA labels these 'Unvalidated estimates (i.e., not yet available for flight use)' and assumes a 6 h EVA at 4.3 psia (NTRS 20220011152, p. 6).",
  "p": "prebreathe:layer",
- "pending": [
+ "pending": [],
+ "points": [
   {
    "atmosphere": "14.7 psi / 21% O2",
+   "duration_text": "4:00 (microgravity, resting); 6:30 to 7:00 (planetary)",
    "finding_id": "FND-EA-PB-14.7",
-   "status": "published figure found; awaiting human verification"
+   "ntrs_id": "20220011152",
+   "o2_pct": {
+    "p": "paper:FND-EA-PB-14.7",
+    "u": "%",
+    "v": 21
+   },
+   "p": "paper:FND-EA-PB-14.7",
+   "page": 6,
+   "pressure_psi": {
+    "p": "paper:FND-EA-PB-14.7",
+    "u": "psi",
+    "v": 14.7
+   },
+   "quote": "14.7 psi, 21% O2 4:00 (resting) 6:30-7:00"
   },
   {
    "atmosphere": "10.2 psi / 26.5% O2",
+   "duration_text": "0:40 (microgravity); 3:00 to 3:30 (planetary)",
    "finding_id": "FND-EA-PB-10.2",
-   "status": "published figure found; awaiting human verification"
+   "ntrs_id": "20220011152",
+   "o2_pct": {
+    "p": "paper:FND-EA-PB-10.2",
+    "u": "%",
+    "v": 26.5
+   },
+   "p": "paper:FND-EA-PB-10.2",
+   "page": 6,
+   "pressure_psi": {
+    "p": "paper:FND-EA-PB-10.2",
+    "u": "psi",
+    "v": 10.2
+   },
+   "quote": "10.2 psi, 26.5% O2 0:40 3:00-3:30"
   },
   {
    "atmosphere": "8.2 psi / 34% O2",
+   "duration_text": "0:00 to 0:15 (microgravity); 0:00 to 0:30 (planetary)",
    "finding_id": "FND-EA-PB-8.2",
-   "status": "published figure found; awaiting human verification"
+   "ntrs_id": "20220011152",
+   "o2_pct": {
+    "p": "paper:FND-EA-PB-8.2",
+    "u": "%",
+    "v": 34
+   },
+   "p": "paper:FND-EA-PB-8.2",
+   "page": 6,
+   "pressure_psi": {
+    "p": "paper:FND-EA-PB-8.2",
+    "u": "psi",
+    "v": 8.2
+   },
+   "quote": "8.2 psi, 34% O2 0:00-0:15 0:00-0:30"
   }
- ],
- "points": []
+ ]
 }

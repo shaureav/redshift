@@ -17,7 +17,7 @@ Run every command below from that folder.
 
 ## Step 1. Verify the paper findings
 
-At this build, 63 paper findings are drafted and 0 are verified (`data/processed/quality_report.json`). Until you verify them, the Saffire tests, the prebreathe points and the detection findings do not appear in the app, and the access gap chart shows 0 paper-described burns.
+**Done 15 November 2026: all 63 verified by Swastik Katiyar (D44).** The text below stays for any future finding. Before that build, 63 paper findings were drafted and 0 verified. Until they are verified, the Saffire tests, the prebreathe points and the detection findings do not appear in the app, and the access gap chart shows 0 paper-described burns.
 
 **First, read `docs/VERIFY_PRECHECK.md`.** An AI pre-checked all 63 drafts against their pages: 53 read consistently, 4 have a note, 4 are quoted from an NTRS abstract, and 2 say more than the source and should be rejected with the note given. It is not verification: you still read each quote and decide.
 

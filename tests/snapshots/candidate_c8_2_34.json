@@ -52,14 +52,14 @@
    "published_paper": {
     "p": "near:c8_2_34:solid:published_paper",
     "u": "tests",
-    "v": 0
+    "v": 3
    }
   }
  },
  "near_total": {
   "p": "near:c8_2_34:total",
   "u": "tests",
-  "v": 37
+  "v": 40
  },
  "nearest": [
   {
@@ -163,6 +163,17 @@
   },
   {
    "distance": {
+    "p": "dist:c8_2_34:paper:Saffire-VI-2",
+    "u": "steps",
+    "v": 0.6317
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire VI",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-VI-2"
+  },
+  {
+   "distance": {
     "p": "dist:c8_2_34:PSI-159-normal-L128",
     "u": "steps",
     "v": 0.6853
@@ -171,6 +182,17 @@
    "investigation": "ACME CFI-G",
    "source_type": "psi_table",
    "test_id": "PSI-159-normal-L128"
+  },
+  {
+   "distance": {
+    "p": "dist:c8_2_34:paper:Saffire-VI-3",
+    "u": "steps",
+    "v": 0.7563
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire VI",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-VI-3"
   },
   {
    "distance": {
@@ -284,6 +306,17 @@
   },
   {
    "distance": {
+    "p": "dist:c8_2_34:paper:Saffire-VI-4",
+    "u": "steps",
+    "v": 1.0455
+   },
+   "fuel_class": "solid",
+   "investigation": "Saffire VI",
+   "source_type": "published_paper",
+   "test_id": "paper:Saffire-VI-4"
+  },
+  {
+   "distance": {
     "p": "dist:c8_2_34:PSI-69-main-L20",
     "u": "steps",
     "v": 1.0756
@@ -303,39 +336,6 @@
    "investigation": "FLEX",
    "source_type": "psi_table",
    "test_id": "PSI-69-main-L21"
-  },
-  {
-   "distance": {
-    "p": "dist:c8_2_34:PSI-69-main-L23",
-    "u": "steps",
-    "v": 1.0873
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L23"
-  },
-  {
-   "distance": {
-    "p": "dist:c8_2_34:PSI-69-main-L22",
-    "u": "steps",
-    "v": 1.0881
-   },
-   "fuel_class": "droplet",
-   "investigation": "FLEX",
-   "source_type": "psi_table",
-   "test_id": "PSI-69-main-L22"
-  },
-  {
-   "distance": {
-    "p": "dist:c8_2_34:PSI-159-normal-L153",
-    "u": "steps",
-    "v": 1.0892
-   },
-   "fuel_class": "gas",
-   "investigation": "ACME CFI-G",
-   "source_type": "psi_table",
-   "test_id": "PSI-159-normal-L153"
   }
  ],
  "o2_match_pressure_unknown": {

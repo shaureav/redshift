@@ -1,6 +1,10 @@
 {
  "findings": {
-  "awaiting_verification": [
+  "awaiting_verification": [],
+  "drafted": 63,
+  "failed_checks": [],
+  "rejected_by_reviewer": [],
+  "verified": [
    "FND-BRE-COND-DROP-P",
    "FND-BRE-COND-DROP-SETUP",
    "FND-BRE-COND-FUELS",
@@ -64,11 +68,7 @@
    "FND-S6-RES-T2-PMMA",
    "FND-S6-RES-T2-SIBAL",
    "FND-S6-RES-TEMP-VS-GAS"
-  ],
-  "drafted": 63,
-  "failed_checks": [],
-  "rejected_by_reviewer": [],
-  "verified": []
+  ]
  },
  "flag_definitions": {
   "blank_row": {
@@ -12440,7 +12440,7 @@
  "p": "summary",
  "provenance_coverage": {
   "examples": [],
-  "numbers_checked": 60420,
+  "numbers_checked": 64239,
   "percent": 100.0,
   "without_provenance": 0
  },

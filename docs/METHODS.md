@@ -317,7 +317,7 @@ The O2 and pressure levels, the weights, the relevance function and the constant
 
 `redshift/science/prebreathe.py`. Only NASA's published points, each with its quote and page; nothing is interpolated. The source is NASA's 2022 Exploration Atmospheres briefing (NTRS 20220011152, p. 6), which gives figures for all three habitat candidates. A point appears on the map only when its finding (`FND-EA-PB-14.7`, `FND-EA-PB-10.2`, `FND-EA-PB-8.2`) has been verified by a named team member. Every time written in the display text must appear in the quote, or the build fails.
 
-In this build all three are "published figure found; awaiting human verification" and `prebreathe.json` has no points. The caveat shown with the layer: NASA labels these "Unvalidated estimates (i.e., not yet available for flight use)" and assumes a 6 h EVA at 4.3 psia.
+Since 15 November 2026 all three are verified (Swastik Katiyar, D44) and `prebreathe.json` holds their points; the panel shows each as a Value that opens its quote and page. The caveat shown with the layer: NASA labels these "Unvalidated estimates (i.e., not yet available for flight use)" and assumes a 6 h EVA at 4.3 psia.
 
 ## 16. Access gap
 
@@ -405,7 +405,7 @@ Summary: 26 checks, 24 matches, 2 explained differences, 0 unexplained.
 3. **Human verification.** A team member runs `uv run python scripts/verify_findings.py`, opens the PDF at the stated page, and answers yes or no for each finding. Each answer is appended, with name and time, to `data/findings/verifications.json` (append-only; the latest answer for a finding wins).
 4. **Publication.** Only findings that pass the checks and have an accepting verification reach the app, labelled "from published paper, human verified", with the verifier's name. A Saffire test appears on the map only when every finding that gives its O2 and pressure is verified (`data/findings/paper_tests.json`).
 
-Status in this build (`quality_report.json`): 63 drafted, 0 failed checks, 63 awaiting verification, 0 verified, 0 rejected.
+Status in this build (`quality_report.json`): 63 drafted, 0 failed checks, 0 awaiting verification, 63 verified (Swastik Katiyar, 15 November 2026; FND-S6-RES-SCALE and FND-S45-RES-HRR were reworded to match their source before verification, D44), 0 rejected.
 
 ## 20. AI text workflow
 

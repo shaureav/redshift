@@ -46,8 +46,14 @@ function GapCounts({ gap }: { gap: AccessGapData | null }): ReactNode {
   const s = gap?.psi_steps;
   if (!s || s.length < 4) return <>The cited counts are still loading.</>;
   const n = (k: number) => <Value val={s[k].count} unit={false} />;
+  // D44: once paper burns are verified, the solid land left on the plane is theirs alone, so the beat says so: a
+  // reader must not take land drawn from papers for downloadable data.
+  const pp = gap?.paper_steps;
+  const papers = pp && pp.length >= 2 && pp[0].count.v ? (
+    <> The solid land left comes only from NASA&apos;s papers: <Value val={pp[0].count} unit={false} /> burns near a candidate, <Value val={pp[1].count} unit={false} /> downloadable as rows.</>
+  ) : null;
   return s[2].count.v === 0 ? (
-    <>No solid burn in PSI&apos;s tables records pressure. Of {n(0)} solid-fuel burn rows, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.</>
+    <>No solid burn in PSI&apos;s tables records pressure. Of {n(0)} solid-fuel burn rows, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.{papers}</>
   ) : (
     <>Of {n(0)} solid-fuel burn rows in PSI&apos;s tables, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.</>
   );

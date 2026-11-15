@@ -167,14 +167,19 @@ describe("soundTotal: the clicks follow the coast that is drawn", () => {
     expect(clickRate(at(21, 14.7, 1, false))).toBeGreaterThan(0);
   });
 
-  it("is silent at every habitat candidate under Solids only, where the plane draws open sea", () => {
+  // D44: the clicks follow the solid coast that is drawn: silent where it is sea, ticking where verified paper
+  // burns (or table rows) make land.
+  it("is silent at a candidate under Solids only exactly where the plane draws open sea", () => {
     const cands = loadSnapshot<{ candidates: { o2_pct: { v: number }; pressure_psi: { v: number }; role: string }[] }>("candidates.json").candidates;
     for (const m of grid.multipliers) {
       for (const c of cands) {
         const r = readAt(grid, c.o2_pct.v, c.pressure_psi.v, m);
-        expect(isLand(coastFor(grid, m, "solids"), r.i, r.j)).toBe(false);
-        expect(at(c.o2_pct.v, c.pressure_psi.v, m, true)).toBe(0);
-        expect(clickRate(at(c.o2_pct.v, c.pressure_psi.v, m, true))).toBe(0);
+        if (!isLand(coastFor(grid, m, "solids"), r.i, r.j)) {
+          expect(at(c.o2_pct.v, c.pressure_psi.v, m, true)).toBe(0);
+          expect(clickRate(at(c.o2_pct.v, c.pressure_psi.v, m, true))).toBe(0);
+        } else {
+          expect(at(c.o2_pct.v, c.pressure_psi.v, m, true)).toBeGreaterThan(0);
+        }
       }
     }
   });
