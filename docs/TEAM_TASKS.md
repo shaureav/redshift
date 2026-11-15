@@ -19,6 +19,8 @@ Run every command below from that folder.
 
 At this build, 63 paper findings are drafted and 0 are verified (`data/processed/quality_report.json`). Until you verify them, the Saffire tests, the prebreathe points and the detection findings do not appear in the app, and the access gap chart shows 0 paper-described burns.
 
+**First, read `docs/VERIFY_PRECHECK.md`.** An AI pre-checked all 63 drafts against their pages: 53 read consistently, 4 have a note, 4 are quoted from an NTRS abstract, and 2 say more than the source and should be rejected with the note given. It is not verification: you still read each quote and decide.
+
 **The quickest way: the app's Verify page.** Open `/verify` on the running site (for example `http://localhost:4173/verify`). Enter your name, then for each finding read the quote, which is marked on the extracted page text, and press **Accept** or **Something is wrong** (with a note). The Saffire findings come first. When you are done, press **Download verifications.json**, save the file as `data/findings/verifications.json` (it already contains any earlier answers), rebuild (`uv run python -m redshift.build`) and commit the file. Decisions stay in your browser until you download them.
 
 Or, in a terminal, run:
