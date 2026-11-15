@@ -48,7 +48,8 @@ export function CompareColumns({ grid, points, m, candidates, candEv, flame, pb,
           </header>
           <div className={row}><FuelRows r={r} /></div>
           <div className={row}>
-            <div className="eyebrow mb-2">Oxygen matches, pressure not recorded</div>
+            {/* o2_match_pressure_unknown: oxygen within the nearness window (1.5 steps), not an exact match (D37). */}
+            <div className="eyebrow mb-2">Near this oxygen, pressure not recorded</div>
             <dl className="grid grid-cols-[1fr_auto] gap-x-3 gap-y-1 text-sm">
               {(["solid", "emulator"] as const).map((f) => (
                 <div key={f} className="contents"><dt className="flex items-center gap-2 text-ink-2"><FuelMarker fuel={f} size={12} />{FUEL_LABEL[f]}</dt><dd className="font-semibold"><Value val={r.o2m[f]} unit={false} /></dd></div>

@@ -69,6 +69,9 @@ export interface PanelData {
   candidate: Candidate | null;
   candEv: CandidateEvidence | null;
   flame: FlameReading | null;
+  /** Whether flame_temperature_grid.json has arrived. Absent means it has: a null flame then means the point lies
+   *  outside the flame grid, while it is loading or failed it means only that no value is shown yet. */
+  flameFile?: "ready" | "loading" | "failed";
   prebreathe: PrebreatheStatus;
   gap: AccessGapData | null;
   steps: { threshold: Val<number>; o2_step: Val<number>; pressure_ratio: Val<number> } | null;
@@ -164,7 +167,7 @@ export function EvidencePanelView({ data, actions, ask, compact = false }: { dat
       <Readout r={r} candidate={candidate} preview={data.preview} outside={data.outside} compact={compact} />
       <MissingCallout r={r} candidate={candidate} prebreathe={data.prebreathe} gap={data.gap} onOpenGap={actions.onOpenGap} />
       {data.profiles && <Sparklines o2={data.profiles.o2} psi={data.profiles.psi} at={{ i: r.i, j: r.j }} o2Val={r.o2} psiVal={r.psi} multiplier={r.multiplier} />}
-      <ContextStrip flame={data.flame} prebreathe={data.prebreathe} multiplier={r.multiplier} multipliers={data.multipliers} onMultiplier={actions.onMultiplier} steps={data.steps} />
+      <ContextStrip flame={data.flame} flameFile={data.flameFile} prebreathe={data.prebreathe} multiplier={r.multiplier} multipliers={data.multipliers} onMultiplier={actions.onMultiplier} steps={data.steps} />
       <NearestTests near={data.near} />
       {ask && (
         <section className="border-t border-line px-5 py-4" aria-labelledby="sec-ask" data-testid="ask">

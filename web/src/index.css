@@ -328,8 +328,9 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 .trail { transition: opacity var(--t-move) var(--ease-out); }
 .trail[data-rest="true"] { opacity: 0; transition-duration: var(--t-scene); }
 /* The story intro (plan, Phase 5; components/Intro.tsx) plays over the live plane, which carries data-intro with
-   the beat. Beat 1: open sea, and the pins appear one after another and pulse three times. Beat 2: the land rises
-   (the Solids only mask, run backwards) and the glyphs fade in, one fuel class after another (--k), then the strip
+   the beat. Beat 1: the bare plot (no land or sea yet, charts/Plane.tsx), and the pins appear one after another and
+   pulse three times. Beat 2: the land rises (the Solids only mask, run backwards) with the sea around it, and the
+   glyphs fade in, one fuel class after another (--k), then the strip
    of tests with no recorded pressure. Beat 3: the
    land sinks. The probe, the toolbar and the page around the plane wait, dimmed, until the intro hands over.
    Under reduced motion the beats are static frames: no pulse, and every change is the short opacity crossfade. */

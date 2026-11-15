@@ -62,8 +62,8 @@ export function CommandPalette() {
       setQ("");
       setActive(0);
       setTimeout(() => input.current?.focus(), 0);
-    } else if (opener.current instanceof HTMLElement) {
-      opener.current.focus();
+    } else if ((opener.current instanceof HTMLElement || opener.current instanceof SVGElement) && opener.current !== document.body) {
+      opener.current.focus(); // the plane, the usual opener on the plane page, is an SVG element
     }
   }, [open]);
 

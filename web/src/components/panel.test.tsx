@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
+import { AccessGap } from "../charts/AccessGap";
 import { DossierEvidenceBars } from "../charts/dossiersEvidenceBars";
 import { FlexSuppression } from "../charts/FlexSuppression";
 import css from "../index.css?raw";
@@ -18,6 +19,7 @@ import Home from "../pages/Home";
 import type { AccessGapData } from "../charts/AccessGap";
 import { chartSvgMarkup } from "./Common";
 import { Intro } from "./Intro";
+import { ContextStrip } from "./panelContext";
 import { Readout } from "./panelReadout";
 
 const FILES = [
@@ -270,7 +272,7 @@ describe("the instrument panel", () => {
     expect(panel.querySelector("h2.text-title")?.textContent).toContain("40%");
     const missing = panel.querySelector('[aria-labelledby="sec-gap"]')?.textContent ?? "";
     expect(missing).toContain("Tests of any fuel class near this point");
-    expect(missing).toContain("Near this oxygen (within the step size), but no pressure recorded");
+    expect(missing).toContain("Near this oxygen (within the nearness window), but no pressure recorded");
     expect(missing).toContain("BRE sessions (chamber pressure)");
     expect(panel.querySelectorAll('[role="slider"]')).toHaveLength(2);
     expect(panel.querySelectorAll('[role="slider"] .hatch-bg').length).toBeGreaterThan(0);
@@ -335,5 +337,63 @@ describe("the story intro", () => {
     host.innerHTML = render("/", <Intro beat={2} gap={null} onBeat={() => {}} onClose={() => {}} />);
     expect(host.textContent).toContain("The cited counts are still loading.");
     expect(bareNumbers(host)).toEqual([]);
+  });
+});
+
+describe("final audit fixes", () => {
+  const at = (path: string) => {
+    const host = document.createElement("div");
+    host.innerHTML = render(path, <Home />);
+    return host;
+  };
+
+  it("keeps the plot's size and the toolbar's place when Solids only changes, so the plot never moves", () => {
+    const frame = (h: Element) => ({
+      plot: h.querySelector("#plane-clip-overlay rect")?.getAttribute("height"),
+      origin: h.querySelector('svg[role="application"] > g')?.getAttribute("transform"),
+      toolbar: h.querySelector<HTMLElement>(".plane-tools")?.getAttribute("style"),
+    });
+    const normal = frame(at("/?o2=34&p=8.2"));
+    expect(normal.plot).toBeTruthy();
+    expect(frame(at("/?o2=34&p=8.2&solids=1"))).toEqual(normal);
+  });
+
+  it("draws the probe grid's edge as a dashed line, with its caption, wherever the grid ends inside the plot", () => {
+    const edge = (h: Element) => h.querySelector('svg[data-chart] rect[stroke-dasharray="4 3"]');
+    const caption = "Past the dashed line, beyond the probe grid: no coast computed";
+    // The habitat range lies inside the grid: no edge, no caption.
+    const habitat = at("/?o2=34&p=8.2");
+    expect(edge(habitat)).toBeNull();
+    expect(habitat.textContent).not.toContain("Past the dashed line");
+    // All tests runs past the grid on every side (left, right and below too, where tests are drawn).
+    const all = at("/?o2=34&p=8.2&zoom=all");
+    expect(edge(all)).not.toBeNull();
+    expect(Number(edge(all)!.getAttribute("x"))).toBeGreaterThan(0);
+    expect(all.textContent).toContain(caption);
+    expect(at("/?o2=34&p=8.2&zoom=plane").textContent).toContain(caption);
+  });
+
+  it("says the flame grid is loading or unavailable, not that the point lies outside it, until it arrives", () => {
+    const strip = (flameFile?: "ready" | "loading" | "failed") => {
+      const host = document.createElement("div");
+      host.innerHTML = render("/", <ContextStrip flame={null} flameFile={flameFile} prebreathe={{ kind: "none" }} multiplier={1} multipliers={[0.75, 1, 1.5]} steps={null} />);
+      return host.textContent ?? "";
+    };
+    expect(strip("loading")).toContain("The flame temperature grid is still loading.");
+    expect(strip("loading")).not.toContain("outside the flame temperature grid");
+    expect(strip("failed")).toContain("could not be loaded");
+    expect(strip("failed")).not.toContain("outside the flame temperature grid");
+    expect(strip("ready")).toContain("outside the flame temperature grid");
+    expect(strip()).toContain("outside the flame temperature grid");
+  });
+
+  it("prints no count in the access gap chart's native tooltips, which cannot open a provenance card", () => {
+    const host = document.createElement("div");
+    host.innerHTML = render("/", <AccessGap />);
+    const titles = [...host.querySelectorAll("svg title")].map((t) => t.textContent ?? "");
+    expect(titles.length).toBeGreaterThan(3);
+    expect(titles.filter((t) => /\d/.test(t))).toEqual([]);
+    // The counts are on the chart as Values.
+    expect(host.querySelectorAll("[data-prov]").length).toBeGreaterThan(3);
   });
 });

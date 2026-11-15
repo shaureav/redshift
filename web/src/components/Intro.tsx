@@ -8,6 +8,7 @@
 // one view change, the hand-over, happens inside the Explore click. Every count it shows is a built value from
 // access_gap.json rendered through Value.
 import { useCallback, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import { flushSync } from "react-dom";
 import type { AccessGapData } from "../charts/AccessGap";
 import type { IntroStage } from "../charts/Plane";
 import { Value } from "./Value";
@@ -59,8 +60,10 @@ const BEATS: { title: ReactNode; body: (gap: AccessGapData | null) => ReactNode 
     body: () => <>Oxygen runs across, cabin pressure up. Each pin is an atmosphere on the table, from Earth&apos;s sea-level air to thinner, oxygen-richer cabins.</>,
   },
   {
-    title: "These are the fire tests PSI lets us place.",
-    body: () => <>Each mark is a microgravity fire test from NASA&apos;s PSI tables, marked by fuel class. Land means tests sit near; hatched sea is unknown, not safe.</>,
+    // "In this range": the intro shows the default habitat zoom, and some placed tests sit outside it (D37).
+    title: "These are the fire tests PSI lets us place in this range.",
+    // A mark is a trade-map bin: one or more tests at the same recorded oxygen and pressure (charts/Plane.tsx).
+    body: () => <>Each mark is one or more microgravity fire tests from NASA&apos;s PSI tables at one recorded oxygen and pressure, marked by fuel class. Land means tests sit near; hatched sea is unknown, not safe.</>,
   },
   {
     title: "Now only solid materials.",
@@ -100,7 +103,9 @@ export function Intro({ beat, gap, onBeat, onClose }: IntroProps) {
     rememberIntro();
     const back = returnTo.current;
     returnTo.current = null;
-    onClose(explore);
+    // Committed at once, so the panel is no longer inert (components/Sheet.tsx lifts it before paint) when focus
+    // goes back into it: focus() on an inert control does nothing, and the focused Skip button then unmounts.
+    flushSync(() => onClose(explore));
     // Explore hands the keyboard to the plane, so the arrow keys move the probe at once; Skip goes back to where
     // focus was, or to the plane on a first visit.
     const plane = document.querySelector<SVGElement>('[aria-roledescription="plane"]');
@@ -116,11 +121,13 @@ export function Intro({ beat, gap, onBeat, onClose }: IntroProps) {
   }, []);
 
   // Keys, anywhere on the page: the arrows and Page Up or Down step, Escape skips, and Tab stays in the card
-  // (aria-modal). Another dialog on top, such as the command palette or a number's source card, keeps its keys.
+  // (aria-modal). Another dialog on top, such as the command palette or a number's source card, keeps its keys:
+  // a key it has already handled (its Escape, which closes it and may hand focus back to this card before the key
+  // reaches the document) is not this card's.
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       const box = card.current;
-      if (!box) return;
+      if (!box || e.defaultPrevented) return;
       const at = document.activeElement;
       if (at instanceof Element && !box.contains(at) && at.closest('[role="dialog"]')) return;
       if (e.key === "Escape") {
@@ -198,8 +205,9 @@ export function Intro({ beat, gap, onBeat, onClose }: IntroProps) {
             which beat this is. */}
         <span className="eyebrow max-lg:sr-only">{ORDINAL[b]} of three</span>
         {/* The text of each beat crossfades in; a screen reader hears the new beat. The block keeps the height of
-            the longest beat on a wide screen, so the buttons stay where the pointer left them. */}
-        <div aria-live="polite" className="lg:min-h-[312px]">
+            the longest beat on a wide screen (now the second: four lines of title, five of body), so the buttons
+            stay where the pointer left them. */}
+        <div aria-live="polite" className="lg:min-h-[328px]">
           <h2 key={`t${b}`} id="intro-title" className="swap-in text-heading lg:mt-2 lg:text-display">{t.title}</h2>
           <p key={`b${b}`} id="intro-body" className="swap-in mt-2 text-sm text-ink-2 lg:mt-4 lg:text-base">{t.body(gap)}</p>
         </div>
@@ -209,7 +217,8 @@ export function Intro({ beat, gap, onBeat, onClose }: IntroProps) {
           </span>
           <span className="flex items-center gap-2">
             <button type="button" className="btn btn-sm btn-quiet" onClick={() => close(false)}>Skip intro</button>
-            {b > 0 && <button type="button" className="btn btn-sm" onClick={() => go(b - 1)}>Back</button>}
+            {/* Back to the first beat removes this button, so focus moves to Next first and stays in the card. */}
+            {b > 0 && <button type="button" className="btn btn-sm" onClick={() => { if (b === 1) primary.current?.focus(); go(b - 1); }}>Back</button>}
             <button ref={primary} type="button" className="btn btn-sm btn-primary" onClick={() => (b < last ? go(b + 1) : close(true))}>
               {b < last ? "Next" : "Explore"}
             </button>

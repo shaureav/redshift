@@ -241,7 +241,12 @@ function ProvPopover({ id, anchor, provId, shown, onClose }: { id: string; ancho
       if (card.current?.contains(e.target as Node) || anchor.current?.contains(e.target as Node)) return;
       onClose();
     };
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    // Taken (preventDefault), so a dialog underneath (the story intro) does not also act on this Escape.
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      e.preventDefault();
+      onClose();
+    };
     window.addEventListener("resize", place);
     window.addEventListener("scroll", place, true);
     document.addEventListener("mousedown", onDoc);

@@ -129,6 +129,9 @@ export default function Home() {
       candidate,
       candEv: ce,
       flame: flameAt(flame.data, r.o2.v, r.psi.v, ce),
+      // The page does not wait for the flame grid, so the panel is told whether it has arrived: while it loads, or
+      // if it failed, a missing flame value is not a statement that the point lies outside the grid.
+      flameFile: flame.data ? "ready" : flame.error ? "failed" : "loading",
       prebreathe: prebreatheFor(pb.data, candidate),
       gap: gap.data ?? null,
       steps: candEv.data.steps,
@@ -138,7 +141,7 @@ export default function Home() {
       // One row and one column of the build's totals through the probe: array reads, no counting.
       profiles: { o2: totalsAlongO2(grid, r.j, view.m), psi: totalsAlongPressure(grid, r.i, view.m) },
     };
-  }, [grid, cands.data, candEv.data, flame.data, pb.data, gap.data, shown.o2, shown.psi, view.m, drag, preview]);
+  }, [grid, cands.data, candEv.data, flame.data, flame.error, pb.data, gap.data, shown.o2, shown.psi, view.m, drag, preview]);
 
   // A brushed area: whether any placed test sits inside it, never how many. The browser does not make new
   // counts (D24 withdraws D20); the Evidence Explorer, filtered to the area, lists the tests themselves.
@@ -388,12 +391,18 @@ function GapDialog({ onClose }: { onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     ref.current?.focus();
-    const esc = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    // Taken (preventDefault), so the story intro, should it be playing underneath, does not also skip.
+    const esc = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      e.preventDefault();
+      onClose();
+    };
     document.addEventListener("keydown", esc);
     return () => document.removeEventListener("keydown", esc);
   }, [onClose]);
   return (
-    <div className="animate-fade scrim fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 backdrop-blur-sm sm:p-8" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+    // Above the story intro and its click catcher (z-[58]), like the shortcut sheet; below a source card (z-[60]).
+    <div className="animate-fade scrim fixed inset-0 z-[59] flex items-start justify-center overflow-y-auto p-4 backdrop-blur-sm sm:p-8" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label="The access gap" className="animate-rise w-full max-w-3xl outline-none">
         <div className="mb-2 flex justify-end"><button type="button" className="btn" onClick={onClose}>Close</button></div>
         <AccessGap />

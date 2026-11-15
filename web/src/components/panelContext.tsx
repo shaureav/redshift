@@ -56,8 +56,17 @@ function StepScrubber({ value, stops, onChange, steps }: { value: number; stops:
   );
 }
 
-function FlameDetail({ flame }: { flame: FlameReading | null }) {
-  if (!flame) return <p className="text-sm text-ink-2">Not computed at this point; it lies outside the flame temperature grid.</p>;
+type FlameFileState = PanelData["flameFile"];
+
+/** What the strip says in place of a flame value: outside the grid only once the grid has arrived. */
+function noFlame(file: FlameFileState): { short: string; long: string } {
+  if (file === "loading") return { short: "loading", long: "The flame temperature grid is still loading." };
+  if (file === "failed") return { short: "not available", long: "The flame temperature grid could not be loaded, so no value is shown." };
+  return { short: "not computed here", long: "Not computed at this point; it lies outside the flame temperature grid." };
+}
+
+function FlameDetail({ flame, file }: { flame: FlameReading | null; file: FlameFileState }) {
+  if (!flame) return <p className="text-sm text-ink-2">{noFlame(file).long}</p>;
   return (
     <>
       <p className="text-sm">
@@ -85,8 +94,10 @@ function PrebreatheDetail({ prebreathe }: { prebreathe: PrebreatheStatus }) {
   return <p className="text-sm text-ink-2">No published prebreathe figure for this atmosphere.</p>;
 }
 
-export function ContextStrip({ flame, prebreathe, multiplier, multipliers, onMultiplier, steps }: {
+export function ContextStrip({ flame, flameFile, prebreathe, multiplier, multipliers, onMultiplier, steps }: {
   flame: FlameReading | null;
+  /** Whether the flame grid has arrived (absent: it has). */
+  flameFile?: FlameFileState;
   prebreathe: PrebreatheStatus;
   multiplier: number;
   multipliers: number[];
@@ -103,7 +114,7 @@ export function ContextStrip({ flame, prebreathe, multiplier, multipliers, onMul
           <div>
             <dt className="eyebrow">Flame</dt>
             <dd className="font-semibold">
-              {flame ? <Value val={flame.value} digits={0} approximate={flame.approximate} /> : <span className="font-normal italic text-ink-2">not computed here</span>}
+              {flame ? <Value val={flame.value} digits={0} approximate={flame.approximate} /> : <span className="font-normal italic text-ink-2">{noFlame(flameFile).short}</span>}
               {flame && !flame.exact && <span className="block whitespace-nowrap text-xs font-normal text-ink-3">nearest point</span>}
             </dd>
           </div>
@@ -125,7 +136,7 @@ export function ContextStrip({ flame, prebreathe, multiplier, multipliers, onMul
       <div id={region} hidden={!open} className="mt-3 space-y-4">
         <div>
           <h3 className="eyebrow mb-1">Flame temperature</h3>
-          <FlameDetail flame={flame} />
+          <FlameDetail flame={flame} file={flameFile} />
         </div>
         <div>
           <h3 className="eyebrow mb-1">Prebreathe</h3>

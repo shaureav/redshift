@@ -94,9 +94,11 @@ export function AccessGap() {
         const pillW = textWidth(text, 12) + 24;
         const twoLines = pillW > iw - 12;
         const h = twoLines ? barH + 20 : barH;
+        // No count in a native tooltip: it cannot open a provenance card (D36, D37). The pill beside it gives the
+        // counts as Values.
         marks.push(
           <rect key={`${k}h`} x={0} y={y} width={iw} height={h} rx={4} fill="url(#hatch-gap)" stroke="var(--line)">
-            <title>{text}</title>
+            <title>{awaiting ? `${step.label}: none verified yet; paper findings await human verification` : `${step.label}: none recorded`}</title>
           </rect>,
         );
         labels.push({
@@ -133,7 +135,7 @@ export function AccessGap() {
           stroke={FUEL_EDGE_VAR.solid}
           strokeWidth={paper ? 2 : 1}
         >
-          <title>{`${step.label}: ${valText(step.count, step.count.u)}`}</title>
+          <title>{step.label}</title>
         </path>,
       );
       labels.push({ key: `${k}c`, x: x(v) + 8, y: y + barH / 2, size: narrow ? 14 : 16, weight: 600, text: valText(step.count), node: <Value val={step.count} unit={false} /> });

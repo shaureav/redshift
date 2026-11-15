@@ -107,13 +107,16 @@ export function EvidenceSheet({ label, resetKey, onPeek, inert = false, classNam
     if (below && stops) onPeek(stops.peek);
   }, [below, stops, onPeek]);
 
-  // React 18 has no inert prop, so the attribute is set here, before paint.
+  // React 18 has no inert prop, so the attribute is set here, before paint. The story intro plays over the plane,
+  // so a sheet left at half or full (opaque while the intro dims its contents) drops to peek as it starts.
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
     el.toggleAttribute("inert", inert);
-    if (inert) el.setAttribute("aria-hidden", "true");
-    else el.removeAttribute("aria-hidden");
+    if (inert) {
+      el.setAttribute("aria-hidden", "true");
+      setSnap("peek");
+    } else el.removeAttribute("aria-hidden");
   }, [inert]);
 
   // Leaving full, the sheet shows its top again: peek and half always begin with the readout.

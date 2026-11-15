@@ -30,10 +30,11 @@ function linesFor(r: Reading, candidate: Candidate | null, prebreathe: Prebreath
   else if (r.nearClass.solid === 0) out.push({ key: "solid", text: "Solid-material tests near this point", door: <Value val={r.near.solid.psi_table} unit={false} /> });
   // Tests near this oxygen (within the nearness window, so 1.5 steps of O2 at the current multiplier) that
   // cannot be placed, because their tables do not record pressure. The heading says "near", not "at": the count
-  // (o2_match_pressure_unknown) includes tests several O2 points away.
+  // (o2_match_pressure_unknown) includes tests several O2 points away. It names the nearness window the context
+  // strip defines, never "the step size", which is one step and so a third narrower than the count (D37).
   const o2m = O2M.filter(({ f }) => r.o2m[f].v > 0);
   if (o2m.length) {
-    out.push({ key: "o2m", text: "Near this oxygen (within the step size), but no pressure recorded" });
+    out.push({ key: "o2m", text: "Near this oxygen (within the nearness window), but no pressure recorded" });
     for (const { f, text } of o2m) out.push({ key: `o2m-${f}`, text, sub: true, door: <Value val={r.o2m[f]} unit={false} /> });
   }
   if (prebreathe.kind === "pending") {

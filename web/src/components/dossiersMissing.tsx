@@ -41,23 +41,25 @@ export function missingLong(c: Candidate, ev: CandidateEvidence, pb: PrebreatheF
   if (FUEL_CLASSES.every((f) => ev.near[f].published_paper.v === 0)) {
     items.push(<>No human-verified paper results counted near this atmosphere yet. Paper results are counted once a named team member has checked them against the PDF.</>);
   }
+  // o2_match_pressure_unknown counts tests whose O2 is within the nearness window (1.5 steps of O2), not an exact
+  // match, and whose pressure is not recorded (D37).
   if (!anyNear(ev.near.solid)) {
     if (ev.o2_match_pressure_unknown.solid.v > 0) {
       items.push(
         <>
-          Solid-material tests with a matching O2 exist (<Value val={ev.o2_match_pressure_unknown.solid} />) but their pressure was not recorded, so they cannot be
-          judged near this atmosphere.
+          Solid-material tests with an O2 within the nearness window exist (<Value val={ev.o2_match_pressure_unknown.solid} />) but their pressure was not recorded, so
+          they cannot be judged near this atmosphere.
         </>,
       );
     } else {
-      items.push(<>No solid-material test with a matching O2 is recorded either, with or without pressure.</>);
+      items.push(<>No solid-material test is recorded with an O2 within the nearness window and no pressure either.</>);
     }
   }
   for (const f of FUEL_CLASSES) {
     if (f !== "solid" && !anyNear(ev.near[f]) && ev.o2_match_pressure_unknown[f].v > 0) {
       items.push(
         <>
-          {FUEL_LABEL[f]} tests with a matching O2 but no recorded pressure: <Value val={ev.o2_match_pressure_unknown[f]} />.
+          {FUEL_LABEL[f]} tests with an O2 within the nearness window but no recorded pressure: <Value val={ev.o2_match_pressure_unknown[f]} />.
         </>,
       );
     }

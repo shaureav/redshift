@@ -25,7 +25,8 @@ export function ShortcutSheet({ candidates, onClose }: { candidates: string[]; o
     const opener = document.activeElement;
     closeBtn.current?.focus();
     return () => {
-      if (opener instanceof HTMLElement) opener.focus();
+      // The plane, the usual opener, is an SVG element.
+      if ((opener instanceof HTMLElement || opener instanceof SVGElement) && opener !== document.body) opener.focus();
     };
   }, []);
   const onKeyDown = (e: React.KeyboardEvent) => {
@@ -39,7 +40,9 @@ export function ShortcutSheet({ candidates, onClose }: { candidates: string[]; o
     }
   };
   return (
-    <div className="animate-fade scrim fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 backdrop-blur-sm sm:p-8" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+    // z-[59]: above the story intro (z-[58]) and its click catcher, should it be opened while the intro plays, and
+    // below a number's source card (z-[60]).
+    <div className="animate-fade scrim fixed inset-0 z-[59] flex items-start justify-center overflow-y-auto p-4 backdrop-blur-sm sm:p-8" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div role="dialog" aria-modal="true" aria-labelledby="shortcut-title" className="floating animate-rise w-full max-w-xl p-6" onKeyDown={onKeyDown}>
         <div className="flex items-center justify-between gap-4">
           <h2 id="shortcut-title" className="text-heading">Keyboard shortcuts</h2>

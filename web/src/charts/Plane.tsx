@@ -71,9 +71,10 @@ function buzz() {
 
 export type ProbeMode = "hover" | "drag" | "commit";
 
-/** A beat of the story intro (components/Intro.tsx) over this live plane. "pins": open sea and the candidate pins
- *  alone, which appear and pulse; "land": the land rises and the glyphs fade in, one fuel class after another;
- *  "solids": the land sinks under Solids only. The probe and the toolbar wait until the intro hands over. */
+/** A beat of the story intro (components/Intro.tsx) over this live plane. "pins": the bare plot (no land and no
+ *  sea yet) and the candidate pins alone, which appear and pulse; "land": the land rises with the sea around it
+ *  and the glyphs fade in, one fuel class after another; "solids": the land sinks under Solids only. The probe and
+ *  the toolbar wait until the intro hands over. */
 export type IntroStage = "pins" | "land" | "solids";
 
 interface Props {
@@ -125,8 +126,16 @@ function useSize<T extends HTMLElement>(fallback: { w: number; h: number }, min 
   return [ref, size] as const;
 }
 
-function stripRowHeight(s: Strip, solids: boolean): number {
-  return solids && s.fuel_class === "solid" ? 32 : solids ? 12 : 16;
+/** Each O2-only strip's row height, in strip order. Under Solids only the solid row grows and the others shrink
+ *  inside the same total, so the plot keeps its size: Solids only (and the story intro's third beat) never moves
+ *  the plot, nor changes whether the toolbar takes its band (D37). */
+function stripRows(strips: Strip[], solids: boolean): number[] {
+  const plain = 16;
+  const ghost = 12;
+  const nSolid = strips.filter((s) => s.fuel_class === "solid").length;
+  if (!solids || nSolid === 0 || nSolid === strips.length) return strips.map(() => plain);
+  const solidH = (strips.length * plain - (strips.length - nSolid) * ghost) / nSolid;
+  return strips.map((s) => (s.fuel_class === "solid" ? solidH : ghost));
 }
 
 interface Frame {
@@ -149,7 +158,8 @@ function useFrame(w: number, h: number, view: View, rawStrips: Strip[], top: num
   }, [rawStrips]);
   const narrow = w < 640;
   const showStrip = view.layers.has("strip");
-  const stripH = showStrip ? 32 + strips.reduce((a, s) => a + stripRowHeight(s, view.solids) + 4, 0) : 0;
+  // The same with Solids only on or off (stripRows keeps the total).
+  const stripH = showStrip ? 32 + stripRows(strips, false).reduce((a, hh) => a + hh + 4, 0) : 0;
   // Narrow margins still fit the rotated axis titles beside their tick labels and the strip lane labels.
   const left = narrow ? 50 : 56;
   const right = narrow ? 52 : 56;
@@ -190,7 +200,8 @@ export function Plane(props: Props) {
   // 14.7 psi row on a tablet's short plot, under 44 px touch tools); then it takes a band of its own above the
   // plot. On a narrow screen even the one menu button it folds into (planeToolbar.tsx) would, so it always does.
   // Decided on the plot as it would be under a floating toolbar, from every pin and glyph whatever the layers
-  // show, so turning a layer on or off never moves the plot.
+  // show, so turning a layer on or off never moves the plot; and that plot is the same size with Solids only on
+  // or off (stripRows), so neither Solids only nor the story intro's beats can tip the decision either way.
   const floating = useFrame(w, h, view, map.strips, 16, zoom);
   const hasToolbar = !!toolbar;
   const band = useMemo(() => {
@@ -484,6 +495,8 @@ export function Plane(props: Props) {
       return onBrush({ o2: [Math.round(o2a * 10) / 10, Math.round(o2b * 10) / 10], psi: [Math.round(pa * 100) / 100, Math.round(pb * 100) / 100] });
     }
     if (dragging) {
+      // A move frame still pending would set the drag again after this commit (as the touch path guards too).
+      cancelFrame();
       const d = toData(e.clientX, e.clientY);
       setDragging(false);
       if (d) onProbe(d.o2, d.psi, "commit");
@@ -494,6 +507,7 @@ export function Plane(props: Props) {
     if (e.pointerType === "touch" && touchUp(e, true)) return;
     setBrush(null);
     if (dragging) {
+      cancelFrame();
       setDragging(false);
       onHoverEnd();
     }
@@ -860,7 +874,7 @@ function stretch(line: [number, number][], k: number, half: number): [number, nu
 /** Land, sea and coast: contours of the probe grid at "more than zero", cached per multiplier and mode. A layer
  *  of its own (its own SVG, composited apart), so the Solids only sink repaints only this, never the glyphs. */
 const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, risen, scene, hatch }: {
-  /** risen: false while the story intro's first beat shows open sea alone, before the land rises. */
+  /** risen: false while the story intro's first beat shows the bare plot, before the land and sea come in. */
   frame: Frame; grid: Grid; multiplier: number; solids: boolean; risen: boolean; scene: boolean; hatch: boolean;
 }) {
   const { w, h, m, iw, ih, x, y, z } = frame;
@@ -901,10 +915,14 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, ris
         <rect width={iw} height={ih} fill="var(--surface)" />
         <g clipPath="url(#plane-clip-land)">
           {/* Sea: the grid's whole extent, hatched (unknown, not safe). The land is drawn over it. Beyond the
-              grid the build computed nothing, so neither land nor sea is drawn there. */}
-          <rect x={extent.x} y={extent.y} width={extent.w} height={extent.h} fill="var(--sea)" />
-          <g className="layer" data-on={hatch}>
-            <rect x={extent.x} y={extent.y} width={extent.w} height={extent.h} fill="url(#hatch-sea)" style={{ opacity: "var(--sea-hatch-opacity)" }} />
+              grid the build computed nothing, so neither land nor sea is drawn there. Before the story intro
+              raises the land (its first beat) there is no sea either, only the bare plot: sea says "no tests
+              near", which is not true where the build counted tests, so it comes in with the land (D37). */}
+          <g className="layer" data-on={risen}>
+            <rect x={extent.x} y={extent.y} width={extent.w} height={extent.h} fill="var(--sea)" />
+            <g className="layer" data-on={hatch}>
+              <rect x={extent.x} y={extent.y} width={extent.w} height={extent.h} fill="url(#hatch-sea)" style={{ opacity: "var(--sea-hatch-opacity)" }} />
+            </g>
           </g>
           {solids && risen && solidLand.d && (
             <g>
@@ -923,8 +941,18 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, ris
 });
 
 /** Pins and the boxes their labels take, placed once per layout (the base draws them; the probe's tag keeps off
- *  their labels). */
+ *  their labels). A label on every pin comes before any pin's evidence word: if placing the words leaves a pin
+ *  with no label, the pins are placed again without them, and the placing that labels more pins is kept (the
+ *  full name and word stay in the tooltip, the Candidates menu and the plane's accessible name). */
 function placePins(candidates: Candidate[], words: Partial<Record<string, EvidenceWord>>, frame: Frame, reserve: Rect, placed: Placed[], probeAt: { o2: number; psi: number } | null = null, keepOff: Rect[] = []): PinAt[] {
+  const first = placePinsWith(true, candidates, words, frame, reserve, placed, probeAt, keepOff);
+  const unlabelled = (ps: PinAt[]) => ps.filter((p) => p.label === "none").length;
+  if (!unlabelled(first) || !first.some((p) => p.label === "full")) return first;
+  const second = placePinsWith(false, candidates, words, frame, reserve, placed, probeAt, keepOff);
+  return unlabelled(second) < unlabelled(first) ? second : first;
+}
+
+function placePinsWith(useWords: boolean, candidates: Candidate[], words: Partial<Record<string, EvidenceWord>>, frame: Frame, reserve: Rect, placed: Placed[], probeAt: { o2: number; psi: number } | null, keepOff: Rect[]): PinAt[] {
   const { iw, ih, narrow, x, y } = frame;
   const nameSize = narrow ? 12 : 14;
   const at = candidates.map((c) => ({ c, cx: x(c.o2_pct.v), cy: y(c.pressure_psi.v) }));
@@ -970,7 +998,7 @@ function placePins(candidates: Candidate[], words: Partial<Record<string, Eviden
     };
     const best = (t: Try) => order.reduce((b, o) => (cost(t)(o) < cost(t)(b) ? o : b), order[0]);
     const tries: Try[] = [
-      ...(word ? [{ label: "full" as const, text: c.name, withWord: true }] : []),
+      ...(word && useWords ? [{ label: "full" as const, text: c.name, withWord: true }] : []),
       { label: "name", text: c.name, withWord: false },
       { label: "short", text: `${fmtNumber(c.o2_pct.v)}% O2`, withWord: false },
     ];
@@ -998,8 +1026,14 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
   const { w, h, m, iw, ih, narrow, x, y, z, strips } = frame;
   const nameSize = narrow ? 12 : 14;
 
-  // Where the probe grid ends (land and sea are drawn by LandLayer, underneath): above it, a caption says so.
-  const beyondGrid = useMemo(() => gridExtent(grid, x, y).y, [grid, x, y]);
+  // Where the probe grid ends (land and sea are drawn by LandLayer, underneath). Wherever it ends inside the plot
+  // (the headroom of Whole plane; All tests, which also runs past it to the left, right and below; a pinched
+  // window) its edge is a dashed line, and one caption beyond it says what lies past that line, so every band
+  // outside the grid reads alike, the glyphs drawn there included (D37).
+  const ext = useMemo(() => gridExtent(grid, x, y), [grid, x, y]);
+  const edgeShows = ext.x > 0.5 || ext.y > 0.5 || ext.x + ext.w < iw - 0.5 || ext.y + ext.h < ih - 0.5;
+  const beyondGrid = ext.y;
+  const belowGrid = ih - (ext.y + ext.h);
 
   // ---- isotherms: solid, quiet lines with their labels along the path, clear of every other label ----
   const isotherms = useMemo(() => {
@@ -1080,8 +1114,13 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
 
         {psiTicks.map((p) => <line key={`gy${p}`} x1={0} x2={iw} y1={y(p)} y2={y(p)} stroke="var(--line)" />)}
         {o2Ticks.map((t) => <line key={`gx${t}`} y1={0} y2={ih} x1={x(t)} x2={x(t)} stroke="var(--line)" />)}
-        {beyondGrid > 24 && (
-          <text x={iw - 8} y={beyondGrid - 8} textAnchor="end" fontSize={12} fill="var(--ink-3)" paintOrder="stroke" stroke="var(--surface)" strokeWidth={4} strokeLinejoin="round">Beyond the probe grid: no coast computed</text>
+        {edgeShows && (
+          <g clipPath="url(#plane-clip)">
+            <rect x={ext.x} y={ext.y} width={ext.w} height={ext.h} fill="none" stroke="var(--ink-3)" strokeOpacity={0.7} strokeDasharray="4 3" />
+          </g>
+        )}
+        {edgeShows && (beyondGrid > 24 || belowGrid > 24) && (
+          <text x={iw - 8} y={beyondGrid > 24 ? beyondGrid - 8 : ih - 8} textAnchor="end" fontSize={12} fill="var(--ink-3)" paintOrder="stroke" stroke="var(--surface)" strokeWidth={4} strokeLinejoin="round">{narrow ? "Past the dashed line: no coast computed" : "Past the dashed line, beyond the probe grid: no coast computed"}</text>
         )}
 
         <g clipPath="url(#plane-clip)">
@@ -1188,11 +1227,12 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
 /** Tests whose pressure is not recorded, in O2-only strips under the plot. */
 const StripLayer = memo(function StripLayer({ strips, solids, x, z, iw, top, narrow }: { strips: Strip[]; solids: boolean; x: d3.ScaleLinear<number, number>; z: { o2: [number, number] }; iw: number; top: number; narrow: boolean }) {
   let yy = 8;
+  const rows = stripRows(strips, solids);
   return (
     <g transform={`translate(0,${top})`} className="animate-fade">
       <text x={0} y={0} fontSize={12} fontWeight={500} fill="var(--ink-2)">{narrow ? "Oxygen recorded, no pressure: not placeable" : "Oxygen recorded, pressure not recorded: cannot be placed on the plane"}</text>
-      {strips.map((s) => {
-        const hh = stripRowHeight(s, solids);
+      {strips.map((s, k) => {
+        const hh = rows[k];
         const at = yy;
         yy += hh + 4;
         const ghost = solids && s.fuel_class !== "solid";

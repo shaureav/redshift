@@ -7,6 +7,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { MemoryRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { geiger, SOUND_KEY } from "../lib/geiger";
+import { requestPlane } from "../lib/planeRequest";
 import { decodeGrid, readAt, totalsAlongO2, type ProbeGridFile } from "../lib/probe";
 import { loadSnapshot } from "../lib/snapshot.fixture";
 import { useView } from "../lib/view";
@@ -117,7 +118,7 @@ afterEach(() => {
 const updateDepthErrors = () => errors.mock.calls.filter((c: unknown[]) => c.some((a) => String(a instanceof Error ? a.message : a).includes("Maximum update depth")));
 
 describe("story intro", () => {
-  const BEAT_TITLES = ["NASA has not chosen the Moon-base atmosphere.", "These are the fire tests PSI lets us place.", "Now only solid materials."];
+  const BEAT_TITLES = ["NASA has not chosen the Moon-base atmosphere.", "These are the fire tests PSI lets us place in this range.", "Now only solid materials."];
   const dialog = () => document.querySelector<HTMLElement>('[role="dialog"][aria-labelledby="intro-title"]');
   const title = () => document.getElementById("intro-title")?.textContent;
   /** The beat the live plane is drawing (charts/Plane.tsx, data-intro), or null once the intro has handed over. */
@@ -134,15 +135,19 @@ describe("story intro", () => {
     const panel = () => document.querySelector("aside.sheet")!;
     expect(panel().hasAttribute("inert")).toBe(true);
     expect(panel().getAttribute("aria-hidden")).toBe("true");
-    // Beat 1: open sea, the pins appear and pulse, and they carry their names alone (no land yet).
+    // Beat 1: the bare plot, the pins appear and pulse, and they carry their names alone (no land yet). No sea
+    // either: sea says "no tests near", which the build's counts contradict wherever tests sit (D37).
+    const sea = () => page.querySelector('rect[fill="var(--sea)"]')?.closest("g.layer")?.getAttribute("data-on");
     expect(title()).toBe(BEAT_TITLES[0]);
     expect(stage()).toBe("pins");
+    expect(sea()).toBe("false");
     expect(page.querySelectorAll(".pin-pulse")).toHaveLength(cands.length);
     expect([...page.querySelectorAll("svg[data-chart] text tspan")].some((t) => /inland|coast|sea/.test(t.textContent ?? ""))).toBe(false);
-    // Beat 2: the land rises and the glyphs come in by fuel class.
+    // Beat 2: the land rises with the sea around it, and the glyphs come in by fuel class.
     press("ArrowRight");
     expect(title()).toBe(BEAT_TITLES[1]);
     expect(stage()).toBe("land");
+    expect(sea()).toBe("true");
     expect(page.querySelectorAll(".pin-pulse")).toHaveLength(0);
     expect(page.querySelectorAll(".glyph-class").length).toBeGreaterThan(1);
     // Beat 3: the land sinks; the plane says no solid test can be placed.
@@ -239,6 +244,62 @@ describe("story intro", () => {
     expect(dialog()).toBeNull();
     expect(lastSearch).toBe("?o2=21&p=14.7");
     expect(updateDepthErrors()).toEqual([]);
+  });
+
+  it("leaves an Escape that a dialog over it has already taken, so closing the palette never skips the story", () => {
+    mount(<Home />, "/");
+    // In a browser the command palette's (or the shortcut sheet's) own Escape handler closes it and hands focus back
+    // to this card before the key reaches the document; a listener that takes the key stands in for it here.
+    const taken = (e: KeyboardEvent) => { if (e.key === "Escape") e.preventDefault(); };
+    document.body.addEventListener("keydown", taken);
+    try {
+      expect(dialog()?.contains(document.activeElement)).toBe(true);
+      press("Escape");
+    } finally {
+      document.body.removeEventListener("keydown", taken);
+    }
+    expect(dialog()).not.toBeNull();
+    expect(localStorage.getItem(INTRO_KEY)).toBeNull();
+    press("Escape"); // its own Escape still skips
+    expect(dialog()).toBeNull();
+  });
+
+  it("draws the shortcut sheet and the access gap above its click catcher when either opens over it", () => {
+    mount(<Home />, "/?view=gap");
+    act(() => requestPlane("intro"));
+    act(() => requestPlane("shortcuts"));
+    expect(dialog()).not.toBeNull();
+    const z = (el: Element | null | undefined) => Number(el?.getAttribute("class")?.match(/\bz-\[(\d+)\]/)?.[1] ?? Number.NaN);
+    const introLayer = z(document.querySelector("[data-intro-catcher]")?.parentElement);
+    expect(introLayer).toBe(58);
+    expect(z(document.querySelector('[aria-labelledby="shortcut-title"]')?.parentElement)).toBeGreaterThan(introLayer);
+    expect(z(document.querySelector('[aria-label="The access gap"]')?.parentElement)).toBeGreaterThan(introLayer);
+  });
+
+  it("keeps focus in its card when Back returns to the first beat, which has no Back button", () => {
+    mount(<Home />, "/");
+    press("ArrowRight");
+    act(() => button("Back").focus());
+    click("Back");
+    expect(title()).toBe(BEAT_TITLES[0]);
+    expect(document.activeElement).toBe(button("Next"));
+  });
+
+  it("on Skip of a replay, gives focus back to the panel control it came from once the panel is no longer inert", async () => {
+    mount(<><CommandPalette /><Home /></>, "/?o2=21&p=14.7");
+    const more = button("More");
+    act(() => more.focus());
+    let inertAtFocus: boolean | null = null;
+    more.addEventListener("focus", () => { inertAtFocus = !!more.closest("[inert]"); });
+    runFromPalette("replay the intro");
+    await settle();
+    expect(title()).toBe(BEAT_TITLES[0]);
+    expect(more.closest("[inert]")).not.toBeNull();
+    inertAtFocus = null;
+    click("Skip intro");
+    expect(dialog()).toBeNull();
+    expect(document.activeElement).toBe(more);
+    expect(inertAtFocus).toBe(false);
   });
 
   it("under reduced motion shows the same three beats as still frames, with no pulse", () => {
@@ -888,5 +949,93 @@ describe("completeness review fixes", () => {
     expect([q().get("o2"), q().get("p")]).toEqual(["21", "14.7"]);
     expect(badge()).not.toBeNull();
     expect(badge()?.querySelector("button")).not.toBeNull();
+  });
+});
+
+describe("final audit fixes", () => {
+  const q = () => new URLSearchParams(lastSearch);
+  const plane = () => document.querySelector<SVGSVGElement>('svg[role="application"]')!;
+  const pointer = (el: Element, type: string, { id = 1, x = 0, y = 0, kind = "mouse" }: { id?: number; x?: number; y?: number; kind?: string }) => {
+    const ev = new MouseEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y, button: 0 });
+    Object.defineProperty(ev, "pointerId", { value: id });
+    Object.defineProperty(ev, "pointerType", { value: kind });
+    act(() => { el.dispatchEvent(ev); });
+  };
+
+  it("gives focus back to the plane (an SVG element) when the shortcut sheet or the command palette closes", async () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    mount(<><CommandPalette /><Home /></>, "/?o2=34&p=8.2");
+    act(() => plane().focus());
+    press("?");
+    expect(document.querySelector('[aria-labelledby="shortcut-title"]')?.contains(document.activeElement)).toBe(true);
+    press("Escape");
+    expect(document.querySelector('[aria-labelledby="shortcut-title"]')).toBeNull();
+    expect(document.activeElement).toBe(plane());
+    press("k", { ctrlKey: true });
+    await settle();
+    expect(document.activeElement?.getAttribute("role")).toBe("combobox");
+    press("Escape");
+    expect(document.activeElement).toBe(plane());
+  });
+
+  it("drops the phone's sheet to peek when the intro replays over it, so the plane shows behind the story", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    vi.stubGlobal("matchMedia", (query: string) => ({ matches: query.includes("max-width"), media: query, onchange: null, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, dispatchEvent: () => false }));
+    mount(<Home />, "/?o2=34&p=8.2");
+    const sheet = () => document.querySelector<HTMLElement>("aside.sheet")!;
+    const handle = sheet().querySelector<HTMLButtonElement>(":scope > button")!;
+    for (let k = 0; k < 2; k++) act(() => { handle.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+    expect(sheet().getAttribute("data-snap")).toBe("full");
+    act(() => requestPlane("intro"));
+    expect(document.getElementById("intro-title")).not.toBeNull();
+    expect(sheet().getAttribute("data-snap")).toBe("peek");
+    expect(sheet().hasAttribute("inert")).toBe(true);
+  });
+
+  it("labels every pin on a phone's plot under Solids only before it gives any pin its evidence word", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    vi.stubGlobal("matchMedia", (query: string) => ({ matches: query.includes("max-width"), media: query, onchange: null, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, dispatchEvent: () => false }));
+    // The plane's box at 390 x 844 under Solids only, as measured in Chrome: 374 x 392, its Tools button 76 x 46.
+    // With the plot the same height as without Solids only (D37), placing the evidence words first gave 14.7 psi
+    // its word and left both 10.2 psi pins with no label.
+    const rect = (w: number, h: number) => ({ x: 0, y: 0, left: 0, top: 0, right: w, bottom: h, width: w, height: h, toJSON: () => ({}) }) as DOMRect;
+    const box = vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (this: HTMLElement) {
+      if (this.classList.contains("plane-tools")) return rect(76, 46);
+      if (this.querySelector(':scope > svg[role="application"]')) return rect(374, 392);
+      return rect(0, 0);
+    });
+    try {
+      mount(<Home />, "/?o2=34&p=8.2&solids=1");
+      expect(plotOrigin()).toEqual([50, 58]);
+      const pins = [...document.querySelectorAll("svg[data-chart] g[transform]")].filter((g) => g.querySelector(':scope > path[d^="M0,0C"]'));
+      // In the build's order: 14.7 / 21, 10.2 / 26.5, 10.2 / 30, 8.2 / 34 (the probe is on it, so its label hides)
+      // and the spacesuit's 4.3 / 100, outside the habitat range.
+      expect(pins.map((g) => g.querySelector(":scope > text")?.textContent ?? null)).toEqual(["14.7 psi / 21% O2", "26.5% O2", "30% O2", null, null]);
+    } finally {
+      box.mockRestore();
+    }
+  });
+
+  it("cancels a mouse drag's pending move frame at pointerup, so the panel never goes back to Preview after the pin", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    const frames = new Map<number, FrameRequestCallback>();
+    let nextId = 1;
+    vi.stubGlobal("requestAnimationFrame", (cb: FrameRequestCallback) => { frames.set(nextId, cb); return nextId++; });
+    vi.stubGlobal("cancelAnimationFrame", (id: number) => { frames.delete(id); });
+    const runFrames = () => act(() => { for (const [id, cb] of [...frames]) { frames.delete(id); cb(0); } });
+    mount(<Home />, "/?o2=31&p=9");
+    const surface = document.querySelector('svg[role="application"] rect[fill="transparent"]')!;
+    const eyebrow = () => document.querySelector('[data-testid="evidence-panel"] .eyebrow')?.textContent;
+    const [ox, oy] = plotOrigin();
+    pointer(surface, "pointerdown", { x: ox + 100, y: oy + 100 });
+    expect(eyebrow()).toBe("Preview");
+    pointer(surface, "pointermove", { x: ox + 140, y: oy + 100 }); // its frame has not run yet
+    pointer(surface, "pointerup", { x: ox + 140, y: oy + 100 });
+    const pinned = [q().get("o2"), q().get("p")];
+    expect(pinned).not.toEqual(["31", "9"]);
+    expect(eyebrow()).not.toBe("Preview");
+    runFrames(); // a frame left pending would set the drag again here
+    expect(eyebrow()).not.toBe("Preview");
+    expect([q().get("o2"), q().get("p")]).toEqual(pinned);
   });
 });
