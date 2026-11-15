@@ -46,15 +46,16 @@ function GapCounts({ gap }: { gap: AccessGapData | null }): ReactNode {
   if (!s || s.length < 4) return <>The cited counts are still loading.</>;
   const n = (k: number) => <Value val={s[k].count} unit={false} />;
   return s[2].count.v === 0 ? (
-    <>No solid burn in PSI&apos;s tables records pressure. Of {n(0)} solid-fuel burn rows, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} near a habitat candidate can be downloaded.</>
+    <>No solid burn in PSI&apos;s tables records pressure. Of {n(0)} solid-fuel burn rows, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.</>
   ) : (
-    <>Of {n(0)} solid-fuel burn rows in PSI&apos;s tables, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} near a habitat candidate can be downloaded.</>
+    <>Of {n(0)} solid-fuel burn rows in PSI&apos;s tables, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.</>
   );
 }
 
-const BEATS: { title: string; body: (gap: AccessGapData | null) => ReactNode }[] = [
+const BEATS: { title: ReactNode; body: (gap: AccessGapData | null) => ReactNode }[] = [
   {
-    title: "NASA has not chosen the Moon-base atmosphere.",
+    // "Moon-base" never breaks at its hyphen in the 40 px headline.
+    title: <>NASA has not chosen the <span className="whitespace-nowrap">Moon-base</span> atmosphere.</>,
     body: () => <>Oxygen runs across, cabin pressure up. Each pin is an atmosphere on the table, from Earth&apos;s sea-level air to thinner, oxygen-richer cabins.</>,
   },
   {
@@ -190,9 +191,11 @@ export function Intro({ beat, gap, onBeat, onClose }: IntroProps) {
         aria-modal="true"
         aria-labelledby="intro-title"
         aria-describedby="intro-body"
-        className="floating animate-rise fixed inset-x-4 top-[calc(var(--nav-h)+8px)] p-3 lg:left-auto lg:right-4 lg:top-[calc(var(--nav-h)+16px)] lg:w-[368px] lg:p-6"
+        className="floating animate-rise fixed inset-x-4 bottom-4 p-3 lg:bottom-auto lg:left-auto lg:right-4 lg:top-[calc(var(--nav-h)+16px)] lg:w-[368px] lg:p-6"
       >
-        {/* On a phone the bars below say which beat this is, and the card must fit above the plot. */}
+        {/* Below lg the card sits at the bottom of the screen, over the evidence sheet (dimmed and unused while
+            the intro plays), so the whole plot shows, the 14.7 psi row included. On a phone the bars below say
+            which beat this is. */}
         <span className="eyebrow max-lg:sr-only">{ORDINAL[b]} of three</span>
         {/* The text of each beat crossfades in; a screen reader hears the new beat. The block keeps the height of
             the longest beat on a wide screen, so the buttons stay where the pointer left them. */}

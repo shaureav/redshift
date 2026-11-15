@@ -423,6 +423,24 @@ describe("instrument panel", () => {
     expect(document.activeElement).toBe(tool("Geiger clicks"));
     press("ArrowLeft");
     expect(document.activeElement).toBe(tool("Select area"));
+    // Focus leaving an open menu (the arrow keys to the next tool) closes it: two menus are never open at once.
+    press1(tool("Candidates"));
+    expect(tool("Candidates").getAttribute("aria-expanded")).toBe("true");
+    act(() => tool("Layers").focus());
+    expect(tool("Candidates").getAttribute("aria-expanded")).toBe("false");
+    press1(tool("Layers"));
+    expect(document.querySelectorAll('[role="toolbar"] [aria-expanded="true"]')).toHaveLength(1);
+  });
+
+  it("keeps Dossier focusable away from a named atmosphere, and says why in a toast", () => {
+    localStorage.setItem(INTRO_KEY, "done");
+    mount(<><Home /><Toaster /></>, "/?o2=40&p=4");
+    const dossier = [...document.querySelectorAll<HTMLButtonElement>('nav[aria-label="Take this point further"] button')].find((b) => b.textContent?.startsWith("Dossier"))!;
+    expect(dossier.disabled).toBe(false);
+    expect(dossier.getAttribute("aria-disabled")).toBe("true");
+    expect(document.getElementById(dossier.getAttribute("aria-describedby")!)?.textContent).toContain("named atmospheres");
+    act(() => { dossier.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+    expect(document.querySelector('[role="status"].fixed')?.textContent).toContain("snap the probe to one");
   });
 
   it("copies the link from Share and says so in a toast", async () => {

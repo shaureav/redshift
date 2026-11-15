@@ -1,17 +1,34 @@
 // The action bar, pinned to the bottom of the panel: Dossier, Tests, Compare, Brief and Share. Share copies the
 // view's link; the page says so in a toast (components/Toaster.tsx, one live region for the whole app).
-import type { ReactNode } from "react";
+// Away from a named atmosphere Dossier stays focusable but unavailable (aria-disabled): a press, a tap or Enter
+// says why in a toast, and a screen reader hears it as the button's description.
+import { useId, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { BriefIcon, CompareIcon, DossierIcon, ShareIcon, TestsIcon } from "./Icons";
+import { toast } from "./Toaster";
 
 export interface ActionLinks { dossier?: string; evidence: string; compare: string; brief: string }
 
 const ACTION =
-  "flex h-12 w-full flex-col items-center justify-center gap-1 rounded-md text-xs font-medium text-ink-2 transition-colors hover:bg-[color:var(--surface-3)] hover:text-ink disabled:cursor-not-allowed disabled:text-ink-3 disabled:hover:bg-transparent";
+  "flex h-12 w-full flex-col items-center justify-center gap-1 rounded-md text-xs font-medium text-ink-2 transition-colors hover:bg-[color:var(--surface-3)] hover:text-ink aria-disabled:cursor-not-allowed aria-disabled:text-ink-3 aria-disabled:hover:bg-transparent";
 
-function Action({ to, icon, label, onClick, disabled, title }: { to?: string; icon: ReactNode; label: string; onClick?: () => void; disabled?: boolean; title?: string }) {
+const DOSSIER_HINT = "Dossiers cover the named atmospheres: snap the probe to one";
+
+function Action({ to, icon, label, onClick }: { to?: string; icon: ReactNode; label: string; onClick?: () => void }) {
   if (to) return <Link className={ACTION} to={to}>{icon}{label}</Link>;
-  return <button type="button" className={ACTION} onClick={onClick} disabled={disabled} title={title}>{icon}{label}</button>;
+  return <button type="button" className={ACTION} onClick={onClick}>{icon}{label}</button>;
+}
+
+function UnavailableDossier() {
+  const hint = useId();
+  return (
+    <>
+      <button type="button" className={ACTION} aria-disabled="true" aria-describedby={hint} title={DOSSIER_HINT} onClick={() => toast(DOSSIER_HINT)}>
+        <DossierIcon />Dossier
+      </button>
+      <span id={hint} className="sr-only">{DOSSIER_HINT}</span>
+    </>
+  );
 }
 
 export function ActionBar({ links, onShare }: { links: ActionLinks; onShare?: () => void }) {
@@ -23,7 +40,7 @@ export function ActionBar({ links, onShare }: { links: ActionLinks; onShare?: ()
             {links.dossier ? (
               <Action to={links.dossier} icon={<DossierIcon />} label="Dossier" />
             ) : (
-              <Action icon={<DossierIcon />} label="Dossier" disabled title="Dossiers cover the named atmospheres; snap the probe to one" />
+              <UnavailableDossier />
             )}
           </li>
           <li><Action to={links.evidence} icon={<TestsIcon />} label="Tests" /></li>

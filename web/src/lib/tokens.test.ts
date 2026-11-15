@@ -90,7 +90,7 @@ describe("design tokens", () => {
 
   it("keeps focus and anchors clear of the sticky nav", () => {
     expect(css).toMatch(/html\s*\{\s*scroll-padding-top:\s*calc\(var\(--nav-h\)/);
-    expect(sources["../components/Layout.tsx"]).toContain("sticky top-0 z-40 h-[var(--nav-h)]");
+    expect(sources["../components/Layout.tsx"]).toContain("sticky top-0 z-50 h-[var(--nav-h)]");
   });
 
   it("draws every control's boundary in --control-line (3:1), never the quiet --line", () => {

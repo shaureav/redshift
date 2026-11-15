@@ -95,21 +95,25 @@ export function Layout() {
     <div className="flex min-h-screen flex-col">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-[90] focus:rounded focus:bg-surface-2 focus:p-2">Skip to content</a>
       {/* The nav must fit a 360 px screen: below 640 px the buttons are tighter, Compare moves into the
-          Reference menu, and the logo never shrinks (images default to max-width 100%). */}
-      <nav className="glass sticky top-0 z-40 h-[var(--nav-h)] border-b border-line backdrop-blur" aria-label="Main">
+          Reference menu, and the logo never shrinks (images default to max-width 100%). The nav (and so its
+          Reference menu) sits above the phone's evidence sheet (z-40); a number's source card (z-60), the
+          command palette (z-80) and toasts (z-85) sit above the nav. Each accessible name holds the words shown
+          (WCAG 2.5.3, label in name): the logo link "Redshift The Atmosphere Trade Studio", the search button
+          "Search" and its shortcut. */}
+      <nav className="glass sticky top-0 z-50 h-[var(--nav-h)] border-b border-line backdrop-blur" aria-label="Main">
         <div className="flex h-full items-center gap-1 px-4 sm:gap-2 lg:px-6">
-          <Link to="/" className="mr-1 flex flex-none items-center gap-2 sm:mr-2" aria-label="Redshift, the plane">
+          <Link to="/" className="mr-1 flex flex-none items-center gap-2 sm:mr-2" aria-label="Redshift The Atmosphere Trade Studio, the plane">
             <img src="/favicon.svg" alt="" className="h-6 w-6 max-w-none flex-none" />
-            <span className="hidden text-base font-semibold tracking-tight sm:inline">Redshift</span>
+            <span className="hidden text-base font-semibold tracking-tight sm:inline">Redshift</span>{" "}
             <span className="hidden text-xs text-ink-3 xl:inline">The Atmosphere Trade Studio</span>
           </Link>
           <NavLink to="/" end className={({ isActive }) => `btn btn-quiet max-sm:px-2 ${isActive ? "text-ink" : ""}`}>Plane</NavLink>
           <NavLink to="/compare" className={({ isActive }) => `btn btn-quiet max-sm:hidden ${isActive ? "text-ink" : ""}`}>Compare</NavLink>
           <ReferenceMenu />
           <span className="ml-auto flex flex-none items-center gap-1 sm:gap-2">
-            <button type="button" className="btn btn-quiet max-sm:px-2" onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))} aria-label="Search and jump (Command K)">
+            <button type="button" className="btn btn-quiet max-sm:px-2" onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))} aria-label={`Search (${isMac ? "Command" : "Ctrl"} K)`}>
               <SearchIcon />
-              <span className="hidden md:inline">Search</span>
+              <span className="hidden md:inline">Search</span>{" "}
               <span className="kbd hidden md:inline">{isMac ? "⌘" : "Ctrl"} K</span>
             </button>
             <button type="button" className="btn btn-quiet max-sm:px-2" onClick={toggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}>

@@ -20,6 +20,8 @@ const DRAG_SLOP = 6;
 const FALLBACK = { peek: 280, half: 440 };
 /** The handle's bar at rest, in px (index.css, .sheet-grip). */
 const GRIP = 32;
+/** The most of the sheet's height that half may show. */
+const HALF_MAX = 0.6;
 
 type Stops = Record<Snap, number>;
 
@@ -78,9 +80,11 @@ export function EvidenceSheet({ label, resetKey, onPeek, className = "", childre
     m.peek = Math.max(m.peek, bottomOf(peekEl, el) + shift + 16);
     m.half = Math.max(m.half, halfEl ? bottomOf(halfEl, el) + shift : m.peek);
     const H = el.clientHeight;
-    // A short screen (a phone on its side) keeps half of itself for the plane.
+    // A short screen (a phone on its side) keeps half of itself for the plane. Half never takes more than 60% of
+    // the sheet, so some of the plane always shows above it: a long missing callout runs on past the edge, and
+    // full (or Tab, which opens full) reaches the rest.
     const peek = Math.round(Math.min(m.peek, H / 2));
-    const half = Math.round(Math.min(Math.max(m.half, peek), H));
+    const half = Math.round(Math.min(Math.max(m.half, peek), Math.max(peek, H * HALF_MAX)));
     setStops((s) => (s && s.peek === peek && s.half === half && s.full === H ? s : { peek, half, full: H }));
   }, [resetKey]);
 

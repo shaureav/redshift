@@ -104,7 +104,7 @@ export function ContextStrip({ flame, prebreathe, multiplier, multipliers, onMul
             <dt className="eyebrow">Flame</dt>
             <dd className="font-semibold">
               {flame ? <Value val={flame.value} digits={0} approximate={flame.approximate} /> : <span className="font-normal italic text-ink-2">not computed here</span>}
-              {flame && !flame.exact && <span className="block text-xs font-normal text-ink-3">nearest point</span>}
+              {flame && !flame.exact && <span className="block whitespace-nowrap text-xs font-normal text-ink-3">nearest point</span>}
             </dd>
           </div>
           <div>

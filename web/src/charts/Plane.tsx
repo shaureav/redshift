@@ -103,8 +103,16 @@ interface Props {
 function useSize<T extends HTMLElement>(fallback: { w: number; h: number }, min = 320) {
   const ref = useRef<T>(null);
   const [size, setSize] = useState(fallback);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ref.current) return;
+    // Measured before the first paint, so nothing is drawn at the fallback size first (a phone saw the probe
+    // near the right edge for a frame). A box with no layout yet (a test) keeps the fallback.
+    const r = ref.current.getBoundingClientRect();
+    if (r.width > 0 && r.height > 0) {
+      const w0 = Math.max(min, Math.ceil(r.width));
+      const h0 = Math.max(min, Math.ceil(r.height));
+      setSize((s) => (s.w === w0 && s.h === h0 ? s : { w: w0, h: h0 }));
+    }
     const ro = new ResizeObserver(([e]) => {
       const w = Math.max(min, Math.ceil(e.contentRect.width));
       const h = Math.max(min, Math.ceil(e.contentRect.height));
@@ -198,7 +206,16 @@ export function Plane(props: Props) {
       .map((p) => ({ p, px: x(p.o2_pct), py: y(p.pressure_psi), r: binRadius(p.n) })),
     [map.points, z, x, y],
   );
-  const pins = useMemo(() => placePins(candidates, words, f, reserve, placed), [candidates, words, f, reserve, placed]);
+  // On a narrow plot the pinned probe (not one being dragged: pins are placed once per view) and its tag are
+  // obstacles for pin labels too, so a label never sits under them. Not while the intro plays: no probe shows.
+  const probeAt = useMemo(() => (narrow && !stage ? { o2: view.o2, psi: view.psi } : null), [narrow, stage, view.o2, view.psi]);
+  // Under Solids only, with no solid test placed, a caption says so; its height is chosen first (captionY).
+  const placedSolid = useMemo(() => map.points.some((p) => p.fuel_class === "solid"), [map.points]);
+  const capY = useMemo(() => (view.solids && !placedSolid ? captionY(f, candidates, reserve) : null), [view.solids, placedSolid, f, candidates, reserve]);
+  const pins = useMemo(
+    () => placePins(candidates, words, f, reserve, placed, probeAt, capY === null ? [] : [captionBox(f, capY)]),
+    [candidates, words, f, reserve, placed, probeAt, capY],
+  );
 
   // ---- pointer to data, snapped to a candidate (magnet) or to the probe grid ----
   const toData = useCallback(
@@ -503,7 +520,8 @@ export function Plane(props: Props) {
   // The tag sits above and right of the probe (left near the right edge, under it near the top), or at the first
   // other corner that keeps it inside the plot and off every other pin and its label, which on a phone's short
   // plot it would otherwise cover. The pin the probe is on hides its own label.
-  const pinLabels = view.layers.has("cand") ? pins.filter((p) => p.c.id !== onCand?.id).flatMap((p) => p.boxes) : [];
+  // The Solids only caption is in the way too.
+  const pinLabels = [...(view.layers.has("cand") ? pins.filter((p) => p.c.id !== onCand?.id).flatMap((p) => p.boxes) : []), ...(capY === null ? [] : [captionBox(f, capY)])];
   const tagCost = ([left, below]: [boolean, boolean]) => {
     const x0 = left ? pxp - 16 - tagW : pxp + 16;
     const y0 = below ? pyp + 16 : pyp - 32;
@@ -590,7 +608,7 @@ export function Plane(props: Props) {
         solids={view.solids}
         scene={scene}
         reserve={reserve}
-        placedSolid={map.points.some((p) => p.fuel_class === "solid")}
+        capY={capY}
         activeCandidate={stage ? null : onCand?.id ?? null}
         pulse={stage === "pins" && !reduced}
       />
@@ -702,7 +720,8 @@ export function Plane(props: Props) {
           style={{ left: m.left + hoverBin.px + Math.max(hoverBin.r, 12) + 2, top: m.top + hoverBin.py + 4 }}
           onPointerLeave={() => setHoverBin(null)}
         >
-          <Value val={{ v: hoverBin.p.n, u: hoverBin.p.fuel_class === "emulator" ? "sessions" : "tests", p: hoverBin.p.p }} />
+          <Value val={{ v: hoverBin.p.n, u: unitFor(hoverBin.p.fuel_class, hoverBin.p.n), p: hoverBin.p.p }} />
+          <span className="text-ink-2">{FUEL_LABEL[hoverBin.p.fuel_class].toLowerCase()}</span>
         </div>
       )}
       <span className="sr-only" aria-live="polite">{brushMode ? "Area selection on. Drag across the plane to select tests; press B to turn it off." : ""}</span>
@@ -710,8 +729,37 @@ export function Plane(props: Props) {
   );
 }
 
-/** Where a pin's two-line label goes: beside its head (above the point) or under the point, to its right or left. */
-interface PinAt { c: Candidate; cx: number; cy: number; word?: EvidenceWord; below: boolean; left: boolean; boxes: Rect[] }
+/** Where a pin's two-line label goes: beside its head (above the point) or under the point, to its right or left.
+ *  label says what is drawn: the name and its evidence word, the name alone, its oxygen alone (the pressure is
+ *  on the axis beside it), or nothing when every side would cover something. The full name and word are always
+ *  in the tooltip and the Candidates menu. text is the first line drawn. */
+interface PinAt { c: Candidate; cx: number; cy: number; text: string; word?: EvidenceWord; below: boolean; left: boolean; label: "full" | "name" | "short" | "none"; boxes: Rect[] }
+
+/** A bin's unit: one test, two tests; BRE counts sessions. */
+export function unitFor(fuel: string, n: number): string {
+  if (fuel === "emulator") return n === 1 ? "session" : "sessions";
+  return n === 1 ? "test" : "tests";
+}
+
+/** The box the Solids only caption takes, centred across the plot at height cy. */
+function captionBox(frame: Frame, cy: number): Rect {
+  const { iw, narrow } = frame;
+  return narrow ? { x0: iw / 2 - 124, x1: iw / 2 + 124, y0: cy - 16, y1: cy + 16 } : { x0: iw / 2 - 254, x1: iw / 2 + 254, y0: cy - 26, y1: cy + 26 };
+}
+
+/** Where the Solids only caption goes: the lowest height, from near the foot of the plot upwards, at which it
+ *  keeps clear of every pin's head and of the toolbar (the foot if there is none). It is placed before the pin
+ *  labels, which then keep off it: under Solids only it is the message, and a label can shorten or step aside. */
+function captionY(frame: Frame, candidates: Candidate[], reserve: Rect): number {
+  const { ih, x, y } = frame;
+  const heads: Rect[] = candidates.map((c) => ({ x0: x(c.o2_pct.v) - 8, x1: x(c.o2_pct.v) + 8, y0: y(c.pressure_psi.v) - 22, y1: y(c.pressure_psi.v) + 4 }));
+  // A narrow plot's caption is one short line (24 px tall); a wide one's is 40 px.
+  const half = frame.narrow ? 14 : 25;
+  const foot = frame.narrow ? ih - 20 : ih - 40;
+  const tight = (cy: number): Rect => ({ ...captionBox(frame, cy), y0: cy - half, y1: cy + half });
+  for (let cy = foot; cy >= 32; cy -= 4) if (!hitsAny(tight(cy), [reserve, ...heads])) return cy;
+  return foot;
+}
 
 const hitsAny = (b: Rect, taken: Rect[]) => taken.some((t) => b.x0 < t.x1 && b.x1 > t.x0 && b.y0 < t.y1 && b.y1 > t.y0);
 
@@ -802,42 +850,73 @@ const LandLayer = memo(function LandLayer({ frame, grid, multiplier, solids, ris
 
 /** Pins and the boxes their labels take, placed once per layout (the base draws them; the probe's tag keeps off
  *  their labels). */
-function placePins(candidates: Candidate[], words: Partial<Record<string, EvidenceWord>>, frame: Frame, reserve: Rect, placed: Placed[]): PinAt[] {
+function placePins(candidates: Candidate[], words: Partial<Record<string, EvidenceWord>>, frame: Frame, reserve: Rect, placed: Placed[], probeAt: { o2: number; psi: number } | null = null, keepOff: Rect[] = []): PinAt[] {
   const { iw, ih, narrow, x, y } = frame;
   const nameSize = narrow ? 12 : 14;
   const at = candidates.map((c) => ({ c, cx: x(c.o2_pct.v), cy: y(c.pressure_psi.v) }));
   const heads: Rect[] = at.map(({ cx, cy }) => ({ x0: cx - 8, x1: cx + 8, y0: cy - 22, y1: cy + 4 }));
+  // The pinned probe's ring and its tag where it first goes (above and right; Plane's tag placement), from a
+  // character-count width: the same guess the tag uses before it is measured.
+  const probe: Rect[] = [];
+  if (probeAt) {
+    const px = x(probeAt.o2);
+    const py = y(probeAt.psi);
+    const tagW = `${fmtNumber(probeAt.o2)}% O2 · ${fmtNumber(probeAt.psi)} psi`.length * 7 + 16;
+    const left = px + 16 + tagW > iw;
+    const tx0 = left ? px - 16 - tagW : px + 16;
+    const ty0 = py < 40 ? py + 16 : py - 32;
+    probe.push({ x0: px - 14, x1: px + 14, y0: py - 14, y1: py + 14 }, { x0: tx0, x1: tx0 + tagW, y0: ty0, y1: ty0 + 24 });
+  }
   const labels: Rect[] = [];
   return at.map(({ c, cx, cy }, k) => {
     const word = words[c.id];
-    const tw = 4 + Math.max(c.name.length * nameSize * 0.6, (word?.length ?? 0) * 12 * 0.6);
-    const box = (below: boolean, left: boolean): Rect => ({
-      x0: left ? cx - 10 - tw : cx + 8,
-      x1: left ? cx - 8 : cx + 10 + tw,
-      y0: below ? cy + 20 - nameSize : cy - 12 - nameSize,
-      y1: below ? cy + 38 : cy + 6,
-    });
+    type Try = { label: "full" | "name" | "short"; text: string; withWord: boolean };
+    const box = (below: boolean, left: boolean, { text, withWord }: Try): Rect => {
+      const tw = 4 + Math.max(text.length * nameSize * 0.6, withWord ? (word?.length ?? 0) * 12 * 0.6 : 0);
+      return {
+        x0: left ? cx - 10 - tw : cx + 8,
+        x1: left ? cx - 8 : cx + 10 + tw,
+        y0: below ? cy + 20 - nameSize : cy - 12 - nameSize,
+        y1: below ? (withWord ? cy + 38 : cy + 24) : withWord ? cy + 6 : cy - 8,
+      };
+    };
     // Beside the head on the right first (the scenario, which shares a pressure with a habitat candidate,
     // tries under it first), then the other sides. A side inside the plot and clear of the toolbar, every other
     // pin and every label already placed wins; among those, the one over the fewest glyphs, then the earlier.
+    // When no side is clear the evidence word goes, then the name gives way to the oxygen alone, then the whole
+    // label, rather than print over another.
     const order: [boolean, boolean][] = c.role === "scenario" ? [[true, false], [false, false], [true, true], [false, true]] : [[false, false], [true, false], [false, true], [true, true]];
-    const hard = [reserve, ...heads.filter((_, i) => i !== k), ...labels];
-    const cost = ([b, l]: [boolean, boolean]) => {
-      const r = box(b, l);
+    const onProbe = !!probeAt && probeAt.o2 === c.o2_pct.v && probeAt.psi === c.pressure_psi.v; // hides its own label
+    const hard = [reserve, ...keepOff, ...heads.filter((_, i) => i !== k), ...labels, ...(onProbe ? [] : probe)];
+    const cost = (t: Try) => ([b, l]: [boolean, boolean]) => {
+      const r = box(b, l, t);
       const out = r.x0 < 0 || r.x1 > iw || r.y0 < 0 || r.y1 > ih;
       const under = placed.filter((g) => g.px + g.r > r.x0 && g.px - g.r < r.x1 && g.py + g.r > r.y0 && g.py - g.r < r.y1).length;
       return (out ? 1e6 : 0) + (hitsAny(r, hard) ? 1e4 : 0) + under;
     };
-    const [below, left] = order.reduce((best, o) => (cost(o) < cost(best) ? o : best), order[0]);
-    labels.push(box(below, left));
-    return { c, cx, cy, word, below, left, boxes: [heads[k], box(below, left)] };
+    const best = (t: Try) => order.reduce((b, o) => (cost(t)(o) < cost(t)(b) ? o : b), order[0]);
+    const tries: Try[] = [
+      ...(word ? [{ label: "full" as const, text: c.name, withWord: true }] : []),
+      { label: "name", text: c.name, withWord: false },
+      { label: "short", text: `${fmtNumber(c.o2_pct.v)}% O2`, withWord: false },
+    ];
+    for (const t of tries) {
+      const [below, left] = best(t);
+      if (cost(t)([below, left]) >= 1e4) continue;
+      const b = box(below, left, t);
+      labels.push(b);
+      return { c, cx, cy, text: t.text, word: t.withWord ? word : undefined, below, left, label: t.label, boxes: [heads[k], b] };
+    }
+    return { c, cx, cy, text: c.name, word: undefined, below: false, left: false, label: "none", boxes: [heads[k]] };
   });
 }
 
 /** Everything else that does not move with the probe. Memoised: a drag never re-renders or repaints it. */
-const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, prebreathe, layers, solids, scene, reserve, placedSolid, activeCandidate, pulse }: {
+const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, prebreathe, layers, solids, scene, reserve, capY, activeCandidate, pulse }: {
   frame: Frame; grid: Grid; placed: Placed[]; pins: PinAt[];
-  flame?: FlameGrid; prebreathe?: PrebreathePoint[]; layers: Set<string>; solids: boolean; scene: boolean; reserve: Rect; placedSolid: boolean;
+  flame?: FlameGrid; prebreathe?: PrebreathePoint[]; layers: Set<string>; solids: boolean; scene: boolean; reserve: Rect;
+  /** Under Solids only with no solid test placed, the height of the caption that says so (captionY); else null. */
+  capY: number | null;
   activeCandidate: string | null;
   /** The story intro's first beat: the pins appear one after another and pulse (never under reduced motion). */
   pulse: boolean;
@@ -865,7 +944,7 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
       const py = y(pb.pressure_psi.v);
       taken.push({ x0: px - 8, x1: px + 12 + (pb.duration_text?.length ?? 0) * 12 * 0.6, y0: py - 22, y1: py + 8 });
     }
-    if (solids && !placedSolid) taken.push(narrow ? { x0: iw / 2 - 144, x1: iw / 2 + 144, y0: ih - 68, y1: ih - 12 } : { x0: iw / 2 - 254, x1: iw / 2 + 254, y0: ih - 66, y1: ih - 14 });
+    if (capY !== null) taken.push(captionBox(frame, capY));
     return gen(flame.temperature_K.flat()).map((c, idx) => {
       const lines: [number, number][][] = [];
       const inside = ([gx, gy]: number[]) => gx > 0.5 && gx < nx - 0.5 && gy > 0.5 && gy < ny - 0.5;
@@ -907,7 +986,7 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
       }
       return { value, text, lines: lines.map((l) => d3.line()(l) ?? ""), label };
     });
-  }, [flame, x, y, z, iw, ih, pins, placed, prebreathe, reserve, solids, placedSolid, narrow]);
+  }, [flame, x, y, z, iw, ih, pins, placed, prebreathe, reserve, frame, capY]);
 
   const psiTicks = [3, 4.3, 6, 8.2, 10.2, 14.7, 20, 30, 45].filter((p) => p >= z.psi[0] && p <= z.psi[1]);
   const kpaTicks = [20, 30, 40, 50, 70, 100, 150, 200, 300].filter((k) => k / KPA_PER_PSI >= z.psi[0] && k / KPA_PER_PSI <= z.psi[1]);
@@ -962,7 +1041,7 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
           </g>
 
           <g className="layer" data-on={layers.has("cand")}>
-            {pins.map(({ c, cx, cy, word, below, left }, k) => {
+            {pins.map(({ c, cx, cy, text, word, below, left, label }, k) => {
               const on = c.id === activeCandidate;
               const tx = left ? -10 : 10;
               const delay = pulse ? { animationDelay: `calc(${k} * var(--t-fast))` } : undefined;
@@ -971,9 +1050,9 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
                   {pulse && <circle cy={-14} r={9} className="pin-pulse" fill="none" stroke="var(--candidate)" strokeWidth={2} style={delay} />}
                   <path d={PIN} fill="var(--candidate)" stroke="var(--sea)" strokeWidth={1.5} strokeLinejoin="round" />
                   <circle cy={-14} r={2.25} fill="var(--sea)" />
-                  {!on && (
+                  {!on && label !== "none" && (
                     <text x={tx} y={below ? 20 : -12} textAnchor={left ? "end" : "start"} fontSize={nameSize} fontWeight={600} fill="var(--ink)" paintOrder="stroke" stroke="var(--land)" strokeWidth={4} strokeLinejoin="round">
-                      {c.name}
+                      {text}
                       {word && <tspan x={tx} dy={14} fontSize={12} fontWeight={400} fill="var(--ink-2)">{word}</tspan>}
                     </text>
                   )}
@@ -982,17 +1061,16 @@ const PlaneBase = memo(function PlaneBase({ frame, grid, placed, pins, flame, pr
             })}
           </g>
 
-          {solids && !placedSolid && (
+          {capY !== null && (
             narrow ? (
-              <g className={scene ? "lands-after-scene" : "animate-fade"} transform={`translate(${iw / 2},${ih - 40})`}>
-                <rect x={-Math.min(140, iw / 2 - 8)} y={-24} width={Math.min(280, iw - 16)} height={48} rx={8} fill="var(--surface)" stroke="var(--solid-edge)" strokeOpacity={0.6} />
-                <text textAnchor="middle" fontSize={14} fontWeight={600} fill="var(--ink)">
-                  <tspan x={0} dy={-4}>No solid-material test can be</tspan>
-                  <tspan x={0} dy={18}>placed on this plane</tspan>
-                </text>
+              // One short line on a phone, so it fits under the pins of a short plot (the headline above the plot,
+              // or the intro's card, gives the cited counts).
+              <g className={scene ? "lands-after-scene" : "animate-fade"} transform={`translate(${iw / 2},${capY})`}>
+                <rect x={-Math.min(120, iw / 2 - 8)} y={-12} width={Math.min(240, iw - 16)} height={24} rx={8} fill="var(--surface)" stroke="var(--solid-edge)" strokeOpacity={0.6} />
+                <text textAnchor="middle" dy={4} fontSize={12} fontWeight={600} fill="var(--ink)">No solid test can be placed here</text>
               </g>
             ) : (
-              <g className={scene ? "lands-after-scene" : "animate-fade"} transform={`translate(${iw / 2},${ih - 40})`}>
+              <g className={scene ? "lands-after-scene" : "animate-fade"} transform={`translate(${iw / 2},${capY})`}>
                 <rect x={-250} y={-22} width={500} height={40} rx={8} fill="var(--surface)" stroke="var(--solid-edge)" strokeOpacity={0.6} />
                 <text textAnchor="middle" dy={4} fontSize={20} fontWeight={600} fill="var(--ink)">No solid-material test can be placed on this plane</text>
               </g>

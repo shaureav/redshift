@@ -26,6 +26,7 @@
   --t-fade: 120ms;     /* opacity crossfades: the only motion left under reduced motion */
   --t-shimmer: 1400ms; /* one loop of the loading skeleton */
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1); /* everything that arrives */
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1); /* a change spread evenly over its scene (the land sinking) */
 
   /* Shape and size: two radii plus pills, on the 8 px grid. */
   --r-control: 4px;
@@ -312,7 +313,8 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
 /* Solids only: the land sinks, erased from the coast inward by a stroke that widens over one scene (a mask in
    charts/Plane.tsx); turning it off lets the land rise back the same way. Then the cited headline lands. Under
    reduced motion both are instant (--t-scene is 0 and transitions and animations are off). */
-.land-sink { transition: stroke-width var(--t-scene) var(--ease-out); }
+/* Even through the scene, not front-loaded: an ease-out would erase most of the land in its first 200 ms. */
+.land-sink { transition: stroke-width var(--t-scene) var(--ease-in-out); }
 .lands-after-scene { animation: fade var(--t-base) var(--ease-out) var(--t-scene) both; }
 .bar { transition: width var(--t-base) var(--ease-out); }
 /* Feel (plan, Phase 4), on the plane's probe overlay. A ring expands from a pin as the probe snaps to it; the
@@ -372,6 +374,11 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
     height: calc(100vh - var(--nav-h) - var(--sheet-peek, 280px)); height: calc(100dvh - var(--nav-h) - var(--sheet-peek, 280px));
   }
   .sheet-pad { padding-bottom: var(--sheet-peek, 280px); }
+  /* During the story intro the sheet's surface stays opaque, so the legend in flow under it never shows
+     through; only its contents dim (the intro's card sits over it, components/Intro.tsx). */
+  [data-intro] .sheet.intro-dim { opacity: 1; }
+  .sheet > * { transition: opacity var(--t-scene) var(--ease-out); }
+  [data-intro] .sheet.intro-dim > * { opacity: 0.15; }
 }
 @media (min-width: 1024px) {
   .plane-stage { display: contents; }
@@ -402,7 +409,7 @@ html { scroll-padding-top: calc(var(--nav-h) + 8px); }
   :root { --t-fast: 0ms; --t-base: 0ms; --t-move: 0ms; --t-scene: 0ms; }
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
   /* Opacity crossfades stay, short and linear: they show that something changed without moving anything. */
-  .crossfade, .layer, .glyph, .glyph-group, .glyph-class, .intro-strip, .intro-hide, .intro-dim { transition: opacity var(--t-fade) linear !important; }
+  .crossfade, .layer, .glyph, .glyph-group, .glyph-class, .intro-strip, .intro-hide, .intro-dim, .sheet > * { transition: opacity var(--t-fade) linear !important; }
   .swap-in { animation: fade var(--t-fade) linear both !important; }
 }
 

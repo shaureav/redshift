@@ -86,6 +86,10 @@ The home page is one big map of oxygen against cabin pressure with a panel besid
 
 The map is drawn like a coastline: land wherever the build counted at least one test near a point, hatched open sea wherever it counted none, and the coast as the line between. Turn on "Solids only" and the land sinks, because no solid-material test can be placed anywhere; the candidate pins then all read "at sea". The words on the pins (inland, on the coast, at sea) describe the recorded evidence around that point, never fire risk, and the plane's controls sit in one small toolbar in its corner.
 
+## Labels that never overprint (`web/src/charts/Plane.tsx`, `placePins` and `captionY`)
+
+Each pin's label tries its four sides and takes the first that covers nothing else; if none is clear, it drops the evidence word, then shortens to the oxygen value, and only then disappears, so two labels never print over each other. Under "Solids only" the caption that says no solid test can be placed is placed first, clear of every pin, and the labels make room for it. The full names and words are always in the Candidates menu.
+
 ## The story intro (`web/src/components/Intro.tsx`)
 
 On a first visit the plane tells its own story in three beats: the atmospheres NASA is weighing appear as pins on an empty map, the fire tests NASA's tables let us place rise as land, and then, with only solid materials kept, the land sinks and the card cites the counts that explain why (each count opens its source). Click, scroll or press the arrow keys to move on, skip at any time, and press Explore to take over the plane at 8.2 psi and 34% oxygen with solids only on. It shows once per device and the command palette can replay it.
@@ -112,4 +116,4 @@ On the website, every number is drawn by one shared piece of code, and every num
 
 ## Design tokens and the contrast check (`web/src/index.css`, `web/scripts/contrast.mjs`)
 
-Every colour, text size, animation time and shadow on the website is set once, in one stylesheet, and every screen uses those settings instead of its own. Line heights follow the same six text roles, and a printed page takes the light colours on white paper. A small program reads that stylesheet and measures the contrast of every pairing that matters, in the dark theme, the light theme and on paper: text must be clearly readable (4.5 to 1), and every data marker and every control's edge must stand out from what is behind it (3 to 1). If a change ever breaks that, or brings red into the palette, the tests fail.
+Every colour, text size, animation time and shadow on the website is set once, in one stylesheet, and every screen uses those settings instead of its own. Line heights follow the same six text roles, and a printed page takes the light colours on white paper. A small program reads that stylesheet and measures the contrast of every pairing that matters, in the dark theme, the light theme and on paper: text must be clearly readable (4.5 to 1), and every data marker and every control's edge must stand out from what is behind it (3 to 1). If a change ever breaks that, or brings red into the palette, the tests fail. A second small program (`web/scripts/palette-hue.mjs`) reads every colour in the stylesheet and the Tailwind settings and fails if any is close to red (within 20 degrees of red on the colour wheel and clearly saturated).

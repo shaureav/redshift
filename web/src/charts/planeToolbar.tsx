@@ -241,15 +241,18 @@ function ToolMenu({ label, tip, icon, width = MENU_W, children }: { label: strin
   }, [open, width]);
   useEffect(() => {
     if (!open) return;
-    const off = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
+    const off = (e: Event) => !ref.current?.contains(e.target as Node) && setOpen(false);
     const esc = (e: globalThis.KeyboardEvent) => {
       if (e.key !== "Escape") return;
       setOpen(false);
       btn.current?.focus();
     };
+    // Focus moving to anything outside (the next tool, by the arrow keys or Tab) closes it too, so two menus are
+    // never open at once.
     document.addEventListener("mousedown", off);
+    document.addEventListener("focusin", off);
     document.addEventListener("keydown", esc);
-    return () => { document.removeEventListener("mousedown", off); document.removeEventListener("keydown", esc); };
+    return () => { document.removeEventListener("mousedown", off); document.removeEventListener("focusin", off); document.removeEventListener("keydown", esc); };
   }, [open]);
   const close = () => {
     setOpen(false);
