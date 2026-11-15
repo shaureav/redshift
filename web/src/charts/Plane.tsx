@@ -36,6 +36,8 @@ const TOUCH_MAGNET_PX = 24;
 // A finger that moves less than this has not started a drag; held this long without moving, it previews.
 const TOUCH_SLOP = 8;
 const LONG_PRESS = 450; // milliseconds
+/** The probe tag's text width by its shape (digits read as 0), measured once in the page's font. */
+const TAG_WIDTHS = new Map<string, number>();
 /** The range of the plane in view: a zoom preset, or the window a pinch left. */
 interface Zoom { label: string; o2: [number, number]; psi: [number, number] }
 /** A zoom from its key: a preset's name, or a pinched window's four numbers. One object per key, so the base
@@ -579,19 +581,29 @@ export function Plane(props: Props) {
   // probe moves, so a drag rarely changes it.
   const tagText = useRef<SVGTextElement>(null);
   const [tagTextW, setTagTextW] = useState<number | null>(null);
-  const measureTag = useCallback(() => {
+  // Measured once per tag shape (its digits read as 0) and kept: tabular figures give every tag of one shape the
+  // same width, and measuring forces a layout. A hover crosses between shapes (34% and 34.5%) on most steps, so
+  // measuring each time a shape came back cost more than the hover itself (D38).
+  const measureTag = useCallback((fresh = false) => {
     const el = tagText.current;
     if (!el || typeof el.getComputedTextLength !== "function") return;
-    const w = el.getComputedTextLength();
-    if (w > 0) setTagTextW(Math.ceil(w));
+    const shape = (el.textContent ?? "").replace(/\d/g, "0");
+    let w = fresh ? undefined : TAG_WIDTHS.get(shape);
+    if (w === undefined) {
+      w = Math.ceil(el.getComputedTextLength());
+      if (w <= 0) return;
+      TAG_WIDTHS.set(shape, w);
+    }
+    setTagTextW(w);
   }, []);
-  // Measured again only when the tag's shape changes (its digits read as 0): tabular figures give every tag of
-  // one shape the same width, and measuring forces a layout, which on every step of a drag cost more than the
-  // drag itself.
   const tagShape = tag.replace(/\d/g, "0");
-  useLayoutEffect(measureTag, [tagShape, measureTag]);
+  useLayoutEffect(() => measureTag(), [tagShape, measureTag]);
   useEffect(() => {
-    void document.fonts?.ready.then(measureTag); // the web font may arrive after the first measure
+    // The web font may arrive after the first measure: widths taken in the fallback font are dropped.
+    void document.fonts?.ready.then(() => {
+      TAG_WIDTHS.clear();
+      measureTag(true);
+    });
   }, [measureTag]);
   const tagW = (tagTextW ?? tag.length * 7) + 16;
   // The tag sits above and right of the probe (left near the right edge, under it near the top), or at the first
@@ -608,7 +620,10 @@ export function Plane(props: Props) {
   const tagFirst: [boolean, boolean] = [pxp + 16 + tagW > iw, pyp < 40];
   const tagCorners: [boolean, boolean][] = [tagFirst, [tagFirst[0], !tagFirst[1]], [!tagFirst[0], tagFirst[1]], [!tagFirst[0], !tagFirst[1]]];
   const [tagLeft, tagBelow] = tagCorners.reduce((best, o) => (tagCost(o) < tagCost(best) ? o : best), tagFirst);
-  const glide = dragging ? "none" : "transform var(--t-move) var(--ease-out)";
+  // The probe glides to a point the keyboard, a chip or a shortcut chose, and back to the pinned point when the
+  // pointer leaves. Under a pointer (a drag, or a hover with the pointer on the plot) it moves at once: a glide
+  // restarted on every step kept the probe animating, and the overlay repainting, for as long as the pointer moved.
+  const glide = dragging || pointerOn ? "none" : "transform var(--t-move) var(--ease-out)";
   const candWord = onCand ? words[onCand.id] : undefined;
   const showTip = !!onCand && (pointerOn || focused) && view.layers.has("cand") && !dragging && !stage;
   const tipRight = pxp + 16 + 256 > iw;

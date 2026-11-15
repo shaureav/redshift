@@ -2,7 +2,7 @@
 // pick an atmosphere (drag, click, arrow keys or a candidate chip), see the evidence instantly, go deeper,
 // take it with you. Every view state lives in the URL. Below lg (plan, Phase 6) the panel is a bottom sheet over
 // the plane (components/Sheet.tsx), and the plane and its headline fill the screen above the sheet's peek.
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AccessGap, type AccessGapData } from "../charts/AccessGap";
 import { Plane, type ProbeMode } from "../charts/Plane";
@@ -10,7 +10,7 @@ import { PlaneToolbar } from "../charts/planeToolbar";
 import type { TradeMapData } from "../charts/TradeMap";
 import { AskBox } from "../components/AskBox";
 import { FuelMarker } from "../components/Common";
-import { EvidencePanelView, flameAt, prebreatheFor, type FlameFile, type PanelData, type PrebreatheFile } from "../components/EvidencePanel";
+import { EvidencePanelView, flameAt, prebreatheFor, type FlameFile, type PanelActions, type PanelData, type PrebreatheFile } from "../components/EvidencePanel";
 import { KeyboardIcon, PinIcon } from "../components/Icons";
 import { EXPLORE_AT, Intro, INTRO_STAGES, introSeen } from "../components/Intro";
 import { EvidenceSheet } from "../components/Sheet";
@@ -33,6 +33,15 @@ const KPA_PER_PSI = 6.894757293168361; // selection filter only; never printed
 
 type CandEvFile = { evidence: CandidateEvidence[]; steps: { threshold: Val<number>; o2_step: Val<number>; pressure_ratio: Val<number> } };
 
+// The panel draws again only when what it is given changes: a probe that moves within one grid node, a new
+// headline or an open dialog leaves it as it is (D38).
+const PanelView = memo(EvidencePanelView);
+
+type Pt = { o2: number; psi: number };
+// A preview or a drag at the node it already holds keeps its object, so the page does not draw again for a
+// pointer that moved within one grid node (the plane snaps every move to a node or a candidate).
+const keep = (o2: number, psi: number) => (p: Pt | null): Pt => (p && p.o2 === o2 && p.psi === psi ? p : { o2, psi });
+
 export default function Home() {
   const [view, setView] = useView();
   const navigate = useNavigate();
@@ -45,8 +54,8 @@ export default function Home() {
   const gap = useData<AccessGapData>("access_gap.json");
 
   const grid = useMemo(() => (probeFile.data ? decodeGrid(probeFile.data) : null), [probeFile.data]);
-  const [preview, setPreview] = useState<{ o2: number; psi: number } | null>(null);
-  const [drag, setDrag] = useState<{ o2: number; psi: number } | null>(null);
+  const [preview, setPreview] = useState<Pt | null>(null);
+  const [drag, setDrag] = useState<Pt | null>(null);
   const [brushMode, setBrushMode] = useState(false);
   const [sheet, setSheet] = useState(false);
   // Below lg the panel is a bottom sheet: its readout leads with the tiles, and the page keeps the plane clear of
@@ -108,8 +117,8 @@ export default function Home() {
 
   const onProbe = useCallback(
     (o2: number, psi: number, mode: ProbeMode) => {
-      if (mode === "hover") return setPreview({ o2, psi });
-      if (mode === "drag") return setDrag({ o2, psi });
+      if (mode === "hover") return setPreview(keep(o2, psi));
+      if (mode === "drag") return setDrag(keep(o2, psi));
       setDrag(null);
       setPreview(null);
       setView({ o2, psi });
@@ -142,6 +151,12 @@ export default function Home() {
       profiles: { o2: totalsAlongO2(grid, r.j, view.m), psi: totalsAlongPressure(grid, r.i, view.m) },
     };
   }, [grid, cands.data, candEv.data, flame.data, flame.error, pb.data, gap.data, shown.o2, shown.psi, view.m, drag, preview]);
+  // While the pointer previews (a hover or a drag), the panel takes each new reading at a lower priority than the
+  // probe, so the probe keeps up with the pointer and the panel follows as soon as the browser has a moment. It
+  // always shows one whole reading (its point, counts and words come from one readAt), and once the pointer
+  // rests every surface holds the same one. A commit (a click, a release, a key, a chip) reaches the panel at once.
+  const deferred = useDeferredValue(data);
+  const panel = data?.preview && deferred ? deferred : data;
 
   // A brushed area: whether any placed test sits inside it, never how many. The browser does not make new
   // counts (D24 withdraws D20); the Evidence Explorer, filtered to the area, lists the tests themselves.
@@ -163,7 +178,7 @@ export default function Home() {
     if (sound) geiger.armOnGesture();
   }, [sound]);
   useEffect(() => () => geiger.pause(), []); // leaving the plane stops the clicks
-  const onSound = () => {
+  const onSound = useCallback(() => {
     if (sound) {
       geiger.disable();
       setSound(false);
@@ -174,13 +189,13 @@ export default function Home() {
     } else {
       toast("Sound is not available in this browser");
     }
-  };
+  }, [sound]);
 
   // Keyboard shortcuts (lib/shortcuts.ts): never while typing, never behind a modal dialog.
-  const compareLink = data ? `/compare?pts=${data.reading.o2.v},${data.reading.psi.v}${data.candidate?.id === "c8_2_34" ? ";26.5,10.2" : ";34,8.2"}&m=${view.m}` : null;
+  const compareLink = panel ? `/compare?pts=${panel.reading.o2.v},${panel.reading.psi.v}${panel.candidate?.id === "c8_2_34" ? ";26.5,10.2" : ";34,8.2"}&m=${view.m}` : null;
   // P pins the grid node the panel reads (a hover or a press and hold included): the address bar then holds it.
-  const readO2 = data?.reading.o2.v ?? null;
-  const readPsi = data?.reading.psi.v ?? null;
+  const readO2 = panel?.reading.o2.v ?? null;
+  const readPsi = panel?.reading.psi.v ?? null;
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const s = shortcutFor(e, !!document.querySelector('[aria-modal="true"]'));
@@ -230,11 +245,64 @@ export default function Home() {
   const failed = probeFile.error || map.error || cands.error || candEv.error;
   const gapSteps = gap.data?.psi_steps;
 
-  if (failed) return <LoadError onRetry={() => window.location.reload()} />;
-  if (loading || !data) return <PlaneSkeleton />;
+  // What the page hands down keeps its identity while the probe moves, so the toolbar, the legend and the panel
+  // are skipped on a frame where only the probe changed (D38).
+  const candId = data?.candidate?.id; // the plane's: it follows the probe
+  const panelCandId = panel?.candidate?.id;
+  const panelO2 = panel?.reading.o2.v;
+  const panelPsi = panel?.reading.psi.v;
+  const candidates = cands.data?.candidates;
+  const toolbar = useMemo(
+    () =>
+      candidates ? (
+        <PlaneToolbar
+          solids={view.solids}
+          onSolids={() => setView({ solids: !view.solids })}
+          candidates={candidates}
+          words={words}
+          activeCandidate={candId ?? null}
+          onCandidate={(c) => onProbe(c.o2_pct.v, c.pressure_psi.v, "commit")}
+          layers={view.layers}
+          onLayer={(l) => { const s = new Set(view.layers); if (s.has(l)) s.delete(l); else s.add(l); setView({ layers: s }); }}
+          zoom={view.zoom}
+          onZoom={(zoom) => setView({ zoom, win: null })}
+          pinched={!!view.win}
+          brushMode={brushMode}
+          onBrush={() => setBrushMode((b) => !b)}
+          sound={sound}
+          onSound={onSound}
+          reducedMotion={reduced}
+          compact={phone}
+        />
+      ) : null,
+    [candidates, view.solids, view.layers, view.zoom, view.win, words, candId, brushMode, sound, onSound, reduced, phone, setView, onProbe],
+  );
+  const actions = useMemo<PanelActions | null>(
+    () =>
+      panelO2 === undefined || panelPsi === undefined
+        ? null
+        : {
+            onMultiplier: (m) => setView({ m }),
+            links: {
+              dossier: panelCandId ? `/dossiers/candidate/${panelCandId}` : undefined,
+              evidence: `/evidence?near=${panelO2},${panelPsi},${view.m}`,
+              compare: compareLink ?? "/compare",
+              brief: `/brief?o2=${panelO2}&p=${panelPsi}${view.m !== 1 ? `&m=${view.m}` : ""}`,
+            },
+            onShare: copyPageLink,
+            onOpenGap: () => setView({ panel: "gap" }, { push: true }),
+          },
+    [panelCandId, panelO2, panelPsi, view.m, compareLink, setView],
+  );
+  const onAsked = useCallback((q: string | null) => setView({ ask: q }), [setView]);
+  const ask = useMemo(
+    () => (panelO2 === undefined || panelPsi === undefined ? null : <AskBox context={{ o2: panelO2, psi: panelPsi, m: view.m }} initial={view.ask} onAsked={onAsked} />),
+    [panelO2, panelPsi, view.m, view.ask, onAsked],
+  );
+  const openShortcuts = useCallback(() => setSheet(true), []);
 
-  const candId = data.candidate?.id;
-  const pointQs = `o2=${data.reading.o2.v}&p=${data.reading.psi.v}${view.m !== 1 ? `&m=${view.m}` : ""}`;
+  if (failed) return <LoadError onRetry={() => window.location.reload()} />;
+  if (loading || !data || !panel || !actions) return <PlaneSkeleton />;
 
   return (
     <div
@@ -279,27 +347,7 @@ export default function Home() {
             words={words}
             scene={scene || stage !== null}
             stage={stage}
-            toolbar={
-              <PlaneToolbar
-                solids={view.solids}
-                onSolids={() => setView({ solids: !view.solids })}
-                candidates={cands.data.candidates}
-                words={words}
-                activeCandidate={candId ?? null}
-                onCandidate={(c) => onProbe(c.o2_pct.v, c.pressure_psi.v, "commit")}
-                layers={view.layers}
-                onLayer={(l) => { const s = new Set(view.layers); if (s.has(l)) s.delete(l); else s.add(l); setView({ layers: s }); }}
-                zoom={view.zoom}
-                onZoom={(zoom) => setView({ zoom, win: null })}
-                pinched={!!view.win}
-                brushMode={brushMode}
-                onBrush={() => setBrushMode((b) => !b)}
-                sound={sound}
-                onSound={onSound}
-                reducedMotion={reduced}
-                compact={phone}
-              />
-            }
+            toolbar={toolbar}
             brushMode={brushMode}
             onProbe={onProbe}
             // The pointer left, a preview ended, or a drag gave way to a pinch: the probe shows the pinned point.
@@ -311,7 +359,7 @@ export default function Home() {
           />
         </div>
         </div>
-        <Legend onShortcuts={() => setSheet(true)} />
+        <Legend onShortcuts={openShortcuts} />
       </section>
 
       {/* At lg the docked panel. lg:relative: it is the containing block for anything absolutely placed inside it
@@ -342,22 +390,7 @@ export default function Home() {
             )}
           </div>
         )}
-        <EvidencePanelView
-          data={data}
-          compact={sheetMode}
-          actions={{
-            onMultiplier: (m) => setView({ m }),
-            links: {
-              dossier: candId ? `/dossiers/candidate/${candId}` : undefined,
-              evidence: `/evidence?near=${data.reading.o2.v},${data.reading.psi.v},${view.m}`,
-              compare: compareLink ?? "/compare",
-              brief: `/brief?${pointQs}`,
-            },
-            onShare: copyPageLink,
-            onOpenGap: () => setView({ panel: "gap" }, { push: true }),
-          }}
-          ask={<AskBox context={{ o2: data.reading.o2.v, psi: data.reading.psi.v, m: view.m }} initial={view.ask} onAsked={(q) => setView({ ask: q })} />}
-        />
+        <PanelView data={panel} compact={sheetMode} actions={actions} ask={ask} />
       </EvidenceSheet>
 
       {view.panel === "gap" && <GapDialog onClose={() => setView({ panel: "evidence" })} />}
@@ -369,7 +402,7 @@ export default function Home() {
 
 /** The plane's key, read as a map: land, sea and coast, the fuel classes, pins and isotherms; and, where there is
  *  room for a keyboard, the door to the shortcut sheet. */
-function Legend({ onShortcuts }: { onShortcuts: () => void }) {
+const Legend = memo(function Legend({ onShortcuts }: { onShortcuts: () => void }) {
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 text-xs text-ink-2 lg:px-6">
       <span className="flex items-center gap-1.5"><span className="inline-block h-3 w-5 rounded-sm border border-[color:var(--coast)] bg-[color:var(--land)]" /> Land: tests near</span>
@@ -385,7 +418,7 @@ function Legend({ onShortcuts }: { onShortcuts: () => void }) {
       </button>
     </div>
   );
-}
+});
 
 function GapDialog({ onClose }: { onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);

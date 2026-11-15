@@ -70,6 +70,31 @@ Target (section 3): under 2.0 s and under 0.02. **Data on first load**: 9 files 
 
 During a pinch the layers follow by a CSS transform and the base layer is never re-rendered (0 mutations); it is drawn once for the new window when the fingers lift (one redraw per gesture: 94 DOM changes for a single gesture in a first check, 711 for run 2's three). Run 1's one long task fell between gestures (no frame during a gesture took more than 44.4 ms), where the work is the redraw after a lift. Before the fix a pinch re-rendered the whole plane on every move (14 to 27 ms a move in the Phase 6 review, one 82 ms spike).
 
+## Hover smoothness (D38)
+
+Phase 12 measured the drag only, and only at full CPU speed. Hovering was not measured, and on a slower CPU it lagged. `web/scripts/perf.mjs` (Node built-ins and a headless Chrome, no dependency) now measures it: 1440 x 900, dark, `/?o2=34&p=8.2`, the mouse moving every 8 ms along a sine path across the plot (160 moves), with the CPU slowed 4 times (a mid-range laptop on battery) and a pixel ratio of 2. It records every frame's interval from inside the page and the main thread's busy time from a DevTools trace.
+
+    node scripts/perf.mjs --base <url> --cpu 4 --dpr 2 --runs 2
+
+The build before the fix (a frozen copy of `web/dist` at 5dedc26) and the fixed build were run alternately, twice each, on the same machine. Each row is the median of two runs. Frames over 25 ms are the guide to what a person feels. Busy time covers the whole sweep, and a sweep lasts as long as the page takes to handle its moves, so a page that keeps up can draw more frames over a longer sweep (round 2 after).
+
+| Scenario | Round | Before: busy, median frame, p95, frames over 25 ms | After: busy, median frame, p95, frames over 25 ms |
+| --- | --- | --- | --- |
+| Hover | 1 | 5,791 ms, 33.3 ms, 55.6 ms, 126 of 187 | 3,513 ms, 22.2 ms, 33.4 ms, 23 of 190 |
+| Hover | 2 | 5,927 ms, 33.4 ms, 55.7 ms, 124 of 185 | 5,118 ms, 11.2 ms, 33.2 ms, 30 of 456 |
+| Hover, Solids only | 1 | 5,710 ms, 33.3 ms, 44.6 ms, 126 of 190 | 3,698 ms, 22.2 ms, 44.4 ms, 35 of 191 |
+| Hover, Solids only | 2 | 5,903 ms, 33.4 ms, 44.7 ms, 132 of 185 | 5,529 ms, 11.2 ms, 33.2 ms, 26 of 496 |
+| Drag, Solids only | 1 | 3,170 ms, 11.2 ms, 33.4 ms, 19 of 200 | 2,742 ms, 11.1 ms, 22.4 ms, 10 of 213 |
+| Drag, Solids only | 2 | 3,227 ms, 11.2 ms, 33.5 ms, 21 of 231 | 3,566 ms, 11.1 ms, 32.9 ms, 16 of 310 |
+| S pressed 8 times | 1 | 2,862 ms, 11.1 ms, 11.3 ms, 9 of 302 | 3,140 ms, 11.1 ms, 22.3 ms, 11 of 290 |
+| S pressed 8 times | 2 | 3,176 ms, 11.3 ms, 56 ms, 32 of 234 | 2,888 ms, 11.1 ms, 22.1 ms, 9 of 302 |
+
+In a CPU profile of one hover sweep on unminified builds, the probe tag's text measuring fell from 415 ms to 15 ms and React's render and commit work from about 2.3 s to about 1.0 s; the main thread was busy 3,558 ms against 5,143 ms. At full CPU speed the build before the fix already held the display's rate (11.1 ms frames, no frame over 25 ms, in all four scenarios), so the lag shows on slower machines.
+
+Not reached: the target of halving the hover's main-thread time. What remains is mostly the browser's own style, layout, paint and compositing for the probe overlay and the panel each time the probe reaches a new grid node (about 2.8 s of native time in the profiled sweep).
+
+Behaviour after the fix, checked on the production build in a headless Chrome at 1440 x 900 (10 checks, all pass): after a hover the panel reads the probe tag's point and the address bar is unchanged; under the pointer the probe does not glide; a click commits the probe's point to the address bar and the panel; a drag's release commits the point released; when the pointer leaves, the glide returns and the probe and panel go back to the pinned point; an arrow key moves and commits one grid step; P pins the hovered point the panel reads. `tsc`, `eslint`, `npm test` (176 tests, 480 contrast pairs, 0 red-adjacent colours) and `npm run build` pass. The screenshot matrix was not rerun: no layout code changed.
+
 ## Touch targets
 
 Measured with `elementFromPoint` (so a pseudo-element's larger target counts) by `matrix.mjs` at 390 x 844 and 768 x 1024 with touch, both themes. Smallest across those views, width x height in px:
