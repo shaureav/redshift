@@ -29,6 +29,10 @@ type Local = Record<string, { decision: "accept" | "reject"; note?: string; at: 
 
 const KEY = "redshift-verify-v1";
 const NAME_KEY = "redshift-verify-name";
+// The eight findings the app itself waits on (D43): the Saffire IV, V and VI condition tables and the Saffire VI
+// flow table place the paper burns on the plane (data/findings/paper_tests.json), the three prebreathe rows fill the
+// panel's prebreathe figures, and NASA's recommendation is the source of the 8.2 psi / 34% pin the demo stops on.
+const KEY_8 = ["FND-S6-COND-P-O2", "FND-S5-COND-P-O2", "FND-S4-COND-P-O2", "FND-S6-COND-MAT-FLOW", "FND-EA-PB-8.2", "FND-EA-PB-10.2", "FND-EA-PB-14.7", "FND-EA-CAND-RECOMMENDED"];
 // The findings the access-gap story leans on come first.
 const ORDER = ["Saffire VI", "Saffire V", "Saffire IV and V", "Exploration atmospheres", "Saffire IV", "ACME BRE", "FLEX"];
 
@@ -60,7 +64,7 @@ export default function Verify() {
   const q = useData<Queue>("verify_queue.json");
   const [name, setName] = useState(() => read(NAME_KEY, ""));
   const [local, setLocal] = useState<Local>(() => read(KEY, {}));
-  const [show, setShow] = useState<"todo" | "all">("todo");
+  const [show, setShow] = useState<"key" | "todo" | "all">("key");
 
   const items = useMemo(() => {
     const f = q.data?.findings ?? [];
@@ -68,7 +72,8 @@ export default function Verify() {
       const i = ORDER.indexOf(d.investigation ?? "");
       return i < 0 ? ORDER.length : i;
     };
-    return [...f].sort((a, b) => rank(a) - rank(b) || a.id.localeCompare(b.id));
+    const key = (d: Draft) => (KEY_8.includes(d.id) ? KEY_8.indexOf(d.id) : KEY_8.length);
+    return [...f].sort((a, b) => key(a) - key(b) || rank(a) - rank(b) || a.id.localeCompare(b.id));
   }, [q.data]);
 
   if (q.error) return <ErrorNote error={q.error} />;
@@ -101,7 +106,7 @@ export default function Verify() {
     a.click();
     URL.revokeObjectURL(a.href);
   };
-  const shown = items.filter((d) => show === "all" || (!d.verification && !local[d.id]));
+  const shown = items.filter((d) => (show === "key" ? KEY_8.includes(d.id) : show === "all" || (!d.verification && !local[d.id])));
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 lg:px-6">
@@ -109,6 +114,9 @@ export default function Verify() {
         title="Verify paper findings"
         lead="An AI read NASA's papers and drafted each finding with an exact quote and page. Code has already checked that every quote is on its page and every number is in its quote. A person must still read each one in context: nothing here reaches the plane until a named team member accepts it and the build runs again."
       />
+      <p className="mb-4 text-sm text-ink-2">
+        <span className="font-semibold text-ink">Short of time? Start with the key 8.</span> They are the findings the app waits on: the Saffire condition tables that place NASA&apos;s published solid burns on the plane, the prebreathe rows the panel shows, and the source of the 8.2 psi / 34% pin. An AI pre-check of all 63, with notes, is in <code>docs/VERIFY_PRECHECK.md</code>; it is not verification.
+      </p>
       <ol className="mb-6 grid gap-2 rounded-lg border border-line bg-surface-2 p-4 text-sm text-ink-2 sm:grid-cols-3">
         <li><span className="font-semibold text-ink">1. Read.</span> Check the quote is on the page as marked, and that the finding and every number say only what the quote says.</li>
         <li><span className="font-semibold text-ink">2. Decide.</span> Accept, or reject with a note. Decisions stay in this browser.</li>
@@ -121,6 +129,7 @@ export default function Verify() {
           <input className="field mt-1 w-56" value={name} onChange={(e) => { setName(e.target.value); save(NAME_KEY, e.target.value); }} placeholder="Full name" />
         </label>
         <span className="seg" role="group" aria-label="Which findings to show">
+          <button type="button" aria-pressed={show === "key"} onClick={() => setShow("key")}>The key 8</button>
           <button type="button" aria-pressed={show === "todo"} onClick={() => setShow("todo")}>Still to check</button>
           <button type="button" aria-pressed={show === "all"} onClick={() => setShow("all")}>All</button>
         </span>

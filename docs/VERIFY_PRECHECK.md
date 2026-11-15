@@ -42,6 +42,19 @@ Details the finding adds beyond its quote were checked against the page and hold
 - ACME BRE: FND-BRE-COND-DROP-P, FND-BRE-COND-DROP-SETUP, FND-BRE-COND-FUELS, FND-BRE-COND-ISS-ATMOS, FND-BRE-COND-VOLUME, FND-BRE-RES-FUEL, FND-BRE-RES-O2-LIMIT, FND-BRE-RES-SIZE
 - FLEX: FND-FLEX-COND-DIAMETERS, FND-FLEX-COND-METHANOL-RANGE, FND-FLEX-COND-PRESSURES, FND-FLEX-DEF-DISRUPTION, FND-FLEX-DEF-DISRUPTIVE-BURNING, FND-FLEX-RES-CONTAMINANT, FND-FLEX-RES-DISRUPTIVE, FND-FLEX-RES-LOI, FND-FLEX-RES-TESTEND
 
-## Order of work if time is short
+## The key 8: verify these first
 
-The access-gap story leans on Saffire V and VI. Verify those first (the Verify page lists them first): the two condition tables (FND-S5-COND-P-O2, FND-S6-COND-P-O2) put the Saffire burns near the Moon-base candidates, and the detection findings (FND-S6-DET-*) are the ones judges remember. Then the prebreathe slide (FND-EA-PB-8.2, FND-EA-PB-10.2, FND-EA-PB-14.7) and the candidate atmosphere sources (FND-EA-CAND-*).
+The Verify page opens on them ("The key 8"). They are the findings the app itself waits on; the other 55 can stay "awaiting check", which the app says honestly.
+
+| Finding | What it unlocks in the app | Pre-check |
+| --- | --- | --- |
+| FND-S6-COND-P-O2 | Saffire VI-2, VI-3 and VI-4 placed on the plane (pressure and oxygen); the AI summary that cites them | Consistent; Table 1 columns run IV-1, V-2, VI-2, VI-3, VI-4 |
+| FND-S5-COND-P-O2 | Saffire V-2, V-3 and V-4 placed on the plane | Consistent; columns run IV-1, IV-2, V-2, V-3, V-4 |
+| FND-S4-COND-P-O2 | Saffire IV-1 and IV-2 placed on the plane (100 kPa, 22%) | Consistent; same table |
+| FND-S6-COND-MAT-FLOW | The Saffire VI samples' flow speed | Consistent; same Table 1 as FND-S6-COND-P-O2 |
+| FND-EA-PB-8.2 | The prebreathe figure the panel shows at 8.2 psi / 34% (the demo point) | Consistent |
+| FND-EA-PB-10.2 | The prebreathe figure at 10.2 psi / 26.5% | Consistent; note on its closing clause |
+| FND-EA-PB-14.7 | The prebreathe figure at 14.7 psi / 21% | Consistent; note on its closing clause |
+| FND-EA-CAND-RECOMMENDED | The source of the 8.2 psi / 34% candidate NASA recommended | Consistent |
+
+After these, if there is time, the Saffire VI detection findings (FND-S6-DET-*), which judges remember.
