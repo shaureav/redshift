@@ -119,7 +119,7 @@ afterEach(() => {
 const updateDepthErrors = () => errors.mock.calls.filter((c: unknown[]) => c.some((a) => String(a instanceof Error ? a.message : a).includes("Maximum update depth")));
 
 describe("story intro", () => {
-  const BEAT_TITLES = ["NASA has not chosen the Moon-base atmosphere.", "These are the fire tests PSI lets us place in this range.", "Now only solid materials."];
+  const BEAT_TITLES = ["NASA has not chosen the Moon-base atmosphere.", "These are the fire tests PSI lets us place in this range.", "Now only solid materials.", "NASA did burn solids here, in papers.", "Every number shows its source."];
   const dialog = () => document.querySelector<HTMLElement>('[role="dialog"][aria-labelledby="intro-title"]');
   const title = () => document.getElementById("intro-title")?.textContent;
   /** The beat the live plane is drawing (charts/Plane.tsx, data-intro), or null once the intro has handed over. */
@@ -159,13 +159,25 @@ describe("story intro", () => {
     const solidPlaced = loadSnapshot<{ points: { fuel_class: string }[] }>("trade_map.json").points.some((p) => p.fuel_class === "solid");
     if (solidPlaced) expect(page.textContent).not.toContain("No solid-material test can be placed on this plane");
     else expect(page.textContent).toContain("No solid-material test can be placed on this plane");
+    // Beats 4 and 5 (D47): the papers, then how to read and use the plane, on the same Solids only stage.
+    press("ArrowRight");
+    expect(title()).toBe(BEAT_TITLES[3]);
+    expect(stage()).toBe("solids");
+    press("ArrowRight");
+    expect(title()).toBe(BEAT_TITLES[4]);
+    expect(stage()).toBe("solids");
     // The last beat stays the last; back and forward again.
     press("ArrowRight");
-    expect(title()).toBe(BEAT_TITLES[2]);
+    expect(title()).toBe(BEAT_TITLES[4]);
+    press("ArrowLeft");
+    press("ArrowLeft");
     press("ArrowLeft");
     expect(stage()).toBe("land");
     press("PageDown");
+    press("PageDown");
+    press("PageDown");
     expect(stage()).toBe("solids");
+    expect(title()).toBe(BEAT_TITLES[4]);
     // Nothing was written to the address bar while the intro played: only Explore hands over.
     expect(lastSearch).toBe("");
     click("Explore");
@@ -181,20 +193,29 @@ describe("story intro", () => {
     expect(updateDepthErrors()).toEqual([]);
   });
 
-  it("cites the access-gap counts in its last beat, each through Value with its provenance", () => {
+  it("cites the access-gap counts in its beats, each through Value with its provenance", () => {
     mount(<Home />, "/");
-    press("ArrowRight");
-    press("ArrowRight");
-    // The four PSI steps, then (D44) the two paper steps once verified paper burns are counted.
     const gapFile = loadSnapshot<{ psi_steps: { count: { p: string; v: number } }[]; paper_steps: { count: { p: string; v: number } }[] }>("access_gap.json");
-    const steps = [...gapFile.psi_steps, ...(gapFile.paper_steps[0].count.v ? gapFile.paper_steps : [])];
-    const cited = [...dialog()!.querySelectorAll("[data-prov]")].map((e) => [e.getAttribute("data-prov"), e.textContent]);
-    expect(cited).toEqual(steps.map((s) => [s.count.p, String(s.count.v)]));
-    // No other digit anywhere in the card.
-    const walk = document.createTreeWalker(dialog()!, NodeFilter.SHOW_TEXT);
-    for (let n = walk.nextNode(); n; n = walk.nextNode()) {
-      if (/\d/.test(n.textContent ?? "")) expect(n.parentElement?.closest("[data-prov]")).not.toBeNull();
-    }
+    const cited = () => [...dialog()!.querySelectorAll("[data-prov]")].map((e) => [e.getAttribute("data-prov"), e.textContent]);
+    const noBareDigit = () => {
+      const walk = document.createTreeWalker(dialog()!, NodeFilter.SHOW_TEXT);
+      for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+        if (/\d/.test(n.textContent ?? "")) expect(n.parentElement?.closest("[data-prov]")).not.toBeNull();
+      }
+    };
+    press("ArrowRight");
+    press("ArrowRight");
+    // Beat 3: the four PSI steps.
+    expect(cited()).toEqual(gapFile.psi_steps.map((s) => [s.count.p, String(s.count.v)]));
+    noBareDigit();
+    // Beat 4 (D47): the two paper steps once verified paper burns are counted.
+    press("ArrowRight");
+    expect(cited()).toEqual(gapFile.paper_steps[0].count.v ? gapFile.paper_steps.map((s) => [s.count.p, String(s.count.v)]) : []);
+    noBareDigit();
+    // Beat 5: one real number to try, the first PSI step.
+    press("ArrowRight");
+    expect(cited()).toEqual([[gapFile.psi_steps[0].count.p, String(gapFile.psi_steps[0].count.v)]]);
+    noBareDigit();
   });
 
   it("skips with Escape at any beat, keeps the view, and does not open again on this device", () => {
@@ -308,11 +329,11 @@ describe("story intro", () => {
     expect(inertAtFocus).toBe(false);
   });
 
-  it("under reduced motion shows the same three beats as still frames, with no pulse", () => {
+  it("under reduced motion shows the same beats as still frames, with no pulse", () => {
     vi.stubGlobal("matchMedia", (m: string) => ({ matches: m.includes("reduce"), media: m, onchange: null, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, dispatchEvent: () => false }));
     const page = mount(<Home />, "/");
     const seen: (string | null | undefined)[] = [];
-    for (let k = 0; k < 3; k++) {
+    for (let k = 0; k < BEAT_TITLES.length; k++) {
       seen.push(title());
       expect(page.querySelectorAll(".pin-pulse")).toHaveLength(0);
       press("ArrowRight");

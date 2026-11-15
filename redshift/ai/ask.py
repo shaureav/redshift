@@ -20,6 +20,8 @@ from __future__ import annotations
 import json
 import os
 import re
+import urllib.error
+import urllib.request
 from collections.abc import Callable
 from typing import Any
 
@@ -39,9 +41,16 @@ SYSTEM = "\n".join(
         '  for example "{{v3}} tests". Identifiers such as PSI-69, O2, CO2 or FLEX-2 are fine as written.',
         "- Each paragraph must cite at least one id that appears in the context: a test id, an investigation id",
         "  (PSI-n), a DOI or a finding id. Put citations in the cites array, not in the text.",
-        "- Do not rank, score or recommend an atmosphere. Never call anything safe, unsafe, safer or dangerous. If",
-        "  the question asks which atmosphere to choose, say that Redshift does not recommend an atmosphere, then",
-        "  describe what evidence exists and what is missing.",
+        "- Do not rank or score an atmosphere, and do not advise which to pick. Only when the question asks which",
+        '  atmosphere to choose, say that "Redshift leaves that choice to the people responsible for it", then',
+        "  describe what evidence exists and what is missing. Otherwise do not write that sentence.",
+        "- Use a slot only for the exact quantity its label in context.values names, for the same test, investigation",
+        "  or finding. Never use a slot for a different quantity. If no slot names the quantity the question asks",
+        "  about, say the context does not give it rather than use a nearby slot.",
+        "- Name an investigation or finding only where the context ties it to what you say about it.",
+        "- These words are rejected by the checker wherever they appear, even in a negative sentence, so never write",
+        '  them: "safe", "safer", "safest", "unsafe", "dangerous", any word starting with "recommend", "should',
+        '  choose", "best atmosphere".',
         '- Empty means unknown: say "no tests recorded", never that an absence means low risk.',
         "- Flame temperature explains how hot a flame can get; it does not predict ignition or spread.",
         "- Outcome labels are verbatim; do not interpret them.",
@@ -255,7 +264,70 @@ def call_claude(question: str, context_json: str) -> dict[str, Any] | None:
     return json.loads(text) if text else None
 
 
+# D48: Google's Gemini may answer instead of Claude, chosen by which key the host has (GEMINI_API_KEY first). The
+# prompt, the context, the answer schema and the post-check are the same, so the same rules hold whichever writes it.
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-flash-lite-latest")
+# Tried next when Google reports the first model overloaded or rate limited (503, 429, 500) or does not answer in
+# time. On 15 November 2026 gemini-flash-latest returned 503 or nothing, and gemini-flash-lite-latest
+# answered in 2 to 3 s.
+GEMINI_FALLBACK = os.environ.get("GEMINI_FALLBACK_MODEL", "gemini-flash-latest")
+CHOICE_SENTENCE = "Redshift leaves that choice to the people responsible for it."
+CHOICE_QUESTION = re.compile(r"\b(choose|chose|choice|pick|select|should|best|which atmosphere|recommend\w*)\b", re.I)
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+
+
+def _gemini_schema(node: Any) -> Any:
+    """The answer schema as Gemini's responseSchema takes it: the same shape, without additionalProperties."""
+    if isinstance(node, dict):
+        return {k: _gemini_schema(v) for k, v in node.items() if k != "additionalProperties"}
+    if isinstance(node, list):
+        return [_gemini_schema(v) for v in node]
+    return node
+
+
+def call_gemini(question: str, context_json: str) -> dict[str, Any] | None:
+    """One generateContent call with a JSON answer. Returns the parsed answer, or None if Gemini declined."""
+    prompt = "Context (JSON):" + chr(10) + context_json + chr(10) * 2 + "Question: " + question
+    body = {
+        "systemInstruction": {"parts": [{"text": SYSTEM}]},
+        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+        "generationConfig": {"responseMimeType": "application/json", "responseSchema": _gemini_schema(SCHEMA)},
+    }
+    data: dict[str, Any] = {}
+    models = [GEMINI_MODEL] + ([GEMINI_FALLBACK] if GEMINI_FALLBACK and GEMINI_FALLBACK != GEMINI_MODEL else [])
+    for k, model in enumerate(models):
+        req = urllib.request.Request(
+            GEMINI_URL.format(model=model),
+            data=json.dumps(body).encode("utf-8"),
+            headers={"Content-Type": "application/json", "x-goog-api-key": os.environ["GEMINI_API_KEY"]},
+            method="POST",
+        )
+        last = k + 1 == len(models)
+        try:
+            # An overloaded model can take about 30 s just to answer 503, so the first try is cut short: the fallback
+            # then still fits inside the host's 60 s limit.
+            with urllib.request.urlopen(req, timeout=40 if last else 12) as res:
+                data = json.loads(res.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as err:
+            if err.code in (429, 500, 503) and not last:
+                continue
+            raise
+        except (TimeoutError, urllib.error.URLError):
+            if not last:
+                continue
+            raise
+    cands = data.get("candidates") or []
+    if not cands or cands[0].get("finishReason") in {"SAFETY", "RECITATION", "BLOCKLIST", "PROHIBITED_CONTENT", "SPII"}:
+        return None
+    parts = (cands[0].get("content") or {}).get("parts") or []
+    text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
+    return json.loads(text) if text else None
+
+
 def live_available() -> bool:
+    if os.environ.get("GEMINI_API_KEY"):
+        return True
     try:
         import anthropic  # noqa: F401
     except ImportError:
@@ -272,8 +344,17 @@ def answer(question: str, ctx: Context, call: ModelCall | None = None) -> dict[s
                 "not_covered": None,
                 "problems": ["no model credential on this server"],
             }
-        call = call_claude
-    draft = call(question, ctx.for_model())
+        call = call_gemini if os.environ.get("GEMINI_API_KEY") else call_claude
+    try:
+        draft = call(question, ctx.for_model())
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, KeyError, OSError) as err:
+        # The model service failed or sent no usable JSON: say so, never show a half answer. No key is logged.
+        return {
+            "status": "unavailable",
+            "paragraphs": [],
+            "not_covered": None,
+            "problems": [f"the live model could not be reached ({type(err).__name__})"],
+        }
     if draft is None:
         return {
             "status": "rejected",
@@ -281,6 +362,12 @@ def answer(question: str, ctx: Context, call: ModelCall | None = None) -> dict[s
             "not_covered": None,
             "problems": ["the model declined to answer"],
         }
+    if not CHOICE_QUESTION.search(question):
+        # The model sometimes opens every answer with the choice sentence; it belongs only to a question about choosing.
+        for para in draft.get("paragraphs") or []:
+            if isinstance(para, dict) and isinstance(para.get("text"), str):
+                para["text"] = para["text"].replace(CHOICE_SENTENCE, "").strip()
+        draft["paragraphs"] = [p for p in draft.get("paragraphs") or [] if not isinstance(p, dict) or p.get("text")]
     problems = check(draft, ctx)
     if problems:
         return {"status": "rejected", "paragraphs": [], "not_covered": None, "problems": problems[:10]}

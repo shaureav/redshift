@@ -333,18 +333,20 @@ describe("the story intro", () => {
     return host;
   };
 
-  it.each([0, 1, 2])("beat %i matches its snapshot, with every number through Value", (b) => {
+  it.each([0, 1, 2, 3, 4])("beat %i matches its snapshot, with every number through Value", (b) => {
     const host = beat(b);
     expect(bareNumbers(host)).toEqual([]);
     expect(tidy(host.innerHTML)).toMatchSnapshot();
   });
 
-  it("cites the access-gap steps in the last beat, and only there", () => {
-    expect(beat(0).querySelectorAll("[data-prov]")).toHaveLength(0);
-    expect(beat(1).querySelectorAll("[data-prov]")).toHaveLength(0);
-    // The four PSI steps, then (D44) the two paper steps once verified paper burns are counted.
-    const steps = [...gap.psi_steps, ...(gap.paper_steps[0].count.v ? gap.paper_steps : [])];
-    expect([...beat(2).querySelectorAll("[data-prov]")].map((e) => e.getAttribute("data-prov"))).toEqual(steps.map((s) => s.count.p));
+  it("cites the access-gap steps from beat 3 on, and none before", () => {
+    const provs = (b: number) => [...beat(b).querySelectorAll("[data-prov]")].map((e) => e.getAttribute("data-prov"));
+    expect(provs(0)).toEqual([]);
+    expect(provs(1)).toEqual([]);
+    expect(provs(2)).toEqual(gap.psi_steps.map((s) => s.count.p));
+    // D47: beat 4 the paper steps (once verified), beat 5 one real number to try.
+    expect(provs(3)).toEqual(gap.paper_steps[0].count.v ? gap.paper_steps.map((s) => s.count.p) : []);
+    expect(provs(4)).toEqual([gap.psi_steps[0].count.p]);
   });
 
   it("says the counts are loading rather than show a number it does not have", () => {

@@ -1,5 +1,5 @@
-// The story intro (plan, Phase 5; decision D2: it replaces the tour). Three beats over the live plane tell the
-// access-gap story to someone who has never seen Redshift, then Explore hands the plane over at 8.2 psi / 34% O2
+// The story intro (plan, Phase 5; decision D2: it replaces the tour). Five beats over the live plane (D47) tell the
+// access-gap story to someone who has never seen Redshift and show how to use the plane, then Explore hands the plane over at 8.2 psi / 34% O2
 // with Solids only on. Advanced by a click on the plane, a scroll, a swipe or the arrow keys; Skip (or Escape) at
 // any time; shown once per device and replayable from the command palette.
 //
@@ -17,7 +17,9 @@ export const INTRO_KEY = "redshift-intro-v1";
 /** Where Explore hands over: the 8.2 psi / 34% O2 candidate, with Solids only on. */
 export const EXPLORE_AT = { o2: 34, psi: 8.2 } as const;
 /** The plane's stage for each beat, in order. */
-export const INTRO_STAGES: readonly IntroStage[] = ["pins", "land", "solids"];
+// D47: five beats. The fourth (the papers) and fifth (how to read and use the plane) keep the Solids only stage, so
+// the plot does not move after the third.
+export const INTRO_STAGES: readonly IntroStage[] = ["pins", "land", "solids", "solids", "solids"];
 /** One scroll gesture is one beat: wheel events closer together than this belong to the gesture already counted. */
 const WHEEL_QUIET_MS = 300;
 /** A vertical swipe at least this long steps a beat on a touch screen. */
@@ -40,22 +42,37 @@ function rememberIntro() {
   }
 }
 
-const ORDINAL = ["One", "Two", "Three"];
+const ORDINAL = ["One", "Two", "Three", "Four", "Five"];
 
 function GapCounts({ gap }: { gap: AccessGapData | null }): ReactNode {
   const s = gap?.psi_steps;
   if (!s || s.length < 4) return <>The cited counts are still loading.</>;
   const n = (k: number) => <Value val={s[k].count} unit={false} />;
-  // D44: once paper burns are verified, the solid land left on the plane is theirs alone, so the beat says so: a
-  // reader must not take land drawn from papers for downloadable data.
-  const pp = gap?.paper_steps;
-  const papers = pp && pp.length >= 2 && pp[0].count.v ? (
-    <> The solid land left comes only from NASA&apos;s papers: <Value val={pp[0].count} unit={false} /> burns near a candidate, <Value val={pp[1].count} unit={false} /> downloadable as rows.</>
-  ) : null;
   return s[2].count.v === 0 ? (
-    <>No solid burn in PSI&apos;s tables records pressure. Of {n(0)} solid-fuel burn rows, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.{papers}</>
+    <>No solid burn in PSI&apos;s tables records pressure. Of {n(0)} solid-fuel burn rows, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.</>
   ) : (
     <>Of {n(0)} solid-fuel burn rows in PSI&apos;s tables, {n(1)} record oxygen, {n(2)} record pressure and {n(3)} sit near a habitat candidate as downloadable rows.</>
+  );
+}
+
+/** Beat four (D44, D47): the solid land left on the plane is NASA's own burns from its papers, none downloadable, so a
+ *  reader never takes land drawn from papers for downloadable data. */
+function PaperCounts({ gap }: { gap: AccessGapData | null }): ReactNode {
+  const pp = gap?.paper_steps;
+  if (!pp || pp.length < 2) return <>The cited counts are still loading.</>;
+  if (!pp[0].count.v) return <>No paper finding verified so far places a solid burn near a candidate. NASA&apos;s Saffire papers are drafted and wait for a named team member to verify them.</>;
+  return (
+    <>The outlined squares are NASA&apos;s Saffire fire tests, verified from its published papers: <Value val={pp[0].count} unit={false} /> burns near a candidate atmosphere, <Value val={pp[1].count} unit={false} /> of them downloadable as rows. The evidence exists; a researcher cannot use it.</>
+  );
+}
+
+/** Beat five (D47): how to read and use the plane, with one real number to try. */
+function HowToUse({ gap }: { gap: AccessGapData | null }): ReactNode {
+  const s = gap?.psi_steps;
+  return (
+    <>
+      Click any number, such as {s && s.length ? <Value val={s[0].count} unit={false} /> : "a count"}, to see where it comes from: the file and row, or the paper, page and quote. Then drag the probe to read the evidence anywhere, press S for solid materials only, ask the evidence a question, or take a cited brief and a data request to NASA.
+    </>
   );
 }
 
@@ -74,6 +91,14 @@ const BEATS: { title: ReactNode; body: (gap: AccessGapData | null) => ReactNode 
   {
     title: "Now only solid materials.",
     body: (gap) => <GapCounts gap={gap} />,
+  },
+  {
+    title: "NASA did burn solids here, in papers.",
+    body: (gap) => <PaperCounts gap={gap} />,
+  },
+  {
+    title: "Every number shows its source.",
+    body: (gap) => <HowToUse gap={gap} />,
   },
 ];
 
@@ -209,7 +234,7 @@ export function Intro({ beat, gap, onBeat, onClose }: IntroProps) {
         {/* Below lg the card sits at the bottom of the screen, over the evidence sheet (dimmed and unused while
             the intro plays), so the whole plot shows, the 14.7 psi row included. On a phone the bars below say
             which beat this is. */}
-        <span className="eyebrow max-lg:sr-only">{ORDINAL[b]} of three</span>
+        <span className="eyebrow max-lg:sr-only">{ORDINAL[b]} of {ORDINAL[last].toLowerCase()}</span>
         {/* The text of each beat crossfades in; a screen reader hears the new beat. The block keeps the height of
             the longest beat on a wide screen (now the second: four lines of title, five of body), so the buttons
             stay where the pointer left them. */}

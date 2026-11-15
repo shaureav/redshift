@@ -9,35 +9,31 @@ Each pin is an atmosphere on the table:
 oxygen across, cabin pressure up.
 
 3
-00:00:06,000 --> 00:00:09,000
+00:00:06,000 --> 00:00:10,000
 These are the microgravity fire tests
 NASA's own tables let us place.
 
 4
-00:00:09,000 --> 00:00:12,000
-Land: tests sit near.
-Hatched sea: unknown, not safe.
+00:00:10,000 --> 00:00:14,000
+Now only solid materials:
+263 burns, none records pressure.
 
 5
-00:00:12,000 --> 00:00:15,000
-Now only solid materials.
+00:00:14,000 --> 00:00:19,000
+NASA did burn solids here, but only in papers:
+8 burns near a candidate, 0 downloadable.
 
 6
-00:00:15,000 --> 00:00:18,000
-263 solid-fuel burn rows.
-None records pressure.
+00:00:19,000 --> 00:00:23,000
+Every number shows its source.
+Click any one to check it.
 
 7
-00:00:18,000 --> 00:00:23,000
+00:00:23,000 --> 00:00:28,000
 At 8.2 psi and 34% oxygen, 40 tests nearby.
 Solid burns: 0 in NASA's tables, 3 only in papers.
 
 8
-00:00:23,000 --> 00:00:28,000
-If NASA has already burned fabric in near-Moon-base air,
-why can't a researcher download it?
-
-9
 00:00:28,000 --> 00:00:30,000
-Redshift: The Atmosphere Trade Studio
-[your public link]
+Why can't a researcher download them?
+Redshift: [your public link]
